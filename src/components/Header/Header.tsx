@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import "./Header.scss";
-import logo from "../../logo.svg";
+import logo from "../../assets/images/logo.svg";
 
 const Header = () => {
   return (
@@ -7,23 +8,25 @@ const Header = () => {
       <header>
         {/* Logo */}
         <div className="logo">
-          <img src={logo} alt="Agile Pulse logo" />
+          <Link to="/">
+            <img src={logo} alt="Agile Pulse logo" />
+          </Link>
         </div>
         {/* Navigation */}
         <nav>
           <div className="nav-left">
             <ul>
               <li>
-                <a href="#">Ana səhifə</a>
+                <Link to="/">Ana səhifə</Link>
               </li>
               <li>
-                <a href="#">Təlimlər</a>
+                <Link to="#">Təlimlər</Link>
               </li>
               <li>
-                <a href="#">İmkanlar</a>
+                <Link to="#">İmkanlar</Link>
               </li>
               <li>
-                <a href="#">Haqqımızda</a>
+                <Link to="#">Haqqımızda</Link>
               </li>
             </ul>
           </div>
@@ -31,10 +34,10 @@ const Header = () => {
           <div className="nav-right">
             <ul>
               <li>
-                <a href="#">Qeydiyyat</a>
+                <Link to="#">Qeydiyyat</Link>
               </li>
               <li>
-                <a href="#">Daxil ol</a>
+                <Link to="#">Daxil ol</Link>
               </li>
             </ul>
           </div>
