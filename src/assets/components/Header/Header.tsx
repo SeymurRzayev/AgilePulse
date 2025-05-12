@@ -20,7 +20,7 @@ const Header = () => {
                 <a href="#">Təlimlər</a>
               </li>
               <li>
-                <a href="#">İmkanlar</a>
+                <a href="#">İmtahanlar</a>
               </li>
               <li>
                 <a href="#">Haqqımızda</a>
