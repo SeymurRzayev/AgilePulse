@@ -1,0 +1,334 @@
+.imageSection {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+
+    /*     Navigates the user back to the previous page */
+    .navigatePageIcon {
+        display: flex;
+        z-index: 9999;
+        width: 60px;
+        height: 60px;
+
+        .navigateIconImg {
+            display: flex;
+            justify-content: center;
+            width: 19.79px;
+            height: 20.86px;
+            left: 32px;
+            top: 32px;
+            object-fit: cover;
+            position: absolute;
+            z-index: 12;
+
+        }
+    }
+
+    .backgroundImgContainer {
+        width: 100%;
+        height: 100%;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+
+
+
+    }
+
+    .backgroundImg {
+        width: 100%;
+        height: 100vh;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+        object-fit: cover;
+        position: relative;
+        z-index: 1;
+    }
+
+    .title {
+        font-size: 46px;
+        font-weight: 700;
+        line-height: 56px;
+        line-height: 36px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        z-index: 10;
+    }
+
+    .description {
+        position: absolute;
+        z-index: 9000;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 36px;
+        letter-spacing: 0px;
+        color: rgba(255, 255, 255, 1);
+        margin-top: 100px;
+
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+    }
+
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        position: absolute;
+        z-index: 100;
+        margin-top: 600px;
+        margin-right: 530px;
+    }
+
+    .logo .logoImg {
+        object-fit: cover;
+    }
+
+    .logo .logoTitle {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 35px;
+        letter-spacing: 0px;
+        color: #fff;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .imageSection {
+        width: 50%;
+        height: 100vh;
+        flex-direction: column;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+
+
+        .navigatePageIcon {
+            display: flex;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+        }
+
+        .navigateIconImg {
+            display: flex;
+            justify-content: center;
+            width: 19.79px;
+            height: 20.86px;
+            left: 32px;
+            top: 32px;
+            object-fit: cover;
+            position: absolute;
+            z-index: 12;
+        }
+
+        .backgroundImgContainer {
+            width: 100%;
+            height: 100%;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        .backgroundImg {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            position: relative;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 56px;
+            letter-spacing: 0px;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .description {
+            font-size: 30px;
+            font-weight: 400;
+            line-height: 36px;
+            letter-spacing: 0px;
+            color: white;
+            position: absolute;
+            z-index: 9000;
+            margin-top: 100px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: absolute;
+            z-index: 100;
+            margin-top: 580px;
+            margin-right: 430px;
+        }
+
+        .logoImg {
+            object-fit: cover;
+        }
+
+        .logoTitle {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 35px;
+            letter-spacing: 0px;
+            color: #fff;
+        }
+    }
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .imageSection {
+        width: 50%;
+        height: 100vh;
+        flex-direction: column;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+
+
+        .navigatePageIcon {
+            display: flex;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+        }
+
+        .navigateIconImg {
+            display: flex;
+            justify-content: center;
+            width: 19.79px;
+            height: 20.86px;
+            left: 32px;
+            top: 32px;
+            object-fit: cover;
+            position: absolute;
+            z-index: 12;
+        }
+
+        .backgroundImgContainer {
+            width: 100%;
+            height: 100%;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        .backgroundImg {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            position: relative;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 56px;
+            letter-spacing: 0px;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            z-index: 10;
+        }
+          .description {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 36px;
+            letter-spacing: 0px;
+            color: white;
+            position: absolute;
+            z-index: 9000;
+            margin-top: 100px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+            border-top-right-radius: 60px;
+            border-bottom-right-radius: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: absolute;
+            z-index: 100;
+            margin-top: 540px;
+            margin-right: 170px;
+        }
+
+        .logoImg {
+            object-fit: cover;
+
+        }
+
+        .logoTitle {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 35px;
+            letter-spacing: 0px;
+            color: #fff;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+    .imageSection {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .imageSection {
+        display: none;
+    }
+}
