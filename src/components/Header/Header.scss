@@ -34,19 +34,24 @@ header {
       gap: 10px;
       li {
         display: flex;
-        :hover {
-          background-color: #2c4b9b;
-          color: #ffffff;
-          cursor: pointer;
-        }
+        border-radius: 30px;
         a {
           display: inline-block;
           width: 100%;
-          border-radius: 30px;
+
           padding: 12px 16px;
-          color: var(--text-color);
+          color: #122041;
         }
       }
     }
   }
+}
+.blue-btn {
+  background-color: #2c4b9b;
+  color: #ffffff;
+}
+.bordered-transparent-btn {
+  background-color: transparent;
+  border: 1px solid #2c4b9b;
+  color: #2c4b9b;
 }
