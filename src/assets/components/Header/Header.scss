@@ -1,5 +1,5 @@
 header {
-  background: rgba(251, 249, 247, 0.75);
+  background: var(--background-blur);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   width: 100%;
