@@ -1,0 +1,111 @@
+.inputFieldContainer {
+    width: 344px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .inputField {
+        width: 100%;
+        height: 48px;
+        border-radius: 30px;
+        border: 1px solid rgba(176, 176, 176, 1);
+        padding: 12px 24px;
+        font-size: 16px;
+        letter-spacing: 0px;
+        color: #646262;
+        outline: none;
+        margin-top: 20px;
+
+    }
+
+    :hover {
+        border: 1px solid #3f51b5;
+        box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+        -webkit-box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+        -moz-box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+    }
+
+    .inputField::placeholder {
+        font-family: "Lexend";
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: 0px;
+        line-height: 24px;
+        color: rgba(0, 0, 0, 0.38);
+    }
+
+    .inputField:focus {
+        outline: none;
+        border-color: #007AFF;
+    }
+
+    .inputField.error {
+        border-color: #FF3B30;
+        box-shadow: -1px 0px 6px 2px rgba(255, 59, 48, 0.14);
+        -webkit-box-shadow: -1px 0px 6px 2px rgba(255, 59, 48, 0.14);
+        -moz-box-shadow: -1px 0px 6px 2px rgba(255, 59, 48, 0.14);
+
+
+    }
+
+    .errorMsg {
+        color: #FF3B30;
+        font-size: 12px;
+        margin-top: 4px;
+        letter-spacing: 0px;
+        display: block;
+    }
+}
+
+@media (min-width: 1024px){
+ .inputFieldContainer {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .inputField {
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+        margin-top: 20px;
+
+    }
+     .inputField::placeholder {
+        font-family: "Lexend";
+        font-size: 20px;
+        font-weight: 300;
+      
+    }
+ .errorMsg {
+        font-size: 16px;
+    }
+}
+
+}
+@media only screen and (max-width: 480px){
+    .inputFieldContainer {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .inputField {
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        margin-top: 20px;
+
+    }
+     .errorMsg {
+        font-size: 14px;
+    }
+}
+
+}

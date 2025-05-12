@@ -34,10 +34,10 @@ const Header = () => {
           <div className="nav-right">
             <ul>
               <li className="blue-btn">
-                <Link to="#">Qeydiyyat</Link>
+                <Link to="/sign-up">Qeydiyyat</Link>
               </li>
               <li className="bordered-transparent-btn">
-                <Link to="#">Daxil ol</Link>
+                <Link to="/sign-in">Daxil ol</Link>
               </li>
             </ul>
           </div>
