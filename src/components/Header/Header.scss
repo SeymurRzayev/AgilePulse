@@ -1,12 +1,4 @@
-.blue-button {
-    background-color: #2C4B9B;
-    color: #ffffff;
-}
-.bordered-transparent-button {
-    background-color: transparent;
-    border: 1px solid #2C4B9B;
-    color: #2C4B9B;
-}
+
 header {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
@@ -43,15 +35,24 @@ header {
       gap: 10px;
       li {
         display: flex;
-        
+        border-radius: 30px;
         a {
           display: inline-block;
           width: 100%;
-          border-radius: 30px;
+          
           padding: 12px 16px;
           color: #122041;
         }
       }
     }
   }
+}
+.blue-btn {
+    background-color: #2C4B9B;
+    color: #ffffff;
+}
+.bordered-transparent-btn {
+    background-color: transparent;
+    border: 1px solid #2C4B9B;
+    color: #2C4B9B;
 }

@@ -33,10 +33,10 @@ const Header = () => {
 
           <div className="nav-right">
             <ul>
-              <li>
+              <li className="blue-btn">
                 <Link to="#">Qeydiyyat</Link>
               </li>
-              <li>
+              <li className="bordered-transparent-btn">
                 <Link to="#">Daxil ol</Link>
               </li>
             </ul>
