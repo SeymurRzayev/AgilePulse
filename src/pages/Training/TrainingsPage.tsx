@@ -19,6 +19,7 @@ import training3 from "../../assets/images/training3.jpg";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 
+
 type TrainingListItemProps = {
   item: string;
   isActive: boolean;
@@ -124,6 +125,7 @@ const TrainingsPage = () => {
   return (
     <div>
       {/* Hero Section */}
+      
       <div
         className={styles.heroSection}
         style={{
