@@ -1,0 +1,7 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--bg-light);
+}

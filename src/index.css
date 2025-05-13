@@ -2,20 +2,12 @@
   --text-color: #122041;
 }
 * {
-  margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  margin: 0;
   list-style: none;
   text-decoration: none;
-  font-family: Corbel, sans-serif;
-
-}
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-body {
-  background-color: rgb(174, 174, 179);
-}
+
+
