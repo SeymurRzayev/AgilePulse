@@ -1,0 +1,332 @@
+.trainersContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: 'Corbel', sans-serif;
+}
+
+.trainersSection {
+  margin-bottom: 80px;
+}
+
+.texts {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.texts h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c4b9b;
+  margin-bottom: 16px;
+}
+
+.texts p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.trainerImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.description {
+  padding: 20px;
+}
+
+.description h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.description h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #2c4b9b;
+}
+
+.description p {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+}
+
+.testimonialsSection {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.testimonialsSection h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c4b9b;
+  margin-bottom: 16px;
+}
+
+.testimonialsSection p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.testimonials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.testimonialCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+}
+
+.testimonialContent {
+  position: relative;
+}
+
+.quoteIcon {
+  font-size: 60px;
+  color: #2c4b9b;
+  opacity: 0.2;
+  position: absolute;
+  top: -30px;
+  left: -10px;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.testimonialCard p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonialFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.testimonialName {
+  font-weight: 700;
+  color: #2c4b9b;
+}
+
+.testimonialDate {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.navArrow {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navArrow:hover {
+  background: #f0f0f0;
+}
+
+.navArrow svg {
+  color: #2c4b9b;
+}
+
+.contactSection {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.contactSection h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c4b9b;
+  margin-bottom: 16px;
+}
+
+.contactSection p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.contactForm {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.messageArea {
+  position: relative;
+}
+
+.messageArea textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-family: 'Corbel', sans-serif;
+  font-size: 16px;
+  resize: none;
+}
+
+.sendButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #2c4b9b;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sendButton:hover {
+  background: #1a3a8f;
+}
+
+.sendButton svg {
+  color: white;
+}
+
+.inputFields {
+  display: flex;
+  gap: 20px;
+}
+
+.inputFields input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  font-family: 'Corbel', sans-serif;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .texts h2,
+  .testimonialsSection h2,
+  .contactSection h2 {
+    font-size: 28px;
+  }
+  
+  .texts p,
+  .testimonialsSection p,
+  .contactSection p {
+    font-size: 16px;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonialCard {
+    padding: 20px;
+  }
+  
+  .testimonialCard p {
+    font-size: 16px;
+  }
+  
+  .inputFields {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trainersContainer {
+    padding: 0 15px;
+  }
+  
+  .texts h2,
+  .testimonialsSection h2,
+  .contactSection h2 {
+    font-size: 24px;
+  }
+  
+  .texts p,
+  .testimonialsSection p,
+  .contactSection p {
+    font-size: 15px;
+  }
+  
+  .testimonials {
+    gap: 10px;
+  }
+  
+  .navArrow {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .messageArea textarea {
+    min-height: 120px;
+    padding: 15px;
+  }
+  
+  .sendButton {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
