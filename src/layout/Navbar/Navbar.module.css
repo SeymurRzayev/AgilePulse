@@ -52,7 +52,7 @@
 
 /* Main navbar container */
 .navbar {
-  width: 100%;
+  width: 1224px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,10 +231,11 @@
 }
 
 @media (min-width: 768px) {
-    
-.container{
+
+  .container {
     width: 100%;
-}
+  }
+
   .actions {
     display: flex;
     justify-content: center;
@@ -452,6 +453,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -482,15 +484,17 @@
   animation: fadeInRight 0.4s 0.6s both;
 }
 
-@media only screen and   (min-width:760px) and (max-width:846px){
- .navbar {
+@media only screen and (min-width:760px) and (max-width:846px) {
+  .navbar {
     top: 10px;
     overflow: hidden;
-    .container{
-        width: 100%;
-        gap: 10px;
+
+    .container {
+      width: 100%;
+      gap: 10px;
     }
   }
+
   .sidebar {
     display: none;
   }
