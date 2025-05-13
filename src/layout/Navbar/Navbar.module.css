@@ -1,0 +1,497 @@
+/* Navbar.module.css */
+/* Custom properties for consistent theming */
+:root {
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --white-high: #ffffff;
+  --black-high: #000000;
+
+  --background-blur: rgba(255, 255, 255, 0.205);
+  --background-blur-scrolled: rgba(255, 255, 255, 0.95);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --transition-standard: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+
+  --font-sans: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Corbel", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  --navbar-height: 72px;
+  --navbar-height-scrolled: 64px;
+}
+
+/* Main navbar container */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  transition: var(--transition-standard);
+  height: var(--navbar-height);
+}
+
+.transparentBg {
+  background-color: transparent;
+}
+
+.container {
+  width: 100%;
+
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 25px;
+  padding: 0 24px;
+  margin: 0 10px;
+  background-color: var(--background-blur);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: var(--transition-standard);
+}
+
+.containerScrolled {
+  height: var(--navbar-height-scrolled);
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Logo styles */
+.logoLink {
+  text-decoration: none;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo span {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 35px;
+  text-align: center;
+  color: var(--blue-900);
+  white-space: nowrap;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 50;
+  background: none;
+  border: none;
+  padding: 8px;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: var(--transition-standard);
+}
+
+.hamburger:hover {
+  background-color: var(--blue-100);
+}
+
+.hamburger:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-500);
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.hamburgerLine {
+  width: 24px;
+  height: 2px;
+  background-color: var(--blue-900);
+  margin-bottom: 6px;
+  transition: var(--transition-standard);
+  border-radius: 2px;
+}
+
+.hamburgerLine:last-child {
+  margin-bottom: 0;
+}
+
+.hamburgerLine1Active {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburgerLine2Active {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburgerLine3Active {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Desktop navigation links */
+.links {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.link {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 30px;
+  color: var(--blue-900);
+  text-decoration: none;
+  transition: var(--transition-standard);
+  position: relative;
+  white-space: nowrap;
+}
+
+.link:hover {
+  background-color: var(--blue-100);
+}
+
+.link.active {
+  color: var(--white-high);
+  background-color: var(--blue-500);
+}
+
+.link.active:hover {
+  background-color: var(--blue-600);
+}
+
+/* Desktop action buttons */
+.actions {
+  display: none;
+}
+
+@media (min-width: 768px) {
+    
+.container{
+    width: 100%;
+}
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.button {
+  border-radius: 30px;
+  padding: 10px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-standard);
+  white-space: nowrap;
+}
+
+.colorBtn {
+  background-color: var(--blue-500);
+  color: var(--white-high);
+  border: 1px solid var(--blue-500);
+}
+
+.colorBtn:hover {
+  background-color: var(--blue-600);
+  border-color: var(--blue-600);
+}
+
+.outlineBtn {
+  border: 1px solid var(--blue-900);
+  color: var(--blue-500);
+  background-color: transparent;
+}
+
+.outlineBtn:hover {
+  background-color: var(--blue-100);
+  color: var(--blue-600);
+}
+
+.button.active {
+  transform: scale(0.98);
+}
+
+/* Close button in sidebar */
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: var(--transition-standard);
+  padding: 0;
+}
+
+.closeButton:hover {
+  background-color: var(--blue-100);
+}
+
+.closeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-500);
+}
+
+/* Mobile sidebar menu */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -20px;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--white-high);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.sidebarContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  height: 100%;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 8px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.sidebarLink {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: var(--blue-900);
+  text-decoration: none;
+  transition: var(--transition-standard);
+  display: flex;
+  align-items: center;
+}
+
+.sidebarLink:hover {
+  background-color: var(--blue-100);
+}
+
+.sidebarLink.active {
+  color: var(--white-high);
+  background-color: var(--blue-500);
+}
+
+.sidebarActions {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebarButton {
+  border-radius: 12px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-standard);
+}
+
+.sidebarColorBtn {
+  background-color: var(--blue-500);
+  color: var(--white-high);
+  border: 1px solid var(--blue-500);
+}
+
+.sidebarColorBtn:hover {
+  background-color: var(--blue-600);
+  border-color: var(--blue-600);
+}
+
+.sidebarOutlineBtn {
+  border: 1px solid var(--blue-900);
+  color: var(--blue-500);
+  background-color: transparent;
+}
+
+.sidebarOutlineBtn:hover {
+  background-color: var(--blue-100);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-standard);
+}
+
+.overlayVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .logo span {
+    font-size: 18px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* Animation for mobile menu items */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebarNav .sidebarLink:nth-child(1) {
+  animation: fadeInRight 0.4s 0.1s both;
+}
+
+.sidebarNav .sidebarLink:nth-child(2) {
+  animation: fadeInRight 0.4s 0.2s both;
+}
+
+.sidebarNav .sidebarLink:nth-child(3) {
+  animation: fadeInRight 0.4s 0.3s both;
+}
+
+.sidebarNav .sidebarLink:nth-child(4) {
+  animation: fadeInRight 0.4s 0.4s both;
+}
+
+.sidebarActions .sidebarButton:nth-child(1) {
+  animation: fadeInRight 0.4s 0.5s both;
+}
+
+.sidebarActions .sidebarButton:nth-child(2) {
+  animation: fadeInRight 0.4s 0.6s both;
+}
+
+@media only screen and   (min-width:760px) and (max-width:846px){
+ .navbar {
+    top: 10px;
+    overflow: hidden;
+    .container{
+        width: 100%;
+        gap: 10px;
+    }
+  }
+  .sidebar {
+    display: none;
+  }
+}
