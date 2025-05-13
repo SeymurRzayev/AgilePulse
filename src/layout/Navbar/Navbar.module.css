@@ -57,7 +57,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  position: absolute;
+  /* position: absolute; */
   top: 1px;
   left: 0;
   transition: var(--transition-standard);
