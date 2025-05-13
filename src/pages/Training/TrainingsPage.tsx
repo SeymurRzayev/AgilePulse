@@ -19,7 +19,13 @@ import training3 from "../../assets/images/training3.jpg";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 
-const TrainingListItem = ({ item, isActive, onClick }) => (
+type TrainingListItemProps = {
+  item: string;
+  isActive: boolean;
+  onClick: () => void;
+};
+
+const TrainingListItem = ({ item, isActive, onClick }: TrainingListItemProps) => (
   <li
     className={`${styles.navigationItem} ${isActive ? styles.active : ""}`}
     onClick={onClick}
@@ -28,7 +34,16 @@ const TrainingListItem = ({ item, isActive, onClick }) => (
   </li>
 );
 
-const TrainingCard = ({ imgUrl, title, time, avatar, user, date }) => {
+type TrainingCardProps = {
+  imgUrl: string;
+  title: string;
+  time: string;
+  avatar: string;
+  user: string;
+  date: string;
+};
+
+const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   return (
     <div className={styles.card}>
