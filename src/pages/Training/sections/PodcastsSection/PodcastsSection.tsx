@@ -1,74 +1,84 @@
 import type { FC } from "react";
 import styles from "./PodcastsSection.module.css";
-// Use placeholder images instead of imported images that don't exist
-import { useEffect, useState } from "react";
+import micImg from "../../../../assets/images/mic.png";
+import podcast1 from "../../../../assets/images/podcast1.jpg";
+import podcast2 from "../../../../assets/images/podcast2.jpg";
+import podcast3 from "../../../../assets/images/podcast3.jpg";
 
 const PodcastsSection: FC = () => {
-  // Using placeholder for podcast images since the actual images don't exist
-  const [podcastImages, setPodcastImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Simulating loading of images with placeholders
-    setPodcastImages([
-      "/api/placeholder/300/200",
-      "/api/placeholder/300/200",
-      "/api/placeholder/300/200"
-    ]);
-  }, []);
-
   const podcasts = [
     {
       id: 1,
-      title: "Agile Transformasiya: Nədir və necə həyata keçirilir?",
-      image: podcastImages[0],
-      duration: "45 dəq",
-      date: "12.05.2025"
+      image: podcast1,
+      name: "Tural Məmmədov",
+      desc1: "“Scrum Master yoxsa Project Manager?",
+      desc2: "Fərqlər, funksiyalar və real təcrübələr”",
     },
     {
       id: 2,
-      title: "Scrum vs Kanban: Hansı və nə vaxt?",
-      image: podcastImages[1],
-      duration: "38 dəq",
-      date: "28.04.2025"
+      image: podcast2,
+      name: "Nuray Əhmədova",
+      desc1: "Personalın idarə edilməsi",
+      desc2: "“Agile yanaşma”",
     },
     {
       id: 3,
-      title: "Remote Agile: Uzaq komandalarda Agile metodologiyası",
-      image: podcastImages[2],
-      duration: "52 dəq",
-      date: "15.03.2025"
-    }
+      image: podcast3,
+      name: "Günel Qasımova",
+      desc1: "“Sprint Retrospective: Uğursuz",
+      desc2: "sessiyaları necə faydalıya çevirək?”",
+    },
   ];
 
   return (
-    <div className={styles.podcastsContainer}>
-      <div className={styles.header}>
-        <h2>Podcastlar</h2>
-        <p>Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən söhbətlər burada səni gözləyir.</p>
+    <section className={styles.podcastsSection}>
+      <div className={styles.banner}>
+        <div className={styles.bannerText}>
+          <h2>Podcastlar</h2>
+          <p>
+            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən <br />
+            söhbətlər burada səni gözləyir.
+          </p>
+        </div>
+        <div className={styles.bannerImage}>
+          <img src={micImg} alt="Mikrofon" />
+        </div>
       </div>
-
-      <div className={styles.podcastsGrid}>
-        {podcasts.map(podcast => (
-          <div key={podcast.id} className={styles.podcastCard}>
-            <div className={styles.imageContainer}>
-              <img src={podcast.image} alt={podcast.title} />
-              <div className={styles.playButton}>
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M8 5.14v14l11-7-11-7z" fill="currentColor" />
-                </svg>
+      <div className={styles.cardsRow}>
+        <div className={styles.cardsWrapper}>
+          {podcasts.map((podcast, idx) => (
+            <div
+              className={`${styles.podcastCard} ${
+                idx === 0
+                  ? styles.cardUp
+                  : idx === 2
+                  ? styles.cardDown
+                  : ""
+              }`}
+              key={podcast.id}
+            >
+              <img className={styles.cardImg} src={podcast.image} alt={podcast.name} />
+              <div className={styles.cardInfo}>
+                <div className={styles.cardName}>{podcast.name}</div>
+                <div className={styles.cardDesc}>
+                  {podcast.desc1}
+                  <br />
+                  {podcast.desc2}
+                </div>
               </div>
             </div>
-            <div className={styles.podcastInfo}>
-              <h3>{podcast.title}</h3>
-              <div className={styles.meta}>
-                <span>{podcast.duration}</span>
-                <span>{podcast.date}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button className={styles.arrowBtn}>
+          <span className={styles.arrowCircle}>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="14" fill="#F3F4F6"/>
+              <path d="M12 9L16 14L12 19" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

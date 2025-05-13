@@ -1,57 +1,47 @@
-.trainingsContainer {
+.container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Hero Section */
 .heroSection {
   width: 100%;
-  min-height: 340px;
-  background-color: #333;
-  background-position: center;
+  height: 320px;
+  background-image: url('../../assets/images/first page.png');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 60px 0 40px 0;
-  border-radius: 0 0 30px 30px;
+  color: white;
+  margin-bottom: 30px;
 }
 
 .heroSection h1 {
-  color: #fff;
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
-  text-align: center;
+  margin-bottom: 15px;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
 }
 
 .heroSection p {
-  color: #fff;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
-  text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Search & Filter Bar */
-.searchBarContainer {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  margin-top: -60px;
-  margin-bottom: 30px;
+.searchContainer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  z-index: 2;
+  align-items: center;
+  margin: 0 auto 30px;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
 .searchBar {
@@ -61,9 +51,9 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 20px;
   height: 56px;
-  min-width: 0;
+  margin-right: 20px;
 }
 
 .searchBar input {
@@ -71,6 +61,7 @@
   outline: none;
   font-size: 16px;
   width: 100%;
+  padding: 0 10px;
   background: transparent;
 }
 
@@ -91,274 +82,230 @@
   cursor: pointer;
 }
 
-/* Navigation Styles */
+.categoriesContainer {
+  margin-bottom: 30px;
+}
+
 .navigation {
-  margin: 40px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 28px;
   flex-wrap: wrap;
+  gap: 15px;
   padding: 0;
   list-style: none;
-  border-bottom: 2px dashed #bec7e0;
-  position: relative;
-  padding-bottom: 30px;
 }
 
 .navigationItem {
-  cursor: pointer;
-  font-family: "Lexend", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: center;
-  border-radius: 50px;
+  padding: 12px 24px;
   background-color: #f5f5f5;
   border: 1px solid #ebebeb;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
-  padding: 14px 28px;
-  transition: all 0.3s;
-  list-style: none;
-  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .navigationItem:hover,
-.active {
+.navigationItem.active {
   background-color: #bec7e0;
   color: #2c4b9b;
-  border: 1px solid #2c4b9b;
+  border-color: #2c4b9b;
   box-shadow: 0px 0px 7px 1.5px rgba(44, 75, 155, 0.25);
 }
 
-/* Training Cards Container */
-.trainingsCardsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 60px 20px;
-  margin-bottom: 80px;
-  flex-direction: row;
-  align-items: flex-start;
-  position: relative;
+.trainingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
-.viewAllButton {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-/* Card Styles */
 .card {
+  border-radius: 50px 50px 100px 50px;
+  overflow: hidden;
+  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  border: 1.5px solid rgba(217, 217, 217, 0.5);
+  height: 520px;
+  background: #fff;
   display: flex;
   flex-direction: column;
-  width: 31.5%;
-  min-height: 595px;
-  height: 650px;
-  border: 1.5px solid rgba(217, 217, 217, 0.5);
-  overflow: hidden;
-  font-family: "Corbel", sans-serif;
-  border-bottom-right-radius: 100px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s;
+  justify-content: space-between;
 }
 
 .card:hover {
-  box-shadow: none;
+  transform: translateY(-5px);
 }
 
 .cardImage {
   position: relative;
-  width: 100%;
-  min-height: 392px;
-  height: 392px;
+  height: 280px;
 }
 
 .cardImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 3px solid #f5f5f5;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-radius: 50px 50px 0 0;
 }
 
 .infoButton {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
-  background-color: #fff;
-  padding: 15px 0px 0px 15px;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  padding: 15px 0 0 15px;
   border-top-left-radius: 40px;
-  padding-right: 5px;
   border-top: 3px solid #f5f5f5;
   border-left: 3px solid #f5f5f5;
 }
 
 .start_btn {
-  font-family: Montserrat, "sans-serif";
-  font-weight: 500;
-  font-size: 16px;
-  border: none;
-  color: #fff;
-  background: linear-gradient(
-    to right,
-    #8a84f2,
-    #6a6acf,
-    #3a358c
-  );
-  width: 163px;
+  width: 160px;
   height: 56px;
   border-radius: 50px;
-  box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
+  background: linear-gradient(to right, #8a84f2, #6a6acf, #3a358c);
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
   transition: all 0.3s ease;
 }
 
 .start_btn:hover {
-  background: #fff;
+  background: white;
   color: #8a84f2;
   border: 1px solid #8a84f2;
 }
 
 .cardContent {
+  padding: 25px;
   position: relative;
-  padding: 32px 0px 0px 18px;
+  height: calc(520px - 280px - 70px); 
+}
+
+.cardContent h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.timeInfo {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  height: 166.7px;
-  position: relative;
-  overflow: hidden;
+  align-items: center;
+  gap: 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
 }
 
 .bookmark {
   position: absolute;
+  top: 25px;
   right: 25px;
-  top: 20px;
   cursor: pointer;
-}
-
-.cardContent p {
-  font-family: Corbel;
-  font-size: 24px;
-  font-weight: 700;
-  width: 355px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cardContent span {
-  margin-top: 10px;
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .cardFooter {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 40px 18px 40px 18px;
-  font-family: Corbel;
+  align-items: center;
+  padding: 0 25px 25px;
+  height: 70px;
 }
 
 .author {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .author img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
 .author span {
-  color: #2c4b9b;
   font-weight: 700;
+  color: #2c4b9b;
   font-size: 16px;
 }
 
 .date {
-  font-size: 18px;
-  font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
 }
 
-/* Responsive Styles */
+/* View All Button */
+.viewAllContainer {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 50px;
+}
+
+.viewAllBtn {
+  width: 180px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid #3a358c;
+  background: white;
+  color: #3a358c;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewAllBtn:hover {
+  background: #3a358c;
+  color: white;
+}
+
+/* Responsive Design */
 @media (max-width: 1200px) {
-  .card {
-    width: 45%;
+  .trainingsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .navigation {
-    margin: 30px 0;
-    gap: 15px;
-  }
-  
-  .navigationItem {
-    font-size: 14px;
-    padding: 10px 20px;
+  .heroSection {
+    height: 240px;
   }
   
   .heroSection h1 {
-    font-size: 34px;
+    font-size: 32px;
   }
   
   .heroSection p {
     font-size: 18px;
   }
   
+  .navigation {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: nowrap;
+  }
+  
   .card {
-    width: 100%;
-    max-width: 450px;
-    min-height: 550px;
-    height: auto;
+    height: 480px;
   }
   
   .cardImage {
-    min-height: 300px;
-    height: 300px;
-  }
-  
-  .cardContent p {
-    width: 100%;
-    max-width: 300px;
-    font-size: 20px;
-  }
-  
-  .start_btn {
-    width: 140px;
-    height: 48px;
-    font-size: 14px;
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
-  .navigation {
-    margin: 20px 0;
-    gap: 10px;
-  }
-  
-  .navigationItem {
-    font-size: 12px;
-    padding: 8px 16px;
+  .heroSection {
+    height: 200px;
   }
   
   .heroSection h1 {
@@ -369,20 +316,25 @@
     font-size: 16px;
   }
   
+  .searchContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .searchBar {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .filterButton {
+    width: 100%;
+  }
+  
+  .card {
+    height: 450px;
+  }
+  
   .cardImage {
-    min-height: 250px;
-    height: 250px;
-  }
-  
-  .cardContent p {
-    font-size: 18px;
-  }
-  
-  .cardContent span {
-    font-size: 16px;
-  }
-  
-  .date {
-    font-size: 16px;
+    height: 220px;
   }
 }
