@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import styles from "./TrainersSection.module.css";
 // Use placeholder images instead of imported images that don't exist
 import { useEffect, useState } from "react";
