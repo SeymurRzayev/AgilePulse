@@ -8,17 +8,18 @@
 
 .trainersSection {
   margin-bottom: 80px;
+  padding-top: 60px;
 }
 
 .texts {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .texts h2 {
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 700;
-  color: #2c4b9b;
+  color: #000;
   margin-bottom: 16px;
 }
 
@@ -31,47 +32,70 @@
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 30px;
   margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .card {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 300px;
+  padding: 30px;
+  text-align: center;
+  position: relative;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: #f5f5f5;
+  border-radius: 16px 16px 0 0;
+  z-index: 0;
+}
+
+.imageWrapper {
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
 }
 
 .trainerImage {
-  width: 100%;
-  height: 250px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
   object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .description {
-  padding: 20px;
+  padding: 20px 0 10px;
+  text-align: center;
 }
 
 .description h3 {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #333;
+  color: #000;
 }
 
 .description h4 {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #2c4b9b;
+  color: #444;
 }
 
 .description p {
@@ -180,12 +204,13 @@
 .contactSection {
   text-align: center;
   margin-bottom: 60px;
+  padding: 10px 0 60px;
 }
 
 .contactSection h2 {
   font-size: 32px;
   font-weight: 700;
-  color: #2c4b9b;
+  color: #000;
   margin-bottom: 16px;
 }
 
@@ -200,37 +225,50 @@
 .contactForm {
   max-width: 800px;
   margin: 0 auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .formWrapper {
   display: flex;
-  flex-direction: column;
   gap: 20px;
+}
+
+.messageWrapper {
+  flex: 3;
 }
 
 .messageArea {
   position: relative;
+  background: #F2F5FA;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
 }
 
 .messageArea textarea {
   width: 100%;
+  height: 100%;
   min-height: 150px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  padding: 20px 70px 20px 20px;
+  border: none;
+  background: transparent;
   font-family: 'Corbel', sans-serif;
   font-size: 16px;
   resize: none;
+  outline: none;
 }
 
 .sendButton {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background: #2c4b9b;
+  background: #6366F1;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -240,32 +278,48 @@
 }
 
 .sendButton:hover {
-  background: #1a3a8f;
+  background: #4F46E5;
 }
 
 .sendButton svg {
   color: white;
+  width: 20px;
+  height: 20px;
 }
 
 .inputFields {
+  flex: 2;
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  justify-content: space-between;
 }
 
 .inputFields input {
-  flex: 1;
+  width: 100%;
   padding: 15px 20px;
-  border: 1px solid #ddd;
-  border-radius: 50px;
+  border: none;
+  background: #F2F5FA;
+  border-radius: 16px;
   font-family: 'Corbel', sans-serif;
   font-size: 16px;
+  outline: none;
+  height: 55px;
+}
+
+@media (max-width: 992px) {
+  .cards {
+    justify-content: center;
+  }
+  
+  .card {
+    width: 280px;
+  }
 }
 
 @media (max-width: 768px) {
-  .texts h2,
-  .testimonialsSection h2,
-  .contactSection h2 {
-    font-size: 28px;
+  .texts h2 {
+    font-size: 30px;
   }
   
   .texts p,
@@ -274,8 +328,19 @@
     font-size: 16px;
   }
   
-  .cards {
-    grid-template-columns: 1fr;
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .imageWrapper {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .trainerImage {
+    width: 140px;
+    height: 140px;
   }
   
   .testimonialCard {
@@ -286,9 +351,12 @@
     font-size: 16px;
   }
   
-  .inputFields {
+  .formWrapper {
     flex-direction: column;
-    gap: 15px;
+  }
+  
+  .messageArea textarea {
+    min-height: 120px;
   }
 }
 
@@ -309,6 +377,28 @@
     font-size: 15px;
   }
   
+  .card::before {
+    height: 180px;
+  }
+  
+  .imageWrapper {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .trainerImage {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .description h3 {
+    font-size: 18px;
+  }
+  
+  .description h4 {
+    font-size: 14px;
+  }
+  
   .testimonials {
     gap: 10px;
   }
@@ -319,14 +409,26 @@
   }
   
   .messageArea textarea {
-    min-height: 120px;
-    padding: 15px;
+    min-height: 100px;
+    padding: 15px 60px 15px 15px;
+    font-size: 15px;
   }
   
   .sendButton {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     bottom: 15px;
     right: 15px;
+  }
+  
+  .inputFields input {
+    padding: 12px 15px;
+    font-size: 15px;
+    height: 45px;
+  }
+  
+  .contactForm {
+    padding: 20px;
+    border-radius: 20px;
   }
 }
