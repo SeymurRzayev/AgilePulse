@@ -3,12 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import TrainingsPage from "../pages/Training/TrainingsPage";
 const AppRouter: FC = () => {
 return (
  <Routes>
     <Route path="/sign-up" element={<SignUp/>}/>
     <Route path="/sign-in" element={<SignIn/>}/>
     <Route path="/reset-password" element={<ResetPassword/>}/>
+     <Route path="/trainings" element={<TrainingsPage />} />
  </Routes>
 )
 };
