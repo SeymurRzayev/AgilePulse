@@ -54,10 +54,6 @@
 .navbar {
   width: 100%;
   display: flex;
-  padding-top: 12px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 12px;
   justify-content: center;
   align-items: center;
   z-index: 1000;
