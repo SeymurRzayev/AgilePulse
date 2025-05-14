@@ -1,4 +1,4 @@
-import type { FC} from "react";
+import type { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
