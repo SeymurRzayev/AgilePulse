@@ -178,7 +178,7 @@
 }
 
 .start_btn {
-  width: 160px;
+  width: 163px;
   height: 56px;
   border-radius: 50px;
   background: linear-gradient(to right, #8a84f2, #6a6acf, #3a358c);
@@ -308,7 +308,7 @@
     padding-bottom: 10px;
     white-space: nowrap;
   }
-  
+
   .card {
     height: 480px;
   }
@@ -339,7 +339,7 @@
   .searchBar {
     padding-left: 8px;
   }
-  
+
   .searchBar input {
     padding: 6px 8px;
     font-size: 14px;
