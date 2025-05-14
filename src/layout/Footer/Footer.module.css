@@ -5,7 +5,7 @@
     padding-top: 51px;
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    gap: 35px;
     margin-top: 0;
 }
 
@@ -279,16 +279,16 @@
     }
 }
 
-@media only screen and   (min-width:760px) and (max-width:846px) {
-   .footer{
-    width: 100vw !important;
-   }
+@media only screen and (min-width:760px) and (max-width:846px) {
+    .footer {
+        width: 100vw !important;
+    }
 
 }
 
 @media only screen and (max-width: 760px) and (min-width: 480px) {
     .footer {
-        width: 100% ;
+        width: 100%;
         min-height: 330px;
 
         .container {
