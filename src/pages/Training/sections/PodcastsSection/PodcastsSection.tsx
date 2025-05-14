@@ -1,74 +1,102 @@
 import type { FC } from "react";
 import styles from "./PodcastsSection.module.css";
-// Use placeholder images instead of imported images that don't exist
-import { useEffect, useState } from "react";
+import micImg from "../../../../assets/images/mic.png";
+import podcast1 from "../../../../assets/images/podcast1.jpg";
+import podcast2 from "../../../../assets/images/podcast2.jpg";
+import podcast3 from "../../../../assets/images/podcast3.jpg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import right from "../../../../assets/icons/right.png";
 
 const PodcastsSection: FC = () => {
-  // Using placeholder for podcast images since the actual images don't exist
-  const [podcastImages, setPodcastImages] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Simulating loading of images with placeholders
-    setPodcastImages([
-      "/api/placeholder/300/200",
-      "/api/placeholder/300/200",
-      "/api/placeholder/300/200"
-    ]);
-  }, []);
-
   const podcasts = [
     {
       id: 1,
-      title: "Agile Transformasiya: Nədir və necə həyata keçirilir?",
-      image: podcastImages[0],
-      duration: "45 dəq",
-      date: "12.05.2025"
+      image: podcast1,
+      name: "Tural Mammadov",
+      desc1: "“Scrum Master yoxsa Project Manager?",
+      desc2: "Fərqlər, funksiyalar və real təcrübələr”",
     },
     {
       id: 2,
-      title: "Scrum vs Kanban: Hansı və nə vaxt?",
-      image: podcastImages[1],
-      duration: "38 dəq",
-      date: "28.04.2025"
+      image: podcast2,
+      name: "Nuray Əhmədova",
+      desc1: "Personalin idarə edilməsi",
+      desc2: "“Agile yanaşma”",
     },
     {
       id: 3,
-      title: "Remote Agile: Uzaq komandalarda Agile metodologiyası",
-      image: podcastImages[2],
-      duration: "52 dəq",
-      date: "15.03.2025"
+      image: podcast3,
+      name: "Günel Qasımova",
+      desc1: "“Sprint Retrospective: Uğursuz",
+      desc2: "sessiyaları necə faydalıya çevirək?”",
     }
   ];
 
-  return (
-    <div className={styles.podcastsContainer}>
-      <div className={styles.header}>
-        <h2>Podcastlar</h2>
-        <p>Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən söhbətlər burada səni gözləyir.</p>
-      </div>
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <img src={right} alt="Next" className={styles.nextArrow} />,
+    prevArrow: <img src={right} alt="Previous" className={styles.prevArrow} />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
-      <div className={styles.podcastsGrid}>
-        {podcasts.map(podcast => (
-          <div key={podcast.id} className={styles.podcastCard}>
-            <div className={styles.imageContainer}>
-              <img src={podcast.image} alt={podcast.title} />
-              <div className={styles.playButton}>
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M8 5.14v14l11-7-11-7z" fill="currentColor" />
-                </svg>
-              </div>
-            </div>
-            <div className={styles.podcastInfo}>
-              <h3>{podcast.title}</h3>
-              <div className={styles.meta}>
-                <span>{podcast.duration}</span>
-                <span>{podcast.date}</span>
-              </div>
-            </div>
-          </div>
-        ))}
+  return (
+    <section className={styles.podcastsSection}>
+      <div className={styles.banner}>
+        <div className={styles.bannerText}>
+          <h2>Podcastlar</h2>
+          <p>
+            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən
+            söhbətlər burada səni gözləyir.
+          </p>
+        </div>
+        <div className={styles.bannerImage}>
+          <img src={micImg} alt="Mikrofon" />
+        </div>
       </div>
-    </div>
+      <div className={styles.sliderContainer}>
+        <Slider {...settings} className={styles.slider}>
+          {podcasts.map((podcast) => (
+            <div key={podcast.id} className={styles.podcastCard}>
+              <img
+                className={styles.cardImg}
+                src={podcast.image}
+                alt={podcast.name}
+              />
+              <div className={styles.cardInfo}>
+                <div className={styles.cardName}>{podcast.name}</div>
+                <div className={styles.cardDesc}>
+                  {podcast.desc1}
+                  <br />
+                  {podcast.desc2}
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
   );
 };
 

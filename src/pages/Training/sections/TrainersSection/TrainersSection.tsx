@@ -1,14 +1,11 @@
 import type { FC } from "react";
 import styles from "./TrainersSection.module.css";
-// Use placeholder images instead of imported images that don't exist
 import { useEffect, useState } from "react";
 
 const TrainersSection: FC = () => {
-  // Using placeholder for trainer images since the actual images don't exist
   const [trainerImages, setTrainerImages] = useState<string[]>([]);
 
   useEffect(() => {
-    // Simulating loading of images with placeholders
     setTrainerImages([
       "/api/placeholder/400/400",
       "/api/placeholder/400/400",
@@ -60,12 +57,14 @@ const TrainersSection: FC = () => {
       <div className={styles.trainersSection}>
         <div className={styles.texts}>
           <h2>Təlimçilər</h2>
-          <p>Agile sahəsində illərin təcrübəsinə sahib mütəxəssislər bu yolda sənə kömək edəcək.</p>
+          <p>Agile sahəsində illərin təcrübəsinə sahib mütəxəssislər bu yolda səninlədir.</p>
         </div>
         <div className={styles.cards}>
           {trainers.map((trainer) => (
             <div className={styles.card} key={trainer.id}>
-              <img src={trainer.image} alt={trainer.name} className={styles.trainerImage} />
+              <div className={styles.imageWrapper}>
+                <img src={trainer.image} alt={trainer.name} className={styles.trainerImage} />
+              </div>
               <div className={styles.description}>
                 <h3>{trainer.name}</h3>
                 <h4>{trainer.title}</h4>
@@ -81,31 +80,24 @@ const TrainersSection: FC = () => {
         <p>AgilePulse platformasında təlim keçmiş iştirakçılarımızın real fikirləri. Onların təcrübələri sizin yolunuzu aydınlada bilər.</p>
         
         <div className={styles.testimonials}>
-          <button className={`${styles.navArrow} ${styles.prevArrow}`}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          
-          {testimonials.map(testimonial => (
-            <div key={testimonial.id} className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <div className={styles.quoteIcon}>"</div>
-                <p>{testimonial.quote}</p>
-                <div className={styles.testimonialFooter}>
-                  <span className={styles.testimonialName}>{testimonial.name}</span>
-                  <span className={styles.testimonialDate}>{testimonial.date}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-          
-          <button className={`${styles.navArrow} ${styles.nextArrow}`}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+  <button className={`${styles.navArrow} ${styles.prevArrow}`}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+  
+  {testimonials.map(testimonial => (
+    <div key={testimonial.id} className={styles.testimonialCard}>
+      {/* ... testimonial content ... */}
+    </div>
+  ))}
+  
+  <button className={`${styles.navArrow} ${styles.nextArrow}`}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+</div>
       </div>
       
       <div className={styles.contactSection}>
@@ -114,13 +106,15 @@ const TrainersSection: FC = () => {
         
         <div className={styles.contactForm}>
           <div className={styles.formWrapper}>
-            <div className={styles.messageArea}>
-              <textarea placeholder="Bizə yaz"></textarea>
-              <button className={styles.sendButton}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+            <div className={styles.messageWrapper}>
+              <div className={styles.messageArea}>
+                <textarea placeholder="Bizə yaz"></textarea>
+                <button className={styles.sendButton}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
             </div>
             <div className={styles.inputFields}>
               <input type="text" placeholder="Ad Soyad" />
