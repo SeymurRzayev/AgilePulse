@@ -128,8 +128,7 @@
   box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
   border: 1.5px solid rgba(217, 217, 217, 0.5);
-  height: 541px;
-  width: 391px;
+  height: 520px;
   background: #fff;
   display: flex;
   flex-direction: column;
