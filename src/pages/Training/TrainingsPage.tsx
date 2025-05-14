@@ -140,12 +140,15 @@ const TrainingsPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.heroSection}>
+        <div className={styles.heroContent}>
+        </div>
       </div>
 
       <div className={styles.searchWrapper}>
         <div className={styles.searchContainer}>
           <div className={styles.searchBar}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
+            <input type="text" placeholder="Search" />
+            <svg className={styles.searchIcon} width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
                 stroke="#222222"
@@ -154,15 +157,15 @@ const TrainingsPage = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Search" />
           </div>
           <button className={styles.filterButton}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
-                d="M4 7H24M7 14H17M10 21H14"
+                d="M3 6H21M6 12H18M10 18H14"
                 stroke="#222222"
                 strokeWidth="2"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </button>
