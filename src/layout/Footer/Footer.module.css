@@ -339,46 +339,90 @@
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 10px 8px;
-    gap: 12px;
-  }
+    .container {
+        padding: 10px 8px;
+        gap: 12px;
+    }
 
-  .section {
-    gap: 8px;
-  }
+    .section {
+        gap: 8px;
+    }
 
-  .logo span {
-    font-size: 11px;
-  }
+    .logo span {
+        font-size: 11px;
+    }
 
-  .input {
-    width: 90px;
-    height: 22px;
-    padding: 1px 2px;
-  }
+    .input {
+        width: 90px;
+        height: 22px;
+        padding: 1px 2px;
+    }
 
-  .sendBtn {
-    width: 32px;
-    height: 16px;
-    font-size: 7px;
-  }
+    .sendBtn {
+        width: 60px;
+        height: 30px;
+        font-size: 7px;
+    }
 
-  .navmenu li a {
-    font-size: 9px;
-  }
+    .navmenu li a {
+        font-size: 9px;
+    }
 
-  .socialIcon {
-    width: 12px;
-    height: 12px;
-  }
+    .socialIcon {
+        width: 12px;
+        height: 12px;
+    }
 
-  .bottomLine li {
-    padding: 0 2px;
-  }
+    .bottomLine li {
+        padding: 0 5px;
+    }
 
-  .bottomLine a,
-  .bottomLine span {
-    font-size: 6px;
-  }
+    .bottomLine a,
+    .bottomLine span {
+        font-size: 6px;
+    }
+}
+@media (max-width:480px){
+       .container {
+        padding: 10px 8px;
+        gap: 12px;
+    }
+
+    .section {
+        gap: 8px;
+    }
+
+    .logo span {
+        font-size: 11px;
+    }
+
+    .subscribe input {
+        width: 70px;
+        height: 22px;
+        padding: 1px 2px;
+    }
+
+    .sendBtn {
+        width: 32px;
+        height: 16px;
+        font-size: 7px;
+    }
+
+    .navmenu li a {
+        font-size: 9px;
+    }
+
+    .socialIcon {
+        width: 10px;
+        height: 10px;
+    }
+
+    .bottomLine li {
+        padding: 0 2px;
+    }
+
+    .bottomLine a,
+    .bottomLine span {
+        font-size: 6px;
+    }
 }
