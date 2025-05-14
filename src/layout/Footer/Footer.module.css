@@ -1,53 +1,55 @@
 .footer {
     width: 100%;
     min-height: 380px;
-    background-color: var(--gray-700);
-    padding-top: 51px;
+    background-color: var(--gray-700, #1f2937);
+    padding: 15px 22px;
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    justify-content: space-between;
+    gap: 24px;
     margin-top: 0;
 }
 
 .container {
     width: 100%;
-    height: auto;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 15px 22px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 40px;
+    gap: 20px;
 }
 
 .section {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 16px;
 }
 
 .logo {
+   
+    min-width: 120px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 12px;
-    max-height: 76px;
+    gap: 8px;
+    max-height: 56px;
 
     span {
         font-family: "Raleway", sans-serif;
         font-weight: 600;
         font-size: 20px;
-        text-align: center;
-        color: var(--white-high);
+        color: var(--white-high, #fff);
     }
 }
 
 .subscribe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+    font-family: "Corbel", sans-serif;
+    font-size: 16px;
+    color: var(--white-high, #fff);
+    margin-bottom: 2px;
 
     span {
         font-family: "Corbel", sans-serif;
@@ -60,21 +62,21 @@
     .input {
         width: 316px;
         height: 48px;
-        border-radius: 30px;
-        border: 1px solid var(--white-high);
-        outline: none;
-        background-color: var(--white-high);
+        border-radius: 24px;
+        border: 1px solid var(--white-high, #fff);
+        background: var(--white-high, #fff);
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 4px 8px;
+        padding: 2px 6px;
+        gap: 6px;
 
         input {
             width: 55%;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             outline: none;
-            padding-left: 12px;
+            padding-left: 8px;
+            background: transparent;
         }
     }
 }
@@ -82,18 +84,14 @@
 .sendBtn {
     width: 122px;
     height: 40px;
-    border-radius: 30px;
+    border-radius: 24px;
     border: none;
-    outline: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 400;
-    cursor: pointer;
+    background: var(--blue-500, #3b82f6);
+    color: var(--white-high, #fff);
+    font-size: 12px;
     font-family: "Lexend", sans-serif;
-    color: var(--white-high);
-    background-color: var(--blue-500);
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .invalid {
@@ -111,42 +109,48 @@
 }
 
 .navmenu {
+    flex: 1 1 0;
+    min-width: 120px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    justify-content: flex-start;
 
     li a {
         font-family: "Corbel", sans-serif;
-        font-weight: 400;
         font-size: 22px;
-        color: var(--white-high);
+        color: var(--white-high, #fff);
+        text-decoration: none;
+        transition: color 0.2s;
     }
 }
 
 .socials {
+    width: 300px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
 
     span {
         font-family: "Corbel", sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        color: var(--white-high);
+        font-size: 13px;
+        color: var(--white-high, #fff);
     }
 }
 
 .socialIcons {
     display: flex;
-    justify-content: center;
+    gap: 18px;
     align-items: center;
-    gap: 35px;
+    justify-content: flex-start;
 
     li {
         .link {
             .socialIcon {
                 width: 36px;
                 height: 36px;
+                transition: filter 0.2s, transform 0.2s;
             }
         }
     }
@@ -156,10 +160,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
+    gap: 8px;
 
     li {
         padding: 0 25px;
         opacity: 0.7;
+        border-right: 1px solid var(--white-high, #fff);
+        list-style: none;
 
         a,
         span {
@@ -173,6 +181,10 @@
 
         &:first-child {
             border-right: 1px solid var(--white-high);
+        }
+
+        &:last-child {
+            border-right: none;
         }
     }
 }
@@ -279,254 +291,186 @@
     }
 }
 
-@media only screen and   (min-width:760px) and (max-width:846px) {
-   .footer{
-    width: 100vw !important;
-   }
-
-}
-
-@media only screen and (max-width: 760px) and (min-width: 480px) {
-    .footer {
-        width: 100% ;
-        min-height: 330px;
-
-        .container {
-            width: 100%;
-            padding: 0 30px;
-
-        }
-
-        .section {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            max-height: 76px;
-
-            span {
-
-                font-size: 18px;
-
-            }
-        }
-
-        .subscribe {
-
-            span {
-
-                font-size: 14px;
-                margin-right: auto;
-            }
-
-            .input {
-                width: 200px;
-                height: 40px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 4px 8px;
-
-                input {
-                    width: 55%;
-                    font-size: 18px;
-
-                }
-            }
-        }
-
-        .sendBtn {
-            width: 100px;
-            height: 30px;
-
-        }
-
-
-        .errorText {
-            font-size: 14px;
-        }
-
-
-        .bottomLine {
-            li {
-
-                a,
-                span {
-                    font-size: 16px;
-                }
-
-            }
-        }
-    }
-}
-
-@media (max-width:480px) {
-    .footer {
-        min-height: 300px;
-        padding-top: 51px;
-        display: flex;
-        flex-direction: column;
-        gap: 45px;
-        margin-top: 0;
-    }
-
+@media (max-width: 900px) {
     .container {
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-        padding: 0 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 40px;
+        padding: 15px 22px;
     }
 
     .section {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 6px;
-        max-height: 15px;
-
-        span {
-            font-family: "Raleway", sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 14px;
-            letter-spacing: 0px;
-            text-align: center;
-            color: var(--white-high);
-        }
-    }
-
-    .subscribe {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         gap: 8px;
+    }
 
-        span {
-            font-family: "Corbel", sans-serif;
-            font-weight: 400;
-            font-size: 6px;
-            color: var(--white-high);
-            margin-right: auto;
-        }
+    .logo span {
+        font-size: 13px;
+    }
 
-        .input {
-            max-width: 136px;
-            max-height: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 4px 8px;
-
-            input {
-                width: 55%;
-                font-size: 12px;
-                padding-left: 12px;
-            }
-        }
+    .input {
+        width: 120px;
+        height: 28px;
+        padding: 1px 3px;
     }
 
     .sendBtn {
-        width: 46px;
+        width: 44px;
         height: 20px;
-        font-size: 5px;
-        font-weight: 400;
-        letter-spacing: 0px;
+        font-size: 9px;
     }
 
-    .errorText {
-        display: block;
-        font-family: Lexend;
-        margin-right: auto;
-        font-weight: 300;
-        font-size: 6px;
-        color: #EC3535;
+    .navmenu li a,
+    .subscribe span,
+    .socials span {
+        font-size: 10px;
     }
 
-    .navmenu {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-
-        li a {
-            font-family: "Corbel", sans-serif;
-            font-weight: 400;
-            font-size: 8px;
-            color: var(--white-high);
-        }
+    .socialIcon {
+        width: 18px;
+        height: 18px;
     }
 
+    .bottomLine li {
+        padding: 0 3px;
+    }
+
+    .bottomLine a,
+    .bottomLine span {
+        font-size: 8px;
+    }
+
+    .subscribe,
     .socials {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        span {
-            font-family: "Corbel", sans-serif;
-            font-weight: 400;
-            font-size: 8px;
-            color: var(--white-high);
-        }
+        max-width: 100%;
     }
 
     .socialIcons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px 8px;
+        gap: 12px;
+    }
+
+    .section {
         gap: 8px;
-
-        li {
-            .link {
-                .socialIcon {
-                    width: 20px;
-                    height: 20px;
-                }
-            }
-        }
     }
 
-    .bottomLine {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        li {
-
-            padding: 0 25px;
-            opacity: 0.7;
-
-
-
-
-            a,
-            span {
-                font-family: "Corbel", sans-serif;
-                font-weight: 400;
-                font-size: 8px;
-                line-height: 20px;
-                letter-spacing: 0px;
-                color: var(--white-high);
-            }
-
-            &:first-child {
-                border-right: 1px solid var(--white-high);
-            }
-        }
+    .logo span {
+        font-size: 11px;
     }
+
+    .input {
+        width: 90px;
+        height: 22px;
+        padding: 1px 2px;
+    }
+
+    .sendBtn {
+        width: 32px;
+        height: 16px;
+        font-size: 7px;
+    }
+
+    .navmenu li a {
+        font-size: 9px;
+    }
+
+    .socialIcon {
+        width: 12px;
+        height: 12px;
+    }
+
+    .bottomLine li {
+        padding: 0 2px;
+    }
+
+    .bottomLine a,
+    .bottomLine span {
+        font-size: 6px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
