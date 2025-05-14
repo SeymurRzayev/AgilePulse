@@ -1,6 +1,7 @@
 import styles from "./App.module.css";
 import Footer from "./layout/Footer/Footer";
 import Navbar from "./layout/Navbar/Navbar";
+{/*import Kabinet from "./pages/Kabinet";*/}
 import AppRouter from "./router/AppRouter";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <AppRouter />
       </div>
       <Footer />
+      {/* <Kabinet /> */}
     </div>
   );
 }
