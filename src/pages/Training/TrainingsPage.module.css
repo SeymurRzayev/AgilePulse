@@ -128,7 +128,8 @@
   box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
   border: 1.5px solid rgba(217, 217, 217, 0.5);
-  height: 520px;
+  height: 541px;
+  width: 391;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -185,7 +186,7 @@
 .cardContent {
   padding: 25px;
   position: relative;
-  height: calc(520px - 280px - 70px); 
+  height: calc(520px - 280px - 70px);
 }
 
 .cardContent h3 {
@@ -278,26 +279,26 @@
   .heroSection {
     height: 240px;
   }
-  
+
   .heroSection h1 {
     font-size: 32px;
   }
-  
+
   .heroSection p {
     font-size: 18px;
   }
-  
+
   .navigation {
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 10px;
     white-space: nowrap;
   }
-  
+
   .card {
     height: 480px;
   }
-  
+
   .cardImage {
     height: 250px;
   }
@@ -307,34 +308,34 @@
   .heroSection {
     height: 200px;
   }
-  
+
   .heroSection h1 {
     font-size: 28px;
   }
-  
+
   .heroSection p {
     font-size: 16px;
   }
-  
+
   .searchContainer {
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .searchBar {
     width: 100%;
     margin-right: 0;
   }
-  
+
   .filterButton {
     width: 100%;
   }
-  
+
   .card {
     height: 450px;
   }
-  
+
   .cardImage {
     height: 220px;
-}
+  }
 }
