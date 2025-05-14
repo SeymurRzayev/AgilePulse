@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import styles from "./AnimatedButton.module.css";
+import styles from "./AnimationButton.module.css";
 
 interface AnimatedButtonProps {
   children: ReactNode;
