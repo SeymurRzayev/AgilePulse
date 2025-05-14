@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import styles from "./TrainingsPage.module.css";
@@ -7,7 +6,6 @@ import timeIcon from "../../assets/icons/time.svg";
 import bookmarkIcon from "../../assets/icons/bookmark.svg";
 import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
 import avatar1 from "../../assets/images/podcast1.jpg";
-import heroBg from "../../assets/images/first page.png"; 
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg";

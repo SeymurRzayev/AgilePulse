@@ -4,13 +4,17 @@ import micImg from "../../../../assets/images/mic.png";
 import podcast1 from "../../../../assets/images/podcast1.jpg";
 import podcast2 from "../../../../assets/images/podcast2.jpg";
 import podcast3 from "../../../../assets/images/podcast3.jpg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import right from "../../../../assets/icons/right.png";
 
 const PodcastsSection: FC = () => {
   const podcasts = [
     {
       id: 1,
       image: podcast1,
-      name: "Tural Məmmədov",
+      name: "Tural Mammadov",
       desc1: "“Scrum Master yoxsa Project Manager?",
       desc2: "Fərqlər, funksiyalar və real təcrübələr”",
     },
@@ -18,7 +22,7 @@ const PodcastsSection: FC = () => {
       id: 2,
       image: podcast2,
       name: "Nuray Əhmədova",
-      desc1: "Personalın idarə edilməsi",
+      desc1: "Personalin idarə edilməsi",
       desc2: "“Agile yanaşma”",
     },
     {
@@ -27,8 +31,35 @@ const PodcastsSection: FC = () => {
       name: "Günel Qasımova",
       desc1: "“Sprint Retrospective: Uğursuz",
       desc2: "sessiyaları necə faydalıya çevirək?”",
-    },
+    }
   ];
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <img src={right} alt="Next" className={styles.nextArrow} />,
+    prevArrow: <img src={right} alt="Previous" className={styles.prevArrow} />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <section className={styles.podcastsSection}>
@@ -36,7 +67,7 @@ const PodcastsSection: FC = () => {
         <div className={styles.bannerText}>
           <h2>Podcastlar</h2>
           <p>
-            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən <br />
+            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən
             söhbətlər burada səni gözləyir.
           </p>
         </div>
@@ -44,20 +75,15 @@ const PodcastsSection: FC = () => {
           <img src={micImg} alt="Mikrofon" />
         </div>
       </div>
-      <div className={styles.cardsRow}>
-        <div className={styles.cardsWrapper}>
-          {podcasts.map((podcast, idx) => (
-            <div
-              className={`${styles.podcastCard} ${
-                idx === 0
-                  ? styles.cardUp
-                  : idx === 2
-                  ? styles.cardDown
-                  : ""
-              }`}
-              key={podcast.id}
-            >
-              <img className={styles.cardImg} src={podcast.image} alt={podcast.name} />
+      <div className={styles.sliderContainer}>
+        <Slider {...settings} className={styles.slider}>
+          {podcasts.map((podcast) => (
+            <div key={podcast.id} className={styles.podcastCard}>
+              <img
+                className={styles.cardImg}
+                src={podcast.image}
+                alt={podcast.name}
+              />
               <div className={styles.cardInfo}>
                 <div className={styles.cardName}>{podcast.name}</div>
                 <div className={styles.cardDesc}>
@@ -68,15 +94,7 @@ const PodcastsSection: FC = () => {
               </div>
             </div>
           ))}
-        </div>
-        <button className={styles.arrowBtn}>
-          <span className={styles.arrowCircle}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <circle cx="14" cy="14" r="14" fill="#F3F4F6"/>
-              <path d="M12 9L16 14L12 19" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-        </button>
+        </Slider>
       </div>
     </section>
   );

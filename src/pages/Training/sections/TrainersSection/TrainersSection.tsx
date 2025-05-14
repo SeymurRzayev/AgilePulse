@@ -80,31 +80,24 @@ const TrainersSection: FC = () => {
         <p>AgilePulse platformasında təlim keçmiş iştirakçılarımızın real fikirləri. Onların təcrübələri sizin yolunuzu aydınlada bilər.</p>
         
         <div className={styles.testimonials}>
-          <button className={`${styles.navArrow} ${styles.prevArrow}`}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          
-          {testimonials.map(testimonial => (
-            <div key={testimonial.id} className={styles.testimonialCard}>
-              <div className={styles.testimonialContent}>
-                <div className={styles.quoteIcon}>"</div>
-                <p>{testimonial.quote}</p>
-                <div className={styles.testimonialFooter}>
-                  <span className={styles.testimonialName}>{testimonial.name}</span>
-                  <span className={styles.testimonialDate}>{testimonial.date}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-          
-          <button className={`${styles.navArrow} ${styles.nextArrow}`}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+  <button className={`${styles.navArrow} ${styles.prevArrow}`}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+  
+  {testimonials.map(testimonial => (
+    <div key={testimonial.id} className={styles.testimonialCard}>
+      {/* ... testimonial content ... */}
+    </div>
+  ))}
+  
+  <button className={`${styles.navArrow} ${styles.nextArrow}`}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </button>
+</div>
       </div>
       
       <div className={styles.contactSection}>

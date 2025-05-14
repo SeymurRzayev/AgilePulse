@@ -1,253 +1,234 @@
 .podcastsSection {
   width: 100%;
-  max-width: 1200px;
-  margin: 60px auto 0 auto;
-  padding: 0 20px;
+  max-width: 1440px;
+  margin: 60px auto;
+  padding: 0;
 }
 
 .banner {
-  background: #0a1017;
-  border-radius: 24px;
+  background: #010B14;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 48px 56px 48px 48px;
-  margin-bottom: 40px;
-  min-height: 220px;
+  padding: 60px 70px;
+  color: white;
+  margin-bottom: 0;
   position: relative;
-  overflow: hidden;
+  width: 100%;
 }
 
 .bannerText {
-  color: #fff;
-  z-index: 2;
-  max-width: 65%;
+  max-width: 60%;
 }
 
 .bannerText h2 {
-  font-size: 40px;
   font-weight: 700;
-  margin-bottom: 18px;
-  line-height: 1.2;
+  font-size: 46px;
+  line-height: 56px;
+  margin-bottom: 16px;
 }
 
 .bannerText p {
-  font-size: 20px;
   font-weight: 400;
-  line-height: 1.5;
-  opacity: 0.9;
+  font-size: 22px;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .bannerImage {
-  min-width: 180px;
-  max-width: 260px;
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 2;
+  width: 320px;
+  height: 300px;
 }
 
 .bannerImage img {
   width: 100%;
-  max-width: 260px;
+  height: 100%;
   object-fit: contain;
 }
 
-.cardsRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+.sliderContainer {
   position: relative;
-  margin-top: 40px;
+  margin-top: -30px;
+  padding: 0 40px;
 }
 
-.cardsWrapper {
-  display: flex;
-  justify-content: space-between;
-  width: calc(100% - 60px);
-  gap: 24px;
+.slider {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .podcastCard {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.05);
-  width: calc(33.333% - 16px);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
   overflow: hidden;
+  height: 100%;
+  width: calc(82% - 20px) !important;
 }
 
 .cardImg {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16/9;
+  height: 230px;
   object-fit: cover;
 }
 
 .cardInfo {
-  padding: 20px;
-  width: 100%;
+  padding: 18px 20px;
 }
 
 .cardName {
   font-weight: 700;
   font-size: 18px;
-  color: #222;
-  margin-bottom: 6px;
+  line-height: 24px;
+  color: #000;
+  margin: 0 0 6px;
 }
 
 .cardDesc {
-  font-size: 15px;
-  color: #444;
-  line-height: 1.4;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
 }
 
-.arrowBtn {
-  background: none;
-  border: none;
-  outline: none;
+.nextArrow, .prevArrow {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin-left: 12px;
-  align-self: center;
+  z-index: 1;
 }
 
-.arrowCircle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #f9f9f9;
+.nextArrow {
+  right: 0;
 }
 
-@media (max-width: 1100px) {
+.prevArrow {
+  left: 0;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .banner {
+    padding: 50px 60px;
+  }
+  
+  .bannerText h2 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  
+  .bannerText p {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .bannerImage {
+    width: 280px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 992px) {
   .banner {
     padding: 40px;
   }
   
-  .bannerText {
-    max-width: 60%;
-  }
-  
   .bannerText h2 {
     font-size: 36px;
-  }
-}
-
-@media (max-width: 900px) {
-  .banner {
-    padding: 32px;
-  }
-  
-  .bannerText h2 {
-    font-size: 32px;
-  }
-  
-  .bannerText p {
-    font-size: 18px;
-  }
-  
-  .cardsWrapper {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 32px 24px;
-  }
-  
-  .bannerText {
-    max-width: 100%;
-    margin-bottom: 24px;
-  }
-  
-  .bannerImage {
-    width: 140px;
-    min-width: auto;
-    justify-content: flex-start;
-  }
-  
-  .cardsRow {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .cardsWrapper {
-    width: 100%;
-    flex-direction: column;
-    gap: 24px;
-  }
-  
-  .podcastCard {
-    width: 100%;
-    max-width: none;
-  }
-  
-  .arrowBtn {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .podcastsSection {
-    padding: 0 16px;
-    margin-top: 40px;
-  }
-  
-  .banner {
-    padding: 24px 20px;
-    border-radius: 16px;
-  }
-  
-  .bannerText h2 {
-    font-size: 28px;
+    line-height: 42px;
     margin-bottom: 12px;
   }
   
   .bannerText p {
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 24px;
   }
   
   .bannerImage {
-    width: 120px;
+    width: 240px;
+    height: 220px;
   }
   
-  .cardsRow {
-    margin-top: 24px;
-  }
-  
-  .cardsWrapper {
-    gap: 16px;
+  .cardImg {
+    height: 200px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .cardsRow {
-    overflow: hidden;
+@media (max-width: 768px) {
+  .podcastsSection {
+    padding: 0 15px;
   }
-
-  .cardsWrapper {
-    flex-wrap: wrap;
+  
+  .banner {
+    flex-direction: column;
+    padding: 40px 30px;
+    text-align: center;
   }
-
+  
+  .bannerText {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .bannerImage {
+    width: 100%;
+    height: auto;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  
+  .bannerImage img {
+    border-radius: 0;
+  }
+  
+  .sliderContainer {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  
   .podcastCard {
-    width: calc(50% - 12px);
-    margin-bottom: 24px;
+    width: 100% !important;
+    margin: 0 auto;
   }
+  
+  .nextArrow,
+  .prevArrow {
+    width: 24px;
+    height: 24px;
+  }
+}
 
-  .podcastCard:last-child {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+@media (max-width: 576px) {
+  .banner {
+    padding: 30px 20px;
+  }
+  
+  .bannerText h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  
+  .bannerText p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+  .cardImg {
+    height: 180px;
+  }
+  
+  .cardName {
+    font-size: 16px;
+  }
+  
+  .cardDesc {
+    font-size: 13px;
   }
 }
