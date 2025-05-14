@@ -8,7 +8,7 @@
 
 .heroSection {
   width: 100%;
-  height: 320px;
+  height: 357px;
   background-image: url('../../assets/images/first page.png');
   background-size: cover;
   background-position: center;
@@ -200,7 +200,7 @@
 .cardContent {
   padding: 25px;
   position: relative;
-  height: calc(520px - 280px - 70px); 
+  height: calc(520px - 280px - 70px);
 }
 
 .cardContent h3 {
@@ -293,15 +293,15 @@
   .heroSection {
     height: 240px;
   }
-  
+
   .heroSection h1 {
     font-size: 32px;
   }
-  
+
   .heroSection p {
     font-size: 18px;
   }
-  
+
   .navigation {
     justify-content: flex-start;
     overflow-x: auto;
@@ -309,18 +309,10 @@
     white-space: nowrap;
   }
   
-  .searchContainer {
-    padding: 6px;
-  }
-  
-  .searchBar input {
-    font-size: 14px;
-  }
-  
   .card {
     height: 480px;
   }
-  
+
   .cardImage {
     height: 250px;
   }
@@ -330,20 +322,20 @@
   .heroSection {
     height: 200px;
   }
-  
+
   .heroSection h1 {
     font-size: 28px;
   }
-  
+
   .heroSection p {
     font-size: 16px;
   }
-  
+
   .searchContainer {
     border-radius: 60px;
     padding: 6px;
   }
-  
+
   .searchBar {
     padding-left: 8px;
   }
@@ -352,16 +344,16 @@
     padding: 6px 8px;
     font-size: 14px;
   }
-  
+
   .filterButton {
     width: 40px;
     height: 40px;
   }
-  
+
   .card {
     height: 450px;
   }
-  
+
   .cardImage {
     height: 220px;
   }
