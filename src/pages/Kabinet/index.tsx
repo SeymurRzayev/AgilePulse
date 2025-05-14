@@ -9,6 +9,8 @@ import time from "../../assets/icons/oclock.svg"
 import userPhoto from "../../assets/icons/userPhoto.svg"
 import cerficate1 from "../../assets/images/certificate1.png"
 import cerficate2 from "../../assets/images/certificate2.png"
+import Img from "../../components/ImageComponent"
+import PersonalCabinetCard from "../../components/PersonalCabinetCard"
 const Kabinet = () => {
   return (
     <div className={styles.container}>
@@ -72,174 +74,46 @@ const Kabinet = () => {
           <div className={styles.boxes}></div>
         </div>
 
-      {/* cards */}
+        {/* cards */}
         <div className={styles.cardContainer}>
-          <div className={styles.card}>
-            <div className={styles.BtnImg}>
-              <img src={certificate} alt="" />
-              <Button
-                children="Kursa basla"
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  width: 163,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  bottom: 55,
-                  right: 10,
-                  color: "#FFF",
-                  backgroundColor: "#621DAC",
-                  alignSelf: "flex-end",
-                }}
-              />
-            </div>
-            <div className={styles.certificateInfoBox}>
-
-              <div className={styles.certificateInfo}>
-                <p>Kanban ilə İş Axınını Optimallaşdır</p>
-                <img src={save}  width={48} height={48} />
-              </div>
-              <div className={styles.certificateInfoDate}>
-                <img src={time} alt="" />
-                <p>4 modul</p>
-                <p>16 blok</p>
-              </div>
-              <div className={styles.certificateUserInfo}>
-                <img src={userPhoto} width={40} height={40}/>
-                <h3>Tofiq Isayev</h3>
-                <p>20.02.2025</p>
-              </div>
-            </div>
-            
-          </div>
-          <div className={styles.card}>
-            <div className={styles.BtnImg}>
-              <img src={certificate} alt="" />
-              <Button
-                children="Kursa basla"
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  width: 163,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  bottom: 55,
-                  right: 10,
-                  color: "#FFF",
-                  backgroundColor: "#621DAC",
-                  alignSelf: "flex-end",
-                }}
-              />
-            </div>
-            <div className={styles.certificateInfoBox}>
-
-              <div className={styles.certificateInfo}>
-                <p>Kanban ilə İş Axınını Optimallaşdır</p>
-                <img src={save}  width={48} height={48} />
-              </div>
-              <div className={styles.certificateInfoDate}>
-                <img src={time} alt="" />
-                <p>4 modul</p>
-                <p>16 blok</p>
-              </div>
-              <div className={styles.certificateUserInfo}>
-                <img src={userPhoto} width={40} height={40}/>
-                <h3>Tofiq Isayev</h3>
-                <p>20.02.2025</p>
-              </div>
-            </div>
-            
-          </div>
-          <div className={styles.card}>
-            <div className={styles.BtnImg}>
-              <img src={certificate} alt="" />
-              <Button
-                children="Kursa basla"
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  width: 163,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  bottom: 55,
-                  right: 10,
-                  color: "#FFF",
-                  backgroundColor: "#621DAC",
-                  alignSelf: "flex-end",
-                }}
-              />
-            </div>
-            <div className={styles.certificateInfoBox}>
-
-              <div className={styles.certificateInfo}>
-                <p>Kanban ilə İş Axınını Optimallaşdır</p>
-                <img src={save}  width={48} height={48} />
-              </div>
-              <div className={styles.certificateInfoDate}>
-                <img src={time} alt="" />
-                <p>4 modul</p>
-                <p>16 blok</p>
-              </div>
-              <div className={styles.certificateUserInfo}>
-                <img src={userPhoto} width={40} height={40}/>
-                <h3>Tofiq Isayev</h3>
-                <p>20.02.2025</p>
-              </div>
-            </div>
-            
-          </div>
-          <div className={styles.card}>
-            <div className={styles.BtnImg}>
-              <img src={certificate} alt="" />
-              <Button
-                children="Kursa basla"
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  width: 163,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  bottom: 55,
-                  right: 10,
-                  color: "#FFF",
-                  backgroundColor: "#621DAC",
-                  alignSelf: "flex-end",
-                }}
-              />
-            </div>
-            <div className={styles.certificateInfoBox}>
-
-              <div className={styles.certificateInfo}>
-                <p>Kanban ilə İş Axınını Optimallaşdır</p>
-                <img src={save}  width={48} height={48} />
-              </div>
-              <div className={styles.certificateInfoDate}>
-                <img src={time} alt="" />
-                <p>4 modul</p>
-                <p>16 blok</p>
-              </div>
-              <div className={styles.certificateUserInfo}>
-                <img src={userPhoto} width={40} height={40}/>
-                <h3>Tofiq Isayev</h3>
-                <p>20.02.2025</p>
-              </div>
-            </div>
-            
-          </div>
+          <PersonalCabinetCard
+            className={styles.card}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+          <PersonalCabinetCard
+            className={styles.card}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+          <PersonalCabinetCard
+            className={styles.card}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+          <PersonalCabinetCard
+            className={styles.card}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
         </div>
 
 
-{/* sertifikatlar */}
+        {/* sertifikatlar */}
 
-                <div className={styles.lastBox}>
-                  <h2>Sertifikatlar</h2>
-                  <div className={styles.imgCertificateBox}>
-                  <img src={cerficate1} alt="" />
-                  <img src={cerficate2} alt="" />
-                  </div>
-                 
+        <div className={styles.lastBox}>
+          <h2>Sertifikatlar</h2>
+          <div className={styles.imgCertificateBox}>
+            <Img src={cerficate1} />
+            <Img src={cerficate2} />
+          </div>
 
-                </div>
+
+        </div>
       </div>
     </div>
   );
