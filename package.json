@@ -10,11 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "i18next": "^25.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.3",
+    "react-i18next": "^15.5.1",
     "react-router-dom": "^7.6.0",
-    "sass": "^1.88.0"
+    "react-slick": "^0.30.3",
+    "sass": "^1.88.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
