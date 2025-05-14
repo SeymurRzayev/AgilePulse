@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./index.module.css";
 import leftArrow from "../../assets/icons/left-arrow.svg";
 import user from "../../assets/images/user.png";

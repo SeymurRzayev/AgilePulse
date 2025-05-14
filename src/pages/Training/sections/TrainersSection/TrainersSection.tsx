@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { useState } from "react";
+import type { FC } from "react";
 import styles from "./TrainersSection.module.css";
 
 interface Trainer {
@@ -62,13 +63,13 @@ const TrainersSection: FC = () => {
   ];
 
   const handlePrevTestimonial = () => {
-    setCurrentTestimonial(prev => 
+    setCurrentTestimonial(prev =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
   const handleNextTestimonial = () => {
-    setCurrentTestimonial(prev => 
+    setCurrentTestimonial(prev =>
       (prev + 1) % testimonials.length
     );
   };
@@ -86,8 +87,8 @@ const TrainersSection: FC = () => {
           {trainers.map(trainer => (
             <div key={trainer.id} className={styles.trainerCard}>
               <div className={styles.trainerImageContainer}>
-                <img 
-                  src={trainer.image} 
+                <img
+                  src={trainer.image}
                   alt={trainer.name}
                   className={styles.trainerImage}
                 />
@@ -106,22 +107,22 @@ const TrainersSection: FC = () => {
       <div className={styles.testimonialsSection}>
         <h2>İştirakçıların Təlim Təcrübələri</h2>
         <p>AgilePulse platformasında təlim keçmiş iştirakçılarımızın real fikirləri. Onların təcrübələri sizin yolunuzu aydınlada bilər.</p>
-        
+
         <div className={styles.testimonialSlider}>
-          <button 
-            className={styles.navArrow} 
+          <button
+            className={styles.navArrow}
             onClick={handlePrevTestimonial}
             aria-label="Previous testimonial"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-          
+
           <div className={styles.testimonialCardsContainer}>
             {testimonials.map((testimonial, index) => (
-              <div 
-                key={testimonial.id} 
+              <div
+                key={testimonial.id}
                 className={`${styles.testimonialCard} ${index === currentTestimonial ? styles.active : ''}`}
               >
                 <div className={styles.testimonialImageContainer}>
@@ -140,24 +141,24 @@ const TrainersSection: FC = () => {
               </div>
             ))}
           </div>
-          
-          <button 
-            className={styles.navArrow} 
+
+          <button
+            className={styles.navArrow}
             onClick={handleNextTestimonial}
             aria-label="Next testimonial"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
       </div>
-      
+
       {/* Contact Section */}
       <div className={styles.contactSection}>
         <h2>Bizə Yaz</h2>
         <p>"Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə hazırdır!"</p>
-        
+
         <div className={styles.contactForm}>
           <div className={styles.formWrapper}>
             <div className={styles.messageWrapper}>
@@ -165,7 +166,7 @@ const TrainersSection: FC = () => {
                 <textarea placeholder="Bizə yaz"></textarea>
                 <button className={styles.sendButton}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               </div>
