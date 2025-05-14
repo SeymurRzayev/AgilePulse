@@ -4,27 +4,13 @@
   flex-direction: column;
   padding: 0;
 }
-.BtnImg img {
+/* .BtnImg img {
   width: 325.0000305175784;
   height: 391.00000000000034;
   left: 391px;
-  /* angle: -90 deg; */
+  angle: -90 deg;
   border-radius: 50px;
-}
-
-@media (max-width: 768px) {
-
-  .BtnImg button {
-    width: 140px !important; 
-
-  }
-}
-@media (max-width: 640px) {
-  .BtnImg button {
-    width: 140px !important; 
-   
-  }
-}
+} */
 
 .certificateInfoBox {
   display: flex;
@@ -45,15 +31,24 @@
   line-height: 32px;
   letter-spacing: 0px;
 }
-@media (max-width: 768px) {
-
-  .BtnImg {
-    width: 350px;
-    height: 350px;
-  }
-
+/* .btn {
+  position: relative;
+                  display: flex;
+                  width: 163;
+                  justify-content: center;
+                  align-items: center;
+                  bottom: 55;
+                  right: 10;
+                  color: #FFF;
+                  background-color: #621DAC;
+                  align-self: flex-end;
+} */
+@media (max-width: 1008px) {
   .certificateInfo p {
     font-size: 16px;
+  }
+  .BtnImg button {
+    right: 0;
   }
 }
 .certificateInfoDate {

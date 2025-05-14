@@ -28,7 +28,9 @@ const personalCabinetCard = ({certificate,userPhoto,timeIcon,save,className}: Ca
                   color: "#FFF",
                   backgroundColor: "#621DAC",
                   alignSelf: "flex-end",
+                  
                 }}
+                
               />
             </div>
             <div className={styles.certificateInfoBox}>
