@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
@@ -16,7 +17,11 @@ type TrainingListItemProps = {
   onClick: () => void;
 };
 
-const TrainingListItem = ({ item, isActive, onClick }: TrainingListItemProps) => (
+const TrainingListItem = ({
+  item,
+  isActive,
+  onClick,
+}: TrainingListItemProps) => (
   <li
     className={`${styles.navigationItem} ${isActive ? styles.active : ""}`}
     onClick={onClick}
@@ -32,11 +37,21 @@ type TrainingCardProps = {
   avatar: string;
   user: string;
   date: string;
+  href?: string;
 };
 
-const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardProps) => {
+const TrainingCard = ({
+  imgUrl,
+  title,
+  time,
+  avatar,
+  user,
+  date,
+  href,
+}: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  return (
+
+  const cardContent = (
     <div className={styles.card}>
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
@@ -54,7 +69,10 @@ const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardP
           className={styles.bookmark}
           src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
           alt="bookmark"
-          onClick={() => setIsBookmarked((prev) => !prev)}
+          onClick={(e) => {
+            e.stopPropagation(); // чтобы клик не инициировал переход по ссылке
+            setIsBookmarked((prev) => !prev);
+          }}
         />
       </div>
       <div className={styles.cardFooter}>
@@ -66,6 +84,8 @@ const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardP
       </div>
     </div>
   );
+
+  return href ? <Link to={href}>{cardContent}</Link> : cardContent;
 };
 
 const TrainingsPage = () => {
@@ -89,6 +109,7 @@ const TrainingsPage = () => {
       avatar: avatar1,
       user: "Səadət Hüseynova",
       date: "12.04.2025",
+      href: "/trainings/scrum",
     },
     {
       id: 2,
@@ -139,13 +160,18 @@ const TrainingsPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.heroSection}>
-      </div>
+      <div className={styles.heroSection}></div>
 
       <div className={styles.searchWrapper}>
         <div className={styles.searchContainer}>
           <div className={styles.searchBar}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              className={styles.searchIcon}
+            >
               <path
                 d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
                 stroke="#222222"
@@ -192,6 +218,7 @@ const TrainingsPage = () => {
             avatar={course.avatar}
             user={course.user}
             date={course.date}
+            href={course.href}
           />
         ))}
       </div>
