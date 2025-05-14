@@ -1,0 +1,107 @@
+
+.BtnImg {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.BtnImg img {
+  width: 325.0000305175784;
+  height: 391.00000000000034;
+  left: 391px;
+  /* angle: -90 deg; */
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+
+  .BtnImg button {
+    width: 140px !important; 
+
+  }
+}
+@media (max-width: 640px) {
+  .BtnImg button {
+    width: 140px !important; 
+   
+  }
+}
+
+.certificateInfoBox {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-left: 10px;
+}
+.certificateInfo {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding-right: 10px;
+}
+.certificateInfo p {
+  font-family: Corbel;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+@media (max-width: 768px) {
+
+  .BtnImg {
+    width: 350px;
+    height: 350px;
+  }
+
+  .certificateInfo p {
+    font-size: 16px;
+  }
+}
+.certificateInfoDate {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.7rem;
+  color: #dedede;
+}
+.certificateInfoDate img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+}
+.certificateInfoDate p {
+  font-family: Corbel;
+  color: #00000099;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.certificateUserInfo {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+.certificateUserInfo h3 {
+  color: #566faf;
+  font-family: Corbel;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.certificateUserInfo p {
+  color: #00000099;
+  font-family: Corbel;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+.certificateUserInfo img {
+  width: 40;
+  height: 40;
+  border-radius: 50px;
+}
