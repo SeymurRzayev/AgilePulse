@@ -1,23 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
+import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import styles from "./TrainingsPage.module.css";
-import InfoButton from "../../components/InfoButton";
-
-// Icons
 import timeIcon from "../../assets/icons/time.svg";
 import bookmarkIcon from "../../assets/icons/bookmark.svg";
 import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
-
-// Images
-import avatar1 from "../../assets/images/picture.png"; // Using picture.png as avatar
-import heroBg from "../../assets/images/first page.png"; // Using home-background.jpeg as hero background
+import avatar1 from "../../assets/images/podcast1.jpg";
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg";
-
-// Sections
-import TrainersSection from "./sections/TrainersSection/TrainersSection";
-import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 
 type TrainingListItemProps = {
   item: string;
@@ -50,17 +41,15 @@ const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardP
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
         <div className={styles.infoButton}>
-          <Link to="*">
-            <button className={styles.start_btn}>Kursa başla</button>
-          </Link>
+          <button className={styles.start_btn}>Kursa başla</button>
         </div>
       </div>
       <div className={styles.cardContent}>
-        <p>{title}</p>
-        <span>
+        <h3>{title}</h3>
+        <div className={styles.timeInfo}>
           <img src={timeIcon} alt="time_icon" />
-          {time}
-        </span>
+          <span>{time}</span>
+        </div>
         <img
           className={styles.bookmark}
           src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
@@ -119,38 +108,58 @@ const TrainingsPage = () => {
       user: "Tofiq İsayev",
       date: "20.02.2025",
     },
+    {
+      id: 4,
+      imgUrl: training1,
+      title: "Scrum nədir? Praktik Başlanğıc",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Səadət Hüseynova",
+      date: "12.04.2025",
+    },
+    {
+      id: 5,
+      imgUrl: training2,
+      title: "Agile Manifesto və 12 Prinsip",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Məhəmməd Qasımov",
+      date: "16.01.2025",
+    },
+    {
+      id: 6,
+      imgUrl: training3,
+      title: "Kanban ilə İş Axınını Optimallaşdır",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Tofiq İsayev",
+      date: "20.02.2025",
+    },
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <div
-        className={styles.heroSection}
-        style={{
-          backgroundImage: `url(${heroBg})`,
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.heroSection}>
       </div>
 
-      {/* Search & Filter Bar */}
-      <div className={styles.searchBarContainer}>
+      <div className={styles.searchContainer}>
         <div className={styles.searchBar}>
-          <input type="text" placeholder="Search" />
-          <svg width="24" height="24" fill="none" className={styles.searchIcon}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
             <path
-              d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"
-              stroke="#222"
+              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+              stroke="#222222"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
+          <input type="text" placeholder="Search" />
         </div>
         <button className={styles.filterButton}>
-          <svg width="28" height="28" fill="none">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <path
-              d="M4 7h20M7 14h10M10 21h4"
-              stroke="#222"
+              d="M4 7H24M7 14H17M10 21H14"
+              stroke="#222222"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -158,8 +167,7 @@ const TrainingsPage = () => {
         </button>
       </div>
 
-      {/* Trainings Content */}
-      <div className={styles.trainingsContainer}>
+      <div className={styles.categoriesContainer}>
         <ul className={styles.navigation}>
           {trainingCategories.map((item) => (
             <TrainingListItem
@@ -170,27 +178,29 @@ const TrainingsPage = () => {
             />
           ))}
         </ul>
-        <section className={styles.trainingsCardsContainer}>
-          {trainingCourses.map((course) => (
-            <TrainingCard
-              key={course.id}
-              imgUrl={course.imgUrl}
-              title={course.title}
-              time={course.time}
-              avatar={course.avatar}
-              user={course.user}
-              date={course.date}
-            />
-          ))}
-          <div className={styles.viewAllButton}>
-            <InfoButton>Hamısına bax</InfoButton>
-          </div>
-        </section>
       </div>
 
-      {/* Sections */}
-      <TrainersSection />
+      <div className={styles.trainingsGrid}>
+        {trainingCourses.map((course) => (
+          <TrainingCard
+            key={course.id}
+            imgUrl={course.imgUrl}
+            title={course.title}
+            time={course.time}
+            avatar={course.avatar}
+            user={course.user}
+            date={course.date}
+          />
+        ))}
+      </div>
+
+      <div className={styles.viewAllContainer}>
+        <button className={styles.viewAllBtn}>Hamısına bax</button>
+      </div>
+
       <PodcastsSection />
+
+      <TrainersSection />
     </div>
   );
 };
