@@ -1,0 +1,311 @@
+.container {
+  font-family: sans-serif;
+  padding: 28px 0 0 25px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: start;
+  gap: 30px;
+  background-color: #fbf9f7;
+}
+
+@media (max-width: 640px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.userCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileImage {
+  display: flex;
+  position: relative;
+  z-index: 2;
+  width: 200;
+  height: 200;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 5px;
+}
+.profileContent {
+  width: 322px;
+  position: relative;
+  top: -70px;
+  z-index: 1;
+  padding: 105px 46px 30px 46px;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+  box-shadow: 5px 6px 20px rgba(0, 0, 0, 0.12), 1px 2px 6px rgba(0, 0, 0, 0.08);
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.titleCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.title {
+  color: #566faf;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.box {
+  width: 970px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 38px 0 20px 0;
+}
+
+
+.myTrainings {
+  display: flex;
+  row-gap: 1.5rem;
+  flex-direction: column;
+ 
+}
+
+@media (max-width: 768px ) {
+ .myTrainings {
+  align-items: center;
+ }
+}
+.category {
+  width: 370px;
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.category li a {
+  color: #000000de;
+  box-sizing: border-box;
+}
+.category li a::after {
+  content: "";
+  display: flex;
+  margin: 5.5px 0 0 1px;
+  flex-direction: column;
+  background-color: #dedede;
+  width: 90px;
+  height: 3px;
+}
+
+.category li a:active,
+.category li a.active::after {
+  color: #2c4b9b;
+  font-weight: bold;
+}
+.cardContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+
+
+.card {
+  display: flex;
+  padding-bottom: 20px;
+  flex-direction: column;
+  top: 175px;
+  border: 1px solid #dedede;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 10px;
+  border-width: 1.5px;
+}
+
+
+
+
+
+
+
+
+.BtnImg {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.BtnImg img {
+  width: 325.0000305175784;
+  height: 391.00000000000034;
+  left: 391px;
+  angle: -90 deg;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .BtnImg button {
+    width: 140px !important; 
+  }
+}
+@media (max-width: 640px) {
+  .BtnImg button {
+    width: 140px !important; 
+  }
+}
+
+
+
+.certificateInfoBox {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding-left: 10px;
+}
+.certificateInfo {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding-right: 10px;
+}
+.certificateInfo p {
+  font-family: Corbel;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+@media (max-width: 768px) {
+  .cardContainer {
+    flex-direction: column;
+    /* align-items: flex-start; */
+
+  }
+  .BtnImg {
+    width: 350px;
+    height: 350px;
+  }
+
+  .certificateInfo p {
+    font-size: 16px;
+  }
+}
+
+.certificateInfoDate {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.7rem;
+  color: #dedede;
+}
+.certificateInfoDate img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+}
+.certificateInfoDate p {
+  font-family: Corbel;
+  color: #00000099;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.certificateUserInfo {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+.certificateUserInfo h3 {
+  color: #566faf;
+  font-family: Corbel;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.certificateUserInfo p {
+  color: #00000099;
+  font-family: Corbel;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+.certificateUserInfo img {
+  width: 40;
+  height: 40;
+  border-radius: 50px;
+}
+.lastBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+.lastBox h2 {
+  color: #2C4B9B;
+
+}
+.lastBox h2::after {
+  content: "";
+  display: flex;
+  flex-direction: column;
+  height: 2px;
+  width: 134px;
+  background-color:#2C4B9B ;
+}
+
+
+.imgCertificateBox {
+
+display: flex;
+gap: 1rem;
+justify-content: flex-start;
+align-items: center;
+overflow-x: auto;
+}
+
+.imgCertificateBox img {
+  width: 495;
+height: 366;
+border: 2px solid #dedede;
+border-top-left-radius: 100px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 100px;
+border-bottom-left-radius: 10px;
+border-width: 1.5px;
+
+}
+
+@media (max-width: 768px) {
+  .imgCertificateBox{ 
+    /* align-items: flex-start; */
+    flex-direction: column;
+  }
+  .imgCertificateBox img {
+    width: 350px;
+    height: 350px;
+  }
+}
