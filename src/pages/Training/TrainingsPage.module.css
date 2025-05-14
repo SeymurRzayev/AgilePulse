@@ -35,25 +35,29 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
+.searchWrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .searchContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto 30px;
-  max-width: 1200px;
-  padding: 0 20px;
+  width: 100%;
+  background-color: #F8F8F8;
+  border-radius: 100px;
+  padding: 8px 8px 8px 28px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .searchBar {
   flex: 1;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  height: 56px;
-  margin-right: 20px;
 }
 
 .searchBar input {
@@ -61,25 +65,36 @@
   outline: none;
   font-size: 16px;
   width: 100%;
-  padding: 0 10px;
+  padding: 8px 16px;
   background: transparent;
+  color: #222;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.searchBar input::placeholder {
+  color: #888;
 }
 
 .searchIcon {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .filterButton {
-  background: #fff;
+  background: #FFFFFF;
   border: none;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  width: 56px;
-  height: 56px;
+  border-radius: 50px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .categoriesContainer {
@@ -294,6 +309,14 @@
     white-space: nowrap;
   }
   
+  .searchContainer {
+    padding: 6px;
+  }
+  
+  .searchBar input {
+    font-size: 14px;
+  }
+  
   .card {
     height: 480px;
   }
@@ -317,17 +340,22 @@
   }
   
   .searchContainer {
-    flex-direction: column;
-    gap: 15px;
+    border-radius: 60px;
+    padding: 6px;
   }
   
   .searchBar {
-    width: 100%;
-    margin-right: 0;
+    padding-left: 8px;
+  }
+  
+  .searchBar input {
+    padding: 6px 8px;
+    font-size: 14px;
   }
   
   .filterButton {
-    width: 100%;
+    width: 40px;
+    height: 40px;
   }
   
   .card {
@@ -336,5 +364,5 @@
   
   .cardImage {
     height: 220px;
-}
+  }
 }
