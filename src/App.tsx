@@ -6,11 +6,11 @@ import AppRouter from "./router/AppRouter";
 function App() {
   return (
     <div className={styles.app}>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mainContent">
         <AppRouter />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
