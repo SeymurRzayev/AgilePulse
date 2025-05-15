@@ -1,18 +1,18 @@
 import styles from "./App.module.css";
-import Footer from "./layout/Footer/Footer";
+
+import AppRouter from "./router/AppRouter";
 import Navbar from "./layout/Navbar/Navbar";
-{/*import Kabinet from "./pages/Kabinet";*/}
+
+import Footer from "./layout/Footer/Footer";
 import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
     <div className={styles.app}>
-      <Navbar />
+     
       <div className="mainContent">
         <AppRouter />
       </div>
-      <Footer />
-      {/* <Kabinet /> */}
     </div>
   );
 }
