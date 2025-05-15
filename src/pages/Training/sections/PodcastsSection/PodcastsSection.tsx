@@ -42,7 +42,6 @@ const PodcastsSection: FC = () => {
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <img src={right} alt="Next" className={styles.nextArrow} />,
-    prevArrow: <img src={right} alt="Previous" className={styles.prevArrow} />,
     responsive: [
       {
         breakpoint: 1024,

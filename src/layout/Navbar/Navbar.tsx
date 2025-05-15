@@ -43,7 +43,7 @@ const Navbar: FC<NavbarProps> = ({
     {
       path: "/about",
       label: "Haqqımızda",
-    }
+    },
   ];
 
   // Close menu when clicking outside
