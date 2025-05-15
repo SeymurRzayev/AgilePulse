@@ -28,34 +28,37 @@ const TrainingListItem = ({ item, isActive, onClick }: TrainingListItemProps) =>
 type TrainingCardProps = {
   imgUrl: string;
   title: string;
-  time: string;
-  avatar: string;
-  user: string;
-  date: string;
+  time?: string;
+  avatar?: string;
+  user?: string;
+  date?: string;
+  content?: string;
+  isArticle?: boolean;
 };
 
-const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardProps) => {
+export const TrainingCard = ({ imgUrl, title, time, avatar, user, date, content, isArticle }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
         <div className={styles.infoButton}>
-          <button className={styles.start_btn}>Kursa başla</button>
+          <button className={styles.start_btn}>{isArticle ? 'Daha çox' : 'Kursa başla'}</button>
         </div>
       </div>
       <div className={styles.cardContent}>
         <h3>{title}</h3>
         <div className={styles.timeInfo}>
-          <img src={timeIcon} alt="time_icon" />
-          <span>{time}</span>
+          {content && <p>{content}</p>}
+          {!isArticle && <img src={timeIcon} alt="time_icon" />}
+          {!isArticle && <span>{time}</span>}
         </div>
-        <img
+        { !isArticle && <img
           className={styles.bookmark}
           src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
           alt="bookmark"
           onClick={() => setIsBookmarked((prev) => !prev)}
-        />
+        />}
       </div>
       <div className={styles.cardFooter}>
         <div className={styles.author}>
@@ -144,35 +147,35 @@ const TrainingsPage = () => {
         </div>
       </div>
 
-<div className={styles.searchWrapper}>
-  <div className={styles.searchContainer}>
-    <div className={styles.searchBar}>
-      <input type="text" placeholder="Search" />
-      <button className={styles.searchButton}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-            stroke="#222222"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <button className={styles.filterButton}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M3 6H21M6 12H18M10 18H14"
-        stroke="#222222"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-</div>
+      <div className={styles.searchWrapper}>
+        <div className={styles.searchContainer}>
+          <div className={styles.searchBar}>
+            <input type="text" placeholder="Search" />
+            <button className={styles.searchButton}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                  stroke="#222222"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button className={styles.filterButton}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M3 6H21M6 12H18M10 18H14"
+              stroke="#222222"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
 
       <div className={styles.categoriesContainer}>
         <ul className={styles.navigation}>
