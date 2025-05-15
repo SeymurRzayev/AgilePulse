@@ -59,6 +59,7 @@
 
     .btnContainer {
         .button {
+            color: #fff;
             width: 163px;
             height: 56px;
             display: flex;
@@ -148,6 +149,7 @@
             justify-content: center;
 
             .button {
+                color: #fff;
                 margin-top: 20px;
                 width: 350px;
                 height: 50px;
@@ -257,7 +259,6 @@
         .btnContainer {
             display: flex;
             justify-content: center;
-         
 
             .button {
                 margin-top: 20px;

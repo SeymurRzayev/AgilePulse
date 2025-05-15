@@ -16,7 +16,11 @@ type TrainingListItemProps = {
   onClick: () => void;
 };
 
-const TrainingListItem = ({ item, isActive, onClick }: TrainingListItemProps) => (
+const TrainingListItem = ({
+  item,
+  isActive,
+  onClick,
+}: TrainingListItemProps) => (
   <li
     className={`${styles.navigationItem} ${isActive ? styles.active : ""}`}
     onClick={onClick}
@@ -36,7 +40,16 @@ type TrainingCardProps = {
   isArticle?: boolean;
 };
 
-export const TrainingCard = ({ imgUrl, title, time, avatar, user, date, content, isArticle }: TrainingCardProps) => {
+export const TrainingCard = ({
+  imgUrl,
+  title,
+  time,
+  avatar,
+  user,
+  date,
+  content,
+  isArticle,
+}: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   return (
     <div className={styles.card}>
@@ -45,10 +58,11 @@ export const TrainingCard = ({ imgUrl, title, time, avatar, user, date, content,
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
           <div className={styles.curve_one}></div>
           <div className={styles.infoButton}>
-            <button className={styles.start_btn}>{isArticle ? 'Daha çox' : 'Kursa başla'}</button>
+            <button className={styles.start_btn}>
+              {isArticle ? "Daha çox" : "Kursa başla"}
+            </button>
           </div>
         </div>
-
       </div>
       <div className={styles.cardContent}>
         <h3>{title}</h3>
@@ -57,24 +71,24 @@ export const TrainingCard = ({ imgUrl, title, time, avatar, user, date, content,
           {!isArticle && <img src={timeIcon} alt="time_icon" />}
           {!isArticle && <span>{time}</span>}
         </div>
-        {!isArticle && <img
-          className={styles.bookmark}
-          src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
-          alt="bookmark"
-          onClick={() => setIsBookmarked((prev) => !prev)}
-        />}
+        {!isArticle && (
+          <img
+            className={styles.bookmark}
+            src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
+            alt="bookmark"
+            onClick={() => setIsBookmarked((prev) => !prev)}
+          />
+        )}
       </div>
-      {
-        !isArticle && (
-          <div className={styles.cardFooter}>
-            <div className={styles.author}>
-              <img src={avatar} alt={user} />
-              <span>{user}</span>
-            </div>
-            <div className={styles.date}>{date}</div>
+      {!isArticle && (
+        <div className={styles.cardFooter}>
+          <div className={styles.author}>
+            <img src={avatar} alt={user} />
+            <span>{user}</span>
           </div>
-        )
-      }
+          <div className={styles.date}>{date}</div>
+        </div>
+      )}
     </div>
   );
 };
@@ -151,8 +165,7 @@ const TrainingsPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.heroSection}>
-        <div className={styles.heroContent}>
-        </div>
+        <div className={styles.heroContent}></div>
       </div>
 
       <div className={styles.searchWrapper}>
