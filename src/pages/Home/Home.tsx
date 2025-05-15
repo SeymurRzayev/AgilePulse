@@ -5,6 +5,8 @@ import { Test } from "../../components/TestSection/Test";
 import TrainingExperiences from "./sections/TrainingExperiences";
 import ArticlesSection from "./sections/ArticlesSection";
 import BookSection from "../../components/BookSection/BookSection";
+import PartnersSection from "./sections/PartnersSection";
+import StatusSection from "./sections/StatusSection";
 
 export const Home: FC = () => {
   return (
@@ -14,6 +16,8 @@ export const Home: FC = () => {
       <BookSection />
       <TrainingExperiences />
       <ArticlesSection />
+      <PartnersSection />
+      <StatusSection />
     </div>
   );
 };
