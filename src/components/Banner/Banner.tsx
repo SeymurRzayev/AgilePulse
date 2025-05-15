@@ -2,6 +2,7 @@ import type { FC } from "react";
 import styles from "./Banner.module.css";
 import { Link } from "react-router-dom";
 
+
 export const Banner: FC = () => {
   return (
     <div className={styles.container}>

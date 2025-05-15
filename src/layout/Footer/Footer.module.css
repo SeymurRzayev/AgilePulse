@@ -379,9 +379,22 @@
 }
 
 @media (min-width: 1024px) {
-  .container {
-    padding-top: 20px;
+  .footer {
     width: 100%;
+    min-height: 450px;
+    background-color: var(--gray-700);
+    padding-top: 51px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    margin-top: 0;
+  }
+
+  .container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -392,7 +405,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 720px;
   }
 
   .logo {
@@ -450,217 +462,284 @@
 
 /* RESPONSIVE - düzülüş dəyişmir, sadəcə ölçülər kiçilir */
 @media (max-width: 900px) {
+
   .container {
     padding: 15px 22px;
+  }
 
-    .section {
-      gap: 350px;
-      display: flex;
-      justify-content: space-between;
+  .section {
+    gap: 8px;
+  }
 
+  .logo span {
+    font-size: 13px;
+  }
+
+  .input {
+    width: 120px;
+    height: 28px;
+    padding: 1px 3px;
+  }
+
+  .sendBtn {
+    width: 44px;
+    height: 20px;
+    font-size: 9px;
+  }
+
+  .navmenu li a,
+  .subscribe span,
+  .socials span {
+    font-size: 10px;
+  }
+
+  .socialIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bottomLine li {
+    padding: 0 3px;
+  }
+
+  .bottomLine a,
+  .bottomLine span {
+    font-size: 8px;
+  }
+
+  .subscribe,
+  .socials {
+    max-width: 100%;
+  }
+
+  .socialIcons {
+    gap: 10px;
+  }
+}
+
+.footer {
+  height: 140px;
+
+  .container {
+    margin-top: 20px;
+    padding: 15px 22px;
+  }
+
+  .section {
+    gap: 8px;
+
+    .navmenu {
+      gap: 4px;
     }
+  }
 
-    .logo span {
+  .logo span {
+    font-size: 13px;
+  }
+
+  .input {
+    width: 170px;
+    height: 35px;
+    border-radius: 24px;
+    border: 1px solid var(--white-high, #fff);
+    background: var(--white-high, #fff);
+    display: flex;
+    align-items: center;
+    padding: 2px 6px;
+    gap: 6px;
+
+    input {
+      width: 55%;
       font-size: 14px;
-    }
-
-    .input {
-      width: 170px;
-      height: 40px;
-      padding: 1px 3px;
+      border: none;
+      outline: none;
+      padding-left: 8px;
+      background: transparent;
     }
 
     .sendBtn {
-      width: 70px;
+      width: 90px;
       height: 30px;
       font-size: 9px;
-    }
 
-    .navmenu li {
-      gap: 2px;
-      a{
-        font-size: 14px;
-      }
     }
-    
+  }
 
-    .socialIcon {
-      width: 19px;
-      height: 19px;
-    }
+  .socials {
+    width: 170px;
 
-    .bottomLine li {
-      padding: 0 3px;
+    span {
+      font-size: 12px;
     }
-
-    .bottomLine a,
-    .bottomLine span {
-      font-size: 8px;
-    }
-
-   .subscribe{
-    span{
-      font-size: 8px;
-    }
-   }
 
     .socialIcons {
       gap: 10px;
+
+      .socialIcon {
+        width: 18px;
+        height: 18px;
+
+
+      }
     }
+
   }
-  
-    }
+
+  .bottomLine li {
+    padding: 0 3px;
+  }
+
+  .bottomLine a,
+  .bottomLine span {
+    font-size: 8px;
+  }
+
+  .subscribe,
+  .socials {
+    max-width: 100%;
+  }
+
+
+}
 
 
 
 @media (max-width: 600px) {
   .container {
-    padding: 10px 30px;
-    gap: 10px;
+    padding: 10px 8px;
+    gap: 12px;
+
+  }
+
+  .section {
+    gap: 8px;
+  }
+
+  .logo span {
+    font-size: 11px;
+  }
+
+  .input {
+    width: 90px;
+    height: 22px;
+    padding: 1px 2px;
+  }
+
+  .sendBtn {
+    width: 32px;
+    height: 16px;
+    font-size: 7px;
+  }
+
+  .navmenu li a {
+    font-size: 9px;
+  }
+
+  .socialIcon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .bottomLine li {
+    padding: 0 2px;
+  }
+
+  .bottomLine a,
+  .bottomLine span {
+    font-size: 6px;
+
+
 
     .section {
-      gap: 120px;
-      display: flex;
-      justify-content: space-between;
+      gap: 8px;
 
-      .logo span {
-        font-size: 12px;
+      .navmenu {
+        li {
+          a {
+            font-size: 12px;
+          }
+
+        }
       }
     }
 
-    .input {
-      width: 150px;
-      height: 30px;
-      padding: 1px 2px;
-
-    }
-
-    .input::placeholder {
+    .logo span {
       font-size: 12px;
     }
 
-
-    .sendBtn {
-      width: 40px;
-      height: 20px;
-      font-size: 7px;
-    }
-
-    .navmenu li a {
-      font-size: 9px;
-    }
-
-    .socialIcon {
-      width: 19px;
-      height: 19px;
-    }
-
-    .bottomLine li {
-      padding: 0 2px;
-    }
-
-    .bottomLine a,
-    .bottomLine span {
-      font-size: 6px;
-
-      .section {
-        display: flex;
-        gap: 100px;
-
-        .navmenu {
-          li {
-            a {
-              font-size: 12px;
-            }
-
-          }
-        }
+    .subscribe {
+      span {
+        font-size: 11px;
       }
 
-      .logo span {
+      .input {
+        width: 210px;
+        height: 40px;
+        padding: 1px 2px;
+
+        input {
+          width: 55%;
+          font-size: 14px;
+        }
+
+        .sendBtn {
+          width: 85px;
+          height: 30px;
+          font-size: 7px;
+        }
+      }
+    }
+
+
+
+    .socials {
+      span {
         font-size: 12px;
       }
 
-      .subscribe {
-        display: flex;
-        justify-content: space-between;
-        gap: 100px;
-
-        span {
-          font-size: 8px;
-        }
-
-        .input {
-          width: 210px;
-          height: 40px;
-          padding: 1px 2px;
-
-          input {
-            width: 55%;
-            font-size: 14px;
-          }
-
-          .sendBtn {
-            width: 85px;
-            height: 30px;
-            font-size: 7px;
+      .socialIcons {
+        .link {
+          .socialIcon {
+            width: 18px;
+            height: 18px;
           }
         }
+
+
       }
-
-
-
-      .socials {
-        span {
-          font-size: 12px;
-        }
-
-        .socialIcons {
-          .link {
-            .socialIcon {
-              width: 18px;
-              height: 18px;
-            }
-          }
-
-
-        }
-      }
-
-
-      .bottomLine {
-        li {
-          a {
-            padding: 0 5px;
-            font-size: 6px;
-          }
-
-          span {
-            font-size: 6px;
-          }
-
-        }
-      }
-
-
     }
+
+
+    .bottomLine {
+      li {
+        a {
+          padding: 0 5px;
+          font-size: 6px;
+        }
+
+        span {
+          font-size: 6px;
+        }
+
+      }
+    }
+
+
   }
 }
 
 @media (max-width:480px) {
+
   .footer {
     max-height: 133px;
 
     .container {
-     
       padding: 20px 15px;
       gap: 12px;
     }
 
     .section {
-      display: flex;
-      justify-content: space-between;
-      gap: 100px;
+      gap: 8px;
     }
 
     .logo {
@@ -670,24 +749,18 @@
     }
 
     .subscribe {
-
       span {
-        font-size: 6px;
+        font-size: 8px;
       }
 
       .input {
-        width: 136px;
+        width: 140px;
         height: 24px;
         padding: 1px 2px;
 
         input {
           width: 55%;
         }
-
-        .input::placeholder {
-          font-size: 8px;
-        }
-
 
         .sendBtn {
           width: 46px;
@@ -697,18 +770,10 @@
       }
     }
 
-    .navmenu {
-      display: flex;
-      justify-content: center;
-      gap: 2px;
 
-      li {
 
-        a {
-          font-size: 8px;
-        }
-
-      }
+    .navmenu li a {
+      font-size: 9px;
     }
 
     .socials {
