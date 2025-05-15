@@ -1,6 +1,7 @@
 .footer {
   width: 100%;
   min-height: 380px;
+
   background-color: var(--gray-700, #1f2937);
   padding: 15px 22px;
   display: flex;
@@ -24,62 +25,78 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
 }
 
 .logo {
+  flex: 1 1 0;
   min-width: 120px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   gap: 8px;
   max-height: 56px;
-
-  span {
-    font-family: "Raleway", sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    color: var(--white-high, #fff);
-  }
+}
+.logo span {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--white-high, #fff);
 }
 
+.navmenu {
+  flex: 1 1 0;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+}
+.navmenu li a {
+  font-family: "Corbel", sans-serif;
+  font-size: 22px;
+  color: var(--white-high, #fff);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.navmenu li a:hover {
+  color: var(--blue-400, #60a5fa);
+}
+
+
 .subscribe {
+  width: 100%;
+  max-width: 316px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.subscribe span {
   font-family: "Corbel", sans-serif;
   font-size: 16px;
   color: var(--white-high, #fff);
   margin-bottom: 2px;
-
-  span {
-    font-family: "Corbel", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--white-high);
-    margin-right: auto;
-  }
-
-  .input {
-    width: 316px;
-    height: 48px;
-    border-radius: 24px;
-    border: 1px solid var(--white-high, #fff);
-    background: var(--white-high, #fff);
-    display: flex;
-    align-items: center;
-    padding: 2px 6px;
-    gap: 6px;
-
-    input {
-      width: 55%;
-      font-size: 14px;
-      border: none;
-      outline: none;
-      padding-left: 8px;
-      background: transparent;
-    }
-  }
 }
-
+.input {
+  width: 316px;
+  height: 48px;
+  border-radius: 24px;
+  border: 1px solid var(--white-high, #fff);
+  background: var(--white-high, #fff);
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  gap: 6px;
+}
+.input input {
+  width: 55%;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  padding-left: 8px;
+  background: transparent;
+}
 .sendBtn {
   width: 122px;
   height: 40px;
@@ -92,36 +109,18 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-
+.sendBtn:hover {
+  background: var(--blue-700, #1d4ed8);
+}
 .invalid {
-  border: 1px solid #e70303 !important;
-  box-shadow: 0px 0px 10px 0px #f2131333;
+  border: 1px solid #E70303 !important;
+  box-shadow: 0px 0px 10px 0px #F2131333;
 }
-
 .errorText {
-  display: block;
-  font-family: Lexend;
-  margin-right: auto;
-  font-weight: 300;
-  font-size: 12px;
-  color: #ec3535;
-}
-
-.navmenu {
-  flex: 1 1 0;
-  min-width: 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  justify-content: flex-start;
-
-  li a {
-    font-family: "Corbel", sans-serif;
-    font-size: 22px;
-    color: var(--white-high, #fff);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  font-family: "Lexend", sans-serif;
+  font-size: 10px;
+  color: #EC3535;
+  margin-top: 2px;
 }
 
 .socials {
@@ -130,29 +129,26 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-
-  span {
-    font-family: "Corbel", sans-serif;
-    font-size: 13px;
-    color: var(--white-high, #fff);
-  }
 }
-
+.socials span {
+  font-family: "Corbel", sans-serif;
+  font-size: 13px;
+  color: var(--white-high, #fff);
+}
 .socialIcons {
   display: flex;
   gap: 18px;
   align-items: center;
   justify-content: flex-start;
-
-  li {
-    .link {
-      .socialIcon {
-        width: 36px;
-        height: 36px;
-        transition: filter 0.2s, transform 0.2s;
-      }
-    }
-  }
+}
+.socialIcon {
+  width: 28px;
+  height: 28px;
+  transition: filter 0.2s, transform 0.2s;
+}
+.socialIcon:hover {
+  filter: brightness(1.2);
+  transform: scale(1.1);
 }
 
 .bottomLine {
@@ -161,29 +157,207 @@
   align-items: center;
   padding-bottom: 20px;
   gap: 8px;
+}
+.bottomLine li {
+  padding: 0 6px;
+  opacity: 0.7;
+  border-right: 1px solid var(--white-high, #fff);
+  list-style: none;
+}
+.bottomLine li:last-child {
+  border-right: none;
+}
+.bottomLine a,
+.bottomLine span {
+  font-family: "Corbel", sans-serif;
+  font-size: 10px;
+  color: var(--white-high, #fff);
+  text-decoration: none;
 
-  li {
-    padding: 0 25px;
-    opacity: 0.7;
-    border-right: 1px solid var(--white-high, #fff);
-    list-style: none;
+  background-color: #1C1C1C !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 0;
 
-    a,
+
+  .container {
+    width: 100%;
+    max-width: 1270px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+  }
+
+  .section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo {
+    min-width: 120px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    max-height: 56px;
+
+    span {
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--white-high, #fff);
+    }
+  }
+
+  .subscribe {
+    font-family: "Corbel", sans-serif;
+    font-size: 16px;
+    color: var(--white-high, #fff);
+    margin-bottom: 2px;
+
     span {
       font-family: "Corbel", sans-serif;
       font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0px;
+      font-size: 16px;
       color: var(--white-high);
+      margin-right: auto;
     }
 
-    &:first-child {
-      border-right: 1px solid var(--white-high);
-    }
+    .input {
+      width: 316px;
+      height: 48px;
+      border-radius: 24px;
+      border: 1px solid var(--white-high, #fff);
+      background: var(--white-high, #fff);
+      display: flex;
+      align-items: center;
+      padding: 2px 6px;
+      gap: 6px;
 
-    &:last-child {
-      border-right: none;
+      input {
+        width: 55%;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        padding-left: 8px;
+        background: transparent;
+      }
+    }
+  }
+
+  .sendBtn {
+    width: 122px;
+    height: 40px;
+    border-radius: 24px;
+    border: none;
+    background: var(--blue-500, #3b82f6);
+    color: var(--white-high, #fff);
+    font-size: 12px;
+    font-family: "Lexend", sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .invalid {
+    border: 1px solid #e70303 !important;
+    box-shadow: 0px 0px 10px 0px #f2131333;
+  }
+
+  .errorText {
+    display: block;
+    font-family: Lexend;
+    margin-right: auto;
+    font-weight: 300;
+    font-size: 12px;
+    color: #ec3535;
+  }
+
+  .navmenu {
+    flex: 1 1 0;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: flex-start;
+
+    li a {
+      font-family: "Corbel", sans-serif;
+      font-size: 22px;
+      color: var(--white-high, #fff);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+  }
+
+  .socials {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    span {
+      font-family: "Corbel", sans-serif;
+      font-size: 13px;
+      color: var(--white-high, #fff);
+    }
+  }
+
+  .socialIcons {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: flex-start;
+
+    li {
+      .link {
+        .socialIcon {
+          width: 36px;
+          height: 36px;
+          transition: filter 0.2s, transform 0.2s;
+        }
+      }
+    }
+  }
+
+  .bottomLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+    gap: 8px;
+
+    li {
+      padding: 0 25px;
+      opacity: 0.7;
+      border-right: 1px solid var(--white-high, #fff);
+      list-style: none;
+
+      a,
+      span {
+        font-family: "Corbel", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0px;
+        color: var(--white-high);
+      }
+
+      &:first-child {
+        border-right: 1px solid var(--white-high);
+      }
+
+      &:last-child {
+        border-right: none;
+      }
     }
   }
 }
@@ -246,22 +420,7 @@
       margin-right: auto;
     }
 
-    .input {
-      width: 320px;
-      height: 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4px 8px;
 
-      input {
-        width: 55%;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        padding-left: 12px;
-      }
-    }
   }
 
   .sendBtn {
@@ -275,154 +434,333 @@
 
   .bottomLine {
     li {
+
       a,
       span {
         font-size: 16px;
       }
     }
   }
+
 }
 
+/* RESPONSIVE - düzülüş dəyişmir, sadəcə ölçülər kiçilir */
 @media (max-width: 900px) {
+
   .container {
     padding: 15px 22px;
   }
-
   .section {
     gap: 8px;
   }
-
   .logo span {
     font-size: 13px;
   }
-
   .input {
     width: 120px;
     height: 28px;
     padding: 1px 3px;
   }
-
   .sendBtn {
     width: 44px;
     height: 20px;
     font-size: 9px;
   }
-
   .navmenu li a,
   .subscribe span,
   .socials span {
     font-size: 10px;
   }
-
   .socialIcon {
     width: 18px;
     height: 18px;
   }
-
   .bottomLine li {
     padding: 0 3px;
   }
-
   .bottomLine a,
   .bottomLine span {
     font-size: 8px;
   }
-
-  .subscribe,
-  .socials {
+  .subscribe, .socials {
     max-width: 100%;
   }
-
   .socialIcons {
     gap: 10px;
   }
 }
+=======
+  .footer {
+    height: 140px;
 
-@media (max-width: 600px) {
     .container {
-        padding: 10px 8px;
-        gap: 12px;
+      margin-top: 20px;
+      padding: 15px 22px;
     }
 
     .section {
-        gap: 8px;
+      gap: 8px;
+
+      .navmenu {
+        gap: 4px;
+      }
     }
 
     .logo span {
-        font-size: 11px;
+      font-size: 13px;
     }
 
     .input {
+      width: 170px;
+      height: 35px;
+      border-radius: 24px;
+      border: 1px solid var(--white-high, #fff);
+      background: var(--white-high, #fff);
+      display: flex;
+      align-items: center;
+      padding: 2px 6px;
+      gap: 6px;
+
+      input {
+        width: 55%;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        padding-left: 8px;
+        background: transparent;
+      }
+
+      .sendBtn {
         width: 90px;
-        height: 22px;
-        padding: 1px 2px;
-    }
-
-    .sendBtn {
-        width: 60px;
         height: 30px;
-        font-size: 7px;
-    }
-
-    .navmenu li a {
         font-size: 9px;
+
+      }
     }
 
-    .socialIcon {
-        width: 12px;
-        height: 12px;
+    .socials {
+      width: 170px;
+
+      span {
+        font-size: 12px;
+      }
+
+      .socialIcons {
+        gap: 10px;
+
+        .socialIcon {
+          width: 18px;
+          height: 18px;
+
+
+        }
+      }
+
     }
 
     .bottomLine li {
-        padding: 0 5px;
+      padding: 0 3px;
     }
 
     .bottomLine a,
     .bottomLine span {
-        font-size: 6px;
-    }
-}
-@media (max-width:480px){
-       .container {
-        padding: 10px 8px;
-        gap: 12px;
+      font-size: 8px;
     }
 
+    .subscribe,
+    .socials {
+      max-width: 100%;
+    }
+
+
+  }
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px 8px;
+    gap: 12px;
+
+  }
+  .section {
+    gap: 8px;
+  }
+  .logo span {
+    font-size: 11px;
+  }
+  .input {
+    width: 90px;
+    height: 22px;
+    padding: 1px 2px;
+  }
+  .sendBtn {
+    width: 32px;
+    height: 16px;
+    font-size: 7px;
+  }
+  .navmenu li a {
+    font-size: 9px;
+  }
+  .socialIcon {
+    width: 12px;
+    height: 12px;
+  }
+  .bottomLine li {
+    padding: 0 2px;
+  }
+  .bottomLine a,
+  .bottomLine span {
+    font-size: 6px;
+
+
+
     .section {
-        gap: 8px;
+      gap: 8px;
+
+      .navmenu {
+        li {
+          a {
+            font-size: 12px;
+          }
+
+        }
+      }
     }
 
     .logo span {
+      font-size: 12px;
+    }
+
+    .subscribe {
+      span {
         font-size: 11px;
-    }
+      }
 
-    .subscribe input {
-        width: 70px;
-        height: 22px;
+      .input {
+        width: 210px;
+        height: 40px;
         padding: 1px 2px;
+
+        input {
+          width: 55%;
+          font-size: 14px;
+        }
+
+        .sendBtn {
+          width: 85px;
+          height: 30px;
+          font-size: 7px;
+        }
+      }
     }
 
-    .sendBtn {
-        width: 32px;
-        height: 16px;
-        font-size: 7px;
+
+
+    .socials {
+      span {
+        font-size: 12px;
+      }
+
+      .socialIcons {
+        .link {
+          .socialIcon {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+
+      }
     }
+
+
+    .bottomLine {
+      li {
+        a {
+          padding: 0 5px;
+          font-size: 6px;
+        }
+
+        span {
+          font-size: 6px;
+        }
+
+      }
+    }
+
+
+  }
+}
+
+@media (max-width:480px) {
+
+  .footer {
+    max-height: 133px;
+
+    .container {
+      padding: 20px 15px;
+      gap: 12px;
+    }
+
+    .section {
+      gap: 8px;
+    }
+
+    .logo {
+      span {
+        font-size: 11px;
+      }
+    }
+
+    .subscribe {
+      span{
+        font-size: 8px;
+      }
+      .input {
+        width: 140px;
+        height: 24px;
+        padding: 1px 2px;
+
+        input {
+          width: 55%;
+        }
+
+        .sendBtn {
+          width: 46px;
+          height: 20px;
+          font-size: 7px;
+        }
+      }
+    }
+
+
 
     .navmenu li a {
-        font-size: 9px;
+      font-size: 9px;
+    }
+.socials{
+  width: 140px;
+.socialIcon {
+      width: 10px;
+      height: 10px;
     }
 
-    .socialIcon {
-        width: 10px;
-        height: 10px;
-    }
+}
+    .bottomLine {
+      li {
+        a {
+          padding: 0 5px;
+          font-size: 8px;
+        }
 
-    .bottomLine li {
-        padding: 0 2px;
-    }
+        span {
+          font-size: 8px;
+        }
 
-    .bottomLine a,
-    .bottomLine span {
-        font-size: 6px;
+      }
     }
+   
+
+  }
 }

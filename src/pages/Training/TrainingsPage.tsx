@@ -10,6 +10,13 @@ import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg";
 
+
+// Sections
+import TrainersSection from "./sections/TrainersSection/TrainersSection";
+import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
+
+
+
 type TrainingListItemProps = {
   item: string;
   isActive: boolean;
@@ -138,8 +145,38 @@ const TrainingsPage = () => {
   ];
 
   return (
+
+    <div>
+      {/* Hero Section */}
+      
+      <div
+        className={styles.heroSection}
+        style={{
+          backgroundImage: `url(${heroBg})`,
+        }}
+      >
+
+        
+     
     <div className={styles.container}>
       <div className={styles.heroSection}>
+
+
+      </div>
+
+      <div className={styles.searchContainer}>
+        <div className={styles.searchBar}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
+            <path
+              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+              stroke="#222222"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <input type="text" placeholder="Search" />
+
         <div className={styles.heroContent}>
         </div>
       </div>
