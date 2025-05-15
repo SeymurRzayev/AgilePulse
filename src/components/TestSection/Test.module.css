@@ -12,7 +12,7 @@
 .testSection {
     width: 100vw;
     height: 100vh;
-   
+
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -23,14 +23,15 @@
     .titleAndTest {
         width: 496px;
         height: 355px;
-         margin: 170px 0px;
+        margin-bottom: 60px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: initial;
         position: relative;
+        gap: 40px;
 
         .title {
+            height: 183px;
 
             p {
                 font-size: 46px;
@@ -44,8 +45,7 @@
             }
 
             span {
-                width: 175px;
-                height: 64px;
+                padding: 0px 35px 0px 35px;
                 font-size: 46px;
                 font-weight: 700;
                 line-height: 56px;
@@ -74,19 +74,30 @@
 
         }
 
-        .description p {
-            font-size: 24px;
-            font-weight: 400;
-            line-height: 32px;
-            letter-spacing: 0px;
-            color: var(--gray-700);
+        .description {
+            height: 64px;
+
+            p {
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 32px;
+                letter-spacing: 0px;
+                color: var(--gray-700);
+                position: relative;
+
+            }
+        }
+
+        .testButton {
+            height: 56px;
             position: relative;
-            margin-top: 200px;
+
+
         }
     }
 
     .imageContainer {
-        width: 643px;
+        width: 528px;
         position: relative;
         z-index: -10;
 
@@ -125,13 +136,13 @@
                 top: 350px;
                 right: 200px;
                 text-align: center;
-                font-size: 18px;
+                font-size: 20px;
                 line-height: 24px;
                 color: rgba(0, 0, 0, 1);
                 border: 1px solid rgba(208, 208, 208, 0.55);
                 padding: 30px 40px;
                 backdrop-filter: blur(8px);
-                border-radius: 40px;
+                border-radius: 12px;
                 background-color: rgba(255, 255, 255, 0.5);
                 width: fit-content;
                 max-width: 90%;
@@ -139,6 +150,671 @@
                 z-index: 99;
             }
         }
+    }
+
+
+}
+
+
+.button {
+    color: #fff;
+    width: 163px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    color: var(--white-high);
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: center;
+        left: center;
+        width: 163px;
+        height: 163px;
+        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+        z-index: -1;
+        border-radius: 50%;
+    }
+
+    &:hover::before {
+        transform: rotate(360deg);
+        animation: spin 0.5s linear infinite;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 1224px) {
+    .testSection {
+        width: 100vw;
+        height: 100vh;
+        padding: 0px 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: -2;
+
+        .titleAndTest {
+            width: 496px;
+            height: 355px;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            gap: 40px;
+
+            .title {
+                height: 183px;
+
+                p {
+                    font-size: 46px;
+                    font-weight: 700;
+                    line-height: 56px;
+                    letter-spacing: 0px;
+                    color: var(--Color);
+                    margin-top: 10px;
+                    position: absolute;
+                    z-index: 3;
+                }
+
+                span {
+                    font-size: 46px;
+                    font-weight: 700;
+                    line-height: 56px;
+                    letter-spacing: 0px;
+                    text-align: center;
+                    padding: 0px 35px 0px 35px;
+                    border-radius: 25px;
+                    background-color: var(--testColor);
+                    position: relative;
+                    z-index: -1;
+                    margin-top: 115px;
+                    display: inline-block;
+                    transform: rotate(-15deg);
+                }
+
+                .pTitle {
+                    font-weight: 700;
+                    line-height: 56px;
+                    letter-spacing: 0px;
+                    position: relative;
+                    z-index: -1;
+                    display: inline-block;
+                }
+
+
+
+            }
+
+            .description {
+                height: 64px;
+
+                p {
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 32px;
+                    letter-spacing: 0px;
+                    color: var(--gray-700);
+                    position: relative;
+
+                }
+            }
+
+            .testButton {
+                height: 56px;
+                position: relative;
+
+
+            }
+        }
+
+        .imageContainer {
+            width: 528px;
+            position: relative;
+            z-index: -10;
+
+            .image {
+                width: 520px;
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                width: 528px;
+                height: 542px;
+                border-radius: 50px;
+                z-index: -9;
+
+                img {
+                    width: 100%;
+                    position: relative;
+                    max-width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    z-index: -7;
+                }
+            }
+
+            .testTextContainer {
+                position: relative;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                z-index: -5;
+                right: 200px;
+
+                .testText {
+                    position: absolute;
+                    top: 350px;
+                    right: 200px;
+                    text-align: center;
+                    font-size: 18px;
+                    line-height: 24px;
+                    color: rgba(0, 0, 0, 1);
+                    border: 1px solid rgba(208, 208, 208, 0.55);
+                    padding: 30px 40px;
+                    backdrop-filter: blur(8px);
+                    border-radius: 40px;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    width: fit-content;
+                    max-width: 90%;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+                    z-index: 99;
+                }
+            }
+        }
+
+
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1224px) {
+    .testSection {
+        flex-direction: column-reverse;
+        height: auto;
+        padding-right: 5px;
+
+        .titleAndTest {
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            height: auto;
+            margin: 0 auto;
+            padding: 20px 0;
+
+            .title {
+                p {
+                    font-size: 46px;
+                    line-height: 36px;
+                    text-align: center;
+                    margin-top: 50px;
+                }
+
+                .test {
+                    padding: 0px 30px 0px 30px;
+                    font-size: 35px;
+                    text-align: center;
+                    margin-bottom: 30px;
+                }
+            }
+
+            .description {
+                p {
+                    font-size: 30px;
+                    line-height: 36px;
+                    text-align: center;
+                }
+            }
+
+            .testButton {
+
+                display: flex;
+                justify-content: center;
+
+                .button {
+                    margin-top: 20px;
+                    width: 350px;
+                    height: 50px;
+                    font-size: 16px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: center;
+                        left: center;
+                        width: 350px;
+                        height: 163px;
+                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+                        z-index: -1;
+                        border-radius: 50%;
+                    }
+
+                    &:hover::before {
+                        transform: rotate(360deg);
+                        animation: spin 0.5s linear infinite;
+                    }
+                }
+            }
+        }
+
+        .imageContainer {
+            width: 450px;
+            height: auto;
+
+
+
+            .image {
+                width: 100%;
+                height: auto;
+            }
+
+            .testTextContainer {
+                justify-content: center;
+                right: 150px;
+                top: 350px;
+
+                .testText {
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+
+        .imageContainer .testTextContainer .testText {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin-top: 20px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .testSection {
+        flex-direction: column-reverse;
+        height: auto;
+        padding-right: 5px;
+
+        .titleAndTest {
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            height: auto;
+            margin: 0 auto;
+            padding: 20px 0;
+
+            .title {
+                p {
+                    font-size: 40px;
+                    line-height: 36px;
+                    text-align: center;
+                    margin-top: 50px;
+                }
+
+                .test {
+                    padding: 0px 30px 0px 30px;
+                    font-size: 35px;
+                    text-align: center;
+                    margin-bottom: 40px;
+                    margin-left: 20px;
+                }
+            }
+
+            .description {
+                p {
+                    font-size: 22px;
+                    line-height: 36px;
+                    text-align: center;
+                }
+            }
+
+            .testButton {
+
+                display: flex;
+                justify-content: center;
+
+                .button {
+                    margin-top: 20px;
+                    width: 350px;
+                    height: 50px;
+                    font-size: 16px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: center;
+                        left: center;
+                        width: 350px;
+                        height: 163px;
+                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+                        z-index: -1;
+                        border-radius: 50%;
+                    }
+
+                    &:hover::before {
+                        transform: rotate(360deg);
+                        animation: spin 0.5s linear infinite;
+                    }
+                }
+            }
+        }
+
+        .imageContainer {
+            width: 450px;
+            height: auto;
+
+
+
+            .image {
+                width: 100%;
+                height: auto;
+            }
+
+            .testTextContainer {
+                justify-content: center;
+                right: 150px;
+                top: 350px;
+
+                .testText {
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+
+
+        .imageContainer .testTextContainer .testText {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin-top: 20px;
+        }
+    }
+
+
+}
+
+@media (max-width: 580px) {
+    .testSection {
+        flex-direction: column-reverse;
+        height: auto;
+        padding-right: 5px;
+
+        .titleAndTest {
+            max-width: 350px;
+            display: flex;
+            justify-content: space-around;
+            margin: 0 auto;
+
+
+            .title {
+                p {
+                    font-size: 25px;
+                    line-height: 36px;
+                    text-align: center;
+                    margin-top: 60px;
+                }
+
+                .test {
+                    padding: 0px 30px 0px 30px;
+                    font-weight: 600;
+                    font-size: 30px;
+                    display: inline-block;
+                    text-align: center;
+                    left: 190px;
+                    border-radius: 30px
+                }
+
+                .pTitle {
+                    left: 210px;
+                    font-size: 25px;
+                    font-weight: 600;
+                }
+            }
+
+            .description {
+                p {
+                    font-size: 14px;
+                    line-height: 36px;
+                    text-align: center;
+                }
+            }
+
+            .testButton {
+                display: flex;
+                justify-content: center;
+
+
+                .button {
+                    margin-top: 20px;
+                    width: 350px;
+                    height: 50px;
+                    font-size: 16px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: center;
+                        left: center;
+                        width: 350px;
+                        height: 163px;
+                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+                        z-index: -1;
+                        border-radius: 50%;
+                    }
+
+                    &:hover::before {
+                        transform: rotate(360deg);
+                        animation: spin 0.5s linear infinite;
+                    }
+                }
+            }
+        }
+
+        .imageContainer {
+            width: 230px;
+            height: auto;
+
+            .image {
+                width: 100%;
+                height: auto;
+            }
+
+            .testTextContainer {
+                width: 243px;
+                height: 140px;
+                justify-content: center;
+                right: 100px;
+                top: 200px;
+
+                .testText {
+                    width: 240px;
+
+                    p {
+                        width: 100%;
+                        font-size: 12px;
+                        font-weight: 400;
+                        letter-spacing: 0px;
+                        line-height: 20px;
+                        text-align: justify;
+                        margin: 0 auto;
+
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .testSection {
+        width: 100%;
+        flex-direction: column-reverse;
+        justify-content: center;
+
+
+        .titleAndTest {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+
+            .title {
+                margin-right: 190px;
+
+                p {
+                    font-size: 25px;
+                    line-height: 36px;
+                    text-align: center;
+                }
+
+                .test {
+                    padding: 0px 40px 0px 40px;
+                    font-size: 25px;
+                    font-weight: 600;
+                    line-height: 56px;
+                    letter-spacing: 0px;
+                    text-align: center;
+                    padding: 0 20px;
+                    border-radius: 25px;
+                    background-color: var(--testColor);
+                    position: relative;
+                    z-index: -1;
+                    margin-top: 115px;
+                    margin-right: 50px;
+                    display: inline-block;
+                    transform: rotate(-15deg);
+
+                }
+
+                .pTitle {
+                    position: absolute;
+                    z-index: 4;
+                    left: 300px;
+                    margin-top: 100px;
+                    height: auto;
+                    font-size: 25px;
+                    font-weight: 600;
+                }
+            }
+
+            .description {
+                position: relative;
+
+                p {
+                    font-size: 14px;
+                    line-height: 36px;
+                    text-align: center;
+                }
+            }
+
+            .testButton {
+                display: flex;
+                justify-content: center;
+
+                .button {
+                    color: #fff;
+                    width: 350px;
+                    height: 50px;
+                    font-size: 16px;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: center;
+                        left: center;
+                        width: 350px;
+                        height: 163px;
+                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+                        z-index: -1;
+                        border-radius: 50%;
+                    }
+
+                    &:hover::before {
+                        transform: rotate(360deg);
+                        animation: spin 0.5s linear infinite;
+                    }
+                }
+            }
+        }
+
+        .imageContainer {
+            width: 212px;
+            height: auto;
+            margin-top: 30px;
+
+            .image {
+                width: 100%;
+                height: auto;
+            }
+
+            .testTextContainer {
+                width: 243px;
+                height: 140px;
+                justify-content: center;
+                right: 100px;
+                top: 200px;
+
+                .testText {
+                    width: 243px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    p {
+                        width: 100%;
+                        padding: 10px 0px;
+                        font-size: 12px;
+                        font-weight: 400;
+                        letter-spacing: 0px;
+                        line-height: 20px;
+                        text-align: justify;
+                        margin: 0 auto;
+
+
+                    }
+                }
+            }
+        }
+
+
     }
 
 

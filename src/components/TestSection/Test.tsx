@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import styles from "./Test.module.css";
 import image from "../../assets/images/testSectionImg.jpg";
-import AnimatedButton from "../../ui/AnimationButton/AnimationButton";
 export const Test: FC = () => {
   return (
     <div className={styles.testSection}>
@@ -19,15 +18,15 @@ export const Test: FC = () => {
           </p>
         </div>
         <div className={styles.testButton}>
-            <AnimatedButton>Testə başla</AnimatedButton>
+           <button className={styles.button}>Testə başla</button>
         </div>
       </div>
      
       <div className={styles.imageContainer}>
              <div className={styles.testTextContainer}>
           <div className={styles.testText}>
-           <p> Bizim məqsədimiz bilik səviyyəni <br />
-            müəyyən edərək sənə uyğun təlimləri <br />
+           <p> Bizim məqsədimiz bilik səviyyəni 
+            müəyyən edərək sənə uyğun təlimləri 
             təklif etməkdir{" "}</p>
           </div>
            </div>
