@@ -1,14 +1,35 @@
-// import type { FC} from "react";
-// import { Routes, Route } from "react-router-dom";
-// import Header from "../components/Header/Header";
-// import SignUp from "../pages/SignUp/SignUp";
-// const AppRouter: FC = () => {
-// return (
-//  <Routes>
+import type { FC } from "react";
+import { Routes, Route } from "react-router-dom";
+import SignUp from "../pages/SignUp/SignUp";
+import SignIn from "../pages/SignIn/SignIn";
+import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import TrainingsPage from "../pages/Training/TrainingsPage";
 
-//     <Route path="/" element={<Header />}/>
-//     <Route path="/sign-up" element={<SignUp/>}/>
-//  </Routes>
-// )
-// };
-// export default AppRouter;
+import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
+const AppRouter: FC = () => {
+  return (
+    <Routes>
+      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/trainings" element={<TrainingsPage />} />
+      <Route path="/trainings/scrum" element={<ScrumSection />} />
+    </Routes>
+  );
+
+import { Home } from "../pages/Home/Home";
+import PersonalCabinet from "../pages/PersonalCabinet";
+const AppRouter: FC = () => {
+return (
+ <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path="/sign-up" element={<SignUp/>}/>
+    <Route path="/sign-in" element={<SignIn/>}/>
+    <Route path="/reset-password" element={<ResetPassword/>}/>
+     <Route path="/trainings" element={<TrainingsPage />} />
+     <Route path="/personal-cabinet" element={<PersonalCabinet />} />
+ </Routes>
+)
+
+};
+export default AppRouter;

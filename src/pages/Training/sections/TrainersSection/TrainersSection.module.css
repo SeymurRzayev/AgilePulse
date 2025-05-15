@@ -1,0 +1,498 @@
+.trainersContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: 'Corbel', sans-serif;
+}
+
+/* Trainers Section */
+.trainersSection {
+  margin-bottom: 80px;
+  padding-top: 60px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionHeader h2 {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 56px;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.sectionHeader p {
+  font-size: 24px;
+  line-height: 32px;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.trainersGrid {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1086px;
+  margin: 0 auto;
+}
+
+.trainerCard {
+  position: relative;
+  width: 322px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trainerImageContainer {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  z-index: 2;
+}
+
+.trainerImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px 100px 100px 5px;
+  object-fit: cover;
+}
+
+.trainerInfo {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 233px;
+  background-color: #F5F5F5;
+  border-radius: 100px 100px 10px 10px;
+  padding-top: 105px;
+  box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.trainerInfo h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.trainerInfo h4 {
+  font-size: 12px;
+  line-height: 16px;
+  color: #566FAF;
+  margin-bottom: 14px;
+}
+
+.trainerInfo p {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.6);
+  max-width: 230px;
+  margin: 0 auto;
+}
+
+/* Testimonials Section */
+.testimonialsSection {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.testimonialsSection h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #2C4B9B;
+  margin-bottom: 16px;
+}
+
+.testimonialsSection p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.testimonialSlider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navArrow {
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #DEDEDE;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navArrow:hover {
+  background: #f0f0f0;
+}
+
+.navArrow svg {
+  color: #2C4B9B;
+}
+
+.testimonialCardsContainer {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+}
+
+.testimonialCard {
+  display: none;
+  position: relative;
+  width: 100%;
+  min-height: 270px;
+}
+
+.testimonialCard.active {
+  display: flex;
+  align-items: center;
+}
+
+.testimonialImageContainer {
+  position: absolute;
+  z-index: 2;
+  width: 120px;
+  height: 120px;
+  left: 20px;
+  top: 40px;
+  border-radius: 50px 5px 50px 5px;
+  overflow: hidden;
+  border: 1.5px solid #fff;
+}
+
+.testimonialImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonialContent {
+  position: relative;
+  width: 100%;
+  margin-left: 140px;
+}
+
+.quoteIcon {
+  font-size: 60px;
+  color: #2C4B9B;
+  opacity: 0.2;
+  position: absolute;
+  top: -30px;
+  right: 80px;
+  font-family: serif;
+  font-weight: bold;
+}
+
+.testimonialText {
+  background-color: white;
+  border-radius: 100px 10px 100px 10px;
+  padding: 50px 60px 50px 90px;
+  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  width: 83%;
+  margin-left: auto;
+}
+
+.testimonialText p {
+  font-size: 18px;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.testimonialFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.testimonialName {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000;
+}
+
+.testimonialDate {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 18px;
+}
+
+/* Contact Section */
+.contactSection {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 10px 0 60px;
+}
+
+.contactSection h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.contactSection p {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.contactForm {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.formWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.messageWrapper {
+  flex: 3;
+}
+
+.messageArea {
+  position: relative;
+  background: #F2F5FA;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.messageArea textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  padding: 20px 70px 20px 20px;
+  border: none;
+  background: transparent;
+  font-family: 'Corbel', sans-serif;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+.sendButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #6366F1;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sendButton:hover {
+  background: #4F46E5;
+}
+
+.sendButton svg {
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
+.inputFields {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.inputFields input {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  background: #F2F5FA;
+  border-radius: 16px;
+  font-family: 'Corbel', sans-serif;
+  font-size: 16px;
+  outline: none;
+  height: 55px;
+}
+
+/* Responsive styles */
+@media (max-width: 1100px) {
+  .trainersGrid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px 30px;
+  }
+  
+  .trainerCard {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .testimonialText {
+    width: 90%;
+    padding: 40px 40px 40px 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionHeader h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  
+  .sectionHeader p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  .testimonialsSection h2 {
+    font-size: 28px;
+  }
+  
+  .testimonialsSection p,
+  .contactSection p {
+    font-size: 16px;
+  }
+  
+  .testimonialImageContainer {
+    width: 100px;
+    height: 100px;
+    left: 10px;
+  }
+  
+  .testimonialText {
+    padding: 30px 30px 30px 70px;
+  }
+  
+  .testimonialName {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  
+  .testimonialDate {
+    font-size: 16px;
+  }
+  
+  .formWrapper {
+    flex-direction: column;
+  }
+  
+  .messageArea textarea {
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trainersContainer {
+    padding: 0 15px;
+  }
+  
+  .sectionHeader h2,
+  .testimonialsSection h2,
+  .contactSection h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .sectionHeader p,
+  .testimonialsSection p,
+  .contactSection p {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  
+  .testimonialImageContainer {
+    width: 70px;
+    height: 70px;
+    top: 20px;
+    left: 5px;
+    border-radius: 10px 5px;
+  }
+  
+  .testimonialContent {
+    margin-left: 60px;
+  }
+  
+  .quoteIcon {
+    display: none;
+  }
+  
+  .testimonialText {
+    padding: 40px 10px 10px 40px;
+    width: 100%;
+    border-radius: 60px 10px 60px 10px;
+  }
+  
+  .testimonialText p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  
+  .testimonialName {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  
+  .testimonialDate {
+    font-size: 14px;
+  }
+  
+  .messageArea textarea {
+    min-height: 100px;
+    padding: 15px 60px 15px 15px;
+    font-size: 15px;
+  }
+  
+  .sendButton {
+    width: 36px;
+    height: 36px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .inputFields input {
+    padding: 12px 15px;
+    font-size: 15px;
+    height: 45px;
+  }
+  
+  .contactForm {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .navArrow {
+    width: 30px;
+    height: 30px;
+  }
+}
