@@ -1,7 +1,7 @@
 import type { FC } from "react";
-import AnimatedButton from "../../ui/AnimationButton/AnimationButton";
 import styles from "./Banner.module.css";
 import { Link } from "react-router-dom";
+
 
 export const Banner: FC = () => {
   return (
@@ -12,7 +12,7 @@ export const Banner: FC = () => {
         <p>Adaptiv, çevik, dəyişkən, dürüst və qorxmaz</p>
       </div>
       <Link to="/trainings" className={styles.btnContainer}>
-       <AnimatedButton>Təlimlərə başla</AnimatedButton>
+    <button className={styles.button}>Təlimlərə başla</button>
       </Link>
     </div>
   );

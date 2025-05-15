@@ -1,7 +1,9 @@
-import ExpCard from "../../../components/TrainingExperienceCard/expCard"
 import Slider from "react-slick";
+import ExpCard from "../../../components/TrainingExperienceCard/ExpCard";
 
-const CustomNextArrow = ({ className, style, onClick }: any) => {
+import type { CustomArrowProps } from "react-slick";
+
+const CustomNextArrow = ({ className, style, onClick }: CustomArrowProps) => {
     return (
         <div
             className={className}
@@ -26,7 +28,7 @@ const CustomNextArrow = ({ className, style, onClick }: any) => {
 };
 
 
-const CustomPrevArrow = ({ className, style, onClick }: any) => {
+const CustomPrevArrow = ({ className, style, onClick }: CustomArrowProps) => {
     return (
         <div
             className={className}

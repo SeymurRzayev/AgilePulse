@@ -8,22 +8,17 @@
   background-color: #fbf9f7;
 }
 
-@media (max-width: 120px) {
+@media (max-width: 1200px) {
   .container {
-   flex-wrap: wrap;
+   flex-direction: column;
    align-items: center;
+   border: 1px solid blue;
   }
 }
-@media (max-width: 740px) {
-  .container{
-    
-  }
-}
+
 @media (max-width: 640px) {
   .container {
     flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: center;
   }
 }
 
@@ -34,15 +29,25 @@
 
 .profileImage {
   display: flex;
+  flex-direction: column;
+  
   position: relative;
   z-index: 2;
-  width: 200;
-  height: 200;
+}
+.arrow {
+  position: relative;
+  top: 50px;
+}
+.userImg {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 5px;
 }
+
 .profileContent {
   width: 322px;
   position: relative;
@@ -83,12 +88,29 @@
 }
 
 .box {
-  width: 970px;
+  /* width: 970px; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 38px 0 20px 0;
+}
+
+@media (max-width: 1240px) {
+  .box{
+  padding-top: 0;
+  align-items: space-between;
+}
+}
+@media (max-width: 1000px) {
+  .box{
+  align-items: center;
+}
+}
+@media (max-width: 640px) {
+  .box{
+  padding-top: 0;
+}
 }
 
 
@@ -132,8 +154,10 @@
 .cardContainer {
   display: flex;
   gap: 2rem;
+  margin: 0 auto;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
 }
@@ -145,6 +169,7 @@
   padding-bottom: 20px;
   flex-direction: column;
   top: 175px;
+  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
   border: 1px solid #dedede;
   border-top-left-radius: 100px;
   border-top-right-radius: 100px;
@@ -152,31 +177,42 @@
   border-bottom-left-radius: 10px;
   border-width: 1.5px;
 }
+.cardContainer :global(.swiper) {
+  width: 100%;
+  padding: 20px 0;
+}
 
-
-.certificateInfoBox {
+.cardContainer :global(.swiper-slide) {
   display: flex;
+  justify-content: center;
+  /* width avtomatik olarsa daha yaxşı oturur */
+  width: auto;
+}
+
+.cardContainer :global(.swiper-wrapper) {
+  align-items: stretch;
+}
+
+
+@media (max-width: 1200px) {
+  .cardContainer {
+  flex-wrap: wrap;
+    
+  }
+
+}
+@media (max-width: 1000px) {
+ 
+.cardContainer {
   flex-direction: column;
-  row-gap: 1rem;
-  padding-left: 10px;
+  align-items: center;
 }
-.certificateInfo {
-  display: flex;
-  justify-content: flex-start;
-  gap: 2rem;
-  padding-right: 10px;
 }
-.certificateInfo p {
-  font-family: Corbel;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: 0px;
-}
-@media (max-width: 768px) {
+
+@media (max-width: 800px) {
   .cardContainer {
     flex-direction: column;
-
+    align-items: center;
   }
 
 }
@@ -188,6 +224,11 @@
   gap: 2rem;
   justify-content: flex-start;
 }
+@media (max-width: 640px) {
+  .lastBox h2 {
+    text-align: center;
+  }
+}
 .lastBox h2 {
   color: #2C4B9B;
 
@@ -197,33 +238,38 @@
   display: flex;
   flex-direction: column;
   height: 2px;
-  width: 134px;
+  width: 84px;
   background-color:#2C4B9B ;
 }
 
 
 .imgCertificateBox {
-
 display: flex;
+width: 100%;
 gap: 1rem;
 justify-content: flex-start;
-align-items: center;
 overflow-x: auto;
 }
-.imgCertificateBox {
-width: 495;
-height: 366;
+@media(max-width: 740px) {
+  .imgCertificateBox {
+    align-items: center;
+  }
+}
+
+.imgCertificateBox img {
+width: 495px;
+height: 366px;
 border: 2px solid #dedede;
 border-top-left-radius: 100px;
 border-top-right-radius: 10px;
 border-bottom-right-radius: 100px;
 border-bottom-left-radius: 10px;
 border-width: 1.5px;
+box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
 }
 
 @media (max-width: 768px) {
   .imgCertificateBox{ 
-    /* align-items: flex-start; */
     flex-direction: column;
   }
   .imgCertificateBox img {
