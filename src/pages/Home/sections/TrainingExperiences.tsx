@@ -70,7 +70,7 @@ const TrainingExperiences = () => {
                 <p className="text-sm w-2/3 font-normal text-center">AgilePulse platformasında təlim keçmiş iştirakçılarımızın real fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada bilər.</p>
             </div>
 
-            <div className="w-[90%] mx-auto mt-10 flex justify-center ">
+            <div className="w-[90%] mx-auto my-15 flex justify-center ">
                 <Slider  {...settings} className="w-full flex justify-center items-center">
                     {
                         long.map((item) => (

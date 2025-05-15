@@ -3,6 +3,7 @@ import { Banner } from "../../components/Banner/Banner";
 import styles from "./Home.module.css";
 import { Test } from "../../components/TestSection/Test";
 import TrainingExperiences from "./sections/TrainingExperiences"
+import ArticlesSection from "./sections/ArticlesSection";
 
 export const Home: FC = () => {
     return (
@@ -10,6 +11,7 @@ export const Home: FC = () => {
             <Banner />
             <Test />
             <TrainingExperiences />
+            <ArticlesSection/>
         </div>
     )
 }
