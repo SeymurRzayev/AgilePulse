@@ -1,8 +1,7 @@
 .trainersContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-  font-family: 'Corbel', sans-serif;
+  font-family: "Corbel", sans-serif;
 }
 
 /* Trainers Section */
@@ -56,10 +55,11 @@
 }
 
 .trainerImage {
-  width: 200px;
+  width: 100%;
   height: 200px;
   border-radius: 100px 100px 100px 5px;
   object-fit: cover;
+  object-position: center;
 }
 
 .trainerInfo {
@@ -67,11 +67,11 @@
   bottom: 0;
   width: 100%;
   height: 233px;
-  background-color: #F5F5F5;
+
   border-radius: 100px 100px 10px 10px;
   padding-top: 105px;
   box-shadow: 4px 4px 15px 2px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background: rgba(245, 245, 245, 1);
 }
 
 .trainerInfo h3 {
@@ -79,20 +79,25 @@
   font-weight: 700;
   line-height: 24px;
   margin-bottom: 5px;
+  margin: 0 auto;
+  width: 75%;
 }
 
 .trainerInfo h4 {
   font-size: 12px;
   line-height: 16px;
-  color: #566FAF;
+  color: #566faf;
+
+  margin: 0 auto;
   margin-bottom: 14px;
+  width: 75%;
 }
 
 .trainerInfo p {
   font-size: 16px;
   line-height: 24px;
   color: rgba(0, 0, 0, 0.6);
-  max-width: 230px;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -103,16 +108,16 @@
 }
 
 .testimonialsSection h2 {
-  font-size: 36px;
+  font-size: 46px;
   font-weight: 700;
-  color: #2C4B9B;
+  color: rgba(0, 0, 0, 0.87);
   margin-bottom: 16px;
 }
 
 .testimonialsSection p {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.7);
-  max-width: 700px;
+  max-width: 550px;
   margin: 0 auto 40px;
   line-height: 1.6;
 }
@@ -121,7 +126,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
+  width: 100%;
+ 
+  margin: 0 auto;
+
 }
 
 .navArrow {
@@ -135,7 +144,7 @@
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #DEDEDE;
+  background-color: #dedede;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -144,21 +153,19 @@
 }
 
 .navArrow svg {
-  color: #2C4B9B;
+  color: #2c4b9b;
 }
 
 .testimonialCardsContainer {
   display: flex;
-  overflow: hidden;
+  gap: 40px;
+
   width: 100%;
-  max-width: 900px;
 }
 
 .testimonialCard {
-  display: none;
   position: relative;
   width: 100%;
-  min-height: 270px;
 }
 
 .testimonialCard.active {
@@ -171,7 +178,7 @@
   z-index: 2;
   width: 120px;
   height: 120px;
-  left: 20px;
+  left: 30px;
   top: 40px;
   border-radius: 50px 5px 50px 5px;
   overflow: hidden;
@@ -182,33 +189,32 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+    border-radius: 50px 5px 50px 5px;
 }
 
 .testimonialContent {
   position: relative;
   width: 100%;
-  margin-left: 140px;
+  margin-left: 100px;
 }
 
 .quoteIcon {
-  font-size: 60px;
-  color: #2C4B9B;
-  opacity: 0.2;
   position: absolute;
-  top: -30px;
-  right: 80px;
-  font-family: serif;
-  font-weight: bold;
+  top: 20px;
+  right: 20px;
+ 
 }
 
 .testimonialText {
   background-color: white;
   border-radius: 100px 10px 100px 10px;
-  padding: 50px 60px 50px 90px;
+  padding: 40px 40px 40px 80px;
   box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
   text-align: left;
-  width: 83%;
-  margin-left: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .testimonialText p {
@@ -279,7 +285,7 @@
 
 .messageArea {
   position: relative;
-  background: #F2F5FA;
+  background: #f2f5fa;
   border-radius: 16px;
   overflow: hidden;
   height: 100%;
@@ -292,7 +298,7 @@
   padding: 20px 70px 20px 20px;
   border: none;
   background: transparent;
-  font-family: 'Corbel', sans-serif;
+  font-family: "Corbel", sans-serif;
   font-size: 16px;
   resize: none;
   outline: none;
@@ -302,7 +308,7 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background: #6366F1;
+  background: #6366f1;
   border: none;
   width: 40px;
   height: 40px;
@@ -315,7 +321,7 @@
 }
 
 .sendButton:hover {
-  background: #4F46E5;
+  background: #4f46e5;
 }
 
 .sendButton svg {
@@ -336,9 +342,9 @@
   width: 100%;
   padding: 15px 20px;
   border: none;
-  background: #F2F5FA;
+  background: #f2f5fa;
   border-radius: 16px;
-  font-family: 'Corbel', sans-serif;
+  font-family: "Corbel", sans-serif;
   font-size: 16px;
   outline: none;
   height: 55px;
@@ -351,7 +357,7 @@
     justify-content: center;
     gap: 80px 30px;
   }
-  
+
   .trainerCard {
     margin: 0 15px;
   }
@@ -369,44 +375,40 @@
     font-size: 30px;
     line-height: 40px;
   }
-  
+
   .sectionHeader p {
     font-size: 18px;
     line-height: 26px;
   }
-  
+
   .testimonialsSection h2 {
     font-size: 28px;
   }
-  
+
   .testimonialsSection p,
   .contactSection p {
     font-size: 16px;
   }
+
   
-  .testimonialImageContainer {
-    width: 100px;
-    height: 100px;
-    left: 10px;
-  }
-  
+
   .testimonialText {
-    padding: 30px 30px 30px 70px;
+    padding: 12px 16px 12px 36px;
   }
-  
+
   .testimonialName {
     font-size: 20px;
     line-height: 28px;
   }
-  
+
   .testimonialDate {
     font-size: 16px;
   }
-  
+
   .formWrapper {
     flex-direction: column;
   }
-  
+
   .messageArea textarea {
     min-height: 120px;
   }
@@ -416,81 +418,95 @@
   .trainersContainer {
     padding: 0 15px;
   }
-  
+
   .sectionHeader h2,
   .testimonialsSection h2,
   .contactSection h2 {
     font-size: 24px;
     line-height: 32px;
   }
-  
+
   .sectionHeader p,
   .testimonialsSection p,
   .contactSection p {
     font-size: 15px;
     line-height: 22px;
   }
-  
+
+  .testimonialCardsContainer {
+  display: flex;
+  gap: 10px;
+
+  width: 100%;
+}
+
   .testimonialImageContainer {
     width: 70px;
     height: 70px;
     top: 20px;
     left: 5px;
-    border-radius: 10px 5px;
+    border-radius: 15px 2px;
   }
-  
+
+  .testimonialImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+     border-radius: 15px 2px;
+}
+
   .testimonialContent {
     margin-left: 60px;
   }
-  
+
   .quoteIcon {
     display: none;
   }
-  
+
   .testimonialText {
     padding: 40px 10px 10px 40px;
     width: 100%;
     border-radius: 60px 10px 60px 10px;
   }
-  
+
   .testimonialText p {
     font-size: 16px;
     line-height: 20px;
   }
-  
+
   .testimonialName {
     font-size: 16px;
     line-height: 20px;
   }
-  
+
   .testimonialDate {
     font-size: 14px;
   }
-  
+
   .messageArea textarea {
     min-height: 100px;
     padding: 15px 60px 15px 15px;
     font-size: 15px;
   }
-  
+
   .sendButton {
     width: 36px;
     height: 36px;
     bottom: 15px;
     right: 15px;
   }
-  
+
   .inputFields input {
     padding: 12px 15px;
     font-size: 15px;
     height: 45px;
   }
-  
+
   .contactForm {
     padding: 20px;
     border-radius: 20px;
   }
-  
+
   .navArrow {
     width: 30px;
     height: 30px;
