@@ -8,18 +8,32 @@
 
 .heroSection {
   width: 100%;
-  height: 320px;
+  height: 357px;
   background-image: url('../../assets/images/first page.png');
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 60px 0 40px 0;
   color: white;
   margin-bottom: 30px;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .heroSection h1 {
@@ -35,25 +49,32 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.searchContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto 30px;
+.searchWrapper {
+  width: 100%;
   max-width: 1200px;
+  margin: 0 auto 30px;
   padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 74px;
+  background-color: #F8F8F8;
+  border-radius: 30px;
+  padding: 0 28px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .searchBar {
   flex: 1;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  height: 56px;
-  margin-right: 20px;
+  height: 100%;
 }
 
 .searchBar input {
@@ -61,25 +82,68 @@
   outline: none;
   font-size: 16px;
   width: 100%;
-  padding: 0 10px;
+  padding: 8px 15px 8px 0;
   background: transparent;
+  color: rgba(117, 117, 117, 1);
+  font-family: 'Montserrat', sans-serif;
 }
 
-.searchIcon {
-  opacity: 0.5;
+.searchBar input::placeholder {
+  color: #888;
 }
 
-.filterButton {
-  background: #fff;
+.searchButton {
   border: none;
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  width: 56px;
-  height: 56px;
+  background: transparent;
+  color: rgba(117, 117, 117, 1);
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 0;
+}
+
+
+.searchButton svg {
+  width: 31.85px;
+  height: 31.85px;
+}
+
+.searchButton svg path {
+  stroke: rgba(117, 117, 117, 1);
+}
+
+.searchButton:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.filterButton {
+  border: none;
+  border-radius: 50px;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filterButton svg {
+  width: 30.83px;
+  height: 29.29px;
+}
+
+.filterButton svg path {
+  stroke: rgba(0, 0, 0, 1);
+}
+
+.filterButton:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .categoriesContainer {
@@ -163,7 +227,7 @@
 }
 
 .start_btn {
-  width: 160px;
+  width: 163px;
   height: 56px;
   border-radius: 50px;
   background: linear-gradient(to right, #8a84f2, #6a6acf, #3a358c);
@@ -185,7 +249,7 @@
 .cardContent {
   padding: 25px;
   position: relative;
-  height: calc(520px - 280px - 70px); 
+  height: calc(520px - 280px - 70px);
 }
 
 .cardContent h3 {
@@ -250,20 +314,28 @@
 }
 
 .viewAllBtn {
-  width: 180px;
-  height: 50px;
-  border-radius: 50px;
-  border: 1px solid #3a358c;
+  width: 154px;
+  height: 56px;
+  border-radius: 30px;
+  border: 1px solid rgba(44, 75, 155, 1);
   background: white;
-  color: #3a358c;
+  color: rgba(44, 75, 155, 1);
+  font-family: 'Lexend', sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 16px 24px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .viewAllBtn:hover {
-  background: #3a358c;
+  background: rgba(44, 75, 155, 1);
   color: white;
 }
 
@@ -278,28 +350,47 @@
   .heroSection {
     height: 240px;
   }
-  
+
   .heroSection h1 {
     font-size: 32px;
   }
-  
+
   .heroSection p {
     font-size: 18px;
   }
-  
+
   .navigation {
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 10px;
     white-space: nowrap;
   }
-  
+
   .card {
     height: 480px;
   }
-  
+
   .cardImage {
     height: 250px;
+  }
+
+  .searchWrapper {
+    margin-bottom: 25px;
+    gap: 10px;
+  }
+  
+  .searchContainer {
+    height: 60px;
+    padding: 0 20px;
+  }
+  
+  .filterButton {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .searchBar {
+    padding: 0 10px;
   }
 }
 
@@ -307,34 +398,46 @@
   .heroSection {
     height: 200px;
   }
-  
+
   .heroSection h1 {
     font-size: 28px;
   }
-  
+
   .heroSection p {
     font-size: 16px;
   }
+
+  .searchWrapper {
+    margin-bottom: 20px;
+    gap: 8px;
+  }
   
   .searchContainer {
-    flex-direction: column;
-    gap: 15px;
+    height: 56px;
+    padding: 0 15px;
   }
   
-  .searchBar {
-    width: 100%;
-    margin-right: 0;
+  .searchBar input {
+    font-size: 14px;
+    padding: 8px 10px 8px 0;
   }
-  
+
   .filterButton {
-    width: 100%;
+    width: 56px;
+    height: 56px;
   }
-  
+
+  .searchButton svg,
+  .filterButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .card {
     height: 450px;
   }
-  
+
   .cardImage {
     height: 220px;
-}
+  }
 }

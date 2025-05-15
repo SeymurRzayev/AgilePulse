@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { FC } from "react";
-import { Link } from "react-router-dom";
 import logo from "../../assets/images/logoWithOutTitle.svg";
 import linkedin_icon from "../../assets/images/sosialLogo/linkedin_icon.png";
 import instagram_icon from "../../assets/images/sosialLogo/instagram_icon.png";
 import telegram_icon from "../../assets/images/sosialLogo/telegram_icon.png";
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 const navMenu = [
   { label: "Haqqımızda", path: "/about" },
@@ -100,7 +100,7 @@ const Footer: FC = () => {
               {socialNetworksLinks.map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} target="_blank" className={styles.link}>
-                    <img  src={link.icon} alt={link.alt} className={styles.socialIcon} />
+                    <img src={link.icon} alt={link.alt} className={styles.socialIcon} />
                   </Link>
                 </li>
               ))}

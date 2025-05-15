@@ -117,7 +117,7 @@ const Navbar: FC<NavbarProps> = ({
     };
   }, [isMenuOpen]);
 
-  // AgilePulse Logo svg component
+  // AgilePulse Logo PNG component
   const AgilePulseLogo: FC<{ size?: number }> = () => (
     <>
       <img src={logo} alt="Logo" />
@@ -140,13 +140,10 @@ const Navbar: FC<NavbarProps> = ({
           className={styles.logoLink}
           aria-label={`${brandName} home`}
         >
-        <div className={styles.logoBg}>
-            <div className={styles.logo}>
+          <div className={styles.logo}>
             <AgilePulseLogo />
-            <span>Agile pulse</span>
+            <span>{brandName}</span>
           </div>
-        </div>
-        
         </Link>
 
         {/* Hamburger Menu Icon */}
