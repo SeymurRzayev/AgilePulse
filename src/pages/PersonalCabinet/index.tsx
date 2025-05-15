@@ -13,6 +13,7 @@ import choose from "../../assets/images/choose.png"
 import Image from "../../components/ImageComponent"
 import PersonalCabinetCard from "../../components/PersonalCabinetCard"
 import { useState } from "react";
+import ImageComponent from "../../components/ImageComponent";
 
 
 const Cabinet = () => {
@@ -28,8 +29,8 @@ const Cabinet = () => {
       <div className={styles.container}>
         <div className={styles.userCard}>
           <div className={styles.profileImage}>
-            <img src={leftArrow} width={60} height={60} />
-            <img src={user} alt="Emin Huseynov" />
+            <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow}/>
+            <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg}/>
           </div>
 
           <div className={styles.profileContent}>
@@ -59,7 +60,7 @@ const Cabinet = () => {
               }}
               onClick={() => SetCheck(true)}
             >
-              <img src={addIcon} alt="" />
+              <ImageComponent src={addIcon} alt="" />
               Məlumatları düzənlə
             </Button>
           </div>
@@ -113,8 +114,8 @@ const Cabinet = () => {
 
       <div className={styles.userCard}>
         <div className={styles.profileImage}>
-          <img src={leftArrow} width={60} height={60} />
-          <img src={user} alt="Emin Huseynov" />
+          <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow}/>
+          <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg}/>
         </div>
 
         <div className={styles.profileContent}>
@@ -144,7 +145,7 @@ const Cabinet = () => {
             }}
             onClick={() => SetCheck(true)}
           >
-            <img src={addIcon} alt="" />
+            <ImageComponent  src={addIcon} alt="" />
             Məlumatları düzənlə
           </Button>
         </div>
@@ -155,7 +156,7 @@ const Cabinet = () => {
       <div className={styles.box}>
         {/* telimler */}
         <div className={styles.myTrainings}>
-          <h2>Şəxsi Cabinet</h2>
+          <h2>Şəxsi Kabinet</h2>
           <h4>Təlimlərim</h4>
           <ul className={styles.category}>
             <li>

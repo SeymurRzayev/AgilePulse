@@ -1,0 +1,15 @@
+.ScrumContainer {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          margin-top: 90px;
+          font-family: 'Corbel', sans-serif;
+
+          h2 {
+                    font-size: 58px;
+                    font-weight: 700;
+                    line-height: 68px;
+                    margin-bottom: 15px;
+                    color: rgba(0, 0, 0, 0.87);
+          }
+}

@@ -9,6 +9,7 @@ import FormButton from "../../ui/FormButton/FormButton";
 import authImage from "../../assets/images/authImage.jpg";
 import checkedBox from "../../assets/images/checked.svg";
 import uncheckedBox from "../../assets/images/unchecked.svg";
+
 interface FormValues {
   name: string;
   email: string;
@@ -31,6 +32,7 @@ const SignUp: FC = () => {
 
   return (
     <div className={styles.signUp}>
+   
       <AuthIllustration 
       imgSrc={authImage}
        title="Hədəfə çevik yolla çat!"
