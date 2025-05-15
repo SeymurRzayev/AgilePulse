@@ -19,7 +19,7 @@ const ArticlesSection = () => {
             content: "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ..."
         },
         {
-            id: 2,
+            id: 3,
             img: Article3,
             title: "Agile gündəlik həyatımızda necə tətbiq edə bilərik?",
             content: "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ..."

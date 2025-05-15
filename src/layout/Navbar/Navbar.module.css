@@ -148,7 +148,7 @@
 
 .link.active {
 
-   border-radius: 30px;
+  border-radius: 30px;
 
   border-radius: 30px;
   padding: 12px 16px;
@@ -159,7 +159,7 @@
 
 .link.active:hover {
 
-   border-radius: 30px;
+  border-radius: 30px;
   background-color: var(--blue-600);
 
   border-radius: 30px;
@@ -167,6 +167,7 @@
   background-color: #2C4B9B;
 
 }
+
 /* Actions */
 .actions {
   display: flex;
@@ -407,29 +408,28 @@
   .container {
     max-width: 720px;
   }
+
   .links {
 
     gap: 1rem;
   }
+
   .link {
     padding: 0.4rem 0.8rem;
   }
 
-    gap: 10px;
-
-    .link {
-      padding: 5px 10px;
-      font-size: 14px;
-    }
-  }
-
-
-
-
-  .button {
+  .link {
     padding: 5px 10px;
     font-size: 14px;
   }
+}
+
+
+
+
+.button {
+  padding: 5px 10px;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -437,18 +437,19 @@
     top: 0;
     border-radius: 0;
     width: 100%;
-
-=======
     background: none;
-
   }
+
   .container {
     max-width: 540px;
     height: var(--navbar-height-scrolled);
   }
-  .links, .actions {
+
+  .links,
+  .actions {
     display: none;
   }
+
   .hamburger {
     display: flex;
   }
@@ -486,6 +487,7 @@
   .logo span {
     font-size: 1.25rem;
   }
+
   .logo img {
     height: 32px;
   }
@@ -508,19 +510,24 @@
   .container {
     padding: 0 1rem;
   }
+
   .sidebar {
     max-width: 100%;
   }
+
   .logo span {
     font-size: 1.1rem;
   }
+
   .logo img {
     height: 28px;
   }
+
   .sidebarLink {
     font-size: 1.1rem;
     padding: 0.6rem 0.8rem;
   }
+
   .sidebarButton {
     padding: 0.6rem;
   }
@@ -532,6 +539,7 @@
     opacity: 0;
     transform: translateX(-20px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);

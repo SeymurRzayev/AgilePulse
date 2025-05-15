@@ -37,6 +37,7 @@
   gap: 8px;
   max-height: 56px;
 }
+
 .logo span {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
@@ -52,6 +53,7 @@
   gap: 12px;
   justify-content: flex-start;
 }
+
 .navmenu li a {
   font-family: "Corbel", sans-serif;
   font-size: 22px;
@@ -59,6 +61,7 @@
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .navmenu li a:hover {
   color: var(--blue-400, #60a5fa);
 }
@@ -72,12 +75,14 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .subscribe span {
   font-family: "Corbel", sans-serif;
   font-size: 16px;
   color: var(--white-high, #fff);
   margin-bottom: 2px;
 }
+
 .input {
   width: 316px;
   height: 48px;
@@ -89,6 +94,7 @@
   padding: 2px 6px;
   gap: 6px;
 }
+
 .input input {
   width: 55%;
   font-size: 14px;
@@ -97,6 +103,7 @@
   padding-left: 8px;
   background: transparent;
 }
+
 .sendBtn {
   width: 122px;
   height: 40px;
@@ -109,13 +116,16 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .sendBtn:hover {
   background: var(--blue-700, #1d4ed8);
 }
+
 .invalid {
   border: 1px solid #E70303 !important;
   box-shadow: 0px 0px 10px 0px #F2131333;
 }
+
 .errorText {
   font-family: "Lexend", sans-serif;
   font-size: 10px;
@@ -130,22 +140,26 @@
   align-items: flex-start;
   gap: 8px;
 }
+
 .socials span {
   font-family: "Corbel", sans-serif;
   font-size: 13px;
   color: var(--white-high, #fff);
 }
+
 .socialIcons {
   display: flex;
   gap: 18px;
   align-items: center;
   justify-content: flex-start;
 }
+
 .socialIcon {
   width: 28px;
   height: 28px;
   transition: filter 0.2s, transform 0.2s;
 }
+
 .socialIcon:hover {
   filter: brightness(1.2);
   transform: scale(1.1);
@@ -158,15 +172,18 @@
   padding-bottom: 20px;
   gap: 8px;
 }
+
 .bottomLine li {
   padding: 0 6px;
   opacity: 0.7;
   border-right: 1px solid var(--white-high, #fff);
   list-style: none;
 }
+
 .bottomLine li:last-child {
   border-right: none;
 }
+
 .bottomLine a,
 .bottomLine span {
   font-family: "Corbel", sans-serif;
@@ -450,130 +467,140 @@
   .container {
     padding: 15px 22px;
   }
+
   .section {
     gap: 8px;
   }
+
   .logo span {
     font-size: 13px;
   }
+
   .input {
     width: 120px;
     height: 28px;
     padding: 1px 3px;
   }
+
   .sendBtn {
     width: 44px;
     height: 20px;
     font-size: 9px;
   }
+
   .navmenu li a,
   .subscribe span,
   .socials span {
     font-size: 10px;
   }
+
   .socialIcon {
     width: 18px;
     height: 18px;
   }
+
   .bottomLine li {
     padding: 0 3px;
   }
+
   .bottomLine a,
   .bottomLine span {
     font-size: 8px;
   }
-  .subscribe, .socials {
+
+  .subscribe,
+  .socials {
     max-width: 100%;
   }
+
   .socialIcons {
     gap: 10px;
   }
 }
-=======
-  .footer {
-    height: 140px;
 
-    .container {
-      margin-top: 20px;
-      padding: 15px 22px;
+.footer {
+  height: 140px;
+
+  .container {
+    margin-top: 20px;
+    padding: 15px 22px;
+  }
+
+  .section {
+    gap: 8px;
+
+    .navmenu {
+      gap: 4px;
+    }
+  }
+
+  .logo span {
+    font-size: 13px;
+  }
+
+  .input {
+    width: 170px;
+    height: 35px;
+    border-radius: 24px;
+    border: 1px solid var(--white-high, #fff);
+    background: var(--white-high, #fff);
+    display: flex;
+    align-items: center;
+    padding: 2px 6px;
+    gap: 6px;
+
+    input {
+      width: 55%;
+      font-size: 14px;
+      border: none;
+      outline: none;
+      padding-left: 8px;
+      background: transparent;
     }
 
-    .section {
-      gap: 8px;
+    .sendBtn {
+      width: 90px;
+      height: 30px;
+      font-size: 9px;
 
-      .navmenu {
-        gap: 4px;
+    }
+  }
+
+  .socials {
+    width: 170px;
+
+    span {
+      font-size: 12px;
+    }
+
+    .socialIcons {
+      gap: 10px;
+
+      .socialIcon {
+        width: 18px;
+        height: 18px;
+
+
       }
     }
-
-    .logo span {
-      font-size: 13px;
-    }
-
-    .input {
-      width: 170px;
-      height: 35px;
-      border-radius: 24px;
-      border: 1px solid var(--white-high, #fff);
-      background: var(--white-high, #fff);
-      display: flex;
-      align-items: center;
-      padding: 2px 6px;
-      gap: 6px;
-
-      input {
-        width: 55%;
-        font-size: 14px;
-        border: none;
-        outline: none;
-        padding-left: 8px;
-        background: transparent;
-      }
-
-      .sendBtn {
-        width: 90px;
-        height: 30px;
-        font-size: 9px;
-
-      }
-    }
-
-    .socials {
-      width: 170px;
-
-      span {
-        font-size: 12px;
-      }
-
-      .socialIcons {
-        gap: 10px;
-
-        .socialIcon {
-          width: 18px;
-          height: 18px;
-
-
-        }
-      }
-
-    }
-
-    .bottomLine li {
-      padding: 0 3px;
-    }
-
-    .bottomLine a,
-    .bottomLine span {
-      font-size: 8px;
-    }
-
-    .subscribe,
-    .socials {
-      max-width: 100%;
-    }
-
 
   }
+
+  .bottomLine li {
+    padding: 0 3px;
+  }
+
+  .bottomLine a,
+  .bottomLine span {
+    font-size: 8px;
+  }
+
+  .subscribe,
+  .socials {
+    max-width: 100%;
+  }
+
+
 }
 
 
@@ -583,32 +610,40 @@
     gap: 12px;
 
   }
+
   .section {
     gap: 8px;
   }
+
   .logo span {
     font-size: 11px;
   }
+
   .input {
     width: 90px;
     height: 22px;
     padding: 1px 2px;
   }
+
   .sendBtn {
     width: 32px;
     height: 16px;
     font-size: 7px;
   }
+
   .navmenu li a {
     font-size: 9px;
   }
+
   .socialIcon {
     width: 12px;
     height: 12px;
   }
+
   .bottomLine li {
     padding: 0 2px;
   }
+
   .bottomLine a,
   .bottomLine span {
     font-size: 6px;
@@ -714,9 +749,10 @@
     }
 
     .subscribe {
-      span{
+      span {
         font-size: 8px;
       }
+
       .input {
         width: 140px;
         height: 24px;
@@ -739,14 +775,17 @@
     .navmenu li a {
       font-size: 9px;
     }
-.socials{
-  width: 140px;
-.socialIcon {
-      width: 10px;
-      height: 10px;
+
+    .socials {
+      width: 140px;
+
+      .socialIcon {
+        width: 10px;
+        height: 10px;
+      }
+
     }
 
-}
     .bottomLine {
       li {
         a {
@@ -760,7 +799,7 @@
 
       }
     }
-   
+
 
   }
 }
