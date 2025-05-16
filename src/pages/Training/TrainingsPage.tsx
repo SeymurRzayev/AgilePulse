@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
-import styles from "./TrainingsPage.module.css";
+import styles from "../../assets/styles/Trainings.module.css";
 import avatar1 from "../../assets/images/podcast1.jpg";
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
