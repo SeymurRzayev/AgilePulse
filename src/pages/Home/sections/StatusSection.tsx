@@ -17,7 +17,7 @@ const StatusSection: React.FC = () => {
           alt=""
           className="w-16 h-16  md:w-auto md:h-auto  absolute bottom-0 left-0 md:bottom-[20px] md:left-[-70px]"
         />
-        <h2 className="text-lg md:text-4xl lg:text-5xl ">
+        <h2 className="text-lg md:text-4xl lg:text-5xl z-10 ">
           Agile öyrənmək yox, düşünmə tərzidir.
         </h2>
         <p className="md:text-2xl text-base text-end opacity-60">
