@@ -9,7 +9,7 @@
 
 
   .container {
-    width: 90%;
+    width: 98%;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
@@ -84,7 +84,7 @@
     height: 40px;
     border-radius: 24px;
     border: none;
-    background: var(--blue-500, #3b82f6);
+    background: var(--blue-500, #2C4B9B);  /* xx */
     color: var(--white-high, #fff);
     font-size: 12px;
     font-family: "Lexend", sans-serif;
@@ -141,7 +141,7 @@
 
   .socialIcons {
     display: flex;
-    gap: 18px;
+    gap: 25px;
     align-items: center;
     justify-content: flex-start;
 
