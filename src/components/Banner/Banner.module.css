@@ -57,56 +57,11 @@
 
     }
 
-    .btnContainer {
-        .button {
-            color: #fff;
-            width: 163px;
-            height: 56px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50px;
-            color: var(--fontColor);
-            border: none;
-            outline: none;
-            box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
-            background-color: transparent;
-            position: relative;
-            z-index: 0;
-            font-family: "Montserrat", sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 24px;
-            letter-spacing: 0px;
-            text-align: center;
-            cursor: pointer;
-            overflow: hidden;
 
-            &::before {
-                content: "";
-                position: absolute;
-                top: center;
-                left: center;
-                width: 163px;
-                height: 163px;
-                background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                z-index: -1;
-                border-radius: 50%;
-
-                &:hover::before {
-                    transform: rotate(360deg);
-                    animation: spin 0.5s linear infinite;
-                }
-            }
-        }
-
-
-
-
-
-    }
 
 }
+
+
 
 @media (min-width: 1024px) {
     .container {
@@ -130,49 +85,24 @@
 /* 768px – 1023px (tablet) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 270px;
 
         .title {
             h1 {
-                font-size: 22px;
-                line-height: 28px;
+                font-size: 30px;
+                line-height: 40px;
             }
 
             p {
-                font-size: 16px;
-                line-height: 22px;
+                font-size: 25px;
+                line-height: 30px;
             }
         }
 
-        .btnContainer {
-
-            display: flex;
-            justify-content: center;
-
-            .button {
-                color: #fff;
-                margin-top: 20px;
-                width: 350px;
-                height: 50px;
-                font-size: 16px;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: center;
-                    left: center;
-                    width: 350px;
-                    height: 163px;
-                    background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                    z-index: -1;
-                    border-radius: 50%;
-                }
-
-                &:hover::before {
-                    transform: rotate(360deg);
-                    animation: spin 0.5s linear infinite;
-                }
-            }
-        }
     }
 }
 
@@ -197,37 +127,10 @@
             }
         }
 
-        .btnContainer {
-            display: flex;
-            justify-content: center;
 
-            .button {
-                margin-top: 20px;
-                width: 350px;
-                height: 50px;
-                font-size: 16px;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: center;
-                    left: center;
-                    width: 350px;
-                    height: 163px;
-                    background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                    z-index: -1;
-                    border-radius: 50%;
-                }
-
-                &:hover::before {
-                    transform: rotate(360deg);
-                    animation: spin 0.5s linear infinite;
-                }
-            }
-        }
     }
-
 }
+
 
 
 /* 480px və aşağı (kiçik mobil) */
@@ -256,35 +159,5 @@
             }
         }
 
-        .btnContainer {
-            display: flex;
-            justify-content: center;
-
-            .button {
-                margin-top: 20px;
-                width: 350px;
-                height: 50px;
-                font-size: 16px;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: center;
-                    left: center;
-                    width: 350px;
-                    height: 163px;
-                    background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                    z-index: -1;
-                    border-radius: 50%;
-                }
-
-                &:hover::before {
-                    transform: rotate(360deg);
-                    animation: spin 0.5s linear infinite;
-                }
-            }
-        }
     }
-
-
 }

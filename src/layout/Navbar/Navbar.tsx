@@ -44,6 +44,10 @@ const Navbar: FC<NavbarProps> = ({
       path: "/about",
       label: "Haqqımızda",
     },
+    {
+      path:"/agileAcademy",
+      label:"Agile Akademiya"
+    }
   ];
 
   // Close menu when clicking outside

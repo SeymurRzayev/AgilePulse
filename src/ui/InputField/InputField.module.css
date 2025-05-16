@@ -28,7 +28,7 @@
     }
 
     .inputField::placeholder {
-        font-family: "Lexend";
+        font-family: "Corbel";
         font-size: 16px;
         font-weight: 300;
         letter-spacing: 0px;
@@ -76,7 +76,7 @@
 
     }
      .inputField::placeholder {
-        font-family: "Lexend";
+        font-family: "Corbel";
         font-size: 20px;
         font-weight: 300;
       

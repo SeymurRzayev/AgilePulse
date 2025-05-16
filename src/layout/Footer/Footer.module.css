@@ -1,23 +1,21 @@
 .footer {
   width: 100%;
-  min-height: 380px;
+  max-height: 400px;
   background-color: #1C1C1C !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 30px;
   margin-top: 0;
 
 
   .container {
-    width: 100%;
-    max-width: 1270px;
+    width: 98%;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    gap: 20px;
+    gap: 10px;
   }
 
   .section {
@@ -37,10 +35,11 @@
     max-height: 56px;
 
     span {
-      font-family: "Raleway", sans-serif;
-      font-weight: 600;
-      font-size: 20px;
+      font-family: Corbel;
+      font-weight: 800;
+      font-size: 24px;
       color: var(--white-high, #fff);
+      line-height: 35px;
     }
   }
 
@@ -85,7 +84,7 @@
     height: 40px;
     border-radius: 24px;
     border: none;
-    background: var(--blue-500, #3b82f6);
+    background: var(--blue-500, #2C4B9B);  /* xx */
     color: var(--white-high, #fff);
     font-size: 12px;
     font-family: "Lexend", sans-serif;
@@ -115,12 +114,14 @@
     gap: 12px;
     justify-content: flex-start;
 
-    li a {
-      font-family: "Corbel", sans-serif;
-      font-size: 22px;
-      color: var(--white-high, #fff);
-      text-decoration: none;
-      transition: color 0.2s;
+    li {
+      a {
+        font-family: "Corbel", sans-serif;
+        font-size: 24px;
+        color: var(--white-high, #fff);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
     }
   }
 
@@ -140,7 +141,7 @@
 
   .socialIcons {
     display: flex;
-    gap: 18px;
+    gap: 25px;
     align-items: center;
     justify-content: flex-start;
 
@@ -189,9 +190,8 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1240px) {
   .footer {
-    width: 100%;
     min-height: 450px;
     background-color: var(--gray-700);
     padding-top: 51px;
@@ -202,7 +202,7 @@
   }
 
   .container {
-    width: 100%;
+
     height: auto;
     margin: 0 auto;
     padding: 0 100px;
@@ -272,18 +272,17 @@
 
 @media (max-width: 900px) {
   .footer {
-    height: 140px;
+    height: 300px;
 
     .container {
-      margin-top: 20px;
-      padding: 15px 22px;
+      padding: 5px 22px;
     }
 
     .section {
       gap: 8px;
 
       .navmenu {
-        gap: 4px;
+        gap: 2px;
       }
     }
 
@@ -292,8 +291,8 @@
     }
 
     .input {
-      width: 170px;
-      height: 35px;
+      width: 150px;
+      height: 50px;
       border-radius: 24px;
       border: 1px solid var(--white-high, #fff);
       background: var(--white-high, #fff);
@@ -312,15 +311,15 @@
       }
 
       .sendBtn {
-        width: 90px;
-        height: 30px;
+        width: 130px;
+        height: 40px;
         font-size: 9px;
 
       }
     }
 
     .socials {
-      width: 170px;
+      width: 300px;
 
       span {
         font-size: 12px;
@@ -339,37 +338,48 @@
 
     }
 
-    .bottomLine li {
-      padding: 0 3px;
+    .bottomLine {
+      li {
+        padding: 0 3px;
+      }
     }
 
-    .bottomLine a,
-    .bottomLine span {
-      font-size: 8px;
+    .bottomLine {
+      height: 20px;
+      li{ 
+        a {
+        font-size: 8px;
+      }
+
+      span {
+        font-size: 8px;
+      }}
+     
     }
 
-    .subscribe,
-    .socials {
+    /* .subscribe{
+        .socials {
       max-width: 100%;
     }
-
-
+    } */
   }
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 10px 8px;
-    gap: 12px;
-
+    padding: 0px 8px;
+    gap: 4px;
 
     .section {
-      gap: 8px;
+      gap: 2px;
 
       .navmenu {
+        gap: 1px;
+
         li {
           a {
-            font-size: 12px;
+            font-size: 8px;
+            line-height: 20px;
           }
 
         }
@@ -386,8 +396,8 @@
       }
 
       .input {
-        width: 210px;
-        height: 40px;
+        width: 190px;
+        height: 35px;
         padding: 1px 2px;
 
         input {
@@ -396,16 +406,15 @@
         }
 
         .sendBtn {
-          width: 85px;
+          width: 70px;
           height: 30px;
           font-size: 7px;
         }
       }
     }
 
-
-
     .socials {
+      width: 180px;
       span {
         font-size: 12px;
       }
@@ -417,8 +426,6 @@
             height: 18px;
           }
         }
-
-
       }
     }
 
@@ -428,6 +435,7 @@
         a {
           padding: 0 5px;
           font-size: 6px;
+          line-height: 20px;
         }
 
         span {
@@ -442,72 +450,102 @@
 }
 
 @media (max-width:480px) {
-
   .footer {
-    max-height: 133px;
+    max-height: 250px;
 
     .container {
-      padding: 20px 15px;
-      gap: 12px;
+      height: 100%;
+      margin: 1px auto;
+      padding: 0px 15px;
+      gap: 1px;
     }
 
     .section {
-      gap: 8px;
-    }
+      height: 45px;
+      gap: 2px;
 
-    .logo {
-      span {
-        font-size: 11px;
-      }
-    }
-
-    .subscribe {
-      span {
-        font-size: 8px;
-      }
-
-      .input {
-        width: 140px;
-        height: 24px;
-        padding: 1px 2px;
-
-        input {
-          width: 55%;
-        }
-
-        .sendBtn {
-          width: 46px;
-          height: 20px;
-          font-size: 7px;
-        }
-      }
-    }
-
-
-
-    .navmenu li a {
-      font-size: 9px;
-    }
-
-    .socials {
-      width: 140px;
-
-      .socialIcon {
-        width: 10px;
-        height: 10px;
-      }
-
-    }
-
-    .bottomLine {
-      li {
-        a {
-          padding: 0 5px;
-          font-size: 8px;
+      .logo {
+        img {
+          width: 11px;
+          height: 13px;
         }
 
         span {
-          font-size: 8px;
+          font-size: 6px;
+        }
+      }
+
+      .subscribe {
+        span {
+          font-size: 6px;
+        }
+
+        .input {
+          width: 115px;
+          height: 20px;
+          padding: 1px 2px;
+
+
+          input {
+            width: 55%;
+          }
+
+          input::placeholder {
+            font-size: 8px;
+            padding: 5px;
+          }
+
+          .sendBtn {
+            width: 55px;
+            height: 17px;
+            font-size: 7px;
+          }
+        }
+      }
+
+      .navmenu {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+
+        li {
+          a {
+            font-size: 6px;
+            line-height: 18px;
+          }
+        }
+      }
+
+      .socials {
+        width: 120px;
+
+        .socialIcon {
+          width: 10px;
+          height: 10px;
+        }
+
+      }
+    }
+
+    .bottomLine {
+      padding-bottom: 8px;
+      height: 16px;
+
+      li {
+        height: 16px;
+        display: flex;
+        justify-content: center;
+
+        a {
+          padding: 0px 5px;
+          font-size: 6px;
+          line-height: 16px;
+
+        }
+
+        span {
+          font-size: 6px;
+          line-height: 16px;
         }
 
       }
