@@ -7,10 +7,13 @@ import ArticlesSection from "./sections/ArticlesSection";
 import BookSection from "../../components/BookSection/BookSection";
 import PartnersSection from "./sections/PartnersSection";
 import StatusSection from "./sections/StatusSection";
+import Navbar from "../../layout/Navbar/Navbar";
+import Footer from "../../layout/Footer/Footer";
 
 export const Home: FC = () => {
   return (
     <div className={styles.HomeSection}>
+      <Navbar/>
       <Banner />
       <Test />
       <BookSection />
@@ -18,6 +21,7 @@ export const Home: FC = () => {
       <ArticlesSection />
       <PartnersSection />
       <StatusSection />
+      <Footer/>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const BookSection: FC = () => {
   const sliderRef = useRef<Slider>(null);
 const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-console.log(bookImages);
+
   const startAutoplay = useCallback(() => {
     if (autoplayIntervalRef.current) {
       clearInterval(autoplayIntervalRef.current);

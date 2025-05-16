@@ -1,6 +1,8 @@
 import type { FC } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Test.module.css";
 import image from "../../assets/images/testSectionImg.jpg";
+import AnimatedButton from "../../ui/AnimatedButton/AnimatedButton";
 export const Test: FC = () => {
   return (
     <div className={styles.testSection}>
@@ -16,9 +18,9 @@ export const Test: FC = () => {
             etdir!
           </p>
         </div>
-        <div className={styles.testButton}>
-          <button className={styles.button}>Testə başla</button>
-        </div>
+        <Link to="/exams"  className={styles.testButton}>
+          <AnimatedButton>Testə başla</AnimatedButton>
+        </Link>
       </div>
 
       <div className={styles.imageContainer}>
