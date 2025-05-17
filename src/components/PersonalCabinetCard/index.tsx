@@ -14,7 +14,7 @@ const personalCabinetCard = ({certificate,userPhoto,timeIcon,save,className}: Ca
   return (
     <div className={className}>
             <div className={styles.BtnImg}>
-              <ImageComponent src={certificate} />
+              <ImageComponent src={certificate}/>
               <Button
                 children="Kursa basla"
                 style={{
