@@ -13,7 +13,6 @@ import Footer from "../../layout/Footer/Footer";
 export const Home: FC = () => {
   return (
     <div className={styles.HomeSection}>
-      <Navbar/>
       <Banner />
       <Test />
       <div className="relative">
