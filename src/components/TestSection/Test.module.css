@@ -88,10 +88,8 @@
         }
 
         .testButton {
-            height: 60px;
+            height: 56px;
             position: relative;
-
-
         }
     }
 
@@ -131,6 +129,8 @@
             right: 200px;
 
             .testText {
+                width: 400px;
+                height: 165px;
                 position: absolute;
                 top: 350px;
                 right: 200px;
