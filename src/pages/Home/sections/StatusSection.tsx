@@ -11,7 +11,7 @@ const StatusSection: React.FC = () => {
       }}
       className="h-28 md:min-h-[369px] flex justify-center items-center"
     >
-      <div className="txtCnt max-w-[927px] w-4/5 md:w-3/4 font-bold mx-auto flex flex-col justify-center relative gap-0 md:gap-2 text-white ">
+      <div className="txtCnt max-w-[927px] px-5 w-4/5 md:w-3/4 font-bold mx-auto flex flex-col justify-center relative gap-0 md:gap-2 text-white ">
         <img
           src={quoteImg}
           alt=""

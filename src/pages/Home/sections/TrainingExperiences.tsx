@@ -6,7 +6,7 @@ import img3 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae9231
 
 import type { CustomArrowProps } from "react-slick";
 
-const CustomNextArrow = ({ className, style, onClick }: CustomArrowProps) => {
+export const CustomNextArrow = ({ className, style, onClick }: CustomArrowProps) => {
   return (
     <div
       className={className}
@@ -110,7 +110,7 @@ const TrainingExperiences = () => {
         </p>
       </div>
 
-      <div className="w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
+      <div className="exp-slider w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
         <Slider {...settings} className="w-full flex px-2 justify-center  items-center">
           {data.map((item) => (
             <ExpCard
