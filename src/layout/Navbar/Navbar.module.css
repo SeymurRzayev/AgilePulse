@@ -26,6 +26,7 @@
   --black-high: #000000;
 
   --background-blur: rgba(251, 249, 247, 0.75);
+
   --background-blur-scrolled: rgba(255, 255, 255, 0.95);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -50,22 +51,27 @@
 
 /* Main navbar container */
 .navbar {
-  position: absolute;
+
   top: 16px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 1224px;
+  width: 100%;
+  max-width: 1224px;
+  padding: 20px 40px;
   height: 72px;
   border-radius: 25px;
-  z-index: 1000;
+  position: relative;
+  z-index: 1;
   transition: var(--transition-standard);
   background: var(--background-blur);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
   justify-content: center;
+
+
 }
 
 /* Scroll zamanı arxa fon və kölgə */
@@ -129,8 +135,11 @@
 
 .link {
   font-family: var(--font-body);
+  font-size: 18px;
   text-decoration: none;
+
   color: #2c4b9b;
+
   font-weight: 400;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;

@@ -1,19 +1,21 @@
 import type { FC } from "react";
-import { Banner } from "../../components/Banner/Banner";
+import { Banner } from "./sections/Banner/Banner";
 import styles from "./Home.module.css";
-import { Test } from "../../components/TestSection/Test";
+import { Test } from "./sections/TestSection/Test";
 import TrainingExperiences from "./sections/TrainingExperiences";
 import ArticlesSection from "./sections/ArticlesSection";
-import BookSection from "../../components/BookSection/BookSection";
+import BookSection from "./sections/BookSection/BookSection";
 import PartnersSection from "./sections/PartnersSection";
 import StatusSection from "./sections/StatusSection";
-import Navbar from "../../layout/Navbar/Navbar";
 import Footer from "../../layout/Footer/Footer";
 
 export const Home: FC = () => {
   return (
     <div className={styles.HomeSection}>
-      <Navbar/>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fix-from-main
       <Banner />
       <Test />
       <div className="relative">
