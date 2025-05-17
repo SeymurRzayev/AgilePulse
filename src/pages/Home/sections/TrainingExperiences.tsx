@@ -66,7 +66,7 @@ const TrainingExperiences = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 2,
-    className: "flex-wrap gap-5 bg-gray-200",
+    
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
     
@@ -111,7 +111,7 @@ const TrainingExperiences = () => {
       </div>
 
       <div className="w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
-        <Slider {...settings} className="w-full flex px-2 justify-center md:px-10 items-center">
+        <Slider {...settings} className="w-full flex px-2 justify-center  items-center">
           {data.map((item) => (
             <ExpCard
               img={item.img}
