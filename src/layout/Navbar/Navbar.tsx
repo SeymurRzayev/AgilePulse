@@ -234,7 +234,7 @@ const Navbar: FC<NavbarProps> = ({
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <div className={styles.logo}>
-                      <AgilePulseLogo size={32} />
+                      <AgilePulseLogo />
                       <span>{brandName}</span>
                     </div>
                   </Link>
