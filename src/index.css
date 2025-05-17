@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   overflow-x: hidden;
 }
 
@@ -32,7 +32,7 @@ body{
 }
 
 @media (max-width: 768px) {
-  .slick-track {
+  .exp-slider .slick-track {
     gap: 0 !important;
   }
 }
