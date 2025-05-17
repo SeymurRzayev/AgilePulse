@@ -1,6 +1,13 @@
 import { useState } from "react";
 import type { FC } from "react";
 import styles from "./TrainersSection.module.css";
+import trainerFirst from "../../../../assets/images/trainer1.jpg";
+import trainerSecond from "../../../../assets/images/trainer2.jpg";
+import trainerThird from "../../../../assets/images/trainer3.jpg";
+// testominal images
+import testominal1 from "../../../../assets/images/testominal1.jpg";
+import testominal2 from "../../../../assets/images/testominal2.jpg";
+import testominalQuote from "../../../../assets/images/quoteTestominals.png";
 
 interface Trainer {
   id: number;
@@ -27,21 +34,21 @@ const TrainersSection: FC = () => {
       name: "Səadət Hüseynova",
       title: "Product Owner",
       description: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-      image: "/assets/images/nigar photo.png",
+      image: trainerFirst,
     },
     {
       id: 2,
       name: "Məhəmməd Qasımov",
       title: "Scrum Master və Agile Coach",
       description: "8+ il real komanda təcrübəsi.",
-      image: "/assets/images/trainer2.png",
+      image: trainerSecond,
     },
     {
       id: 3,
       name: "Tofiq İsayev",
       title: "Agile Facilitator",
       description: "Retrospektiv və planlama təlimçisi",
-      image: "/assets/images/trainer3.png",
+      image: trainerThird,
     },
   ];
 
@@ -49,29 +56,29 @@ const TrainersSection: FC = () => {
     {
       id: 1,
       name: "Nigar Məmmədova",
-      quote: "Agile təlimi mənim üçün tam bir geri dönüş nöqtəsi oldu. Məzmun real iş həyatına uyğun qurulmuşdu.",
+      quote:
+        "Agile təlimi mənim üçün tam bir geri dönüş nöqtəsi oldu. Məzmun real iş həyatına uyğun qurulmuşdu.",
       date: "15.03.2025",
-      image: "/assets/images/testimonial1.png",
+      image: testominal1,
     },
     {
       id: 2,
       name: "Elvin Quliyev",
-      quote: "Platforma çox peşəkar formada hazırlanıb. Təlimin sonunda Agile metodologiyasını rahatlıqla tətbiq edə bilirəm.",
+      quote:
+        "Platforma çox peşəkar formada hazırlanıb. Təlimin sonunda Agile metodologiyasını rahatlıqla tətbiq edə bilirəm.",
       date: "02.04.2025",
-      image: "/assets/images/testimonial2.png",
+      image: testominal2,
     },
   ];
 
   const handlePrevTestimonial = () => {
-    setCurrentTestimonial(prev =>
+    setCurrentTestimonial((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
   const handleNextTestimonial = () => {
-    setCurrentTestimonial(prev =>
-      (prev + 1) % testimonials.length
-    );
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
 
   return (
@@ -80,11 +87,14 @@ const TrainersSection: FC = () => {
       <div className={styles.trainersSection}>
         <div className={styles.sectionHeader}>
           <h2>Təlimçilər</h2>
-          <p>Agile sahəsində illərin təcrübəsinə sahib mütəxəssislər bu yolda səninlədir.</p>
+          <p>
+            Agile sahəsində illərin təcrübəsinə sahib mütəxəssislər bu yolda
+            səninlədir.
+          </p>
         </div>
 
         <div className={styles.trainersGrid}>
-          {trainers.map(trainer => (
+          {trainers.map((trainer) => (
             <div key={trainer.id} className={styles.trainerCard}>
               <div className={styles.trainerImageContainer}>
                 <img
@@ -106,7 +116,10 @@ const TrainersSection: FC = () => {
       {/* Testimonials Section */}
       <div className={styles.testimonialsSection}>
         <h2>İştirakçıların Təlim Təcrübələri</h2>
-        <p>AgilePulse platformasında təlim keçmiş iştirakçılarımızın real fikirləri. Onların təcrübələri sizin yolunuzu aydınlada bilər.</p>
+        <p>
+          AgilePulse platformasında təlim keçmiş iştirakçılarımızın real
+          fikirləri. Onların təcrübələri sizin yolunuzu aydınlada bilər.
+        </p>
 
         <div className={styles.testimonialSlider}>
           <button
@@ -115,7 +128,13 @@ const TrainersSection: FC = () => {
             aria-label="Previous testimonial"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
 
@@ -123,18 +142,26 @@ const TrainersSection: FC = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className={`${styles.testimonialCard} ${index === currentTestimonial ? styles.active : ''}`}
+                className={`${styles.testimonialCard} ${
+                  index === currentTestimonial ? styles.active : ""
+                }`}
               >
                 <div className={styles.testimonialImageContainer}>
                   <img src={testimonial.image} alt={testimonial.name} />
                 </div>
                 <div className={styles.testimonialContent}>
-                  <span className={styles.quoteIcon}>"</span>
+                 
+                  <img src={testominalQuote} className={styles.quoteIcon} alt="quote" />
+
                   <div className={styles.testimonialText}>
+                    <span className={styles.testimonialName}>
+                      {testimonial.name}
+                    </span>
                     <p>{testimonial.quote}</p>
                     <div className={styles.testimonialFooter}>
-                      <span className={styles.testimonialName}>{testimonial.name}</span>
-                      <span className={styles.testimonialDate}>{testimonial.date}</span>
+                      <span className={styles.testimonialDate}>
+                        {testimonial.date}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -148,7 +175,13 @@ const TrainersSection: FC = () => {
             aria-label="Next testimonial"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M9 18L15 12L9 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>
@@ -157,7 +190,10 @@ const TrainersSection: FC = () => {
       {/* Contact Section */}
       <div className={styles.contactSection}>
         <h2>Bizə Yaz</h2>
-        <p>"Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə hazırdır!"</p>
+        <p>
+          "Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə
+          hazırdır!"
+        </p>
 
         <div className={styles.contactForm}>
           <div className={styles.formWrapper}>
@@ -166,7 +202,13 @@ const TrainersSection: FC = () => {
                 <textarea placeholder="Bizə yaz"></textarea>
                 <button className={styles.sendButton}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path
+                      d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </div>

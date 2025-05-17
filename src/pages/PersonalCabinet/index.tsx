@@ -14,12 +14,15 @@ import Image from "../../components/ImageComponent"
 import PersonalCabinetCard from "../../components/PersonalCabinetCard"
 import { useState } from "react";
 import ImageComponent from "../../components/ImageComponent";
+import useEmblaCarousel from "embla-carousel-react";
 
 
 const Cabinet = () => {
 
   const [check, SetCheck] = useState<boolean>(false)
+  const [emblaRef] = useEmblaCarousel()
 
+console.log(check);
 
 
   if (check) {
@@ -29,8 +32,11 @@ const Cabinet = () => {
       <div className={styles.container}>
         <div className={styles.userCard}>
           <div className={styles.profileImage}>
-            <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow}/>
-            <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg}/>
+            <Button  onClick={() => SetCheck(false)}>
+            
+            <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow} />
+            </Button>
+            <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg} />
           </div>
 
           <div className={styles.profileContent}>
@@ -72,14 +78,14 @@ const Cabinet = () => {
             <input type="email" placeholder="Biznes Analitik" />
             <input type="password" placeholder="example@gmail.com" />
             <textarea name="" id="" readOnly value={"10 ildən artıqdır ki, biznes analitikası sahəsində fəaliyyət göstərirəm. Müxtəlif sənaye sahələrində — bankçılıq, retail, texnologiya və startap ekosistemlərində — proseslərin təhlili, data əsaslı qərarların verilməsi və rəqəmsal transformasiya layihələrində iştirak etmişəm. Analitik düşüncə, güclü kommunikasiya və Agile çərçivəsində iş təcrübəm mənə komandalarla effektiv əməkdaşlıq qurmağa və biznes məqsədlərini texniki həllərlə birləşdirməyə imkan verir."}>
-              
+
             </textarea>
             <Button children={"Yadda saxla"}
-            style={{
-              width: 344,
-              height: 48,
-              color: "#fff"
-            }}
+              style={{
+                width: 344,
+                height: 48,
+                color: "#fff"
+              }}
             />
           </form>
 
@@ -88,15 +94,15 @@ const Cabinet = () => {
         </div>
 
         <div className={styles.editPhotoSection}>
-            <h2>Photo</h2>
-            <Image src={choose} />
-            <Button children="Qalereyadan seç" 
+          <h2>Photo</h2>
+          <Image src={choose} />
+          <Button children="Qalereyadan seç"
             style={{
               width: 200,
               height: 48,
               color: "#fff"
             }}
-            />
+          />
         </div>
 
       </div>
@@ -114,8 +120,8 @@ const Cabinet = () => {
 
       <div className={styles.userCard}>
         <div className={styles.profileImage}>
-          <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow}/>
-          <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg}/>
+          <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow} />
+          <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg} />
         </div>
 
         <div className={styles.profileContent}>
@@ -145,7 +151,7 @@ const Cabinet = () => {
             }}
             onClick={() => SetCheck(true)}
           >
-            <ImageComponent  src={addIcon} alt="" />
+            <ImageComponent src={addIcon} alt="" />
             Məlumatları düzənlə
           </Button>
         </div>
@@ -154,6 +160,7 @@ const Cabinet = () => {
       {/* telimler ve sertifikatlar */}
 
       <div className={styles.box}>
+        
         {/* telimler */}
         <div className={styles.myTrainings}>
           <h2>Şəxsi Kabinet</h2>
@@ -169,36 +176,39 @@ const Cabinet = () => {
               <a href="">Qeyd olunan</a>
             </li>
           </ul>
-          <div className={styles.boxes}></div>
+          <div className={styles.embla} ref={emblaRef}>
+            <div className={styles.emblaContainer} >
+          <PersonalCabinetCard
+            className={styles.emblaSlide}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+
+          <PersonalCabinetCard
+            className={styles.emblaSlide}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+          <PersonalCabinetCard
+            className={styles.emblaSlide}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+          <PersonalCabinetCard
+            className={styles.emblaSlide}
+            certificate={certificate}
+            save={save}
+            timeIcon={time}
+            userPhoto={userPhoto} />
+        </div>
+          </div>
         </div>
 
         {/* cards */}
-        <div className={styles.cardContainer}>
-          <PersonalCabinetCard
-            className={styles.card}
-            certificate={certificate}
-            save={save}
-            timeIcon={time}
-            userPhoto={userPhoto} />
-          <PersonalCabinetCard
-            className={styles.card}
-            certificate={certificate}
-            save={save}
-            timeIcon={time}
-            userPhoto={userPhoto} />
-          <PersonalCabinetCard
-            className={styles.card}
-            certificate={certificate}
-            save={save}
-            timeIcon={time}
-            userPhoto={userPhoto} />
-          <PersonalCabinetCard
-            className={styles.card}
-            certificate={certificate}
-            save={save}
-            timeIcon={time}
-            userPhoto={userPhoto} />
-        </div>
+       
 
 
         {/* sertifikatlar */}

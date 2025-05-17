@@ -45,19 +45,17 @@
             }
 
             span {
-                width: 175px;
-                height: 64px;
                 font-size: 46px;
                 font-weight: 700;
                 line-height: 56px;
                 letter-spacing: 0px;
                 text-align: center;
-                padding: 0 20px;
+                padding: 0px 30px 0px 30px;
                 border-radius: 25px;
                 background-color: var(--testColor);
                 position: relative;
                 z-index: -1;
-                margin-top: 115px;
+                margin-top: 120px;
                 display: inline-block;
                 transform: rotate(-15deg);
             }
@@ -157,48 +155,6 @@
 }
 
 
-.button {
-    width: 163px;
-    height: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    color: var(--white-high);
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
-    background-color: transparent;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: center;
-
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: center;
-        left: center;
-        width: 163px;
-        height: 163px;
-        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-        z-index: -1;
-        border-radius: 50%;
-    }
-
-    &:hover::before {
-        transform: rotate(360deg);
-        animation: spin 0.5s linear infinite;
-    }
-}
-
 @keyframes spin {
     from {
         transform: rotate(0);
@@ -246,14 +202,12 @@
                 }
 
                 span {
-                    width: 175px;
-                    height: 64px;
+                     padding: 0px 30px 0px 30px;
                     font-size: 46px;
                     font-weight: 700;
                     line-height: 56px;
                     letter-spacing: 0px;
                     text-align: center;
-                    padding: 0 20px;
                     border-radius: 25px;
                     background-color: var(--testColor);
                     position: relative;
@@ -381,8 +335,7 @@
                 }
 
                 .test {
-                    width: 110px;
-                    height: 50px;
+                     padding: 0px 30px 0px 30px;
                     font-size: 35px;
                     text-align: center;
                     margin-bottom: 30px;
@@ -402,29 +355,6 @@
                 display: flex;
                 justify-content: center;
 
-                .button {
-                    margin-top: 20px;
-                    width: 350px;
-                    height: 50px;
-                    font-size: 16px;
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: center;
-                        left: center;
-                        width: 350px;
-                        height: 163px;
-                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                        z-index: -1;
-                        border-radius: 50%;
-                    }
-
-                    &:hover::before {
-                        transform: rotate(360deg);
-                        animation: spin 0.5s linear infinite;
-                    }
-                }
             }
         }
 
@@ -485,8 +415,7 @@
                 }
 
                 .test {
-                    width: 110px;
-                    height: 50px;
+                    padding: 0px 25px 0px 25px;
                     font-size: 35px;
                     text-align: center;
                     margin-bottom: 30px;
@@ -506,29 +435,6 @@
                 display: flex;
                 justify-content: center;
 
-                .button {
-                    margin-top: 20px;
-                    width: 350px;
-                    height: 50px;
-                    font-size: 16px;
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: center;
-                        left: center;
-                        width: 350px;
-                        height: 163px;
-                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                        z-index: -1;
-                        border-radius: 50%;
-                    }
-
-                    &:hover::before {
-                        transform: rotate(360deg);
-                        animation: spin 0.5s linear infinite;
-                    }
-                }
             }
         }
 
@@ -572,7 +478,7 @@
     .testSection {
         flex-direction: column-reverse;
         height: auto;
-        padding-right: 5px;
+       padding: 0px 15px;
 
         .titleAndTest {
             max-width: 350px;
@@ -590,10 +496,10 @@
                 }
 
                 .test {
-                    width: 90px;
-                    height: 40px;
+                    padding: 0px 25px 0px 25px;
                     font-weight: 600;
                     font-size: 30px;
+                    line-height: 40px;
                     display: inline-block;
                     text-align: center;
                     left: 190px;
@@ -601,16 +507,17 @@
                 }
 
                 .pTitle {
-                    left: 210px;
+                    left: 180px;
                     font-size: 25px;
                     font-weight: 600;
                 }
             }
 
             .description {
+              
                 p {
                     font-size: 14px;
-                    line-height: 36px;
+                    line-height: 20px;
                     text-align: center;
                 }
             }
@@ -619,30 +526,6 @@
                 display: flex;
                 justify-content: center;
 
-
-                .button {
-                    margin-top: 20px;
-                    width: 350px;
-                    height: 50px;
-                    font-size: 16px;
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: center;
-                        left: center;
-                        width: 350px;
-                        height: 163px;
-                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                        z-index: -1;
-                        border-radius: 50%;
-                    }
-
-                    &:hover::before {
-                        transform: rotate(360deg);
-                        animation: spin 0.5s linear infinite;
-                    }
-                }
             }
         }
 
@@ -670,7 +553,7 @@
                         font-size: 12px;
                         font-weight: 400;
                         letter-spacing: 0px;
-                        line-height: 20px;
+                        line-height: 18px;
                         text-align: justify;
                         margin: 0 auto;
 
@@ -708,19 +591,17 @@
                 }
 
                 .test {
-                    width: 70px;
-                    height: 40px;
+                     padding: 0px 25px 0px 25px;
                     font-size: 25px;
                     font-weight: 600;
-                    line-height: 56px;
+                    line-height: 40px;
                     letter-spacing: 0px;
                     text-align: center;
-                    padding: 0 20px;
                     border-radius: 25px;
                     background-color: var(--testColor);
                     position: relative;
                     z-index: -1;
-                    margin-top: 115px;
+                    margin-top: 117px;
                     margin-right: 50px;
                     display: inline-block;
                     transform: rotate(-15deg);
@@ -728,7 +609,10 @@
                 }
 
                 .pTitle {
-                    left: 130px;
+                    position: absolute;
+                    z-index: 3;
+                    left: 300px;
+                    top: 70px;
                     font-size: 25px;
                     font-weight: 600;
                 }
@@ -745,31 +629,6 @@
             .testButton {
                 display: flex;
                 justify-content: center;
-
-
-                .button {
-
-                    width: 350px;
-                    height: 50px;
-                    font-size: 16px;
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: center;
-                        left: center;
-                        width: 350px;
-                        height: 163px;
-                        background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
-                        z-index: -1;
-                        border-radius: 50%;
-                    }
-
-                    &:hover::before {
-                        transform: rotate(360deg);
-                        animation: spin 0.5s linear infinite;
-                    }
-                }
             }
         }
 
@@ -784,14 +643,16 @@
             }
 
             .testTextContainer {
-                width: 243px;
-                height: 140px;
+                width: 220px;
+                height: 100px;
                 justify-content: center;
-                right: 100px;
+                right: 80px;
                 top: 200px;
 
                 .testText {
-                    width: 240px;
+                    margin-top: 0px;
+                    padding: 20px 15px;
+                    width: 200px;
 
                     p {
                         width: 100%;

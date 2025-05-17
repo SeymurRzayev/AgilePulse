@@ -1,10 +1,11 @@
 .container {
   font-family: sans-serif;
-  padding: 28px 0 0 25px;
+  margin: 0 auto;
+  padding: 28px 15px 0 25px;
   box-sizing: border-box;
   display: flex;
   justify-content: start;
-  gap: 5rem;
+  gap: 2rem;
   background-color: #fbf9f7;
 }
 
@@ -30,9 +31,12 @@
 .profileImage {
   display: flex;
   flex-direction: column;
-  
   position: relative;
   z-index: 2;
+}
+
+.profileImage button {
+  display: block;
 }
 .arrow {
   position: relative;
@@ -88,7 +92,6 @@
 }
 
 .box {
-  /* width: 970px; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -118,7 +121,7 @@
   display: flex;
   row-gap: 1.5rem;
   flex-direction: column;
- 
+ font-weight: bold;
 }
 
 @media (max-width: 768px ) {
@@ -135,31 +138,32 @@
 .category li a {
   color: #000000de;
   box-sizing: border-box;
+  font-weight: bold;
 }
 .category li a::after {
   content: "";
   display: flex;
-  margin: 5.5px 0 0 1px;
   flex-direction: column;
   background-color: #dedede;
   width: 90px;
   height: 3px;
 }
 
-.category li a:active,
-.category li a.active::after {
+.category li a:active{
   color: #2c4b9b;
   font-weight: bold;
+}
+
+.category li a:active::after  {
+  background-color: #2C4B9B;
 }
 .cardContainer {
   display: flex;
   gap: 2rem;
   margin: 0 auto;
+  padding-top: 10px;
   justify-content: flex-start;
   align-items: center;
-  overflow-y: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
 
@@ -177,27 +181,54 @@
   border-bottom-left-radius: 10px;
   border-width: 1.5px;
 }
-.cardContainer :global(.swiper) {
-  width: 100%;
-  padding: 20px 0;
+.card:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); 
 }
 
-.cardContainer :global(.swiper-slide) {
+.embla {
+  overflow: hidden;
+}
+.emblaContainer {
   display: flex;
-  justify-content: center;
-  /* width avtomatik olarsa daha yaxşı oturur */
-  width: auto;
+  gap: 2rem;
+  margin: 0 auto;
+  padding-top: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.emblaSlide {
+  flex:  0 0 48%;
+  min-width: 0;
+  display: flex;
+  padding-bottom: 20px;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #dedede;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 10px;
+  border-width: 1.5px;
+  box-sizing: border-box;
 }
 
-.cardContainer :global(.swiper-wrapper) {
-  align-items: stretch;
+
+@media (max-width: 768px) {
+  .emblaContainer {
+    flex-direction: column;
+  }
+
 }
+
 
 
 @media (max-width: 1200px) {
   .cardContainer {
   flex-wrap: wrap;
-    
+    margin: 0 auto;
+    border: 1px solid red;
   }
 
 }
@@ -224,19 +255,29 @@
   gap: 2rem;
   justify-content: flex-start;
 }
+.lastBox h2 {
+  font-weight: bold;
+  color: #2C4B9B;
+  display: flex;
+  flex-direction: column;
+  
+}
+@media (max-width: 1000px) {
+  .lastBox h2 {
+        justify-content: center; 
+  align-items: center;
+  }
+}
 @media (max-width: 640px) {
   .lastBox h2 {
     text-align: center;
+
   }
 }
-.lastBox h2 {
-  color: #2C4B9B;
 
-}
+
 .lastBox h2::after {
   content: "";
-  display: flex;
-  flex-direction: column;
   height: 2px;
   width: 84px;
   background-color:#2C4B9B ;
@@ -246,19 +287,14 @@
 .imgCertificateBox {
 display: flex;
 width: 100%;
-gap: 1rem;
-justify-content: flex-start;
+gap: 1.5rem;
+justify-content: space-around;
 overflow-x: auto;
-}
-@media(max-width: 740px) {
-  .imgCertificateBox {
-    align-items: center;
-  }
 }
 
 .imgCertificateBox img {
-width: 495px;
-height: 366px;
+min-width: 495px;
+min-height: 366px;
 border: 2px solid #dedede;
 border-top-left-radius: 100px;
 border-top-right-radius: 10px;
@@ -267,14 +303,35 @@ border-bottom-left-radius: 10px;
 border-width: 1.5px;
 box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
 }
+@media (max-width: 1497px) {
+  .imgCertificateBox img {
+ /* min-width: 495px;
+min-height: 366px; */
 
-@media (max-width: 768px) {
+  }
+}
+
+
+
+@media (max-width: 1000px) {
   .imgCertificateBox{ 
     flex-direction: column;
   }
   .imgCertificateBox img {
     width: 350px;
     height: 350px;
+  }
+}
+@media(max-width: 740px) {
+  .imgCertificateBox {
+    align-items: center;
+  }
+}
+@media (max-width: 640px) {
+  
+  .imgCertificateBox img {
+    width: 250px;
+   height: 250px;
   }
 }
 

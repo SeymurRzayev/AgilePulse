@@ -11,13 +11,6 @@ import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg";
 
-
-// Sections
-import TrainersSection from "./sections/TrainersSection/TrainersSection";
-import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
-
-
-
 type TrainingListItemProps = {
   item: string;
   isActive: boolean;
@@ -40,6 +33,7 @@ const TrainingListItem = ({
 type TrainingCardProps = {
   imgUrl: string;
   title: string;
+<<<<<<< HEAD
   time: string;
   avatar: string;
   user: string;
@@ -48,13 +42,29 @@ type TrainingCardProps = {
 };
 
 const TrainingCard = ({
+=======
+  time?: string;
+  avatar?: string;
+  user?: string;
+  date?: string;
+  content?: string;
+  isArticle?: boolean;
+};
+
+export const TrainingCard = ({
+>>>>>>> main
   imgUrl,
   title,
   time,
   avatar,
   user,
   date,
+<<<<<<< HEAD
   href,
+=======
+  content,
+  isArticle,
+>>>>>>> main
 }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -62,16 +72,23 @@ const TrainingCard = ({
     <div className={styles.card}>
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
-        <div className={styles.infoButton}>
-          <button className={styles.start_btn}>Kursa başla</button>
+        <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
+          <div className={styles.curve_one}></div>
+          <div className={styles.infoButton}>
+            <button className={styles.start_btn}>
+              {isArticle ? "Daha çox" : "Kursa başla"}
+            </button>
+          </div>
         </div>
       </div>
       <div className={styles.cardContent}>
         <h3>{title}</h3>
         <div className={styles.timeInfo}>
-          <img src={timeIcon} alt="time_icon" />
-          <span>{time}</span>
+          {content && <p>{content}</p>}
+          {!isArticle && <img src={timeIcon} alt="time_icon" />}
+          {!isArticle && <span>{time}</span>}
         </div>
+<<<<<<< HEAD
         <img
           className={styles.bookmark}
           src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
@@ -81,14 +98,26 @@ const TrainingCard = ({
             setIsBookmarked((prev) => !prev);
           }}
         />
+=======
+        {!isArticle && (
+          <img
+            className={styles.bookmark}
+            src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
+            alt="bookmark"
+            onClick={() => setIsBookmarked((prev) => !prev)}
+          />
+        )}
+>>>>>>> main
       </div>
-      <div className={styles.cardFooter}>
-        <div className={styles.author}>
-          <img src={avatar} alt={user} />
-          <span>{user}</span>
+      {!isArticle && (
+        <div className={styles.cardFooter}>
+          <div className={styles.author}>
+            <img src={avatar} alt={user} />
+            <span>{user}</span>
+          </div>
+          <div className={styles.date}>{date}</div>
         </div>
-        <div className={styles.date}>{date}</div>
-      </div>
+      )}
     </div>
   );
 
@@ -166,19 +195,6 @@ const TrainingsPage = () => {
   ];
 
   return (
-
-    <div>
-      {/* Hero Section */}
-      
-      <div
-        className={styles.heroSection}
-        style={{
-          backgroundImage: `url(${heroBg})`,
-        }}
-      >
-
-        
-     
     <div className={styles.container}>
 
       <div className={styles.heroSection}></div>
@@ -215,57 +231,46 @@ const TrainingsPage = () => {
           </button>
 
       <div className={styles.heroSection}>
-
-
+        <div className={styles.heroContent}></div>
       </div>
 
-      <div className={styles.searchContainer}>
-        <div className={styles.searchBar}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
+      <div className={styles.searchWrapper}>
+        <div className={styles.searchContainer}>
+          <div className={styles.searchBar}>
+            <input type="text" placeholder="Search" />
+            <button className={styles.searchButton}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                  stroke="#222222"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button className={styles.filterButton}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
-              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+              d="M3 6H21M6 12H18M10 18H14"
               stroke="#222222"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
+<<<<<<< HEAD
           <input type="text" placeholder="Search" />
 
         <div className={styles.heroContent}>
 
         </div>
+=======
+        </button>
+>>>>>>> main
       </div>
-
-<div className={styles.searchWrapper}>
-  <div className={styles.searchContainer}>
-    <div className={styles.searchBar}>
-      <input type="text" placeholder="Search" />
-      <button className={styles.searchButton}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path
-            d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-            stroke="#222222"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <button className={styles.filterButton}>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M3 6H21M6 12H18M10 18H14"
-        stroke="#222222"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-</div>
 
       <div className={styles.categoriesContainer}>
         <ul className={styles.navigation}>
