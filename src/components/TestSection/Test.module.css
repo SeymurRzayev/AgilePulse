@@ -147,7 +147,7 @@
                 /* width: fit-content;
                 max-width: 90%; */
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-                z-index: 110;
+                z-index: 90;
             }
         }
     }
