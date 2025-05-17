@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 .slick-prev:before,
 .slick-next:before {
   display: none !important;

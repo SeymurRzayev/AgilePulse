@@ -5,16 +5,16 @@ import { Link } from "react-router-dom";
 export const Banner: FC = () => {
 
   return (
-    <div className={styles.container}>
-        <div className={styles.overlay}/>
+    <div className={`${styles.container} backdrop-brightness-50`}>
+      <div className={styles.overlay} />
       <div className={styles.title}>
         <h1>Çevik düşünməklə dünyanı dəyişənlərdən ol!</h1>
         <p>Adaptiv, çevik, dəyişkən, dürüst və qorxmaz</p>
       </div>
-      <Link to="/trainings"> 
-       <AnimatedButton>Təlimlərə başla</AnimatedButton>
-    </Link>
-  
+      <Link className="cursor-pointer" to="/trainings">
+        <AnimatedButton>Təlimlərə başla</AnimatedButton>
+      </Link>
+
     </div>
   );
 };
