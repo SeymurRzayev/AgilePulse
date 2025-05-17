@@ -88,7 +88,7 @@
         }
 
         .testButton {
-            height: 56px;
+            height: 60px;
             position: relative;
 
 
@@ -202,7 +202,7 @@
                 }
 
                 span {
-                     padding: 0px 30px 0px 30px;
+                    padding: 0px 30px 0px 30px;
                     font-size: 46px;
                     font-weight: 700;
                     line-height: 56px;
@@ -335,7 +335,7 @@
                 }
 
                 .test {
-                     padding: 0px 30px 0px 30px;
+                    padding: 0px 30px 0px 30px;
                     font-size: 35px;
                     text-align: center;
                     margin-bottom: 30px;
@@ -478,7 +478,7 @@
     .testSection {
         flex-direction: column-reverse;
         height: auto;
-       padding: 0px 15px;
+        padding: 0px 15px;
 
         .titleAndTest {
             max-width: 350px;
@@ -514,7 +514,7 @@
             }
 
             .description {
-              
+
                 p {
                     font-size: 14px;
                     line-height: 20px;
@@ -580,10 +580,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-          
+
 
             .title {
-                  margin-right: 190px;
+                margin-right: 190px;
+
                 p {
                     font-size: 25px;
                     line-height: 36px;
@@ -591,7 +592,7 @@
                 }
 
                 .test {
-                     padding: 0px 25px 0px 25px;
+                    padding: 0px 25px 0px 25px;
                     font-size: 25px;
                     font-weight: 600;
                     line-height: 40px;
