@@ -50,7 +50,7 @@
 
 /* Main navbar container */
 .navbar {
-  position: fixed;
+  /* position: fixed; */
   top: 16px;
   left: 0;
   right: 0;
