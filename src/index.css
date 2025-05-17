@@ -12,6 +12,10 @@
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 .slick-prev:before,
 .slick-next:before {
   display: none !important;
@@ -20,4 +24,15 @@
 .slick-prev,
 .slick-next {
   z-index: 2;
+}
+
+.slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .slick-track {
+    gap: 0 !important;
+  }
 }

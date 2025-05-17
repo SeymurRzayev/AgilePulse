@@ -17,7 +17,7 @@
   font-weight: 500;
   line-height: 24px;
   text-align: center;
-  cursor: pointer; 
+  cursor: pointer !important; 
 
   &::before {
   content: "";
@@ -47,15 +47,7 @@
   background-position: right;
 }
 }
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 @media (min-width: 480px) and (max-width: 767px){
    .btn{
