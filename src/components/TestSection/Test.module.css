@@ -130,7 +130,7 @@
 
             .testText {
                 width: 450px;
-                height: 155px;
+                height: 150px;
                 position: absolute;
                 top: 339px;
                 right: 200px;
@@ -147,7 +147,7 @@
                 /* width: fit-content;
                 max-width: 90%; */
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-                z-index: 99;
+                z-index: 110;
             }
         }
     }
