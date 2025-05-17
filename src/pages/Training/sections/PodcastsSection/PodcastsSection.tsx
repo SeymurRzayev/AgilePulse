@@ -7,7 +7,7 @@ import podcast3 from "../../../../assets/images/podcast3.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import right from "../../../../assets/icons/right.png";
+import { CustomNextArrow } from "../../../Home/sections/TrainingExperiences";
 
 const PodcastsSection: FC = () => {
   const podcasts = [
@@ -41,7 +41,7 @@ const PodcastsSection: FC = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
-    nextArrow: <img src={right} alt="Next" className={styles.nextArrow} />,
+    nextArrow: <CustomNextArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -51,7 +51,7 @@ const PodcastsSection: FC = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 576,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

@@ -9,6 +9,8 @@ import bookmarkIcon from "../../assets/icons/bookmark.svg";
 import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
 import timeIcon from "../../assets/icons/time.svg";
 import training3 from "../../assets/images/training3.jpg";
+import Navbar from "../../layout/Navbar/Navbar";
+import Footer from "../../layout/Footer/Footer";
 
 type TrainingListItemProps = {
   item: string;
@@ -164,75 +166,79 @@ const TrainingsPage = () => {
   ];
 
   return (
-    <div className={styles.container}>
-      <div className={styles.heroSection}>
-        <div className={styles.heroContent}></div>
-      </div>
-
-      <div className={styles.searchWrapper}>
-        <div className={styles.searchContainer}>
-          <div className={styles.searchBar}>
-            <input type="text" placeholder="Search" />
-            <button className={styles.searchButton}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-                  stroke="#222222"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+    <>
+      <Navbar />
+      <div className={styles.container}>
+        <div className={styles.heroSection}>
+          <div className={styles.heroContent}></div>
         </div>
-        <button className={styles.filterButton}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M3 6H21M6 12H18M10 18H14"
-              stroke="#222222"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
 
-      <div className={styles.categoriesContainer}>
-        <ul className={styles.navigation}>
-          {trainingCategories.map((item) => (
-            <TrainingListItem
-              key={item}
-              item={item}
-              isActive={activeItem === item}
-              onClick={() => setActiveItem(item)}
+        <div className={styles.searchWrapper}>
+          <div className={styles.searchContainer}>
+            <div className={styles.searchBar}>
+              <input type="text" placeholder="Search" />
+              <button className={styles.searchButton}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+                    stroke="#222222"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button className={styles.filterButton}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M3 6H21M6 12H18M10 18H14"
+                stroke="#222222"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div className={styles.categoriesContainer}>
+          <ul className={styles.navigation}>
+            {trainingCategories.map((item) => (
+              <TrainingListItem
+                key={item}
+                item={item}
+                isActive={activeItem === item}
+                onClick={() => setActiveItem(item)}
+              />
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.trainingsGrid}>
+          {trainingCourses.map((course) => (
+            <TrainingCard
+              key={course.id}
+              imgUrl={course.imgUrl}
+              title={course.title}
+              time={course.time}
+              avatar={course.avatar}
+              user={course.user}
+              date={course.date}
             />
           ))}
-        </ul>
-      </div>
+        </div>
 
-      <div className={styles.trainingsGrid}>
-        {trainingCourses.map((course) => (
-          <TrainingCard
-            key={course.id}
-            imgUrl={course.imgUrl}
-            title={course.title}
-            time={course.time}
-            avatar={course.avatar}
-            user={course.user}
-            date={course.date}
-          />
-        ))}
-      </div>
+        <div className={styles.viewAllContainer}>
+          <button className={styles.viewAllBtn}>Hamısına bax</button>
+        </div>
 
-      <div className={styles.viewAllContainer}>
-        <button className={styles.viewAllBtn}>Hamısına bax</button>
+        <PodcastsSection />
+        <TrainersSection />
       </div>
-
-      <PodcastsSection />
-      <TrainersSection />
-    </div>
+      <Footer />
+    </>
   );
 };
 

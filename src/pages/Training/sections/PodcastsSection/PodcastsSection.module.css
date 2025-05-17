@@ -50,7 +50,7 @@
 .sliderContainer {
   position: relative;
   top: -50px;
-  padding: 0 40px;
+ 
   width: 100%;
   max-width: 972px;
   margin: 0 auto;
@@ -204,12 +204,14 @@
 
   .sliderContainer {
     margin-top: 20px;
-    padding: 0 20px;
+    
   }
 
   .podcastCard {
-    width: 100% !important;
-    margin: 0 auto;
+    width: 100vh !important;
+    display: block !important;
+    margin: auto !important;
+   
   }
 
   .nextArrow,
