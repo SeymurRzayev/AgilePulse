@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   overflow-x: hidden;
 }
 
@@ -26,13 +26,13 @@ body{
   z-index: 2;
 }
 
-.slick-track {
+.exp-slider .slick-track {
   display: flex !important;
   gap: 20px !important;
 }
 
 @media (max-width: 768px) {
-  .slick-track {
+  .exp-slider .slick-track {
     gap: 0 !important;
   }
 }
