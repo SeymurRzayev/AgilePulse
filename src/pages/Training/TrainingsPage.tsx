@@ -5,98 +5,19 @@ import styles from "../../assets/styles/Trainings.module.css";
 import avatar1 from "../../assets/images/podcast1.jpg";
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
-import bookmarkIcon from "../../assets/icons/bookmark.svg";
-import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
-import timeIcon from "../../assets/icons/time.svg";
 import training3 from "../../assets/images/training3.jpg";
 import Navbar from "../../layout/Navbar/Navbar";
 import Footer from "../../layout/Footer/Footer";
+// Trainings Page Components
+import TrainingsHeroContainer from "../../components/Trainings/TrainingsHeroContainer";
+import TrainingsSearchContainer from "../../components/Trainings/TrainingsSearchContainer";
+import TrainingsCategoryList from "../../components/Trainings/TrainingsCategoryList";
+import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
+import TrainingsViewAllContainer from "../../components/Trainings/TrainingsViewAllContainer";
 
-type TrainingListItemProps = {
-  item: string;
-  isActive: boolean;
-  onClick: () => void;
-};
-
-const TrainingListItem = ({
-  item,
-  isActive,
-  onClick,
-}: TrainingListItemProps) => (
-  <li
-    className={`${styles.navigationItem} ${isActive ? styles.active : ""}`}
-    onClick={onClick}
-  >
-    {item}
-  </li>
-);
-
-type TrainingCardProps = {
-  imgUrl: string;
-  title: string;
-  time?: string;
-  avatar?: string;
-  user?: string;
-  date?: string;
-  content?: string;
-  isArticle?: boolean;
-};
-
-export const TrainingCard = ({
-  imgUrl,
-  title,
-  time,
-  avatar,
-  user,
-  date,
-  content,
-  isArticle,
-}: TrainingCardProps) => {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  return (
-    <div className={styles.card}>
-      <div className={styles.cardImage}>
-        <img src={imgUrl} alt={title} />
-        <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
-          <div className={styles.curve_one}></div>
-          <div className={styles.infoButton}>
-            <button className={styles.start_btn}>
-              {isArticle ? "Daha çox" : "Kursa başla"}
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardContent}>
-        <h3>{title}</h3>
-        <div className={styles.timeInfo}>
-          {content && <p>{content}</p>}
-          {!isArticle && <img src={timeIcon} alt="time_icon" />}
-          {!isArticle && <span>{time}</span>}
-        </div>
-        {!isArticle && (
-          <img
-            className={styles.bookmark}
-            src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
-            alt="bookmark"
-            onClick={() => setIsBookmarked((prev) => !prev)}
-          />
-        )}
-      </div>
-      {!isArticle && (
-        <div className={styles.cardFooter}>
-          <div className={styles.author}>
-            <img src={avatar} alt={user} />
-            <span>{user}</span>
-          </div>
-          <div className={styles.date}>{date}</div>
-        </div>
-      )}
-    </div>
-  );
-};
 
 const TrainingsPage = () => {
-  const [activeItem, setActiveItem] = useState("Scrum");
+  const [activeItem, setActiveItem] = useState<string>("Scrum");
 
   const trainingCategories = [
     "Scrum",
@@ -169,71 +90,11 @@ const TrainingsPage = () => {
     <>
       <Navbar />
       <div className={styles.container}>
-        <div className={styles.heroSection}>
-          <div className={styles.heroContent}></div>
-        </div>
-
-        <div className={styles.searchWrapper}>
-          <div className={styles.searchContainer}>
-            <div className={styles.searchBar}>
-              <input type="text" placeholder="Search" />
-              <button className={styles.searchButton}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-                    stroke="#222222"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <button className={styles.filterButton}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 6H21M6 12H18M10 18H14"
-                stroke="#222222"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <div className={styles.categoriesContainer}>
-          <ul className={styles.navigation}>
-            {trainingCategories.map((item) => (
-              <TrainingListItem
-                key={item}
-                item={item}
-                isActive={activeItem === item}
-                onClick={() => setActiveItem(item)}
-              />
-            ))}
-          </ul>
-        </div>
-
-        <div className={styles.trainingsGrid}>
-          {trainingCourses.map((course) => (
-            <TrainingCard
-              key={course.id}
-              imgUrl={course.imgUrl}
-              title={course.title}
-              time={course.time}
-              avatar={course.avatar}
-              user={course.user}
-              date={course.date}
-            />
-          ))}
-        </div>
-
-        <div className={styles.viewAllContainer}>
-          <button className={styles.viewAllBtn}>Hamısına bax</button>
-        </div>
-
+        <TrainingsHeroContainer />
+        <TrainingsSearchContainer />
+        <TrainingsCategoryList trainingCategories={trainingCategories} activeItem={activeItem} setActiveItem={setActiveItem} />
+        <TrainingListContainer trainingCourses={trainingCourses} />
+        <TrainingsViewAllContainer text="Hamısına bax" clickFunction={() => { }} />
         <PodcastsSection />
         <TrainersSection />
       </div>
