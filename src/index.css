@@ -1,12 +1,9 @@
 @import "tailwindcss";
-
 :root {
   --text-color: #122041;
 }
 
 * {
-  /*   padding: 0;
-  margin: 0; */
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
@@ -14,6 +11,8 @@
 
 body {
   overflow-x: hidden;
+    margin: 0;
+  padding: 0;
 }
 
 .slick-prev:before,
