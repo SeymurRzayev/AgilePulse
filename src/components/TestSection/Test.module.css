@@ -129,8 +129,8 @@
             right: 200px;
 
             .testText {
-                width: 450px;
-                height: 150px;
+                /* width: 450px;
+                height: 150px; */
                 position: absolute;
                 top: 339px;
                 right: 200px;
@@ -144,8 +144,8 @@
                 backdrop-filter: blur(8px);
                 border-radius: 12px;
                 background-color: rgba(255, 255, 255, 0.35);
-                /* width: fit-content;
-                max-width: 90%; */
+                width: fit-content;
+                max-width: 90%;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
                 z-index: 90;
             }
