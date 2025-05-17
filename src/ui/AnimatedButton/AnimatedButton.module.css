@@ -10,25 +10,15 @@
   outline: none;
   box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
   background-color: transparent;
-<<<<<<< HEAD
-  position: absolute;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 30;
-=======
   position: relative;
->>>>>>> fix-from-main
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
-<<<<<<< HEAD
-=======
   cursor: pointer !important; 
   z-index: 2;
->>>>>>> fix-from-main
 
   &::before {
     content: "";
@@ -57,13 +47,6 @@
   }
 }
 
-<<<<<<< HEAD
-  to {
-    transform: rotate(90deg);
-  }
-}
-=======
->>>>>>> fix-from-main
 
 @media (min-width: 480px) and (max-width: 767px){
    .btn{
