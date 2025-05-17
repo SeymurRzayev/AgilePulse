@@ -1,15 +1,18 @@
 @import "tailwindcss";
-
 :root {
   --text-color: #122041;
 }
 
 * {
-  /*   padding: 0;
-  margin: 0; */
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+    margin: 0;
+  padding: 0;
 }
 
 .slick-prev:before,
@@ -20,4 +23,15 @@
 .slick-prev,
 .slick-next {
   z-index: 2;
+}
+
+.exp-slider .slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .exp-slider .slick-track {
+    gap: 0 !important;
+  }
 }
