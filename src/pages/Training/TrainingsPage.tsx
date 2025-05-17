@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
-import styles from "./TrainingsPage.module.css";
-import timeIcon from "../../assets/icons/time.svg";
-import bookmarkIcon from "../../assets/icons/bookmark.svg";
-import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
+import styles from "../../assets/styles/Trainings.module.css";
 import avatar1 from "../../assets/images/podcast1.jpg";
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
@@ -33,16 +30,26 @@ const TrainingListItem = ({
 type TrainingCardProps = {
   imgUrl: string;
   title: string;
-  time: string;
-  avatar: string;
-  user: string;
-  date: string;
+  time?: string;
+  avatar?: string;
+  user?: string;
+  date?: string;
+  content?: string;
+  isArticle?: boolean;
 };
 
-const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardProps) => {
+export const TrainingCard = ({
+  imgUrl,
+  title,
+  time,
+  avatar,
+  user,
+  date,
+  content,
+  isArticle,
+}: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
-
-  const cardContent = (
+  return (
     <div className={styles.card}>
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
@@ -62,12 +69,14 @@ const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardP
           {!isArticle && <img src={timeIcon} alt="time_icon" />}
           {!isArticle && <span>{time}</span>}
         </div>
-        <img
-          className={styles.bookmark}
-          src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
-          alt="bookmark"
-          onClick={() => setIsBookmarked((prev) => !prev)}
-        />
+        {!isArticle && (
+          <img
+            className={styles.bookmark}
+            src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
+            alt="bookmark"
+            onClick={() => setIsBookmarked((prev) => !prev)}
+          />
+        )}
       </div>
       {!isArticle && (
         <div className={styles.cardFooter}>
@@ -80,8 +89,6 @@ const TrainingCard = ({ imgUrl, title, time, avatar, user, date }: TrainingCardP
       )}
     </div>
   );
-
-  return href ? <Link to={href}>{cardContent}</Link> : cardContent;
 };
 
 const TrainingsPage = () => {
@@ -156,60 +163,8 @@ const TrainingsPage = () => {
 
   return (
     <div className={styles.container}>
-
-      <div className={styles.heroSection}></div>
-
-      <div className={styles.searchWrapper}>
-        <div className={styles.searchContainer}>
-          <div className={styles.searchBar}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              className={styles.searchIcon}
-            >
-              <path
-                d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-                stroke="#222222"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <input type="text" placeholder="Search" />
-          </div>
-          <button className={styles.filterButton}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path
-                d="M4 7H24M7 14H17M10 21H14"
-                stroke="#222222"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-
       <div className={styles.heroSection}>
-
-
-      </div>
-
-      <div className={styles.searchContainer}>
-        <div className={styles.searchBar}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className={styles.searchIcon}>
-            <path
-              d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-              stroke="#222222"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <input type="text" placeholder="Search" />
-
-        <div className={styles.heroContent}>
-        </div>
+        <div className={styles.heroContent}></div>
       </div>
 
       <div className={styles.searchWrapper}>
@@ -265,7 +220,6 @@ const TrainingsPage = () => {
             avatar={course.avatar}
             user={course.user}
             date={course.date}
-            href={course.href}
           />
         ))}
       </div>
@@ -275,7 +229,6 @@ const TrainingsPage = () => {
       </div>
 
       <PodcastsSection />
-
       <TrainersSection />
     </div>
   );

@@ -1,5 +1,8 @@
 import Slider from "react-slick";
 import ExpCard from "../../../components/TrainingExperienceCard/ExpCard";
+import img1 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
+import img2 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
+import img3 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
 
 import type { CustomArrowProps } from "react-slick";
 
@@ -52,40 +55,76 @@ const CustomPrevArrow = ({ className, style, onClick }: CustomArrowProps) => {
 };
 
 const TrainingExperiences = () => {
-  const long = [1, 2, 3, 4];
+  const data = [
+    { id: 1, img: `${img1}`, name: "Nigar Məmmədova", subtitle: 'Agile təlimi mənim üçün tam bir geri dönüş nöqtəsi oldu.Məzmun real iş həyatına uyğun qurulmuşdu.', date: "15.03.2025" },
+    { id: 2, img: `${img2}`, name: "Elvin Quliyev", subtitle: 'Platforma çox peşəkar formada hazırlanıb. Təlimin sonunda  Agile metodologiyasını rahatlıqla tətbiq edə bilirəm.', date: "02.04.2025" },
+    { id: 3, img: `${img3}`, name: "Alice Doe", subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, magnam.', date: "2022-03-01" },
+  ];
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 2,
+    className: "flex-wrap gap-5 bg-gray-200",
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
+    
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
   return (
-    <div className="w-full flex flex-col gap-5 justify-center items-center">
-      <div className="w-1/2 flex flex-col items-center gap-3">
+    <div className="w-full flex flex-col gap-5 justify-center items-center px-4">
+      <div className="w-full md:w-2/3 flex flex-col items-center gap-3">
         <h2 className="text-center text-2xl w-full font-mbold">
           İştirakçıların Təlim Təcrübələri
         </h2>
-        <p className="text-sm w-2/3 font-normal text-center">
+        <p className="text-sm w-full md:w-2/3 font-normal text-center">
           AgilePulse platformasında təlim keçmiş iştirakçılarımızın real
-          fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada
-          bilər.
+          fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada bilər.
         </p>
       </div>
 
-      <div className="w-[90%] mx-auto my-15 flex justify-center ">
-        <Slider
-          {...settings}
-          className="w-full flex justify-center items-center"
-        >
-          {long.map((item) => (
-            <ExpCard key={item} />
+      <div className="w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
+        <Slider {...settings} className="w-full flex px-2 justify-center md:px-10 items-center">
+          {data.map((item) => (
+            <ExpCard
+              img={item.img}
+              subtitle={item.subtitle}
+              title={item.name}
+              key={item.id}
+              date={item.date}
+            />
           ))}
         </Slider>
       </div>
     </div>
+
   );
 };
 
