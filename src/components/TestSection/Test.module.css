@@ -99,14 +99,13 @@
         z-index: -10;
 
         .image {
-            width: 520px;
+            width: 528px;
+            height: 542px;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            width: 528px;
-            height: 542px;
             border-radius: 50px;
             z-index: -9;
 
