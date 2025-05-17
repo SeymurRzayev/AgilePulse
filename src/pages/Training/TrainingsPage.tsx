@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
@@ -6,6 +5,9 @@ import styles from "../../assets/styles/Trainings.module.css";
 import avatar1 from "../../assets/images/podcast1.jpg";
 import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
+import bookmarkIcon from "../../assets/icons/bookmark.svg";
+import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
+import timeIcon from "../../assets/icons/time.svg";
 import training3 from "../../assets/images/training3.jpg";
 
 type TrainingListItemProps = {
