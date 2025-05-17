@@ -38,7 +38,7 @@ const AuthIllustration: React.FC<ImageSectionProps> = ({
         <img
           src={arrowIcon}
           alt="Əvvəlki səhifəyə qayıt"
-          className={styles.navigateIconImg}
+          className={`${styles.navigateIconImg} cursor-pointer`}
         />
       </div>
 
