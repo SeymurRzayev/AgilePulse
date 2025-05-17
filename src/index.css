@@ -21,3 +21,14 @@
 .slick-next {
   z-index: 2;
 }
+
+.slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .slick-track {
+    gap: 0 !important;
+  }
+}
