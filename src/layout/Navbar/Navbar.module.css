@@ -25,7 +25,7 @@
   --white-high: #ffffff;
   --black-high: #000000;
 
-  --background-blur: rgba(255, 255, 255, 0.205);
+  --background-blur: rgba(251, 249, 247, 0.70);
   --background-blur-scrolled: rgba(255, 255, 255, 0.95);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -50,22 +50,26 @@
 
 /* Main navbar container */
 .navbar {
-  position: fixed;
   top: 16px;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 1224px;
+  width: 100%;
+  max-width: 1224px;
+  padding: 20px 40px;
   height: 72px;
   border-radius: 25px;
-  z-index: 1000;
+  position: relative;
+  z-index: 1;
   transition: var(--transition-standard);
   background: var(--background-blur);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
   justify-content: center;
+
+
 }
 
 /* Scroll zamanı arxa fon və kölgə */
@@ -124,12 +128,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .link {
   font-family: var(--font-body);
+  font-size: 18px;
   text-decoration: none;
-  color: #2C4B9B;
+  color: #122041;
   font-weight: 400;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -310,9 +316,6 @@
     }
   }
 
- 
-
-
 
   .sidebarLink.active {
     background: var(--blue-100);
@@ -399,7 +402,7 @@
     .container {
       display: flex;
       justify-content: space-between;
-      gap:40px;
+      gap: 40px;
 
       .logo {
         padding: 5px 7px;
@@ -574,7 +577,7 @@
 }
 
 .sidebarNav .sidebarLink:nth-child(5) {
-  background: linear-gradient(135deg,#4B4193,#DA3D68,#E99826);
+  background: linear-gradient(135deg, #4B4193, #DA3D68, #E99826);
   color: var(--white-high);
   border-radius: 30px;
   animation: fadeInRight 0.4s 0.4s both;

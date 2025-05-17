@@ -1,0 +1,22 @@
+import type { FC } from "react";
+import styles from "./Banner.module.css";
+import AnimatedButton from "../../../../ui/AnimatedButton/AnimatedButton";
+import { Link } from "react-router-dom";
+import Navbar from "../../../../layout/Navbar/Navbar";
+export const Banner: FC = () => {
+  return (
+    <div className={styles.container}>
+          <div className={styles.overlay} />
+      <Navbar />
+      <div className={styles.titleContainer}>
+        <div className={styles.title}>
+          <h1>Çevik düşünməklə dünyanı dəyişənlərdən ol!</h1>
+          <p>Adaptiv, çevik, dəyişkən, dürüst və qorxmaz</p>
+        </div>
+        <Link to="/trainings">
+          <AnimatedButton>Təlimlərə başla</AnimatedButton>
+        </Link>
+      </div>
+    </div>
+  );
+};
