@@ -6,10 +6,9 @@ export const Test: FC = () => {
     <div className={styles.testSection}>
       <div className={styles.titleAndTest}>
         <div className={styles.title}>
-          <p>
-            Beynəlxalq standartlara uyğun suallarla biliyini{" "}
-          </p>
-         <span className={styles.test}>test</span> <p className={styles.pTitle}>et</p>
+          <p>Beynəlxalq standartlara uyğun suallarla biliyini </p>
+          <span className={styles.test}>test</span>{" "}
+          <p className={styles.pTitle}>et</p>
         </div>
         <div className={styles.description}>
           <p>
@@ -18,23 +17,23 @@ export const Test: FC = () => {
           </p>
         </div>
         <div className={styles.testButton}>
-            <button className={styles.button}>Təstə başla</button>
+          <button className={styles.button}>Testə başla</button>
         </div>
       </div>
-     
+
       <div className={styles.imageContainer}>
-             <div className={styles.testTextContainer}>
+        <div className={styles.testTextContainer}>
           <div className={styles.testText}>
-           <p> Bizim məqsədimiz bilik səviyyəni 
-            müəyyən edərək sənə uyğun təlimləri 
-            təklif etməkdir{" "}</p>
+            <p>
+              {" "}
+              Bizim məqsədimiz bilik səviyyəni müəyyən edərək sənə uyğun
+              təlimləri təklif etməkdir{" "}
+            </p>
           </div>
-           </div>
+        </div>
         <div className={styles.image}>
           <img src={image} alt="Test mərhələsi şəkili" />
         </div>
-    
-       
       </div>
     </div>
   );
