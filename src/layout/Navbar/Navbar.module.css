@@ -25,7 +25,7 @@
   --white-high: #ffffff;
   --black-high: #000000;
 
-  --background-blur: rgba(255, 255, 255, 0.205);
+  --background-blur: rgba(251, 249, 247, 0.75);
   --background-blur-scrolled: rgba(255, 255, 255, 0.95);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -61,8 +61,7 @@
   border-radius: 25px;
   z-index: 1000;
   transition: var(--transition-standard);
-  /* background: var(--background-blur); */
-  background-color: rgba(251, 249, 247, 0.75);
+  background: var(--background-blur);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
