@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  color: #fff;
+  color: var(--white-high);
   border: none;
   outline: none;
   box-shadow: 0px 0px 15px 0px rgba(0, 16, 135, 0.2);
@@ -17,45 +17,53 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
-  cursor: pointer !important; 
-  z-index: 2;
+  cursor: pointer !important;
+  z-index: 0;
 
   &::before {
     content: "";
     position: absolute;
-    top: center;
-    left: center;
-    width: 163px;
-    height: 163px;
-    background: linear-gradient(78deg,#000C67, #1a2893,#5468F8,#681DB0, #4f1ba1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(78deg, #000C67, #1a2893, #5468F8, #681DB0, #4f1ba1);
     z-index: -1;
-    border-radius: 50%;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
   }
 
   &:hover::before {
-    transform: rotate(200deg);
     animation: spin 1s linear infinite;
   }
+
+  &::before {
+    background: linear-gradient(78deg, #000C67, #5468F8, #681DB0, #4c1da1);
+    transition: background-position 0.5s ease;
+    background-size: 200%;
+    background-position: left;
+  }
+
+
+  &:hover::before {
+    background-position: right;
+  }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(90deg);
-  }
-}
 
 
-@media (min-width: 480px) and (max-width: 767px){
-   .btn{
+
+
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .btn {
     width: 290px;
     height: 48px;
   }
 }
-@media (max-width: 479px){
-  .btn{
+
+@media (max-width: 479px) {
+  .btn {
     width: 230px;
     height: 48px;
   }
