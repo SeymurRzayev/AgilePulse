@@ -99,9 +99,9 @@ const TrainingExperiences = () => {
     ],
   };
   return (
-    <div className="w-full flex flex-col gap-5 justify-center items-center px-4">
+    <div className="w-full mt-20 flex flex-col gap-5 justify-center items-center px-4">
       <div className="w-full md:w-2/3 flex flex-col items-center gap-3">
-        <h2 className="text-center text-2xl w-full font-mbold">
+        <h2 className="text-center text-md text-2xl font-bold md:text-2xl w-full font-mbold">
           İştirakçıların Təlim Təcrübələri
         </h2>
         <p className="text-sm w-full md:w-2/3 font-normal text-center">
