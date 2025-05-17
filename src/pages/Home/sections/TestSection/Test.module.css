@@ -10,24 +10,22 @@
 }
 
 .testSection {
-    width: 80%;
-    height: 100vh;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     position: relative;
-    gap: 10px;
-    z-index: 0;
+      z-index: 0;
 
     .titleAndTest {
-        width: 496px;
-        height: 355px;
+        width: 643px;
+        height: 542px;
         margin-bottom: 60px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         position: relative;
         z-index: 0;
         gap: 40px;
@@ -45,7 +43,7 @@
                 color: var(--Color);
                 margin-top: 10px;
                 position: absolute;
-                z-index: 3;
+                z-index: 2;
             }
 
             span {
@@ -58,8 +56,8 @@
                 border-radius: 25px;
                 background-color: var(--testColor);
                 position: relative;
-                z-index: 1;
-                margin-top: 115px;
+                z-index: 0;
+                margin-top: 120px;
                 display: inline-block;
                 transform: rotate(-15deg);
             }
@@ -90,34 +88,38 @@
                 color: var(--gray-700);
                 position: relative;
                 z-index: 0;
+
             }
         }
 
+        .testButton {
+            height: 56px;
+             position: relative;
+            z-index: 4;
+        }
     }
 
     .imageContainer {
-        width: 648px;
-        height: 542px;
-        /* padding-bottom: 170px;
-        margin-bottom: 270px; */
+        width: 643px;
         position: relative;
         z-index: 0;
 
         .image {
+            width: 528px;
+            height: 542px;
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            width: 528px;
-            height: 542px;
             border-radius: 50px;
             z-index: 0;
 
             img {
                 width: 100%;
-                position: relative;
                 height: 100%;
+                position: relative;
+                height: auto;
                 object-fit: contain;
                 z-index: 0;
             }
@@ -126,35 +128,30 @@
         .testTextContainer {
             position: relative;
             width: 400px;
-            height: 165px;
             display: flex;
             justify-content: flex-end;
-            z-index: 3;
+            z-index: 1;
             right: 200px;
 
             .testText {
                 position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 460px;
-                right: 150px;
+                top: 339px;
+                right: 200px;
+                text-align: center;
+                font-size: 20px;
+                line-height: 24px;
                 color: rgba(0, 0, 0, 1);
-                border: 1px solid #E4E3E3;
-                padding: 15px 40px;
-                backdrop-filter: blur(5px);
-                border-radius: 40px;
-                background-color: rgba(208, 208, 208, 0.20) !important;
+                border: 1px solid rgba(208, 208, 208, 0.55);
+                padding: 30px 40px;
+                backdrop-filter: blur(8px);
+                border-radius: 12px;
+                background-color: rgba(255, 255, 255, 0.35);
                 width: fit-content;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-                z-index: 99;
+                z-index: 2;
 
-                p {
-                    text-align: center;
-                    font-size: 18px;
-                    font-weight: 700;
-                    font-family: 'corbel';
-                    line-height: 24px;
-
+                p{
+                    padding: 5px;
                 }
             }
         }
@@ -176,7 +173,7 @@
         align-items: center;
         gap: 200px;
         position: relative;
-        z-index: 0;
+        
 
         .titleAndTest {
             width: 496px;
@@ -185,7 +182,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
             gap: 40px;
             z-index: 0;
 
@@ -197,23 +193,18 @@
                     font-weight: 700;
                     line-height: 56px;
                     letter-spacing: 0px;
-                    color: var(--Color);
                     margin-top: 10px;
-                    position: absolute;
-                    z-index: 3;
+                  
+                    
                 }
 
                 span {
-                    padding: 0px 35px 0px 35px;
+                    padding: 0px 40px 0px 40px;
                     font-size: 46px;
                     font-weight: 700;
                     line-height: 56px;
                     letter-spacing: 0px;
                     text-align: center;
-                    border-radius: 25px;
-                    background-color: var(--testColor);
-                    position: relative;
-                    z-index: 1;
                     margin-top: 115px;
                     display: inline-block;
                     transform: rotate(-15deg);
@@ -223,8 +214,6 @@
                     font-weight: 700;
                     line-height: 56px;
                     letter-spacing: 0px;
-                    position: relative;
-                    z-index: 0;
                     display: inline-block;
                 }
             }
@@ -238,32 +227,29 @@
                     font-size: 24px;
                     font-weight: 400;
                     line-height: 32px;
-                    letter-spacing: 0px;
-                    color: var(--gray-700);
-                    position: relative;
-                    z-index: 0;
+                 
+
 
                 }
             }
 
+            .testButton {
+                height: 56px;
+            }
         }
 
         .imageContainer {
-            width: 623px;
-            padding-top: 0px;
-            position: relative;
-            z-index: 0;
+            width: 528px;
+   
 
             .image {
                 flex: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                position: relative;
                 width: 528px;
                 height: 542px;
                 border-radius: 50px;
-                z-index: 0;
 
                 img {
                     width: 100%;
@@ -271,20 +257,19 @@
                     max-width: 100%;
                     height: auto;
                     object-fit: contain;
-                   
+                    
                 }
             }
 
             .testTextContainer {
-                position: relative;
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
-                z-index: 3;
                 right: 200px;
 
                 .testText {
-                    position: absolute;
+                    top: 350px;
+                    right: 200px;
                     text-align: center;
                     font-size: 20px;
                     line-height: 24px;
@@ -295,7 +280,7 @@
                     border-radius: 40px;
                     background-color: rgba(255, 255, 255, 0.10);
                     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-                    z-index: 99;
+                   
                 }
             }
         }

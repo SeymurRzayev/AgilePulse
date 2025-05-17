@@ -9,7 +9,7 @@ interface AnimatedButtonProps {
 
 const AnimatedButton: FC<AnimatedButtonProps> = ({ children}) => {
   return (
-    <button className={styles.btn} type="button">
+    <button className={`${styles.btn} !cursor-pointer`} type="button">
       {children}
     </button>
   );

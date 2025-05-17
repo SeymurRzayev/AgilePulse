@@ -2,7 +2,7 @@ import Article1 from "../../../assets/images/Article.jpg";
 import Article2 from "../../../assets/images/Article2.png";
 import Article3 from "../../../assets/images/Article3.png";
 import styles from "../../Training/TrainingsPage.module.css";
-import { TrainingCard } from "../../Training/TrainingsPage";
+import  TrainingCard  from "../../../components/Trainings/TrainingCard";
 const ArticlesSection = () => {
   const data = [
     {
@@ -39,7 +39,7 @@ const ArticlesSection = () => {
       </div>
       <div className="flex flex-wrap mt-15 justify-center gap-5">
         {data.map((item) => (
-          <div key={item.id} className="w-[30%]">
+          <div key={item.id} className="w-[100%] sm:w-[40%] md:w-[30%]">
             <TrainingCard
               isArticle={true}
               title={item.title}

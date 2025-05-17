@@ -12,14 +12,22 @@ import Footer from "../../layout/Footer/Footer";
 export const Home: FC = () => {
   return (
     <div className={styles.HomeSection}>
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fix-from-main
       <Banner />
       <Test />
-      <BookSection />
-      <TrainingExperiences />
-      <ArticlesSection />
+      <div className="relative">
+        <div className=" absolute bg-gradient-to-b from-[#E99826] via-[#DA3D68] to-[#4B4193] opacity-60 w-[800px] h-[800px] top-[30%] -z-10 right-0 rounded-full rotate-45 blur-[150px]"></div>
+        <div className=" absolute bg-gradient-to-b from-[#E99826] via-[#DA3D68] to-[#4B4193] opacity-60 w-[800px] h-[800px] bottom-0 -z-10 left-[-10%] rounded-full rotate-45 blur-[150px]"></div>
+        <BookSection />
+        <TrainingExperiences />
+        <ArticlesSection />
+      </div>
       <PartnersSection />
       <StatusSection />
-      <Footer/>
+      <Footer />
     </div>
   );
 };
