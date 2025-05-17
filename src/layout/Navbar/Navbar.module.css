@@ -57,13 +57,13 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  max-width: 1224px;
+  width: 95% !important;
+  margin: 0 auto;
   padding: 20px 40px;
   height: 72px;
   border-radius: 25px;
-  position: fixed;
-  z-index: 1;
+  position: absolute;
+  z-index: 1000;
   transition: var(--transition-standard);
   background: var(--background-blur);
   box-shadow: var(--shadow-md);
@@ -264,19 +264,23 @@
 .sidebar {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 100%;
+  right: 20;
+  width: 0;
+  opacity: 0;
   max-width: 400px;
   height: 100vh;
   background: var(--white-high);
   padding: 2rem;
   transition: var(--transition-standard);
-  z-index: 1001;
   box-shadow: var(--shadow-lg);
+  z-index: 100;
 }
 
 .sidebarOpen {
+  top: 0;
   right: 0;
+  width: 100%;
+  opacity: 1;
 }
 
 .sidebarContent {
@@ -395,10 +399,15 @@
 }
 
 /* Responsive Styles */
-@media (min-width: 1024px) {
+@media (max-width: 1240px) {
   .navbar {
-    width: 95%;
-    margin: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    width: 100%;
 
     .container {
       display: flex;
@@ -407,32 +416,31 @@
 
       .logo {
         padding: 5px 7px;
-        width: 100px;
+        width: 90px;
 
         img {
-          width: 30px;
-          height: 36px;
+          width: 16px;
+          height: 19px;
         }
 
         span {
-          font-size: 16px;
+          font-size: 12px;
           color: #122041;
         }
       }
 
       .links {
-        gap: 4px;
+        gap: 8px;
       }
 
       .link {
-        padding: 10px 20px;
+        padding: 5px 15px;
+        font-size: 12px;
+      }
+
+      .link.active {
+        padding: 5px 15px;
         font-size: 14px;
-
-
-        .link.active {
-          padding: 10px 20px;
-          font-size: 14px;
-        }
       }
 
       .actions {
@@ -456,31 +464,19 @@
   }
 
   .container {
-
+    max-width: 540px;
     display: flex;
     justify-content: space-between;
     height: var(--navbar-height-scrolled);
+  }
 
+  .links,
+  .actions {
+    display: none;
+  }
 
-   
-    .links,
-    .actions {
-      display: none;
-    }
-
-    .hamburger {
-      display: flex;
-    }
-
-
-    .overlay {
-      display: none;
-    }
-
-
-    .sidebar {
-      display: block;
-    }
+  .hamburger {
+    display: flex;
   }
 
   .transparentBg {
@@ -489,64 +485,69 @@
     border: none;
   }
 
-   .logo {
-        padding: 15px 17px;
-        background-color: #fbf9f7bf;
-        border-radius: 25px;
-        box-shadow: var(--shadow-md);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
+  .overlay {
+    display: none;
+  }
 
-        img {
-          width: 24px;
-          height: 28px;
-        }
+  .logo {
+    width: 127px;
+    height: 49px;
+    background: #fbf9f7bf;
+    border-radius: 25px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
 
-        span {
-          font-size: 16px;
-          color: #122041;
-        }
-      }
+  .logo img {
+    width: 16px;
+    height: 19px;
+  }
+
+  .logo span {
+    font-size: 12px;
+    color: #122041;
+  }
+
+  .sidebar {
+    display: block;
+  }
 }
 
-
+.sidebar {
+  display: block;
+}
 
 @media (max-width: 576px) {
   .container {
-    width: 100%;
     display: flex;
     justify-content: space-between;
-   
+    padding: 0 1rem;
+  }
 
+  .sidebar {
+    max-width: 100%;
+  }
 
-    .sidebar {
-      max-width: 100%;
-    }
+  .logo span {
+    font-size: 12px;
+    color: #122041;
+  }
 
-    .logo{
-      width: 127px;
-      height: 49px;
-      
-      span {
-      font-size: 12px;
-      color: #122041;
-    }
-    img {
-      width: 16px;
-      height: 19px;
-    }
-    } 
+  .logo img {
+    width: 16px;
+    height: 19px;
+  }
 
-    .sidebarLink {
-      font-size: 1.1rem;
-      padding: 0.6rem 0.8rem;
-    }
+  .sidebarLink {
+    font-size: 1.1rem;
+    padding: 0.6rem 0.8rem;
+  }
 
-    .sidebarButton {
-      padding: 0.6rem;
-    }
+  .sidebarButton {
+    padding: 0.6rem;
   }
 }
 
