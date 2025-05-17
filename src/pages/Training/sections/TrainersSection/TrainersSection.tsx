@@ -3,6 +3,7 @@ import styles from "./TrainersSection.module.css";
 import trainerFirst from "../../../../assets/images/trainer1.jpg";
 import trainerSecond from "../../../../assets/images/trainer2.jpg";
 import trainerThird from "../../../../assets/images/trainer3.jpg";
+import Slider from "react-slick";
 
 import TrainingExperiences from "../../../Home/sections/TrainingExperiences";
 
@@ -15,6 +16,42 @@ interface Trainer {
 }
 
 const TrainersSection: FC = () => {
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+   responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      }
+    
+    ]
+  };
   const trainers: Trainer[] = [
     {
       id: 1,
@@ -51,8 +88,11 @@ const TrainersSection: FC = () => {
           </p>
         </div>
 
-        <div className={styles.trainersGrid}>
-          {trainers.map((trainer) => (
+       
+          <div className="slider-container py-4">
+            <Slider {...settings}>
+
+{trainers.map((trainer) => (
             <div key={trainer.id} className={styles.trainerCard}>
               <div className={styles.trainerImageContainer}>
                 <img
@@ -68,7 +108,11 @@ const TrainersSection: FC = () => {
               </div>
             </div>
           ))}
-        </div>
+            </Slider>
+
+          </div>
+          
+      
       </div>
 
       <TrainingExperiences />

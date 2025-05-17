@@ -10,6 +10,12 @@
   padding-top: 60px;
 }
 
+
+.slider-container .slick-track {
+  display: flex !important;
+  gap: 20px !important;
+}
+
 .sectionHeader {
   text-align: center;
   margin-bottom: 60px;
@@ -45,12 +51,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px 0px;
 }
+
+
 
 .trainerImageContainer {
   width: 200px;
   height: 200px;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 2;
 }
 
@@ -65,7 +76,7 @@
 .trainerInfo {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 95%;
   height: 233px;
 
   border-radius: 100px 100px 10px 10px;
@@ -128,7 +139,7 @@
   justify-content: center;
   gap: 10px;
   width: 100%;
- 
+
   margin: 0 auto;
 
 }
@@ -189,7 +200,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-    border-radius: 50px 5px 50px 5px;
+  border-radius: 50px 5px 50px 5px;
 }
 
 .testimonialContent {
@@ -202,7 +213,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
- 
+
 }
 
 .testimonialText {
@@ -358,9 +369,6 @@
     gap: 80px 30px;
   }
 
-  .trainerCard {
-    margin: 0 15px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -390,7 +398,7 @@
     font-size: 16px;
   }
 
-  
+
 
   .testimonialText {
     padding: 12px 16px 12px 36px;
@@ -434,11 +442,11 @@
   }
 
   .testimonialCardsContainer {
-  display: flex;
-  gap: 10px;
+    display: flex;
+    gap: 10px;
 
-  width: 100%;
-}
+    width: 100%;
+  }
 
   .testimonialImageContainer {
     width: 70px;
@@ -449,11 +457,11 @@
   }
 
   .testimonialImageContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-     border-radius: 15px 2px;
-}
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px 2px;
+  }
 
   .testimonialContent {
     margin-left: 60px;
