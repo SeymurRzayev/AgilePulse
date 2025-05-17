@@ -39,7 +39,7 @@ const ArticlesSection = () => {
       </div>
       <div className="flex flex-wrap mt-15 justify-center gap-5">
         {data.map((item) => (
-          <div key={item.id} className="w-[30%]">
+          <div key={item.id} className="w-[100%] sm:w-[40%] md:w-[30%]">
             <TrainingCard
               isArticle={true}
               title={item.title}

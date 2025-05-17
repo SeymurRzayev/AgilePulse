@@ -27,7 +27,7 @@ type TrainingCardProps = {
 }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = React.useState(false);
   return (
-    <div className={styles.card}>
+    <div className={styles.card} >
       <div className={styles.cardImage}>
         <img src={imgUrl} alt={title} />
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
