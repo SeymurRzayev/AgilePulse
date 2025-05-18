@@ -3,13 +3,18 @@
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  height: auto;
+}
+
+body {
+  background-color: #faf7f5;
 }
 
 .heroSection {
   width: 100%;
   height: 357px;
-  background-image: url('../../assets/images/first page.png');
+  background-image: url("../../assets/images/first page.png");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -63,7 +68,7 @@
   display: flex;
   align-items: center;
   height: 74px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border-radius: 30px;
   padding: 0 28px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -84,7 +89,7 @@
   padding: 8px 15px 8px 0;
   background: transparent;
   color: rgba(117, 117, 117, 1);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .searchBar input::placeholder {
@@ -103,7 +108,6 @@
   cursor: pointer;
   padding: 0;
 }
-
 
 .searchButton svg {
   width: 31.85px;
@@ -246,7 +250,7 @@
 .curve_one {
   width: 2.4rem;
   height: 2.4rem;
-  content: '';
+  content: "";
 }
 
 .curve_one {
@@ -256,7 +260,7 @@
   border-bottom: 3px solid #f5f5f5;
   border-right: 3px solid #f5f5f5;
   border-bottom-right-radius: 104%;
-  box-shadow: 5px 8px 0px 5px  white;
+  box-shadow: 5px 8px 0px 5px white;
   z-index: 9;
 }
 
@@ -354,7 +358,7 @@
   border: 1px solid rgba(44, 75, 155, 1);
   background: white;
   color: rgba(44, 75, 155, 1);
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;

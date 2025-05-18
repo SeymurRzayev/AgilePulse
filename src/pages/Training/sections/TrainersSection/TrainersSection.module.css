@@ -254,113 +254,6 @@
   font-size: 18px;
 }
 
-/* Contact Section */
-.contactSection {
-  text-align: center;
-  margin-bottom: 60px;
-  padding: 10px 0 60px;
-}
-
-.contactSection h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 16px;
-}
-
-.contactSection p {
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.7);
-  max-width: 700px;
-  margin: 0 auto 40px;
-  line-height: 1.6;
-}
-
-.contactForm {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 24px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.formWrapper {
-  display: flex;
-  gap: 20px;
-}
-
-.messageWrapper {
-  flex: 3;
-}
-
-.messageArea {
-  position: relative;
-  background: #f2f5fa;
-  border-radius: 16px;
-  overflow: hidden;
-  height: 100%;
-}
-
-.messageArea textarea {
-  width: 100%;
-  height: 100%;
-  min-height: 150px;
-  padding: 20px 70px 20px 20px;
-  border: none;
-  background: transparent;
-  font-family: "Corbel", sans-serif;
-  font-size: 16px;
-  resize: none;
-  outline: none;
-}
-
-.sendButton {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: #6366f1;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.sendButton:hover {
-  background: #4f46e5;
-}
-
-.sendButton svg {
-  color: white;
-  width: 20px;
-  height: 20px;
-}
-
-.inputFields {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-.inputFields input {
-  width: 100%;
-  padding: 15px 20px;
-  border: none;
-  background: #f2f5fa;
-  border-radius: 16px;
-  font-family: "Corbel", sans-serif;
-  font-size: 16px;
-  outline: none;
-  height: 55px;
-}
-
 /* Responsive styles */
 @media (max-width: 1100px) {
   .trainersGrid {
@@ -413,13 +306,7 @@
     font-size: 16px;
   }
 
-  .formWrapper {
-    flex-direction: column;
-  }
-
-  .messageArea textarea {
-    min-height: 120px;
-  }
+ 
 }
 
 @media (max-width: 480px) {
@@ -491,29 +378,6 @@
     font-size: 14px;
   }
 
-  .messageArea textarea {
-    min-height: 100px;
-    padding: 15px 60px 15px 15px;
-    font-size: 15px;
-  }
-
-  .sendButton {
-    width: 36px;
-    height: 36px;
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .inputFields input {
-    padding: 12px 15px;
-    font-size: 15px;
-    height: 45px;
-  }
-
-  .contactForm {
-    padding: 20px;
-    border-radius: 20px;
-  }
 
   .navArrow {
     width: 30px;

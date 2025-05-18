@@ -1,7 +1,8 @@
 import Article1 from "../../../assets/images/Article.jpg";
 import Article2 from "../../../assets/images/Article2.png";
 import Article3 from "../../../assets/images/Article3.png";
-import styles from "../../Training/TrainingsPage.module.css";
+import styles from "../../../assets/styles/Trainings.module.css";
+
 import  TrainingCard  from "../../../components/Trainings/TrainingCard";
 const ArticlesSection = () => {
   const data = [

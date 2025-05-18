@@ -16,41 +16,39 @@ interface Trainer {
 }
 
 const TrainersSection: FC = () => {
-
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
-   responsive: [
+    slidesToScroll: 1,
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
-      }
-    
-    ]
+          initialSlide: 2,
+        },
+      },
+    ],
   };
   const trainers: Trainer[] = [
     {
@@ -88,68 +86,31 @@ const TrainersSection: FC = () => {
           </p>
         </div>
 
-       
-          <div className="slider-container py-4">
-            <Slider {...settings}>
-
-{trainers.map((trainer) => (
-            <div key={trainer.id} className={styles.trainerCard}>
-              <div className={styles.trainerImageContainer}>
-                <img
-                  src={trainer.image}
-                  alt={trainer.name}
-                  className={styles.trainerImage}
-                />
+        <div className="slider-container py-4">
+          <Slider {...settings}>
+            {trainers.map((trainer) => (
+              <div key={trainer.id} className={styles.trainerCard}>
+                <div className={styles.trainerImageContainer}>
+                  <img
+                    src={trainer.image}
+                    alt={trainer.name}
+                    className={styles.trainerImage}
+                  />
+                </div>
+                <div className={styles.trainerInfo}>
+                  <h3>{trainer.name}</h3>
+                  <h4>{trainer.title}</h4>
+                  <p>{trainer.description}</p>
+                </div>
               </div>
-              <div className={styles.trainerInfo}>
-                <h3>{trainer.name}</h3>
-                <h4>{trainer.title}</h4>
-                <p>{trainer.description}</p>
-              </div>
-            </div>
-          ))}
-            </Slider>
-
-          </div>
-          
-      
+            ))}
+          </Slider>
+        </div>
       </div>
 
       <TrainingExperiences />
 
       {/* Contact Section */}
-      <div className={styles.contactSection}>
-        <h2>Bizə Yaz</h2>
-        <p>
-          "Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə
-          hazırdır!"
-        </p>
-
-        <div className={styles.contactForm}>
-          <div className={styles.formWrapper}>
-            <div className={styles.messageWrapper}>
-              <div className={styles.messageArea}>
-                <textarea placeholder="Bizə yaz"></textarea>
-                <button className={styles.sendButton}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div className={styles.inputFields}>
-              <input type="text" placeholder="Ad Soyad" />
-              <input type="email" placeholder="E-mail adress" />
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

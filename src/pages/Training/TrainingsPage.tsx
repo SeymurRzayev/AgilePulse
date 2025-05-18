@@ -14,6 +14,7 @@ import TrainingsSearchContainer from "../../components/Trainings/TrainingsSearch
 import TrainingsCategoryList from "../../components/Trainings/TrainingsCategoryList";
 import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
 import TrainingsViewAllContainer from "../../components/Trainings/TrainingsViewAllContainer";
+import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 
 
 const TrainingsPage = () => {
@@ -97,6 +98,8 @@ const TrainingsPage = () => {
         <TrainingsViewAllContainer text="Hamısına bax" clickFunction={() => { }} />
         <PodcastsSection />
         <TrainersSection />
+
+        <TrainingsContactUs />
       </div>
       <Footer />
     </>
