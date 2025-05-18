@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ title, children, onClick, className }) 
       className={`
         w-[163px] h-[56px]
         rounded-[30px] 
-        border-none outline-none 
+         outline-none 
         text-white
         flex justify-center items-center 
         text-base font-normal 
