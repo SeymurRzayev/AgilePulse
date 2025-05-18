@@ -31,17 +31,20 @@ const PodcastsSection: FC = () => {
       name: "Günel Qasımova",
       desc1: "“Sprint Retrospective: Uğursuz",
       desc2: "sessiyaları necə faydalıya çevirək?”",
-    }
+    },
   ];
 
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: <CustomNextArrow />,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1024,
@@ -73,8 +76,8 @@ const PodcastsSection: FC = () => {
         <div className={styles.bannerText}>
           <h2>Podcastlar</h2>
           <p>
-            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks etdirən
-            söhbətlər burada səni gözləyir.
+            Teoriyadan praktikaya keçid edən, gündəlik Agile həyatını əks
+            etdirən söhbətlər burada səni gözləyir.
           </p>
         </div>
         <div className={styles.bannerImage}>

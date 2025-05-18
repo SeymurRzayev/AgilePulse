@@ -19,9 +19,12 @@ const TrainersSection: FC = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 1000,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1024,
@@ -71,6 +74,27 @@ const TrainersSection: FC = () => {
       title: "Agile Facilitator",
       description: "Retrospektiv və planlama təlimçisi",
       image: trainerThird,
+    },
+     {
+      id: 4,
+      name: "Tofiq İsayev",
+      title: "Agile Facilitator",
+      description: "Retrospektiv və planlama təlimçisi",
+      image: trainerThird,
+    },
+    {
+      id: 5,
+      name: "Məhəmməd Qasımov",
+      title: "Scrum Master və Agile Coach",
+      description: "8+ il real komanda təcrübəsi.",
+      image: trainerSecond,
+    },
+     {
+      id: 6,
+      name: "Səadət Hüseynova",
+      title: "Product Owner",
+      description: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
+      image: trainerFirst,
     },
   ];
 
