@@ -1,14 +1,38 @@
-const TrainingsContactUs = () => {
+import { type FC, useState } from "react";
+
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+const TrainingsContactUs: FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+ const handleSubmit = () => {
+  console.log(formData);
+  if (!formData.name || !formData.email || !formData.message) {
+    alert("Bütün sahələri doldurun.");
+    return;
+  }
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(formData.email)) {
+    alert("Email formatı yanlışdır.");
+    return;
+  }
+};
   return (
     <div className=" h-auto md:h-[380px] max-w-[851px] mx-auto flex flex-col gap-10 my-20 ">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
           Bizə Yaz
         </h2>
-        <p
-          
-          className="text-sm md:text-lg text-[#000000DE]"
-        >
+        <p className="text-sm md:text-lg text-[#000000DE]">
           “Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə
           hazırdır!”
         </p>
@@ -22,10 +46,16 @@ const TrainingsContactUs = () => {
           <div className="text-area relative  h-[123px] flex flex-col ">
             <textarea
               className="!w-full h-full !rounded-[20px] !border-0 bg-[#EAEDF5] md:min-w-[344px] "
-              name=""
+              name="message"
               id=""
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
             ></textarea>
-            <button className="absolute bottom-3 right-3 cursor-pointer">
+            <button
+              className="absolute bottom-3 right-3 cursor-pointer"
+              onClick={handleSubmit}
+            >
               <svg
                 width="32"
                 height="31"
@@ -68,11 +98,17 @@ const TrainingsContactUs = () => {
           </div>
           <div className="text-inputs flex flex-col gap-6 w-full">
             <input
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
               type="text"
               className=" w-full rounded-[30px] py-[16px] px-[12px] !text-[#00000061]"
               placeholder="Ad/Soyad"
             />
             <input
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               type="text"
               placeholder="E-mail adresi"
               className=" w-full rounded-[30px] py-[16px] px-[12px] !text-[#00000061]"
