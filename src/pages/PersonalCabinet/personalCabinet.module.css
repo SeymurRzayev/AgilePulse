@@ -35,9 +35,9 @@
   z-index: 2;
 }
 
-.profileImage button {
+/* .profileImage button {
   display: block;
-}
+} */
 .arrow {
   position: relative;
   top: 50px;
@@ -303,13 +303,7 @@ border-bottom-left-radius: 10px;
 border-width: 1.5px;
 box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
 }
-@media (max-width: 1497px) {
-  .imgCertificateBox img {
- /* min-width: 495px;
-min-height: 366px; */
 
-  }
-}
 
 
 
@@ -364,6 +358,14 @@ padding-right: 16px;
 padding-bottom: 12px;
 padding-left: 16px;
 }
+input:hover {
+  
+        border: 1px solid #3f51b5;
+        box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+        -webkit-box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+        -moz-box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
+    
+}
 textarea,input {
  border:1px solid  #B0B0B0;
  color: #B0B0B0;
@@ -389,7 +391,7 @@ min-height: 40px;
 }
 
 form button {
-gap: 8px;
+/* gap: 8px;
 border-radius: 30px;
 padding-top: 12px;
 padding-right: 24px;
@@ -397,7 +399,7 @@ padding-bottom: 12px;
 padding-left: 24px;
 background-color: #2C4B9B;
 color: #fff;
-border: none;
+border: none; */
 }
 
 
