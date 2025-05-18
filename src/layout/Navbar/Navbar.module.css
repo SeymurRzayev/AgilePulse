@@ -326,11 +326,9 @@
   }
 
   .sidebarActions {
-    width: 243px;
     display: flex;
     justify-content: space-between;
     gap: 8px;
-    margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid var(--gray-200);
   }
