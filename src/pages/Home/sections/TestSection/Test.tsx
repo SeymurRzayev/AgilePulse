@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import styles from "./Test.module.css";
 import image from "../../../../assets/images/testSectionImg.jpg";
 import AnimatedButton from "../../../../ui/AnimatedButton/AnimatedButton";
+
 export const Test: FC = () => {
   return (
     <div className={styles.testSection}>
       <div className={styles.titleAndTest}>
         <div className={styles.title}>
-          <p>Beynəlxalq standartlara uyğun suallarla biliyini </p>
-          <span className={styles.test}>test</span>{" "}
-          <p className={styles.pTitle}>et</p>
+          <p>
+            Beynəlxalq standartlara uyğun suallarla biliyini
+            <span className={styles.test}>test</span> et
+          </p>
         </div>
         <div className={styles.description}>
           <p>
@@ -18,7 +20,7 @@ export const Test: FC = () => {
             etdir!
           </p>
         </div>
-        <Link to="/exams"  className={styles.testButton}>
+        <Link to="/exams" className={`${styles.testButton}`}>
           <AnimatedButton>Testə başla</AnimatedButton>
         </Link>
       </div>
@@ -27,9 +29,8 @@ export const Test: FC = () => {
         <div className={styles.testTextContainer}>
           <div className={styles.testText}>
             <p>
-              {" "}
               Bizim məqsədimiz bilik səviyyəni müəyyən edərək sənə uyğun
-              təlimləri təklif etməkdir{" "}
+              təlimləri təklif etməkdir
             </p>
           </div>
         </div>

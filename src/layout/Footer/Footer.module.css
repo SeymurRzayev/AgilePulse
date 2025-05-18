@@ -451,7 +451,7 @@
 
 @media (max-width:480px) {
   .footer {
-    max-height: 250px;
+    max-height: 133px;
 
     .container {
       height: 100%;
@@ -466,12 +466,12 @@
 
       .logo {
         img {
-          width: 11px;
-          height: 13px;
+          width: 16px;
+          height: 19px;
         }
 
         span {
-          font-size: 6px;
+          font-size: 8px;
         }
       }
 
@@ -510,7 +510,7 @@
 
         li {
           a {
-            font-size: 6px;
+            font-size: 8px;
             line-height: 18px;
           }
         }
