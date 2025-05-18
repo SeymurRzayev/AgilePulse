@@ -1,4 +1,4 @@
-import styles from "./index.module.css";
+import styles from "./personalCabinet.module.css";
 import leftArrow from "../../assets/icons/left-arrow.svg";
 import user from "../../assets/images/user.png";
 import Button from "../../ui/Button/Button";
@@ -13,7 +13,6 @@ import choose from "../../assets/images/choose.png"
 import Image from "../../components/ImageComponent"
 import PersonalCabinetCard from "../../components/PersonalCabinetCard"
 import { useState } from "react";
-import ImageComponent from "../../components/ImageComponent";
 import useEmblaCarousel from "embla-carousel-react";
 
 
@@ -21,9 +20,6 @@ const Cabinet = () => {
 
   const [check, SetCheck] = useState<boolean>(false)
   const [emblaRef] = useEmblaCarousel()
-
-console.log(check);
-
 
   if (check) {
 
@@ -34,9 +30,9 @@ console.log(check);
           <div className={styles.profileImage}>
             <Button  onClick={() => SetCheck(false)}>
             
-            <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow} />
+            <Image src={leftArrow} width={60} height={60} className={styles.arrow} />
             </Button>
-            <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg} />
+            <Image src={user} alt="Emin Huseynov" className={styles.userImg} />
           </div>
 
           <div className={styles.profileContent}>
@@ -66,7 +62,7 @@ console.log(check);
               }}
               onClick={() => SetCheck(true)}
             >
-              <ImageComponent src={addIcon} alt="" />
+              <Image src={addIcon} alt="" />
               Məlumatları düzənlə
             </Button>
           </div>
@@ -96,7 +92,7 @@ console.log(check);
         <div className={styles.editPhotoSection}>
           <h2>Photo</h2>
           <Image src={choose} />
-          <Button children="Qalereyadan seç"
+          <Button children="Qalareyadan seç"
             style={{
               width: 200,
               height: 48,
@@ -120,8 +116,8 @@ console.log(check);
 
       <div className={styles.userCard}>
         <div className={styles.profileImage}>
-          <ImageComponent src={leftArrow} width={60} height={60} className={styles.arrow} />
-          <ImageComponent src={user} alt="Emin Huseynov" className={styles.userImg} />
+          <Image src={leftArrow} width={60} height={60} className={styles.arrow} />
+          <Image src={user} alt="Emin Huseynov" className={styles.userImg} />
         </div>
 
         <div className={styles.profileContent}>
@@ -151,7 +147,7 @@ console.log(check);
             }}
             onClick={() => SetCheck(true)}
           >
-            <ImageComponent src={addIcon} alt="" />
+            <Image src={addIcon} alt="" />
             Məlumatları düzənlə
           </Button>
         </div>
@@ -223,9 +219,6 @@ console.log(check);
 
         </div>
       </div>
-
-
-
     </div>
   );
 

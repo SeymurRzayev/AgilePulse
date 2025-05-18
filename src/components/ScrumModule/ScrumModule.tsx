@@ -23,7 +23,7 @@ const ScrumModule: FC = () => {
 
   const progress = 14.5;
   return (
-    <div className={styles.moduleWrapper}>
+    <div className={`${styles.moduleWrapper}`}>
       <div className={styles.progressBar}>
         <span
           className={styles.progressFill}
