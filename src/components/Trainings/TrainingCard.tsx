@@ -40,7 +40,7 @@ type TrainingCardProps = {
         </div>
       </div>
       <div className={styles.cardContent}>
-        <h3>{title}</h3>
+        <h3 className='w-4/5'>{title}</h3>
         <div className={styles.timeInfo}>
           {content && <p>{content}</p>}
           {!isArticle && <img src={timeIcon} alt="time_icon" />}
