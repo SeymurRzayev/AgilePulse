@@ -16,7 +16,6 @@ import TrainingListContainer from "../../components/Trainings/TrainingListContai
 import TrainingsViewAllContainer from "../../components/Trainings/TrainingsViewAllContainer";
 import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 
-
 const TrainingsPage = () => {
   const [activeItem, setActiveItem] = useState<string>("Scrum");
 
@@ -89,13 +88,22 @@ const TrainingsPage = () => {
 
   return (
     <>
-      <Navbar />
+      <div className="relative w-full flex items-center justify-center">
+        <Navbar />
+      </div>
       <div className={styles.container}>
         <TrainingsHeroContainer />
         <TrainingsSearchContainer />
-        <TrainingsCategoryList trainingCategories={trainingCategories} activeItem={activeItem} setActiveItem={setActiveItem} />
+        <TrainingsCategoryList
+          trainingCategories={trainingCategories}
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        />
         <TrainingListContainer trainingCourses={trainingCourses} />
-        <TrainingsViewAllContainer text="Hamısına bax" clickFunction={() => { }} />
+        <TrainingsViewAllContainer
+          text="Hamısına bax"
+          clickFunction={() => {}}
+        />
         <PodcastsSection />
         <TrainersSection />
 
