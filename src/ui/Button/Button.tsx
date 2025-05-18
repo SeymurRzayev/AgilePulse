@@ -1,17 +1,30 @@
-import type { CSSProperties, ReactNode, FC } from "react";
-import styles from "./Button.module.css";
+import React, { type ReactNode } from "react";
 
 interface ButtonProps {
-  children: ReactNode;
-  style?: CSSProperties;
+  title: string;
+  children?: ReactNode;
   onClick?: () => void;
-  className?: React.CSSProperties
+  className?: string;
 }
 
-const Button: FC<ButtonProps> = ({ children, style, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ title, children, onClick, className }) => {
   return (
-    <button className={styles.button} style={style} onClick={onClick} >
-      {children}
+    <button
+      onClick={onClick}
+      className={`
+        w-[163px] h-[56px]
+        rounded-[30px] 
+         outline-none 
+        text-white
+        flex justify-center items-center 
+        text-base font-normal 
+        cursor-pointer 
+        font-[Lexend]
+        ${className ?? ""}
+      `}
+    >
+      {title}
+      <span className="ml-2">{children && children}</span>
     </button>
   );
 };
