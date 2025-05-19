@@ -12,20 +12,20 @@ const TrainingsContactUs: FC = () => {
     message: "",
   });
 
- const handleSubmit = () => {
-  console.log(formData);
-  if (!formData.name || !formData.email || !formData.message) {
-    alert("Bütün sahələri doldurun.");
-    return;
-  }
+  const handleSubmit = () => {
+    console.log(formData);
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Bütün sahələri doldurun.");
+      return;
+    }
 
-  // Email validation regex
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(formData.email)) {
-    alert("Email formatı yanlışdır.");
-    return;
-  }
-};
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Email formatı yanlışdır.");
+      return;
+    }
+  };
   return (
     <div className=" h-auto md:h-[380px] max-w-[851px] mx-auto flex flex-col gap-10 my-20 ">
       <div className="flex flex-col justify-center items-center gap-4">
@@ -45,7 +45,7 @@ const TrainingsContactUs: FC = () => {
         <div className="form-center w-full flex flex-col-reverse md:flex-row gap-12 m-14 h-auto md:max-h-[123px]">
           <div className="text-area relative  h-[123px] flex flex-col ">
             <textarea
-              className="!w-full h-full !rounded-[20px] !border-0 bg-[#EAEDF5] md:min-w-[344px] "
+              className="!w-full h-full !rounded-[20px] !border-0 bg-[#EAEDF5] md:min-w-[344px] p-2 "
               name="message"
               id=""
               onChange={(e) =>
@@ -102,7 +102,7 @@ const TrainingsContactUs: FC = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
               type="text"
-              className=" w-full rounded-[30px] py-[16px] px-[12px] !text-[#00000061]"
+              className=" w-full rounded-[30px] py-[12px] px-[16px] !text-[#00000061]"
               placeholder="Ad/Soyad"
             />
             <input
@@ -111,7 +111,7 @@ const TrainingsContactUs: FC = () => {
               }
               type="text"
               placeholder="E-mail adresi"
-              className=" w-full rounded-[30px] py-[16px] px-[12px] !text-[#00000061]"
+              className=" w-full rounded-[30px] py-[12px] px-[16px] !text-[#00000061]"
             />
           </div>
         </div>
