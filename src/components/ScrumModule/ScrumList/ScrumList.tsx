@@ -1,9 +1,9 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Button from "../../../ui/Button/Button";
 import AccordionItem from "../../AccordionItem";
-import { dummyMock } from "../../../dummyMock";
+/* import { dummyMock } from "../../../dummyMock";
 import save from "../../../assets/icons/save.svg"
-import timeIcon from "../../../assets/icons/time.svg"
+import timeIcon from "../../../assets/icons/time.svg" */
 // import PersonalCard from "../../PersonalCard";
 import TrainersSection from "../../../pages/Training/sections/TrainersSection/TrainersSection";
 
