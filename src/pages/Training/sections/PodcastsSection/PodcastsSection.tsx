@@ -1,9 +1,9 @@
 import type { FC } from "react";
 import styles from "./PodcastsSection.module.css";
 import micImg from "../../../../assets/images/mic.png";
-import podcast1 from "../../../../assets/images/podcast1.jpg";
-import podcast2 from "../../../../assets/images/podcast2.jpg";
-import podcast3 from "../../../../assets/images/podcast3.jpg";
+import podcast1 from "../../../../assets/images/podcast1.webp";
+import podcast2 from "../../../../assets/images/podcast2.webp";
+import podcast3 from "../../../../assets/images/podcast3.webp";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -81,7 +81,7 @@ const PodcastsSection: FC = () => {
           </p>
         </div>
         <div className={styles.bannerImage}>
-          <img src={micImg} alt="Mikrofon" />
+          <img src={micImg} alt="Mikrofon" loading="lazy" />
         </div>
       </div>
       <div className={styles.sliderContainer}>
@@ -92,6 +92,7 @@ const PodcastsSection: FC = () => {
                 className={styles.cardImg}
                 src={podcast.image}
                 alt={podcast.name}
+                loading="lazy"
               />
               <div className={styles.cardInfo}>
                 <div className={styles.cardName}>{podcast.name}</div>
