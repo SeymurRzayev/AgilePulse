@@ -3,6 +3,7 @@ import styles from "../../assets/styles/Trainings.module.css";
 import timeIcon from "../../assets/icons/time.svg";
 import bookmarkIcon from "../../assets/icons/bookmark.svg";
 import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
+import { Link } from "react-router-dom";
 
 type TrainingCardProps = {
   imgUrl: string;
@@ -33,9 +34,11 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
           <div className={styles.curve_one}></div>
           <div className={styles.infoButton}>
-            <button className={styles.start_btn}>
-              {isArticle ? "Daha çox" : "Kursa başla"}
-            </button>
+            <Link to={isArticle ? "/article" : "/trainings/scrum"}>
+              <button className={styles.start_btn}>
+                {isArticle ? "Daha çox" : "Kursa başla"}
+              </button>
+            </Link>
           </div>
         </div>
       </div>
