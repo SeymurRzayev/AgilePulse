@@ -1,12 +1,14 @@
 import Slider from "react-slick";
 import ExpCard from "../../../components/TrainingExperienceCard/ExpCard";
-import img1 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
-import img2 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
-import img3 from '../../../assets/images/943898faecd477f7d486f17373ff66441ae92315.jpg'
+import img1 from "../../../assets/images/testominal1.webp";
 
 import type { CustomArrowProps } from "react-slick";
 
-export const CustomNextArrow = ({ className, style, onClick }: CustomArrowProps) => {
+export const CustomNextArrow = ({
+  className,
+  style,
+  onClick,
+}: CustomArrowProps) => {
   return (
     <div
       className={className}
@@ -56,9 +58,30 @@ const CustomPrevArrow = ({ className, style, onClick }: CustomArrowProps) => {
 
 const TrainingExperiences = () => {
   const data = [
-    { id: 1, img: `${img1}`, name: "Nigar Məmmədova", subtitle: 'Agile təlimi mənim üçün tam bir geri dönüş nöqtəsi oldu.Məzmun real iş həyatına uyğun qurulmuşdu.', date: "15.03.2025" },
-    { id: 2, img: `${img2}`, name: "Elvin Quliyev", subtitle: 'Platforma çox peşəkar formada hazırlanıb. Təlimin sonunda  Agile metodologiyasını rahatlıqla tətbiq edə bilirəm.', date: "02.04.2025" },
-    { id: 3, img: `${img3}`, name: "Alice Doe", subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, magnam.', date: "2022-03-01" },
+    {
+      id: 1,
+      img: `${img1}`,
+      name: "Nigar Məmmədova",
+      subtitle:
+        "Agile təlimi mənim üçün tam bir geri dönüş nöqtəsi oldu.Məzmun real iş həyatına uyğun qurulmuşdu.",
+      date: "15.03.2025",
+    },
+    {
+      id: 2,
+      img: `${img1}`,
+      name: "Elvin Quliyev",
+      subtitle:
+        "Platforma çox peşəkar formada hazırlanıb. Təlimin sonunda  Agile metodologiyasını rahatlıqla tətbiq edə bilirəm.",
+      date: "02.04.2025",
+    },
+    {
+      id: 3,
+      img: `${img1}`,
+      name: "Alice Doe",
+      subtitle:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, magnam.",
+      date: "2022-03-01",
+    },
   ];
   const settings = {
     dots: false,
@@ -66,10 +89,10 @@ const TrainingExperiences = () => {
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 2,
-    
+
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-    
+
     responsive: [
       {
         breakpoint: 1024,
@@ -106,12 +129,16 @@ const TrainingExperiences = () => {
         </h2>
         <p className="text-sm w-full md:w-2/3 font-normal text-center">
           AgilePulse platformasında təlim keçmiş iştirakçılarımızın real
-          fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada bilər.
+          fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada
+          bilər.
         </p>
       </div>
 
       <div className="exp-slider w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
-        <Slider {...settings} className="w-full flex px-2 justify-center  items-center">
+        <Slider
+          {...settings}
+          className="w-full flex px-2 justify-center  items-center"
+        >
           {data.map((item) => (
             <ExpCard
               img={item.img}
@@ -124,7 +151,6 @@ const TrainingExperiences = () => {
         </Slider>
       </div>
     </div>
-
   );
 };
 
