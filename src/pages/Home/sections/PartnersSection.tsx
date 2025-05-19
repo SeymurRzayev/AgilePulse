@@ -26,6 +26,7 @@ const PartnersSection: FC = () => {
             alt=""
             className="h-24 md:h-56 w-full object-cover rounded-lg"
             key={index}
+            loading="lazy"
           />
         ))}
       </div>
