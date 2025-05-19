@@ -15,13 +15,15 @@ const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
                 <img
                     src={img}
                     className="rounded-bl-md rounded-tr-md rounded-br-[30px] md:rounded-br-[50px] w-[80px] h-[100px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-tl-[30px] md:rounded-tl-[50px] bg-center object-cover"
+                    alt="testimonial"
+                    loading='lazy'
                 />
             </div>
 
             <div className="relative w-[92%] md:w-[90%] sm:w-[95%] ml-auto bg-[#FFFFFF] shadow-lg rounded-bl-lg rounded-tr-lg rounded-br-[100px] rounded-tl-[100px] py-5 md:py-9">
 
                 <div className="absolute top-0 w-full right-0 flex justify-end">
-                    <img className="w-[42px]" src={quotes} alt="" />
+                    <img className="w-[42px]" src={quotes} alt="testimonial" loading='lazy' />
                 </div>
 
                 <div className="flex flex-col ml-20 justify-between">

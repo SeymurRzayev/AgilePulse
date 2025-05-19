@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Test.module.css";
-import image from "../../../../assets/images/testSectionImg.jpg";
+import image from "../../../../assets/images/testSectionImg.webp";
 import AnimatedButton from "../../../../ui/AnimatedButton/AnimatedButton";
 
 export const Test: FC = () => {
@@ -35,7 +35,7 @@ export const Test: FC = () => {
           </div>
         </div>
         <div className={styles.image}>
-          <img src={image} alt="Test mərhələsi şəkili" />
+          <img src={image} alt="Test mərhələsi şəkili" loading="lazy" />
         </div>
       </div>
     </div>
