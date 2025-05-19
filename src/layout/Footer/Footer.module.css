@@ -455,7 +455,7 @@
 
 @media (max-width:480px) {
   .footer {
-    max-height: 140px;
+    max-height: 160px;
 
     .container {
       height: 100%;
@@ -488,10 +488,9 @@
           width: 115px;
           height: 20px;
          
-
-
           input {
             width: 55%;
+            font-size: 8px;
           }
 
           input::placeholder {
@@ -506,6 +505,10 @@
             font-size: 7px;
           }
         }
+          .errorText{
+            font-size: 6px;
+            line-height: 10px;
+          }
       }
 
       .navmenu {
@@ -540,7 +543,7 @@
     }
 
     .bottomLine {
-      padding-bottom: 3px;
+      padding-bottom: 1px;
       height: 16px;
 
       li {
