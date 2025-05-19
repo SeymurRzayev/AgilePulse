@@ -45,7 +45,7 @@ const Navbar: FC<NavbarProps> = ({
       label: "Haqqımızda",
     },
     {
-      path:"/agileAcademy",
+      path:"/personal-cabinet",
       label:"Agile Akademiya"
     }
   ];
