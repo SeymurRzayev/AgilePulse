@@ -59,7 +59,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
       {!isArticle && (
         <div className={styles.cardFooter}>
           <div className={styles.author}>
-            <img src={avatar} alt={user} />
+            <img src={avatar} alt={user} loading="lazy" />
             <span>{user}</span>
           </div>
           <div className={styles.date}>{date}</div>
