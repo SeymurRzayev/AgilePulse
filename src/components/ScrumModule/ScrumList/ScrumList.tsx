@@ -4,7 +4,7 @@ import AccordionItem from "../../AccordionItem";
 import { dummyMock } from "../../../dummyMock";
 import save from "../../../assets/icons/save.svg"
 import timeIcon from "../../../assets/icons/time.svg"
-import PersonalCard from "../../PersonalCard";
+// import PersonalCard from "../../PersonalCard";
 import TrainersSection from "../../../pages/Training/sections/TrainersSection/TrainersSection";
 
 
@@ -48,7 +48,7 @@ const ScrumList = () => {
         <div className="overflow-hidden" ref={emblaRef}>
 
           <div className="flex gap-8 mx-auto pt-2 justify-start items-center flex-col md:flex-row">
-             {
+    {/*          {
               dummyMock.map(({ certificate, userPhoto, id,title,description,author }) => {
                 return <PersonalCard 
                 certificate={certificate}
@@ -64,7 +64,7 @@ const ScrumList = () => {
  rounded-tl-[100px] rounded-tr-[100px] rounded-br-[100px] rounded-bl-[10px] box-border"/>
 
               })
-            }
+            } */}
           </div>
         </div>
 

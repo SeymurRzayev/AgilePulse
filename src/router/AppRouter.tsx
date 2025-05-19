@@ -4,10 +4,11 @@ import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import TrainingsPage from "../pages/Training/TrainingsPage";
-import PersonalCabinet from "../pages/PersonalCabinet";
+// import PersonalCabinet from "../pages/PersonalCabinet";
 import { Home } from "../pages/Home/Home";
 
 import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
+import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
 const AppRouter: FC = () => {
   return (
     <Routes>
