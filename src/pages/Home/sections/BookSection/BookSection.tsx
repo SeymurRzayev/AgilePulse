@@ -118,6 +118,7 @@ const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
               src={image}
               alt={`Agile book ${index + 1}`}
               className={styles.bookImage}
+              loading="lazy"
             />
           </div>
         ))}

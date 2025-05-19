@@ -1,6 +1,6 @@
-import Article1 from "../../../assets/images/Article.jpg";
-import Article2 from "../../../assets/images/Article2.png";
-import Article3 from "../../../assets/images/Article3.png";
+import Article1 from "../../../assets/images/Article.webp";
+import Article2 from "../../../assets/images/Article2.webp";
+import Article3 from "../../../assets/images/Article3.webp";
 import styles from "../../../assets/styles/Trainings.module.css";
 
 import  TrainingCard  from "../../../components/Trainings/TrainingCard";
