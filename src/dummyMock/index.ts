@@ -1,10 +1,18 @@
 import userPhoto from "../assets/images/user.png"
 import certificate from "../assets/images/certificate.png"
- export const dummyMock = [
+import Trainer1 from '../assets/images/trainer1.jpg'
+import Trainer2 from '../assets/images/trainer2.jpg'
+import Trainer3 from '../assets/images/trainer3.jpg'
+import Image1 from '../assets/images/training1.jpg'
+import Image2 from '../assets/images/training2.jpg'
+import Image3 from '../assets/images/training3.jpg'
+export const dummyMock = [
   {
     id: 1,
-     certificate,
-     userPhoto,
+    profileImgUrl: `${Trainer1}`,
+    imgUrl: `${Image1}`,
+    certificate,
+    userPhoto,
     title: "Scrum nədir? Praktik Başlanğıc",
     description: "4 modul · 16 blok",
     author: "Tofiq Isayev",
@@ -12,6 +20,8 @@ import certificate from "../assets/images/certificate.png"
   },
   {
     id: 2,
+    profileImgUrl: `${Trainer2}`,
+    imgUrl: `${Image2}`,
     certificate,
     title: "Agile Manifesto və 12 Prinsip",
     userPhoto,
@@ -21,6 +31,8 @@ import certificate from "../assets/images/certificate.png"
   },
   {
     id: 3,
+    profileImgUrl: `${Trainer3}`,
+    imgUrl: `${Image3}`,
     certificate,
     title: "Kanban ilə İş Axınını Optimallaşdır",
     userPhoto,
