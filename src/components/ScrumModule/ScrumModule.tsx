@@ -28,11 +28,11 @@ const ScrumModule: FC = () => {
       <div className={`${styles.moduleWrapper}`}>
         <div className={styles.progressBar}>
           <span
-            className={styles.progressFill}
+            className={`${styles.progressFill} mt-5 `}
             style={{ width: `${progress}%` }}
           />
-          <div className={styles.trainerInfo}>
-            <div>
+          <div className={`${styles.trainerInfo} mt-5  flex-col md:flex-row md:justify-start md:items-start`}>
+            <div >
               <img
                 src={scrumTrainer.image}
                 alt={scrumTrainer.name}
@@ -40,17 +40,19 @@ const ScrumModule: FC = () => {
               />
               <h3 className={styles.trainerName}>{scrumTrainer.name}</h3>
             </div>
-            <p className={styles.trainerDate}>{scrumTrainer.date}</p>
-            <p className={styles.trainerDuration}>{scrumTrainer.time}</p>
-            <button className={styles.favoriteBtn}>
-              <img className={styles.favorite} src={bookmark} />
-            </button>
+            <div className="flex flex-col justify-center  md:w-[60%]">
+              <p className={`${styles.trainerDate} text-xl md:text-2xl`}>{scrumTrainer.date}</p>
+              <p className={`${styles.trainerDuration} text-xl md:text-2xl md:[background-size:48.5px_46.4px] [background-size:35.5px_35.4px]`}>{scrumTrainer.time}</p>
+              <button className={`${styles.favoriteBtn} w-[45px] md:w-[86px]`}>
+                <img className={styles.favorite} src={bookmark} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
       <ScrumList />
       <div className="w-[70%] mx-auto">
-        <TrainingsContactUs/>
+        <TrainingsContactUs />
       </div>
     </>
   );
