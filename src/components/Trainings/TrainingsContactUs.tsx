@@ -27,7 +27,7 @@ const TrainingsContactUs: FC = () => {
     }
   };
   return (
-    <div className=" h-auto md:h-[380px] max-w-[851px] mx-auto flex flex-col gap-10 my-20 ">
+    <div className=" h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20 ">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
           Bizə Yaz

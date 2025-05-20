@@ -301,10 +301,10 @@ body {
 
 .cardFooter {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 25px 25px;
   height: 70px;
+  gap: 28px;
 }
 
 .author {

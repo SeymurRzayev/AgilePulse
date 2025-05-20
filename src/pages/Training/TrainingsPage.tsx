@@ -88,7 +88,7 @@ const TrainingsPage = () => {
 
   return (
     <>
-      <div className="relative w-full flex items-center justify-center">
+      <div className="relative left-0 w-full flex items-center justify-center">
         <Navbar />
       </div>
       <div className={styles.container}>
@@ -107,7 +107,9 @@ const TrainingsPage = () => {
         <PodcastsSection />
         <TrainersSection />
 
-        <TrainingsContactUs />
+        <div className="w-[70%] mx-auto">
+          <TrainingsContactUs />
+        </div>
       </div>
       <Footer />
     </>
