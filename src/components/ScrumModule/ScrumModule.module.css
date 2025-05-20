@@ -39,7 +39,7 @@
     width: 100%;
 }
 
-.trainerInfo div {
+.trainerInfo div:not(:first-child) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -67,7 +67,7 @@
 }
 
 .trainerName {
-    font-size: 30px;
+    /* font-size: 30px; */
     font-weight: 700;
     line-height: 36px;
     color: rgba(86, 111, 175, 1);
