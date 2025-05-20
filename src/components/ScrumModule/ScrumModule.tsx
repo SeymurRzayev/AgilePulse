@@ -32,13 +32,13 @@ const ScrumModule: FC = () => {
             style={{ width: `${progress}%` }}
           />
           <div className={`${styles.trainerInfo} mt-5  flex-col md:flex-row md:justify-start md:items-start`}>
-            <div >
+            <div className="flex flex-col md:items-center md:flex-row ">
               <img
                 src={scrumTrainer.image}
                 alt={scrumTrainer.name}
-                className={styles.trainerImage}
+                className={`${styles.trainerImage}  `}
               />
-              <h3 className={styles.trainerName}>{scrumTrainer.name}</h3>
+              <h3 className={`${styles.trainerName} mt-3 md:mt-0 text-2xl md:text-3xl`}>{scrumTrainer.name}</h3>
             </div>
             <div className="flex flex-col justify-center  md:w-[60%]">
               <p className={`${styles.trainerDate} text-xl md:text-2xl`}>{scrumTrainer.date}</p>
