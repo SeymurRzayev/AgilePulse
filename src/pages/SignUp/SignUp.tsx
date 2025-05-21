@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { FC} from "react";
+import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import styles from "./SignUp.module.css";
@@ -26,17 +26,13 @@ const SignUp: FC = () => {
 
   // Handle form submission
   const onSubmit = (data: FormValues) => {
-     console.log(data);
-    alert("Qeydiyyat uğurla tamamlandı")
+    console.log(data);
+    alert("Qeydiyyat uğurla tamamlandı");
   };
 
   return (
     <div className={styles.signUp}>
-   
-      <AuthIllustration 
-      imgSrc={authImage}
-       title="Hədəfə çevik yolla çat!"
-        />
+      <AuthIllustration imgSrc={authImage} title="Hədəfə çevik yolla çat!" />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h1>Qeydiyyat</h1>
         <div className={styles.inputFields}>
@@ -44,9 +40,23 @@ const SignUp: FC = () => {
           <Controller
             name="name"
             control={control}
+            rules={{
+              required: "Ad Soyad daxil edilməlidir",
+              pattern: {
+                value:
+                  /^[A-Za-zƏəÖöÜüÇçĞğİıŞş]{2,}(?:\s[A-Za-zƏəÖöÜüÇçĞğİıŞş]{2,})?$/,
+                message:
+                  "Yalnız hərflərdən istifadə edin (rəqəm və simvol olmaz)",
+              },
+            }}
             render={({ field }) => (
-              <InputField placeholder="Ad Soyad" {...field} />
+              <InputField 
+              placeholder="Ad Soyad"
+               {...field} 
+                error={errors.name?.message}
+               />
             )}
+                 
           />
 
           {/* Email input with validation */}
@@ -77,7 +87,11 @@ const SignUp: FC = () => {
                 const letters = (value.match(/[A-Za-z]/g) || []).length;
                 const digits = (value.match(/\d/g) || []).length;
                 const symbols = (value.match(/[^A-Za-z0-9]/g) || []).length;
+                const hasSpace = /\s/.test(value);
 
+                if (hasSpace) {
+                  return "Şifrə boşluq simvolu ehtiva etməməlidir";
+                }
                 if (letters < 6 || digits < 2 || symbols < 2) {
                   return "Şifrə minimum 6 hərf, 2 rəqəm və 2 simvol olmalıdır";
                 }
@@ -86,12 +100,13 @@ const SignUp: FC = () => {
               },
             }}
             render={({ field }) => (
-              <InputField type="password" placeholder="Şifrə"
-               {...field} 
-               error={errors.password?.message}
+              <InputField
+                type="password"
+                placeholder="Şifrə"
+                {...field}
+                error={errors.password?.message}
               />
             )}
-           
           />
 
           {/* Forgot password link */}
