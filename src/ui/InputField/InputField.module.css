@@ -59,53 +59,58 @@
     }
 }
 
-@media (min-width: 1024px){
- .inputFieldContainer {
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-
-    .inputField {
-        width: 100%;
-        height: 60px;
-        font-size: 20px;
-        margin-top: 20px;
-
-    }
-     .inputField::placeholder {
-        font-family: "Corbel";
-        font-size: 20px;
-        font-weight: 300;
-      
-    }
- .errorMsg {
-        font-size: 16px;
-    }
-}
-
-}
-@media only screen and (max-width: 480px){
+@media (min-width: 1024px) {
     .inputFieldContainer {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: "Lexend";
 
+        .inputField {
+            width: 100%;
+            height: 60px;
+            font-size: 20px;
+            margin-top: 20px;
+            font-family: "Lexend";
 
-    .inputField {
-        width: 100%;
-        height: 40px;
-        font-size: 14px;
-        margin-top: 20px;
+        }
 
+        .inputField::placeholder {
+            font-family: "Lexend";
+            font-size: 20px;
+            font-weight: 300;
+
+        }
+
+        .errorMsg {
+            font-size: 16px;
+        }
     }
-     .errorMsg {
-        font-size: 14px;
-    }
+
 }
+
+@media only screen and (max-width: 480px) {
+    .inputFieldContainer {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        .inputField {
+            width: 100%;
+            height: 40px;
+            font-size: 14px;
+            margin-top: 20px;
+
+        }
+
+        .errorMsg {
+            font-size: 14px;
+        }
+    }
 
 }
