@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Test.module.css";
-import image from "../../../../assets/images/testSectionImg.webp";
+import image from "../../../../assets/images/testSectionImg.png";
 import AnimatedButton from "../../../../ui/AnimatedButton/AnimatedButton";
 
 export const Test: FC = () => {
