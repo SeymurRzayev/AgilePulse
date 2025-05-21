@@ -296,6 +296,7 @@
 
   .closeButton:hover {
     background: var(--gray-100);
+    
   }
 
   .sidebarNav {

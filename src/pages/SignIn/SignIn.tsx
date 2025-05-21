@@ -9,13 +9,14 @@ import authImgSignIn from "../../assets/images/authImageSignIn.jpg";
 interface LoginForm {
   email: string;
   password: string;
-  error:string;
+  error: string;
 }
 const SignIn: FC = () => {
-  const { control,
-     handleSubmit ,
-     formState: { errors },
-    } = useForm<LoginForm>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>({
     mode: "all",
   });
   // onSubmit function
@@ -61,7 +62,11 @@ const SignIn: FC = () => {
                 const letters = (value.match(/[A-Za-z]/g) || []).length;
                 const digits = (value.match(/\d/g) || []).length;
                 const symbols = (value.match(/[^A-Za-z0-9]/g) || []).length;
+                const hasSpace = /\s/.test(value);
 
+                if (hasSpace) {
+                  return "Şifrə boşluq simvolu ehtiva etməməlidir";
+                }
                 if (letters < 6 || digits < 2 || symbols < 2) {
                   return "Şifrə minimum 6 hərf, 2 rəqəm və 2 simvol olmalıdır";
                 }
