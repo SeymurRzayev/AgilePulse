@@ -19,7 +19,7 @@ const AppRouter: FC = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
-      <Route path="/library/:id" element={<LibraryDetails />} />
+      <Route path="/library/detail" element={<LibraryDetails />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
     </Routes>
