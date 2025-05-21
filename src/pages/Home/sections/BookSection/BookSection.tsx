@@ -5,6 +5,7 @@ import type { Settings } from "react-slick";
 import styles from "./BookSection.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
 const bookImages = [
   "https://as2.ftcdn.net/v2/jpg/00/34/26/61/1000_F_34266135_Cki3pgen1JRdEuthnW3YXgrvHGhjlAqn.jpg",
@@ -21,10 +22,11 @@ const bookImages = [
 
 
 const BookSection: FC = () => {
+  const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(2);
   const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<Slider>(null);
-const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
 
   const startAutoplay = useCallback(() => {
@@ -103,9 +105,8 @@ const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
         {bookImages.map((image, index) => (
           <div
             key={index}
-            className={`${styles.slideItem} ${
-              index === activeIndex ? styles.activeSlide : styles.blurredSlide
-            }`}
+            className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
+              }`}
             onClick={togglePause}
             title={
               isPaused
@@ -125,7 +126,7 @@ const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
       </Slider>
 
       <div className={styles.buttonContainer}>
-        <button className={styles.moreButton}>Daha çox</button>
+        <button onClick={() => navigate('/library')} className={styles.moreButton}>Daha çox</button>
       </div>
     </div>
   );

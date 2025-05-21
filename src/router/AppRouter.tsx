@@ -4,11 +4,11 @@ import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import TrainingsPage from "../pages/Training/TrainingsPage";
-// import PersonalCabinet from "../pages/PersonalCabinet";
 import { Home } from "../pages/Home/Home";
 
 import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
 import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
+import Library from "../pages/Library/Library";
 const AppRouter: FC = () => {
   return (
     <Routes>
@@ -17,6 +17,8 @@ const AppRouter: FC = () => {
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
+      <Route path="/library" element={<Library />} />
+      <Route path="/library/:id" element={<Library />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
     </Routes>
