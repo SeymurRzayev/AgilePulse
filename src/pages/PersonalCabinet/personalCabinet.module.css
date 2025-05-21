@@ -28,6 +28,7 @@
 .userCard {
   display: flex;
   flex-direction: column;
+  
 }
 
 .profileImage {
@@ -35,7 +36,7 @@
   flex-direction: row;
   position: relative;
   z-index: 2;
-  justify-content: start;
+  justify-content:start;
   align-items: start;
 }
 
@@ -352,7 +353,7 @@
 }
 
 .editSection {
-  width: 60% !important;
+  width: 100% !important;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -408,19 +409,20 @@ textarea {
 
 
 .editPhotoSection {
-  width: 50% !important;
+  width: 100% !important;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
 
-.editPhotoSection img {
+/* .editPhotoSection img {
   width: 373;
   height: 392;
   border-radius: 30px;
-}
+} */
 
 .editPhotoSection button {
   gap: 8px;

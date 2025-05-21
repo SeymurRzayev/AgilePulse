@@ -81,17 +81,44 @@ const PersonalCabinetTrainings = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 2,
+         responsive: [
+      {
+        breakpoint: 1281,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+
+    ]
     }
 
     return (
-        <div className='w-[74%] mx-auto mt-4'>
+        <div className='w-[74%] md:w-[50%] xl:w-[74%] mx-auto mt-4  '>
             <div className='flex mt-4 items-center justify-between w-[95%]'>
                 <p className='font-semibold text-2xl'>Şəxsi Kabinet</p>
                 <span
                     onClick={() => navigate('/')}
                     style={{ fontFamily: 'Raleway' }}
-                    className='flex cursor-pointer gap-2 text-[20px] items-center font-semibold text-[#1e3a8a]' ><img src={Logo} alt=""
+                    className='cursor-pointer gap-2 text-base items-center font-semibold text-[#1e3a8a] hidden md:flex' >
+                        <img src={Logo} alt=""
                     /> Agile Pulse
                 </span>
             </div>
@@ -99,7 +126,7 @@ const PersonalCabinetTrainings = () => {
                 <p className='text-[#000000DE] text-xl font-semibold'>Təlimlərim</p>
                 <div className='w-full'>
                     <div>
-                        <ul className="flex py-6 gap-2 font-semibold text-[#000000DE] font-[Corbel] text-[20px]">
+                        <ul className="flex py-6 gap-2 font-semibold text-[#000000DE] font-[Corbel] sm:text-xl text-base ">
                             {
                                 navLink.map((linkName, index) => (
                                     <li

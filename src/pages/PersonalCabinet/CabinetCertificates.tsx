@@ -11,7 +11,34 @@ const CabinetCertificates = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 2,
+
+              responsive: [
+      {
+        breakpoint: 1281,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+
+    ]
     }
 
     return (
