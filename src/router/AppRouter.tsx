@@ -9,6 +9,7 @@ import { Home } from "../pages/Home/Home";
 import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
 import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
 import Library from "../pages/Library/Library";
+import LibraryDetails from "../pages/Library/LibraryDetails";
 const AppRouter: FC = () => {
   return (
     <Routes>
@@ -18,7 +19,7 @@ const AppRouter: FC = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
-      <Route path="/library/:id" element={<Library />} />
+      <Route path="/library/:id" element={<LibraryDetails />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
     </Routes>
