@@ -17,9 +17,9 @@ const UserInfo = ({ setEditMode, isEditMode }: UserInfoProps) => {
   }
 
   return (
-    <div className={`${styles.userCard}  mt-[28px] ${isEditMode ? 'ml-[50px]' : 'ml-[25px]'} `}>
+    <div className={`${styles.userCard}  mt-[28px] ${isEditMode ? 'ml-[50px]' : 'sm:ml-[25px] ml-0'} md:items-start   items-center `}>
       <div className={styles.profileImage}>
-        <Image onClick={goBack} src={leftArrow} width={60} height={60} className={styles.arrow} />
+        <Image onClick={goBack} src={leftArrow} width={60} height={60} className={`${styles.arrow}  hidden sm:block`} />
         <Image src={user} alt="Emin Huseynov" className={styles.userImg} />
       </div>
 
