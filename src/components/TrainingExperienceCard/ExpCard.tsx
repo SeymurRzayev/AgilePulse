@@ -9,9 +9,9 @@ interface ExpCardProps {
 
 const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
     return (
-        <div className="relative py-3">
+        <div className="relative mx-auto max-w-[524px] max-h-[240px]">
 
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute left-0 top-1/2  md:top-1/2  -translate-y-1/2 z-10">
                 <img
                     src={img}
                     className="rounded-bl-md rounded-tr-md rounded-br-[30px] md:rounded-br-[50px] w-[80px] h-[100px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-tl-[30px] md:rounded-tl-[50px] bg-center object-cover"
@@ -20,16 +20,16 @@ const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
                 />
             </div>
 
-            <div className="relative w-[92%] md:w-[90%] sm:w-[95%] ml-auto bg-[#FFFFFF] shadow-lg rounded-bl-lg rounded-tr-lg rounded-br-[100px] rounded-tl-[100px] py-5 md:py-9">
+            <div className="relative flex items-center w-[92%] md:w-[90%] sm:w-[95%] ml-auto bg-[#FFFFFF] shadow-lg rounded-bl-lg rounded-tr-lg rounded-br-[100px] rounded-tl-[100px] h-[240px]">
 
-                <div className="absolute top-0 w-full right-0 flex justify-end">
-                    <img className="w-[42px]" src={quotes} alt="testimonial" loading='lazy' />
+                <div className="absolute top-[24px] right-[23px] flex justify-end">
+                    <img className="w-[44px] h-[44px]" src={quotes} alt="testimonial" loading='lazy' />
                 </div>
 
-                <div className="flex flex-col ml-20 justify-between">
-                    <h3 className="text-base md:text-2xl font-bold">{title}</h3>
-                    <p className="md:font-medium-regular text-md leading-relaxed line-clamp-3 md:min-h-[5rem]">{subtitle}</p>
-                    <span className="text-sm mt-[4%] text-gray-500">{date}</span>
+                <div className="flex flex-col ml-20 max-w-[339px] max-h-[240px]">
+                    <h3 className="text-base font-[Corbel] sm:text-xl lg:text-2xl font-bold">{title}</h3>
+                    <p className="md:font-medium-regular mt-[8px] font-normal text-lg font-[Corbel] leading-relaxed line-clamp-3 md:min-h-[5rem]">{subtitle}</p>
+                    <span className="text-lg font-normal font-[Corbel] mt-[24px] text-gray-500">{date}</span>
                 </div>
             </div>
         </div>
