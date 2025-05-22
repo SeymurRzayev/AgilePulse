@@ -1,7 +1,6 @@
 import Slider from "react-slick";
 import ExpCard from "../../../components/TrainingExperienceCard/ExpCard";
 import img1 from "../../../assets/images/testominal1.webp";
-
 import type { CustomArrowProps } from "react-slick";
 
 export const CustomNextArrow = ({
@@ -18,15 +17,15 @@ export const CustomNextArrow = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#eee",
+        background: "#FFFFFF",
         borderRadius: "50%",
         width: "40px",
         height: "40px",
         zIndex: 1,
       }}
     >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M8 5l8 7-8 7" stroke="#000" strokeWidth="2" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" clipRule="evenodd" d="M12.2929 4.29289C12.6834 3.90237 13.3166 3.90237 13.7071 4.29289L20.7071 11.2929C21.0976 11.6834 21.0976 12.3166 20.7071 12.7071L13.7071 19.7071C13.3166 20.0976 12.6834 20.0976 12.2929 19.7071C11.9024 19.3166 11.9024 18.6834 12.2929 18.2929L17.5858 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11H17.5858L12.2929 5.70711C11.9024 5.31658 11.9024 4.68342 12.2929 4.29289Z" fill="#000000" />
       </svg>
     </div>
   );
@@ -42,15 +41,15 @@ const CustomPrevArrow = ({ className, style, onClick }: CustomArrowProps) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#eee",
+        background: "#FFFFFF",
         borderRadius: "50%",
         width: "40px",
         height: "40px",
         zIndex: 1,
       }}
     >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M16 5l-8 7 8 7" stroke="#000" strokeWidth="2" />
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" clipRule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#000000" />
       </svg>
     </div>
   );
@@ -122,22 +121,22 @@ const TrainingExperiences = () => {
     ],
   };
   return (
-    <div className="w-full mt-20 flex flex-col gap-5 justify-center items-center px-4">
-      <div className="w-full md:w-2/3 flex flex-col items-center gap-3">
-        <h2 className="text-center text-md text-2xl font-bold md:text-2xl w-full font-mbold">
+    <div className="w-[90%] mx-auto mt-20 flex flex-col gap-5 justify-center items-center px-4">
+      <div className="w-full font-[Corbel]  flex flex-col items-center gap-3">
+        <h2 className="text-center text-lg font-bold md:text-2xl w-full font-mbold">
           İştirakçıların Təlim Təcrübələri
         </h2>
-        <p className="text-sm w-full md:w-2/3 font-normal text-center">
+        <p className="text-lg w-full md:w-2/3 max-w-[542px] font-normal text-center">
           AgilePulse platformasında təlim keçmiş iştirakçılarımızın real
           fikirlərini oxuyun. Onların təcrübələri sizin yolunuzu aydınlada
           bilər.
         </p>
       </div>
 
-      <div className="exp-slider w-full md:w-[90%] mx-auto my-10 flex ite justify-center">
+      <div className="exp-slider w-full md:w-[90%] mx-auto my-10 flex items-center justify-center">
         <Slider
           {...settings}
-          className="w-full flex px-2 justify-center  items-center"
+          className="w-full mx-auto flex items-center justify-center"
         >
           {data.map((item) => (
             <ExpCard
