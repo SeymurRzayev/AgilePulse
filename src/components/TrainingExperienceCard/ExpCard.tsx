@@ -23,7 +23,7 @@ const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
             <div className="relative flex items-center w-[92%] md:w-[90%] sm:w-[95%] ml-auto bg-[#FFFFFF] shadow-lg rounded-bl-lg rounded-tr-lg rounded-br-[100px] rounded-tl-[100px] h-[240px]">
 
                 <div className="absolute top-[24px] right-[23px] flex justify-end">
-                    <img className="w-[44px] h-[44px]" src={quotes} alt="testimonial" loading='lazy' />
+                    <img className="w-[45px] h-[32px] object-cover" src={quotes} alt="testimonial" loading='lazy' />
                 </div>
 
                 <div className="flex flex-col ml-20 max-w-[339px] max-h-[240px]">
