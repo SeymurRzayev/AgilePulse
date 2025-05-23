@@ -118,9 +118,9 @@ body {
   stroke: rgba(117, 117, 117, 1);
 }
 
-.searchButton:hover {
+/* .searchButton:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-}
+} */
 
 .filterButton {
   border: none;
@@ -148,6 +148,7 @@ body {
   padding: 0;
   list-style: none;
 }
+
 
 .navigationItem {
   padding: 12px 24px;
@@ -444,7 +445,7 @@ body {
 
   .searchBar input {
     font-size: 14px;
-    padding: 8px 10px 8px 0;
+    padding-left: 16px;
   }
 
   .filterButton {
