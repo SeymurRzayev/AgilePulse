@@ -1,11 +1,15 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
-import InputField from "../../ui/InputField/InputField";
+import InputField from "../../../ui/InputField/InputField";
 import { Link } from "react-router-dom";
-import AuthIllustration from "../../ui/AuthIllustration/AuthIllustration";
+//validation
+import { yupResolver } from '@hookform/resolvers/yup';
+import { resetPasswordSchema } from "../../../validation/resetPasswordSchema";
+//ui components
+import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
 import styles from "./ResetPassword.module.css";
-import FormButton from "../..//ui/FormButton/FormButton";
-import authImage from "../../assets/images/authImage.jpg";
+import FormButton from "../../../ui/FormButton/FormButton";
+import authImage from "../../../assets/images/authImage.jpg";
 
 // Interface to define the structure of form data (email in this case)
 interface ResetForm {
@@ -13,7 +17,9 @@ interface ResetForm {
 }
 // Using React Hook Form to handle form state and validation
 const ResetPassword: React.FC = () => {
-  const { control, handleSubmit } = useForm<ResetForm>({
+  const { control,
+     handleSubmit 
+    } = useForm<ResetForm>({resolver:yupResolver(resetPasswordSchema),
     mode: "all",
   });
 
@@ -52,6 +58,7 @@ const ResetPassword: React.FC = () => {
               placeholder="E-mail adress"
               {...field}
               error={fieldState.error?.message}
+              noSpace
             />
           )}
         />

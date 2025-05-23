@@ -2,13 +2,18 @@ import { useState } from "react";
 import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
+// validation
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signUpSchema } from "../../../validation/signUpSchema";
+
 import styles from "./SignUp.module.css";
-import InputField from "../../ui/InputField/InputField";
-import AuthIllustration from "../../ui/AuthIllustration/AuthIllustration";
-import FormButton from "../../ui/FormButton/FormButton";
-import authImage from "../../assets/images/authImage.jpg";
-import checkedBox from "../../assets/images/checked.svg";
-import uncheckedBox from "../../assets/images/unchecked.svg";
+// ui components
+import InputField from "../../../ui/InputField/InputField";
+import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
+import FormButton from "../../../ui/FormButton/FormButton";
+import authImage from "../../../assets/images/authImage.jpg";
+import checkedBox from "../../../assets/images/checked.svg";
+import uncheckedBox from "../../../assets/images/unchecked.svg";
 
 interface FormValues {
   name: string;
@@ -17,12 +22,15 @@ interface FormValues {
   rememberMe: boolean;
 }
 const SignUp: FC = () => {
+
   const [rememberMe, setRememberMe] = useState(false);
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ mode: "all" });
+  } = useForm<FormValues>({ resolver:yupResolver(signUpSchema),
+  mode: "all",
+  });
 
   // Handle form submission
   const onSubmit = (data: FormValues) => {
@@ -40,23 +48,21 @@ const SignUp: FC = () => {
           <Controller
             name="name"
             control={control}
-            rules={{
-              required: "Ad Soyad daxil edilməlidir",
-              pattern: {
-                value:
-                  /^[A-Za-zƏəÖöÜüÇçĞğİıŞş]{2,}(?:\s[A-Za-zƏəÖöÜüÇçĞğİıŞş]{2,})?$/,
-                message:
-                  "Yalnız hərflərdən istifadə edin (rəqəm və simvol olmaz)",
-              },
-            }}
             render={({ field }) => (
-              <InputField 
-              placeholder="Ad Soyad"
-               {...field} 
+              <InputField
+                placeholder="Ad Soyad"
+                {...field}
+               onChange={(e) => {
+                  let value = e.target.value.replace(
+                    /[^A-Za-zƏəÖöÜüÇçĞğİıŞş\s]/g,
+                    ""
+                  );
+                  value = value.slice(0, 50);
+                  field.onChange({ target: { value } });
+                }}
                 error={errors.name?.message}
-               />
+              />
             )}
-                 
           />
 
           {/* Email input with validation */}
@@ -64,16 +70,23 @@ const SignUp: FC = () => {
             control={control}
             name="email"
             rules={{
-              required: "Email ünvanının düzgünlüyünü yoxlayın",
-              validate: (value) =>
-                value.includes("@") || "Email ünvanının düzgünlüyünü yoxlayın",
+              required: "Email ünvanı daxil edilməlidir",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Email ünvanının düzgünlüyünü yoxlayın",
+              },
             }}
             render={({ field }) => (
               <InputField
                 type="email"
                 placeholder="E-mail adress"
                 {...field}
+                onChange={(e) => {
+                  const value = e.target.value.slice(0, 254); // Max 254 characters
+                  field.onChange({ target: { value } });
+                }}
                 error={errors.email?.message}
+                noSpace
               />
             )}
           />
@@ -81,40 +94,21 @@ const SignUp: FC = () => {
           <Controller
             name="password"
             control={control}
-            rules={{
-              required: "Şifrə daxil edilməlidir",
-              validate: (value) => {
-                const letters = (value.match(/[A-Za-z]/g) || []).length;
-                const digits = (value.match(/\d/g) || []).length;
-                const symbols = (value.match(/[^A-Za-z0-9]/g) || []).length;
-                const hasSpace = /\s/.test(value);
-
-                if (hasSpace) {
-                  return "Şifrə boşluq simvolu ehtiva etməməlidir";
-                }
-                if (letters < 6 || digits < 2 || symbols < 2) {
-                  return "Şifrə minimum 6 hərf, 2 rəqəm və 2 simvol olmalıdır";
-                }
-
-                return true;
-              },
-            }}
+           
             render={({ field }) => (
               <InputField
                 type="password"
                 placeholder="Şifrə"
                 {...field}
+                   onChange={(e) => {
+                  const value = e.target.value.slice(0, 64);
+                  field.onChange({ target: { value } });
+                }}
                 error={errors.password?.message}
+                noSpace
               />
             )}
           />
-
-          {/* Forgot password link */}
-          <div className={styles.forgotPassword}>
-            <Link to="/reset-password" className={styles.forgotPasswordLink}>
-              *Şifrəni unutmusan?
-            </Link>
-          </div>
 
           {/* Remember Me Checkbox */}
           <div className={styles.rememberMeContainer}>

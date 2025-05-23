@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import { Routes, Route } from "react-router-dom";
-import SignUp from "../pages/SignUp/SignUp";
-import SignIn from "../pages/SignIn/SignIn";
-import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import SignUp from "../pages/Auth/SignUp/SignUp";
+import SignIn from "../pages/Auth/SignIn/SignIn";
+import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import TrainingsPage from "../pages/Training/TrainingsPage";
 import { Home } from "../pages/Home/Home";
 

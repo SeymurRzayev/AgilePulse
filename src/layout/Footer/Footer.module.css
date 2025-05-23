@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    gap: 10px;
+    gap: 20px;
   }
 
   .section {
@@ -38,74 +38,82 @@
       font-family: Corbel;
       font-weight: 800;
       font-size: 24px;
-      color: var(--white-high, #fff);
+      color:  #fff;
       line-height: 35px;
     }
   }
 
-  .subscribe {
-    font-family: "Corbel", sans-serif;
-    font-size: 16px;
-    color: var(--white-high, #fff);
-    margin-bottom: 2px;
+  .subscribeContainer {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
 
-    span {
-      font-family: "Corbel", sans-serif;
-      font-weight: 400;
+    .subscribe {
+      font-family: "Corbel";
       font-size: 16px;
-      color: var(--white-high);
-      margin-right: auto;
-    }
+      color:  #fff;
+      margin-bottom: 2px;
 
-    .input {
-      width: 316px;
-      height: 48px;
-      border-radius: 24px;
-      border: 1px solid var(--white-high, #fff);
-      background: var(--white-high, #fff);
-      display: flex;
-      align-items: center;
-      padding: 2px 6px;
-      gap: 6px;
+      span {
+        font-family: "Corbel";
+        font-weight: 400;
+        font-size: 16px;
+        color: var(--white-high);
+        margin-right: auto;
+      }
 
-      input {
-        width: 55%;
-        font-size: 14px;
-        border: none;
-        outline: none;
-        padding-left: 8px;
-        background: transparent;
+      .input {
+        width: 316px;
+        height: 48px;
+        border-radius: 24px;
+        border: 1px solid #fff;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 2px 6px;
+        gap: 6px;
+
+        .sendInput {
+          width: 58%;
+          font-size: 14px;
+          color: #1C1C1C;
+          border: none;
+          outline: none;
+          padding-left: 8px;
+          background: transparent;
+         
+        }
       }
     }
+
+    .sendBtn {
+      width: 122px;
+      height: 40px;
+      border-radius: 30px;
+      border: none;
+      background: #2C4B9B;
+      color:  #fff;
+      font-size: 12px;
+      font-family: "Lexend";
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .invalid {
+      border: 1px solid #e70303 !important;
+      box-shadow: 0px 0px 10px 0px #f2131333;
+    }
+
+    .errorText {
+      display: block;
+      font-family: "corbel";
+      margin-right: auto;
+      font-weight: 300;
+      font-size: 12px;
+      color: #ec3535;
+    }
   }
 
-  .sendBtn {
-    width: 122px;
-    height: 40px;
-    border-radius: 24px;
-    border: none;
-    background: var(--blue-500, #2C4B9B);
-    /* xx */
-    color: var(--white-high, #fff);
-    font-size: 12px;
-    font-family: "Lexend", sans-serif;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .invalid {
-    border: 1px solid #e70303 !important;
-    box-shadow: 0px 0px 10px 0px #f2131333;
-  }
-
-  .errorText {
-    display: block;
-    font-family: Lexend;
-    margin-right: auto;
-    font-weight: 300;
-    font-size: 12px;
-    color: #ec3535;
-  }
 
   .navmenu {
     min-width: 120px;
@@ -116,9 +124,9 @@
 
     li {
       a {
-        font-family: "Corbel", sans-serif;
+        font-family: "Corbel";
         font-size: 24px;
-        color: var(--white-high, #fff);
+        color:  #fff;
         text-decoration: none;
         transition: color 0.2s;
       }
@@ -133,9 +141,9 @@
     gap: 8px;
 
     span {
-      font-family: "Corbel", sans-serif;
+      font-family: "Corbel";
       font-size: 13px;
-      color: var(--white-high, #fff);
+      color:  #fff;
     }
   }
 
@@ -171,7 +179,7 @@
 
       a,
       span {
-        font-family: "Corbel", sans-serif;
+        font-family: "Corbel";
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
@@ -180,7 +188,7 @@
       }
 
       &:first-child {
-        border-right: 1px solid var(--white-high);
+        border-right: 1px solid #fff
       }
 
       &:last-child {
@@ -193,7 +201,6 @@
 @media (min-width: 1240px) {
   .footer {
     min-height: 450px;
-    background-color: var(--gray-700);
     padding-top: 51px;
     display: flex;
     flex-direction: column;
@@ -226,7 +233,7 @@
     max-height: 76px;
 
     span {
-      font-family: "Raleway", sans-serif;
+      font-family: "Raleway";
       font-weight: 600;
       font-size: 20px;
       text-align: center;
@@ -284,63 +291,74 @@
       .navmenu {
         gap: 2px;
       }
-    }
 
-    .logo span {
-      font-size: 13px;
-    }
 
-    .input {
-      width: 150px;
-      height: 50px;
-      border-radius: 24px;
-      border: 1px solid var(--white-high, #fff);
-      background: var(--white-high, #fff);
-      display: flex;
-      align-items: center;
-      padding: 2px 6px;
-      gap: 6px;
-
-      input {
-        width: 55%;
-        font-size: 14px;
-        border: none;
-        outline: none;
-        padding-left: 8px;
-        background: transparent;
+      .logo span {
+        font-size: 16px;
       }
 
-      .sendBtn {
-        width: 130px;
-        height: 40px;
-        font-size: 9px;
+      .subscribeContainer {
 
-      }
-    }
+        span {
+          font-size: 14px;
+        }
 
-    .socials {
-      width: 300px;
+        .input {
+          width: 270px;
+          height: 45px;
+          border-radius: 24px;
+          border: 1px solid #fff;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          padding: 2px 6px;
+          gap: 6px;
 
-      span {
-        font-size: 12px;
-      }
+          .sendInput {
+            width: 58%;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            padding-left: 8px;
+            background: transparent;
+          }
 
-      .socialIcons {
-        gap: 10px;
+          .sendBtn {
+            width: 130px;
+            height: 40px;
+            font-size: 9px;
 
-        .socialIcon {
-          width: 18px;
-          height: 18px;
-
-
+          }
         }
       }
 
-    }
+      .navmenu {
+        li {
+          a {
+            font-size: 14px;
+            line-height: 20px;
+          }
+        }
+      }
 
-    .bottomLine {
-      li {
-        padding: 0 3px;
+      .socials {
+        width: 270px;
+
+        span {
+          font-size: 12px;
+        }
+
+        .socialIcons {
+          gap: 10px;
+
+          .socialIcon {
+            width: 25px;
+            height: 27px;
+
+
+          }
+        }
+
       }
     }
 
@@ -349,21 +367,16 @@
 
       li {
         a {
-          font-size: 8px;
+          font-size: 12px;
         }
 
         span {
-          font-size: 8px;
+          font-size: 12px;
         }
       }
 
     }
 
-    /* .subscribe{
-        .socials {
-      max-width: 100%;
-    }
-    } */
   }
 }
 
@@ -380,65 +393,65 @@
 
         li {
           a {
-            font-size: 8px;
+            font-size: 12px;
             line-height: 20px;
           }
 
         }
       }
-    }
 
-    .logo span {
-      font-size: 12px;
-    }
-
-    .subscribe {
-      span {
-        font-size: 11px;
+      .logo span {
+        font-size: 14px;
       }
 
-      .input {
-        width: 190px;
-        height: 35px;
-        padding: 1px 2px;
-
-        input {
-          width: 55%;
-          font-size: 14px;
+      .subscribe {
+        span {
+          font-size: 11px;
         }
 
-        .sendBtn {
-          width: 70px;
-          height: 30px;
-          font-size: 7px;
+        .input {
+          width: 190px;
+          height: 35px;
+          padding: 1px 2px;
+
+          .sendInput {
+            width: 58%;
+            font-size: 14px;
+          }
+
+          .sendBtn {
+            width: 70px;
+            height: 30px;
+            font-size: 7px;
+          }
         }
       }
-    }
 
-    .socials {
-      width: 180px;
+      .socials {
+        width: 180px;
 
-      span {
-        font-size: 12px;
-      }
+        span {
+          font-size: 12px;
+        }
 
-      .socialIcons {
-        .link {
-          .socialIcon {
-            width: 18px;
-            height: 18px;
+        .socialIcons {
+          .link {
+            .socialIcon {
+              width: 18px;
+              height: 18px;
+            }
           }
         }
       }
     }
 
-
     .bottomLine {
       li {
+
         a {
           padding: 0 5px;
           font-size: 6px;
-          line-height: 20px;
+          line-height: 16px;
         }
 
         span {
@@ -455,94 +468,104 @@
 @media (max-width:480px) {
   .footer {
     max-height: 160px;
-  
 
     .container {
       height: 100%;
       margin: 10px auto;
       padding: 0px 15px;
-  
-    }
+      gap: 5px;
 
-    .section {
-      height: 45px;
-      display: flex;
-      align-items:flex-start;
-      gap: 2px;
-
-      .logo {
-        img {
-          width: 19px;
-          height: 22px;
-        }
-
-        span {
-          font-size: 11px;
-        }
-      }
-
-      .subscribe {
-        span {
-          font-size: 6px;
-        }
-
-        .input {
-          width: 115px;
-          height: 20px;
-         
-          input {
-            width: 55%;
-            font-size: 8px;
-          }
-
-          input::placeholder {
-            font-size: 8px;
-            padding: 5px;
-          }
-
-          .sendBtn {
-     
-            width: 55px;
-            height: 16px;
-            font-size: 7px;
-          }
-        }
-          .errorText{
-            font-size: 6px;
-            line-height: 10px;
-          }
-      }
-
-      .navmenu {
-       max-height: 45px;
+      .section {
+        height: 45px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 3px;
+        align-items: flex-start;
+        
 
-        li{
-          height: 9px;
-          a {
+        .logo {
+          img {
+            width: 19px;
+            height: 22px;
+          }
+
+          span {
+            font-size: 11px;
+          }
+        }
+
+        .subscribeContainer {
+          .subscribe {
+            span {
+              font-size: 6px;
+            }
+
+            .input {
+              width: 115px;
+              height: 20px;
+
+              .sendInput {
+                width: 58%;
+                font-size: 8px;
+              }
+
+              .sendInput::placeholder {
+                font-size: 8px;
+                padding: 5px;
+              }
+
+              .sendBtn {
+
+                width: 55px;
+                height: 16px;
+                font-size: 7px;
+              }
+            }
+
+
+
+          }
+
+          .errorContainer {
+            .errorText {
+              font-size: 6px;
+              line-height: 10px;
+            }
+          }
+        }
+
+        .navmenu {
+          max-height: 45px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 3px;
+
+          li {
+            height: 9px;
+
+            a {
+              font-size: 8px;
+              font-weight: 400;
+              line-height: 9px;
+            }
+          }
+        }
+
+        .socials {
+          width: 110px;
+
+          span {
             font-size: 8px;
-            font-weight: 400;
-            line-height: 9px;
+            line-height: 18px;
           }
-        }
-      }
 
-      .socials {
-        width: 110px;
-        span{
-          font-size: 8px;
-           line-height: 18px;
-        }
+          .link {
 
-        .link {
-
-          .socialIcon {
-            width: 14px;
-            height: 14px;
+            .socialIcon {
+              width: 14px;
+              height: 14px;
+            }
           }
+
         }
 
       }
@@ -558,8 +581,8 @@
         justify-content: center;
 
         a {
-          padding: 0px 5px;
-          font-size: 8px;
+       
+          font-size: 6px;
           line-height: 10px;
 
         }
@@ -571,6 +594,5 @@
 
       }
     }
-
   }
 }

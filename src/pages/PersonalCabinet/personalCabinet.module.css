@@ -371,7 +371,7 @@ form {
   row-gap: 3rem;
 }
 
-input {
+/* input {
   gap: 8px;
   border: 1px solid #B0B0B0;
   outline: none;
@@ -391,9 +391,9 @@ input:hover {
 input {
   border: 1px solid #B0B0B0;
   color: #B0B0B0;
-}
+} */
 
-textarea {
+/* textarea {
   height: 306px;
   color: #00000099;
   border-width: 1px;
@@ -405,7 +405,7 @@ textarea {
   padding: 23px 57px;
   border: 1px solid #ccc;
   overflow: hidden;
-}
+} */
 
 
 .editPhotoSection {

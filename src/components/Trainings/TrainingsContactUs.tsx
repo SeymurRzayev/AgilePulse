@@ -29,7 +29,7 @@ const TrainingsContactUs: FC = () => {
   return (
     <div className=" h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20 ">
       <div className="flex flex-col justify-center items-center gap-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
+        <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
         </h2>
         <p className="text-sm md:text-lg text-[#000000DE]">
@@ -40,17 +40,18 @@ const TrainingsContactUs: FC = () => {
 
       <div
         style={{ border: "1.5px solid rgba(217, 217, 217, 0.5)" }}
-        className=" w-full h-auto rounded-[40px] bg-white flex shadow-2xl "
+        className=" w-full h-auto rounded-[40px] bg-white flex shadow-2xl max-w-[850px] "
       >
         <div className="form-center w-full flex flex-col-reverse md:flex-row gap-12 m-14 h-auto md:max-h-[123px]">
           <div className="text-area relative  h-[123px] flex flex-col ">
             <textarea
-              className="!w-full h-full !rounded-[20px] !border-0 bg-[#EAEDF5] md:min-w-[344px] p-2 "
+              className="!w-full  h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:mt-auto "
               name="message"
               id=""
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
+              placeholder="Bizə yaz..." 
             ></textarea>
             <button
               className="absolute bottom-3 right-3 cursor-pointer"
@@ -102,7 +103,7 @@ const TrainingsContactUs: FC = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
               type="text"
-              className=" w-full rounded-[30px] py-[12px] px-[16px] !text-[#00000061]"
+              className=" w-full rounded-[30px] py-[12px] px-[16px]  border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
               placeholder="Ad/Soyad"
             />
             <input
@@ -111,7 +112,7 @@ const TrainingsContactUs: FC = () => {
               }
               type="text"
               placeholder="E-mail adresi"
-              className=" w-full rounded-[30px] py-[12px] px-[16px] !text-[#00000061]"
+              className=" w-full rounded-[30px] py-[12px] px-[16px]  border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
             />
           </div>
         </div>

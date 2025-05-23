@@ -14,13 +14,14 @@
         padding: 12px 24px;
         font-size: 16px;
         letter-spacing: 0px;
-        color: #646262;
+        text-transform: capitalize;
+        color: #1C1C1C;
         outline: none;
-        margin-top: 20px;
+      
        
     }
 
-    :hover {
+    .inputField:hover {
         border: 1px solid #3f51b5;
         box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
         -webkit-box-shadow: -1px 0px 6px 2px rgba(44, 75, 155, 0.35);
@@ -61,7 +62,7 @@
 
 @media (min-width: 1024px) {
     .inputFieldContainer {
-        width: 450px;
+        width: 400px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -73,12 +74,12 @@
             height: 60px;
             font-size: 20px;
             margin-top: 20px;
-            font-family: "corbel";
+            font-family: "Lexend";
 
         }
 
         .inputField::placeholder {
-            font-family: "corbel";
+            font-family: "Lexend";
             font-size: 20px;
             font-weight: 300;
 
