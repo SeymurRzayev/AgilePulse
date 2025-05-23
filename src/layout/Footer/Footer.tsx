@@ -35,24 +35,24 @@ const Footer: FC = () => {
   const [email, setEmail] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const [showError, setShowError] = useState(false);
+const handleSubscribe = () => {
+  const trimmedEmail = email.trim();
 
-  const handleSubscribe = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setIsInvalid(true);
-      setShowError(true);
-      setTimeout(() => {
-        setIsInvalid(false);
-        setShowError(false);
-      }, 1200);
-      return;
-    }
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    console.log("Email submitted:", email);
-    setEmail("");
-    alert("Mesajınız uğurla göndərildi."); //^ muveqqeti alert
-  };
+  if (!emailRegex.test(trimmedEmail)) {
+    setIsInvalid(true);
+    setShowError(true);
+    return;
+  }
 
+  setIsInvalid(false);
+  setShowError(false);
+
+  console.log("Email submitted:", trimmedEmail);
+  setEmail("");
+  alert("Mesajınız uğurla göndərildi.");
+};
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -61,27 +61,32 @@ const Footer: FC = () => {
             <img src={logo} alt="Agile Pulse" />
             <span>Agile Pulse</span>
           </div>
-
-          <div className={styles.subscribe}>
-            <span>Yeniliklərdən xəbərdar olmaq üçün Abunə Ol</span>
-            <div
-              className={`${styles.input} ${isInvalid ? styles.invalid : ""}`}
-            >
-              <input
-                type="text"
-                placeholder="E-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button className={styles.sendBtn} onClick={handleSubscribe}>
-                Göndər
-              </button>
+          <div className={styles.subscribeContainer}>
+          
+            <div className={styles.subscribe}>
+              <span>Yeniliklərdən xəbərdar olmaq üçün Abunə Ol</span>
+              <div
+                className={`${styles.input} ${isInvalid ? styles.invalid : ""}`}
+              >
+                <input type="email" 
+                  placeholder="E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={styles.sendInput}
+                />
+                <button className={styles.sendBtn} onClick={handleSubscribe}>
+                  Göndər
+                </button>
+              </div>
+            
             </div>
-            {showError && (
-              <p className={styles.errorText}>
-                Düzgün e-mail formatı daxil edin.
-              </p>
-            )}
+            <div className={styles.errorContainer}>
+              {showError && (
+                <p className={styles.errorText}>
+                  Düzgün e-mail formatı daxil edin.
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
@@ -100,7 +105,11 @@ const Footer: FC = () => {
               {socialNetworksLinks.map((link) => (
                 <li key={link.path}>
                   <Link to={link.path} target="_blank" className={styles.link}>
-                    <img src={link.icon} alt={link.alt} className={styles.socialIcon} />
+                    <img
+                      src={link.icon}
+                      alt={link.alt}
+                      className={styles.socialIcon}
+                    />
                   </Link>
                 </li>
               ))}

@@ -9,6 +9,7 @@ interface InputFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
+  noSpace?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -19,6 +20,7 @@ const InputField: React.FC<InputFieldProps> = ({
   onChange,
   onBlur,
   error,
+  noSpace,
 }) => {
   return (
     <div className={styles.inputFieldContainer}>
@@ -30,6 +32,11 @@ const InputField: React.FC<InputFieldProps> = ({
         value={value ?? ""}
         onChange={onChange}
         onBlur={onBlur}
+        onKeyDown={(e) => {
+          if (noSpace && e.key === " ") {
+            e.preventDefault(); // space bloklanır
+          }
+        }}
         className={`${styles.inputField} ${error ? styles.error : ""}`}
       />
       {error && <span className={styles.errorMsg}>*{error}</span>}
