@@ -40,3 +40,14 @@ body {
 .sliderPersonalCab .slick-active {
   width: unset !important;
 }
+
+.sliderPersonalCab .slick-track {
+  /* flex-wrap: nowrap; */
+  /* height: 541px !important; */
+  left: -24px;
+
+  .slick-active {
+    margin: 0 24px;
+  }
+
+}
