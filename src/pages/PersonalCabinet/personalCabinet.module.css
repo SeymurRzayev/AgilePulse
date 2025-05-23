@@ -28,7 +28,7 @@
 .userCard {
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .profileImage {
@@ -36,7 +36,7 @@
   flex-direction: row;
   position: relative;
   z-index: 2;
-  justify-content:start;
+  justify-content: start;
   align-items: start;
 }
 

@@ -9,7 +9,6 @@ import TrainingCard from '../../components/Trainings/TrainingCard';
 import CabinetCertificates from './CabinetCertificates';
 import { useNavigate } from 'react-router-dom';
 
-
 const PersonalCabinetTrainings = () => {
 
     const navigate = useNavigate()
@@ -82,32 +81,32 @@ const PersonalCabinetTrainings = () => {
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 2,
-         responsive: [
-      {
-        breakpoint: 1281,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false
-        }
-      },
-      {
-        breakpoint: 1025,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
+        responsive: [
+            {
+                breakpoint: 1281,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
 
-    ]
+        ]
     }
 
     return (
@@ -118,7 +117,7 @@ const PersonalCabinetTrainings = () => {
                     onClick={() => navigate('/')}
                     style={{ fontFamily: 'Raleway' }}
                     className='cursor-pointer gap-2 text-base items-center font-semibold text-[#1e3a8a] hidden md:flex' >
-                        <img src={Logo} alt=""
+                    <img src={Logo} alt=""
                     /> Agile Pulse
                 </span>
             </div>
@@ -146,10 +145,10 @@ const PersonalCabinetTrainings = () => {
                     </div>
                     <div className='!w-full overflow-x-hidden flex flex-col gap-3'>
                         {/* Card */}
-                        <Slider {...settings} className=''>
+                        <Slider {...settings} className={"sliderPersonalCab"}>
                             {
                                 courses.map(course => (
-                                    <div className='px-3 py-3'>
+                                    <div className={`px-3 py-3 `}>
                                         <TrainingCard
                                             key={course.id}
                                             imgUrl={course.imgUrl}

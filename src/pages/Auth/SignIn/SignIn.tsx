@@ -46,10 +46,11 @@ const SignIn: FC = () => {
               <InputField
                 placeholder="E-mail adress"
                 {...field}
-                   onChange={(e) => {
-                  const value = e.target.value.slice(0, 254); // Max 254 characters
-                  field.onChange({ target: { value } });
-                }}
+                onChange={(e) => {
+        const value = e.target.value.slice(0, 254);
+        const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
+        field.onChange({ target: { value: capitalized } });
+      }}
                 error={fieldState.error?.message}
                 noSpace
               />
