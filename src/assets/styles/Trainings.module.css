@@ -170,75 +170,24 @@ body {
   box-shadow: 0px 0px 7px 1.5px rgba(44, 75, 155, 0.25);
 }
 
-.trainingsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.card {
-  border-radius: 50px 50px 100px 50px;
-  overflow: hidden;
-  box-shadow: 4px 4px 12px 5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-  border: 1.5px solid rgba(217, 217, 217, 0.5);
-  height: 520px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.cardImage {
-  position: relative;
-  height: 280px;
-}
-
-.cardImage img {
+.curveImg {
   width: 100%;
-  height: 100%;
+  position: relative;
+  height: 391px !important;
+  border-radius: 50px 50px 0px 50px;
   object-fit: cover;
-  border-radius: 50px 50px 0 50px;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
+  clip-path: path('M 0,0 L381,0 L381,280 Q 375,307 347,316 Q 338,318 335,318 L240,320 Q 221,320 207,332 Q 202,336 198,346 Q 196,356 196,357 Q 190,387 158,391 L0,391 Z') !important;
 }
+
 
 .infoButton {
-  bottom: 0;
-  right: 0;
-  background-color: white;
-  padding: 15px 0 0 15px;
-  border-top-left-radius: 40px;
-  border-top: 3px solid #f5f5f5;
-  border-left: 3px solid #f5f5f5;
-  z-index: 5;
-}
-
-.infoButton::after,
-.infoButton::before {
-  content: "";
   position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.infoButton::after {
-  top: -2.3rem;
-  right: -2px;
-  background-color: transparent;
-  border-bottom: 3px solid #f5f5f5;
-  border-right: 3px solid #f5f5f5;
-  border-bottom-right-radius: 2rem;
-  box-shadow: 0.5rem 0.7rem white;
-}
-
-.curve_one {
-  width: 2.4rem;
-  height: 2.4rem;
-  content: "";
+  bottom: 0px;
+  right: 0;
+  z-index: 5;
 }
 
 .curve_one {
@@ -270,66 +219,6 @@ body {
   background: white;
   color: #8a84f2;
   border: 1px solid #8a84f2;
-}
-
-.cardContent {
-  padding: 25px;
-  position: relative;
-  height: calc(520px - 280px - 70px);
-}
-
-.cardContent h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  line-height: 1.3;
-}
-
-.timeInfo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 16px;
-}
-
-.bookmark {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  cursor: pointer;
-}
-
-.cardFooter {
-  display: flex;
-  align-items: center;
-  padding: 0 25px 25px;
-  height: 70px;
-  gap: 28px;
-}
-
-.author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.author img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.author span {
-  font-weight: 700;
-  color: #2c4b9b;
-  font-size: 16px;
-}
-
-.date {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 16px;
 }
 
 /* View All Button */

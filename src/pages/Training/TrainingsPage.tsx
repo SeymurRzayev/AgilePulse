@@ -13,8 +13,8 @@ import TrainingsHeroContainer from "../../components/Trainings/TrainingsHeroCont
 import TrainingsSearchContainer from "../../components/Trainings/TrainingsSearchContainer";
 import TrainingsCategoryList from "../../components/Trainings/TrainingsCategoryList";
 import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
-import TrainingsViewAllContainer from "../../components/Trainings/TrainingsViewAllContainer";
 import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
+import TrainingExperiences from "../Home/sections/TrainingExperiences";
 
 const TrainingsPage = () => {
   const [activeItem, setActiveItem] = useState<string>("Scrum");
@@ -100,16 +100,13 @@ const TrainingsPage = () => {
           setActiveItem={setActiveItem}
         />
         <TrainingListContainer trainingCourses={trainingCourses} />
-        <TrainingsViewAllContainer
-          text="Hamısına bax"
-          clickFunction={() => {}}
-        />
-        <PodcastsSection />
+              <PodcastsSection />
         <TrainersSection />
 
-        <div className="w-[70%] mx-auto">
-          <TrainingsContactUs />
-        </div>
+      </div>
+      <TrainingExperiences />
+      <div className="w-[70%] mx-auto">
+        <TrainingsContactUs />
       </div>
       <Footer />
     </>
