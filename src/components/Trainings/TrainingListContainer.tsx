@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "../../assets/styles/Trainings.module.css";
+import React, { useState } from "react";
 import TrainingCard from "./TrainingCard";
+import TrainingsViewAllContainer from "./TrainingsViewAllContainer";
 
 type TrainingCardProps = {
   id: number;
@@ -18,9 +18,14 @@ type TrainingListContainerProps = {
 const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
   trainingCourses,
 }) => {
+
+  const [visibilty, setVisibility] = useState<number>(6)
+
+  const slicesData = trainingCourses.slice(0, visibilty)
+
   return (
-    <div className={styles.trainingsGrid}>
-      {trainingCourses.map((course) => (
+    <div className="w-full flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
+      {slicesData.map((course) => (
         <TrainingCard
           key={course.id}
           imgUrl={course.imgUrl}
@@ -31,6 +36,10 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
           date={course.date}
         />
       ))}
+      <TrainingsViewAllContainer
+        text="Hamısına bax"
+        clickFunction={() => { () => setVisibility(visibilty + 6) }}
+      />
     </div>
   );
 };

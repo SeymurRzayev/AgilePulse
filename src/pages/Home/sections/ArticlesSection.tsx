@@ -3,7 +3,7 @@ import Article2 from "../../../assets/images/Article2.webp";
 import Article3 from "../../../assets/images/Article3.webp";
 import styles from "../../../assets/styles/Trainings.module.css";
 
-import  TrainingCard  from "../../../components/Trainings/TrainingCard";
+import TrainingCard from "../../../components/Trainings/TrainingCard";
 const ArticlesSection = () => {
   const data = [
     {
@@ -31,23 +31,22 @@ const ArticlesSection = () => {
 
   return (
     <div className="my-15">
-      <div className="mt-10 flex flex-col items-center gap-3">
-        <h2 className="text-center text-2xl w-full font-mbold">Məqalələr</h2>
-        <p className="text-sm w-2/3 font-normal text-center">
+      <div className="mt-10 flex flex-col items-center gap-4">
+        <h2 className="text-center w-full font-mbold">Məqalələr</h2>
+        <p className="text-lg text-[#000000DE] font-[Corbel] font-normal text-center">
           Agile metodologiyası haqqında ən son məqalələr, praktik yanaşmalar və
           mütəxəssis fikirləri ilə tanış olun.
         </p>
       </div>
-      <div className="flex flex-wrap mt-15 justify-center gap-5">
+      <div className="w-full flex flex-wrap mt-15 justify-center gap-6">
         {data.map((item) => (
-          <div key={item.id} className="w-[100%] sm:w-[40%] md:w-[30%]">
-            <TrainingCard
-              isArticle={true}
-              title={item.title}
-              imgUrl={item.img}
-              content={item.content}
-            />
-          </div>
+          <TrainingCard
+            isArticle={true}
+            title={item.title}
+            imgUrl={item.img}
+            content={item.content}
+            key={item.id}
+          />
         ))}
       </div>
       <div className={styles.viewAllContainer}>

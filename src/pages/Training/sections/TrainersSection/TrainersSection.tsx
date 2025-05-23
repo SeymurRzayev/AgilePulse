@@ -5,7 +5,6 @@ import trainerSecond from "../../../../assets/images/trainer2.jpg";
 import trainerThird from "../../../../assets/images/trainer3.jpg";
 import Slider from "react-slick";
 
-import TrainingExperiences from "../../../Home/sections/TrainingExperiences";
 
 interface Trainer {
   id: number;
@@ -132,7 +131,7 @@ const TrainersSection: FC = () => {
         </div>
       </div>
 
-      <TrainingExperiences />
+      
 
       {/* Contact Section */}
     </div>
