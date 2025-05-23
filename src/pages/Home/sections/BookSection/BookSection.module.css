@@ -1,4 +1,10 @@
 .bookSection {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+  gap: 40px;
   padding: 4rem 1rem;
   /* background-color: #f5f5f7; */
   overflow: hidden;
@@ -6,102 +12,111 @@
   position: relative;
 
 
-.textContainer {
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  text-align: center;
+  .textContainer {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
 
 
-.description {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 2rem;
-}
-}
-.sliderWrapper {
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 1rem;
-  position: relative;
-  z-index: 1;
-
-
-.slideItem {
-  padding: 1rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-
-  .bookImage {
+    .description {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+  }
+.sliderContainer{
+  height: 440px;
   width: 100%;
-  height: 280px;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: all 0.3s ease;
 }
-}
-.activeSlide {
-  transform: scale(1.1);
-  z-index: 2;
-}
+  .sliderWrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
 
 
-.blurredSlide {
-  opacity: 0.5;
-  filter: blur(1px);
-  transform: scale(0.9);
-}
+    .slideItem {
+      padding: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+
+      .bookImage {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+    }
+
+    .activeSlide {
+  
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+
+    .blurredSlide {
+      opacity: 0.5;
+      filter: blur(1px);
+      transform: scale(0.9);
+    }
+  }
+
+  .buttonContainer {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .moreButton {
+    background-color: transparent;
+    color: #4e61ec;
+    border: 1px solid #4e61ec;
+    border-radius: 30px;
+    padding: 0.65rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    gap: 8px;
+  }
+
+  .moreButton:hover {
+    background: linear-gradient(90deg, #4e61ec 0%, #621dac 51.04%, #401795 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .moreButton::after {
+    margin-left: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .moreButton:hover::after {
+    margin-left: 12px;
+  }
 }
 
-.buttonContainer {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.moreButton {
-  background-color: transparent;
-  color: #4e61ec;
-  border: 1px solid #4e61ec;
-  border-radius: 30px;
-  padding: 0.65rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  gap: 8px;
-}
-
-.moreButton:hover {
-  background: linear-gradient(90deg, #4e61ec 0%, #621dac 51.04%, #401795 100%);
-  color: white;
-  border-color: transparent;
-}
-
-.moreButton::after {
-  margin-left: 8px;
-  transition: all 0.3s ease;
-}
-
-.moreButton:hover::after {
-  margin-left: 12px;
-}
-}
 /* Responsive styles */
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .bookSection {
     padding: 3rem 1rem;
 
 
-  .bookImage {
-    height: 240px;
-  }
-    
-  .activeSlide {
-    transform: scale(1.08);
-  }
+    .bookImage {
+      width: 268px;
+      height: 413px;
+      
+    }
+
+    .activeSlide {
+      transform: scale(1.08);
+    }
   }
 
 
@@ -111,86 +126,102 @@
 @media (max-width: 768px) {
   .booksSection {
     padding: 2.5rem 0.75rem;
-  
-  .description {
-    font-size: 1rem;
-  }
 
-  .activeSlide {
-    transform: scale(1.05);
-  }
+    .description {
+      font-size: 1rem;
+    }
 
-  .bookImage {
-    height: auto;
-    max-height: 220px;
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-  }
+    .activeSlide {
+      transform: scale(1.05);
+    }
 
-  .slideItem {
-    padding: 0.75rem;
-  }
+    .bookImage {
+      height: 400px;
+      max-height: 220px;
+      width: 90%;
+      margin: 0 auto;
+      display: block;
+    }
 
-  .buttonContainer {
-    margin-top: 2rem;
+    .slideItem {
+      padding: 0.75rem;
+    }
 
-    .moreButton{
-      width: 196px;
-      height: 48px;
+    .buttonContainer {
+      margin-top: 2rem;
+
+      .moreButton {
+        width: 196px;
+        height: 48px;
+      }
+    }
+
+    .sliderWrapper {
+      padding: 0;
     }
   }
+}
 
-  .sliderWrapper {
-    padding: 0;
-  }
-}
-}
 @media (max-width: 480px) {
   .bookSection {
     padding: 2rem 0.5rem;
-
-
-  .textContainer {
-    margin-bottom: 2rem;
-  }
-
-  .description {
-    font-size: 0.9rem;
-  }
-
-  .activeSlide {
-    transform: scale(1.05);
-  }
-
-  .blurredSlide {
-    opacity: 0.4;
-    filter: blur(1px);
-    transform: scale(0.9);
-  }
-
-  .slideItem {
-    padding: 0.5rem;
-  }
-
-  .bookImage {
+    width: 100%;
     height: auto;
-    max-height: 200px;
-    width: 85%;
-    margin: 0 auto;
-    display: block;
-  }
 
-  .sliderWrapper {
-    padding: 0;
-    margin-left: -10%;
-    margin-right: -10%;
-    width: 120%;
-  }
+    .sliderWrapper {
+      max-width: 260px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .moreButton {
-    padding: 0.6rem 1.75rem;
-    font-size: 0.9rem;
+    .textContainer {
+      margin-bottom: 2rem;
+    }
+
+    .description {
+      font-size: 0.9rem;
+    }
+
+    .activeSlide {
+      max-height: 180px;
+      height: 259px;
+      transform: scale(1.05);
+    }
+
+    .blurredSlide {
+      width: 155px;
+      height: 187px;
+      opacity: 0.4;
+      filter: blur(1px);
+      transform: scale(0.9);
+    }
+
+    .slideItem {
+      width: 155px;
+      height: 239px;
+    
+    }
+
+    .bookImage {
+      max-height: 160px;
+      width: 150px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .sliderWrapper {
+      padding: 0;
+      margin-left: -10%;
+      margin-right: -10%;
+      width: 120%;
+    }
+
+    .moreButton {
+     width: 196px;
+     height: 48px;
+     font-size: 10px;
+     line-height: 16px
+    }
   }
-}
 }

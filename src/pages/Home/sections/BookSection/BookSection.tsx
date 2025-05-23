@@ -20,14 +20,14 @@ const bookImages = [
   "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
 ];
 
-
 const BookSection: FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(2);
   const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<Slider>(null);
-  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
+  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null
+  );
 
   const startAutoplay = useCallback(() => {
     if (autoplayIntervalRef.current) {
@@ -84,7 +84,7 @@ const BookSection: FC = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           centerMode: true,
         },
       },
@@ -100,34 +100,42 @@ const BookSection: FC = () => {
           kitabxanamızda olan bir çox kitabı <b>ödənişsiz</b> oxuya bilərsiniz.
         </p>
       </div>
-
-      <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
-        {bookImages.map((image, index) => (
-          <div
-            key={index}
-            className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
-              }`}
-            onClick={togglePause}
-            title={
-              isPaused
-                ? "Davam etdirmək üçün kliklə"
-                : "Dayandırmaq üçün kliklə"
-            }
-            tabIndex={-1}
-          >
-            <img
-              src={image}
-              alt={`Agile book ${index + 1}`}
-              className={styles.bookImage}
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </Slider>
-
-      <div className={styles.buttonContainer}>
-        <button onClick={() => navigate('/library')} className={styles.moreButton}>Daha çox</button>
+      <div className={styles.sliderContainer}>
+        <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
+          {bookImages.map((image, index) => (
+            <div
+              key={index}
+              className={`${styles.slideItem} ${
+                index === activeIndex ? styles.activeSlide : styles.blurredSlide
+              } `}
+              onClick={togglePause}
+              title={
+                isPaused
+                  ? "Davam etdirmək üçün kliklə"
+                  : "Dayandırmaq üçün kliklə"
+              }
+              tabIndex={-1}
+            >
+              <img
+                src={image}
+                alt={`Agile book ${index + 1}`}
+                className={` ${styles.bookImage}`}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
+           <div className={styles.buttonContainer}>
+        <button
+          onClick={() => navigate("/library")}
+          className={styles.moreButton}
+        >
+          Daha çox
+        </button>
       </div>
+      </div>
+
+   
     </div>
   );
 };
