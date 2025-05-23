@@ -17,7 +17,7 @@ export const CustomNextArrow = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#FFFFFF",
+        background: "#DEDEDE",
         borderRadius: "50%",
         width: "40px",
         height: "40px",
