@@ -77,7 +77,7 @@
         gap: 60px;
 
         h1 {
-            font-family: "corbel";
+            font-family: "Corbel";
             font-weight: 700;
             font-size: 46px;
             line-height: 56px;
@@ -87,7 +87,7 @@
     .forgotPasswordContainer {
 
         .forgotPasswordLink {
-            font-size: 20px;
+            font-size: 14px;
             line-height: 20px;
           
         }
