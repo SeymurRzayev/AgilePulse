@@ -105,8 +105,8 @@
 }
 
 .nextArrow {
-  width: 28px;
-  height: 28px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
