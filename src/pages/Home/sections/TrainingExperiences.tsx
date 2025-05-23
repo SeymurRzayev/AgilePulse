@@ -10,7 +10,7 @@ export const CustomNextArrow = ({
 }: CustomArrowProps) => {
   return (
     <div
-      className={className}
+      className={`${className} mr-[-20px] lg:mr-[-8px]`}
       onClick={onClick}
       style={{
         ...style,
@@ -34,14 +34,14 @@ export const CustomNextArrow = ({
 const CustomPrevArrow = ({ className, style, onClick }: CustomArrowProps) => {
   return (
     <div
-      className={className}
+      className={`${className} ml-[-16px] lg:ml-[-4px]`}
       onClick={onClick}
       style={{
         ...style,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#FFFFFF",
+        background: "#DEDEDE",
         borderRadius: "50%",
         width: "40px",
         height: "40px",
@@ -86,12 +86,11 @@ const TrainingExperiences = () => {
     dots: false,
     infinite: true,
     speed: 500,
+    arrows: true,
     slidesToShow: 2,
     slidesToScroll: 2,
-
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-
     responsive: [
       {
         breakpoint: 1024,
@@ -99,7 +98,7 @@ const TrainingExperiences = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -121,7 +120,7 @@ const TrainingExperiences = () => {
     ],
   };
   return (
-    <div className="w-[90%] mx-auto mt-20 flex flex-col gap-5 justify-center items-center px-4">
+    <div className="w-[96%] mx-auto mt-20 flex flex-col gap-5 justify-center items-center px-4">
       <div className="w-full font-[Corbel]  flex flex-col items-center gap-3">
         <h2 className="text-center text-lg font-bold md:text-2xl w-full font-mbold">
           İştirakçıların Təlim Təcrübələri
@@ -133,7 +132,7 @@ const TrainingExperiences = () => {
         </p>
       </div>
 
-      <div className="exp-slider w-full md:w-[90%] mx-auto my-10 flex items-center justify-center">
+      <div className="exp-slider w-full md:w-[100%] mx-auto my-10 flex items-center justify-center">
         <Slider
           {...settings}
           className="w-full mx-auto flex items-center justify-center"

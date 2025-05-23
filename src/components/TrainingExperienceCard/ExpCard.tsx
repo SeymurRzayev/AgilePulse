@@ -27,7 +27,7 @@ const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
                 </div>
 
                 <div className="flex flex-col ml-20 max-w-[339px] max-h-[240px]">
-                    <h3 className="text-base font-[Corbel] sm:text-xl lg:text-2xl font-bold">{title}</h3>
+                    <h3 className="text-base font-[Corbel] z-10 sm:text-xl lg:text-2xl font-bold">{title}</h3>
                     <p className="md:font-medium-regular mt-[8px] font-normal text-lg font-[Corbel] leading-relaxed line-clamp-3 md:min-h-[5rem]">{subtitle}</p>
                     <span className="text-lg font-normal font-[Corbel] mt-[24px] text-gray-500">{date}</span>
                 </div>

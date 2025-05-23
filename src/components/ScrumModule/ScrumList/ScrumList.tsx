@@ -76,7 +76,7 @@ const ScrumList = () => {
             <AccordionItem content="Sprint Review: geribildirim və uyğunlaşdırma" />
             <AccordionItem content="Sprint Retrospective: təkmilləşdirmə fürsətləri" />
           </div>
-          <Button title="Tapşırıq və quiz" className="self-center bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]" />
+          <Button title="Tapşırıq və quiz" className="self-center !font-medium !font-[Montserrat] bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]" />
 
         </div>
       </div>

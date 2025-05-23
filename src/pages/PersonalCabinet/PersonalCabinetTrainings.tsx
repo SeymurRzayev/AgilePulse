@@ -99,7 +99,7 @@ const PersonalCabinetTrainings = () => {
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 780,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
@@ -110,7 +110,7 @@ const PersonalCabinetTrainings = () => {
     }
 
     return (
-        <div className='w-[74%] md:w-[50%] xl:w-[74%] mx-auto mt-4  '>
+        <div className='w-full ml-5 max-h-fit sm:max-w-[calc(100%-390px)] mx-auto mt-4  '>
             <div className='flex mt-4 items-center justify-between w-[95%]'>
                 <p className='font-semibold text-2xl'>Şəxsi Kabinet</p>
                 <span
@@ -143,22 +143,20 @@ const PersonalCabinetTrainings = () => {
                             }
                         </ul>
                     </div>
-                    <div className='!w-full overflow-x-hidden flex flex-col gap-3'>
+                    <div className='!w-full max-h-[639px] overflow-hidden gap-3]'>
                         {/* Card */}
                         <Slider {...settings} className={"sliderPersonalCab"}>
                             {
                                 courses.map(course => (
-                                    <div className={`px-3 py-3 `}>
-                                        <TrainingCard
-                                            key={course.id}
-                                            imgUrl={course.imgUrl}
-                                            title={course.title}
-                                            time={course.time}
-                                            avatar={course.avatar}
-                                            date={course.date}
-                                            isArticle={false}
-                                        />
-                                    </div>
+                                    <TrainingCard
+                                        key={course.id}
+                                        imgUrl={course.imgUrl}
+                                        title={course.title}
+                                        time={course.time}
+                                        avatar={course.avatar}
+                                        date={course.date}
+                                        isArticle={false}
+                                    />
                                 ))
                             }
                         </Slider>
