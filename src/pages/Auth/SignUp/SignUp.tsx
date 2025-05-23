@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 // validation
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { signUpSchema } from "../../../validation/signUpSchema";
 
 import styles from "./SignUp.module.css";
@@ -22,15 +22,13 @@ interface FormValues {
   rememberMe: boolean;
 }
 const SignUp: FC = () => {
-
   const [rememberMe, setRememberMe] = useState(false);
+
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver:yupResolver(signUpSchema),
-  mode: "all",
-  });
+  } = useForm<FormValues>({ resolver: yupResolver(signUpSchema), mode: "all" });
 
   // Handle form submission
   const onSubmit = (data: FormValues) => {
@@ -52,7 +50,7 @@ const SignUp: FC = () => {
               <InputField
                 placeholder="Ad Soyad"
                 {...field}
-               onChange={(e) => {
+                onChange={(e) => {
                   let value = e.target.value.replace(
                     /[^A-Za-zƏəÖöÜüÇçĞğİıŞş\s]/g,
                     ""
@@ -94,16 +92,17 @@ const SignUp: FC = () => {
           <Controller
             name="password"
             control={control}
-           
             render={({ field }) => (
               <InputField
                 type="password"
+                name={field.name}
                 placeholder="Şifrə"
-                {...field}
-                   onChange={(e) => {
+                defaultValue=''
+                onChange={(e) => {
                   const value = e.target.value.slice(0, 64);
                   field.onChange({ target: { value } });
                 }}
+                onBlur={field.onBlur}
                 error={errors.password?.message}
                 noSpace
               />

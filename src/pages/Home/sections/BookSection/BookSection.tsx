@@ -84,7 +84,7 @@ const BookSection: FC = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           centerMode: true,
         },
       },
@@ -134,7 +134,6 @@ const BookSection: FC = () => {
         </button>
       </div>
       </div>
-
    
     </div>
   );

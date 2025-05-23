@@ -5,9 +5,10 @@ interface InputFieldProps {
   name: string;
   type?: string;
   placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  value?: string; // optional
+  defaultValue?: string; // optional
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
   noSpace?: boolean;
 }
@@ -17,6 +18,7 @@ const InputField: React.FC<InputFieldProps> = ({
   type = "text",
   placeholder,
   value,
+  defaultValue,
   onChange,
   onBlur,
   error,
@@ -29,12 +31,12 @@ const InputField: React.FC<InputFieldProps> = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        value={value ?? ""}
+        {...(value !== undefined ? { value } : { defaultValue })}
         onChange={onChange}
         onBlur={onBlur}
         onKeyDown={(e) => {
           if (noSpace && e.key === " ") {
-            e.preventDefault(); // space bloklanır
+            e.preventDefault();
           }
         }}
         className={`${styles.inputField} ${error ? styles.error : ""}`}

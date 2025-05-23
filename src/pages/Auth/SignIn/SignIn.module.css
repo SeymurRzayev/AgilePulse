@@ -88,7 +88,7 @@
     .forgotPasswordContainer {
 
         .forgotPasswordLink {
-            font-size: 20px;
+            font-size: 14px;
             line-height: 20px;
           
         }
@@ -96,13 +96,13 @@
 
     .linkContainer {
         p {
-            font-size: 20px;
+            font-size: 14px;
             
         }
     }
 
     .registerLink {
-        font-size: 20px;
+        font-size: 14px;
     
     }
 }

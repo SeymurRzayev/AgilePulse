@@ -39,12 +39,9 @@
 
     .backgroundImgContainer {
         width: 100%;
-       min-height: 100vh;
-       
+        min-height: 100vh;
         border-top-right-radius: 60px;
         border-bottom-right-radius: 60px;
-
-
 
         .backgroundImg {
             width: 100%;
@@ -94,13 +91,15 @@
 
 
     .logo {
+        width: 200px;
+        height: 45px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 12px;
         position: absolute;
         z-index: 100;
-        margin-top: 600px;
+        margin-top: 650px;
         margin-right: 530px;
     }
 
