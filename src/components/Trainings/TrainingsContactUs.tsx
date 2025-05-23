@@ -29,7 +29,7 @@ const TrainingsContactUs: FC = () => {
   return (
     <div className=" h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20 ">
       <div className="flex flex-col justify-center items-center gap-4">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
+        <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
         </h2>
         <p className="text-sm md:text-lg text-[#000000DE]">
