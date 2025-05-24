@@ -99,20 +99,18 @@
         gap: 12px;
         position: absolute;
         z-index: 100;
-        margin-top: 650px;
-        margin-right: 530px;
-    }
 
-    .logo .logoImg {
-        object-fit: cover;
-    }
+        .logoImg {
+            object-fit: cover;
+        }
 
-    .logo .logoTitle {
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 35px;
-        letter-spacing: 0px;
-        color: #fff;
+        .logoTitle {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 35px;
+            letter-spacing: 0px;
+            color: #fff;
+        }
     }
 
 }
@@ -207,21 +205,24 @@
             gap: 12px;
             position: absolute;
             z-index: 100;
-            margin-top: 460px;
-            margin-right: 400px;
+            margin-top: 500px;
+            margin-right: 450px;
+
+            .logoImg {
+                object-fit: cover;
+            }
+
+            .logoTitle {
+                font-size: 22px;
+                font-weight: 500;
+                line-height: 35px;
+                letter-spacing: 0px;
+                color: #fff;
+            }
+
         }
 
-        .logoImg {
-            object-fit: cover;
-        }
 
-        .logoTitle {
-            font-size: 22px;
-            font-weight: 500;
-            line-height: 35px;
-            letter-spacing: 0px;
-            color: #fff;
-        }
     }
 }
 
@@ -311,22 +312,24 @@
             gap: 12px;
             position: absolute;
             z-index: 100;
-            margin-top: 350px;
-            margin-right: 250px;
+            /* margin-top: 350px;
+            margin-right: 250px; */
+
+            .logoImg {
+                object-fit: cover;
+
+            }
+
+            .logoTitle {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 35px;
+                letter-spacing: 0px;
+                color: #fff;
+            }
         }
 
-        .logoImg {
-            object-fit: cover;
 
-        }
-
-        .logoTitle {
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 35px;
-            letter-spacing: 0px;
-            color: #fff;
-        }
     }
 }
 
