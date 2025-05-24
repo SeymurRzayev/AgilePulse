@@ -34,7 +34,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
         <img src={imgUrl} className={styles.curveImg} />
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
           <div className={`${styles.infoButton}`}>
-            <Link to={isArticle ? "/article" : "/trainings/scrum"}>
+            <Link to={isArticle ? "/articles/details" : "/trainings/scrum"}>
               {isArticle
                 ? <MainButton className="w-[162px] h-[55px]" text="Daha çox" />
                 : <button className={styles.start_btn}>
