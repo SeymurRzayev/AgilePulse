@@ -122,7 +122,7 @@ const TrainingExperiences = () => {
   return (
     <div className="w-[96%] mx-auto mt-20 flex flex-col gap-5 justify-center items-center px-4">
       <div className="w-full font-[Corbel]  flex flex-col items-center gap-3">
-        <h2 className="text-center text-lg font-bold md:text-2xl w-full font-mbold">
+        <h2 className="text-center text-lg font-bold md:text-[46px] w-full font-[Corbel]">
           İştirakçıların Təlim Təcrübələri
         </h2>
         <p className="text-lg w-full md:w-2/3 max-w-[542px] font-normal text-center">

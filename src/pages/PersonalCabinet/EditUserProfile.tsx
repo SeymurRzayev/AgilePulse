@@ -10,9 +10,9 @@ const EditUserProfile = () => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     return (
-        <div className='w-full mt-[53px] flex justify-center px-4  pb-5 gap-5 flex-col-reverse  lg:flex-row '>
+        <div className='edit-user w-full mt-[53px] flex justify-center px-4  pb-5 gap-5 flex-col-reverse  lg:flex-row '>
             <div className={styles.editSection}>
-                <h2 style={{fontFamily: 'Corbel'}} className='text-[#000000DE] font-semibold text-3xl cursor-default'>Şəxsi məlumatlar</h2>
+                <h2 style={{ fontFamily: 'Corbel' }} className='text-[#000000DE] font-semibold text-3xl cursor-default'>Şəxsi məlumatlar</h2>
                 <form action="" className='w-4/5 mx-auto edit-profile'>
                     <input className='placeholder-[#000000DE]' type="text" placeholder="Emin Huseynov" />
                     <input className='placeholder-[#000000DE]' type="email" placeholder="Biznes Analitik" />
@@ -29,8 +29,8 @@ const EditUserProfile = () => {
 
             </div>
             <div className={`${styles.editPhotoSection} gap-8 `}>
-                <h2 style={{fontFamily: 'Corbel'}} className='text-[#000000DE] font-semibold text-3xl cursor-default'>Photo</h2>
-                <Image src={choose} className={' object-contain  rounded-4xl w-[300px]  lg:w-[373px] '}  />
+                <h2 style={{ fontFamily: 'Corbel' }} className='text-[#000000DE] font-semibold text-3xl cursor-default'>Photo</h2>
+                <Image src={choose} className={' object-contain  rounded-4xl w-[300px]  lg:w-[373px] '} />
                 <input type="file" ref={fileInputRef} hidden />
                 <Button title="Qalareyadan seç"
                     className="w-[200px] h-[48px]"

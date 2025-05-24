@@ -10,6 +10,7 @@ import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
 import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
 import Library from "../pages/Library/Library";
 import LibraryDetails from "../pages/Library/LibraryDetails";
+import Articles from "../pages/Articles/Articles";
 const AppRouter: FC = () => {
   return (
     <Routes>
@@ -20,6 +21,7 @@ const AppRouter: FC = () => {
       <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
       <Route path="/library/detail" element={<LibraryDetails />} />
+      <Route path="/articles" element={<Articles />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
     </Routes>
