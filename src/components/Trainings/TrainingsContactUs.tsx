@@ -5,6 +5,7 @@ type FormData = {
   email: string;
   message: string;
 };
+
 const TrainingsContactUs: FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -26,32 +27,33 @@ const TrainingsContactUs: FC = () => {
       return;
     }
   };
+
   return (
-    <div className=" h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20 ">
+    <div className="h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
         </h2>
         <p className="text-sm md:text-lg text-[#000000DE]">
-          “Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə
-          hazırdır!”
+          "Sualın var? Bizimlə əlaqə saxla – komandamız sənə kömək etməyə
+          hazırdır!"
         </p>
       </div>
 
       <div
         style={{ border: "1.5px solid rgba(217, 217, 217, 0.5)" }}
-        className=" w-full h-auto rounded-[40px] bg-white flex shadow-2xl max-w-[850px] "
+        className="w-full h-auto rounded-[40px] bg-white flex shadow-2xl max-w-[850px] mx-auto"
       >
-        <div className="form-center w-full flex flex-col-reverse md:flex-row gap-12 m-14 h-auto md:max-h-[123px]">
-          <div className="text-area relative  h-[123px] flex flex-col ">
+        <div className="form-center w-full flex flex-col md:flex-row gap-6 md:gap-12 m-6 md:m-14">
+          {/* Text area section - left side on desktop */}
+          <div className="text-area relative h-[123px] flex flex-col order-2 md:order-1">
             <textarea
-              className="!w-full  h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:mt-auto "
+              className="w-full h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start"
               name="message"
-              id=""
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              placeholder="Bizə yaz..." 
+              placeholder="Bizə yaz..."
             ></textarea>
             <button
               className="absolute bottom-3 right-3 cursor-pointer"
@@ -97,13 +99,15 @@ const TrainingsContactUs: FC = () => {
               </svg>
             </button>
           </div>
-          <div className="text-inputs flex flex-col gap-6 w-full">
+
+          {/* Text inputs section - right side on desktop */}
+          <div className="text-inputs flex flex-col gap-6 w-full md:w-auto md:min-w-[300px] order-1 md:order-2">
             <input
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
               type="text"
-              className=" w-full rounded-[30px] py-[12px] px-[16px]  border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
               placeholder="Ad/Soyad"
             />
             <input
@@ -112,7 +116,7 @@ const TrainingsContactUs: FC = () => {
               }
               type="text"
               placeholder="E-mail adresi"
-              className=" w-full rounded-[30px] py-[12px] px-[16px]  border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
             />
           </div>
         </div>
