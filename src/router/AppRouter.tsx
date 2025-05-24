@@ -11,6 +11,7 @@ import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
 import Library from "../pages/Library/Library";
 import LibraryDetails from "../pages/Library/LibraryDetails";
 import Articles from "../pages/Articles/Articles";
+import ArticleDetails from "../pages/Articles/ArticleDetails";
 const AppRouter: FC = () => {
   return (
     <Routes>
@@ -22,6 +23,7 @@ const AppRouter: FC = () => {
       <Route path="/library" element={<Library />} />
       <Route path="/library/detail" element={<LibraryDetails />} />
       <Route path="/articles" element={<Articles />} />
+      <Route path="/articles/details" element={<ArticleDetails />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
       <Route path="/FAQ" element={<Faq/>}/>
