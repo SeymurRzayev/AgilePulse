@@ -4,7 +4,7 @@ import bookImg from "../../assets/images/libdel1.png";
 const LibraryDetails = () => {
   return (
     <>
-      <div className="relative h-28 w-full flex items-center justify-center">
+      <div className="relative mb-[50px] h-28 w-full flex items-center justify-center">
         <Navbar />
       </div>
       <div className="">
@@ -12,7 +12,7 @@ const LibraryDetails = () => {
           <div className="relative">
             <img
               src={bookImg}
-              className="w-full md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] static h-[400px] md:fixed top-26 -bottom-10 left-14"
+              className="w-full md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] absolute h-[400px] -top-[61px] left-14"
               alt="image"
             />
           </div>

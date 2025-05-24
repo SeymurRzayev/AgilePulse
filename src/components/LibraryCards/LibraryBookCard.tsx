@@ -17,7 +17,7 @@ const LibraryBookCard = ({ author, imgUrls, title }: CardProps) => {
                 <div className="flex flex-col text-center gap-2">
                     <h5 className="text-lg font-[Corbel] text-[#000000DE]">{title}</h5>
                     <span className="text-xs text-[#00000099]">{author}</span>
-                    <button onClick={() => navigate('/library/detail')} className="bg-[#2C4B9B] px-5 text-[#FFFFFF] text-l rounded-4xl py-2" title="xxx" >
+                    <button onClick={() => navigate('/library/detail')} className="bg-[#2C4B9B] cursor-pointer px-5 text-[#FFFFFF] text-l rounded-4xl py-2" >
                         Oxu
                     </button>
                 </div>
