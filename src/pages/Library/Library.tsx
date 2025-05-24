@@ -85,10 +85,10 @@ const Library = () => {
                 className="w-full relative -z-10 h-[357px] bg-no-repeat bg-cover bg-center"
             >
                 <div className="absolute z-10 flex items-center justify-center bg-[#00000099]  w-full h-full bg-">
-                    <h2 className="text-4xl font-bold text-[#FFFFFF] w-[700px] text-center mt-6">İlham almaq üçün Agile Pulse kitabxanasını kəşf et!</h2>
+                    <h2 className="text-4xl font-[Corbel] font-bold text-[#FFFFFF] w-[700px] text-center mt-6">İlham almaq üçün Agile Pulse kitabxanasını kəşf et!</h2>
                 </div>
             </div>
-            <h3 className="text-[#000000DE] text-xl font-medium text-center mt-[43px]">Təcrübəni zənginləşdirəcək materiallar burada!</h3>
+            <h3 className="text-[#000000DE] text-2xl font-[Corbel] font-normal text-center mt-[43px]">Təcrübəni zənginləşdirəcək materiallar burada!</h3>
             <div className="w-[90%] flex flex-wrap gap-y-10 mt-[55px] mb-[137px] justify-between mx-auto">
 
                 {
