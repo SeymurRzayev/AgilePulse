@@ -23,7 +23,9 @@ const AuthIllustration: React.FC<ImageSectionProps> = ({
         />
       </div>
 
-      <div className={`&{styles.navigatePageIcon} left-[40px] top-[20px] cursor-pointer`}>
+      <div
+        className={styles.navigatePageIcon}
+      >
         <NavigateArrow />
       </div>
 

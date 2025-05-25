@@ -39,7 +39,7 @@ const Faq: React.FC = () => {
   return (
     <div className="w-full">
       <div
-        className="relative w-full h-[282px] bg-no-repeat bg-center bg-cover flex justify-center items-center"
+        className="relative w-full h-[170px] md:h-[282px] bg-no-repeat bg-center bg-cover flex justify-center items-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)] bg-opacity-50 w-full h-full" />
@@ -54,7 +54,7 @@ const Faq: React.FC = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center gap-16 px-4 md:px-0">
-        <div className="w-full max-w-[1020px] text-center mt-8">
+        <div className="w-full max-w-[1020px] text-center mt-8 flex flex-col gap-3">
           <h1 className="text-[30px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel">
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>

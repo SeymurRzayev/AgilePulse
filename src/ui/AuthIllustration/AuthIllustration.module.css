@@ -6,8 +6,6 @@
 .imageSection {
     width: 50%;
     height: 100vh;
-    min-height: 100vh;
-    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,30 +14,20 @@
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px;
 
-    /*     Navigates the user back to the previous page */
+    /*Navigates the user back to the previous page */
     .navigatePageIcon {
+        position: absolute;
         display: flex;
         z-index: 9999;
+        left: 40px;
+        top: 20px;
         width: 60px;
         height: 60px;
-
-        .navigateIconImg {
-            display: flex;
-            justify-content: center;
-            width: 19.79px;
-            height: 20.86px;
-            left: 32px;
-            top: 32px;
-            object-fit: cover;
-            position: absolute;
-            z-index: 12;
-
-        }
     }
 
     .backgroundImgContainer {
         width: 100%;
-        min-height: 100vh;
+        height: 100vh;
         border-top-right-radius: 60px;
         border-bottom-right-radius: 60px;
 
@@ -99,6 +87,8 @@
         gap: 12px;
         position: absolute;
         z-index: 100;
+        bottom: 53px;
+        left: 52px;
 
         .logoImg {
             object-fit: cover;
@@ -118,8 +108,7 @@
 @media (min-width: 1024px) {
     .imageSection {
         width: 50%;
-        min-height: 100vh;
-        overflow: auto;
+        height: 100vh;
         flex-direction: column;
         border-top-right-radius: 60px;
         border-bottom-right-radius: 60px;
@@ -132,31 +121,16 @@
             height: 60px;
         }
 
-        .navigateIconImg {
-            display: flex;
-            justify-content: center;
-            width: 19.79px;
-            height: 20.86px;
-            left: 32px;
-            top: 32px;
-            object-fit: cover;
-            position: absolute;
-            z-index: 12;
-        }
 
         .backgroundImgContainer {
             width: 100%;
             position: relative;
-            min-height: 100vh;
-            overflow: auto;
             border-top-right-radius: 60px;
             border-bottom-right-radius: 60px;
         }
 
         .backgroundImg {
             width: 100%;
-            min-height: 100vh;
-            overflow: auto;
             object-fit: contain;
             position: relative;
             border-top-right-radius: 60px;
@@ -205,8 +179,8 @@
             gap: 12px;
             position: absolute;
             z-index: 100;
-            margin-top: 550px;
-            margin-right: 450px;
+            bottom: 53px;
+            left: 52px;
 
             .logoImg {
                 object-fit: cover;
@@ -221,8 +195,6 @@
             }
 
         }
-
-
     }
 }
 
@@ -300,9 +272,8 @@
             justify-content: center;
             gap: 12px;
             position: absolute;
-            z-index: 100;
-            /* margin-top: 350px;
-            margin-right: 250px; */
+            bottom: 43px;
+            left: 22px;
 
             .logoImg {
                 object-fit: cover;
