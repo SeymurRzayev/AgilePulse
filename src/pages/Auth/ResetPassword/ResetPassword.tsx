@@ -1,82 +1,103 @@
-import React from "react";
-import { useForm, Controller } from "react-hook-form";
-import InputField from "../../../ui/InputField/InputField";
-import { Link } from "react-router-dom";
-//validation
-import { yupResolver } from '@hookform/resolvers/yup';
-import { resetPasswordSchema } from "../../../validation/resetPasswordSchema";
-//ui components
-import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
-import styles from "./ResetPassword.module.css";
-import FormButton from "../../../ui/FormButton/FormButton";
-import authImage from "../../../assets/images/authImage.jpg";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import MainButton from '../../../components/Butttons/MainButton';
+import openEye from '../../../assets/icons/Inputeye.svg'
+import closeEye from '../../../assets/icons/Inputclosedeye.svg'
+import { useState } from 'react';
+import { resetPassword } from '../../../validation/signInSchema';
 
-// Interface to define the structure of form data (email in this case)
-interface ResetForm {
-  email: string;
-}
-// Using React Hook Form to handle form state and validation
-const ResetPassword: React.FC = () => {
-  const { control,
-     handleSubmit 
-    } = useForm<ResetForm>({resolver:yupResolver(resetPasswordSchema),
-    mode: "all",
-  });
 
-  // Here you can make an API request to send a reset password link
-  const onSubmit = (data: ResetForm) => {
-    console.log("Şifrə yeniləmə emaili:", data.email);
-  };
-
-  return (
-    <div className={styles.resetPasswordContainer}>
-      {/* Illustration on the page (used for visual aid) */}
-      <AuthIllustration
-        imgSrc={authImage}
-        title="Hədəfə çevik yolla çat!"
-      />
-
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={styles.resetPasswordForm}
-      >
-        <h1>Şifrəni Yenilə</h1>
-        {/* Email input with validation using Controller from React Hook Form */}
-        <Controller
-          name="email"
-          control={control}
-          rules={{
-            required: "E-mail ünvanının düzgünlüyünü yoxlayın",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: "E-mail ünvanının düzgünlüyünü yoxlayın",
-            },
-          }}
-          render={({ field, fieldState }) => (
-            <InputField
-              type="email"
-              placeholder="E-mail adress"
-              {...field}
-              error={fieldState.error?.message}
-              noSpace
-            />
-          )}
-        />
-
-        {/* Button and Link to Sign In */}
-        <div className={styles.buttonAndLinkContainer}>
-          <FormButton type="submit" onClick={() => {}} children="Göndər" />
-          {/* Link to Sign In page */}
-          <div className={styles.linkContainer}>
-            <span>Hesabin var?</span>
-            <Link to="/sign-in" className={styles.link}>
-              Daxil ol
-            </Link>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+const initialValues = {
+    password: '',
+    confirmPassword: '',
 };
 
-export default ResetPassword;
+const ResetPassword = () => {
+
+    const [showPassword, setShowPassword] = useState<boolean>(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
+
+    const handlechangePassword = async ({ values }: any) => {
+        /* Api integration */
+        console.log(values)
+    }
+
+
+    return (
+        <div className='w-full h-screen flex items-center justify-center'>
+            <div className='w-1/3 '>
+                <h1 className='text-[46px] font-[Corbel] font-bold text-center text-[#000000DE]'>Şifrənin bərpa olunması</h1>
+                <h5 className='font-[Corbel] text-lg font-normal text-[#00000099] text-center'>Yeni şifrə yarat və təkrar et.</h5>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={resetPassword}
+                    onSubmit={(values, { setSubmitting }) => {
+                        handlechangePassword(values);
+                        setSubmitting(false);
+                    }}
+                >
+                    {
+                        ({ isSubmitting }) => (
+                            <Form
+                                className='w-full !gap-y-6 mt-9'
+                            >
+                                <div className='flex flex-col w-full'>
+                                    <div className="relative">
+                                        <Field
+                                            name='password'
+                                            type={showPassword ? "text" : "password"}
+                                            placeholder="Yeni şifrə"
+                                            className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] focus:border-[#2C4B9B]"
+                                        />
+                                        <div
+                                            onClick={() => setShowPassword((prev) => !prev)}
+                                            className="absolute inset-y-0 right-0 flex items-center cursor-pointer pr-4"
+                                        >
+                                            <img
+                                                className="w-4 h-5"
+                                                src={showPassword ? openEye : closeEye}
+                                            />
+                                        </div>
+                                    </div>
+                                    <ErrorMessage
+                                        name='password'
+                                        component="div"
+                                        className='text-[#E70303] text-sm mt-1'
+                                    />
+                                </div>
+                                <div className="flex flex-col w-full">
+                                    <div className="relative">
+                                        <Field
+                                            name='confirmPassword'
+                                            type={showConfirmPassword ? "text" : "password"}
+                                            placeholder="Təkrar et"
+                                            className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] focus:border-[#2C4B9B]"
+
+                                        />
+                                        <div
+                                            className='absolute inset-y-0 right-0 flex items-center cursor-pointer pr-4'
+                                            onClick={() => setShowConfirmPassword((prev) => !prev)}
+                                        >
+                                            <img
+                                                className="w-4 h-5"
+                                                src={showConfirmPassword ? openEye : closeEye}
+                                            />
+                                        </div>
+                                    </div>
+                                    <ErrorMessage
+                                        name='confirmPassword'
+                                        component="div"
+                                        className='text-sm mt-1 text-[#E70303]'
+                                    />
+                                </div>
+                                <MainButton disabled={isSubmitting} buttonClassName='!py-3' text='Submit' />
+                            </Form>
+                        )
+                    }
+                </Formik>
+            </div>
+            {/* Turn to back */}
+        </div>
+    )
+}
+
+export default ResetPassword

@@ -12,6 +12,29 @@ export const emailField = yup
     value ? !/\s/.test(value) : true
   );
 
+export const resetPassword = yup.object({
+  password: yup
+    .string()
+    .required("Şifrə daxil edilməlidir")
+    .min(8, "Minimum 8 simvol daxil edilməlidir")
+    .max(64, "Maksimum 64 simvol daxil edilməlidir")
+    .matches(/[A-Z]/, "Ən az 1 böyük hərf olmalıdır")
+    .matches(/[a-z]/, "Ən az 1 kiçik hərf olmalıdır")
+    .matches(/\d/, "Ən az 1 rəqəm olmalıdır")
+    .matches(/[^A-Za-z0-9]/, "Ən az 1 simvol (@#$%! və s.) olmalıdır")
+    .test("no-space", "Şifrə boşluq simvolu ehtiva etməməlidir", (value) =>
+      value ? !/\s/.test(value) : true
+    )
+    .test("no-repeated-char", "Şifrə eyni simvoldan 3 və ya daha çox təkrar etməməlidir", (value) => {
+      if (!value) return true;
+      return !/(.)\1{2,}/.test(value);
+    }),
+  confirmPassword: yup.string()
+    .oneOf([yup.ref('password')], 'Şifrələr uyğun gəlmir')
+    .required('Şifrəni təkrarlayın'),
+});
+
+
 export const passwordField = yup
   .string()
   .required("Şifrə daxil edilməlidir")
