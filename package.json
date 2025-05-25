@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@tailwindcss/vite": "^4.1.6",
     "embla-carousel-react": "^8.6.0",
+    "formik": "^2.4.6",
     "i18next": "^25.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

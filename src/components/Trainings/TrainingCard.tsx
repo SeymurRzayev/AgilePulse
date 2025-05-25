@@ -36,7 +36,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           <div className={`${styles.infoButton}`}>
             <Link to={isArticle ? "/articles/details" : "/trainings/scrum"}>
               {isArticle
-                ? <MainButton className="w-[162px] h-[55px]" text="Daha çox" />
+                ? <MainButton buttonClassName="py-6"  className="w-[162px] h-[55px]" text="Daha çox" />
                 : <button className={styles.start_btn}>
                   Kursa başla
                 </button>}

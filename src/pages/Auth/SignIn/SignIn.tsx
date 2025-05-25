@@ -76,7 +76,7 @@ const SignIn: FC = () => {
           />
 
           <div className={styles.forgotPasswordContainer}>
-            <Link to="/reset-password" className={styles.forgotPasswordLink}>
+            <Link to="/forgetpassword" className={styles.forgotPasswordLink}>
               *Şifrəni unutmusan?
             </Link>
           </div>

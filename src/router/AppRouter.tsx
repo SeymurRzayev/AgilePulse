@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "../pages/Auth/SignUp/SignUp";
 import SignIn from "../pages/Auth/SignIn/SignIn";
-import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
+import ForgetPassword from "../pages/Auth/ForgetPassword/ForgetPassword";
 import TrainingsPage from "../pages/Training/TrainingsPage";
 import { Home } from "../pages/Home/Home";
 
@@ -12,12 +12,14 @@ import Library from "../pages/Library/Library";
 import LibraryDetails from "../pages/Library/LibraryDetails";
 import Articles from "../pages/Articles/Articles";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
+import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 const AppRouter: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
