@@ -91,7 +91,7 @@ const TrainingsPage = () => {
       <div className="relative left-0 w-full flex items-center justify-center">
         <Navbar />
       </div>
-      <div className={styles.container}>
+      <div className={`${styles.container} font-[Corbel]`}>
         <TrainingsHeroContainer />
         <TrainingsSearchContainer />
         <TrainingsCategoryList

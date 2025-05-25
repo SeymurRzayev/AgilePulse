@@ -6,9 +6,10 @@ import img4 from "../../../assets/images/book_4.webp";
 import img5 from "../../../assets/images/book_5.webp";
 import img6 from "../../../assets/images/book_6.webp";
 
+
 const PartnersSection: FC = () => {
   return (
-    <section className="partnersSection py-12 flex flex-col gap-24">
+    <section className=" font-[Corbel] partnersSection py-12 flex flex-col gap-24">
       <div className="textSection">
         <h2 className="text-center  font-bold mb-2 md:mb-4 text-lg md:text-[56px]">
           Partnyorlar
