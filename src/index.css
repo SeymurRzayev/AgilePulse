@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   --text-color: #122041;
 }
@@ -14,6 +13,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  font-family: "Corbel", sans-serif;
 }
 
 .slick-prev:before,
@@ -49,5 +49,4 @@ body {
   .slick-active {
     margin: 0 24px;
   }
-
 }
