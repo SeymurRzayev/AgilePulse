@@ -5,7 +5,7 @@ import SignIn from "../pages/Auth/SignIn/SignIn";
 import ForgetPassword from "../pages/Auth/ForgetPassword/ForgetPassword";
 import TrainingsPage from "../pages/Training/TrainingsPage";
 import { Home } from "../pages/Home/Home";
-
+import Faq from "../pages/FAQ/Faq";
 import ScrumSection from "../pages/Training/ScrumSection/ScrumSection";
 import PersonalCabinet from "../pages/PersonalCabinet/PersonalCabinet";
 import Library from "../pages/Library/Library";
@@ -28,6 +28,7 @@ const AppRouter: FC = () => {
       <Route path="/articles/details" element={<ArticleDetails />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
+      <Route path="/FAQ" element={<Faq/>}/>
     </Routes>
   );
 }

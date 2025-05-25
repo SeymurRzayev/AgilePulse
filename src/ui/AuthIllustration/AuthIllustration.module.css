@@ -205,7 +205,7 @@
             gap: 12px;
             position: absolute;
             z-index: 100;
-            margin-top: 500px;
+            margin-top: 550px;
             margin-right: 450px;
 
             .logoImg {
@@ -242,17 +242,6 @@
             height: 60px;
         }
 
-        .navigateIconImg {
-            display: flex;
-            justify-content: center;
-            width: 19.79px;
-            height: 20.86px;
-            left: 32px;
-            top: 32px;
-            object-fit: cover;
-            position: absolute;
-            z-index: 12;
-        }
 
         .backgroundImgContainer {
             width: 100%;

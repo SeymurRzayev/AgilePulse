@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const navMenu = [
   { label: "Haqqımızda", path: "/about" },
-  { label: "FAQ", path: "/#2" },
+  { label: "FAQ", path: "/FAQ" },
   { label: "Təklif və şikayətlər", path: "/#3" },
 ];
 

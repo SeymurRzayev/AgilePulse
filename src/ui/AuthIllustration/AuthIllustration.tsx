@@ -1,8 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./AuthIllustration.module.css";
-import arrowIcon from "../../assets/images/arrow.svg";
 import logo from "../../assets/images/logoWithOutTitle.svg";
+import NavigateArrow from "../NavigateArrow/NavigateArrow";
 
 interface ImageSectionProps {
   title: string;
@@ -14,16 +13,6 @@ const AuthIllustration: React.FC<ImageSectionProps> = ({
   description,
   imgSrc,
 }) => {
-  // Navigates the user back to the previous page
-  const navigate = useNavigate();
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      navigate(-1);
-    } else {
-      navigate("/"); // back to home
-    }
-  };
-
   return (
     <div className={styles.imageSection}>
       <div className={styles.backgroundImgContainer}>
@@ -34,12 +23,8 @@ const AuthIllustration: React.FC<ImageSectionProps> = ({
         />
       </div>
 
-      <div className={styles.navigatePageIcon} onClick={handleBack}>
-        <img
-          src={arrowIcon}
-          alt="Əvvəlki səhifəyə qayıt"
-          className={`${styles.navigateIconImg} cursor-pointer`}
-        />
+      <div className={`&{styles.navigatePageIcon} left-[40px] top-[20px] cursor-pointer`}>
+        <NavigateArrow />
       </div>
 
       <p className={styles.title}>{title}</p>
