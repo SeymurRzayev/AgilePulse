@@ -9,7 +9,7 @@ const StatusSection: React.FC = () => {
         background:
           "linear-gradient(263.45deg, #E7912B 7.26%, #D83D69 49.31%, #2C4B9B 90.56%)",
       }}
-      className="h-28 md:min-h-[369px] flex justify-center items-center"
+      className="font-[Corbel] h-28 md:min-h-[369px] flex justify-center items-center"
     >
       <div className="txtCnt max-w-[927px] px-0 md:px-5 w-4/5 md:w-3/4 font-bold mx-auto flex flex-col justify-center relative gap-0 md:gap-2 text-white ">
         <img
