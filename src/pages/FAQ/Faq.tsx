@@ -17,7 +17,8 @@ const faqData = [
       "Agile təlimləri məhsul sahibləri, layihə menecerləri və çevik komandalar üçün nəzərdə tutulub.",
   },
   {
-    question: "Agile ilə işləmək şirkətimə nə kimi üstünlüklər qazandıra bilər?",
+    question:
+      "Agile ilə işləmək şirkətimə nə kimi üstünlüklər qazandıra bilər?",
     answer:
       " Agile sayəsində məhsul və ya xidmət mərhələli şəkildə inkişaf etdirilir. Bu, nəticələri daha tez görməyə və erkən mərhələdə müştəri rəyinə əsasən dəyişiklik etməyə imkan verir.",
   },
@@ -59,7 +60,8 @@ const Faq: React.FC = () => {
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>
           <p className="text-lg md:text-[24px] leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel">
-            Əgər sualınız varsa, başlamazdan əvvəl bu bölməyə nəzər yetirin – bəlkə cavab artıq buradadır!
+            Əgər sualınız varsa, başlamazdan əvvəl bu bölməyə nəzər yetirin –
+            bəlkə cavab artıq buradadır!
           </p>
         </div>
 
@@ -69,7 +71,9 @@ const Faq: React.FC = () => {
               <div
                 key={index}
                 className={`transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0"
+                  openIndex === index
+                    ? "opacity-100 max-h-[500px]"
+                    : "opacity-0 max-h-0"
                 }`}
               >
                 <AnswerContainer
@@ -87,7 +91,7 @@ const Faq: React.FC = () => {
             )
           )}
         </div>
-
+        {/* contact us section */}
         <div className="w-full max-w-[1020px]">
           <TrainingsContactUs />
         </div>

@@ -14,7 +14,9 @@ import FormButton from "../../../ui/FormButton/FormButton";
 import authImage from "../../../assets/images/authImage.jpg";
 import checkedBox from "../../../assets/images/checked.svg";
 import uncheckedBox from "../../../assets/images/unchecked.svg";
-
+// Hook for swipe back functionality
+import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
+import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
 interface FormValues {
   name: string;
   email: string;
@@ -22,6 +24,7 @@ interface FormValues {
   rememberMe: boolean;
 }
 const SignUp: FC = () => {
+  useSwipeBack();
   const [rememberMe, setRememberMe] = useState(false);
 
   const {
@@ -38,6 +41,7 @@ const SignUp: FC = () => {
 
   return (
     <div className={styles.signUp}>
+       <SwipeBackMessage />
       <AuthIllustration imgSrc={authImage} title="Hədəfə çevik yolla çat!" />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h1>Qeydiyyat</h1>
