@@ -10,6 +10,9 @@ import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
 import styles from "./ForgetPassword.module.css";
 import FormButton from "../../../ui/FormButton/FormButton";
 import authImage from "../../../assets/images/authImage.jpg";
+// Hook for swipe back functionality
+import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
+import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
 
 // Interface to define the structure of form data (email in this case)
 interface ResetForm {
@@ -17,6 +20,7 @@ interface ResetForm {
 }
 // Using React Hook Form to handle form state and validation
 const ForgetPassword: React.FC = () => {
+  useSwipeBack(); 
   const { control,
      handleSubmit 
     } = useForm<ResetForm>({resolver:yupResolver(resetPasswordSchema),
@@ -30,6 +34,7 @@ const ForgetPassword: React.FC = () => {
 
   return (
     <div className={styles.resetPasswordContainer}>
+      <SwipeBackMessage />
       {/* Illustration on the page (used for visual aid) */}
       <AuthIllustration
         imgSrc={authImage}

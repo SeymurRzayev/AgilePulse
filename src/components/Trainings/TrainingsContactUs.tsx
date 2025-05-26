@@ -29,7 +29,7 @@ const TrainingsContactUs: FC = () => {
   };
 
   return (
-    <div className="h-auto md:h-[380px] mx-auto flex flex-col gap-10 my-20">
+    <div className="h-auto lg:h-[380px] mx-auto flex flex-col gap-10 my-20">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
@@ -44,11 +44,11 @@ const TrainingsContactUs: FC = () => {
         style={{ border: "1.5px solid rgba(217, 217, 217, 0.5)" }}
         className="w-full h-auto rounded-[40px] bg-white flex shadow-2xl max-w-[850px] mx-auto"
       >
-        <div className="form-center w-full flex flex-col md:flex-row gap-6 md:gap-12 m-6 md:m-14">
+        <div className="form-center w-full flex flex-col lg:flex-row gap-6 md:gap-12 m-6 md:m-14">
           {/* Text area section - left side on desktop */}
           <div className="text-area relative h-[123px] flex flex-col order-2 md:order-1">
             <textarea
-              className="w-full h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start"
+              className="w-full h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:text-Lexend"
               name="message"
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -107,7 +107,7 @@ const TrainingsContactUs: FC = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
               type="text"
-              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0] placeholder:text-Lexend"
               placeholder="Ad/Soyad"
             />
             <input
@@ -116,7 +116,7 @@ const TrainingsContactUs: FC = () => {
               }
               type="text"
               placeholder="E-mail adresi"
-              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0] placeholder:text-Lexend"
             />
           </div>
         </div>

@@ -112,12 +112,16 @@
 }
 
 /* Links */
-.links {
+/* .links {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
+} */
+
+/* .links a[href="/personal-cabinet"] {
+  
+} */
 
 .link {
   font-family: var(--font-body);
@@ -420,6 +424,9 @@
 }
 
 
+
+
+
 /* Animation for mobile menu items */
 @keyframes fadeInRight {
   0% {
@@ -513,10 +520,6 @@
 
 @media (min-width:768px) and (max-width:1023px) {
   .navbar {
-    top: 0;
-    border-radius: 0;
-    width: 100%;
-    background: none;
 
     .container {
       width: 100%;
@@ -525,13 +528,15 @@
       justify-content: space-between;
       height: var(--navbar-height-scrolled);
 
-      .links,
-      .actions {
-        display: none;
+
+
+      .link {
+        font-size: 14px;
+
       }
 
-      .hamburger {
-        display: flex;
+      .link {
+        padding: 0.5rem 0.5rem;
       }
 
 
@@ -539,7 +544,7 @@
         display: none;
       }
 
-      .logo {
+      /* .logo {
         width: 127px;
         height: 49px;
         background: #fbf9f7bf;
@@ -549,32 +554,34 @@
         justify-content: center;
         align-items: center;
         gap: 5px;
-      }
+      } */
 
       .logo img {
-        width: 16px;
-        height: 19px;
+        width: 18px;
+        height: 20px;
       }
 
       .logo span {
-        font-size: 12px;
+        font-size: 14px;
         color: #122041;
       }
 
-      .sidebar {
+      /* .sidebar {
         display: block;
-      }
+      } */
+
     }
 
   }
 
 }
 
-@media (min-width:480px) and (max-width:768px) {
+@media (min-width:480px) and (max-width:767px) {
   .navbar {
     top: 0;
     border-radius: 0;
     width: 100%;
+     padding: 20px 10px;
     background: none;
     position: fixed;
 
@@ -634,6 +641,7 @@
     top: 0;
     border-radius: 0;
     width: 100%;
+     padding: 20px 10px;
     background: none;
     position: fixed;
 

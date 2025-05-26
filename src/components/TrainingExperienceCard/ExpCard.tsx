@@ -9,7 +9,7 @@ interface ExpCardProps {
 
 const ExpCard = ({ date, img, subtitle, title }: ExpCardProps) => {
     return (
-        <div className="relative mx-auto max-w-[524px] max-h-[240px]">
+        <div className="relative mx-1 md:mx-auto max-w-[524px] max-h-[240px]">
 
             <div className="absolute left-0 top-1/2  md:top-1/2  -translate-y-1/2 z-10">
                 <img
