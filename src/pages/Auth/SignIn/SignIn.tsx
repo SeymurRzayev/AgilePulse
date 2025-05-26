@@ -10,11 +10,15 @@ import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
 import FormButton from "../../../ui/FormButton/FormButton";
 import InputField from "../../../ui/InputField/InputField";
 import authImgSignIn from "../../../assets/images/authImageSignIn.jpg";
+// Hook for swipe back functionality
+import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
+import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 
-//  Tip validationdan gəlir
+//  validation schema for sign-in form
 type LoginForm = InferType<typeof signInSchema>;
 
 const SignIn: FC = () => {
+   useSwipeBack();
   const { control, handleSubmit } = useForm<LoginForm>({
     resolver: yupResolver(signInSchema),
     mode: "all",
@@ -26,6 +30,7 @@ const SignIn: FC = () => {
 
   return (
     <div className={styles.signIn}>
+      <SwipeBackMessage />
       <AuthIllustration
         imgSrc={authImgSignIn}
         title="Yenidən bizimləsən!"
