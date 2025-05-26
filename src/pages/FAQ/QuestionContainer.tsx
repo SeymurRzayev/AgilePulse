@@ -11,14 +11,14 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({
 }) => {
   return (
     <div
-      className="w-[95%] max-w-[900px] bg-[#28448D] rounded-[15px] flex justify-end items-center relative mx-auto overflow-hidden"
+      className="w-[95%] max-w-[900px] bg-gradient-to-r from-[#28448D] rounded-[15px] flex justify-end items-center relative mx-auto overflow-hidden m-1"
       style={{
         boxShadow: "-1px 10px 26px -8px rgba(0,0,0,0.2)",
       }}
     >
       {/* Ağ div: sağ radius var, sol radius yoxdur */}
       <div
-        className="w-[97.5%] bg-white rounded-r-[15px] rounded-l-none h-full py-6 pl-6  pr-[60px]"
+        className="w-[97.5%] bg-white rounded-r-[15px]  h-full py-6 pl-6 ml-1 pr-[60px]"
         style={{
           boxShadow: "4px 4px 12px 5px rgba(0, 0, 0, 0.09)",
         }}
