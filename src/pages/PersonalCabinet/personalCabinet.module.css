@@ -25,11 +25,6 @@
   }
 }
 
-.userCard {
-  display: flex;
-  flex-direction: column;
-
-}
 
 .profileImage {
   display: flex;
@@ -353,10 +348,8 @@
 }
 
 .editSection {
-  width: 100% !important;
   display: flex;
   flex-direction: column;
-  gap: 40px;
 }
 
 .editSection h2 {
@@ -412,21 +405,7 @@ form {
 }
 
 
-.editPhotoSection {
-  width: 100% !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  /* gap: 2rem; */
-}
 
-
-/* .editPhotoSection img {
-  width: 373;
-  height: 392;
-  border-radius: 30px;
-} */
 
 .editPhotoSection button {
   gap: 8px;

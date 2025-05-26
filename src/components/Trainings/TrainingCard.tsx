@@ -36,7 +36,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           <div className={`${styles.infoButton}`}>
             <Link to={isArticle ? "/articles/details" : "/trainings/scrum"}>
               {isArticle
-                ? <MainButton buttonClassName="py-6"  className="w-[162px] h-[55px]" text="Daha çox" />
+                ? <MainButton buttonClassName="py-6" className="w-[162px] h-[55px] pr-1" text="Daha çox" />
                 : <button className={styles.start_btn}>
                   Kursa başla
                 </button>}
@@ -47,7 +47,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
       <div className={`pt-[32px] ${isArticle ? 'max-w-[355px]' : 'max-w-[339px]'} mx-auto`}>
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="max-w-[221px] font-[Corbel] font-bold text-[22px] text-[#000000DE]">{title}</h3>
+            <h3 className={` ${!isArticle && 'max-w-[221px]'}  font-[Corbel] font-bold text-[22px] text-[#000000DE]`}>{title}</h3>
             {!isArticle && (
               <div className="flex gap-4 mt-[8px] items-center">
                 <img src={timeIcon} className="w-[20.44px] h-[20.44px] rounded-full " alt="time_icon" />

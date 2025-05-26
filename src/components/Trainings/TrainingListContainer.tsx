@@ -24,21 +24,23 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
   const slicesData = trainingCourses.slice(0, visibilty)
 
   return (
-    <div className="w-full flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
-      {slicesData.map((course) => (
-        <TrainingCard
-          key={course.id}
-          imgUrl={course.imgUrl}
-          title={course.title}
-          time={course.time}
-          avatar={course.avatar}
-          user={course.user}
-          date={course.date}
-        />
-      ))}
+    <div>
+      <div className="w-full flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
+        {slicesData.map((course) => (
+          <TrainingCard
+            key={course.id}
+            imgUrl={course.imgUrl}
+            title={course.title}
+            time={course.time}
+            avatar={course.avatar}
+            user={course.user}
+            date={course.date}
+          />
+        ))}
+      </div>
       <TrainingsViewAllContainer
         text="Hamısına bax"
-        clickFunction={() => { () => setVisibility(visibilty + 6) }}
+        clickFunction={() => setVisibility(visibilty + 6)}
       />
     </div>
   );

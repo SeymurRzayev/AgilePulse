@@ -43,7 +43,7 @@ const CabinetCertificates = () => {
 
   return (
     <div className="mt-[42px]">
-      <p className='text-[#2C4B9B] w-fit border-b-2 border-[#2C4B9B] text-xl font-semibold'>Sertifikatlar</p>
+      <p className='text-[#2C4B9B] w-fit border-b-2 border-[#2C4B9B] text-xl ml-5 sm:ml-0 font-semibold'>Sertifikatlar</p>
       <div className='!w-full overflow-x-hidden mt-[36px] flex flex-col gap-3'>
         {/* Card */}
         <Slider {...settings} className="w-full ml-[-24px] lg:ml-0">
