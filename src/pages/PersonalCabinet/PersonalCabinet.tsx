@@ -3,7 +3,7 @@ import Image from '../../components/ImageComponent'
 import leftArrow from "../../assets/icons/left-arrow.svg";
 import user from "../../assets/images/user.png";
 import addIcon from "../../assets/icons/pencil.svg";
-import { useState, type Dispatch, type SetStateAction } from 'react';
+import { useState } from 'react';
 import EditUserProfile from './EditUserProfile';
 import PersonalCabinetTrainings from './PersonalCabinetTrainings';
 
