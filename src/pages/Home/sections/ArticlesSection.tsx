@@ -42,7 +42,7 @@ const ArticlesSection = () => {
           mütəxəssis fikirləri ilə tanış olun.
         </p>
       </div>
-      <div className="w-full flex flex-wrap mt-15 justify-center gap-6">
+      <div className="w-full flex px-1 flex-wrap mt-15 justify-center gap-6">
         {data.map((item) => (
           <TrainingCard
             isArticle={true}

@@ -110,9 +110,9 @@ const PersonalCabinetTrainings = () => {
     }
 
     return (
-        <div className='w-full ml-5 max-h-fit sm:max-w-[calc(100%-390px)] mx-auto mt-4  '>
+        <div className='w-full ml-0 sm:ml-5 max-h-fit sm:max-w-[calc(100%-390px)] mx-auto mt-4  '>
             <div className='flex mt-4 items-center justify-between w-[95%]'>
-                <p className='font-semibold text-2xl'>Şəxsi Kabinet</p>
+                <p className='font-semibold pl-5 sm:pl-0 text-2xl'>Şəxsi Kabinet</p>
                 <span
                     onClick={() => navigate('/')}
                     style={{ fontFamily: 'Raleway' }}
@@ -122,10 +122,10 @@ const PersonalCabinetTrainings = () => {
                 </span>
             </div>
             <div className='mt-3'>
-                <p className='text-[#000000DE] text-xl font-semibold'>Təlimlərim</p>
+                <p className='text-[#000000DE] pl-5 sm:pl-0 text-xl font-semibold'>Təlimlərim</p>
                 <div className='w-full'>
                     <div>
-                        <ul className="flex py-6 gap-2 font-semibold text-[#000000DE] font-[Corbel] sm:text-xl text-base ">
+                        <ul className="flex pl-5 sm:pl-0 py-6 gap-2 font-semibold text-[#000000DE] font-[Corbel] sm:text-xl text-base ">
                             {
                                 navLink.map((linkName, index) => (
                                     <li
