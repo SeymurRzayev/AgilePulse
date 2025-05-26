@@ -2,7 +2,7 @@ import type { FC } from "react";
 import styles from "./SignIn.module.css";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "../../../validation/signInSchema";
 import type { InferType } from "yup";
 // UI
@@ -15,12 +15,9 @@ import authImgSignIn from "../../../assets/images/authImageSignIn.jpg";
 type LoginForm = InferType<typeof signInSchema>;
 
 const SignIn: FC = () => {
-  const {
-    control,
-    handleSubmit,
-  } = useForm<LoginForm>({
+  const { control, handleSubmit } = useForm<LoginForm>({
     resolver: yupResolver(signInSchema),
-    mode:'all',
+    mode: "all",
   });
 
   const onSubmit = (data: LoginForm) => {
@@ -38,7 +35,7 @@ const SignIn: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={styles.signInForm}>
         <h1>Daxil ol</h1>
 
-        <div className={styles.inputFields}>
+        <div className={`${styles.inputFields} flex flex-col gap-4`}>
           <Controller
             name="email"
             control={control}
@@ -47,10 +44,11 @@ const SignIn: FC = () => {
                 placeholder="E-mail adress"
                 {...field}
                 onChange={(e) => {
-        const value = e.target.value.slice(0, 254);
-        const capitalized = value.charAt(0).toUpperCase() + value.slice(1);
-        field.onChange({ target: { value: capitalized } });
-      }}
+                  const value = e.target.value.slice(0, 254);
+                  const capitalized =
+                    value.charAt(0).toUpperCase() + value.slice(1);
+                  field.onChange({ target: { value: capitalized } });
+                }}
                 error={fieldState.error?.message}
                 noSpace
               />
@@ -65,7 +63,7 @@ const SignIn: FC = () => {
                 type="password"
                 placeholder="Şifrə"
                 {...field}
-                    onChange={(e) => {
+                onChange={(e) => {
                   const value = e.target.value.slice(0, 64);
                   field.onChange({ target: { value } });
                 }}
@@ -83,8 +81,7 @@ const SignIn: FC = () => {
         </div>
 
         <div className={styles.buttonAndLinkContainer}>
-          <FormButton type="submit" 
-          onClick={() => {}}>
+          <FormButton type="submit" onClick={() => {}}>
             Daxil ol
           </FormButton>
 
