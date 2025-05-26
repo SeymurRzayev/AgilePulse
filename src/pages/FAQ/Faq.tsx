@@ -56,7 +56,7 @@ const Faq: React.FC = () => {
 
       <div className="flex flex-col justify-center items-center gap-16 px-4 md:px-0">
         <div className="w-full max-w-[1020px] text-center mt-8 flex flex-col gap-3">
-          <h1 className="text-[30px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel">
+          <h1 className="text-[30px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel p-2 md:p-2.5">
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>
           <p className="text-lg md:text-[24px] leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel">
