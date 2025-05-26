@@ -13,6 +13,7 @@ import LibraryDetails from "../pages/Library/LibraryDetails";
 import Articles from "../pages/Articles/Articles";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
 import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
+import About from "../pages/About/About";
 const AppRouter: FC = () => {
   return (
     <Routes>
@@ -29,6 +30,7 @@ const AppRouter: FC = () => {
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
       <Route path="/FAQ" element={<Faq/>}/>
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }
