@@ -3,6 +3,8 @@ import type { FC } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/images/logoWithOutTitle.svg";
+import loginIcon768 from "../../assets/images/login-768.svg"
+
 interface NavLinkItem {
   path: string;
   label: string;
@@ -45,8 +47,8 @@ const Navbar: FC<NavbarProps> = ({
       label: "Haqqımızda",
     },
     {
-      path:"/personal-cabinet",
-      label:"Agile Akademiya"
+      path: "/personal-cabinet",
+      label: "Agile Akademiya"
     }
   ];
 
@@ -176,7 +178,7 @@ const Navbar: FC<NavbarProps> = ({
 
         {/* Desktop Navigation Links */}
         {!logoOnly && (
-          <div className={styles.links}>
+          <div className={`${styles.links} flex justify-center items-center gap-[10px] `}>
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -194,25 +196,41 @@ const Navbar: FC<NavbarProps> = ({
 
         {/* Desktop Action Buttons */}
         {!logoOnly && (
-          <div className={styles.actions}>
-            <NavLink
-              to="/sign-up"
-              className={({ isActive }) =>
-                `${styles.button} ${styles.colorBtn} ${isActive ? styles.active : ""
-                }`
-              }
-            >
-              Qeydiyyat
-            </NavLink>
-            <NavLink
-              to="/sign-in"
-              className={({ isActive }) =>
-                `${styles.button} ${styles.outlineBtn} ${isActive ? styles.active : ""
-                }`
-              }
-            >
-              Daxil ol
-            </NavLink>
+          <div className={`${styles.actions}`}>
+            <div className=" hidden lg:flex gap-4">
+              <NavLink
+                to="/sign-up"
+                className={({ isActive }) =>
+                  `${styles.button} ${styles.colorBtn} ${isActive ? styles.active : ""
+                  }`
+                }
+              >
+                Qeydiyyat
+              </NavLink>
+              <NavLink
+                to="/sign-in"
+                className={({ isActive }) =>
+                  `${styles.button} ${styles.outlineBtn} ${isActive ? styles.active : ""
+                  }`
+                }
+              >
+                Daxil ol
+              </NavLink>
+
+            </div>
+            <div className="flex lg:hidden ">
+              <NavLink
+                to="/sign-in"
+                className={({ isActive }) =>
+                  ` ${isActive ? `${styles.active}` : ""
+                  }`
+                }
+              >
+                <img src={loginIcon768} alt="" className="w-[35px]" />
+              </NavLink>
+
+
+            </div>
           </div>
         )}
 
