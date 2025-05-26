@@ -70,7 +70,7 @@ const Faq: React.FC = () => {
             openIndex === index ? (
               <div
                 key={index}
-                className={`transition-all duration-500 ease-in-out ${
+                className={`transition-all duration-1700 ease-in-out ${
                   openIndex === index
                     ? "opacity-100 max-h-[500px]"
                     : "opacity-0 max-h-0"

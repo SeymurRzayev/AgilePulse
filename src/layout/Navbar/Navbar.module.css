@@ -581,6 +581,7 @@
     top: 0;
     border-radius: 0;
     width: 100%;
+     padding: 20px 10px;
     background: none;
     position: fixed;
 
@@ -640,6 +641,7 @@
     top: 0;
     border-radius: 0;
     width: 100%;
+     padding: 20px 10px;
     background: none;
     position: fixed;
 
