@@ -48,7 +48,7 @@ const TrainingsContactUs: FC = () => {
           {/* Text area section - left side on desktop */}
           <div className="text-area relative h-[123px] flex flex-col order-2 md:order-1">
             <textarea
-              className="w-full h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start"
+              className="w-full h-full rounded-[20px] border-0 bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:text-Lexend"
               name="message"
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
@@ -107,7 +107,7 @@ const TrainingsContactUs: FC = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
               type="text"
-              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0] placeholder:text-Lexend"
               placeholder="Ad/Soyad"
             />
             <input
@@ -116,7 +116,7 @@ const TrainingsContactUs: FC = () => {
               }
               type="text"
               placeholder="E-mail adresi"
-              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0]"
+              className="w-full rounded-[30px] py-[12px] px-[16px] border-[1px] border-[#B0B0B0] placeholder:text-[#B0B0B0] placeholder:text-Lexend"
             />
           </div>
         </div>
