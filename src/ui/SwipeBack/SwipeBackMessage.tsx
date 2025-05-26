@@ -16,7 +16,7 @@ export default function SwipeBackMessage() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-36 left-[40%] -translate-x-1/2 bg-[rgba(44,75,155,0.8)] bg-opacity-70 text-white px-4 py-1 rounded-4xl text-[12px] z-[1000] block lg:hidden">
+    <div className="fixed bottom-40 left-[40%] -translate-x-1/2 bg-[rgba(44,75,155,0.8)] bg-opacity-70 text-white px-4 py-1 rounded-4xl text-[12px] z-[1000] block lg:hidden">
       Geri qayıtmaq üçün sola sürüşdür
     </div>
   );
