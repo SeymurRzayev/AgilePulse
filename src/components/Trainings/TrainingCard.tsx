@@ -56,7 +56,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           </div>
         </div>
       </div>
-      <div className={`pt-[28px] ${isCourse && 'px-[26px] py-[29px]'} ${isArticle ? 'max-w-[355px]' : 'max-w-[339px]'} mx-auto`}>
+      <div className={`pt-[28px] ${isCourse && 'px-[26px] py-[29px]'} ${isArticle ? 'max-w-[355px] px-3 sm:px-0' : 'max-w-[339px] px-3 sm:px-0'} mx-auto`}>
         <div className="flex items-start justify-between">
           <div>
             <h3 className={` ${!isArticle && 'max-w-[221px]'}  font-[Corbel] font-bold text-[22px] text-[#000000DE]`}>{title}</h3>
@@ -78,7 +78,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           )}
         </div>
         <div className=''>
-          {content && <p className="mt-[12px] min-h-[96px] font-normal text-lg font-[Corbel] text-[#00000099] max-w-[343px]">{content}</p>}
+          {content && <p className="mt-[12px] min-h-[96px] font-normal text-base md:text-lg font-[Corbel] text-[#00000099] max-w-[343px]">{content}</p>}
         </div>
 
         {!isArticle && (
