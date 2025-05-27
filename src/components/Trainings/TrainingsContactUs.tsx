@@ -29,7 +29,7 @@ const TrainingsContactUs: FC = () => {
   };
 
   return (
-    <div className="h-auto lg:h-[380px] mx-auto flex flex-col gap-10 my-20">
+    <div className=" w-full h-auto lg:h-[380px] mx-auto flex flex-col gap-10 my-20 md: max-w-[1020px] ">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
@@ -101,7 +101,7 @@ const TrainingsContactUs: FC = () => {
           </div>
 
           {/* Text inputs section - right side on desktop */}
-          <div className="text-inputs flex flex-col gap-6 w-full md:w-auto md:min-w-[300px] order-1 md:order-2">
+          <div className="text-inputs flex flex-col gap-6 w-full md:w-auto lg:min-w-[300px] order-1 md:order-2">
             <input
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
