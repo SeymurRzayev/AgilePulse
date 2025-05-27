@@ -8,7 +8,7 @@ const LibraryDetails = () => {
         <Navbar />
       </div>
       <div className="">
-        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28">
+        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28" style={{background: "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))"}}>
           <div className="relative flex justify-center md:block">
             <img
               src={bookImg}
