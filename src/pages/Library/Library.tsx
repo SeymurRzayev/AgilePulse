@@ -78,7 +78,8 @@ const Library = () => {
     return (
         <div>
             <div className="relative left-0 w-full flex items-center justify-center">
-                <Navbar />
+                <Navbar className="!shadow-none" />
+
             </div>
             <div
                 style={{ backgroundImage: `url(${backgroundImage})` }}
