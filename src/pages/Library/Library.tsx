@@ -91,18 +91,18 @@ const Library = () => {
             </div>
             <h3 className="text-[#000000DE] text-xl md:text-2xl font-[Corbel] font-normal text-center mt-[30px] md:mt-[43px] px-4">Təcrübəni zənginləşdirəcək materiallar burada!</h3>
             <div className="w-[95%] md:w-[90%] flex flex-wrap gap-y-6 md:gap-y-8 lg:gap-y-10 mt-[40px] md:mt-[55px] mb-[80px] md:mb-[100px] lg:mb-[137px] justify-center md:justify-between mx-auto">
-
                 {
                     slicesBooks.map((item, i) =>
-                        <LibraryBookCard
-                            author={item.author}
-                            imgUrls={item.imageUrl}
-                            title={item.title}
-                            key={i}
-                        />
+                        <div key={i} className="w-full md:w-1/2 lg:w-1/3 px-2">
+                            <LibraryBookCard
+                                author={item.author}
+                                imgUrls={item.imageUrl}
+                                title={item.title}
+                                key={i}
+                            />
+                        </div>
                     )
                 }
-
                 {
                     slicesBooks.length >= bookImages.length
                         ? (
@@ -118,7 +118,7 @@ const Library = () => {
                 }
             </div>
             <Footer />
-        </div>
+        </div >
     )
 }
 

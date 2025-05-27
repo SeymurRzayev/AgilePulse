@@ -9,7 +9,7 @@ interface CardProps {
 const LibraryBookCard = ({ author, imgUrls, title }: CardProps) => {
     const navigate = useNavigate()
     return (
-        <div className="w-full md:w-[32%] bg-transparent">
+        <div className="w-full  bg-transparent"> {/** this class has been removed md:w-[32%] */}
             <div className="w-fit mx-auto flex items-center flex-col gap-4 px-[36px] py-[31px] rounded-4xl bg-[#EAEDF580]">
                 <div style={{ boxShadow: '0px 0px 13px 5px #0000003B' }} className=" object-cover  rounded-xl">
                     <img className="rounded-xl w-[228px] h-[326px]" src={imgUrls} alt="" />
