@@ -179,9 +179,13 @@ body {
   margin: 0 auto;
   background-size: cover;
   background-position: center;
-  clip-path: path('M 0,0 L381,0 L381,280 Q 375,307 347,316 Q 338,318 335,318 L240,320 Q 221,320 207,332 Q 202,336 198,346 Q 196,356 196,357 Q 190,387 158,391 L0,391 Z') !important;
 }
 
+@media (max-width: 640px) {
+  .curveImg {
+    clip-path: path('M 0,0 L325,0 L328,286 Q 319.74,307 300.43,316 Q 291.98,319 274.56,321 L215.71,321 Q 158.3,317 150,354 Q 141.39,344 142,355 Q 83.27,399 157,300 Q 158.06,391 97.76,391 L0,391 Z') !important;
+  }
+}
 
 .infoButton {
   position: absolute;
@@ -204,6 +208,8 @@ body {
 .start_btn {
   width: 163px;
   height: 56px;
+  padding: 12px 16px;
+  margin-right: 4px;
   border-radius: 50px;
   background: linear-gradient(to right, #8a84f2, #6a6acf, #3a358c);
   color: white;

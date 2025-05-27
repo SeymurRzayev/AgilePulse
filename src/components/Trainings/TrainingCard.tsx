@@ -15,6 +15,7 @@ type TrainingCardProps = {
   date?: string;
   content?: string;
   isArticle?: boolean;
+  isCourse?: boolean;
 };
 
 const TrainingCard: React.FC<TrainingCardProps> = ({
@@ -26,12 +27,23 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
   date,
   content,
   isArticle,
+  isCourse,
 }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = React.useState(false);
   return (
-    <div className='w-[381px] pb-[46px] bg-[#FFFFFF] hover:translate-y-[-5px] transition-all duration-300 shadow-[4px_4px_12px_5px_#0000000D] rounded-br-[100px] rounded-bl-xl rounded-tl-[50px] rounded-tr-[50px]'>
-      <div className='h-[391px] relative flex items-center justify-center overflow-hidden'>
-        <img src={imgUrl} className={styles.curveImg} />
+    <div
+      className={`${isCourse ? 'w-[325px]' : 'w-[325px] sm:w-[381px]'} ${isArticle && 'min-h-[595px]'} bg-[#FFFFFF] hover:translate-y-[-5px] transition-all duration-300 shadow-[4px_4px_12px_5px_#0000000D] rounded-br-[100px] rounded-bl-xl rounded-tl-[50px] rounded-tr-[50px]`}
+    >
+      <div className={`h-[391px] relative flex items-center justify-center overflow-hidden`}>
+        <img
+          src={imgUrl}
+          style={{
+            clipPath: isCourse
+              ? "path('M 0,0 L325,0 L328,286 Q 319.74,307 300.43,316 Q 291.98,319 274.56,321 L215.71,321 Q 158.3,317 150,354 Q 141.39,344 142,355 Q 83.27,399 157,300 Q 158.06,391 97.76,391 L0,391 Z')"
+              : "path('M 0,0 L381,0 L381,280 Q 375,307 347,316 Q 338,318 335,318 L240,320 Q 221,320 207,332 Q 202,336 198,346 Q 196,356 196,357 Q 190,387 158,391 L0,391 Z')"
+          }}
+          className={`${styles.curveImg}
+           `} />
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
           <div className={`${styles.infoButton}`}>
             <Link to={isArticle ? "/articles/details" : "/trainings/scrum"}>
@@ -44,7 +56,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           </div>
         </div>
       </div>
-      <div className={`pt-[32px] ${isArticle ? 'max-w-[355px]' : 'max-w-[339px]'} mx-auto`}>
+      <div className={`pt-[28px] ${isCourse && 'px-[26px] py-[29px]'} ${isArticle ? 'max-w-[355px]' : 'max-w-[339px]'} mx-auto`}>
         <div className="flex items-start justify-between">
           <div>
             <h3 className={` ${!isArticle && 'max-w-[221px]'}  font-[Corbel] font-bold text-[22px] text-[#000000DE]`}>{title}</h3>
@@ -66,7 +78,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           )}
         </div>
         <div className=''>
-          {content && <p className="mt-[12px] font-normal text-lg font-[Corbel] text-[#00000099] max-w-[343px]">{content}</p>}
+          {content && <p className="mt-[12px] min-h-[96px] font-normal text-lg font-[Corbel] text-[#00000099] max-w-[343px]">{content}</p>}
         </div>
 
         {!isArticle && (
