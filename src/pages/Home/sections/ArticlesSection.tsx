@@ -37,7 +37,7 @@ const ArticlesSection = () => {
     <div className="my-15">
       <div className="mt-10 flex flex-col items-center gap-4">
         <h2 className="text-center w-full font-[Corbel] font-bold text-[46px] ">Məqalələr</h2>
-        <p className="text-lg text-[#000000DE] font-[Corbel] font-normal text-center">
+        <p className="text-lg text-[#000000DE] px-2 sm:px-0 font-[Corbel] font-normal text-center">
           Agile metodologiyası haqqında ən son məqalələr, praktik yanaşmalar və
           mütəxəssis fikirləri ilə tanış olun.
         </p>

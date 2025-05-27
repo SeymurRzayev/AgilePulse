@@ -15,7 +15,7 @@ const ArticleDetails = () => {
                 style={{ backgroundImage: `url(${backgroundImage})` }}
                 className="w-full relative h-[282px] bg-no-repeat bg-cover bg-center"
             >
-                <span  className='absolute cursor-pointer z-20 w-[60px] h-[60px]  flex items-center justify-center top-[30px] left-[19px]'>
+                <span className='absolute cursor-pointer z-20 w-[60px] h-[60px]  flex items-center justify-center top-[30px] left-[19px]'>
                     <svg onClick={goBack} className='absolute z-50 cursor-pointer' width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" clipRule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#FFFFFF" />
                     </svg>
@@ -37,8 +37,8 @@ const ArticleDetails = () => {
                     <ShowMoreText text={articleText} maxLength={1700} className='max-w-[725px] lg:max-w-[850px] mx-auto text-justify text-[#000000DE] font-[Corbel] text-base font-normal px-4 lg:px-0' />
                 </div>
                 {/* Other articles (Right side) */}
-                <div className='flex-1 min-w-[300px] lg:max-w-[391px] flex flex-col items-center'>
-                    <h4 className='max-w-[391px] mx-auto font-[Corbel] font-bold text-[46px] sm:text-[36px] text-[#000000DE] text-center mb-6'>Digər məqalələr</h4>
+                <div className='flex-1 min-w-[300px] lg:max-w-[391px] flex flex-col gap-6 items-center'>
+                    <h4 className='max-w-[391px] mx-auto font-[Corbel] font-bold text-[46px] sm:text-[36px] text-[#000000DE] text-center mb-[22px]'>Digər məqalələr</h4>
                     {/* Cards */}
                     {
                         articlesData.map(article =>
