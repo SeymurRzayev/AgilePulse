@@ -14,12 +14,15 @@ import Articles from "../pages/Articles/Articles";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
 import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import About from "../pages/About/About";
+import OTP from "../pages/Auth/OTP/OTP";
+
 const AppRouter: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/auth/otp" element={<OTP />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
