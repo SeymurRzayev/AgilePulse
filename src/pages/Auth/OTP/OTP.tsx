@@ -81,7 +81,7 @@ const OTP = () => {
       <div className="w-full max-w-md">
         <button 
           onClick={() => navigate(-1)} 
-          className="mb-6 flex items-center text-purple-600 hover:text-purple-800 transition-colors"
+          className="mb-6 flex items-center text-[#2C4B9B] hover:text-[#5a77be] transition-colors"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -89,7 +89,7 @@ const OTP = () => {
           Geri
         </button>
 
-        <div className="bg-white rounded-3xl shadow-xl p-8 border border-purple-100">
+        <div className="bg-white rounded-3xl shadow-xl p-8 border border-[#E5E7EB]">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Təsdiq kodu</h1>
             <p className="text-gray-600 text-sm">
@@ -98,11 +98,11 @@ const OTP = () => {
           </div>
 
           <div className="flex items-center justify-center mb-8">
-            <div className="flex items-center bg-purple-50 rounded-full px-4 py-2 border border-purple-200">
-              <svg className="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center bg-[#F3F4F6] rounded-full px-4 py-2 border border-[#E5E7EB]">
+              <svg className="w-5 h-5 text-[#2C4B9B] mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
               </svg>
-              <span className="text-purple-600 font-semibold text-lg">
+              <span className="text-[#2C4B9B] font-semibold text-lg">
                 {formatTime(timeLeft)}
               </span>
             </div>
@@ -119,7 +119,7 @@ const OTP = () => {
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 onPaste={handlePaste}
-                className="w-12 h-14 text-center text-xl font-bold border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200 outline-none bg-gray-50 focus:bg-white"
+                className="w-12 h-14 text-center text-xl font-bold border-2 border-gray-200 rounded-xl focus:border-[#2C4B9B] focus:ring-2 focus:ring-[#4e71c7] transition-all duration-200 outline-none bg-gray-50 focus:bg-white"
                 maxLength={1}
                 inputMode="numeric"
                 autoFocus={index === 0}
@@ -130,7 +130,7 @@ const OTP = () => {
           <div className="space-y-4">
             <button
               onClick={handleVerify}
-              className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+              className="w-full bg-gradient-to-r from-[#2C4B9B] to-[#2C4B9B] hover:from-[#2C4B9B] hover:to-[#2C4B9B] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
             >
               Təsdiqlə
             </button>
@@ -141,7 +141,7 @@ const OTP = () => {
               className={`w-full font-semibold py-4 px-6 rounded-2xl transition-all duration-200 ${
                 isResendDisabled
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]'
+                  : 'bg-gradient-to-r from-[#4B4193] to-[#DA3D68] hover:from-[#4B4193] hover:to-[#E99826] text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]'
               }`}
             >
               Kodu yenidən göndər
