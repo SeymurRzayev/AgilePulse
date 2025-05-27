@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('./assets/styles/stylesheet.css');
 
 :root {
   --text-color: #122041;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import bgImage from "../../assets/images/imageForFaq.jpg";
+import bgImage from "../../assets/images/FAQSectionImg.jpg";
 import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
 import QuestionContainer from "./QuestionContainer";
@@ -40,8 +40,8 @@ const Faq: React.FC = () => {
   return (
     <div className="w-full">
       <div
-        className="relative w-full h-[170px] md:h-[282px] bg-no-repeat bg-center bg-cover flex justify-center items-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        className="relative w-full h-[170px] md:h-[282px] bg-no-repeat  bg-bottom flex justify-center items-center bg-[length:110%_105%]"
+        style={{ backgroundImage: `url(${bgImage})`, }}
       >
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.6)] bg-opacity-50 w-full h-full" />
         <div className="absolute left-5 top-5 cursor-pointer">
@@ -59,7 +59,7 @@ const Faq: React.FC = () => {
           <h1 className="text-[25px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel p-1 md:p-2">
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>
-          <p className="text-[18px] md:text-xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel">
+          <p className="text-[18px] md:text-xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel p-2">
             Əgər sualınız varsa, başlamazdan əvvəl bu bölməyə nəzər yetirin –
             bəlkə cavab artıq buradadır!
           </p>

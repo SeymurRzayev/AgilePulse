@@ -1,9 +1,25 @@
+/* Corbel */
 @font-face {
     font-family: 'Corbel';
-    src: url('Corbel.woff2') format('woff2'),
-        url('Corbel.woff') format('woff');
+    src: url('./corbel/Corbel.woff2') format('woff2'),
+        url('./corbel/Corbel.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
+/* Montserrat */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
