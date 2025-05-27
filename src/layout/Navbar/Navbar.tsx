@@ -48,7 +48,7 @@ const Navbar: FC<NavbarProps> = ({
     },
     {
       path: "/personal-cabinet",
-      label: "Agile Akademiya"
+      label: "Akademiya",
     }
   ];
 
