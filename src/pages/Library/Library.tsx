@@ -4,75 +4,21 @@ import LibraryBookCard from "../../components/LibraryCards/LibraryBookCard"
 import Footer from "../../layout/Footer/Footer";
 import { useState } from "react";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
+import { useGetAllBookQuery } from "../../services/features/bookApi";
 
 const Library = () => {
 
     const [visibility, setVisibility] = useState<number>(6)
 
-    const bookImages = [
-        {
-            imageUrl: "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://m.media-amazon.com/images/I/81ZgVTKyyiL.UF1000,1000_QL80.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://media.licdn.com/dms/image/C5612AQExDzdX9dzYrA/article-cover_image-shrink_600_2000/0/1644469313843?e=2147483647&v=beta&t=rGwKP6_aXhVMQpAHcJN3HJXlO8AYiRGg2focfzUus_g",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://m.media-amazon.com/images/I/81ZgVTKyyiL.UF1000,1000_QL80.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://media.licdn.com/dms/image/C5612AQExDzdX9dzYrA/article-cover_image-shrink_600_2000/0/1644469313843?e=2147483647&v=beta&t=rGwKP6_aXhVMQpAHcJN3HJXlO8AYiRGg2focfzUus_g",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-        {
-            imageUrl: "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-            title: "Agile Changee Managemet",
-            author: "Melanie Franklin",
-        },
-    ];
 
-    const slicesBooks = bookImages.slice(0, visibility)
+    const { data } = useGetAllBookQuery()
+
+    const allBook = data?.data?.data
+
+    if (!allBook) return null
+
+
+    const slicesBooks = allBook?.slice(0, visibility)
 
 
     return (
@@ -92,19 +38,20 @@ const Library = () => {
             <h3 className="text-[#000000DE] text-xl md:text-2xl font-[Corbel] font-normal text-center mt-[30px] md:mt-[43px] px-4">Təcrübəni zənginləşdirəcək materiallar burada!</h3>
             <div className="w-[95%] md:w-[90%] flex flex-wrap gap-y-6 md:gap-y-8 lg:gap-y-10 mt-[40px] md:mt-[55px] mb-[80px] md:mb-[100px] lg:mb-[137px] justify-center md:justify-between mx-auto">
                 {
-                    slicesBooks.map((item, i) =>
+                    slicesBooks?.map((item, i) =>
                         <div key={i} className="w-full md:w-1/2 lg:w-1/3 px-2">
                             <LibraryBookCard
                                 author={item.author}
                                 imgUrls={item.imageUrl}
-                                title={item.title}
+                                title={item.name}
+                                id={item.id}
                                 key={i}
                             />
                         </div>
                     )
                 }
                 {
-                    slicesBooks.length >= bookImages.length
+                    slicesBooks.length >= allBook?.length
                         ? (
                             <div className="w-full text-center mt-6 md:mt-8">
                                 <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(6)} />
