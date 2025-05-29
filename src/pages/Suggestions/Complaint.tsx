@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Suggestions = () => {
+const Complaint = () => {
   const [formData, setFormData] = useState({
     emailAddress: "",
     textarea: "",
@@ -59,7 +59,6 @@ const Suggestions = () => {
     }, 1000);
   };
 const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#401795] via-[#621DAC] to-[#4E61EC] flex items-center justify-center p-4 relative">
       <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl relative">
@@ -131,7 +130,7 @@ const navigate = useNavigate();
                     className={`w-full px-3 sm:px-4 py-3 sm:py-4  bg-[#F2F2F2] focus:border-1 border-[#4E61EC] rounded-md font-medium tracking-wide focus:outline-none  transition-all duration-300 text-sm sm:text-base shadow-lg placeholder-gray-400 placeholder:font-[corbel] ${
                       errors.textarea ? "ring-2 ring-red-500" : ""
                     }`}
-                    placeholder="Sizin təklifiniz..."
+                    placeholder="Sizin şikayətiniz..."
                   ></textarea>
                 </div>
               </div>
@@ -158,4 +157,4 @@ const navigate = useNavigate();
   );
 };
 
-export default Suggestions;
+export default Complaint;

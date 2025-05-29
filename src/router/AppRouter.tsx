@@ -16,6 +16,7 @@ import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import About from "../pages/About/About";
 import OTP from "../pages/Auth/OTP/OTP";
 import Suggestions from "../pages/Suggestions/Suggestions"; 
+import Complaint from "../pages/Suggestions/Complaint";
 
 const AppRouter: FC = () => {
   return (
@@ -36,6 +37,7 @@ const AppRouter: FC = () => {
       <Route path="/FAQ" element={<Faq/>}/>
       <Route path="/about" element={<About />} />
       <Route path="/suggestions" element={<Suggestions />} /> 
+      <Route path='/complaint' element={<Complaint />} />
     </Routes>
   );
 }
