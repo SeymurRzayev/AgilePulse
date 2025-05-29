@@ -1,14 +1,15 @@
 @import "tailwindcss";
 @import url('./assets/styles/stylesheet.css');
 
-:root {
-  --text-color: #122041;
-}
-
 * {
   text-decoration: none;
   box-sizing: border-box;
 }
+
+:root {
+  --text-color: #122041;
+}
+
 
 body {
   overflow-x: hidden;
