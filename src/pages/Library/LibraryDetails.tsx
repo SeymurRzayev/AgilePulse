@@ -43,7 +43,7 @@ const LibraryDetails = () => {
               <div className="list flex flex-col gap-4 text-white text-base md:text-xl xl:text-2xl px-2">
                 <p>3 əsas prinsip:</p>
 
-                <ol style={{ listStyleType: "decimal" }} className="list-item pl-4">
+                <ol style={{ listStyleType: "decimal" }} className=" pl-4">
                   <li className="mb-2">
                     Müştəri fokusluluğu – hər şey müştəriyə dəyər yaratmaq üçün.
                   </li>

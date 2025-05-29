@@ -1,13 +1,12 @@
 import type { ReactNode } from "react";
 import type { FC } from "react";
-import  styles from "./AnimatedButton.module.css";
+import styles from "./AnimatedButton.module.css";
 
 interface AnimatedButtonProps {
   children: ReactNode;
- 
 }
 
-const AnimatedButton: FC<AnimatedButtonProps> = ({ children}) => {
+const AnimatedButton: FC<AnimatedButtonProps> = ({ children }) => {
   return (
     <button className={`${styles.btn} !cursor-pointer`} type="button">
       {children}
