@@ -17,7 +17,7 @@ export const Banner: FC = () => {
           <p>Adaptiv, çevik, dəyişkən, dürüst və qorxmaz</p>
         </div>
         <Link className="cursor-pointer mt-20" to="/trainings">
-          <AnimatedButton>Təlimlərə başla</AnimatedButton>
+          <AnimatedButton className="">Təlimlərə başla</AnimatedButton>
         </Link>
 
       </div>
