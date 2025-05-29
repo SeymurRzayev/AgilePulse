@@ -79,7 +79,7 @@ const navigate = useNavigate();
             </div>
           </div>
 
-          <div className="bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-2xl p-6 sm:p-8 transform hover:scale-105 transition-transform duration-300 relative border border-gray-300">
+          <div className="bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-2xl p-6 sm:p-8 transition-transform duration-300 relative border border-gray-300">
             <div className="absolute -right-10 top-1/6 hidden md:flex flex-col gap-4">
               <button
                onClick={() => navigate("/suggestions")}
@@ -141,7 +141,7 @@ const navigate = useNavigate();
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-          className="w-full py-3 sm:py-4 bg-gradient-to-r from-[#401795] via-[#621DAC] to-[#4E61EC] hover:from-[#4E61EC] hover:via-[#621DAC] hover:to-[#401795] text-white font-[lexend] text-base sm:text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
+          className="w-full py-3 sm:py-4 bg-gradient-to-r from-[#401795] via-[#621DAC] to-[#4E61EC] hover:from-[#4E61EC] hover:via-[#621DAC] hover:to-[#401795] text-white font-[lexend] text-base sm:text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
 
               >
                 {isSubmitting ? (

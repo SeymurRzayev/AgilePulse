@@ -81,7 +81,7 @@ const Complaint = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-2xl p-6 sm:p-8 transform hover:scale-105 transition-transform duration-300 relative border border-gray-300">
+            <div className="bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-2xl p-6 sm:p-8 transition-transform duration-300 relative border border-gray-300">
               <div className="absolute -right-10 top-1/6 hidden md:flex flex-col gap-4">
                 <button
                   onClick={() => navigate("/suggestions")}
