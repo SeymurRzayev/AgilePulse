@@ -32,6 +32,7 @@ const ArticlesSection = () => {
             imgUrl={item.imageUrl}
             content={item.content}
             key={item.id}
+            id={item.id}
           />
         ))}
       </div>

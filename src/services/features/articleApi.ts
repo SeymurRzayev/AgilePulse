@@ -1,16 +1,22 @@
-import type { ApiResponse } from "../../types/types";
+import type { GetAllArticleResponse, GetByIdArticle } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 
 export const articleApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getAllArticle: build.query<ApiResponse, void>({
+        getAllArticle: build.query<GetAllArticleResponse, void>({
             query: () => ({
                 url: '/articles/all',
+                method: 'GET',
+            }),
+        }),
+        getArticleById: build.query<GetByIdArticle, number>({
+            query: (id) => ({
+                url: `/articles/get/${id}`,
                 method: 'GET',
             }),
         }),
     })
 });
 
-export const { useGetAllArticleQuery } = articleApi;
+export const { useGetAllArticleQuery, useGetArticleByIdQuery } = articleApi;
