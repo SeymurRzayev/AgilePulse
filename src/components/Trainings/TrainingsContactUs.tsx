@@ -1,4 +1,5 @@
 import { type FC, useState } from "react";
+import { useCreateContactUsMutation } from "../../services/features/contactUs";
 
 type FormData = {
   name: string;
@@ -13,7 +14,9 @@ const TrainingsContactUs: FC = () => {
     message: "",
   });
 
-  const handleSubmit = () => {
+  const [createContactUs] = useCreateContactUsMutation();
+
+  const handleSubmit = async () => {
     console.log(formData);
     if (!formData.name || !formData.email || !formData.message) {
       alert("Bütün sahələri doldurun.");
@@ -26,6 +29,27 @@ const TrainingsContactUs: FC = () => {
       alert("Email formatı yanlışdır.");
       return;
     }
+
+    const nameParts = formData.name.trim().split(" ");
+    const firstName = nameParts[0];
+    const surname = nameParts.slice(1).join(" ") || " ";
+    try {
+      await createContactUs({
+        data: {
+          name: firstName,
+          surname,
+          email: formData.email,
+          message: formData.message,
+        },
+      }).unwrap();
+
+      alert("Mesajınız uğurla göndərildi!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Göndərmə zamanı xəta baş verdi", error);
+      alert("Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.");
+    }
+
   };
 
   return (
