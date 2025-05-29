@@ -1,8 +1,8 @@
 /* Corbel */
 @font-face {
     font-family: 'Corbel';
-    src: url('./corbel/Corbel.woff2') format('woff2'),
-        url('./corbel/Corbel.woff') format('woff');
+    src: url('../fonts/corbel/Corbel.woff2') format('woff2'),
+        url('../fonts/corbel/Corbel.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
