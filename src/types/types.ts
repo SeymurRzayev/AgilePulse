@@ -65,8 +65,7 @@ interface BookByidData {
 export interface BookByIdResponse {
   message: string;
   data: BookByidData;
-=======
-
+}
 
 //FAQ types
 
