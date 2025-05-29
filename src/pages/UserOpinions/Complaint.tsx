@@ -146,7 +146,19 @@ const Complaint = () => {
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-gradient-to-r from-[#401795] via-[#621DAC] to-[#4E61EC] hover:from-[#4E61EC] hover:via-[#621DAC] hover:to-[#401795] text-white font-[lexend] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
+                className="w-full py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3  text-white font-[lexend] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
+                style={{
+                  background: "linear-gradient(78deg, #000C67, #1a2893, #5468F8, #681DB0, #4f1ba1)",
+                  backgroundSize: "200% 100%",
+                  backgroundPosition: "left",
+                  transition: "background-position 0.5s ease",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundPosition = "right")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundPosition = "left")
+                }
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-2">
