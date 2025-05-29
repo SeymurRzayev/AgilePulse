@@ -4,17 +4,11 @@ import styles from "./AnimatedButton.module.css";
 
 interface AnimatedButtonProps {
   children: ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
-  className?: string;
 }
 
-const AnimatedButton: FC<AnimatedButtonProps> = ({ children, onClick, disabled }) => {
+const AnimatedButton: FC<AnimatedButtonProps> = ({ children }) => {
   return (
-    <button className={`${styles.btn} !cursor-pointer`}
-      onClick={onClick}
-      disabled={disabled}
-      type="button">
+    <button className={`${styles.btn} !cursor-pointer`} type="button">
       {children}
     </button>
   );
