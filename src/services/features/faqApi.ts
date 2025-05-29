@@ -1,5 +1,5 @@
 
-import type { GetAllFaqResponse, GetByIdFaq } from "../../types/types";
+import type { GetAllFaqResponse, GetByIdFaq, FaqRes } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 export const faqApi = baseApi.injectEndpoints({
@@ -16,7 +16,7 @@ export const faqApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
-        createFaq: build.mutation({
+        createFaq: build.mutation<FaqRes, { data: FaqRes }>({
             query({ data }) {
                 return {
                     url: 'faqs/create',

@@ -1,10 +1,10 @@
 
-import type { ContactUsEntry, ContactUsResponse } from "../../types/types";
+import type { ContactUsEntry, FindAllContactUsResponse } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 export const contactUsApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        findAllContactUs: build.query<ContactUsResponse, void>({
+        findAllContactUs: build.query<FindAllContactUsResponse, void>({
             query: () => ({
                 url: '/contactUs/all',
                 method: 'GET',
