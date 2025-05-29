@@ -66,20 +66,21 @@ const Complaint = () => {
       <div className="z-10 absolute top-10 left-8">
         <NavigateArrow />
       </div>
-      <div className="min-h-screen bg-gradient-to-br from-[#401795] via-[#621DAC] to-[#4E61EC] flex items-center justify-center p-4 relative">
+      <div className="min-h-screen bg-gradient-to-br from-[#E19BA6] via-[#F3C8B8] via-30% via-[#FAF3EF] to-[#D8AFC1] flex items-center justify-center p-4 relative">
         <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl relative">
           <div className="relative">
             <div className="flex justify-center mb-6 relative">
-              <div className="relative">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-gray-300 via-gray-400 to-gray-600 shadow-xl flex items-center justify-center border border-gray-500">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 shadow-inner border border-gray-600"></div>
-                </div>
+  <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 z-10">
+    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-gray-300 via-gray-400 to-gray-600 shadow-xl flex items-center justify-center border border-gray-500 relative z-10">
+      <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 shadow-inner border border-gray-600"></div>
+    </div>
 
-                <div className="absolute top-4 sm:top-5 lg:top-6 -left-10 sm:-left-12 lg:-left-16 w-10 sm:w-12 lg:w-16 h-0.5 sm:h-1 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-600 rounded-full shadow-lg transform -rotate-12"></div>
+    <div className="absolute top-10 -left-[140px] w-[140px] h-1 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-600 transform origin-right -rotate-[30deg] rounded-full shadow-lg z-0"></div>
 
-                <div className="absolute top-4 sm:top-5 lg:top-6 -right-10 sm:-right-12 lg:-right-16 w-10 sm:w-12 lg:w-16 h-0.5 sm:h-1 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-700 rounded-full shadow-lg transform rotate-12"></div>
-              </div>
-            </div>
+    <div className="absolute top-10 -right-[140px] w-[140px] h-1 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-700 transform origin-left rotate-[30deg] rounded-full shadow-lg z-0"></div>
+  </div>
+</div>
+
 
             <div className="bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-lg shadow-2xl p-6 sm:p-8 transition-transform duration-300 relative border border-gray-300">
               <div className="absolute -right-10 top-1/6 hidden md:flex flex-col gap-4">
