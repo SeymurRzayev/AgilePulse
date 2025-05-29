@@ -1,6 +1,7 @@
 import Navbar from "../../layout/Navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { useGetBookByIdQuery } from "../../services/features/bookApi";
+// import FlipBook from "./FlipBook";
 
 const LibraryDetails = () => {
 
@@ -9,6 +10,7 @@ const LibraryDetails = () => {
   const { data: bookRes } = useGetBookByIdQuery(Number(params.id))
 
   const book = bookRes?.data
+
 
   return (
     <>
@@ -66,7 +68,10 @@ const LibraryDetails = () => {
         <div className="max-w-[519px]"></div>
 
         <div className="txtContainer ml-auto w-full">
-          <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
+
+          {/* <FlipBook fileUrl={book?.pdfUrl ?? ''}/> */}
+
+             <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
             <ol style={{ listStyleType: "decimal" }} className="space-y-4">
               <li>
                 Ənənəvi idarəetmədən çevik idarəetməyə keçid Müəllif göstərir

@@ -1,1 +1,2 @@
-export const base_url = 'http://95.216.205.215:8080/api/agile/pulse/v1';
+export const base_url = 'https://agilepulse.org/api/agile/pulse/v1';
+
