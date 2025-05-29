@@ -4,39 +4,48 @@ import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
 import QuestionContainer from "./QuestionContainer";
 import AnswerContainer from "./AnswerContainer";
+import { useGetAllFaqsQuery } from "../../services/features/faqApi";
+import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
 
-const faqData = [
-  {
-    question: "Agile Pulse nədir və hansı xidmətləri təqdim edir?",
-    answer:
-      "Agile Pulse çevik (Agile) idarəetmə yanaşmalarını tətbiq edən və komandaların daha məhsuldar işləməsinə dəstək olan bir platformadır. Biz təlimlər, Agile kouçinq, Scrum və Kanban sistemlərinin tətbiqi üzrə məsləhət xidmətləri göstəririk.",
-  },
-  {
-    question: "Agile təlimləri kimlər üçündür?",
-    answer:
-      "Agile təlimləri məhsul sahibləri, layihə menecerləri və çevik komandalar üçün nəzərdə tutulub.",
-  },
-  {
-    question:
-      "Agile ilə işləmək şirkətimə nə kimi üstünlüklər qazandıra bilər?",
-    answer:
-      " Agile sayəsində məhsul və ya xidmət mərhələli şəkildə inkişaf etdirilir. Bu, nəticələri daha tez görməyə və erkən mərhələdə müştəri rəyinə əsasən dəyişiklik etməyə imkan verir.",
-  },
-  {
-    question: "Scrum və Kanban arasında fərq nədir?",
-    answer:
-      "Scrum işi sabit vaxt çərçivələrində (sprintlərdə) planlayır və konkret rollar üzərindən idarə edir, Kanban isə fasiləsiz iş axını və tapşırıq sayına limit qoymaqla çevik idarəetmə təklif edir. Əsas fərq Scrum-un strukturlaşdırılmış, Kanban-ın isə daha elastik olmasıdır.",
-  },
-  {
-    question: "Agile Pulse ilə necə əlaqə saxlaya bilərəm?",
-    answer:
-      "Agile Pulse ilə əlaqə saxlamaq üçün veb saytımızdakı “Əlaqə” bölməsindən bizə mesaj göndərə və ya sosial media hesablarımız vasitəsilə birbaşa yazışa bilərsiniz. Əlavə olaraq, təlim və xidmətlərimizlə bağlı suallar üçün e-poçt və telefon vasitəsilə də bizimlə əlaqə saxlaya bilərsiniz.",
-  },
-];
+// const faqData = [
+//   {
+//     question: "Agile Pulse nədir və hansı xidmətləri təqdim edir?",
+//     answer:
+//       "Agile Pulse çevik (Agile) idarəetmə yanaşmalarını tətbiq edən və komandaların daha məhsuldar işləməsinə dəstək olan bir platformadır. Biz təlimlər, Agile kouçinq, Scrum və Kanban sistemlərinin tətbiqi üzrə məsləhət xidmətləri göstəririk.",
+//   },
+//   {
+//     question: "Agile təlimləri kimlər üçündür?",
+//     answer:
+//       "Agile təlimləri məhsul sahibləri, layihə menecerləri və çevik komandalar üçün nəzərdə tutulub.",
+//   },
+//   {
+//     question:
+//       "Agile ilə işləmək şirkətimə nə kimi üstünlüklər qazandıra bilər?",
+//     answer:
+//       " Agile sayəsində məhsul və ya xidmət mərhələli şəkildə inkişaf etdirilir. Bu, nəticələri daha tez görməyə və erkən mərhələdə müştəri rəyinə əsasən dəyişiklik etməyə imkan verir.",
+//   },
+//   {
+//     question: "Scrum və Kanban arasında fərq nədir?",
+//     answer:
+//       "Scrum işi sabit vaxt çərçivələrində (sprintlərdə) planlayır və konkret rollar üzərindən idarə edir, Kanban isə fasiləsiz iş axını və tapşırıq sayına limit qoymaqla çevik idarəetmə təklif edir. Əsas fərq Scrum-un strukturlaşdırılmış, Kanban-ın isə daha elastik olmasıdır.",
+//   },
+//   {
+//     question: "Agile Pulse ilə necə əlaqə saxlaya bilərəm?",
+//     answer:
+//       "Agile Pulse ilə əlaqə saxlamaq üçün veb saytımızdakı “Əlaqə” bölməsindən bizə mesaj göndərə və ya sosial media hesablarımız vasitəsilə birbaşa yazışa bilərsiniz. Əlavə olaraq, təlim və xidmətlərimizlə bağlı suallar üçün e-poçt və telefon vasitəsilə də bizimlə əlaqə saxlaya bilərsiniz.",
+//   },
+// ];
 
 const Faq: React.FC = () => {
+  const [visibility, setVisibility] = useState(5)
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { data: allFaqsResponse } = useGetAllFaqsQuery()
 
+  if (!allFaqsResponse) return null;
+
+  const allFaqs = allFaqsResponse?.data.data
+  const slicesFaqs = allFaqs.slice(0, visibility)
+  console.log(allFaqs)
   return (
     <div className="w-full">
       <div
@@ -66,15 +75,14 @@ const Faq: React.FC = () => {
         </div>
 
         <div className="w-full max-w-[1020px] flex flex-col justify-center gap-[35px]">
-          {faqData.map((item, index) =>
+          {slicesFaqs.map((item, index) =>
             openIndex === index ? (
               <div
                 key={index}
-                className={`transition-all duration-1700 ease-in-out ${
-                  openIndex === index
-                    ? "opacity-100 max-h-[500px]"
-                    : "opacity-0 max-h-0"
-                }`}
+                className={`transition-all duration-1700 ease-in-out ${openIndex === index
+                  ? "opacity-100 max-h-[500px]"
+                  : "opacity-0 max-h-0"
+                  }`}
               >
                 <AnswerContainer
                   question={item.question}
@@ -91,6 +99,19 @@ const Faq: React.FC = () => {
             )
           )}
         </div>
+        {
+          slicesFaqs.length >= allFaqs.length
+            ? (
+              <div className="w-full text-center">
+                <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(5)} />
+              </div>
+            )
+            : (
+              <div className="w-full text-center">
+                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(visibility + 5)} />
+              </div>
+            )
+        }
         {/* contact us section */}
         <div className="w-full max-w-[1020px]">
           <TrainingsContactUs />
