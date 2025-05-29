@@ -6,19 +6,7 @@ import styles from "./BookSection.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
-
-const bookImages = [
-  "https://as2.ftcdn.net/v2/jpg/00/34/26/61/1000_F_34266135_Cki3pgen1JRdEuthnW3YXgrvHGhjlAqn.jpg",
-  "https://m.media-amazon.com/images/I/81ZgVTKyyiL.UF1000,1000_QL80.jpg",
-  "https://www.un.org/sites/un2.un.org/files/styles/large-article-image-style-16-9/public/2021/12/human-rights-exhibits.jpg",
-  "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-  "https://media.licdn.com/dms/image/C5612AQExDzdX9dzYrA/article-cover_image-shrink_600_2000/0/1644469313843?e=2147483647&v=beta&t=rGwKP6_aXhVMQpAHcJN3HJXlO8AYiRGg2focfzUus_g",
-  "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-  "https://m.media-amazon.com/images/I/81ZgVTKyyiL.UF1000,1000_QL80.jpg",
-  "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1556410005i/45318151.jpg",
-  "https://media.licdn.com/dms/image/C5612AQExDzdX9dzYrA/article-cover_image-shrink_600_2000/0/1644469313843?e=2147483647&v=beta&t=rGwKP6_aXhVMQpAHcJN3HJXlO8AYiRGg2focfzUus_g",
-  "https://agilekrc.com/agile-training-course/agile-project-management.jpg",
-];
+import { useGetAllBookQuery } from "../../../../services/features/bookApi";
 
 const BookSection: FC = () => {
   const navigate = useNavigate();
@@ -28,6 +16,10 @@ const BookSection: FC = () => {
   const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
     null
   );
+
+  const { data } = useGetAllBookQuery()
+
+  const allBook = data?.data?.data
 
   const startAutoplay = useCallback(() => {
     if (autoplayIntervalRef.current) {
@@ -102,12 +94,11 @@ const BookSection: FC = () => {
       </div>
       <div className={styles.sliderContainer}>
         <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
-          {bookImages.map((image, index) => (
+          {allBook?.map((book, index) => (
             <div
               key={index}
-              className={`${styles.slideItem} ${
-                index === activeIndex ? styles.activeSlide : styles.blurredSlide
-              } `}
+              className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
+                } `}
               onClick={togglePause}
               title={
                 isPaused
@@ -117,7 +108,8 @@ const BookSection: FC = () => {
               tabIndex={-1}
             >
               <img
-                src={image}
+                onClick={() => navigate(`/library/detail/${book.id}`)}
+                src={book.imageUrl}
                 alt={`Agile book ${index + 1}`}
                 className={` ${styles.bookImage}`}
                 loading="lazy"
@@ -125,16 +117,16 @@ const BookSection: FC = () => {
             </div>
           ))}
         </Slider>
-           <div className={styles.buttonContainer}>
-        <button
-          onClick={() => navigate("/library")}
-          className={styles.moreButton}
-        >
-          Daha çox
-        </button>
+        <div className={styles.buttonContainer}>
+          <button
+            onClick={() => navigate("/library")}
+            className={styles.moreButton}
+          >
+            Daha çox
+          </button>
+        </div>
       </div>
-      </div>
-   
+
     </div>
   );
 };

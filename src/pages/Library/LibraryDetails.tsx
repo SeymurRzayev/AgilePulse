@@ -1,17 +1,25 @@
 import Navbar from "../../layout/Navbar/Navbar";
-import bookImg from "../../assets/images/libdel1.png";
+import { useParams } from "react-router-dom";
+import { useGetBookByIdQuery } from "../../services/features/bookApi";
 
 const LibraryDetails = () => {
+
+  const params = useParams()
+
+  const { data: bookRes } = useGetBookByIdQuery(Number(params.id))
+
+  const book = bookRes?.data
+
   return (
     <>
       <div className="relative mb-[50px] h-28 w-full flex items-center justify-center">
         <Navbar />
       </div>
       <div className="">
-        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28" style={{background: "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))"}}>
+        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28" style={{ background: "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))" }}>
           <div className="relative flex justify-center md:block">
             <img
-              src={bookImg}
+              src={book?.imageUrl}
               className="w-[280px] h-[350px] md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] static md:absolute md:-top-[61px] md:left-14"
               alt="image"
             />
@@ -19,10 +27,10 @@ const LibraryDetails = () => {
           <div className="md:my-3 xl:my-6 flex flex-col gap-6 md:gap-5 xl:gap-10 max-w-[515px]">
             <div className="hederCnt flex flex-col gap-2">
               <h2 className="font-bold text-center text-2xl md:text-3xl xl:text-[46px] text-white">
-                The Age of Agile
+                {book?.name}
               </h2>
               <p className="font-normal text-center text-lg md:text-2xl xl:text-[34px] text-[#FFFFFF99]">
-                Stephen Denning
+                {book?.author}
               </p>
             </div>
 
