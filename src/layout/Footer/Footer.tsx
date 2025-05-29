@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const navMenu = [
   { label: "Haqqımızda", path: "/about" },
   { label: "FAQ", path: "/FAQ" },
-  { label: "Təklif və şikayətlər", path: "/#3" },
+  { label: "Təklif və şikayətlər", path: "/suggestions" }, 
 ];
 
 const socialNetworksLinks = [
@@ -35,24 +35,26 @@ const Footer: FC = () => {
   const [email, setEmail] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const [showError, setShowError] = useState(false);
-const handleSubscribe = () => {
-  const trimmedEmail = email.trim();
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const handleSubscribe = () => {
+    const trimmedEmail = email.trim();
 
-  if (!emailRegex.test(trimmedEmail)) {
-    setIsInvalid(true);
-    setShowError(true);
-    return;
-  }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  setIsInvalid(false);
-  setShowError(false);
+    if (!emailRegex.test(trimmedEmail)) {
+      setIsInvalid(true);
+      setShowError(true);
+      return;
+    }
 
-  console.log("Email submitted:", trimmedEmail);
-  setEmail("");
-  alert("Mesajınız uğurla göndərildi.");
-};
+    setIsInvalid(false);
+    setShowError(false);
+
+    console.log("Email submitted:", trimmedEmail);
+    setEmail("");
+    alert("Mesajınız uğurla göndərildi.");
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -62,13 +64,13 @@ const handleSubscribe = () => {
             <span>Agile Pulse</span>
           </div>
           <div className={styles.subscribeContainer}>
-          
             <div className={styles.subscribe}>
               <span>Yeniliklərdən xəbərdar olmaq üçün Abunə Ol</span>
               <div
                 className={`${styles.input} ${isInvalid ? styles.invalid : ""}`}
               >
-                <input type="email" 
+                <input
+                  type="email"
                   placeholder="E-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -78,7 +80,6 @@ const handleSubscribe = () => {
                   Göndər
                 </button>
               </div>
-            
             </div>
             <div className={styles.errorContainer}>
               {showError && (
