@@ -1,9 +1,17 @@
+import { useParams } from 'react-router-dom';
 import backgroundImage from '../../assets/images/articles-bg.jpg'
 import ShowMoreText from '../../components/Butttons/ShowMoreText';
 import TrainingCard from '../../components/Trainings/TrainingCard';
-import { articlesData, articleText } from '../../dummyMock';
+import { useGetAllArticleQuery, useGetArticleByIdQuery } from '../../services/features/articleApi';
 
 const ArticleDetails = () => {
+
+    const params = useParams()
+    const { data: allArticlesResponse } = useGetAllArticleQuery()
+    const { data: articleRes } = useGetArticleByIdQuery(Number(params.id))
+
+    const article = articleRes?.data
+    const allArticles = allArticlesResponse?.data.data
 
     const goBack = () => {
         window.history.back()
@@ -29,25 +37,26 @@ const ArticleDetails = () => {
                 <div className='flex-1 min-w-[300px] lg:min-w-[400px]'>
                     <div className='max-w-[725px] lg:max-w-[850px] h-auto mx-auto mb-6'>
                         {/* Article content will come from API */}
-                        <h1 className='text-[#000000DE] text-center font-[Corbel] font-bold text-[34px] sm:text-[28px] leading-tight'>Agile metodologiyanın populyarlığının və effektivliyinin sirri nədir</h1>
-                        <h5 className='text-[#00000099] font-bold text-base font-[Corbel] text-right mt-4'>Tofiq İsayev</h5>
-                        <span className='text-[#00000061] block font-bold text-base font-[Corbel] text-right'>05.02.2025</span>
+                        <h1 className='text-[#000000DE] text-center font-[Corbel] font-bold text-[34px] sm:text-[28px] leading-tight'>{article?.title}</h1>
+                        <h5 className='text-[#00000099] font-bold text-base font-[Corbel] text-right mt-4'>Name olmalidi apide duzelis</h5>
+                        <span className='text-[#00000061] block font-bold text-base font-[Corbel] text-right'>Tarix Api duzelis</span>
                     </div>
                     {/* Text */}
-                    <ShowMoreText text={articleText} maxLength={1700} className='max-w-[725px] lg:max-w-[850px] mx-auto text-justify text-[#000000DE] font-[Corbel] text-base font-normal px-4 lg:px-0' />
+                    <ShowMoreText text={article?.content ?? ''} maxLength={1700} className='max-w-[725px] lg:max-w-[850px] mx-auto text-justify text-[#000000DE] font-[Corbel] text-base font-normal px-4 lg:px-0' />
                 </div>
                 {/* Other articles (Right side) */}
                 <div className='flex-1 min-w-[300px] lg:max-w-[391px] flex flex-col gap-6 items-center'>
                     <h4 className='max-w-[391px] mx-auto font-[Corbel] font-bold text-[46px] sm:text-[36px] text-[#000000DE] text-center mb-[22px]'>Digər məqalələr</h4>
                     {/* Cards */}
                     {
-                        articlesData.map(article =>
+                        allArticles?.map(article =>
                             <TrainingCard
                                 isArticle={true}
                                 title={article.title}
-                                imgUrl={article.img}
+                                imgUrl={article.imageUrl}
                                 content={article.content}
                                 key={article.id}
+                                id={article.id}
                             />
                         )
                     }

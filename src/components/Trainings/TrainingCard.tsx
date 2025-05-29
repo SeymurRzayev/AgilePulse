@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import MainButton from "../Butttons/MainButton";
 
 type TrainingCardProps = {
+  id?: number;
   imgUrl: string;
   title: string;
   time?: string;
@@ -27,6 +28,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
   date,
   content,
   isArticle,
+  id,
   isCourse,
 }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = React.useState(false);
@@ -46,7 +48,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
            `} />
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-40">
           <div className={`${styles.infoButton}`}>
-            <Link to={isArticle ? "/articles/details" : "/trainings/scrum"}>
+            <Link to={isArticle ? `/articles/details/${id}` : "/trainings/scrum"}>
               {isArticle
                 ? <MainButton buttonClassName="py-6" className="w-[162px] h-[55px] pr-1" text="Daha çox" />
                 : <button className={styles.start_btn}>
