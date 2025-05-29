@@ -15,8 +15,8 @@ import ArticleDetails from "../pages/Articles/ArticleDetails";
 import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import About from "../pages/About/About";
 import OTP from "../pages/Auth/OTP/OTP";
-import Suggestions from "../pages/Suggestions/Suggestions"; 
-import Complaint from "../pages/Suggestions/Complaint";
+import Suggestions from "../pages/UserOpinions/Suggestions"; 
+import Complaint from "../pages/UserOpinions/Complaint";
 
 const AppRouter: FC = () => {
   return (
