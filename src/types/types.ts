@@ -68,7 +68,6 @@ export interface BookByIdResponse {
 }
 
 //FAQ types
-
 export interface GetAllFaqResponse {
   message: string;
   data: {
@@ -79,8 +78,8 @@ export interface GetAllFaqResponse {
   };
 }
 
-interface FaqRes {
-  id: number;
+export interface FaqRes {
+  id?: number;
   question: string;
   answer: string;
 }
@@ -98,7 +97,6 @@ interface FaqByIdRes {
 
 
 //Contact Us
-
 export interface ContactUsEntry {
   id?: number;
   email: string;
@@ -123,7 +121,7 @@ export interface Pageable {
   sort: SortInfo;
 }
 
-export interface ContactUsResponse {
+export interface FindAllContactUsResponse {
   totalElements: number;
   totalPages: number;
   pageable: Pageable;
@@ -136,4 +134,31 @@ export interface ContactUsResponse {
   last: boolean;
   empty: boolean;
 
+}
+
+
+
+//Partners Controller
+
+export interface PartnerItem {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
+
+export interface GetPartnerByIdResponse {
+  message: string;
+  data: PartnerItem;
+}
+
+export interface PartnerData {
+  data: PartnerItem[];
+  totalElements: number;
+  lastPageNumber: number;
+  hasNextPage: boolean;
+}
+
+export interface GetAllPartnersResponse {
+  message: string;
+  data: PartnerData;
 }
