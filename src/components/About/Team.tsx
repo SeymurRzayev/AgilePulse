@@ -1,17 +1,22 @@
 import type { FC } from "react";
 import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
+
 import { HiArrowDown } from "react-icons/hi2";
+import Lines from "./Lines";
 const Team: FC = () => {
   return (
-    <div className="flex flex-col gap-[50px]">
+    <div className="flex flex-col gap-[50px] relative">
+      <Lines />
       <h1 className="text-4xl text-[58px] bg-gradient-to-r from-[#E7912B] via-[#D83D69] to-[#2C4B9B] bg-clip-text text-transparent text-center font-bold">
         Bizim komandanı tanı
       </h1>
-      <div className="cntList">
+      <div className="cntList ">
         <div className="mngrCnt w-full">
-          <div className="managerCntContent mx-auto mt-32">
-            <h2 className="text-[46px] font-bold text-center ">Manager</h2>
+          <div className="managerCntContent mx-auto mt-[8%]">
+            <h2 className="text-[46px] font-bold text-center ">
+              Layihə meneceri
+            </h2>
             {/* cardItem*/}
             <div className="relative bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  mt-[32px]">
               <TeamInfoCard
@@ -26,10 +31,10 @@ const Team: FC = () => {
           </div>
         </div>
         {/* {first big container} */}
-        <div className="teamCenterCnt  flex  gap-[12%]  justify-center mt-[6%] mb-[14%]  ">
+        <div className="teamCenterCnt  flex  gap-[7.4%]  justify-center  mb-[14%]  ">
           {/* left  */}
           <div className="flex flex-col ">
-            <h2 className="text-[34px] font-bold w-[54%] mx-auto mb-[10%]   ">
+            <h2 className="text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]   ">
               Frontend developerlər
             </h2>
             <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px]">
@@ -60,7 +65,7 @@ const Team: FC = () => {
           </div>
 
           {/* middle */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mb-[4.8%]">
             <h2 className="text-[34px] font-bold   text-center mb-[6%] ">
               Dizayner
             </h2>
@@ -75,7 +80,7 @@ const Team: FC = () => {
           </div>
           {/* right */}
           <div className="flex flex-col  ">
-            <h2 className="text-[34px] font-bold  w-[54%] mx-auto  mb-[10%]  ">
+            <h2 className="text-[34px] text-center font-bold  w-[54%] mx-auto  mb-[10%]  ">
               Backend developerlər
             </h2>
 
@@ -107,11 +112,11 @@ const Team: FC = () => {
           </div>
         </div>
         {/* {second big container} */}
-        <div className="teamCenterCnt  flex  gap-[12%]  justify-center   mt-[6%] pt-[10%]   ">
+        <div className="teamCenterCnt  flex  gap-[7.4%]  justify-center    mb-[6%] pt-[10%]   ">
           {/* left  */}
           <div className="flex flex-col ">
             <h2 className="text-[34px] font-bold w-[54%] mx-auto mb-[10%]   ">
-              Frontend developerlər
+              Agile team
             </h2>
             <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px]">
               <div className="relative  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px] mb-[20%] ">
@@ -141,9 +146,9 @@ const Team: FC = () => {
           </div>
 
           {/* middle */}
-          <div className="flex flex-col justify-end   h-[124vh]   ">
+          <div className="flex flex-col justify-end   h-[120vh]   ">
             <h2 className="text-[34px] font-bold   text-center mb-[10%] ">
-              Dizayner
+              QA testerlər
             </h2>
             <div className=" bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px] ">
               <div className="relative  teamList mx-auto rounded-tl-[50px] shadow-[4px 4px 15px 2px rgba(0, 0, 0, 0.1)]  rounded-tr-[50px] w-[330px] h-[375px] mb-[20%]  ">
@@ -173,8 +178,8 @@ const Team: FC = () => {
           </div>
           {/* right */}
           <div className="flex flex-col  ">
-            <h2 className="text-[34px] font-bold  w-[54%] mx-auto  mb-[10%]  ">
-              Backend developerlər
+            <h2 className="text-[34px] font-bold  mx-auto mb-[10%]  ">
+              System support
             </h2>
 
             <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px] ">
