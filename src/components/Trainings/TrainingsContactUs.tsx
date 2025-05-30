@@ -1,6 +1,7 @@
 import { type FC, useState } from "react";
 import { useCreateContactUsMutation } from "../../services/features/contactUsApi";
 import { contactUsSchema } from "../../validation/contactUsSchema";
+import Swal from "sweetalert2";
 
 type FormData = {
   name: string;
@@ -66,12 +67,12 @@ const TrainingsContactUs: FC = () => {
         },
       }).unwrap();
 
-      alert("Mesajınız uğurla göndərildi!");
       setFormData({ name: "", email: "", message: "" });
       setValidationErrors({});
+      Swal.fire("Uğurlu", "Müracitəniz göndərildi!", "success")
     } catch (error) {
       console.error("Göndərmə zamanı xəta baş verdi", error);
-      alert("Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.");
+      Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error")
     }
   };
 

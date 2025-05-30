@@ -49,8 +49,8 @@ const Articles = () => {
                     )
                 }
 
-                {
-                    slicesArticles.length >= allArticles.length
+                {allArticles?.length > 6 && (
+                    visibility >= allArticles.length
                         ? (
                             <div className="w-full text-center">
                                 <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(6)} />
@@ -58,9 +58,10 @@ const Articles = () => {
                         )
                         : (
                             <div className="w-full text-center">
-                                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(visibility + 6)} />
+                                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(prev => prev + 6)} />
                             </div>
                         )
+                )
                 }
             </div>
             <Footer />
