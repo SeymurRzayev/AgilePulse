@@ -68,7 +68,7 @@ const Faq: React.FC = () => {
           <h1 className="text-[25px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel p-1 md:p-2">
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>
-          <p className="text-[18px] md:text-xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel p-2">
+          <p className="text-[18px] md:text-2xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel p-2">
             Əgər sualınız varsa, başlamazdan əvvəl bu bölməyə nəzər yetirin –
             bəlkə cavab artıq buradadır!
           </p>

@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { useGetAllPartnersQuery } from "../../../services/features/partner";
+import { useGetAllPartnersQuery } from "../../../services/features/partnerApi";
 import Slider from "react-slick";
 
 const settings = {
