@@ -31,6 +31,7 @@ const Suggestions = () => {
   };
 
   const handleSubmit = async () => {
+    debugger
     if (isSuggestions) {
       try {
         await createSuggestion(data).unwrap()

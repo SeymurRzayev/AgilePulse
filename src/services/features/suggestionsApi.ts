@@ -25,7 +25,7 @@ const suggestionsApi = baseApi.injectEndpoints({
         }),
         createComplaint: builder.mutation<SuggestionRes, SuggestionReq>({
             query: (body) => ({
-                url: '/suggestions/submit',
+                url: '/complaints',
                 method: 'POST',
                 body,
             }),
