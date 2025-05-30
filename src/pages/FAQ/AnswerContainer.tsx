@@ -14,9 +14,10 @@ const AnswerContainer: React.FC<AnswerContainerProps> = ({
   return (
     <div
       className="w-[95%] max-w-[900px] rounded-[15px] flex flex-col items-end relative mx-auto"
-      style={{ boxShadow: "-1px 10px 26px -8px rgba(0,0,0,0.2)",
-       background: 'linear-gradient(90deg, rgba(40, 68, 141, 1) 2.5%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%)',
-       }}
+      style={{
+        boxShadow: "-1px 10px 26px -8px rgba(0,0,0,0.2)",
+        background: 'linear-gradient(90deg, rgba(40, 68, 141, 1) 2.5%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%)',
+      }}
     >
       <div
         className="w-[97.5%] h-[84px] bg-white flex justify-between items-center rounded-tr-[15px]"
@@ -28,7 +29,7 @@ const AnswerContainer: React.FC<AnswerContainerProps> = ({
         </div>
         <div
           onClick={closeAnswer}
-          className="w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[52px] md:h-[52px] flex justify-center items-center mr-3 p-1 sm:p-2"
+          className="w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[52px] md:h-[52px] flex justify-center items-center mr-3 p-1 sm:p-2 cursor-pointer"
         >
           <img
             src={circleOpen}
@@ -45,7 +46,7 @@ const AnswerContainer: React.FC<AnswerContainerProps> = ({
           {answer}
         </p>
       </div>
-    </div>  
+    </div>
   );
 };
 

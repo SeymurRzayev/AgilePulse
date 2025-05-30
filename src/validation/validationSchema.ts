@@ -25,7 +25,7 @@ export const passwordField = yup
   .test("no-space", "Şifrə boşluq simvolu ehtiva etməməlidir", (value) =>
     value ? !/\s/.test(value) : true
   )
-    .test(
+  .test(
     "no-repeated-char",
     "Şifrə eyni simvoldan 3 və ya daha çox təkrar etməməlidir",
     (value) => {
@@ -35,3 +35,16 @@ export const passwordField = yup
   )
 
 
+export const messageSchema = yup
+  .string()
+  .required("Mesaj daxil edilməlidir")
+  .min(10, "Mesaj ən azı 10 simvol olmalıdır")
+  .max(1000, "Mesaj 1000 simvoldan çox olmamalıdır");
+
+
+export const nameSchema = yup
+  .string()
+  .required("Ad Soyad daxil edilməlidir")
+  .matches(/^[A-Za-zƏəÖöÜüÇçĞğİıŞş\s-]+$/, "Yalnız hərflər və boşluq")
+  .min(2, 'Ad və soyad minimum 2 simvol olmalıdır')
+  .max(50, 'Ad və soyad maksimum 50 simvol olmalıdır')
