@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
-import { HiArrowDown } from "react-icons/hi2";
+// import { HiArrowDown } from "react-icons/hi2";
 import Lines from "./Lines";
 import RoleGroup from "./RoleGroup";
 
