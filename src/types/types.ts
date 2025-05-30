@@ -169,7 +169,7 @@ export interface SuggestionRes {
   id: number;
   email: string;
   message: string;
-  createdAt: string; 
+  createdAt: string;
 }
 
 export interface SuggestionReq {
@@ -177,3 +177,29 @@ export interface SuggestionReq {
   message: string;
 }
 
+//Subscription api requests
+
+export interface SubscriptionReq {
+  email: string;
+}
+
+export interface SubscriptionRes {
+  id: number;
+  email: string
+}
+
+export interface GetAllSubscriptionsResponse {
+  message: string;
+  data: {
+    data: SubscriptionRes[];
+    totalElements: number;
+    lastPageNumber: number;
+    hasNextPage: boolean;
+  };
+}
+
+
+export interface GetSubscriptionByIdResponse {
+  message: string;
+  data: SubscriptionRes;
+}

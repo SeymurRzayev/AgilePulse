@@ -1,5 +1,5 @@
 import { type FC, useState } from "react";
-import { useCreateContactUsMutation } from "../../services/features/contactUs";
+import { useCreateContactUsMutation } from "../../services/features/contactUsApi";
 import { contactUsSchema } from "../../validation/contactUsSchema";
 
 type FormData = {
@@ -46,7 +46,7 @@ const TrainingsContactUs: FC = () => {
 
   const handleSubmit = async () => {
     console.log(formData);
-    
+
     const isValid = await validateForm();
     if (!isValid) {
       return;
@@ -55,7 +55,7 @@ const TrainingsContactUs: FC = () => {
     const nameParts = formData.name.trim().split(" ");
     const firstName = nameParts[0];
     const surname = nameParts.slice(1).join(" ") || " ";
-    
+
     try {
       await createContactUs({
         data: {
@@ -77,7 +77,7 @@ const TrainingsContactUs: FC = () => {
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData({ ...formData, [field]: value });
-    
+
     if (validationErrors[field]) {
       setValidationErrors({ ...validationErrors, [field]: undefined });
     }
@@ -102,9 +102,8 @@ const TrainingsContactUs: FC = () => {
         <div className="form-center w-full flex flex-col lg:flex-row gap-6 md:gap-12 m-6 md:m-14">
           <div className="text-area relative flex flex-col order-2 md:order-1">
             <textarea
-              className={`w-full h-[123px] rounded-[20px] bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:text-Lexend outline-none ${
-                validationErrors.message ? 'border-2 border-red-500' : 'border-0'
-              }`}
+              className={`w-full h-[123px] rounded-[20px] bg-[#EAEDF5] md:min-w-[344px] p-4 resize-none placeholder:text-start placeholder:text-Lexend outline-none ${validationErrors.message ? 'border-2 border-red-500' : 'border-0'
+                }`}
               name="message"
               value={formData.message}
               onChange={(e) => handleInputChange('message', e.target.value)}
@@ -167,9 +166,8 @@ const TrainingsContactUs: FC = () => {
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 value={formData.name}
                 type="text"
-                className={`w-full rounded-[30px] py-[12px] px-[16px] border-[1px] placeholder:text-[#B0B0B0] placeholder:text-Lexend outline-none ${
-                  validationErrors.name ? 'border-red-500' : 'border-[#B0B0B0]'
-                }`}
+                className={`w-full rounded-[30px] py-[12px] px-[16px] border-[1px] placeholder:text-[#B0B0B0] placeholder:text-Lexend outline-none ${validationErrors.name ? 'border-red-500' : 'border-[#B0B0B0]'
+                  }`}
                 placeholder="Ad/Soyad"
               />
               {validationErrors.name && (
@@ -184,9 +182,8 @@ const TrainingsContactUs: FC = () => {
                 value={formData.email}
                 type="email"
                 placeholder="E-mail adresi"
-                className={`w-full rounded-[30px] py-[12px] px-[16px] border-[1px] placeholder:text-[#B0B0B0] placeholder:text-Lexend outline-none ${
-                  validationErrors.email ? 'border-red-500' : 'border-[#B0B0B0]'
-                }`}
+                className={`w-full rounded-[30px] py-[12px] px-[16px] border-[1px] placeholder:text-[#B0B0B0] placeholder:text-Lexend outline-none ${validationErrors.email ? 'border-red-500' : 'border-[#B0B0B0]'
+                  }`}
               />
               {validationErrors.email && (
                 <span className="text-red-500 text-sm mt-1 absolute -bottom-5 left-0 whitespace-nowrap">
