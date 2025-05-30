@@ -37,6 +37,7 @@ const Suggestions = () => {
         Swal.fire("Uğurlu", "Təklifiniz uğurla göndərildi!", "success")
         setData({ email: '', message: '' })
       } catch (error) {
+        console.log(error)
         Swal.fire("Xəta baş verdi", "Zəhmət olmasa yenidən cəhd edin", "error")
       }
     } else {
@@ -45,6 +46,7 @@ const Suggestions = () => {
         Swal.fire("Uğurlu", "Şikayətiniz uğurla göndərildi!", "success")
         setData({ email: '', message: '' })
       } catch (error) {
+        console.log(error)
         Swal.fire("Xəta baş verdi", "Zəhmət olmasa yenidən cəhd edin", "error")
       }
     }

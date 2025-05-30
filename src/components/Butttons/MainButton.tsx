@@ -5,14 +5,16 @@ interface ButtonProps {
     onClick?: () => void;
     buttonClassName?: string;
     disabled?: boolean;
+    type?: "button" | "submit" | "reset";
 }
 
 
-const MainButton = ({ text, className, onClick, buttonClassName, disabled }: ButtonProps) => {
+const MainButton = ({ text, className, onClick, type, buttonClassName, disabled }: ButtonProps) => {
     return (
         <div className={className}>
             <button
                 onClick={onClick}
+                type={type}
                 className={`bg-[#2C4B9B]
                 font-normal text-base font-[Lexend] text-[#FFFFFF]
                 w-full h-full rounded-4xl px-2 flex items-center justify-center

@@ -203,3 +203,10 @@ export interface GetSubscriptionByIdResponse {
   message: string;
   data: SubscriptionRes;
 }
+
+// Sign up
+export interface CreateUserReq {
+  fullName: string;
+  email: string;
+  password: string;
+}
