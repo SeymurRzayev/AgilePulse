@@ -69,7 +69,7 @@ const LibraryDetails = () => {
 
         <div className="txtContainer ml-auto w-full">
 
-          {/* <FlipBook fileUrl={book?.pdfUrl ?? ''}/> */}
+          {/* <FlipBook pdfUrl={book?.pdfUrl ?? ''}/> */}
 
              <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
             <ol style={{ listStyleType: "decimal" }} className="space-y-4">
