@@ -145,7 +145,7 @@ const PersonalCabinetTrainings = () => {
                     </div>
                     <div className='!w-full max-h-[639px] overflow-hidden gap-3]'>
                         {/* Card */}
-                        <Slider {...settings} className={"sliderPersonalCab"}>
+                        <Slider {...settings} className={"sliderPersonalCab ml-2"}>
                             {
                                 courses.map(course => (
                                     <TrainingCard
@@ -156,6 +156,7 @@ const PersonalCabinetTrainings = () => {
                                         avatar={course.avatar}
                                         date={course.date}
                                         isArticle={false}
+                                        isCourse={true}
                                     />
                                 ))
                             }

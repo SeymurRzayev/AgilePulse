@@ -17,12 +17,14 @@ import uncheckedBox from "../../../assets/images/unchecked.svg";
 // Hook for swipe back functionality
 import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
+
 interface FormValues {
   name: string;
   email: string;
   password: string;
   rememberMe: boolean;
 }
+
 const SignUp: FC = () => {
   useSwipeBack();
   const [rememberMe, setRememberMe] = useState(false);
@@ -36,7 +38,10 @@ const SignUp: FC = () => {
   // Handle form submission
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    alert("Qeydiyyat uğurla tamamlandı");
+    // OTP səhifəsinə yönləndir - alternative method
+    window.location.href = "/auth/otp";
+    // və ya
+    // window.location.href = "/otp";
   };
 
   return (

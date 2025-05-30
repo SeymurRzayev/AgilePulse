@@ -24,9 +24,9 @@ const ResetPassword = () => {
 
     return (
         <div className='w-full h-screen flex items-center justify-center'>
-            <div className='w-1/3 '>
-                <h1 className='text-[46px] font-[Corbel] font-bold text-center text-[#000000DE]'>Şifrənin bərpa olunması</h1>
-                <h5 className='font-[Corbel] text-lg font-normal text-[#00000099] text-center'>Yeni şifrə yarat və təkrar et.</h5>
+            <div className='mx-auto'>
+                <h1 className='text-[28px] md:text-[46px] font-[Corbel] font-bold text-center text-[#000000DE]'>Şifrənin bərpa olunması</h1>
+                <h5 className='font-[Corbel] pt-2 text-base md:text-lg font-normal text-[#00000099] text-center'>Yeni şifrə yarat və təkrar et.</h5>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={resetPassword}
@@ -38,7 +38,7 @@ const ResetPassword = () => {
                     {
                         ({ isSubmitting }) => (
                             <Form
-                                className='w-full !gap-y-6 mt-9'
+                                className='w-[60%] sm:w-[80%] md:w-full min-w-[250px] !gap-y-6 mt-9 mx-auto'
                             >
                                 <div className='flex flex-col w-full'>
                                     <div className="relative">

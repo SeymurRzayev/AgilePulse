@@ -442,7 +442,7 @@
         width: 100%;
         flex-direction: column-reverse;
         justify-content: center;
-        gap: 20px;
+        gap: 10px;
         margin: auto;
     }
 
@@ -495,6 +495,7 @@
         width: 215px;
         height: 218px;
         margin-left: 50px;
+         
     }
 
     .image {

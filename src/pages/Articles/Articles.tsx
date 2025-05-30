@@ -1,105 +1,22 @@
 import Footer from "../../layout/Footer/Footer"
 import Navbar from "../../layout/Navbar/Navbar"
 import backgroundImage from '../../assets/images/articles-bg.jpg'
-import Article1 from "../../assets/images/Article.webp";
-import Article2 from "../../assets/images/Article2.webp";
-import Article3 from "../../assets/images/Article3.webp";
 import { useState } from "react";
 import TrainingCard from "../../components/Trainings/TrainingCard";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
+import { useGetAllArticleQuery } from "../../services/features/articleApi";
 
 const Articles = () => {
 
     const [visibility, setVisibility] = useState(6)
 
-    const data = [
-        {
-            id: 1,
-            img: Article1,
-            title: "Agile metodologiyası nədir?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin bir metodologiyası olaraq tanınır.",
-        },
-        {
-            id: 2,
-            img: Article2,
-            title: "Təşkilatlarda çevik idarəetmə",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 3,
-            img: Article3,
-            title: "Agile gündəlik həyatımızda necə tətbiq edə bilərik?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 1,
-            img: Article1,
-            title: "Agile metodologiyası nədir?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin bir metodologiyası olaraq tanınır.",
-        },
-        {
-            id: 2,
-            img: Article2,
-            title: "Təşkilatlarda çevik idarəetmə",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 3,
-            img: Article3,
-            title: "Agile gündəlik həyatımızda necə tətbiq edə bilərik?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 1,
-            img: Article1,
-            title: "Agile metodologiyası nədir?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin bir metodologiyası olaraq tanınır.",
-        },
-        {
-            id: 2,
-            img: Article2,
-            title: "Təşkilatlarda çevik idarəetmə",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 3,
-            img: Article3,
-            title: "Agile gündəlik həyatımızda necə tətbiq edə bilərik?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 1,
-            img: Article1,
-            title: "Agile metodologiyası nədir?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin bir metodologiyası olaraq tanınır.",
-        },
-        {
-            id: 2,
-            img: Article2,
-            title: "Təşkilatlarda çevik idarəetmə",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-        {
-            id: 3,
-            img: Article3,
-            title: "Agile gündəlik həyatımızda necə tətbiq edə bilərik?",
-            content:
-                "Son dövrlərdə tez-tez eşitdiyimiz “agile”, “agile management” və ya “agile project management” layihə idarəetməsinin ...",
-        },
-    ];
+    const { data: allArticlesResponse } = useGetAllArticleQuery()
 
-    const slicesArticles = data.slice(0, visibility)
+    if (!allArticlesResponse) return null;
+
+    const allArticles = allArticlesResponse?.data.data
+
+    const slicesArticles = allArticles.slice(0, visibility)
 
 
 
@@ -124,15 +41,16 @@ const Articles = () => {
                         <TrainingCard
                             isArticle={true}
                             title={item.title}
-                            imgUrl={item.img}
+                            imgUrl={item.imageUrl}
                             content={item.content}
                             key={item.id}
+                            id={item.id}
                         />
                     )
                 }
 
                 {
-                    slicesArticles.length >= data.length
+                    slicesArticles.length >= allArticles.length
                         ? (
                             <div className="w-full text-center">
                                 <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(6)} />

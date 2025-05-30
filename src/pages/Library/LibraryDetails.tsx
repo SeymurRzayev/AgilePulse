@@ -1,17 +1,27 @@
 import Navbar from "../../layout/Navbar/Navbar";
-import bookImg from "../../assets/images/libdel1.png";
+import { useParams } from "react-router-dom";
+import { useGetBookByIdQuery } from "../../services/features/bookApi";
+// import FlipBook from "./FlipBook";
 
 const LibraryDetails = () => {
+
+  const params = useParams()
+
+  const { data: bookRes } = useGetBookByIdQuery(Number(params.id))
+
+  const book = bookRes?.data
+
+
   return (
     <>
       <div className="relative mb-[50px] h-28 w-full flex items-center justify-center">
         <Navbar />
       </div>
       <div className="">
-        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28">
+        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28" style={{ background: "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))" }}>
           <div className="relative flex justify-center md:block">
             <img
-              src={bookImg}
+              src={book?.imageUrl}
               className="w-[280px] h-[350px] md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] static md:absolute md:-top-[61px] md:left-14"
               alt="image"
             />
@@ -19,10 +29,10 @@ const LibraryDetails = () => {
           <div className="md:my-3 xl:my-6 flex flex-col gap-6 md:gap-5 xl:gap-10 max-w-[515px]">
             <div className="hederCnt flex flex-col gap-2">
               <h2 className="font-bold text-center text-2xl md:text-3xl xl:text-[46px] text-white">
-                The Age of Agile
+                {book?.name}
               </h2>
               <p className="font-normal text-center text-lg md:text-2xl xl:text-[34px] text-[#FFFFFF99]">
-                Stephen Denning
+                {book?.author}
               </p>
             </div>
 
@@ -35,7 +45,7 @@ const LibraryDetails = () => {
               <div className="list flex flex-col gap-4 text-white text-base md:text-xl xl:text-2xl px-2">
                 <p>3 əsas prinsip:</p>
 
-                <ol style={{ listStyleType: "decimal" }} className="list-item pl-4">
+                <ol style={{ listStyleType: "decimal" }} className=" pl-4">
                   <li className="mb-2">
                     Müştəri fokusluluğu – hər şey müştəriyə dəyər yaratmaq üçün.
                   </li>
@@ -58,7 +68,10 @@ const LibraryDetails = () => {
         <div className="max-w-[519px]"></div>
 
         <div className="txtContainer ml-auto w-full">
-          <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
+
+          {/* <FlipBook fileUrl={book?.pdfUrl ?? ''}/> */}
+
+             <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
             <ol style={{ listStyleType: "decimal" }} className="space-y-4">
               <li>
                 Ənənəvi idarəetmədən çevik idarəetməyə keçid Müəllif göstərir

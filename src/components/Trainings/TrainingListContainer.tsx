@@ -25,7 +25,7 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
 
   return (
     <div>
-      <div className="w-full flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
+      <div className="w-full  flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
         {slicesData.map((course) => (
           <TrainingCard
             key={course.id}
@@ -35,6 +35,7 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
             avatar={course.avatar}
             user={course.user}
             date={course.date}
+            isCourse={true}
           />
         ))}
       </div>

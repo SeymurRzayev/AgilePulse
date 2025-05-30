@@ -1,4 +1,5 @@
 import { type FC, useState } from "react";
+import { useCreateContactUsMutation } from "../../services/features/contactUs";
 
 type FormData = {
   name: string;
@@ -13,7 +14,9 @@ const TrainingsContactUs: FC = () => {
     message: "",
   });
 
-  const handleSubmit = () => {
+  const [createContactUs] = useCreateContactUsMutation();
+
+  const handleSubmit = async () => {
     console.log(formData);
     if (!formData.name || !formData.email || !formData.message) {
       alert("Bütün sahələri doldurun.");
@@ -26,10 +29,31 @@ const TrainingsContactUs: FC = () => {
       alert("Email formatı yanlışdır.");
       return;
     }
+
+    const nameParts = formData.name.trim().split(" ");
+    const firstName = nameParts[0];
+    const surname = nameParts.slice(1).join(" ") || " ";
+    try {
+      await createContactUs({
+        data: {
+          name: firstName,
+          surname,
+          email: formData.email,
+          message: formData.message,
+        },
+      }).unwrap();
+
+      alert("Mesajınız uğurla göndərildi!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Göndərmə zamanı xəta baş verdi", error);
+      alert("Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.");
+    }
+
   };
 
   return (
-    <div className="h-auto lg:h-[380px] mx-auto flex flex-col gap-10 my-20">
+    <div className=" w-full h-auto lg:h-[380px] mx-auto flex flex-col gap-10 my-20 md: max-w-[1020px] ">
       <div className="flex flex-col justify-center items-center gap-4">
         <h2 className="text-3xl md:text-4xl lg:text-[46px] font-semibold">
           Bizə Yaz
@@ -101,7 +125,7 @@ const TrainingsContactUs: FC = () => {
           </div>
 
           {/* Text inputs section - right side on desktop */}
-          <div className="text-inputs flex flex-col gap-6 w-full md:w-auto md:min-w-[300px] order-1 md:order-2">
+          <div className="text-inputs flex flex-col gap-6 w-full md:w-auto lg:min-w-[300px] order-1 md:order-2">
             <input
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })

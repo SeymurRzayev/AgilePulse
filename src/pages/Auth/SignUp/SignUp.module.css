@@ -286,15 +286,15 @@
   }
   @media  (max-width: 480px){
      .signUp {
-    flex-direction: row;
+      overflow-y: scroll;
     align-items: center;
     justify-content: center;
    
-  }
+  
 
   .form {
-    width: 50%;
     gap: 40px;
+    
   }
 
   .form h1 {
@@ -338,4 +338,5 @@
     line-height: 14px;
     text-align: left;
   }
+}
   }

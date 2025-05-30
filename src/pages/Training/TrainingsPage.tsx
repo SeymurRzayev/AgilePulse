@@ -160,7 +160,7 @@ const TrainingsPage = () => {
 
       </div>
       <TrainingExperiences />
-      <div className="w-[70%] mx-auto">
+      <div className="w-full mx-auto  max-w-[1020px] ">
         <TrainingsContactUs />
       </div>
       <Footer />

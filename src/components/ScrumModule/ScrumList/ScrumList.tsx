@@ -95,6 +95,7 @@ const ScrumList = () => {
                     title={item.title}
                     isArticle={false}
                     user={item.author}
+                    isCourse={true}
                     time="4 modul : 16 blok"
                   />
                 </div>

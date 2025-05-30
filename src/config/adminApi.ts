@@ -1,1 +1,2 @@
-export const base_url = 'xxx';
+export const base_url = 'https://agilepulse.org/api/agile/pulse/v1';
+

@@ -1,19 +1,21 @@
 @import "tailwindcss";
-
-:root {
-  --text-color: #122041;
-}
+@import url('./assets/styles/stylesheet.css');
 
 * {
   text-decoration: none;
   box-sizing: border-box;
 }
 
+:root {
+  --text-color: #122041;
+}
+
+
 body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  font-family: "Corbel", sans-serif;
+  font-family: "Corbel";
 }
 
 .slick-prev:before,
