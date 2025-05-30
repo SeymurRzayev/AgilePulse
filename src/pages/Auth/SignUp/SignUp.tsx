@@ -1,151 +1,123 @@
 import { useState } from "react";
 import type { FC } from "react";
-import { Link } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
-// validation
-import { yupResolver } from "@hookform/resolvers/yup";
-import { signUpSchema } from "../../../validation/signUpSchema";
-
 import styles from "./SignUp.module.css";
-// ui components
-import InputField from "../../../ui/InputField/InputField";
 import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
-import FormButton from "../../../ui/FormButton/FormButton";
 import authImage from "../../../assets/images/authImage.jpg";
-import checkedBox from "../../../assets/images/checked.svg";
-import uncheckedBox from "../../../assets/images/unchecked.svg";
-// Hook for swipe back functionality
+import openEye from '../../../assets/icons/Inputeye.svg'
+import closeEye from '../../../assets/icons/Inputclosedeye.svg'
 import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import { signUpSchema } from "../../../validation/signUpSchema";
+import MainButton from "../../../components/Butttons/MainButton";
+import { useSignUpMutation } from "../../../services/features/signUpApi";
+// import { useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
 
-interface FormValues {
-  name: string;
-  email: string;
-  password: string;
-  rememberMe: boolean;
-}
+
 
 const SignUp: FC = () => {
+  // const navigate = useNavigate()
   useSwipeBack();
-  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>({ resolver: yupResolver(signUpSchema), mode: "all" });
+  const [createUser, { status, error }] = useSignUpMutation()
 
-  // Handle form submission
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
-    // OTP səhifəsinə yönləndir - alternative method
-    window.location.href = "/auth/otp";
-    // və ya
-    // window.location.href = "/otp";
-  };
+  console.log(status, ' status')
+  console.log(error, ' error')
+
+  const initialValues = {
+    fullName: '',
+    email: '',
+    password: ''
+  }
+
+  const handleCreateUser = async (values: any) => {
+    try {
+      await createUser(values).unwrap()
+      // console.log(res.originalStatus, 'dasdasdsadas')
+    } catch (error) {
+
+      // Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
+      console.log(error)
+    }
+  }
+
 
   return (
     <div className={styles.signUp}>
-       <SwipeBackMessage />
+      <SwipeBackMessage />
       <AuthIllustration imgSrc={authImage} title="Hədəfə çevik yolla çat!" />
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <h1>Qeydiyyat</h1>
-        <div className={styles.inputFields}>
-          {/* Name input */}
-          <Controller
-            name="name"
-            control={control}
-            render={({ field }) => (
-              <InputField
-                placeholder="Ad Soyad"
-                {...field}
-                onChange={(e) => {
-                  let value = e.target.value.replace(
-                    /[^A-Za-zƏəÖöÜüÇçĞğİıŞş\s]/g,
-                    ""
-                  );
-                  value = value.slice(0, 50);
-                  field.onChange({ target: { value } });
-                }}
-                error={errors.name?.message}
-              />
-            )}
-          />
-
-          {/* Email input with validation */}
-          <Controller
-            control={control}
-            name="email"
-            rules={{
-              required: "Email ünvanı daxil edilməlidir",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Email ünvanının düzgünlüyünü yoxlayın",
-              },
-            }}
-            render={({ field }) => (
-              <InputField
-                type="email"
-                placeholder="E-mail adress"
-                {...field}
-                onChange={(e) => {
-                  const value = e.target.value.slice(0, 254); // Max 254 characters
-                  field.onChange({ target: { value } });
-                }}
-                error={errors.email?.message}
-                noSpace
-              />
-            )}
-          />
-          {/* Password without validation */}
-          <Controller
-            name="password"
-            control={control}
-            render={({ field }) => (
-              <InputField
-                type="password"
-                name={field.name}
-                placeholder="Şifrə"
-                defaultValue=''
-                onChange={(e) => {
-                  const value = e.target.value.slice(0, 64);
-                  field.onChange({ target: { value } });
-                }}
-                onBlur={field.onBlur}
-                error={errors.password?.message}
-                noSpace
-              />
-            )}
-          />
-
-          {/* Remember Me Checkbox */}
-          <div className={styles.rememberMeContainer}>
-            <div className={styles.checkboxImg}>
-              <img
-                src={rememberMe ? checkedBox : uncheckedBox}
-                alt="Məni yadda saxla"
-                onClick={() => setRememberMe(!rememberMe)}
-              />
-            </div>
-            <p className={styles.rememberMeTitle}>Məni yadda saxla</p>
-          </div>
-        </div>
-
-        {/*  Submit button and login link */}
-        <div className={styles.submitButtonAndLoginLink}>
-          <FormButton
-            type="submit"
-            onClick={handleSubmit(onSubmit)}
-            children="Qeydiyyatdan keç"
-          />
-          <div className={styles.loginLinkContainer}>
-            <span>Hesabin var?</span>
-            <Link to="/sign-in" className={styles.loginLink}>
-              Daxil ol
-            </Link>
-          </div>
-        </div>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={signUpSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          handleCreateUser(values);
+          setSubmitting(false);
+        }}
+      >
+        {
+          ({ isSubmitting }) => (
+            <Form
+              className='w-[50%] min-w-[250px] !gap-y-6 mt-9 mx-auto'
+            >
+              <div className="w-1/2 flex items-center justify-center flex-col mx-auto h-screen">
+                <div className='flex flex-col w-full'>
+                  <Field
+                    name='fullName'
+                    type='text'
+                    placeholder="Ad"
+                    className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] focus:border-[#2C4B9B]"
+                  />
+                  <ErrorMessage
+                    name='fullName'
+                    component="div"
+                    className='text-[#E70303] text-sm mt-1'
+                  />
+                </div>
+                <div className='flex flex-col w-full'>
+                  <Field
+                    name='email'
+                    type='email'
+                    placeholder="email"
+                    className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] focus:border-[#2C4B9B]"
+                  />
+                  <ErrorMessage
+                    name='email'
+                    component="div"
+                    className='text-[#E70303] text-sm mt-1'
+                  />
+                </div>
+                <div className='flex flex-col w-full'>
+                  <div className="relative">
+                    <Field
+                      name='password'
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Yeni şifrə"
+                      className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] focus:border-[#2C4B9B]"
+                    />
+                    <div
+                      onClick={() => setShowPassword((prev) => !prev)}
+                      className="absolute inset-y-0 right-0 flex items-center cursor-pointer pr-4"
+                    >
+                      <img
+                        className="w-4 h-5"
+                        src={showPassword ? openEye : closeEye}
+                      />
+                    </div>
+                  </div>
+                  <ErrorMessage
+                    name='password'
+                    component="div"
+                    className='text-[#E70303] text-sm mt-1'
+                  />
+                </div>
+                <MainButton type="submit" disabled={isSubmitting} buttonClassName='!py-3' text='Submit' />
+              </div>
+            </Form>
+          )
+        }
+      </Formik>
     </div>
   );
 };
