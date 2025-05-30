@@ -13,7 +13,7 @@ const LibraryBookCard = ({ author, imgUrls, title, id }: CardProps) => {
         <div className="w-full  bg-transparent"> {/** this class has been removed md:w-[32%] */}
             <div className="w-fit mx-auto flex items-center flex-col gap-4 px-[36px] py-[31px] rounded-4xl bg-[#EAEDF580]">
                 <div style={{ boxShadow: '0px 0px 13px 5px #0000003B' }} className=" object-cover  rounded-xl">
-                    <img className="rounded-xl w-[228px] h-[326px]" src={imgUrls} alt="" />
+                    <img className="rounded-xl w-[228px] h-[326px] object-cover" src={imgUrls} alt="" />
                 </div>
                 <div className="flex flex-col text-center gap-2">
                     <h5 className="text-lg font-[Corbel] text-[#000000DE]">{title}</h5>
