@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('./assets/styles/stylesheet.css');
+@import "tailwindcss";
 
 * {
   text-decoration: none;
