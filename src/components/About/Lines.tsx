@@ -15,82 +15,82 @@ function Lines() {
       <img
         className="absolute top-[4%] right-[20%] "
         src={lineteamsvg}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[4%] right-[19.5%] "
         src={arrowlinesvg}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[4%] left-[19.9%] "
         src={arrowlinesvg}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[4%] right-[50%] "
         src={arrshortteam}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[5.5%] right-[35.4%] "
         src={lineteamsvg}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[5.5%] left-[34.8%] "
+        className="absolute  top-[5.5%] left-[34.8%] "
         src={shortsideline}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[5.5%] right-[35.4%] "
         src={longsideline}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[24.5%] left-[34.8%] "
+        className="absolute  top-[24.7%] left-[34.8%] "
         src={shortlineteam}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[24.6%] left-[48.4%] "
+        className="absolute top-[24.7%] left-[48.7%] "
         src={arrowline152}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[45.4%] right-[35.3%] "
+        className="absolute  top-[46%] right-[35.3%] "
         src={shortlineteam}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[45.4%] right-[49.7%] "
+        className="absolute  top-[46%] right-[49.7%] "
         src={arrowteam273}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[54%] right-[49.3%] "
+        className="absolute top-[55%] right-[49.3%] "
         src={arrshortteam}
-        alt=""
+        alt="line"
       />
       <img
-        className="absolute top-[55.9%] left-[20%] "
+        className="absolute   top-[55.9%] left-[20%] "
         src={lineteamsvg}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[55.9%] right-[20%] "
         src={lineteamsvg}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[55.9%] right-[19.5%] "
         src={arrowline221}
-        alt=""
+        alt="line"
       />
       <img
         className="absolute top-[55.9%] left-[19.9%] "
         src={arrowline221}
-        alt=""
+        alt="line"
       />
     </>
   );

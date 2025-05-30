@@ -1,9 +1,10 @@
 import type { FC } from "react";
 import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
-
 import { HiArrowDown } from "react-icons/hi2";
 import Lines from "./Lines";
+import RoleGroup from "./RoleGroup";
+
 const Team: FC = () => {
   return (
     <div className="flex flex-col gap-[50px] relative">
@@ -31,38 +32,14 @@ const Team: FC = () => {
           </div>
         </div>
         {/* {first big container} */}
-        <div className="teamCenterCnt  flex  gap-[7.4%]  justify-center  mb-[14%]  ">
+        <div className="teamCenterCnt  flex  gap-[7.4%]  justify-center   mb-[14%]  ">
           {/* left  */}
-          <div className="flex flex-col ">
-            <h2 className="text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]   ">
-              Frontend developerlər
-            </h2>
-            <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px]">
-              <div className="relative  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px] mb-[20%] ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <span className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px]  ">
-                <HiArrowDown />
-              </span>
-            </div>
-          </div>
+          <RoleGroup
+            className={
+              "text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]"
+            }
+            occupation={"Frontend developerlər"}
+          />
 
           {/* middle */}
           <div className="flex flex-col items-center justify-center mb-[4.8%]">
@@ -79,134 +56,39 @@ const Team: FC = () => {
             </div>
           </div>
           {/* right */}
-          <div className="flex flex-col  ">
-            <h2 className="text-[34px] text-center font-bold  w-[54%] mx-auto  mb-[10%]  ">
-              Backend developerlər
-            </h2>
-
-            <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px] ">
-              <div className="relative  teamList mx-auto rounded-tl-[50px] shadow-[4px 4px 15px 2px rgba(0, 0, 0, 0.1)]  rounded-tr-[50px] w-[330px] h-[375px] mb-[20%]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <span className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px]  ">
-                <HiArrowDown />
-              </span>
-            </div>
-          </div>
+          <RoleGroup
+            className={
+              "text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]"
+            }
+            occupation={"Backend developerlər"}
+          />
         </div>
         {/* {second big container} */}
         <div className="teamCenterCnt  flex  gap-[7.4%]  justify-center    mb-[6%] pt-[10%]   ">
-          {/* left  */}
-          <div className="flex flex-col ">
-            <h2 className="text-[34px] font-bold w-[54%] mx-auto mb-[10%]   ">
-              Agile team
-            </h2>
-            <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px]">
-              <div className="relative  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px] mb-[20%] ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <span className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px]  ">
-                <HiArrowDown />
-              </span>
-            </div>
+          <div className="mt-[-3%]">
+            <RoleGroup
+              className={
+                "text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]"
+              }
+              occupation={"Agile Team"}
+            />
           </div>
 
-          {/* middle */}
-          <div className="flex flex-col justify-end   h-[120vh]   ">
-            <h2 className="text-[34px] font-bold   text-center mb-[10%] ">
-              QA testerlər
-            </h2>
-            <div className=" bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px] ">
-              <div className="relative  teamList mx-auto rounded-tl-[50px] shadow-[4px 4px 15px 2px rgba(0, 0, 0, 0.1)]  rounded-tr-[50px] w-[330px] h-[375px] mb-[20%]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <span className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px]  ">
-                <HiArrowDown />
-              </span>
-            </div>
+          <div className="mt-[-15%]">
+            <RoleGroup
+              className={
+                "text-[34px] text-center font-bold w-[54%] mx-auto mb-[10%]"
+              }
+              occupation={"QA Testerlər"}
+            />
           </div>
-          {/* right */}
-          <div className="flex flex-col  ">
-            <h2 className="text-[34px] font-bold  mx-auto mb-[10%]  ">
-              System support
-            </h2>
-
-            <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px] ">
-              <div className="relative  teamList mx-auto rounded-tl-[50px] shadow-[4px 4px 15px 2px rgba(0, 0, 0, 0.1)]  rounded-tr-[50px] w-[330px] h-[375px] mb-[20%]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
-                <TeamInfoCard
-                  name={"Səadət Hüseynova"}
-                  occupation="Agile Coach"
-                  jobDescription={
-                    "Startap və korporativ layihələrdə liderlik təcrübəsi."
-                  }
-                  img={managerImg}
-                />
-              </div>
-              <span className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px]  ">
-                <HiArrowDown />
-              </span>
-            </div>
+          <div className="mt-[-3%]">
+            <RoleGroup
+              className={
+                "text-[34px] text-center font-bold w-full mx-auto mb-[10%]"
+              }
+              occupation={"System Support"}
+            />
           </div>
         </div>
       </div>
