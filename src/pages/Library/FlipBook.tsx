@@ -1,28 +1,68 @@
-// import { useState } from 'react';
-// import { Document, Page } from 'react-pdf';
+/* import React, { useState } from 'react';
+import HTMLFlipBook from 'react-pageflip';
+import { Document, Page, pdfjs } from 'react-pdf';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
 
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-function FlipBook({ fileUrl }: { fileUrl: string }) {
-    // const [numPages, setNumPages] = useState<number | null>(null);
-    // const [pageNumber, setPageNumber] = useState(1);
-  /*   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
-        setNumPages(numPages);
-    }; */
-    console.log(fileUrl)
+// PDF worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-    return (
-        <div>
-            {/* <Document file={fileUrl} onLoadSuccess={onDocumentLoadSuccess} className={`bg-red-500 h-[500px]`}>
-                <Page pageNumber={pageNumber} />
-            </Document> */}
-           {/*  <div className="flex gap-4 mt-4">
-                <button className='cursor-pointer' disabled={pageNumber <= 1} onClick={() => setPageNumber(pageNumber - 1)}>Previous</button>
-                <span>Page {pageNumber} of {numPages}</span>
-                <button className='cursor-pointer' disabled={pageNumber >= (numPages ?? 0)} onClick={() => setPageNumber(pageNumber + 1)}>Next</button>
-            </div> */}
-        </div>
-    );
+// Props tipi
+interface FlipbookProps {
+    pdfUrl: string;
 }
 
+// Page komponenti
+interface PagesProps {
+    number: number;
+    children: React.ReactNode;
+}
 
-export default FlipBook;
+const Pages = React.forwardRef<HTMLDivElement, PagesProps>(({ number, children }, ref) => {
+    return (
+        <div className="demoPage" ref={ref}>
+            <div>{children}</div>
+            <div>Page number: {number}</div>
+        </div>
+    );
+});
+
+Pages.displayName = 'Pages';
+
+const Flipbook: React.FC<FlipbookProps> = ({ pdfUrl }) => {
+    const [numPages, setNumPages] = useState<number | null>(null);
+
+    const onDocumentLoadSuccess = ({ numPages }: PDFDocumentProxy) => {
+        setNumPages(numPages);
+    };
+
+    return (
+        <div className="h-screen w-screen flex flex-col gap-5 justify-center items-center bg-gray-900 overflow-hidden">
+            <h1 className="text-3xl text-white text-center font-bold">FlipBook</h1>
+            <HTMLFlipBook
+                {...({
+                    width: 400,
+                    height: 570,
+                } as any)}
+            >
+                {Array.from(new Array(numPages || 0), (_, index) => (
+                    <Pages key={index} number={index + 1}>
+                        <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+                            <Page
+                                pageNumber={index + 1}
+                                width={400}
+                                renderAnnotationLayer={false}
+                                renderTextLayer={false}
+                            />
+                        </Document>
+                    </Pages>
+                ))}
+            </HTMLFlipBook>
+        </div >
+    );
+};
+
+export default Flipbook;
+ */
