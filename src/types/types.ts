@@ -162,3 +162,18 @@ export interface GetAllPartnersResponse {
   message: string;
   data: PartnerData;
 }
+
+//Suggestion api requests
+
+export interface SuggestionRes {
+  id: number;
+  email: string;
+  message: string;
+  createdAt: string; 
+}
+
+export interface SuggestionReq {
+  email: string;
+  message: string;
+}
+
