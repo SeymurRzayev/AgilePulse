@@ -52,6 +52,7 @@
         color: #fff;
         position: absolute;
         z-index: 10;
+        cursor: default;
     }
 
     .description {
@@ -63,7 +64,7 @@
         letter-spacing: 0px;
         color: rgba(255, 255, 255, 1);
         margin-top: 100px;
-
+        cursor: default;
     }
 
     .overlay {
@@ -95,6 +96,7 @@
         }
 
         .logoTitle {
+            cursor: default;
             font-size: 20px;
             font-weight: 500;
             font-family: 'Raleway';
