@@ -11,12 +11,13 @@ import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import MainButton from "../../../components/Butttons/MainButton";
 import Swal from "sweetalert2";
+import { useLoginMutation } from "../../../services/features/loginApi";
 
 //  validation schema for sign-in form
 
 const SignIn: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
+  const [login] = useLoginMutation()
   useSwipeBack();
 
   const initialValues = {
@@ -24,9 +25,12 @@ const SignIn: FC = () => {
     password: "",
   };
 
-  const handleSignin = (values: any) => {
+  const handleSignin = async (values: any) => {
     try {
       console.log(values);
+      const res = await login(values).unwrap()
+
+      console.log(res)
     } catch (error) {
       console.log(error);
       Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error");
