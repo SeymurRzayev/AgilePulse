@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import type { FC } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/images/logoWithOutTitle.svg";
 import loginIcon768 from "../../assets/images/login-768.svg"
-
+import { useAppSelector } from "../../redux/hooks/Hooks";
+import loginAvatar from '../../assets/icons/loginAvatar.svg'
 interface NavLinkItem {
   path: string;
   label: string;
@@ -25,11 +26,14 @@ const Navbar: FC<NavbarProps> = ({
   className = "",
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [scrolled, setScrolled] = useState<boolean>(false);
+  const navigate = useNavigate()
   const location = useLocation();
-
+  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
   // Navigation links configuration
   const navLinks: NavLinkItem[] = [
+    ...(isLoggedIn && isMenuOpen
+      ? [{ path: "/personal-cabinet", label: "Şəxsi kabinetim" }]
+      : []),
     {
       path: "/",
       label: "Ana səhifə",
@@ -47,9 +51,10 @@ const Navbar: FC<NavbarProps> = ({
       label: "Haqqımızda",
     },
     {
-      path: "/personal-cabinet",
+      path: "#",
       label: "Akademiya",
     }
+
   ];
 
   // Close menu when clicking outside
@@ -72,20 +77,6 @@ const Navbar: FC<NavbarProps> = ({
   }, [isMenuOpen]);
 
   // Handle scroll events to change navbar appearance
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   // Close menu on route change
   useEffect(() => {
@@ -132,13 +123,11 @@ const Navbar: FC<NavbarProps> = ({
 
   return (
     <nav
-      className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""} ${transparentBg ? styles.transparentBg : ""
-        } ${className}`}
+      className={`${styles.navbar}  ${transparentBg ? styles.transparentBg : ""} ${className}`}
       aria-label="Main navigation"
     >
       <div
-        className={`${styles.container} ${scrolled ? styles.containerScrolled : ""
-          }`}
+        className={`${styles.container}`}
       >
         {/* Logo */}
         <Link
@@ -195,44 +184,50 @@ const Navbar: FC<NavbarProps> = ({
         )}
 
         {/* Desktop Action Buttons */}
+
         {!logoOnly && (
           <div className={`${styles.actions}`}>
-            <div className=" hidden lg:flex gap-4">
-              <NavLink
-                to="/sign-up"
-                className={({ isActive }) =>
-                  `${styles.button} ${styles.colorBtn} ${isActive ? styles.active : ""
-                  }`
-                }
-              >
-                Qeydiyyat
-              </NavLink>
-              <NavLink
-                to="/sign-in"
-                className={({ isActive }) =>
-                  `${styles.button} ${styles.outlineBtn} ${isActive ? styles.active : ""
-                  }`
-                }
-              >
-                Daxil ol
-              </NavLink>
+            {isLoggedIn ? <img src={loginAvatar} alt="loginAvator" className="cursor-pointer" onClick={() => navigate("/personal-cabinet")} /> : (
+              <>
+                <div className=" hidden lg:flex gap-4">
+                  <NavLink
+                    to="/sign-up"
+                    className={({ isActive }) =>
+                      `${styles.button} ${styles.colorBtn} ${isActive ? styles.active : ""
+                      }`
+                    }
+                  >
+                    Qeydiyyat
+                  </NavLink>
+                  <NavLink
+                    to="/sign-in"
+                    className={({ isActive }) =>
+                      `${styles.button} ${styles.outlineBtn} ${isActive ? styles.active : ""
+                      }`
+                    }
+                  >
+                    Daxil ol
+                  </NavLink>
 
-            </div>
-            <div className="flex lg:hidden ">
-              <NavLink
-                to="/sign-in"
-                className={({ isActive }) =>
-                  ` ${isActive ? `${styles.active}` : ""
-                  }`
-                }
-              >
-                <img src={loginIcon768} alt="" className="w-[35px]" />
-              </NavLink>
+                </div>
 
 
-            </div>
+                <div className="flex lg:hidden ">
+                  <NavLink
+                    to="/sign-in"
+                    className={({ isActive }) =>
+                      ` ${isActive ? `${styles.active}` : ""
+                      }`
+                    }
+                  >
+                    <img src={loginIcon768} alt="" className="w-[35px]" />
+                  </NavLink>
+                </div></>
+            )}
           </div>
-        )}
+        )
+        }
+
 
         {/* Mobile Sidebar Menu */}
         {!logoOnly && (
@@ -303,28 +298,30 @@ const Navbar: FC<NavbarProps> = ({
                   ))}
                 </nav>
 
-                <div className={styles.sidebarActions}>
-                  <NavLink
-                    to="/sign-up"
-                    className={({ isActive }) =>
-                      `${styles.sidebarButton} ${styles.sidebarColorBtn} ${isActive ? styles.active : ""
-                      }`
-                    }
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Qeydiyyat
-                  </NavLink>
-                  <NavLink
-                    to="/sign-in"
-                    className={({ isActive }) =>
-                      `${styles.sidebarButton} ${styles.sidebarOutlineBtn} ${isActive ? styles.active : ""
-                      }`
-                    }
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Daxil ol
-                  </NavLink>
-                </div>
+                {!isLoggedIn && (
+                  <div className={styles.sidebarActions}>
+                    <NavLink
+                      to="/sign-up"
+                      className={({ isActive }) =>
+                        `${styles.sidebarButton} ${styles.sidebarColorBtn} ${isActive ? styles.active : ""
+                        }`
+                      }
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Qeydiyyat
+                    </NavLink>
+                    <NavLink
+                      to="/sign-in"
+                      className={({ isActive }) =>
+                        `${styles.sidebarButton} ${styles.sidebarOutlineBtn} ${isActive ? styles.active : ""
+                        }`
+                      }
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Daxil ol
+                    </NavLink>
+                  </div>
+                )}
               </div>
             </div>
 
