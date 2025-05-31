@@ -1,15 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useVerifyMutation } from '../../../services/features/verifyApi';
+import Swal from 'sweetalert2';
 
 const OTP = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const params = useParams()
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
-  const [timeLeft, setTimeLeft] = useState(120);
+  const [timeLeft, setTimeLeft] = useState(300);
   const [isResendDisabled, setIsResendDisabled] = useState(true);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  
-  const email = location.state?.email || 'your@email.com';
+
+  const [sendOtp] = useVerifyMutation()
+  const email: string = params.email ?? '';
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -42,12 +45,12 @@ const OTP = () => {
     e.preventDefault();
     const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
     const newOtp = [...otp];
-    
+
     for (let i = 0; i < pastedData.length && i < 6; i++) {
       newOtp[i] = pastedData[i];
     }
     setOtp(newOtp);
-    
+
     const lastIndex = Math.min(pastedData.length, 5);
     inputRefs.current[lastIndex]?.focus();
   };
@@ -58,13 +61,16 @@ const OTP = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleVerify = () => {
-    const otpValue = otp.join('');
-    if (otpValue.length === 6) {
-      console.log('OTP Verified:', otpValue);
-      navigate('/');
-    } else {
-      alert('Zəhmət olmasa bütün rəqəmləri daxil edin');
+  const handleVerify = async () => {
+    const otpCode = otp.join('');
+    try {
+      await sendOtp({ email, otp: otpCode }).unwrap()
+      Swal.fire('Uğurlu!', 'Qeydiyyat uğurla tamamlandı', 'success')
+      navigate('/sign-in', { replace: true })
+    } catch (error: any) {
+      error?.status === 401
+        ? Swal.fire('Xəta baş verdi!', 'Təsdiq kodu yanlışdır!', 'error')
+        : Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
     }
   };
 
@@ -79,8 +85,8 @@ const OTP = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           className="mb-6 flex items-center text-[#2C4B9B] hover:text-[#5a77be] transition-colors"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +118,7 @@ const OTP = () => {
             {otp.map((digit, index) => (
               <input
                 key={index}
-                ref={(el) => {inputRefs.current[index] = el;}}
+                ref={(el) => { inputRefs.current[index] = el; }}
 
                 type="text"
                 value={digit}
@@ -138,11 +144,10 @@ const OTP = () => {
             <button
               onClick={handleResend}
               disabled={isResendDisabled}
-              className={`w-full font-semibold py-4 px-6 rounded-2xl transition-all duration-200 ${
-                isResendDisabled
-                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-[#4B4193] to-[#DA3D68] hover:from-[#4B4193] hover:to-[#E99826] text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]'
-              }`}
+              className={`w-full font-semibold py-4 px-6 rounded-2xl transition-all duration-200 ${isResendDisabled
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-[#4B4193] to-[#DA3D68] hover:from-[#4B4193] hover:to-[#E99826] text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]'
+                }`}
             >
               Kodu yenidən göndər
             </button>
