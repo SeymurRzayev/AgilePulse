@@ -218,3 +218,23 @@ export interface GetRandomQuotesRes {
   text: string;
   author: string;
 }
+
+
+export interface UserLoginReq {
+  email: string;
+  password: string;
+}
+
+
+export interface UserLoginRes {
+  accessToken: string;
+  refreshToken: string;
+  id: number;
+  fullName: string;
+  position: string;
+  description: string;
+  email: string;
+  phone: string;
+  dateOfBirth: string;
+  profileImage: string;
+}
