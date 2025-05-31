@@ -226,7 +226,7 @@ export interface UserLoginReq {
 }
 
 
-export interface UserLoginRes {
+export interface User {
   accessToken: string;
   refreshToken: string;
   id: number;
