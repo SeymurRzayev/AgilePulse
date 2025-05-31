@@ -11,38 +11,37 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { signUpSchema } from "../../../validation/signUpSchema";
 import MainButton from "../../../components/Butttons/MainButton";
 import { useSignUpMutation } from "../../../services/features/signUpApi";
-import checked from "../../../assets/images/checked.svg";
-import unchecked from "../../../assets/images/unchecked.svg";
-// import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
+// import checked from "../../../assets/images/checked.svg";
+// import unchecked from "../../../assets/images/unchecked.svg";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SignUp: FC = () => {
-  // const navigate = useNavigate()
-  const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate()
+  // const [rememberMe, setRememberMe] = useState(false);
   useSwipeBack();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const [createUser, { status, error }] = useSignUpMutation();
+  const [createUser] = useSignUpMutation()
 
-  console.log(status, " status");
-  console.log(error, " error");
 
   const initialValues = {
     fullName: "",
     email: "",
     password: "",
-    rememberMe: false,
+    // rememberMe: false,
   };
 
   const handleCreateUser = async (values: any) => {
     try {
-      await createUser(values).unwrap();
-      // console.log(res.originalStatus, 'dasdasdsadas')
-    } catch (error) {
-      // Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
-      console.log(error);
+      await createUser(values).unwrap()
+      navigate(`/auth/otp/${values.email}`)
+    } catch (error: any) {
+      error?.status === 409
+        ? Swal.fire('Xəta baş verdi!', 'Siz artıq qeydiyyatdan keçmisiniz', 'error')
+        : Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
     }
-  };
+  }
 
   return (
     <div className="w-full h-auto flex flex-row items-center   bg-[#F5F5F5] p-0">
@@ -113,14 +112,14 @@ const SignUp: FC = () => {
                     />
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                {/* <div className="flex items-center gap-2">
                   <img
                     src={rememberMe ? checked : unchecked}
                     alt="Məni yadda saxla"
                     onClick={() => setRememberMe(!rememberMe)}
                   />
                   <span className="text-[14px] font-normal tracking-normal leading-[20px]">Məni yadda saxla</span>
-                </div>
+                </div> */}
               </div>
 
               <div className="w-[344px]">
@@ -131,8 +130,8 @@ const SignUp: FC = () => {
                   text="Qeydiyyatdan keç"
                 />
                 <span className="text-[#9C9A99] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel] mt-4">Hesabin var?
-                   <Link to="/sign-in" 
-                className="text-[#566FAF] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel] ml-1">Daxil ol</Link></span>
+                  <Link to="/sign-in"
+                    className="text-[#566FAF] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel] ml-1">Daxil ol</Link></span>
               </div>
             </div>
           </Form>
