@@ -1,7 +1,13 @@
 import React from "react";
 import quoteImg from "../../../assets/images/quote.png";
+import { useGetRandomQuotesQuery } from "../../../services/features/quotesApi";
 
 const StatusSection: React.FC = () => {
+
+  const { data: quote } = useGetRandomQuotesQuery()
+
+  if (!quote) return null;
+
   return (
     <section
       id="status"
@@ -18,10 +24,10 @@ const StatusSection: React.FC = () => {
           className="w-16 h-14  md:w-auto md:h-auto  absolute bottom-6 -left-6 md:bottom-[20px] md:left-[-70px]"
         />
         <h2 className="text-lg md:text-3xl lg:text-5xl z-10 mt-6 ">
-          Agile öyrənmək yox, düşünmə tərzidir.
+          {quote?.text}
         </h2>
         <p className="md:text-xl lg:text-2xl text-xs text-end opacity-60">
-          Alistair Cockburn
+          {quote?.author}
         </p>
       </div>
     </section>

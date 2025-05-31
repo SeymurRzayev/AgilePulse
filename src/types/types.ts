@@ -210,3 +210,11 @@ export interface CreateUserReq {
   email: string;
   password: string;
 }
+
+//quotes api
+
+export interface GetRandomQuotesRes {
+  id: number;       // ya da bigint, duruma göre
+  text: string;
+  author: string;
+}
