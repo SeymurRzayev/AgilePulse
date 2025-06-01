@@ -1,38 +1,59 @@
-import type { FC } from "react";
+"use client";
+import { useState, type FC } from "react";
 import TeamInfoCard from "./TeamInfoCard";
-import managerImg from "../../assets/images/trainer1.jpg";
+// import managerImg from "../../assets/images/trainer1.jpg";
 import { HiArrowDown } from "react-icons/hi2";
 
+type Person = {
+  name: string;
+  occupation: string;
+  jobDescription: string;
+  img: string;
+};
 type Props = {
   occupation: string;
-  className: any;
+  className: string;
+  people: Person[];
 };
-const RoleGroup: FC<Props> = ({ occupation, className }) => {
+const RoleGroup: FC<Props> = ({ occupation, className, people }) => {
+  const [index, setIndex] = useState(0);
+  const person = people[index];
+
+  const handleNext = () => {
+    setIndex((prevIndex) => (prevIndex + 1) % people.length);
+  };
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col  items-center  ">
       <h2 className={className}>{occupation}</h2>
-      <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col rounded-t-[50px] p-[8px]">
-        <div className="relative  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px] mb-[20%] ">
+      <div className="bg-gradient-to-t to-[rgba(153,153,153,0.2)] from-[rgba(255,255,255,0.2)] flex flex-col  items-center justify-center   rounded-t-[50px] ">
+        <div
+          className="relative   teamList mx-auto flex justify-center
+              rounded-t-[50px]   w-[230px] h-[300px]
+               lg:w-[300px] lg:h-[375px]  "
+        >
           <TeamInfoCard
-            name={"Səadət Hüseynova"}
-            occupation="Agile Coach"
-            jobDescription={
-              "Startap və korporativ layihələrdə liderlik təcrübəsi."
-            }
-            img={managerImg}
+            name={person.name}
+            occupation={person.occupation}
+            jobDescription={person.jobDescription}
+            img={person.img}
           />
         </div>
-        <div className="relative bg-[rgba(255, 255, 255, 1)]  teamList mx-auto rounded-tl-[50px] rounded-tr-[50px] w-[330px] h-[375px]  ">
+        <div
+          className="relative  teamList mx-auto 
+              rounded-t-[50px]   w-[230px] h-[300px]
+               lg:w-[300px] lg:h-[375px]  mt-[32px]"
+        >
           <TeamInfoCard
-            name={"Səadət Hüseynova"}
-            occupation="Agile Coach"
-            jobDescription={
-              "Startap və korporativ layihələrdə liderlik təcrübəsi."
-            }
-            img={managerImg}
+            name={person.name}
+            occupation={person.occupation}
+            jobDescription={person.jobDescription}
+            img={person.img}
           />
         </div>
-        <button className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px] hover:scale-110 transition-transform duration-300 cursor-pointer">
+        <button
+          onClick={handleNext}
+          className="w-[60px] h-[60px] flex justify-center items-center text-[#122041] text-[22px] rounded-full bg-[#DEDEDE] mx-auto mt-[28px] hover:scale-110 transition-transform duration-300 cursor-pointer"
+        >
           <HiArrowDown />
         </button>
       </div>
