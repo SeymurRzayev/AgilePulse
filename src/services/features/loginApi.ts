@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { setLoggedUser } from "../../redux/slices/authSlice";
 import type { UserLoginReq, User } from "../../types/types";
 import { baseApi } from "../api/baseApi";
@@ -16,10 +17,11 @@ export const loginApi = baseApi.injectEndpoints({
                     localStorage.setItem("token", data.refreshToken);
                     localStorage.setItem("user", JSON.stringify(data));
                     dispatch(setLoggedUser(data))
-                    if (data?.accessToken) {
+                    if (data?.refreshToken) {
                         window.location.href = '/'
                     }
                 } catch (err) {
+                    Swal.fire("Xəta!", "İstifadəçi adı və ya şifrə yanlışdır", "error")
                     console.error("Login failed:", err);
                 }
             }
