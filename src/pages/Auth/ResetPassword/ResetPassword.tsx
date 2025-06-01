@@ -4,6 +4,9 @@ import openEye from '../../../assets/icons/Inputeye.svg'
 import closeEye from '../../../assets/icons/Inputclosedeye.svg'
 import { useState } from 'react';
 import { resetPassword } from '../../../validation/signInSchema';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useResetPasswordMutation } from '../../../services/features/forgotPasswordApi';
+import Swal from 'sweetalert2';
 
 
 const initialValues = {
@@ -13,12 +16,22 @@ const initialValues = {
 
 const ResetPassword = () => {
 
+    const navigate = useNavigate()
+    const params = useParams();
+    const token = params.token ?? "";
+
     const [showPassword, setShowPassword] = useState<boolean>(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
+    const [resetPasswordReq] = useResetPasswordMutation()
 
     const handlechangePassword = async (values: any) => {
-        /* Api integration */
-        console.log(values)
+        try {
+            await resetPasswordReq({ password: values, token }).unwrap()
+            Swal.fire("Uğurlu!", "Şifrə yeniləndi", "success")
+            navigate('/sign-in')
+        } catch (error) {
+            Swal.fire("Xəta baş verdi!", "Yenidən yoxlayın", "error")
+        }
     }
 
 

@@ -28,9 +28,7 @@ const SignIn: FC = () => {
   const handleSignin = async (values: any) => {
     try {
       console.log(values);
-      const res = await login(values).unwrap()
-
-      console.log(res)
+      await login(values).unwrap()
     } catch (error) {
       console.log(error);
       Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error");

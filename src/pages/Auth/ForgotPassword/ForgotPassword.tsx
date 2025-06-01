@@ -1,18 +1,20 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import InputField from "../../../ui/InputField/InputField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //validation
 import { yupResolver } from '@hookform/resolvers/yup';
 import { resetPasswordSchema } from "../../../validation/resetPasswordSchema";
 //ui components
 import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
-import styles from "./ForgetPassword.module.css";
+import styles from "./ForgotPassword.module.css";
 import FormButton from "../../../ui/FormButton/FormButton";
 import authImage from "../../../assets/images/authImage.jpg";
 // Hook for swipe back functionality
 import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
+import { useForgotPasswordMutation } from "../../../services/features/forgotPasswordApi";
+import Swal from "sweetalert2";
 
 // Interface to define the structure of form data (email in this case)
 interface ResetForm {
@@ -20,16 +22,27 @@ interface ResetForm {
 }
 // Using React Hook Form to handle form state and validation
 const ForgetPassword: React.FC = () => {
-  useSwipeBack(); 
+  const navigate = useNavigate()
+  useSwipeBack();
   const { control,
-     handleSubmit 
-    } = useForm<ResetForm>({resolver:yupResolver(resetPasswordSchema),
+    handleSubmit
+  } = useForm<ResetForm>({
+    resolver: yupResolver(resetPasswordSchema),
     mode: "all",
   });
 
+  const [sendLink] = useForgotPasswordMutation()
+
   // Here you can make an API request to send a reset password link
-  const onSubmit = (data: ResetForm) => {
-    console.log("Şifrə yeniləmə emaili:", data.email);
+  const onSubmit = async (data: ResetForm) => {
+    try {
+      await sendLink(data.email).unwrap();
+      Swal.fire("Uğurlu!", "Şifrə yeniləmə linki göndərildi", "success")
+      navigate('/sign-in')
+    } catch (error) {
+      Swal.fire("Xəta baş verdi!", "Yenidən yoxlayın", "error")
+      console.error(error)
+    }
   };
 
   return (
@@ -70,7 +83,7 @@ const ForgetPassword: React.FC = () => {
 
         {/* Button and Link to Sign In */}
         <div className={styles.buttonAndLinkContainer}>
-          <FormButton type="submit" onClick={() => {}} children="Göndər" />
+          <FormButton type="submit" onClick={() => { }} children="Göndər" />
           {/* Link to Sign In page */}
           <div className={styles.linkContainer}>
             <span>Hesabin var?</span>
