@@ -16,7 +16,7 @@ const ResetPassword = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false)
 
-    const handlechangePassword = async ({ values }: any) => {
+    const handlechangePassword = async (values: any) => {
         /* Api integration */
         console.log(values)
     }

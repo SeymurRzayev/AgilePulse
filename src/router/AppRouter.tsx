@@ -15,8 +15,7 @@ import ArticleDetails from "../pages/Articles/ArticleDetails";
 import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import About from "../pages/About/About";
 import OTP from "../pages/Auth/OTP/OTP";
-import Suggestions from "../pages/UserOpinions/Suggestions"; 
-import Complaint from "../pages/UserOpinions/Complaint";
+import Suggestions from "../pages/UserOpinions/Suggestions";
 
 const AppRouter: FC = () => {
   return (
@@ -24,7 +23,7 @@ const AppRouter: FC = () => {
       <Route path="/" element={<Home />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/auth/otp" element={<OTP />} />
+      <Route path="/auth/otp/:email" element={<OTP />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/trainings" element={<TrainingsPage />} />
@@ -34,10 +33,10 @@ const AppRouter: FC = () => {
       <Route path="/articles/details/:id" element={<ArticleDetails />} />
       <Route path="/trainings/scrum" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<PersonalCabinet />} />
-      <Route path="/FAQ" element={<Faq/>}/>
+      <Route path="/FAQ" element={<Faq />} />
       <Route path="/about" element={<About />} />
-      <Route path="/suggestions" element={<Suggestions />} /> 
-      <Route path='/complaint' element={<Complaint />} />
+      <Route path="/suggestions" element={<Suggestions />} />
+      <Route path='/complaint' element={<Suggestions />} />
     </Routes>
   );
 }

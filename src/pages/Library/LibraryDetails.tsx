@@ -22,7 +22,7 @@ const LibraryDetails = () => {
           <div className="relative flex justify-center md:block">
             <img
               src={book?.imageUrl}
-              className="w-[280px] h-[350px] md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] static md:absolute md:-top-[61px] md:left-14"
+              className="w-[280px] h-[350px] md:w-[350px] md:h-[530px] xl:h-[690px] xl:w-[521px] static md:absolute md:-top-[61px] md:left-14 object-cover"
               alt="image"
             />
           </div>
@@ -71,7 +71,7 @@ const LibraryDetails = () => {
 
           {/* <FlipBook pdfUrl={book?.pdfUrl ?? ''}/> */}
 
-             <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
+          <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
             <ol style={{ listStyleType: "decimal" }} className="space-y-4">
               <li>
                 Ənənəvi idarəetmədən çevik idarəetməyə keçid Müəllif göstərir

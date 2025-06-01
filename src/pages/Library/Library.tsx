@@ -50,8 +50,8 @@ const Library = () => {
                         </div>
                     )
                 }
-                {
-                    slicesBooks.length >= allBook?.length
+                {allBook?.length > 6 && (
+                    visibility >= allBook?.length
                         ? (
                             <div className="w-full text-center mt-6 md:mt-8">
                                 <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(6)} />
@@ -59,9 +59,10 @@ const Library = () => {
                         )
                         : (
                             <div className="w-full text-center mt-6 md:mt-8">
-                                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(visibility + 6)} />
+                                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(prev => prev + 6)} />
                             </div>
                         )
+                )
                 }
             </div>
             <Footer />

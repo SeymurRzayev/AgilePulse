@@ -1,65 +1,55 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
+import { useCreateComplaintMutation, useCreateSuggestionMutation } from "../../services/features/suggestionsApi";
+import Swal from 'sweetalert2'
 
 const Suggestions = () => {
-  const [formData, setFormData] = useState({
-    emailAddress: "",
-    textarea: "",
-  });
 
-  const [errors, setErrors] = useState({
-    emailAddress: "",
-    textarea: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [createSuggestion, { isLoading: sugLoading }] = useCreateSuggestionMutation()
+  const [createComplaint, { isLoading: comLoading }] = useCreateComplaintMutation()
+
+  const isSuggestions = location.pathname === "/suggestions";
+
+  const [data, setData] = useState<{
+    email: string;
+    message: string;
+  }>({
+    email: "",
+    message: "",
+  })
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({
+    setData(prev => ({
       ...prev,
       [field]: value,
-    }));
+    }))
 
-    if (errors[field as keyof typeof errors]) {
-      setErrors((prev) => ({
-        ...prev,
-        [field]: "",
-      }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {
-      emailAddress: "",
-      textarea: "",
-    };
-
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!formData.emailAddress.trim()) {
-      newErrors.emailAddress = "E-mail ünvanı tələb olunur";
-    } else if (!emailRegex.test(formData.emailAddress)) {
-      newErrors.emailAddress = "Düzgün e-mail formatı daxil edin";
-    }
-
-    setErrors(newErrors);
-    return !Object.values(newErrors).some((error) => error !== "");
   };
 
   const handleSubmit = async () => {
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      alert("Mesajınız göndərildi!");
-      setFormData({
-        textarea: "",
-        emailAddress: "",
-      });
-      setIsSubmitting(false);
-    }, 1000);
+    if (isSuggestions) {
+      try {
+        await createSuggestion(data).unwrap()
+        Swal.fire("Uğurlu", "Təklifiniz uğurla göndərildi!", "success")
+        setData({ email: '', message: '' })
+      } catch (error) {
+        console.log(error)
+        Swal.fire("Xəta baş verdi", "Zəhmət olmasa yenidən cəhd edin", "error")
+      }
+    } else {
+      try {
+        await createComplaint(data).unwrap()
+        Swal.fire("Uğurlu", "Şikayətiniz uğurla göndərildi!", "success")
+        setData({ email: '', message: '' })
+      } catch (error) {
+        console.log(error)
+        Swal.fire("Xəta baş verdi", "Zəhmət olmasa yenidən cəhd edin", "error")
+      }
+    }
   };
 
   return (
@@ -71,7 +61,7 @@ const Suggestions = () => {
         <NavigateArrow />
       </div>
 
-      <div className="min-h-screen z-0 bg-gradient-to-br from-[#E19BA6] via-[#F3C8B8] via-30% via-[#FAF3EF] to-[#D8AFC1] flex items-center justify-center p-1 sm:p-2 md:p-3 lg:p-4 xl:p-5 relative">
+      <div className="min-h-screen z-0 bg-gradient-to-br from-[#E19BA6] via-30% via-[#FAF3EF] to-[#D8AFC1] flex items-center justify-center p-1 sm:p-2 md:p-3 lg:p-4 xl:p-5 relative">
         <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl relative px-6 sm:px-3 md:px-4 lg:px-5 xl:px-6">
           <div className="relative">
             <div className="flex justify-center mb-1 sm:mb-2 md:mb-3 lg:mb-4 xl:mb-5 relative">
@@ -109,7 +99,7 @@ const Suggestions = () => {
 
             <div className="text-center mb-2 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6">
               <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-800 mb-1 font-[corbel]">
-                Təklifiniz
+                {isSuggestions ? 'Təklifiniz' : 'Şikayətiniz'}
               </h1>
               <div className="w-60 sm:w-60 md:w-80 lg:w-80 xl:w-96 h-1 sm:h-1 md:h-1 lg:h-1 xl:h-1 bg-gradient-to-r from-[#4B4193] via-[#DA3D68] to-[#E99826] mx-auto rounded-full shadow-sm"></div>
             </div>
@@ -118,45 +108,41 @@ const Suggestions = () => {
               <div>
                 <input
                   type="email"
-                  value={formData.emailAddress}
+                  value={data.email}
                   onChange={(e) =>
-                    handleInputChange("emailAddress", e.target.value)
+                    handleInputChange("email", e.target.value)
                   }
-                  className={`w-full px-1.5 sm:px-2 md:px-3 lg:px-4 xl:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-[#F2F2F2] rounded-md font-medium tracking-wide focus:outline-none focus:border-1 border-[#4E61EC] transition-all duration-300 text-sm sm:text-base md:text-lg lg:text-[16px] xl:text-lg shadow-lg placeholder-gray-400 placeholder:font-[corbel] placeholder:text-[16px] ${
-                    errors.emailAddress ? "ring-2 ring-red-500" : ""
-                  }`}
-                  placeholder="Email adres"
+                  className={`w-full px-1.5 sm:px-2 md:px-3 lg:px-4 xl:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-[#F2F2F2] rounded-md font-medium tracking-wide focus:outline-none focus:border-1 border-[#4E61EC] transition-all duration-300 text-sm sm:text-base md:text-lg lg:text-[16px] xl:text-lg shadow-lg placeholder-gray-400 placeholder:font-[corbel] placeholder:text-[16px]`}
+                  placeholder="Email adress"
                 />
-                {errors.emailAddress && (
+                {/* {errors.emailAddress && (
                   <p className="text-red-600 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mt-1 ml-1">
                     {errors.emailAddress}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div>
                 <textarea
                   name="textarea"
-                  value={formData.textarea}
+                  value={data.message}
                   onChange={(e) =>
-                    handleInputChange("textarea", e.target.value)
+                    handleInputChange("message", e.target.value)
                   }
-                  className={`w-full px-1.5 sm:px-2 md:px-3 lg:px-4 xl:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-[#F2F2F2] focus:border-1 border-[#4E61EC] rounded-md font-medium tracking-wide focus:outline-none transition-all duration-300 text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] shadow-lg placeholder-gray-400 placeholder:font-[corbel] placeholder:text-[16px] ${
-                    errors.textarea ? "ring-2 ring-red-500" : ""
-                  }`}
-                  placeholder="Sizin təklifiniz..."
+                  className={`w-full px-1.5 sm:px-2 md:px-3 lg:px-4 xl:px-5 py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-[#F2F2F2] focus:border-1 border-[#4E61EC] rounded-md font-medium tracking-wide focus:outline-none transition-all duration-300 text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] shadow-lg placeholder-gray-400 placeholder:font-[corbel] placeholder:text-[16px]`}
+                  placeholder={`${isSuggestions ? "Sizin təklifiniz..." : "Sizin şikayətiniz..."}`}
                 ></textarea>
               </div>
 
               <button
                 onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="w-full py-1 sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-gradient-to-r from-[#401795] via-[#621DAC] to-[#4E61EC] hover:from-[#4E61EC] hover:via-[#621DAC] hover:to-[#401795] text-white font-[lexend] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
+                disabled={sugLoading || comLoading}
+                className="w-full py-1 cursor-pointer sm:py-1.5 md:py-2 lg:py-2.5 xl:py-3 bg-gradient-to-r from-[#401795] via-[#621DAC] to-[#4E61EC] hover:from-[#4E61EC] hover:via-[#621DAC] hover:to-[#401795] text-white font-[lexend] text-sm sm:text-base md:text-lg lg:text-xl xl:text-[18px] rounded-md focus:outline-none focus:ring-2 focus:ring-[#621DAC] transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-[#621DAC]"
               >
-                {isSubmitting ? (
+                {sugLoading || comLoading ? (
                   <div className="flex items-center justify-center space-x-2">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>GÖNDƏRİLİR...</span>
+                    <span>Göndərilir...</span>
                   </div>
                 ) : (
                   "Göndər"

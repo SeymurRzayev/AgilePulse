@@ -7,35 +7,6 @@ import AnswerContainer from "./AnswerContainer";
 import { useGetAllFaqsQuery } from "../../services/features/faqApi";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
 
-// const faqData = [
-//   {
-//     question: "Agile Pulse nədir və hansı xidmətləri təqdim edir?",
-//     answer:
-//       "Agile Pulse çevik (Agile) idarəetmə yanaşmalarını tətbiq edən və komandaların daha məhsuldar işləməsinə dəstək olan bir platformadır. Biz təlimlər, Agile kouçinq, Scrum və Kanban sistemlərinin tətbiqi üzrə məsləhət xidmətləri göstəririk.",
-//   },
-//   {
-//     question: "Agile təlimləri kimlər üçündür?",
-//     answer:
-//       "Agile təlimləri məhsul sahibləri, layihə menecerləri və çevik komandalar üçün nəzərdə tutulub.",
-//   },
-//   {
-//     question:
-//       "Agile ilə işləmək şirkətimə nə kimi üstünlüklər qazandıra bilər?",
-//     answer:
-//       " Agile sayəsində məhsul və ya xidmət mərhələli şəkildə inkişaf etdirilir. Bu, nəticələri daha tez görməyə və erkən mərhələdə müştəri rəyinə əsasən dəyişiklik etməyə imkan verir.",
-//   },
-//   {
-//     question: "Scrum və Kanban arasında fərq nədir?",
-//     answer:
-//       "Scrum işi sabit vaxt çərçivələrində (sprintlərdə) planlayır və konkret rollar üzərindən idarə edir, Kanban isə fasiləsiz iş axını və tapşırıq sayına limit qoymaqla çevik idarəetmə təklif edir. Əsas fərq Scrum-un strukturlaşdırılmış, Kanban-ın isə daha elastik olmasıdır.",
-//   },
-//   {
-//     question: "Agile Pulse ilə necə əlaqə saxlaya bilərəm?",
-//     answer:
-//       "Agile Pulse ilə əlaqə saxlamaq üçün veb saytımızdakı “Əlaqə” bölməsindən bizə mesaj göndərə və ya sosial media hesablarımız vasitəsilə birbaşa yazışa bilərsiniz. Əlavə olaraq, təlim və xidmətlərimizlə bağlı suallar üçün e-poçt və telefon vasitəsilə də bizimlə əlaqə saxlaya bilərsiniz.",
-//   },
-// ];
-
 const Faq: React.FC = () => {
   const [visibility, setVisibility] = useState(5)
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -68,14 +39,14 @@ const Faq: React.FC = () => {
           <h1 className="text-[25px] md:text-[46px] text-[rgba(0,0,0,0.87)] leading-snug md:leading-[56px] tracking-normal font-bold font-corbel p-1 md:p-2">
             Agile Pulse ilə bağlı suallar? Cavablayırıq!
           </h1>
-          <p className="text-[18px] md:text-xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel p-2">
+          <p className="text-[18px] md:text-2xl leading-7 md:leading-8 tracking-normal font-normal text-[#646463] font-corbel p-2">
             Əgər sualınız varsa, başlamazdan əvvəl bu bölməyə nəzər yetirin –
             bəlkə cavab artıq buradadır!
           </p>
         </div>
 
         <div className="w-full max-w-[1020px] flex flex-col justify-center gap-[35px]">
-          {slicesFaqs.map((item, index) =>
+          {slicesFaqs?.map((item, index) =>
             openIndex === index ? (
               <div
                 key={index}
@@ -99,8 +70,8 @@ const Faq: React.FC = () => {
             )
           )}
         </div>
-        {
-          slicesFaqs.length >= allFaqs.length
+        {allFaqs?.length > 5 && (
+          visibility >= allFaqs.length
             ? (
               <div className="w-full text-center">
                 <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(5)} />
@@ -108,9 +79,10 @@ const Faq: React.FC = () => {
             )
             : (
               <div className="w-full text-center">
-                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(visibility + 5)} />
+                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(prev => prev + 5)} />
               </div>
             )
+        )
         }
         {/* contact us section */}
         <div className="w-full max-w-[1020px]">

@@ -54,5 +54,4 @@ export const passwordField = yup
 
 export const signInSchema = yup.object({
   email: emailField,
-  password: passwordField,
 });

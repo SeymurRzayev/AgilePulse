@@ -51,14 +51,18 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
             <Link to={isArticle ? `/articles/details/${id}` : "/trainings/scrum"}>
               {isArticle
                 ? <MainButton buttonClassName="py-6" className="w-[162px] h-[55px] pr-1" text="Daha çox" />
-                : <button className={styles.start_btn}>
+                : <button className={`${styles.start_btn} min-w-[140px] h-[55px] sm:w-[162px] sm:h-[55px] `}>
                   Kursa başla
                 </button>}
             </Link>
           </div>
         </div>
       </div>
-      <div className={`pt-[28px] ${isCourse && 'px-[26px] py-[29px]'} ${isArticle ? 'max-w-[355px] px-3 sm:px-0' : 'max-w-[339px] px-3 sm:px-0'} mx-auto`}>
+      <div className={
+        `pt-[28px] 
+        ${isCourse && 'px-4 md:px-[26px] py-[29px]'} 
+        ${isArticle ? 'max-w-[355px] px-3 sm:px-0' : 'max-w-[339px] sm:px-0'} mx-auto`
+      }>
         <div className="flex items-start justify-between">
           <div>
             <h3 className={` ${!isArticle && 'max-w-[221px]'}  font-[Corbel] font-bold text-[22px] text-[#000000DE]`}>{title}</h3>

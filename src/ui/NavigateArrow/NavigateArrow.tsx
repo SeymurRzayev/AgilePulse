@@ -15,12 +15,12 @@ const NavigateArrow = () => {
   return (
     <div
       className="absolute w-[60px] h-[60px] "
-      onClick={handleBack}
     >
       <img
         src={navigateArrow}
+        onClick={handleBack}
         alt="əvvəlki səhifəyə qayıt"
-        className="w-[19px] h-[20px]"
+        className="w-[19px] h-[20px] cursor-pointer"
       />
     </div>
   );

@@ -6,11 +6,13 @@ import instagram_icon from "../../assets/images/sosialLogo/instagram_icon.png";
 import telegram_icon from "../../assets/images/sosialLogo/telegram_icon.png";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
+import { useCreateSubscriptionMutation } from "../../services/features/subscriptionApi";
+import Swal from "sweetalert2";
 
 const navMenu = [
   { label: "Haqqımızda", path: "/about" },
   { label: "FAQ", path: "/FAQ" },
-  { label: "Təklif və şikayətlər", path: "/suggestions" }, 
+  { label: "Təklif və şikayətlər", path: "/suggestions" },
 ];
 
 const socialNetworksLinks = [
@@ -32,15 +34,14 @@ const socialNetworksLinks = [
 ];
 
 const Footer: FC = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [createSubscription] = useCreateSubscriptionMutation()
+  const handleSubscribe = async () => {
 
-  const handleSubscribe = () => {
     const trimmedEmail = email.trim();
-
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
     if (!emailRegex.test(trimmedEmail)) {
       setIsInvalid(true);
       setShowError(true);
@@ -48,11 +49,38 @@ const Footer: FC = () => {
     }
 
     setIsInvalid(false);
+
     setShowError(false);
 
-    console.log("Email submitted:", trimmedEmail);
-    setEmail("");
-    alert("Mesajınız uğurla göndərildi.");
+    const result = await Swal.fire({
+      title: "Əminsiniz?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Abunə ol",
+      cancelButtonText: "İmtina et"
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await createSubscription(trimmedEmail).unwrap();
+
+        Swal.fire({
+          title: "Abunə oldunuz!",
+          text: "Abunəlik sorğunuz tamamlandı!",
+          icon: "success"
+        });
+        setEmail("");
+      } catch (err) {
+        console.error(err)
+        Swal.fire({
+          title: "Xəta baş verdi!",
+          text: "Abunəlik sorğusu yerinə yetirilmədi.",
+          icon: "error"
+        });
+      }
+    }
   };
 
   return (
@@ -99,7 +127,6 @@ const Footer: FC = () => {
               </li>
             ))}
           </ul>
-
           <div className={styles.socials}>
             <span>Bizi izləyin</span>
             <ul className={styles.socialIcons}>
@@ -118,7 +145,6 @@ const Footer: FC = () => {
           </div>
         </div>
       </div>
-
       <ul className={styles.bottomLine}>
         <li>
           <Link to="/#"> Müəllif hüquqları qorunur </Link>

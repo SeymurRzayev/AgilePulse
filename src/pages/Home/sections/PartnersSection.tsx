@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { useGetAllPartnersQuery } from "../../../services/features/partner";
+import { useGetAllPartnersQuery } from "../../../services/features/partnerApi";
 import Slider from "react-slick";
 
 const settings = {
@@ -48,7 +48,7 @@ const PartnersSection: FC = () => {
       {/* <div className=" max-w-4xl mx-auto  grid grid-cols-3 gap-4  md:gap-12 ">
         
       </div> */}
-      <div className="flex flex-col  gap-10 max-w-4xl md:mx-auto  ">
+      <div className="flex flex-col w-full gap-10 max-w-4xl md:mx-auto">
         {/* 1-ci sıra - soldan sağa */}
         <Slider {...settings}>
           {firstRow.map((item, index) => (

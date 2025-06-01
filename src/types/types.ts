@@ -162,3 +162,79 @@ export interface GetAllPartnersResponse {
   message: string;
   data: PartnerData;
 }
+
+//Suggestion api requests
+
+export interface SuggestionRes {
+  id: number;
+  email: string;
+  message: string;
+  createdAt: string;
+}
+
+export interface SuggestionReq {
+  email: string;
+  message: string;
+}
+
+//Subscription api requests
+
+export interface SubscriptionReq {
+  email: string;
+}
+
+export interface SubscriptionRes {
+  id: number;
+  email: string
+}
+
+export interface GetAllSubscriptionsResponse {
+  message: string;
+  data: {
+    data: SubscriptionRes[];
+    totalElements: number;
+    lastPageNumber: number;
+    hasNextPage: boolean;
+  };
+}
+
+
+export interface GetSubscriptionByIdResponse {
+  message: string;
+  data: SubscriptionRes;
+}
+
+// Sign up
+export interface CreateUserReq {
+  fullName: string;
+  email: string;
+  password: string;
+}
+
+//quotes api
+
+export interface GetRandomQuotesRes {
+  id: number;       // ya da bigint, duruma göre
+  text: string;
+  author: string;
+}
+
+
+export interface UserLoginReq {
+  email: string;
+  password: string;
+}
+
+
+export interface User {
+  accessToken: string;
+  refreshToken: string;
+  id: number;
+  fullName: string;
+  position: string;
+  description: string;
+  email: string;
+  phone: string;
+  dateOfBirth: string;
+  profileImage: string;
+}
