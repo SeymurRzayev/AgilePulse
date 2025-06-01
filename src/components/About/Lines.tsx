@@ -5,7 +5,6 @@ import shortsideline from "../../assets/images/shortsideline.svg";
 import shortlineteam from "../../assets/images/shortlineteam.svg";
 import arrowline152 from "../../assets/images/arrowline152.svg";
 import arrowteam273 from "../../assets/images/arrowteam273.svg";
-import arrowline221 from "../../assets/images/arrowline221.svg";
 import arrshortteam from "../../assets/images/arrshortteam.svg";
 
 function Lines() {
