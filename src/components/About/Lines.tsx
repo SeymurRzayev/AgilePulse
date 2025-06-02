@@ -24,7 +24,7 @@ function Lines() {
       />
       {/* out right line */}
       <img
-        className="absolute  hidden   lg:block h-[19.4%]  top-[4%] right-[19.5%] "
+        className="absolute  hidden   lg:block h-[19.4%]  top-[3.6%] right-[19.5%] "
         src={arrowlinesvg}
         alt="line"
       />
