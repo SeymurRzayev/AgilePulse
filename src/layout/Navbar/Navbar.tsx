@@ -38,9 +38,10 @@ const Navbar: FC<NavbarProps> = ({
       path: "/",
       label: "Ana səhifə",
     },
-    ...(isLoggedIn
-      ? [{ path: "/trainings", label: "Təlimlər" }]
-      : []),
+    {
+      path: "/trainings",
+      label: "Təlimlər",
+    },
     {
       path: "/exams",
       label: "İmtahanlar",
