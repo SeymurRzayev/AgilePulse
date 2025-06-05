@@ -29,9 +29,7 @@ const AppRouter: FC = () => {
       <Route path="/auth/otp/:email" element={<OTP />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/trainings" element={<ProtectedRoute />}>
-        <Route path="/trainings" element={<TrainingsPage />} />
-      </Route>
+      <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
       <Route path="/library/detail/:id" element={<ProtectedRoute />}>
         <Route path="/library/detail/:id" element={<LibraryDetails />} />
