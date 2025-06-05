@@ -18,6 +18,7 @@ import OTP from "../pages/Auth/OTP/OTP";
 import Suggestions from "../pages/UserOpinions/Suggestions";
 import Certificate from "../pages/Certificate/Certificate";
 import ProtectedRoute from "./ProtectedRoute";
+import QuizPage from "../pages/Quiz/Quiz";
 
 
 const AppRouter: FC = () => {
@@ -45,6 +46,7 @@ const AppRouter: FC = () => {
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
       <Route path="/exams" element={<Certificate studentName="Shahana Khalilova" />} />
+      <Route path="/quiz" element={<QuizPage/>}/>
     </Routes>
   );
 }
