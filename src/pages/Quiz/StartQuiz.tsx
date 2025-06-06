@@ -25,12 +25,12 @@ export default function StartQuiz({
             əməkdaşlıq prinsipləri ilə bağlı biliklərini yoxlayacaq. Hər cavab
             bir addım daha çevik düşüncəyə yaxınlaşmaqdır! Uğurlar! 🚀
           </p>
-          <ul className="flex  sm:flex-row justify-between items-center gap-2 sm:gap-2.5 w-full">
+          <ul className="flex  sm:flex-row justify-between items-center gap-2 sm:gap-2.5  w-[65%]">
             <li className="w-full sm:w-[154px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
               Sual: {totalQuestions}
             </li>
-            <li className="w-full sm:w-[154px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
-              Keçid: {PassingScore}
+            <li className="w-full sm:w-[200px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
+              Keçid: +{PassingScore}%
             </li>
             <li className="w-full sm:w-[245px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] flex items-center justify-center">
               Vaxt: {timeLimit} dəqiqə

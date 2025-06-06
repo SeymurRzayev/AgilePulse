@@ -19,7 +19,7 @@ export default function QuizPage() {
             <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6 py-6 -mt-52 sm:-mt-32 md:-mt-40">
                 <StartQuiz
                     totalQuestions={5}
-                    PassingScore={3}
+                    PassingScore={75}
                     timeLimit={10}
                 />
             </div>
