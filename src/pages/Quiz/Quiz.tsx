@@ -7,7 +7,7 @@ import QuizSider from "./QuizSider";
 
 const quizdata = [
   {
-    question: "Agile metodologiyasının əsas məqsədi nədir?",                 
+    question: "Agile metodologiyasının əsas məqsədi nədir?",
     answers: [
       "Müştəriyə yalnız layihənin sonunda məhsul təqdim etmək",
       "Planlara ciddi şəkildə sadiq qalmaq və dəyişikliklərə qarşı çıxmaq",
@@ -89,30 +89,3 @@ export default function QuizPage() {
     </div>
   );
 }
-
-
-export default function QuizPage() {
-    return (
-        <div className="min-h-screen w-full overflow-x-hidden">
-            <div className="flex justify-center px-4 sm:px-6 lg:px-8">
-                <Navbar />
-            </div>
-            <div className="relative w-full h-[240px] sm:h-[300px] md:h-[357px]">
-                <img 
-                    src={QuizBgImg} 
-                    alt="Quiz Background"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] bg-opacity-50" />
-            </div>
-            <div className="w-full max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-6 py-6 -mt-52 sm:-mt-32 md:-mt-40">
-                <StartQuiz
-                    totalQuestions={5}
-                    PassingScore={75}
-                    timeLimit={10}
-                />
-            </div>
-        </div>
-    )
-}
-
