@@ -50,13 +50,8 @@ export default function StartQuiz({
 
           <MainButton
             text={"Quizə başla"}
-            className="w-[234px] h-[56px]"
-            onClick={handleNext}
-          />
-
-          <MainButton
-            text={"Quizə başla"}
             className="w-full sm:w-[234px] h-[56px] mt-2"
+            onClick={handleNext}
           />
         </div>
       </div>
