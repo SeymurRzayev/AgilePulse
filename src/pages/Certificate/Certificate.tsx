@@ -7,7 +7,7 @@ import gradientBg5 from "../../assets/images/cerificateGradient5.svg";
 import gradientBg6 from "../../assets/images/cerificateGradient6.svg";
 import gradientBg7 from "../../assets/images/certificateGradient7.svg";
 import gradientBg8 from "../../assets/images/cerificateGradient8.svg";
-import seal from "../../assets/images/seal.svg";
+import seal from "../../assets/images/seal.png";
 import logo from "../../assets/icons/logo.svg";
 
 interface CertificateProps {
@@ -28,19 +28,19 @@ const Certificate: React.FC<CertificateProps> = ({
     .replace(/\//g, "."),
 }) => {
   return (
-    <div className="h-[650px] bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">
-      <div className="relative w-full xl:w-[85%] 2xl:w-[80%] max-w-[1400px] bg-white shadow-2xl overflow-hidden border border-gray-200 rounded-lg flex justify-center">
+    <div className="h-[650px]  bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">
+      <div className="relative w-full sm:w-[75%] md:w-[80%] lg:w-[88%] max-w-[1400px] bg-white  overflow-hidden border border-gray-200 rounded-lg flex justify-center">
         {/* Gradient backgrounds */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="relative top-0 left-0 flex flex-row">
-            <div className="w-[200px] md:w-[250px] xl:w-[400px] h-[200px] md:h-[220px] xl:h-[420px] absolute z-0">
+            <div className="w-[200px] md:w-[250px] lg:w-[400px] 2xl:w-[450px] h-[200px] md:h-[220px] lg:h-[420px] 2xl:h-[620px] absolute z-0">
               <img
                 src={gradientBg}
                 alt="gradient"
                 className="w-full h-full object-cover absolute z-0"
               />
             </div>
-            <div className="w-[170px] md:w-[150px] xl:w-[270px] h-[55px] md:h-[80px] xl:h-[150px] absolute z-10 ml-12 xl:ml-20 top-0">
+            <div className="w-[170px] md:w-[150px] lg:w-[270px] 2xl:w-[380px] h-[55px] md:h-[80px] lg:h-[150px] 2xl:h-[240px] absolute z-10 ml-12 lg:ml-20 top-0">
               <img
                 src={gradientBg2}
                 alt="gradient"
@@ -50,14 +50,14 @@ const Certificate: React.FC<CertificateProps> = ({
           </div>
 
           <div className="relative top-0 right-0 z-0">
-            <div className="absolute z-20 top-0 right-0 w-[120px] xl:w-[350px] h-[40px] xl:h-[150px]">
+            <div className="absolute z-20 top-0 right-0 w-[120px] lg:w-[350px] 2xl:w-[380px] h-[40px] lg:h-[150px] 2xl:h-[180px]">
               <img
                 src={gradientBg3}
                 alt="gradient"
                 className="w-full h-full object-fill"
               />
             </div>
-            <div className="absolute z-20 top-0 right-0 w-[100px] xl:w-[256px] h-[140px] xl:h-[340px]">
+            <div className="absolute z-20 top-0 right-0 w-[100px] lg:w-[256px] 2xl:[300px] h-[140px] lg:h-[340px] 2xl:h-[360px]">
               <img
                 src={gradientBg4}
                 alt="gradient"
@@ -67,7 +67,7 @@ const Certificate: React.FC<CertificateProps> = ({
           </div>
 
           <div className="absolute bottom-0 left-0">
-            <div className="w-[250px]  md:w-[280px] xl:w-[670px] h-[120px]  md:h-[140px] xl:h-[300px]">
+            <div className="w-[250px]  md:w-[280px] lg:w-[670px] 2xl:w-[750px] h-[120px]  md:h-[140px] lg:h-[280px] 2xl:h-[490px]">
               <img
                 src={gradientBg5}
                 alt="gradient"
@@ -77,21 +77,21 @@ const Certificate: React.FC<CertificateProps> = ({
           </div>
 
           <div className="absolute flex flex-row bottom-0 right-0">
-            <div className="w-[180px] md:w-[370px] xl:w-[600px] h-[70px] md:h-[70px] xl:h-[130px] relative z-19">
+            <div className="w-[180px] md:w-[370px] lg:w-[600px] 2xl:w-[670px] h-[70px] md:h-[70px] lg:h-[110px] 2xl:h-[170px] relative z-19">
               <img
                 src={gradientBg6}
                 alt="gradient"
                 className="w-full h-full object-fill"
               />
             </div>
-            <div className="w-[220px] md:w-[540px] xl:w-[870px] h-[100px] md:h-[160px] xl:h-[250px] absolute z-20 bottom-0">
+            <div className="w-[220px] md:w-[540px] lg:w-[870px] 2xl:w-[940px] h-[100px] md:h-[160px] lg:h-[230px] 2xl:h-[320px] absolute z-20 bottom-0">
               <img
                 src={gradientBg7}
                 alt="gradient"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="w-[110px] md:w-[150px]  xl:w-[250px] h-[40px]  md:h-[50px] xl:h-[100px] absolute z-23 right-0 bottom-0">
+            <div className="w-[110px] md:w-[150px]  lg:w-[250px] 2xl:w-[270px] h-[40px]  md:h-[50px] lg:h-[80px] 2xl:h-[150px] absolute z-23 right-0 bottom-0">
               <img
                 src={gradientBg8}
                 alt="gradient"
@@ -108,33 +108,33 @@ const Certificate: React.FC<CertificateProps> = ({
         </div>
 
         {/* Certificate content */}
-        <div className="relative z-10 flex flex-col justify-center items-center px-6 py-4 xl:px-12 xl:py-16 2xl:px-20 2xl:py-24">
-          <div className="text-center mt-[40px] xl:mt-[100px]">
-            <h1 className="text-2xl xl:text-5xl 2xl:text-6xl font-bold text-[#6D3892] tracking-[2px] xl:tracking-[4px] mb-2  font-[corbel]">
+        <div className="relative z-10 flex flex-col justify-center items-center px-6 py-4 lg:px-12 lg:py-16 2xl:px-20 2xl:py-24">
+          <div className="text-center mt-[40px] lg:mt-[100px]">
+            <h1 className="text-2xl lg:text-5xl 2xl:text-6xl font-bold text-[#6D3892] tracking-[2px] lg:tracking-[4px] mb-2  font-[corbel]">
               CERTIFICATE
             </h1>
-            <div className="w-28 xl:w-72 h-1 bg-gradient-to-r from-[#2C4B9B] via-orange-400 to-pink-400 mx-auto"></div>
+            <div className="w-28 lg:w-72 h-1 bg-gradient-to-r from-[#2C4B9B] via-orange-400 to-pink-400 mx-auto"></div>
           </div>
 
-          <div className="text-center mt-3 xl:mt-6 mb-3 xl:mb-6">
-            <h2 className="text-base xl:text-3xl 2xl:text-4xl font-light text-gray-700 italic font-[corbel italic]">
+          <div className="text-center mt-3 lg:mt-6 mb-3 xl:mb-6">
+            <h2 className="text-base lg:text-3xl 2xl:text-4xl font-light text-gray-700 italic font-[corbel italic]">
               {studentName}
             </h2>
           </div>
 
-          <div className="flex justify-center text-center mb-6 xl:mb-12 max-w-4xl mx-auto px-4">
-            <p className="text-[10px] xl:text-lg 2xl:text-xl text-[#182955] leading-relaxed font-[corbel]">
+          <div className="flex justify-center text-center mb-6 lg:mb-12 max-w-4xl mx-auto px-4">
+            <p className="text-[10px] lg:text-lg 2xl:text-xl text-[#182955] leading-relaxed font-[corbel]">
               {courseDescription}
             </p>
           </div>
 
-          <div className="flex justify-between items-center max-w-5xl mx-auto w-full px-4 md:px-8  mb-10 md:mb-15 ">
+          <div className="flex justify-between items-center max-w-5xl mx-auto w-full px-4 md:px-8  mb-6 md:mb-10 ">
             {/* Left: Logo + date */}
             <div className="flex items-center">
               <img
                 src={logo}
                 alt="Agile Pulse Logo"
-                className="w-6 h-6 xl:w-20 xl:h-20 mr-3 object-contain"
+                className="w-6 h-6 lg:w-18 lg:h-18 mr-3 object-contain"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.style.display = "none";
@@ -144,15 +144,15 @@ const Certificate: React.FC<CertificateProps> = ({
               />
             
               <div>
-                <div className="text-[#182955] font-normal text-xs xl:text-lg">
+                <div className="text-[#182955] font-normal text-xs lg:text-lg 2xl:text-2xl">
                   Agile Pulse
                 </div>
-                <div className="text-[#182955] text-xs xl:text-base">
+                <div className="text-[#182955] text-xs lg:text-[14px] 2xl:text-lg">
                   {date}
                 </div>
               </div>
             </div>
-            <div className="w-20 h-20 xl:w-40 xl:h-40 2xl:w-40 2xl:h-40 flex justify-center items-center mt-3">
+            <div className=" w-17 h-13 md:w-28 md:h-20 lg:w-50 lg:h-35 2xl:w-50 2xl:h-35 flex justify-center items-center mt-3">
               <img
                 src={seal}
                 alt="seal"
@@ -161,11 +161,11 @@ const Certificate: React.FC<CertificateProps> = ({
             </div>
 
             {/* Right: Signature / repeated info */}
-            <div className="text-right">
-              <div className="text-[#182955] font-normal text-xs xl:text-lg">
+            <div className="text-center">
+              <div className="text-[#182955] font-normal text-xs lg:text-lg 2xl:text-2xl">
                 Agile Pulse
               </div>
-              <div className="text-[#182955] text-xs xl:text-base">{date}</div>
+              <div className="text-[#182955] text-xs lg:text-[14px] 2xl:text-lg">{date}</div>
             </div>
           </div>
         </div>

@@ -56,39 +56,49 @@ export default function QuizPage() {
     }
   };
   return (
-    <div className="mb-[30%]  ">
-      <div className="flex justify-center w-[100vw]">
+    <div className="mb-[30%] min-h-screen w-full overflow-x-hidden">
+      <div className=" w-full flex justify-center px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
-      <div className="w-[100vw] h-[30vh] md:h-[40vh]">
+      <div className="w-full h-[30vh] md:h-[40vh] relative sm:h-[300px]  ">
         <img
           src={QuizBgImg}
           alt="Quiz Background"
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] bg-opacity-50" />
       </div>
-
-      <div className="flex gap-[4%]  ">
-        {!quizStarted || backButtonClicked ? (
-          <StartQuiz
-            totalQuestions={5}
-            PassingScore={3}
-            timeLimit={10}
-            onclicked={handleQuiz}
+      <div className="w-full flex md:justify-center items-center absolute top-[60%] md:top-[75%] lg:top-[70%] ">
+        <div className="flex flex-col  justify-center gap-20 absolute ">
+          <ProgressBar
+            progress={
+              quizStarted ? ((currentQuizIndex + 1) / quizdata.length) * 100 : 0
+            }
+            status={quizStarted ? "started" : "not started"}
           />
-        ) : (
-          <>
-            <QuizCards
-              quizNum={currentQuizIndex + 1}
-              questionItem={quizdata[currentQuizIndex].question}
-              answers={quizdata[currentQuizIndex].answers}
-              remainingTime={52}
-              clickedBack={handleBackButton}
-              clickForward={handleNextQuestion}
-            />
-            <QuizSider buttonCounts={numbers} />
-          </>
-        )}
+          <div className="w-full max-w-[1440px] mx-auto  py-6 -mt-52 sm:-mt-32 md:-mt-40 ">
+            {!quizStarted || backButtonClicked ? (
+              <StartQuiz
+                totalQuestions={5}
+                PassingScore={75}
+                timeLimit={10}
+                onclicked={handleQuiz}
+              />
+            ) : (
+              <>
+                <QuizCards
+                  quizNum={currentQuizIndex + 1}
+                  questionItem={quizdata[currentQuizIndex].question}
+                  answers={quizdata[currentQuizIndex].answers}
+                  remainingTime={52}
+                  clickedBack={handleBackButton}
+                  clickForward={handleNextQuestion}
+                />
+                <QuizSider buttonCounts={numbers} />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

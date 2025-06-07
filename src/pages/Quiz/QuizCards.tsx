@@ -28,17 +28,17 @@ const QuizCards: FC<Props> = ({
     setSelectedCheckbox(-1);
   };
   return (
-    <div>
-      <div className="w-[94%] top-[58%] right-[-44%] md:w-[60%] lg:w-[60%] h-[450px] absolute md:top-[62%] lg:top-[62%] md:left-[36%] lg:left-[36%] -translate-x-[50%] -translate-y-[50%] flex flex-col ">
+    <div >
+      <div className="w-[94%] top-[58%] right-[-44%] md:w-[60%] lg:w-[60%] h-[450px] absolute md:top-[62%] lg:top-[62%] md:left-[36%] lg:left-[36%] -translate-x-[50%] -translate-y-[50%] flex flex-col owerflow-hidden">
         <div className="relative z-0 flex flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[50px] shadow-2xl">
-          <div className="p-[2%] md:p-0 lg:p-0 absolute top-[4%] md:top-[12%] lg:top-[12%] left-[5%] z-10 flex flex-col gap-[4%] w-[555px] h-[331px]">
+          <div className="p-[2%] md:p-0 lg:p-0 absolute top-[4%] md:top-[12%] lg:top-[12%] left-[5%] z-10 flex flex-col gap-[4%] w-full h-[331px] overflow-hidden">
             <h3 className="text-[18px] text-[#00000099] font-[Corbel] font-[700]">
               Sual {quizNum}
             </h3>
             <h1 className="text-[20px] md:text-[24px] lg:text-[30px] w-[50%] md:w-[100%] lg:w-[100%]  text-[#1F356E] font-[Corbel] font-[700]">
               {questionItem}
             </h1>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 overflow-hidden">
               {answers.map((answer, index) => (
                 <div key={index} className="flex gap-2 items-center">
                   <input
