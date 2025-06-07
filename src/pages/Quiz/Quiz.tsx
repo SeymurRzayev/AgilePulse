@@ -4,6 +4,7 @@ import StartQuiz from "../../pages/Quiz/StartQuiz";
 import QuizCards from "./QuizCards";
 import { useState } from "react";
 import QuizSider from "./QuizSider";
+import ProgressBar from "./ProgressBar";
 
 const quizdata = [
   {
@@ -44,7 +45,7 @@ export default function QuizPage() {
       setBackButtonClicked(true);
     }
   };
-
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const handleNextQuestion = () => {
     if (currentQuizIndex < quizdata.length - 1) {
       setCurrentQuizIndex(currentQuizIndex + 1);
@@ -55,18 +56,19 @@ export default function QuizPage() {
     }
   };
   return (
-    <div className="mb-[30%]">
-      <div className="flex justify-center">
+    <div className="mb-[30%]  ">
+      <div className="flex justify-center w-[100vw]">
         <Navbar />
       </div>
-      <div className="w-full h-[360px] ">
+      <div className="w-[100vw] h-[30vh] md:h-[40vh]">
         <img
           src={QuizBgImg}
           alt="Quiz Background"
-          className="w-full h-full object-cover object-[20%_40%] "
+          className="w-full h-full object-cover object-center"
         />
       </div>
-      <div className="flex gap-[4%]">
+
+      <div className="flex gap-[4%]  ">
         {!quizStarted || backButtonClicked ? (
           <StartQuiz
             totalQuestions={5}
@@ -75,16 +77,18 @@ export default function QuizPage() {
             onclicked={handleQuiz}
           />
         ) : (
-          <QuizCards
-            quizNum={currentQuizIndex + 1}
-            questionItem={quizdata[currentQuizIndex].question}
-            answers={quizdata[currentQuizIndex].answers}
-            remainingTime={52}
-            clickedBack={handleBackButton}
-            clickForward={handleNextQuestion}
-          />
+          <>
+            <QuizCards
+              quizNum={currentQuizIndex + 1}
+              questionItem={quizdata[currentQuizIndex].question}
+              answers={quizdata[currentQuizIndex].answers}
+              remainingTime={52}
+              clickedBack={handleBackButton}
+              clickForward={handleNextQuestion}
+            />
+            <QuizSider buttonCounts={numbers} />
+          </>
         )}
-        <QuizSider />
       </div>
     </div>
   );
