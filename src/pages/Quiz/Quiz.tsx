@@ -4,7 +4,7 @@ import StartQuiz from "../../pages/Quiz/StartQuiz";
 import QuizCards from "./QuizCards";
 import { useState } from "react";
 import QuizSider from "./QuizSider";
-import ProgressBar from "./ProgressBar";
+// import ProgressBar from "./ProgressBar";
 
 const quizdata = [
   {
