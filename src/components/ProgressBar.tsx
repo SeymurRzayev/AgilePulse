@@ -8,7 +8,7 @@ interface ProgressBarProps {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress, className }) => {
   return (
-    <div className={`flex flex-col items-start w-full gap-1 ${className}`}>
+    <div className={`flex justify-center w-11/12 ${className}`}>
       <Box
         sx={{
           width: "100vw",

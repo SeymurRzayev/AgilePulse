@@ -29,7 +29,7 @@ const QuizCards: FC<Props> = ({
     setSelectedCheckbox(-1);
   };
   return (
-    <div className="w-full max-w-[823px] h-[3223px]">
+    <div className="w-full max-w-[823px]">
       <div className="w-full lg:min-w-[790px] max-w-[823px] flex flex-col owerflow-hidden">
         <div className=" flex lg:min-h-[411px] flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px] shadow-2xl">
           <div className="flex flex-col w-full mt-10 ml-10 overflow-hidden">
