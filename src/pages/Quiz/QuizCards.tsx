@@ -1,6 +1,7 @@
 import { useState, type FC } from "react";
 import MainButton from "../../components/Butttons/MainButton";
 import { FaRegClock } from "react-icons/fa6";
+import OutlineBtn from "../../components/Butttons/OutlineBtn";
 type Props = {
   quizNum: number;
   questionItem: string;
@@ -28,10 +29,10 @@ const QuizCards: FC<Props> = ({
     setSelectedCheckbox(-1);
   };
   return (
-    <div >
-      <div className="w-[94%] top-[58%] right-[-44%] md:w-[60%] lg:w-[60%] h-[450px] absolute md:top-[62%] lg:top-[62%] md:left-[36%] lg:left-[36%] -translate-x-[50%] -translate-y-[50%] flex flex-col owerflow-hidden">
-        <div className="relative z-0 flex flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[50px] shadow-2xl">
-          <div className="p-[2%] md:p-0 lg:p-0 absolute top-[4%] md:top-[12%] lg:top-[12%] left-[5%] z-10 flex flex-col gap-[4%] w-full h-[331px] overflow-hidden">
+    <div className="w-full max-w-[823px] h-[3223px]">
+      <div className="w-full lg:min-w-[790px] max-w-[823px] flex flex-col owerflow-hidden">
+        <div className=" flex lg:min-h-[411px] flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px] shadow-2xl">
+          <div className="flex flex-col w-full mt-10 ml-10 overflow-hidden">
             <h3 className="text-[18px] text-[#00000099] font-[Corbel] font-[700]">
               Sual {quizNum}
             </h3>
@@ -58,26 +59,26 @@ const QuizCards: FC<Props> = ({
       </div>
 
       {/* Timer and Buttons */}
-      <div className="absolute w-[100%] md:w-[60%]  top-[98%] md:top-[105%] lg:top-[105%] left-[6%] lg:w-[60%] flex justify-between md:gap-4 lg:gap-4">
-        <div className=" md:gap-2 lg:gap-2 items-center hidden md:flex lg:flex  bg-amber-300 py-1 px-3 ">
+      {/* Container */}
+      <div className=" w-[100%] mt-7 flex justify-between  md:gap-4 lg:gap-4">
+        {/* Time */}
+        <div className=" md:gap-2 lg:gap-2 items-center hidden md:flex lg:flex  py-1 px-3 ">
           <FaRegClock className="text-[32px] text-[#00000099] " />
           <p className="text-[18px] md:text-[24px] lg:text-[24px]  text-[#00000099] mb-[3%] ">
             {remainingTime} dəqiqə
           </p>
         </div>
-
-        <div className="flex gap-4 items-center justify-end bg-yellow-200   w-[90%] md:w-[60%] lg:w-[60%]">
-          <button
+        {/* Buttons */}
+        <div className="flex gap-4 ">
+          <OutlineBtn
             onClick={handleReturnButton}
-            className=" w-[50%] h-[8vh] md:w-[24%]  lg:w-[24%]  text-[16px] border-[2px] border-indigo-500 rounded-full cursor-pointer"
-          >
-            Geriyə qayıt
-          </button>
-
+            size={144}
+            text="Geriyə qayıt"
+          />
           <MainButton
             text="Davam et"
+            className="w-[144px] h-[56px]"
             onClick={handleNextQuestion}
-            className=" w-[50%] h-[8vh] md:w-[24%]  lg:w-[24%]   text-[16px] leading-[24px]"
           />
         </div>
       </div>

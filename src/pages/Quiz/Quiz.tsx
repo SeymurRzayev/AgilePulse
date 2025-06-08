@@ -4,7 +4,7 @@ import StartQuiz from "../../pages/Quiz/StartQuiz";
 import QuizCards from "./QuizCards";
 import { useState } from "react";
 import QuizSider from "./QuizSider";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../../components/ProgressBar";
 
 const quizdata = [
   {
@@ -41,7 +41,11 @@ export default function QuizPage() {
   const handleBackButton = () => {
     if (currentQuizIndex > 0) {
       setCurrentQuizIndex(currentQuizIndex - 1);
-    } else {
+    }
+    else if (currentQuizIndex === 0) {
+      setQuizStarted(false);
+    }
+    else {
       setBackButtonClicked(true);
     }
   };
@@ -56,27 +60,39 @@ export default function QuizPage() {
     }
   };
   return (
-    <div className="mb-[30%] min-h-screen w-full overflow-x-hidden">
+    <div className="min-h-screen overflow-y-auto flex flex-col items-center w-full  ">
+      {/* Navbar */}
       <div className=" w-full flex justify-center px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
-      <div className="w-full h-[30vh] md:h-[40vh] relative sm:h-[300px]  ">
+      {/* Banner */}
+      <div className="w-full absolute top-0 h-[357px] md:h-[357px] brightness-50 opacity-95 sm:h-[300px]  ">
         <img
           src={QuizBgImg}
           alt="Quiz Background"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] bg-opacity-50" />
       </div>
-      <div className="w-full flex md:justify-center items-center absolute top-[60%] md:top-[75%] lg:top-[70%] ">
-        <div className="flex flex-col  justify-center gap-20 absolute ">
+
+      {/* Container */}
+      <div
+        className={`w-full ${!quizStarted ? 'max-w-[1093px]' : 'max-w-[1183px]'} flex flex-col justify-center  mt-[200px] relative`}
+      >
+        {/* Header and progress bar */}
+        <div className="space-y-4 relative ">
+          <h1 className="text-2xl sm:text-3xl text-white leading-9 font-bold">
+            Başlanılmayıb
+          </h1>
           <ProgressBar
+            className={quizStarted ? "max-w-[823px]" : 'max-w-[1093px]'}
             progress={
               quizStarted ? ((currentQuizIndex + 1) / quizdata.length) * 100 : 0
             }
-            status={quizStarted ? "started" : "not started"}
           />
-          <div className="w-full max-w-[1440px] mx-auto  py-6 -mt-52 sm:-mt-32 md:-mt-40 ">
+        </div>
+        <div className="w-full flex flex-col justify-center gap-20">
+
+          <div className="flex w-full max-w-[1440px] py-6 ">
             {!quizStarted || backButtonClicked ? (
               <StartQuiz
                 totalQuestions={5}
@@ -85,7 +101,7 @@ export default function QuizPage() {
                 onclicked={handleQuiz}
               />
             ) : (
-              <>
+              <div className="w-full gap-x-11 flex flex-col lg:flex-row justify-between">
                 <QuizCards
                   quizNum={currentQuizIndex + 1}
                   questionItem={quizdata[currentQuizIndex].question}
@@ -95,10 +111,11 @@ export default function QuizPage() {
                   clickForward={handleNextQuestion}
                 />
                 <QuizSider buttonCounts={numbers} />
-              </>
+              </div>
             )}
           </div>
         </div>
+
       </div>
     </div>
   );

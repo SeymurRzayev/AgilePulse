@@ -5,10 +5,10 @@ type Props = {
 };
 const QuizSider: FC<Props> = ({ buttonCounts }) => {
   return (
-    <div className="w-[22%] h-[94vh] absolute top-[67%] right-[-3%] -translate-x-[50%] -translate-y-[50%] hidden  lg:flex flex-col">
-      <div className="relative z-0 flex flex-col justify-center items-center gap-[3%] w-full h-full bg-[#BEC7E0BF] backdrop-blur-lg rounded-[30px] shadow-2xl ">
+    <div className="w-full max-w-[316px] absolute top-0 right-0">
+      <div className="flex flex-col  py-[38px] items-center gap-[13px] w-full h-full bg-[#BEC7E0BF] backdrop-blur-lg rounded-[30px] shadow-2xl ">
         {buttonCounts.map((buttonCount, index) => (
-          <button className="w-[78%] h-[42px] rounded-[15px] bg-[#28448D] text-[#FFFFFF] text-[18px] font-[700]" key={index}>Sual {buttonCount}</button>
+          <button className="w-[78%] font-[Corbel] rounded-[15px] text-left pl-[29px] bg-[#28448D] text-[#FFFFFF] text-lg h-[42px] cursor-pointer" key={index}>Sual {buttonCount}</button>
         ))}
       </div>
     </div>
