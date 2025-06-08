@@ -21,7 +21,7 @@ export default function StartQuiz({
   };
 
   return (
-    <div className=" w-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]  p-3 sm:p-6 lg:p-8">
+    <div className=" w-11/12 bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]  p-3 sm:p-6 lg:p-8">
       <div className="w-full mx-auto max-w-[941px]  flex flex-col justify-center items-center gap-4 sm:gap-11">
         <p className="text-wrap text-center text-lg sm:text-2xl lg:text-3xl font-[corbel] leading-7 sm:leading-9 tracking-normal font-bold">
           Agile dünyasına hazırsan? Bu qısa quiz çevik düşünmə və komandada

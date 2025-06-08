@@ -60,7 +60,7 @@ export default function QuizPage() {
     }
   };
   return (
-    <div className="min-h-screen overflow-y-auto flex flex-col items-center w-full  ">
+    <div className="min-h-screen flex flex-col items-center w-full ">
       {/* Navbar */}
       <div className=" w-full flex justify-center px-4 sm:px-6 lg:px-8">
         <Navbar />
@@ -79,8 +79,8 @@ export default function QuizPage() {
         className={`w-full ${!quizStarted ? 'max-w-[1093px]' : 'max-w-[1183px]'} flex flex-col justify-center  mt-[200px] relative`}
       >
         {/* Header and progress bar */}
-        <div className="space-y-4 relative ">
-          <h1 className="text-2xl sm:text-3xl text-white leading-9 font-bold">
+        <div className="space-y-4 relative w-[91%] mx-auto">
+          <h1 className="text-2xl text-start  sm:text-3xl text-white leading-9 font-bold">
             Başlanılmayıb
           </h1>
           <ProgressBar
@@ -92,7 +92,7 @@ export default function QuizPage() {
         </div>
         <div className="w-full flex flex-col justify-center gap-20">
 
-          <div className="flex w-full max-w-[1440px] py-6 ">
+          <div className="flex justify-center w-full max-w-[1440px] py-6 ">
             {!quizStarted || backButtonClicked ? (
               <StartQuiz
                 totalQuestions={5}
