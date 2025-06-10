@@ -79,7 +79,7 @@ export default function QuizPage() {
         className={`w-full ${!quizStarted ? 'max-w-[1093px]' : 'max-w-[1183px]'} flex flex-col justify-center  mt-[200px] relative`}
       >
         {/* Header and progress bar */}
-        <div className="space-y-4 relative w-[91%] mx-auto">
+        <div className="space-y-4 relative w-[91%]">
           <h1 className="text-2xl text-start  sm:text-3xl text-white leading-9 font-bold">
             Başlanılmayıb
           </h1>
@@ -92,7 +92,7 @@ export default function QuizPage() {
         </div>
         <div className="w-full flex flex-col justify-center gap-20">
 
-          <div className="flex justify-center w-full max-w-[1440px] py-6 ">
+          <div className="flex mx-8 w-full max-w-[1440px] py-6 ">
             {!quizStarted || backButtonClicked ? (
               <StartQuiz
                 totalQuestions={5}
@@ -101,7 +101,7 @@ export default function QuizPage() {
                 onclicked={handleQuiz}
               />
             ) : (
-              <div className="w-full gap-x-11 flex flex-col lg:flex-row justify-between">
+              <div className="w-full gap-x-11 mx-[3%] flex flex-col lg:flex-row">
                 <QuizCards
                   quizNum={currentQuizIndex + 1}
                   questionItem={quizdata[currentQuizIndex].question}
