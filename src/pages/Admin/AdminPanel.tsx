@@ -1,6 +1,6 @@
 import dasboardIconAdmin from '../../assets/icons/dashboard-icon-admin.svg'
 // import adminUsers from '../../assets/icons/admin_users.svg'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/icons/logo.svg'
 const NAVIGATION = [
     {
@@ -20,17 +20,17 @@ const NAVIGATION = [
     },
     {
         title: 'Tapşırıqlar',
-        path: '/tasks',
+        path: 'tasks',
         icon: dasboardIconAdmin
     },
     {
         title: 'Komandalar',
-        path: '/groups',
+        path: 'groups',
         icon: dasboardIconAdmin
     },
     {
         title: 'Bildirişlər sistemi',
-        path: '/notificationSystem',
+        path: 'notificationSystem',
         icon: dasboardIconAdmin
     }
 ];
@@ -71,7 +71,7 @@ const AdminPanel = () => {
                     </ul>
                 </div>
             </div>
-            <div className="bg-[#FBF9F7] w-4/5 mt-2.5 mb-2.5 mr-2.5  rounded-[50px]">menucontent</div>
+            <div className="bg-[#FBF9F7] w-4/5 mt-2.5 mb-2.5 mr-2.5  rounded-[50px]"><Outlet /></div>
         </div>
     )
 }
