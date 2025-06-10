@@ -20,6 +20,12 @@ import Certificate from "../pages/Certificate/Certificate";
 import ProtectedRoute from "./ProtectedRoute";
 import QuizPage from "../pages/Quiz/Quiz";
 import AdminPanel from "../pages/Admin/AdminPanel";
+import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
+import Users from "../pages/Admin/MenuItemsContent/Users";
+import Projects from "../pages/Admin/MenuItemsContent/Projects";
+import Tasks from "../pages/Admin/MenuItemsContent/Tasks";
+import Groups from "../pages/Admin/MenuItemsContent/Groups";
+import NotificationCenter from "../pages/Admin/MenuItemsContent/NotificationCenter";
 
 
 const AppRouter: FC = () => {
@@ -48,7 +54,14 @@ const AppRouter: FC = () => {
       <Route path='/complaint' element={<Suggestions />} />
       <Route path="/exams" element={<Certificate studentName="Shahana Khalilova" />} />
       <Route path="/quiz" element={<QuizPage />} />
-      <Route path="/admin" element={<AdminPanel />} />
+      <Route path="/admin" element={<AdminPanel />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="users" element={<Users />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="tasks" element={<Tasks />} />
+        <Route path="groups" element={<Groups />} />
+        <Route path="notificationSystem" element={<NotificationCenter />} />
+      </Route>
     </Routes>
   );
 }
