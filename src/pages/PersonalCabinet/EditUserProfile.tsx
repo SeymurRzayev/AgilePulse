@@ -4,11 +4,14 @@ import Image from "../../components/ImageComponent"
 import choose from "../../assets/images/choose.png"
 import { useRef, useState } from 'react'
 import MainButton from '../../components/Butttons/MainButton'
+import { useAppSelector } from '../../redux/hooks/Hooks'
 
 const EditUserProfile = () => {
+    const user = useAppSelector(state => state.auth.user)
 
-    const [userDescription, setUserDescription] = useState<string>("10 ildən artıqdır ki, biznes analitikası sahəsində fəaliyyət göstərirəm. Müxtəlif sənaye sahələrində — bankçılıq, retail, texnologiya və startap ekosistemlərində — proseslərin təhlili, data əsaslı qərarların verilməsi və rəqəmsal transformasiya layihələrində iştirak etmişəm. Analitik düşüncə, güclü kommunikasiya və Agile çərçivəsində iş təcrübəm mənə komandalarla effektiv əməkdaşlıq qurmağa və biznes məqsədlərini texniki həllərlə birləşdirməyə imkan verir.")
+    const [userDescription, setUserDescription] = useState<string>(`${user?.description}`)
     const fileInputRef = useRef<HTMLInputElement | null>(null);
+
 
     return (
         <div className='w-full mt-[53px] gap-0 xl:gap-15 flex justify-center pb-5 flex-col-reverse lg:items-start items-center lg:flex-row '>
@@ -16,9 +19,9 @@ const EditUserProfile = () => {
                 <h2 style={{ fontFamily: 'Corbel' }} className='text-[#000000DE] font-semibold text-3xl mt-10 lg:mt-0 cursor-default'>Şəxsi məlumatlar</h2>
                 <form action="" className='w-full px-9 lg:px-0 lg:w-4/5 mt-10 mx-auto edit-profile'>
                     {/* Value APIden gelende inputlarin ici dolu formada gelecek */}
-                    <input className='placeholder-[#000000DE]' type="text" placeholder="Emin Huseynov" />
-                    <input className='placeholder-[#000000DE]' type="text" placeholder="Biznes Analitik" />
-                    <input className='placeholder-[#000000DE]' type="email" placeholder="example@gmail.com" />
+                    <input className='!text-[#000000DE]' type="text" value={user?.fullName} />
+                    <input className='!text-[#000000DE]' type="text" value={user?.position} />
+                    <input className='!text-[#000000DE]' type="email" value={user?.email} />
                     <textarea
                         value={userDescription}
                         onChange={(e) => setUserDescription(e.target.value)}
