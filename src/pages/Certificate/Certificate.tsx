@@ -29,35 +29,35 @@ const Certificate: React.FC<CertificateProps> = ({
 }) => {
   return (
     <div className="h-[650px]  bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">
-      <div className="relative w-full sm:w-[75%] md:w-[80%] lg:w-[88%] max-w-[1400px] bg-white  overflow-hidden border border-gray-200 rounded-lg flex justify-center">
+      <div className="relative w-[96%] md:w-[68%] lg:w-[90%] xl:w-[72%] bg-white  overflow-hidden border border-gray-200 rounded-lg flex justify-center">
         {/* Gradient backgrounds */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="relative top-0 left-0 flex flex-row">
-            <div className="w-[200px] md:w-[250px] lg:w-[400px] 2xl:w-[450px] h-[200px] md:h-[220px] lg:h-[420px] 2xl:h-[620px] absolute z-0">
+            <div className="w-[180px] md:w-[250px] lg:w-[400px] 2xl:w-[450px] h-[220px] md:h-[260px] lg:h-[420px] 2xl:h-[620px] absolute z-0">
               <img
                 src={gradientBg}
                 alt="gradient"
                 className="w-full h-full object-cover absolute z-0"
               />
             </div>
-            <div className="w-[170px] md:w-[150px] lg:w-[270px] 2xl:w-[380px] h-[55px] md:h-[80px] lg:h-[150px] 2xl:h-[240px] absolute z-10 ml-12 lg:ml-20 top-0">
+            <div className="w-[150px] md:w-[200px] lg:w-[310px] 2xl:w-[380px] h-[60px] md:h-[90px] lg:h-[150px] 2xl:h-[240px] absolute z-10 ml-12 lg:ml-20 top-0">
               <img
                 src={gradientBg2}
                 alt="gradient"
-                className="w-full h-full object-fill absolute z-10"
+                className="w-full h-full object-contain absolute z-10"
               />
             </div>
           </div>
 
           <div className="relative top-0 right-0 z-0">
-            <div className="absolute z-20 top-0 right-0 w-[120px] lg:w-[350px] 2xl:w-[380px] h-[40px] lg:h-[150px] 2xl:h-[180px]">
+            <div className="absolute z-20 top-0 right-0 w-[120px] md:w-[180px] lg:w-[350px] 2xl:w-[380px] h-[50px] md:h-[100px] lg:h-[150px] 2xl:h-[180px]">
               <img
                 src={gradientBg3}
                 alt="gradient"
                 className="w-full h-full object-fill"
               />
             </div>
-            <div className="absolute z-20 top-0 right-0 w-[100px] lg:w-[256px] 2xl:[300px] h-[140px] lg:h-[340px] 2xl:h-[360px]">
+            <div className="absolute z-20 top-0 right-0 w-[100px] md:w-[140px] lg:w-[256px] 2xl:[300px] h-[90px] md:h-[120px] lg:h-[340px] 2xl:h-[360px]">
               <img
                 src={gradientBg4}
                 alt="gradient"
@@ -67,7 +67,7 @@ const Certificate: React.FC<CertificateProps> = ({
           </div>
 
           <div className="absolute bottom-0 left-0">
-            <div className="w-[250px]  md:w-[280px] lg:w-[670px] 2xl:w-[750px] h-[120px]  md:h-[140px] lg:h-[280px] 2xl:h-[490px]">
+            <div className="w-[200px]  md:w-[280px] lg:w-[670px] 2xl:w-[750px] h-[100px]  md:h-[140px] lg:h-[280px] 2xl:h-[490px]">
               <img
                 src={gradientBg5}
                 alt="gradient"
@@ -77,21 +77,21 @@ const Certificate: React.FC<CertificateProps> = ({
           </div>
 
           <div className="absolute flex flex-row bottom-0 right-0">
-            <div className="w-[180px] md:w-[370px] lg:w-[600px] 2xl:w-[670px] h-[70px] md:h-[70px] lg:h-[110px] 2xl:h-[170px] relative z-19">
+            <div className="w-[160px] md:w-[300px] lg:w-[550px] 2xl:w-[670px] h-[50px] md:h-[50px] lg:h-[90px] 2xl:h-[170px] relative z-19">
               <img
                 src={gradientBg6}
                 alt="gradient"
                 className="w-full h-full object-fill"
               />
             </div>
-            <div className="w-[220px] md:w-[540px] lg:w-[870px] 2xl:w-[940px] h-[100px] md:h-[160px] lg:h-[230px] 2xl:h-[320px] absolute z-20 bottom-0">
+            <div className="w-[220px] md:w-[480px] lg:w-[870px] 2xl:w-[940px] h-[80px] md:h-[140px] lg:h-[230px] 2xl:h-[320px] absolute z-20 bottom-0">
               <img
                 src={gradientBg7}
                 alt="gradient"
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="w-[110px] md:w-[150px]  lg:w-[250px] 2xl:w-[270px] h-[40px]  md:h-[50px] lg:h-[80px] 2xl:h-[150px] absolute z-23 right-0 bottom-0">
+            <div className="w-[80px] md:w-[90px]  lg:w-[250px] 2xl:w-[270px] h-[27px]  md:h-[30px] lg:h-[80px] 2xl:h-[150px] absolute z-23 right-0 bottom-0">
               <img
                 src={gradientBg8}
                 alt="gradient"
@@ -109,7 +109,7 @@ const Certificate: React.FC<CertificateProps> = ({
 
         {/* Certificate content */}
         <div className="relative z-10 flex flex-col justify-center items-center px-6 py-4 lg:px-12 lg:py-16 2xl:px-20 2xl:py-24">
-          <div className="text-center mt-[40px] lg:mt-[100px]">
+          <div className="text-center mt-[50px] md:mt-[80px] lg:mt-[100px]">
             <h1 className="text-2xl lg:text-5xl 2xl:text-6xl font-bold text-[#6D3892] tracking-[2px] lg:tracking-[4px] mb-2  font-[corbel]">
               CERTIFICATE
             </h1>
