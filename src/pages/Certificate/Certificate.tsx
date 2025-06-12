@@ -91,7 +91,7 @@ const Certificate: React.FC<CertificateProps> = ({
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="w-[80px] md:w-[90px]  lg:w-[250px] 2xl:w-[270px] h-[27px]  md:h-[30px] lg:h-[80px] 2xl:h-[150px] absolute z-23 right-0 bottom-0">
+            <div className="w-[80px] md:w-[90px]  lg:w-[200px] 2xl:w-[270px] h-[27px]  md:h-[30px] lg:h-[70px] 2xl:h-[150px] absolute z-23 right-0 bottom-0">
               <img
                 src={gradientBg8}
                 alt="gradient"
