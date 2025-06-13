@@ -237,3 +237,13 @@ export interface User {
   position: string;
   profileImage: string | null;
 }
+
+export interface UpdateUserRequest {
+  userId: number;
+  data: {
+    fullName: string;
+    position: string;
+    description: string;
+    email: string;
+  };
+}
