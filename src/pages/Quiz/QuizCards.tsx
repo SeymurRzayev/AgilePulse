@@ -7,8 +7,11 @@ type Props = {
   questionItem: string;
   answers: string[];
   remainingTime: number;
+  totalQuestions: number;
   clickedBack: any;
   clickForward: any;
+  onFinishQuiz: () => void;
+    totalQuestionCount:number
 };
 
 const QuizCards: FC<Props> = ({
@@ -16,18 +19,24 @@ const QuizCards: FC<Props> = ({
   questionItem,
   answers,
   remainingTime,
+  totalQuestions,
   clickedBack,
   clickForward,
+ 
 }) => {
   const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
   const handleReturnButton = () => {
     clickedBack();
     setSelectedCheckbox(-1);
   };
+
+  const isLastQuestion = quizNum === totalQuestions;
+
   const handleNextQuestion = () => {
     clickForward();
     setSelectedCheckbox(-1);
   };
+  
   return (
     <div className="w-full max-w-[823px]">
       <div className="w-full lg:min-w-[690px] max-w-[823px] flex flex-col owerflow-hidden">
@@ -76,7 +85,7 @@ const QuizCards: FC<Props> = ({
             text="Geriyə qayıt"
           />
           <MainButton
-            text="Davam et"
+            text={isLastQuestion ? "Quizi bitir" : "Davam et"}
             className="w-[144px] h-[56px]"
             onClick={handleNextQuestion}
           />
