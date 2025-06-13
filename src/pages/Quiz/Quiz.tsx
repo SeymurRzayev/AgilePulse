@@ -5,6 +5,7 @@ import QuizCards from "./QuizCards";
 import { useState } from "react";
 import QuizSider from "./QuizSider";
 import ProgressBar from "../../components/ProgressBar";
+import QuizResult from "./QuizResult";
 
 const quizdata = [
   {
@@ -28,45 +29,48 @@ const quizdata = [
     ],
   },
 ];
+
 export default function QuizPage() {
-  const [quizStarted, setQuizStarted] = useState(false); // to start the quiz
-  const [backButtonClicked, setBackButtonClicked] = useState(false); // to go back to the previous question
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [backButtonClicked, setBackButtonClicked] = useState(false);
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [showResult, setShowResult] = useState(false);
 
   const handleQuiz = () => {
     setQuizStarted(true);
     setBackButtonClicked(false);
+    setShowResult(false);
   };
 
   const handleBackButton = () => {
     if (currentQuizIndex > 0) {
       setCurrentQuizIndex(currentQuizIndex - 1);
-    }
-    else if (currentQuizIndex === 0) {
+    } else if (currentQuizIndex === 0) {
       setQuizStarted(false);
-    }
-    else {
+    } else {
       setBackButtonClicked(true);
     }
   };
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const numbers = [1, 2];
+
   const handleNextQuestion = () => {
     if (currentQuizIndex < quizdata.length - 1) {
       setCurrentQuizIndex(currentQuizIndex + 1);
     } else {
-      setQuizStarted(false);
-      setBackButtonClicked(false);
-      setCurrentQuizIndex(0);
+      setShowResult(true);
     }
   };
+
   return (
-    <div className="min-h-screen flex flex-col items-center w-full ">
+    <div className="min-h-screen flex flex-col items-center w-full">
       {/* Navbar */}
-      <div className=" w-full flex justify-center px-4 sm:px-6 lg:px-8">
+      <div className="w-full flex justify-center px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
+
       {/* Banner */}
-      <div className="w-full absolute top-0 h-[357px] md:h-[357px] brightness-50 opacity-95 sm:h-[300px]  ">
+      <div className="w-full absolute top-0 h-[357px] md:h-[357px] brightness-50 opacity-95 sm:h-[300px]">
         <img
           src={QuizBgImg}
           alt="Quiz Background"
@@ -76,24 +80,34 @@ export default function QuizPage() {
 
       {/* Container */}
       <div
-        className={`w-full ${!quizStarted ? 'max-w-[1093px]' : 'max-w-[1183px]'} flex flex-col justify-center  mt-[200px] relative`}
+        className={`w-full ${
+          !quizStarted ? "max-w-[1093px]" : "max-w-[1183px]"
+        } flex flex-col justify-center mt-[200px] relative`}
       >
         {/* Header and progress bar */}
         <div className="space-y-4 relative w-[91%]">
-          <h1 className="text-2xl text-start  sm:text-3xl text-white leading-9 font-bold">
-            Başlanılmayıb
+          <h1 className="text-2xl text-start sm:text-3xl text-white leading-9 font-bold">
+            {showResult ? "" : quizStarted ? "Quiz" : "Başlanılmayıb"}
           </h1>
-          <ProgressBar
-            className={quizStarted ? "max-w-[823px]" : 'max-w-[1093px]'}
-            progress={
-              quizStarted ? ((currentQuizIndex + 1) / quizdata.length) * 100 : 0
-            }
-          />
+          {!showResult && (
+            <ProgressBar
+              className={quizStarted ? "max-w-[823px]" : "max-w-[1093px]"}
+              progress={
+                quizStarted
+                  ? ((currentQuizIndex + 1) / quizdata.length) * 100
+                  : 0
+              }
+            />
+          )}
         </div>
-        <div className="w-full flex flex-col justify-center gap-20">
 
-          <div className="flex mx-8 w-full max-w-[1440px] py-6 ">
-            {!quizStarted || backButtonClicked ? (
+        {/* Content */}
+        <div className="w-full flex flex-col justify-center gap-20">
+          <div className="flex mx-8 w-full max-w-[1440px] py-6">
+            {showResult ? (
+              <QuizResult
+              score={9} totalQuestions={10}/>
+            ) : !quizStarted || backButtonClicked ? (
               <StartQuiz
                 totalQuestions={5}
                 PassingScore={75}
@@ -109,13 +123,16 @@ export default function QuizPage() {
                   remainingTime={52}
                   clickedBack={handleBackButton}
                   clickForward={handleNextQuestion}
+                  totalQuestionCount={quizdata.length}
+                  totalQuestions={quizdata.length}
+                  onFinishQuiz={() => setShowResult(true)}
+                 
                 />
                 <QuizSider buttonCounts={numbers} />
               </div>
             )}
           </div>
         </div>
-
       </div>
     </div>
   );
