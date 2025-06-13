@@ -1,18 +1,19 @@
 import styles from '../../pages/PersonalCabinet/personalCabinet.module.css'
 import Image from '../../components/ImageComponent'
 import leftArrow from "../../assets/icons/left-arrow.svg";
-import user from "../../assets/images/user.png";
+import userImg from "../../assets/images/user.png";
 import addIcon from "../../assets/icons/pencil.svg";
 import { useState } from 'react';
 import EditUserProfile from './EditUserProfile';
 import PersonalCabinetTrainings from './PersonalCabinetTrainings';
+import { useAppSelector } from '../../redux/hooks/Hooks';
 
 
 
 const PersonalCabinet = () => {
 
-
   const [isEditMode, setisEditMode] = useState(false)
+  const user = useAppSelector(state => state.auth.user);
 
   const goBack = () => {
     window.history.back()
@@ -24,23 +25,17 @@ const PersonalCabinet = () => {
       <div className={`max-h-fit mx-auto w-full flex flex-col sm:max-w-fit mt-[28px] ml-0 sm:ml-[50px] md:items-start items-center `}>
         <div className={styles.profileImage}>
           <Image onClick={goBack} src={leftArrow} width={60} height={60} className={`${styles.arrow}  hidden sm:block`} />
-          <Image src={user} alt="Emin Huseynov" className={styles.userImg} />
+          <Image src={user?.profileImage ? user?.profileImage : userImg} alt="Emin Huseynov" className={styles.userImg} />
         </div>
 
         <div className={styles.profileContent}>
           <div className={styles.userInfo}>
             <div className={styles.titleCard}>
-              <h2>Emin Hüseynov</h2>
-              <p className={styles.title}>Biznes analitik</p>
+              <h2>{user?.fullName}</h2>
+              <p className={styles.title}>{user?.position}</p>
             </div>
 
-            <p className={styles.description}>
-              10 ildən artıqdır ki, biznes analitikası sahəsində fəaliyyət
-              göstərirəm. Müxtəlif sənaye sahələrində — bankçılıq, retail,
-              texnologiya və startap ekosistemlərində — proseslərin təhlili,
-              data əsaslı qərarların verilməsi və rəqəmsal transformasiya
-              layihələrində iştirak etmişəm...
-            </p>
+            <p className={styles.description}>{user?.description}</p>
           </div>
           <button
             onClick={() => setisEditMode(prev => !prev)}

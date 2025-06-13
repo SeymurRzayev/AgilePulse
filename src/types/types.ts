@@ -225,16 +225,25 @@ export interface UserLoginReq {
   password: string;
 }
 
-
 export interface User {
   accessToken: string;
   refreshToken: string;
-  id: number;
-  fullName: string;
-  position: string;
-  description: string;
+  dateOfBirth: string | null;
+  description: string | null;
   email: string;
-  phone: string;
-  dateOfBirth: string;
-  profileImage: string;
+  fullName: string;
+  id: number;
+  phone: string | null;
+  position: string;
+  profileImage: string | null;
+}
+
+export interface UpdateUserRequest {
+  userId: number;
+  data: {
+    fullName: string;
+    position: string;
+    description: string;
+    email: string;
+  };
 }
