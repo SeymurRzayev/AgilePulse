@@ -3,6 +3,7 @@ import type { FC } from 'react';
 interface QuizScoreChartProps {
     score: number;
     totalQuestions: number;
+    isTimeOut:boolean;
 }
 
 const QuizScoreChart: FC<QuizScoreChartProps> = ({ score, totalQuestions }) => {
@@ -12,7 +13,7 @@ const QuizScoreChart: FC<QuizScoreChartProps> = ({ score, totalQuestions }) => {
     }
     const isPassed = percentage >= 75;
 
-    const color = isPassed ? '#44DA5F' : '#EF3739';
+    const color =isPassed ? '#44DA5F' : '#EF3739';
 
     return (
         <div className="w-full max-w-[300px] h-[280px] md:max-w-[400px] md:max-h-[350px] flex flex-col items-center justify-center">

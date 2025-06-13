@@ -6,6 +6,7 @@ interface StartQuizProps {
   PassingScore: number;
   timeLimit: number;
   onclicked: any;
+   onFinishQuiz: () => void;
 }
 
 export default function StartQuiz({

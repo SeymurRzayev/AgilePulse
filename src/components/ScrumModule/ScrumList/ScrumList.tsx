@@ -4,7 +4,7 @@ import { dummyMock } from "../../../dummyMock";
 import Slider from "react-slick";
 import TrainingCard from "../../Trainings/TrainingCard";
 import TrainingExperiences from "../../../pages/Home/sections/TrainingExperiences";
-
+import { useNavigate } from "react-router-dom";
 
 const ScrumList = () => {
 
@@ -43,6 +43,10 @@ const ScrumList = () => {
     ]
   }
 
+const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/quiz");
+  };
 
   return (
     <>
@@ -76,7 +80,10 @@ const ScrumList = () => {
             <AccordionItem content="Sprint Review: geribildirim və uyğunlaşdırma" />
             <AccordionItem content="Sprint Retrospective: təkmilləşdirmə fürsətləri" />
           </div>
-          <Button title="Tapşırıq və quiz" className="self-center !font-medium !font-[Montserrat] bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]" />
+          <Button 
+          onClick={handleClick}
+          title="Tapşırıq və quiz" 
+          className="self-center !font-medium !font-[Montserrat] bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]" />
 
         </div>
       </div>

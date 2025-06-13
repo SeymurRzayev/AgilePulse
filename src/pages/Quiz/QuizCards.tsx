@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { useEffect,useState, type FC } from "react";
 import MainButton from "../../components/Butttons/MainButton";
 import { FaRegClock } from "react-icons/fa6";
 import OutlineBtn from "../../components/Butttons/OutlineBtn";
@@ -22,7 +22,7 @@ const QuizCards: FC<Props> = ({
   totalQuestions,
   clickedBack,
   clickForward,
- 
+ onFinishQuiz,
 }) => {
   const [selectedCheckbox, setSelectedCheckbox] = useState(-1);
   const handleReturnButton = () => {
@@ -36,7 +36,11 @@ const QuizCards: FC<Props> = ({
     clickForward();
     setSelectedCheckbox(-1);
   };
-  
+  useEffect(() => {
+  if (remainingTime ===0) {
+     onFinishQuiz(); 
+  }
+}, [remainingTime, onFinishQuiz]);
   return (
     <div className="w-full max-w-[823px]">
       <div className="w-full lg:min-w-[690px] max-w-[823px] flex flex-col owerflow-hidden">

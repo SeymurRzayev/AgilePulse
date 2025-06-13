@@ -35,7 +35,8 @@ export default function QuizPage() {
   const [backButtonClicked, setBackButtonClicked] = useState(false);
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [showResult, setShowResult] = useState(false);
-
+const [isTimeOut, setIsTimeOut] = useState(false);
+const [isFinished, setIsFinished] = useState(false);
   const handleQuiz = () => {
     setQuizStarted(true);
     setBackButtonClicked(false);
@@ -52,7 +53,7 @@ export default function QuizPage() {
     }
   };
 
-  const numbers = [1, 2];
+  const numbers = [1, 2,3,4,5,6,7,8,9,10];
 
   const handleNextQuestion = () => {
     if (currentQuizIndex < quizdata.length - 1) {
@@ -61,7 +62,10 @@ export default function QuizPage() {
       setShowResult(true);
     }
   };
-
+const handleFinishQuiz = (timeout = false) => {
+  setIsFinished(true);
+  setIsTimeOut(timeout); // Vaxtla bitibsə true olacaq
+};
   return (
     <div className="min-h-screen flex flex-col items-center w-full">
       {/* Navbar */}
@@ -82,7 +86,7 @@ export default function QuizPage() {
       <div
         className={`w-full ${
           !quizStarted ? "max-w-[1093px]" : "max-w-[1183px]"
-        } flex flex-col justify-center mt-[200px] relative`}
+        } flex flex-col justify-center items-center mt-[200px] relative`}
       >
         {/* Header and progress bar */}
         <div className="space-y-4 relative w-[91%]">
@@ -103,9 +107,10 @@ export default function QuizPage() {
 
         {/* Content */}
         <div className="w-full flex flex-col justify-center gap-20">
-          <div className="flex mx-8 w-full max-w-[1440px] py-6">
+          <div className=" w-full max-w-[1440px] py-6 flex justify-center">
             {showResult ? (
               <QuizResult
+              isTimeOut={isTimeOut}
               score={9} totalQuestions={10}/>
             ) : !quizStarted || backButtonClicked ? (
               <StartQuiz
@@ -113,6 +118,7 @@ export default function QuizPage() {
                 PassingScore={75}
                 timeLimit={10}
                 onclicked={handleQuiz}
+                onFinishQuiz={() => handleFinishQuiz(true)}
               />
             ) : (
               <div className="w-full gap-x-11 mx-[3%] flex flex-col lg:flex-row">
@@ -125,8 +131,7 @@ export default function QuizPage() {
                   clickForward={handleNextQuestion}
                   totalQuestionCount={quizdata.length}
                   totalQuestions={quizdata.length}
-                  onFinishQuiz={() => setShowResult(true)}
-                 
+                  onFinishQuiz={() => handleFinishQuiz(true)} 
                 />
                 <QuizSider buttonCounts={numbers} />
               </div>
