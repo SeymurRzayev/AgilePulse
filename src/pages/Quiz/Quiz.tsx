@@ -36,7 +36,7 @@ export default function QuizPage() {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [showResult, setShowResult] = useState(false);
 const [isTimeOut, setIsTimeOut] = useState(false);
-const [isFinished, setIsFinished] = useState(false);
+const [, setIsFinished] = useState(false);
   const handleQuiz = () => {
     setQuizStarted(true);
     setBackButtonClicked(false);
