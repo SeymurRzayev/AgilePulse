@@ -61,7 +61,7 @@ const QuizCards: FC<Props> = ({
                     onChange={() => setSelectedCheckbox(index)}
                     className="w-[10px] h-[10px] md:max-xl:w-[24px] md:max-xl:h-[24px] rounded-full appearance-none border border-[#757575] checked:bg-[#1F356E]"
                   />
-                  <p className="text-[14px]  md:text-[16px] lg:text-[18px]  text-[#00000099] font-[700] w-[50%] lg:w-[100%]  ">
+                  <p className="text-[14px]   md:text-[16px] lg:text-[18px]  text-[#00000099] font-[700] w-[50%] lg:w-[100%]  ">
                     {answer}
                   </p>
                 </div>
