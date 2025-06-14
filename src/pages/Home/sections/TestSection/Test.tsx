@@ -20,7 +20,7 @@ export const Test: FC = () => {
             etdir!
           </p>
         </div>
-        <Link to="/quiz" className={`${styles.testButton}`}>
+        <Link to="/#" className={`${styles.testButton}`}>
           <AnimatedButton >Testə başla</AnimatedButton>
         </Link>
       </div>
