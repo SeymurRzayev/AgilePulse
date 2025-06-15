@@ -4,7 +4,7 @@ import styles from '../../pages/PersonalCabinet/personalCabinet.module.css';
 import Button from '../../ui/Button/Button';
 import Image from "../../components/ImageComponent";
 import choose from "../../assets/images/choose.png";
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import MainButton from '../../components/Butttons/MainButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/Hooks';
 import { useEditUserMutation, useUpdatePhotoMutation } from '../../services/features/userApi';
@@ -16,7 +16,8 @@ const EditUserProfile = () => {
     const user = useAppSelector(state => state.auth.user);
     const dispatch = useAppDispatch()
     const fileInputRef = useRef<HTMLInputElement | null>(null);
-
+    const [profImage, setProfImage] = useState<null | FormData>(null)
+    const [profImageUrl, setProfImageUrl] = useState('')
     const [updateUser, { isLoading }] = useEditUserMutation();
     const [updatePhoto] = useUpdatePhotoMutation();
 
@@ -52,31 +53,31 @@ const EditUserProfile = () => {
         }
 
         try {
+            //user melumatlarinin backend-de update edilmesi
             await updateUser({ userId: user?.id!, data: values }).unwrap();
+            //backend-de update edilen melumatlarin anliq UI-da gorsenmeyi
             dispatch(setLoggedUser({ ...user!, ...values }));
             localStorage.setItem("user", JSON.stringify({ ...user!, ...values }));
+            //state-den gelen deyishdirilmish sheklin backend-e gonderilmesi
+            const res = await updatePhoto({ id: user?.id!, data: profImage }).unwrap()
+            dispatch(setLoggedUser({ ...user!, profileImage: res.profileImageUrl }));
+            localStorage.setItem("user", JSON.stringify({ ...user!, profileImage: res.profileImageUrl }));
             toast.success('Məlumatlar uğurla yeniləndi!');
         } catch (err) {
             toast.error('Xəta baş verdi!');
         }
     };
 
-    const handleChangePhoto = async () => {
+    const handleChangePhoto = () => {
         const file = fileInputRef.current?.files?.[0];
         if (!file) return;
+        const imageUrl = URL.createObjectURL(file)
+        //shekil update-i zamani preview
+        setProfImageUrl(imageUrl)
         const formData = new FormData();
         formData.append('image', file);
-        console.log(file)
-        console.log(formData)
-        try {
-            const res = await updatePhoto({ id: user?.id!, data: formData }).unwrap()
-            console.log(res)
-            dispatch(setLoggedUser({ ...user!, profileImage: res.profileImageUrl }));
-            localStorage.setItem("user", JSON.stringify({ ...user!, profileImage: res.profileImageUrl }));
-            toast.success('Şəkil uğurla yeniləndi!');
-        } catch (error) {
-            toast.error('Xəta baş verdi!');
-        }
+        // backend-e gondermeden updated sheklin state-de saxlanmasi
+        setProfImage(formData)
     }
 
     return (
@@ -122,7 +123,7 @@ const EditUserProfile = () => {
 
             <div className={`flex flex-col justify-start items-center w-1/2 mr-4 gap-8 `}>
                 <h2 style={{ fontFamily: 'Corbel' }} className='text-[#000000DE] font-semibold text-3xl cursor-default'>Photo</h2>
-                <Image src={user?.profileImage ? user?.profileImage : choose} className={' object-contain  rounded-4xl w-[300px]  lg:w-[373px] '} />
+                <Image src={profImage ? profImageUrl : choose} className={' object-contain  rounded-4xl w-[300px]  lg:w-[373px] '} />
                 <input type="file" ref={fileInputRef} hidden onChange={handleChangePhoto} />
                 <MainButton
                     text="Qalereyadan seç"
