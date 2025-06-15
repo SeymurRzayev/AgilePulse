@@ -248,3 +248,31 @@ export interface UpdateUserRequest {
     email: string;
   };
 }
+
+
+// team-controller api
+
+export interface TeamMember {
+  id?: number;
+  name: string;
+  surname: string;
+  position: string;
+  description: string;
+  imageUrl: string;
+}
+
+export interface GetAllTeamResponse {
+  message: string;
+  data: {
+    data: TeamMember[];
+    totalElements: number;
+    lastPageNumber: number;
+    hasNextPage: boolean;
+  };
+}
+
+
+export interface GetEmployeeByIdResponse {
+  message: string;
+  data: TeamMember;
+}

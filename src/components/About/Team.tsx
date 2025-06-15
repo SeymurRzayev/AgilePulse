@@ -3,6 +3,7 @@ import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
 import Lines from "./Lines";
 import RoleGroup from "./RoleGroup";
+import { useGetAllTeamQuery } from "../../services/features/teamApi";
 
 const Team: FC = () => {
   const people = [
@@ -25,6 +26,12 @@ const Team: FC = () => {
       img: managerImg,
     },
   ];
+
+  const { data } = useGetAllTeamQuery()
+
+  const people1 = data?.data.data;
+  console.log("object", people1)
+
   return (
     <div className="flex flex-col gap-[50px] relative">
       <Lines />

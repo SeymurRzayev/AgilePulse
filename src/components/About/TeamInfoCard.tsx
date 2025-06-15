@@ -5,6 +5,8 @@ type Props = {
   jobDescription: string;
   img: any;
 };
+
+// FC<TeamMember> = ({ name, surname, position, description, imageUrl })
 const TeamInfoCard: FC<Props> = ({ name, occupation, jobDescription, img }) => {
   return (
     <>

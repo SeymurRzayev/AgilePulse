@@ -11,7 +11,7 @@ const userApi = baseApi.injectEndpoints({
             }),
         }),
         updatePhoto: builder.mutation({
-            query: ({ id, data }: { id: number, data: FormData }) => ({
+            query: ({ id, data }: { id: number, data: FormData | null }) => ({
                 url: `/user/upload-profile-image/${id}`,
                 method: "POST",
                 body: data,
