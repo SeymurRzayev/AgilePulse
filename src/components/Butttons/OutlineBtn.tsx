@@ -4,7 +4,7 @@ interface ButtonProps {
     className?: string;
     onClick?: () => void;
     buttonClassName?: string;
-    size: number, //width
+    size?: number, //width
 }
 
 
