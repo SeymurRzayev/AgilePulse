@@ -1,16 +1,17 @@
 import Navbar from "../../layout/Navbar/Navbar";
 import { useParams } from "react-router-dom";
 import { useGetBookByIdQuery } from "../../services/features/bookApi";
-// import FlipBook from "./FlipBook";
+import type { BookByidData } from "../../types/types";
+import FlipBook from "./FlipBook";
 
 const LibraryDetails = () => {
+  const params = useParams();
 
-  const params = useParams()
+  const { data: bookRes } = useGetBookByIdQuery(Number(params.id));
 
-  const { data: bookRes } = useGetBookByIdQuery(Number(params.id))
+  const book: BookByidData | undefined = bookRes?.data;
 
-  const book = bookRes?.data
-
+  console.log(book);
 
   return (
     <>
@@ -18,7 +19,13 @@ const LibraryDetails = () => {
         <Navbar />
       </div>
       <div className="">
-        <div className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28" style={{ background: "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))" }}>
+        <div
+          className="bookSection h-auto md:h-[450px] xl:h-[610px] p-5 bg-[#2C4B9B] w-full my-2 md:my-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-28"
+          style={{
+            background:
+              "linear-gradient(to left, rgba(78, 97, 236, 1), rgba(98, 29, 172, 1), rgba(64, 23, 149, 1))",
+          }}
+        >
           <div className="relative flex justify-center md:block">
             <img
               src={book?.imageUrl}
@@ -38,11 +45,10 @@ const LibraryDetails = () => {
 
             <div className="midCnt flex flex-col gap-4 md:gap-3 xl:gap-6">
               <p className="text-white text-center text-lg md:text-2xl xl:text-[30px] max-w-[512px] mx-auto px-2">
-                Ənənəvi idarəetmədən çevik (agile) yanaşmaya keçid – uğurlu
-                şirkətlərin gələcəyidir.
+                {book?.description}
               </p>
 
-              <div className="list flex flex-col gap-4 text-white text-base md:text-xl xl:text-2xl px-2">
+              {/* <div className="list flex flex-col gap-4 text-white text-base md:text-xl xl:text-2xl px-2">
                 <p>3 əsas prinsip:</p>
 
                 <ol style={{ listStyleType: "decimal" }} className=" pl-4">
@@ -58,59 +64,27 @@ const LibraryDetails = () => {
                     əməkdaşlıq.
                   </li>
                 </ol>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="bottomSection w-full px-5 md:px-10 xl:px-14 py-6 md:py-16 grid grid-cols-1 md:grid-cols-2 md:gap-14 xl:gap-28">
-        <div className="max-w-[519px]"></div>
+      <div className="bottomSection w-full px-2 py-6 md:py-16 grid grid-cols-1 ">
+        <div className="w-full  leftPage">
+          {/* PDF Viewer */}
+          {book?.pdfUrl && (
+            <FlipBook pdfUrl={book?.pdfUrl} />
+          )}
+        </div>
 
-        <div className="txtContainer ml-auto w-full">
-
-          {/* <FlipBook pdfUrl={book?.pdfUrl ?? ''}/> */}
-
+        {/* <div className="txtContainer ml-auto w-full rightPage">
+          
           <div className="list flex flex-col gap-4 text-sm md:text-lg lg:text-xl bg-white shadow-md border-0 rounded-[30px] px-4 md:px-8 py-8 md:py-12">
-            <ol style={{ listStyleType: "decimal" }} className="space-y-4">
-              <li>
-                Ənənəvi idarəetmədən çevik idarəetməyə keçid Müəllif göstərir
-                ki, sabit və plan əsasında idarə olunan şirkətlər artıq müasir
-                rəqabətə davam gətirə bilmir. Onların yerini çevik, müştəriyə
-                fokuslanan və tez reaksiya verən komandalar tutur.
-              </li>
-              <li>
-                Üç əsas prinsip:
-                <ul style={{ listStyleType: "disc" }} className="w-full mt-2 ml-4 space-y-2">
-                  <li>
-                    Müştəri fokusluluğu: Bütün qərarlar və fəaliyyətlər
-                    müştəriyə dəyər yaratmağa yönəlməlidir.
-                  </li>
-                  <li>
-                    Kiçik, özünüidarə edən komandalar: Əməkdaşlıq edən və qərar
-                    vermə səlahiyyətinə sahib komandalar daha məhsuldar olur.
-                  </li>
-                  <li>
-                    Şəbəkə əsaslı idarəetmə: Yuxarıdan-aşağı sərt strukturların
-                    əvəzinə çevik və əlaqəli komandalar şəbəkəsi daha effektiv
-                    işləyir.
-                  </li>
-                </ul>
-              </li>
-              <li>
-                Daimi öyrənmə və dəyişiklik Şirkətlər bazar dəyişikliklərinə
-                uyğunlaşmaq üçün daimi eksperiment aparmalı və öyrənməyə açıq
-                olmalıdır.
-              </li>
-              <li>
-                Uğurlu nümunələr Kitabda Microsoft, Amazon və Spotify kimi
-                şirkətlərin çevik yanaşmanı necə tətbiq edib böyümələrini
-                sürətləndirdiyi təhlil olunur.
-              </li>
-            </ol>
+         
           </div>
           <p className="text-lg md:text-xl text-center mt-7">15-325</p>
-        </div>
+        </div> */}
       </div>
     </>
   );

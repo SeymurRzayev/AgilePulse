@@ -30,7 +30,7 @@ interface ArticleByIdRes {
   imageUrl: string;
 }
 
-interface Book {
+export interface Book {
   id: number;
   name: string;
   pdfUrl: string;
@@ -52,7 +52,7 @@ export interface GetAllBookResponse {
   data: BookData;
 }
 
-interface BookByidData {
+export interface BookByidData {
   id: number;
   name: string;
   pdfUrl: string;
@@ -60,6 +60,7 @@ interface BookByidData {
   language: string;
   pageCount: number;
   imageUrl: string;
+  description: string;
 }
 
 export interface BookByIdResponse {
