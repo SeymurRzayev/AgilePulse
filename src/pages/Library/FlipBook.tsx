@@ -223,13 +223,13 @@ const FlipBook = ({ pdfUrl }: FlipBookProps) => {
           {/* Pages container */}
           <div className={`flex ${
             isMobile ? "flex-col items-center" : "flex-row justify-center"
-          } gap-4 w-full`}>
+          } gap-0 w-full`}>
             {/* Left Page */}
             <div className={`flex flex-col items-center ${
               isMobile ? "w-full max-w-md mx-auto" : 
               isTablet ? "w-full max-w-lg" : "w-1/2"
             }`}>
-              <div className={`shadow-xl border border-gray-200 overflow-hidden ${
+              <div style={{boxShadow: "0px 4px 8px 7px rgba(0, 0, 0, 0.14)"}} className={`shadow-xl border border-gray-200 overflow-hidden ${
                 isMobile ? "rounded-lg" : "rounded-tl-[30px] rounded-bl-[30px]"
               }`}>
                 <canvas ref={canvasRef1} className="w-full" />
@@ -244,7 +244,7 @@ const FlipBook = ({ pdfUrl }: FlipBookProps) => {
               <div className={`flex flex-col items-center ${
                 isTablet ? "w-full max-w-lg" : "w-1/2"
               }`}>
-                <div className="shadow-xl border border-gray-200 overflow-hidden rounded-tr-[30px] rounded-br-[30px] w-full">
+                <div style={{boxShadow: "0px 4px 8px 7px rgba(0, 0, 0, 0.14)"}} className="shadow-2xl border border-gray-200 overflow-hidden rounded-tr-[30px] rounded-br-[30px] w-full">
                   <canvas ref={canvasRef2} className="w-full" />
                 </div>
                 <p className="text-center text-lg md:text-xl mt-2.5 text-black">
