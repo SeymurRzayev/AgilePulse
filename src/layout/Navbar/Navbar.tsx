@@ -11,6 +11,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { userLogout } from "../../redux/slices/authSlice";
 import Swal from "sweetalert2";
+import OutlineBtn from "../../components/Butttons/OutlineBtn";
 interface NavLinkItem {
   path: string;
   label: string;
@@ -35,6 +36,7 @@ const Navbar: FC<NavbarProps> = ({
   const dispatch = useAppDispatch()
   const location = useLocation();
   const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
+  const user = useAppSelector(state => state.auth.user)
   const [openDropDown, setOpenDropDown] = useState<boolean>(false)
   // Navigation links configuration
   const navLinks: NavLinkItem[] = [
@@ -218,7 +220,7 @@ const Navbar: FC<NavbarProps> = ({
                   className="bg-[#2C4B9B] rounded-4xl py-2 px-3 flex items-center gap-1 cursor-pointer"
                 >
                   <span className="bg-white rounded-full">
-                    <img src={loginAvatar} alt="loginAvatar" className="cursor-pointer" />
+                    <img src={user?.profileImage ? user?.profileImage : loginAvatar} alt="loginAvatar" className="cursor-pointer w-[30px] h-[30px] object-cover rounded-full" />
                   </span>
                   {
                     <span
@@ -363,30 +365,39 @@ const Navbar: FC<NavbarProps> = ({
                   ))}
                 </nav>
 
-                {!isLoggedIn && (
-                  <div className={styles.sidebarActions}>
-                    <NavLink
-                      to="/sign-up"
-                      className={({ isActive }) =>
-                        `${styles.sidebarButton} ${styles.sidebarColorBtn} ${isActive ? styles.active : ""
-                        }`
-                      }
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Qeydiyyat
-                    </NavLink>
-                    <NavLink
-                      to="/sign-in"
-                      className={({ isActive }) =>
-                        `${styles.sidebarButton} ${styles.sidebarOutlineBtn} ${isActive ? styles.active : ""
-                        }`
-                      }
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Daxil ol
-                    </NavLink>
-                  </div>
-                )}
+                {!isLoggedIn
+                  ? (
+                    <div className={styles.sidebarActions}>
+                      <NavLink
+                        to="/sign-up"
+                        className={({ isActive }) =>
+                          `${styles.sidebarButton} ${styles.sidebarColorBtn} ${isActive ? styles.active : ""
+                          }`
+                        }
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Qeydiyyat
+                      </NavLink>
+                      <NavLink
+                        to="/sign-in"
+                        className={({ isActive }) =>
+                          `${styles.sidebarButton} ${styles.sidebarOutlineBtn} ${isActive ? styles.active : ""
+                          }`
+                        }
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Daxil ol
+                      </NavLink>
+                    </div>
+                  )
+                  : (
+                    <OutlineBtn
+                      text="Çıxış"
+                      onClick={() => handleLogOut()}
+                      buttonClassName="py-2"
+                    />
+                  )
+                }
               </div>
             </div>
 
