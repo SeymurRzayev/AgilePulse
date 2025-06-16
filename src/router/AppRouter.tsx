@@ -52,7 +52,7 @@ const AppRouter: FC = () => {
       <Route path="/about" element={<About />} />
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
-      <Route path="/exams" element={<Certificate studentName="Shahana Khalilova" />} />
+      <Route path="/certificate" element={<Certificate studentName="Shahana Khalilova" />} />
       <Route path="/quiz" element={<QuizPage />} />
       <Route path="/admin" element={<AdminPanel />}>
         <Route path="dashboard" element={<Dashboard />} />
