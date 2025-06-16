@@ -6,6 +6,7 @@ import notsucces from "../../assets/images/notsucces.svg";
 import MainButton from "../../components/Butttons/MainButton";
 import timeOut from '../../assets/images/timeOut.svg';
 import { useNavigate } from "react-router-dom";
+
 interface Props {
   score: number;
   totalQuestions: number;
@@ -40,7 +41,8 @@ const resultTitle = isTimeOut
   };
 
   return (
-    <div className="w-11/12 h-[580px]  md:max-h-[687px] bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]">
+    <div className="w-11/12 flex flex-col justify-center gap-10 md:gap-14">
+      <div className="w-full h-[580px]  md:max-h-[687px] bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]">
       <div
         className="flex flex-col justify-between items-center  w-full h-full bg-cover bg-center rounded-4xl relative z-0 "
         style={{
@@ -63,7 +65,7 @@ const resultTitle = isTimeOut
             <h2 className="text-xl md:text-3xl font-bold leading-8 md:leading-9 tracking-normal font-[corbel] text-center">
               {resultMessage}
             </h2>
-            <h4 className="text-lg md:text-[22px] font-bold leading-4 md:leading-8 tracking-normal font-[corbel] text-center">
+            <h4 className="text-lg md:text-[22px] font-bold leading-5 md:leading-8 tracking-normal font-[corbel] text-center">
               {resultTitle}
             </h4>
             {isTimeOut? <MainButton 
@@ -89,6 +91,12 @@ const resultTitle = isTimeOut
         </div>
       </div>
     </div>
+    {isPassed && <div className="flex flex-col items-center justify-center gap-10 md:gap-14  text-center ">
+      <h2 className="font-bold leading-7 md:leading-11 font-[corbel] text-2xl md:text-4xl">Uğurlu iştirakçılar üçün növbəti addım: yeni təlimlər</h2>
+     {/* training cards */}
+      </div>}
+    </div>
+    
   );
 };
 export default QuizResult;
