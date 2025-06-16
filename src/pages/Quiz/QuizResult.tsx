@@ -6,13 +6,129 @@ import notsucces from "../../assets/images/notsucces.svg";
 import MainButton from "../../components/Butttons/MainButton";
 import timeOut from '../../assets/images/timeOut.svg';
 import { useNavigate } from "react-router-dom";
-
+import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
+import avatar1 from "../../assets/images/podcast1.webp";
+import training1 from "../../assets/images/trainer1.jpg";
+import training2 from "../../assets/images/training2.jpg";
+import training3 from "../../assets/images/training3.jpg";
 interface Props {
   score: number;
   totalQuestions: number;
   isTimeOut: boolean;
 }
 
+  const trainingCourses = [
+    {
+      id: 1,
+      imgUrl: training1,
+      title: "Scrum nədir? Praktik Başlanğıc",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Səadət Hüseynova",
+      date: "12.04.2025",
+      href: "/trainings/scrum",
+    },
+    {
+      id: 2,
+      imgUrl: training2,
+      title: "Agile Manifesto və 12 Prinsip",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Məhəmməd Qasımov",
+      date: "16.01.2025",
+    },
+    {
+      id: 3,
+      imgUrl: training3,
+      title: "Kanban ilə İş Axınını Optimallaşdır",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Tofiq İsayev",
+      date: "20.02.2025",
+    },
+    {
+      id: 4,
+      imgUrl: training1,
+      title: "Scrum nədir? Praktik Başlanğıc",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Səadət Hüseynova",
+      date: "12.04.2025",
+    },
+    {
+      id: 5,
+      imgUrl: training2,
+      title: "Agile Manifesto və 12 Prinsip",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Məhəmməd Qasımov",
+      date: "16.01.2025",
+    },
+    {
+      id: 6,
+      imgUrl: training3,
+      title: "Kanban ilə İş Axınını Optimallaşdır",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Tofiq İsayev",
+      date: "20.02.2025",
+    },
+    {
+      id: 1,
+      imgUrl: training1,
+      title: "Scrum nədir? Praktik Başlanğıc",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Səadət Hüseynova",
+      date: "12.04.2025",
+      href: "/trainings/scrum",
+    },
+    {
+      id: 2,
+      imgUrl: training2,
+      title: "Agile Manifesto və 12 Prinsip",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Məhəmməd Qasımov",
+      date: "16.01.2025",
+    },
+    {
+      id: 3,
+      imgUrl: training3,
+      title: "Kanban ilə İş Axınını Optimallaşdır",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Tofiq İsayev",
+      date: "20.02.2025",
+    },
+    {
+      id: 4,
+      imgUrl: training1,
+      title: "Scrum nədir? Praktik Başlanğıc",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Səadət Hüseynova",
+      date: "12.04.2025",
+    },
+    {
+      id: 5,
+      imgUrl: training2,
+      title: "Agile Manifesto və 12 Prinsip",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Məhəmməd Qasımov",
+      date: "16.01.2025",
+    },
+    {
+      id: 6,
+      imgUrl: training3,
+      title: "Kanban ilə İş Axınını Optimallaşdır",
+      time: "4 modul : 16 blok",
+      avatar: avatar1,
+      user: "Tofiq İsayev",
+      date: "20.02.2025",
+    },
+  ];
 const QuizResult: React.FC<Props> = ({ score, totalQuestions, isTimeOut }) => {
   let percentage = 0;
   if (totalQuestions > 0) {
@@ -34,10 +150,13 @@ const resultTitle = isTimeOut
   : "Quizdən keçə bilməmisinizsə, narahat olmayın – sizə yenidən müraciət etmək imkanı təqdim olunur. Hazırlaşın, daha güclü qayıdın!";
   const navigate = useNavigate();
   const navigateTraining = () => {
-    navigate("/#");
+    navigate("/trainings");
   };
     const navigateQuiz = () => {
-    navigate("/#");
+    navigate("/quiz");
+  };
+  const navigateCertificate = () => {
+    navigate("/certificate");
   };
 
   return (
@@ -72,7 +191,9 @@ const resultTitle = isTimeOut
             text="Quizə başla"
             onClick={navigateQuiz}
             className="w-60 h-14"/>: isPassed ? (
-              <div className="flex justify-center items-center gap-1.5 md:gap-2">
+              <div 
+              onClick={navigateCertificate} 
+              className="flex justify-center items-center gap-1.5 md:gap-2">
                 <p className="leading-5 md:leading-7 text-[14px] md:text-[22px] font-medium font-[corbel]">
                   Sertifikatınızı buradan yükləyin
                 </p>
@@ -93,7 +214,7 @@ const resultTitle = isTimeOut
     </div>
     {isPassed && <div className="flex flex-col items-center justify-center gap-10 md:gap-14  text-center ">
       <h2 className="font-bold leading-7 md:leading-11 font-[corbel] text-2xl md:text-4xl">Uğurlu iştirakçılar üçün növbəti addım: yeni təlimlər</h2>
-     {/* training cards */}
+   <TrainingListContainer trainingCourses={trainingCourses}/>
       </div>}
     </div>
     
