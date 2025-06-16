@@ -47,8 +47,8 @@ const resultTitle = isTimeOut
           backgroundImage:isTimeOut? "none": isPassed ? `url(${successConfetti})` : "none",
         }}
       >
-        <div className={isTimeOut? "absolute z-20 flex flex-col justify-center items-center gap-17 bottom-43 md:bottom-30 " : "absolute z-20 flex flex-col justify-center items-center gap-2 md:gap-10 p-5 bottom-1 md:bottom-10"}>
-          <div className={isTimeOut? "w-38 h-38 md:w-60 md:h-60": isPassed ? "w-40 h-40" : "w-18 h-18 md:w-24 md:h-24"}>
+        <div className={isTimeOut? "absolute z-20 flex flex-col justify-center items-center gap-20 bottom-54 md:bottom-30 " : "absolute z-20 flex flex-col justify-center items-center gap-3 p-5 bottom-1 md:bottom-3"}>
+          <div className={isTimeOut? "w-38 h-38 md:w-60 md:h-60": isPassed ? "w-38 h-38 md:w-40 md:h-40" : "w-18 h-18 md:w-22 md:h-22"}>
             <img
               src={resultImg}
               alt=""
@@ -57,9 +57,9 @@ const resultTitle = isTimeOut
           </div>
 
           {
-            !isTimeOut&&<QuizScoreChart score={80} totalQuestions={100} isTimeOut={false} />
+            !isTimeOut&&<QuizScoreChart score={90} totalQuestions={100} isTimeOut={false} />
           }
-          <div className="flex flex-col items-center justify-center gap-12">
+          <div className="flex flex-col items-center justify-center gap-4 md:gap-7">
             <h2 className="text-xl md:text-3xl font-bold leading-8 md:leading-9 tracking-normal font-[corbel] text-center">
               {resultMessage}
             </h2>
@@ -71,11 +71,11 @@ const resultTitle = isTimeOut
             onClick={navigateQuiz}
             className="w-60 h-14"/>: isPassed ? (
               <div className="flex justify-center items-center gap-1.5 md:gap-2">
-                <p className="leading-5 md:leading-7 text-[16px] md:text-[22px] font-medium font-[corbel]">
+                <p className="leading-5 md:leading-7 text-[14px] md:text-[22px] font-medium font-[corbel]">
                   Sertifikatınızı buradan yükləyin
                 </p>
-                <div>
-                  <img src={downloadCertificate} alt="download icon" />
+                <div className="w-5 h-5 md:w-8 md:h-8">
+                  <img  className="w-full h-full object-cover" src={downloadCertificate} alt="download icon" />
                 </div>
               </div>
             ) :  (
