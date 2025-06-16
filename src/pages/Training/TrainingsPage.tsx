@@ -162,7 +162,7 @@ const TrainingsPage = () => {
       </div>
       <div className={`${styles.container} font-[Corbel]`}>
         <TrainingsHeroContainer />
-        <TrainingsSearchContainer />
+        <TrainingsSearchContainer filterIcon={true} height={74}/>
         <TrainingsCategoryList
           trainingCategories={trainingCategories}
           activeItem={activeItem}
