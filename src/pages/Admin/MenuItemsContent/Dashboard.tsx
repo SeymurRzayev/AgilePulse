@@ -1,13 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import dasboardIconAdmin from '../../../assets/icons/ci_main-component.svg'
 import userImg from "../../../assets/images/user.png";
-import TrainingsSearchContainer from "../../../components/Trainings/TrainingsSearchContainer"
 
 
 const PAGES = [
     {
         label: 'Ana səhifə',
         icon: dasboardIconAdmin,
-        path: ''
+        path: 'main-page'
     },
     {
         label: 'Təlimlər',
@@ -37,31 +37,30 @@ const PAGES = [
 ]
 
 const Dashboard = () => {
+
+    const navigate = useNavigate()
+
     return (
         <div className=' w-full h-full '>
-            <div className="w-full flex justify-between items-start ">
-                <div className="w-[669px] h-fit">
-                    <TrainingsSearchContainer filterIcon={false} height={56} />
+            <div className="flex gap-3 items-center">
+                {/* Name */}
+                <div className="">
+                    {/* Must be dynamic */}
+                    <span className="block text-[#000000DE] text-sm font-bold font-[Corbel]">Seymur Rzayev</span>
+                    <span className=" text-[#000000DE] text-[12px] font-normal font-[Corbel]">Boss admin</span>
                 </div>
-                <div className="flex gap-3 items-center">
-                    {/* Name */}
-                    <div className="">
-                        {/* Must be dynamic */}
-                        <span className="block text-[#000000DE] text-sm font-bold font-[Corbel]">Seymur Rzayev</span>
-                        <span className=" text-[#000000DE] text-[12px] font-normal font-[Corbel]">Boss admin</span>
-                    </div>
-                    {/* Img */}
-                    <div className="w-[46px] h-[46px]">
-                        <img src={userImg} alt="" />
-                    </div>
+                {/* Img */}
+                <div className="w-[46px] h-[46px]">
+                    <img src={userImg} alt="" />
                 </div>
             </div>
-            <div className='w-[630px] mt-[13px]'>
+            <div className='w-[630px] mt-[43px]'>
                 <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>Tapşırıqlar</h2>
                 <div className="grid grid-cols-3 gap-6 mt-[30px]">
                     {/* Cards */}
                     {PAGES.map((page, index) => (
                         <div key={index}
+                            onClick={() => navigate(`${page.path}`)}
                             style={{ boxShadow: '4px 4px 3px 3px #5756561F' }}
                             className='w-[194px] h-[148px] bg-[#EAEDF5] p-8 rounded-4xl cursor-pointer'
                         >

@@ -26,6 +26,8 @@ import Tasks from "../pages/Admin/MenuItemsContent/Tasks";
 import Groups from "../pages/Admin/MenuItemsContent/Groups";
 import NotificationCenter from "../pages/Admin/MenuItemsContent/NotificationCenter";
 import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
+import AdminMainPage from "../components/Admin/AdminMainPage";
+import AdminLibraryAndArticles from "../components/Admin/AdminLibraryAndArticles";
 
 
 const AppRouter: FC = () => {
@@ -57,7 +59,11 @@ const AppRouter: FC = () => {
 
       {/* Admin panel */}
       <Route path="/admin/*" element={<AdminPanel />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard">
+          <Route index element={<Dashboard />} />
+          <Route path="main-page" element={<AdminMainPage />} />
+          <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
+        </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />
         <Route path="tasks" element={<Tasks />} />
