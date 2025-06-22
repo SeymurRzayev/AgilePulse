@@ -51,7 +51,7 @@ const AdminMenu = () => {
                     /> Agile Pulse
                 </span>
                 <ul>
-                    {NAVIGATION.map((navItem , index) => (
+                    {NAVIGATION.map((navItem, index) => (
                         <li key={index} className='flex items-center gap-3 p-2.5  opacity-60'>
                             <img src={navItem.icon} alt="" className='w-8' />
                             <Link to={`/admin/${navItem.path}`} className='text-white'>{navItem.title}</Link>
