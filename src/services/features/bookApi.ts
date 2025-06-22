@@ -1,4 +1,4 @@
-import type { BookByIdResponse, GetAllBookResponse, Book } from "../../types/types";
+import type { BookByIdResponse, GetAllBookResponse } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 
@@ -33,4 +33,4 @@ const bookApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useGetAllBookQuery, useGetBookByIdQuery, useUpdateBookMutation, useDeleteBookMutation } = bookApi;
+export const { useGetAllBookQuery, useGetBookByIdQuery, useUpdateBookMutation, } = bookApi;
