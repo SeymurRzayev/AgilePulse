@@ -3,9 +3,12 @@ import styles from "../../assets/styles/Trainings.module.css";
 interface SearchProps {
   filterIcon: boolean;
   height: number;
+  searchValue?: string;
+  onSearchChange?: (val: string) => void;
 }
 
-const TrainingsSearchContainer = ({ filterIcon, height }: SearchProps) => {
+
+const TrainingsSearchContainer = ({ filterIcon, height, onSearchChange, searchValue }: SearchProps) => {
   return (
     <div className={styles.searchWrapper}>
       <div className={`${styles.searchContainer} h-[${height}px]`}>
@@ -14,6 +17,8 @@ const TrainingsSearchContainer = ({ filterIcon, height }: SearchProps) => {
             type="text"
             placeholder="Search"
             className="!outline-none !border-0 !shadow-none "
+            value={searchValue}
+            onChange={(e) => onSearchChange?.(e.target.value)}
           />
           <button className={styles.searchButton}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

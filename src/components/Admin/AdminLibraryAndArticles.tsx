@@ -1,53 +1,102 @@
 import userImg from "../../assets/images/user.png";
 import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/bookApi";
 import TrainingsSearchContainer from "../Trainings/TrainingsSearchContainer";
-import EditableInput from "../EditableInput";
-import { useEffect, useRef, useState } from "react";
-import type { Book } from "../../types/types";
-import DelIcon from '../../assets/icons/delete_icon.svg'
-import CamIcon from '../../assets/icons/camera_icon.svg'
-import DowmloadIcon from '../../assets/icons/mynaui_download.svg'
+import { useEffect, useState } from "react";
+import type { ArticleRes, Book } from "../../types/types";
 import Swal from "sweetalert2";
+import './Admin.css'
+import LoadingSpinner from "../General/LoadingSpinner";
+import { useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/articleApi";
+import { useLocation } from "react-router-dom";
+import ListItem from "./ListItem";
 
 const AdminLibraryAndArticles = () => {
 
-  const [books, setBooks] = useState<Book[]>([])
-  const { data, refetch: refreshBook } = useGetAllBookQuery()
-  const [updateBook] = useUpdateBookMutation()
-  const [deleteBook] = useDeleteBookMutation()
+  const location = useLocation()
 
-  const editableFields: Array<keyof Book> = ["name", "author"];
-  const allBook = data?.data?.data
+  const isLibraryMode: boolean = location.pathname.includes('library')
+
+  const [books, setBooks] = useState<Book[]>([]);
+  const [articles, setArticles] = useState<ArticleRes[]>([]);
+  const [search, setSearch] = useState<string>("");
+
+  const { data: allBookData, refetch: refreshBook, isLoading: isLoadingBooks } = useGetAllBookQuery();
+  const { data: allArticleData, refetch: refreshArticle, isLoading: isLoadingArticle } = useGetAllArticleQuery();
+  const [updateBook] = useUpdateBookMutation();
+  const [updateArticle] = useUpdateArticleMutation();
+  const [deleteBook] = useDeleteBookMutation();
+
+  const editableFields = isLibraryMode
+    ? ["name", "author"] as Array<keyof Book>
+    : ["title", "content"] as Array<keyof ArticleRes>;
 
   useEffect(() => {
-    if (allBook) {
-      setBooks(allBook);
+    if (isLibraryMode && allBookData?.data?.data) {
+      setBooks(allBookData.data.data);
+    } else if (!isLibraryMode && allArticleData?.data?.data) {
+      setArticles(allArticleData.data.data);
     }
-  }, [allBook]);
+  }, [allBookData, allArticleData, isLibraryMode]);
 
-  const pdfInp = useRef<HTMLInputElement>(null);
-  const imgInp = useRef<HTMLInputElement>(null);
+  const filteredBooks = books.filter(book =>
+    book.name.toLowerCase().includes(search.toLowerCase()) ||
+    book.author.toLowerCase().includes(search.toLowerCase())
+  );
+  const filteredArticles = articles.filter(article =>
+    article.title.toLowerCase().includes(search.toLowerCase()) ||
+    article.author.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const handleFieldChange = (
+  const handleFieldChange = async (
     id: number,
-    field: keyof Book,
+    field: keyof Book | keyof ArticleRes,
     value: string | number
   ) => {
-    const book = books.find(book => book.id === id);
-    if (!book) return;
-
-    const updatedBooks = books.map(b =>
-      b.id === id ? { ...b, [field]: value } : b
-    );
-    setBooks(updatedBooks);
-
     const formData = new FormData();
     formData.append(field, value.toString());
 
-    updateBook({ bookId: id, formData }).unwrap().catch(() =>
-      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Yenilənmə uğursuz oldu!' })
-    );
+    if (isLibraryMode) {
+      const updatedBooks = books.map(b =>
+        b.id === id ? { ...b, [field as keyof Book]: value } : b
+      );
+      setBooks(updatedBooks);
+
+      await updateBook({ bookId: id, formData }).unwrap().catch(() =>
+        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Yenilənmə uğursuz oldu!' })
+      );
+    } else {
+      const updatedArticles = articles.map(a =>
+        a.id === id ? { ...a, [field as keyof ArticleRes]: value } : a
+      );
+      setArticles(updatedArticles);
+
+      await updateArticle({ id, data: formData }).unwrap().catch(() =>
+        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Məqalə yenilənmədi!' })
+      );
+    }
   };
+
+
+  /*   const handleFieldChange = (
+      id: number,
+      field: keyof Book,
+      value: string | number
+    ) => {
+      const book = books.find(book => book.id === id);
+      if (!book) return;
+  
+      const updatedBooks = books.map(b =>
+        b.id === id ? { ...b, [field]: value } : b
+      );
+      setBooks(updatedBooks);
+  
+      const formData = new FormData();
+      formData.append(field, value.toString());
+  
+      updateBook({ bookId: id, formData }).unwrap().catch(() =>
+        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Yenilənmə uğursuz oldu!' })
+      );
+    }; */
 
 
   const handleFileUpload = async (
@@ -62,13 +111,39 @@ const AdminLibraryAndArticles = () => {
     formData.append(field, file);
 
     try {
-      await updateBook({ bookId: id, formData }).unwrap();
-      refreshBook()
+      if (isLibraryMode) {
+        await updateBook({ bookId: id, formData }).unwrap();
+        refreshBook();
+      } else {
+        await updateArticle({ id, data: formData }).unwrap();
+        refreshArticle();
+      }
       Swal.fire({ icon: "success", title: "Uğurla yükləndi!" });
     } catch (error) {
       Swal.fire({ icon: "error", title: "Xəta", text: "Fayl yüklənmədi." });
     }
   };
+
+
+  /*   const handleFileUpload = async (
+      e: React.ChangeEvent<HTMLInputElement>,
+      id: number,
+      field: "image" | "pdfFile"
+    ) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+  
+      const formData = new FormData();
+      formData.append(field, file);
+  
+      try {
+        await updateBook({ bookId: id, formData }).unwrap();
+        refreshBook()
+        Swal.fire({ icon: "success", title: "Uğurla yükləndi!" });
+      } catch (error) {
+        Swal.fire({ icon: "error", title: "Xəta", text: "Fayl yüklənmədi." });
+      }
+    }; */
 
   const handleDeleteBook = async (bookId: number) => {
     const result = await Swal.fire({
@@ -94,14 +169,16 @@ const AdminLibraryAndArticles = () => {
   };
 
 
-  if (!allBook) return null
-
   return (
     <div className=' w-full h-full '>
 
       <div className="w-full  flex justify-between items-start ">
         <div className="w-[669px] h-fit">
-          <TrainingsSearchContainer filterIcon={false} height={56} />
+          <TrainingsSearchContainer
+            searchValue={search}
+            onSearchChange={setSearch}
+            filterIcon={false} height={56}
+          />
         </div>
         <div className="flex gap-3 items-center">
           {/* Name */}
@@ -116,61 +193,52 @@ const AdminLibraryAndArticles = () => {
           </div>
         </div>
       </div>
-      <div className=' mt-[43px]'>
-        <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>Tapşırıqlar</h2>
-        <ul className="space-y-[19px]">
-          {
-            books?.map(book => (
-              <li
-                className="w-full flex justify-between items-center py-2 pr-5 pl-2 bg-[#EAEDF5] rounded-[30px]"
-                key={book.id}
+      <div className=' '>
+        <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
+        {
+          isLoadingBooks || isLoadingArticle
+            ? <LoadingSpinner className="mt-6" />
+            : (
+              <ul
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none'
+                }}
+                className="space-y-[19px] max-h-[750px] mt-5 overflow-y-scroll animated-list"
               >
-                <div className="flex items-center max-w-[388px] gap-x-10">
-                  <div className=" w-[106px] h-[143px] p-2.5 ">
-                    <img
-                      style={{
-                        boxShadow: "0px 0px 4.9px 1.89px #0000003B",
-                      }}
-                      src={book.imageUrl} alt={book.name}
-                      className="w-[86px] h-[123px] rounded-[3.77px]"
-                    />
-                  </div>
-                  <div >
-                    {
-                      editableFields.map((field) => (
-                        <EditableInput
-                          key={field}
-                          value={book[field] as string}
-                          onChange={(val) => handleFieldChange(book.id, field, val)}
+                {
+                  isLibraryMode
+                    ? (
+                      filteredBooks?.map(book => (
+                        <ListItem
+                          key={book.id}
+                          data={book}
+                          editableFields={editableFields}
+                          onFieldChange={handleFieldChange}
+                          onFileUpload={handleFileUpload}
+                          onDelete={handleDeleteBook}
+                          isLibraryMode={isLibraryMode}
                         />
                       ))
-                    }
-                  </div>
-                </div>
-                <div className="flex gap-x-5">
-                  <input
-                    type="file"
-                    ref={pdfInp}
-                    hidden
-                    accept=".pdf"
-                    onChange={(e) => handleFileUpload(e, book.id, "pdfFile")}
-                  />
-                  <input
-                    type="file"
-                    ref={imgInp}
-                    hidden
-                    accept="image/*"
-                    onChange={(e) => handleFileUpload(e, book.id, "image")}
-                  />
-                  <span onClick={() => { pdfInp.current?.click() }} className="bg-[#E99826] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"><img src={DowmloadIcon} /></span>
-                  <span onClick={() => { imgInp.current?.click() }} className="bg-[#44A15E] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"><img src={CamIcon} /></span>
-                  <span onClick={() => handleDeleteBook(book.id)} className="bg-[#DA3D68] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"><img src={DelIcon} /></span>
-                </div>
-              </li>
-            ))
-          }
+                    )
+                    : (
+                      filteredArticles?.map(article => (
+                        <ListItem
+                          key={article.id}
+                          data={article}
+                          editableFields={editableFields}
+                          onFieldChange={handleFieldChange}
+                          onFileUpload={handleFileUpload}
+                          onDelete={handleDeleteBook}
+                          isLibraryMode={isLibraryMode}
+                        />
+                      ))
+                    )
+                }
 
-        </ul>
+              </ul>
+            )
+        }
       </div>
     </div>
   )

@@ -9,12 +9,14 @@ export interface GetAllArticleResponse {
     hasNextPage: boolean;
   };
 }
-interface ArticleRes {
+export interface ArticleRes {
   id: number;
   title: string;
   content: string;
   text: string;
   imageUrl: string;
+  author: string;
+  createdAt: string
 }
 
 export interface GetByIdArticle {

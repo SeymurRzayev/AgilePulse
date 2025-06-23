@@ -63,6 +63,7 @@ const AppRouter: FC = () => {
           <Route index element={<Dashboard />} />
           <Route path="main-page" element={<AdminMainPage />} />
           <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
+          <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
         </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />

@@ -11,7 +11,6 @@ const LibraryDetails = () => {
 
   const book: BookByidData | undefined = bookRes?.data;
 
-  console.log(book);
 
   return (
     <>
