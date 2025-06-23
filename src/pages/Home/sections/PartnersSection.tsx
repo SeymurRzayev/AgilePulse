@@ -38,7 +38,6 @@ const PartnersSection: FC = () => {
     ],
   };
 
-  console.log("set", settings)
 
   return (
     <section className="font-[Corbel] partnersSection py-12 flex flex-col gap-16">

@@ -28,6 +28,8 @@ interface ArticleByIdRes {
   content: string;
   text: string;
   imageUrl: string;
+  author: string;
+  createdAt: string
 }
 
 export interface Book {

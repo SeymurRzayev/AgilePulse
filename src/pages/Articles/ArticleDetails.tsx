@@ -3,6 +3,7 @@ import backgroundImage from '../../assets/images/articles-bg.jpg'
 import ShowMoreText from '../../components/Butttons/ShowMoreText';
 import TrainingCard from '../../components/Trainings/TrainingCard';
 import { useGetAllArticleQuery, useGetArticleByIdQuery } from '../../services/features/articleApi';
+import dayjs from 'dayjs';
 
 const ArticleDetails = () => {
 
@@ -12,6 +13,14 @@ const ArticleDetails = () => {
 
     const article = articleRes?.data
     const allArticles = allArticlesResponse?.data.data
+
+    const rawDate = "2025-06-23T08:35:35.501008";
+    const cleanedDate = rawDate.split('.')[0]; // "2025-06-23T08:35:35"
+
+    const formattedDate = dayjs(cleanedDate).format('DD.MM.YYYY, HH:mm');
+
+    console.log(formattedDate); // Çıxış: 23.06.2025, 08:35
+    console.log(allArticles)
 
     const goBack = () => {
         window.history.back()
@@ -36,13 +45,18 @@ const ArticleDetails = () => {
             <div className='w-[95%] flex flex-wrap gap-6 mx-auto'>
                 <div className='flex-1 min-w-[300px] lg:min-w-[400px]'>
                     <div className='max-w-[725px] lg:max-w-[850px] h-auto mx-auto mb-6'>
-                        {/* Article content will come from API */}
                         <h1 className='text-[#000000DE] text-center font-[Corbel] font-bold text-[34px] sm:text-[28px] leading-tight'>{article?.title}</h1>
-                        <h5 className='text-[#00000099] font-bold text-base font-[Corbel] text-right mt-4'>Name olmalidi apide duzelis</h5>
-                        <span className='text-[#00000061] block font-bold text-base font-[Corbel] text-right'>Tarix Api duzelis</span>
+                        <h5 className='text-[#00000099] font-bold text-base font-[Corbel] text-right mt-4'>{article?.author}</h5>
+                        <span className='text-[#00000061] block font-bold text-base font-[Corbel] text-right'>
+                            {
+                                article?.createdAt
+                                    ? dayjs(article.createdAt.split('.')[0]).format('DD.MM.YYYY')
+                                    : ''
+                            }
+                        </span>
                     </div>
                     {/* Text */}
-                    <ShowMoreText text={article?.content ?? ''} maxLength={1700} className='max-w-[725px] lg:max-w-[850px] mx-auto text-justify text-[#000000DE] font-[Corbel] text-base font-normal px-4 lg:px-0' />
+                    <ShowMoreText text={article?.text ?? ''} maxLength={1700} className='max-w-[725px] lg:max-w-[850px] mx-auto text-justify text-[#000000DE] font-[Corbel] text-base font-normal px-4 lg:px-0' />
                 </div>
                 {/* Other articles (Right side) */}
                 <div className='flex-1 min-w-[300px] lg:max-w-[391px] flex flex-col gap-6 items-center'>
