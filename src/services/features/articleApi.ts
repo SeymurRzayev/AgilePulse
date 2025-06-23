@@ -16,7 +16,21 @@ export const articleApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        updateArticle: build.mutation<void, { id: number; data: FormData }>({
+            query: ({ id, data }) => ({
+                url: `/articles/update/${id}`,
+                method: 'PUT',
+                body: data,
+                formData: true,
+            }),
+        }),
+        deleteArticle: build.mutation<void, number>({
+            query: (id) => ({
+                url: `/articles/delete/${id}`,
+                method: 'DELETE',
+            }),
+        }),
     })
 });
 
-export const { useGetAllArticleQuery, useGetArticleByIdQuery } = articleApi;
+export const { useGetAllArticleQuery, useGetArticleByIdQuery, useUpdateArticleMutation, useDeleteArticleMutation } = articleApi;

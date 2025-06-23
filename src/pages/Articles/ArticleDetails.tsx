@@ -14,14 +14,6 @@ const ArticleDetails = () => {
     const article = articleRes?.data
     const allArticles = allArticlesResponse?.data.data
 
-    const rawDate = "2025-06-23T08:35:35.501008";
-    const cleanedDate = rawDate.split('.')[0]; // "2025-06-23T08:35:35"
-
-    const formattedDate = dayjs(cleanedDate).format('DD.MM.YYYY, HH:mm');
-
-    console.log(formattedDate); // Çıxış: 23.06.2025, 08:35
-    console.log(allArticles)
-
     const goBack = () => {
         window.history.back()
     }

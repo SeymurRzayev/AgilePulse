@@ -13,10 +13,10 @@ const EditableInput: React.FC<EditableInputProps> = ({ value, onChange }) => {
     const [isEditMode, setIsEditMode] = useState<boolean>(false)
 
     return (
-        <div className="flex items-center gap-y-2">
+        <div className="flex  gap-x-2">
             <input
                 type="text"
-                className="outline-none"
+                className="outline-none "
                 readOnly={!isEditMode}
                 autoFocus={isEditMode}
                 value={value}
