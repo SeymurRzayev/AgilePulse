@@ -34,6 +34,7 @@ interface ArticleByIdRes {
   createdAt: string
 }
 
+//Book types
 export interface Book {
   id: number;
   name: string;
@@ -57,7 +58,7 @@ export interface GetAllBookResponse {
 }
 
 export interface BookByidData {
-  id: number;
+  id?: number;
   name: string;
   pdfUrl: string;
   author: string;

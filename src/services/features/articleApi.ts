@@ -1,4 +1,4 @@
-import type { GetAllArticleResponse, GetByIdArticle } from "../../types/types";
+import type { ArticleRes, GetAllArticleResponse, GetByIdArticle } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 
@@ -16,6 +16,13 @@ export const articleApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        createArticle: build.mutation<ArticleRes, { data: ArticleRes }>({
+            query: ({ data }) => ({
+                url: '/book/create',
+                method: 'POST',
+                body: data,
+            }),
+        }),
         updateArticle: build.mutation<void, { id: number; data: FormData }>({
             query: ({ id, data }) => ({
                 url: `/articles/update/${id}`,
@@ -26,8 +33,8 @@ export const articleApi = baseApi.injectEndpoints({
         }),
         deleteArticle: build.mutation<void, number>({
             query: (id) => ({
-                url: `/articles/delete/${id}`,
-                method: 'DELETE',
+                url: `/articles/disable/${id}`,
+                method: 'PUT',
             }),
         }),
     })
