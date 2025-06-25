@@ -6,14 +6,15 @@ import type { ArticleRes, Book } from "../../types/types";
 import Swal from "sweetalert2";
 import './Admin.css'
 import LoadingSpinner from "../General/LoadingSpinner";
-import { useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/articleApi";
-import { useLocation } from "react-router-dom";
+import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/articleApi";
+import { useLocation, useNavigate } from "react-router-dom";
 import ListItem from "./ListItem";
+import MainButton from "../Butttons/MainButton";
 
 const AdminLibraryAndArticles = () => {
 
   const location = useLocation()
-
+  const navigate = useNavigate()
   const isLibraryMode: boolean = location.pathname.includes('library')
 
   const [books, setBooks] = useState<Book[]>([]);
@@ -25,6 +26,7 @@ const AdminLibraryAndArticles = () => {
   const [updateBook] = useUpdateBookMutation();
   const [updateArticle] = useUpdateArticleMutation();
   const [deleteBook] = useDeleteBookMutation();
+  const [deleteArticle] = useDeleteArticleMutation()
 
   const editableFields = isLibraryMode
     ? ["name", "author"] as Array<keyof Book>
@@ -145,7 +147,7 @@ const AdminLibraryAndArticles = () => {
       }
     }; */
 
-  const handleDeleteBook = async (bookId: number) => {
+  const handleFieldDelete = async (id: number) => {
     const result = await Swal.fire({
       title: 'Silmək istəyirsən?',
       text: "Bu əməliyyat geri qaytarıla bilməz!",
@@ -159,11 +161,17 @@ const AdminLibraryAndArticles = () => {
 
     if (result.isConfirmed) {
       try {
-        await deleteBook(bookId);
-        refreshBook()
-        Swal.fire('Silindi!', 'Kitab silindi.', 'success');
+        if (isLibraryMode) {
+          await deleteBook(id);
+          refreshBook()
+          Swal.fire('Silindi!', 'Kitab silindi.', 'success');
+        } else {
+          await deleteArticle(id)
+          refreshArticle()
+          Swal.fire('Silindi!', 'Məqalə silindi.', 'success');
+        }
       } catch {
-        Swal.fire('Xəta!', 'Kitab silinmədi.', 'error');
+        Swal.fire('Xəta!', 'Seçilmiş məhsul silinmədi.', 'error');
       }
     }
   };
@@ -194,7 +202,10 @@ const AdminLibraryAndArticles = () => {
         </div>
       </div>
       <div className=' '>
-        <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
+        <div className="w-full flex justify-between px-3 ">
+          <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
+          <MainButton text={isLibraryMode ? "+ Kitab " : "+ Məqalə"} onClick={() => navigate(`${isLibraryMode ? 'addBook' : 'addArticle'}`)} />
+        </div>
         {
           isLoadingBooks || isLoadingArticle
             ? <LoadingSpinner className="mt-6" />
@@ -216,7 +227,7 @@ const AdminLibraryAndArticles = () => {
                           editableFields={editableFields}
                           onFieldChange={handleFieldChange}
                           onFileUpload={handleFileUpload}
-                          onDelete={handleDeleteBook}
+                          onDelete={handleFieldDelete}
                           isLibraryMode={isLibraryMode}
                         />
                       ))
@@ -229,7 +240,7 @@ const AdminLibraryAndArticles = () => {
                           editableFields={editableFields}
                           onFieldChange={handleFieldChange}
                           onFileUpload={handleFileUpload}
-                          onDelete={handleDeleteBook}
+                          onDelete={handleFieldDelete}
                           isLibraryMode={isLibraryMode}
                         />
                       ))

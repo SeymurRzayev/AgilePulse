@@ -1,4 +1,4 @@
-import type { BookByIdResponse, GetAllBookResponse } from "../../types/types";
+import type { BookByidData, BookByIdResponse, GetAllBookResponse } from "../../types/types";
 import { baseApi } from "../api/baseApi";
 
 
@@ -14,6 +14,13 @@ const bookApi = baseApi.injectEndpoints({
             query: (id) => ({
                 url: `/book/get/${id}`,
                 method: 'GET',
+            }),
+        }),
+        createBook: builder.mutation<BookByidData, { data: BookByidData }>({
+            query: ({ data }) => ({
+                url: '/articles/create',
+                method: 'POST',
+                body: data,
             }),
         }),
         updateBook: builder.mutation<void, { bookId: number, formData: FormData }>({
@@ -33,4 +40,4 @@ const bookApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useGetAllBookQuery, useGetBookByIdQuery, useUpdateBookMutation, useDeleteBookMutation} = bookApi;
+export const { useGetAllBookQuery, useGetBookByIdQuery, useUpdateBookMutation, useDeleteBookMutation } = bookApi;
