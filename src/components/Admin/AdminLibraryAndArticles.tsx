@@ -201,7 +201,7 @@ const AdminLibraryAndArticles = () => {
           </div>
         </div>
       </div>
-      <div className=' '>
+      <div className=''>
         <div className="w-full flex justify-between px-3 ">
           <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
           <MainButton text={isLibraryMode ? "+ Kitab " : "+ Məqalə"} onClick={() => navigate(`${isLibraryMode ? 'addBook' : 'addArticle'}`)} />
@@ -215,7 +215,7 @@ const AdminLibraryAndArticles = () => {
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none'
                 }}
-                className="space-y-[19px] max-h-[750px] mt-5 overflow-y-scroll animated-list"
+                className="space-y-[19px] max-h-[520px] mt-5 overflow-y-scroll animated-list"
               >
                 {
                   isLibraryMode
