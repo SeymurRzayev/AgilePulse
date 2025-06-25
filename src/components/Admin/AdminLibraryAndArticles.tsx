@@ -147,7 +147,7 @@ const AdminLibraryAndArticles = () => {
       }
     }; */
 
-  const handleFieldDelete = async (id: number) => {
+  const handleItemDelete = async (id: number) => {
     const result = await Swal.fire({
       title: 'Silmək istəyirsən?',
       text: "Bu əməliyyat geri qaytarıla bilməz!",
@@ -227,7 +227,7 @@ const AdminLibraryAndArticles = () => {
                           editableFields={editableFields}
                           onFieldChange={handleFieldChange}
                           onFileUpload={handleFileUpload}
-                          onDelete={handleFieldDelete}
+                          onDelete={handleItemDelete}
                           isLibraryMode={isLibraryMode}
                         />
                       ))
@@ -240,7 +240,7 @@ const AdminLibraryAndArticles = () => {
                           editableFields={editableFields}
                           onFieldChange={handleFieldChange}
                           onFileUpload={handleFileUpload}
-                          onDelete={handleFieldDelete}
+                          onDelete={handleItemDelete}
                           isLibraryMode={isLibraryMode}
                         />
                       ))
