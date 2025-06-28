@@ -1,4 +1,4 @@
-import { baseApi } from "../api/baseApi";
+import { baseApi } from "../../api/baseApi";
 
 
 const forgotPassword = baseApi.injectEndpoints({

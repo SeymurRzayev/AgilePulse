@@ -3,7 +3,7 @@ import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
 import Lines from "./Lines";
 import RoleGroup from "./RoleGroup";
-import { useGetAllTeamQuery } from "../../services/features/teamApi";
+import { useGetAllTeamQuery } from "../../services/features/about/teamApi";
 
 const Team: FC = () => {
   const people = [

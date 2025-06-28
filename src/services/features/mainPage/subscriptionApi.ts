@@ -1,5 +1,5 @@
-import type { GetAllSubscriptionsResponse, GetSubscriptionByIdResponse, SubscriptionRes } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { GetAllSubscriptionsResponse, GetSubscriptionByIdResponse, SubscriptionRes } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 export const subscriptionApi = baseApi.injectEndpoints({
     endpoints: (build) => ({

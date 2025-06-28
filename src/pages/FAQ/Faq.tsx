@@ -4,7 +4,7 @@ import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
 import QuestionContainer from "./QuestionContainer";
 import AnswerContainer from "./AnswerContainer";
-import { useGetAllFaqsQuery } from "../../services/features/faqApi";
+import { useGetAllFaqsQuery } from "../../services/features/mainPage/faqApi";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
 
 const Faq: React.FC = () => {

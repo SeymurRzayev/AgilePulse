@@ -1,5 +1,5 @@
 import { type FC, useState } from "react";
-import { useCreateContactUsMutation } from "../../services/features/contactUsApi";
+import { useCreateContactUsMutation } from "../../services/features/mainPage/contactUsApi";
 import { contactUsSchema } from "../../validation/contactUsSchema";
 import Swal from "sweetalert2";
 

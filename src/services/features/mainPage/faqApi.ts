@@ -1,6 +1,6 @@
 
-import type { GetAllFaqResponse, GetByIdFaq, FaqRes } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { GetAllFaqResponse, GetByIdFaq, FaqRes } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 export const faqApi = baseApi.injectEndpoints({
     endpoints: (build) => ({

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../../assets/styles/Trainings.module.css";
 
 import TrainingCard from "../../../components/Trainings/TrainingCard";
-import { useGetAllArticleQuery } from "../../../services/features/articleApi";
+import { useGetAllArticleQuery } from "../../../services/features/mainPage/articleApi";
 const ArticlesSection = () => {
 
   const navigate = useNavigate()

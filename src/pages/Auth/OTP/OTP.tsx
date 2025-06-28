@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useVerifyMutation } from '../../../services/features/verifyApi';
+import { useVerifyMutation } from '../../../services/features/auth/verifyApi';
 import Swal from 'sweetalert2';
 
 const OTP = () => {

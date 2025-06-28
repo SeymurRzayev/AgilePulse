@@ -1,5 +1,5 @@
-import type { CreateUserReq } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { CreateUserReq } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 const signUpApi = baseApi.injectEndpoints({

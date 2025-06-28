@@ -1,12 +1,12 @@
 import userImg from "../../assets/images/user.png";
-import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/bookApi";
+import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/mainPage/bookApi";
 import TrainingsSearchContainer from "../Trainings/TrainingsSearchContainer";
 import { useEffect, useState } from "react";
 import type { ArticleRes, Book } from "../../types/types";
 import Swal from "sweetalert2";
 import './Admin.css'
 import LoadingSpinner from "../General/LoadingSpinner";
-import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/articleApi";
+import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/mainPage/articleApi";
 import { useLocation, useNavigate } from "react-router-dom";
 import ListItem from "./ListItem";
 import MainButton from "../Butttons/MainButton";

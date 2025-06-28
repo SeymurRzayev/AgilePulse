@@ -1,5 +1,5 @@
-import type { UpdateUserRequest } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { UpdateUserRequest } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 const userApi = baseApi.injectEndpoints({
