@@ -72,11 +72,11 @@
   width: 100%;
   max-width: 260px;
   margin: 0 auto;
-
   height: 302px;
   margin: 0 10px;
   overflow: hidden;
   height: 100%;
+  cursor: pointer;
 }
 
 .cardImg {

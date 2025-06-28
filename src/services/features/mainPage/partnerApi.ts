@@ -1,6 +1,6 @@
 
-import type { GetAllPartnersResponse, GetPartnerByIdResponse, PartnerItem } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { GetAllPartnersResponse, GetPartnerByIdResponse, PartnerItem } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 export const partnerApi = baseApi.injectEndpoints({
     endpoints: (build) => ({

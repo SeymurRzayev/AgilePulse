@@ -1,6 +1,6 @@
 
-import type { GetAllTeamResponse, TeamMember } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { GetAllTeamResponse, TeamMember } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 const teamApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

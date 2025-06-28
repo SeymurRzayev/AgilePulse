@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
-import { setLoggedUser } from "../../redux/slices/authSlice";
-import type { UserLoginReq, User } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import { setLoggedUser } from "../../../redux/slices/authSlice";
+import type { UserLoginReq, User } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 export const loginApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({

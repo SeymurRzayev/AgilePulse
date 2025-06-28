@@ -281,3 +281,30 @@ export interface GetEmployeeByIdResponse {
   message: string;
   data: TeamMember;
 }
+
+
+export interface CategoriesResponse {
+  id: number;
+  name: string;
+}
+
+interface Podcast {
+  id: number;
+  speakerName: string;
+  topicTitle: string;
+  description: string;
+  imageUrl: string;
+  youtubeUrl: string;
+}
+
+interface PodcastData {
+  data: Podcast[];
+  totalElements: number;
+  lastPageNumber: number;
+  hasNextPage: boolean;
+}
+
+export interface PodcastResponse {
+  message: string;
+  data: PodcastData;
+}

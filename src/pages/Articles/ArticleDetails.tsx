@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import backgroundImage from '../../assets/images/articles-bg.jpg'
 import ShowMoreText from '../../components/Butttons/ShowMoreText';
 import TrainingCard from '../../components/Trainings/TrainingCard';
-import { useGetAllArticleQuery, useGetArticleByIdQuery } from '../../services/features/articleApi';
+import { useGetAllArticleQuery, useGetArticleByIdQuery } from '../../services/features/mainPage/articleApi';
 import dayjs from 'dayjs';
 
 const ArticleDetails = () => {

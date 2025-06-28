@@ -1,6 +1,6 @@
 import React from "react";
 import quoteImg from "../../../assets/images/quote.png";
-import { useGetRandomQuotesQuery } from "../../../services/features/quotesApi";
+import { useGetRandomQuotesQuery } from "../../../services/features/mainPage/quotesApi";
 
 const StatusSection: React.FC = () => {
 

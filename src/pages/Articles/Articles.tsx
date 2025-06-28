@@ -4,7 +4,7 @@ import backgroundImage from '../../assets/images/articles-bg.jpg'
 import { useState } from "react";
 import TrainingCard from "../../components/Trainings/TrainingCard";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
-import { useGetAllArticleQuery } from "../../services/features/articleApi";
+import { useGetAllArticleQuery } from "../../services/features/mainPage/articleApi";
 
 const Articles = () => {
 

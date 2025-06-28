@@ -5,7 +5,7 @@ import closeEye from '../../../assets/icons/Inputclosedeye.svg'
 import { useState } from 'react';
 import { resetPassword } from '../../../validation/signInSchema';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useResetPasswordMutation } from '../../../services/features/forgotPasswordApi';
+import { useResetPasswordMutation } from '../../../services/features/auth/forgotPasswordApi';
 import Swal from 'sweetalert2';
 
 

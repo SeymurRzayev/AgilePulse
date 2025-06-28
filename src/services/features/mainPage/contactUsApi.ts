@@ -1,6 +1,6 @@
 
-import type { ContactUsEntry, FindAllContactUsResponse } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { ContactUsEntry, FindAllContactUsResponse } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 export const contactUsApi = baseApi.injectEndpoints({
     endpoints: (build) => ({

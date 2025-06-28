@@ -10,7 +10,7 @@ import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { signUpSchema } from "../../../validation/signUpSchema";
 import MainButton from "../../../components/Butttons/MainButton";
-import { useSignUpMutation } from "../../../services/features/signUpApi";
+import { useSignUpMutation } from "../../../services/features/auth/signUpApi";
 // import checked from "../../../assets/images/checked.svg";
 // import unchecked from "../../../assets/images/unchecked.svg";
 import { useNavigate } from "react-router-dom";

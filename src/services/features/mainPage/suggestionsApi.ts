@@ -1,5 +1,5 @@
-import type { SuggestionReq, SuggestionRes } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { SuggestionReq, SuggestionRes } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 const suggestionsApi = baseApi.injectEndpoints({

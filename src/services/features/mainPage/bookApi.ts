@@ -1,5 +1,5 @@
-import type { BookByidData, BookByIdResponse, GetAllBookResponse } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { BookByidData, BookByIdResponse, GetAllBookResponse } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 const bookApi = baseApi.injectEndpoints({

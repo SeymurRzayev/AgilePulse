@@ -13,7 +13,7 @@ import authImage from "../../../assets/images/authImage.jpg";
 // Hook for swipe back functionality
 import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
-import { useForgotPasswordMutation } from "../../../services/features/forgotPasswordApi";
+import { useForgotPasswordMutation } from "../../../services/features/auth/forgotPasswordApi";
 import Swal from "sweetalert2";
 
 // Interface to define the structure of form data (email in this case)

@@ -6,7 +6,7 @@ import styles from "./BookSection.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
-import { useGetAllBookQuery } from "../../../../services/features/bookApi";
+import { useGetAllBookQuery } from "../../../../services/features/mainPage/bookApi";
 
 const BookSection: FC = () => {
   const navigate = useNavigate();

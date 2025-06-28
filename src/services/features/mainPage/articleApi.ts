@@ -1,5 +1,5 @@
-import type { ArticleRes, GetAllArticleResponse, GetByIdArticle } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { ArticleRes, GetAllArticleResponse, GetByIdArticle } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 export const articleApi = baseApi.injectEndpoints({

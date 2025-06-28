@@ -11,7 +11,7 @@ import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import MainButton from "../../../components/Butttons/MainButton";
 import Swal from "sweetalert2";
-import { useLoginMutation } from "../../../services/features/loginApi";
+import { useLoginMutation } from "../../../services/features/auth/loginApi";
 
 //  validation schema for sign-in form
 
