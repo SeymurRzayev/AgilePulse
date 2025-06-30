@@ -308,3 +308,25 @@ export interface PodcastResponse {
   message: string;
   data: PodcastData;
 }
+
+
+export interface Trainer {
+    id: number;
+    name: string;
+    surname: string;
+    position: string;
+    description: string;
+    imageUrl: string;
+}
+
+interface TrainersData {
+    data: Trainer[];
+    totalElements: number;
+    lastPageNumber: number;
+    hasNextPage: boolean;
+}
+
+export interface TrainerResponse {
+    message: string | null;
+    data: TrainersData;
+}
