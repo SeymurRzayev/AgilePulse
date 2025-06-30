@@ -3,13 +3,9 @@ import { useState, type FC } from "react";
 import TeamInfoCard from "./TeamInfoCard";
 // import managerImg from "../../assets/images/trainer1.jpg";
 import { HiArrowDown } from "react-icons/hi2";
+import type { Person } from "../../types/types";
 
-type Person = {
-  name: string;
-  occupation: string;
-  jobDescription: string;
-  img: string;
-};
+
 type Props = {
   occupation: string;
   className: string;
@@ -32,10 +28,10 @@ const RoleGroup: FC<Props> = ({ occupation, className, people }) => {
                lg:w-[300px] lg:h-[375px]  "
         >
           <TeamInfoCard
-            name={person.name}
-            occupation={person.occupation}
-            jobDescription={person.jobDescription}
-            img={person.img}
+            name={person?.name || person?.surname}
+            occupation={person?.position}
+            jobDescription={person?.description}
+            img={person?.imgUrl}
           />
         </div>
         <div
@@ -44,10 +40,10 @@ const RoleGroup: FC<Props> = ({ occupation, className, people }) => {
                lg:w-[300px] lg:h-[375px]  mt-[32px]"
         >
           <TeamInfoCard
-            name={person.name}
-            occupation={person.occupation}
-            jobDescription={person.jobDescription}
-            img={person.img}
+            name={person?.name || person?.surname}
+            occupation={person?.position}
+            jobDescription={person?.description}
+            img={person?.imgUrl}
           />
         </div>
         <button
