@@ -1,22 +1,27 @@
 import { type FC } from "react";
-import { useGetAllPartnersQuery } from "../../../services/features//mainPage/partnerApi";
+import { useGetAllPartnersQuery } from "../../../services/features/mainPage/partnerApi";
 import Slider from "react-slick";
-
-
 
 const PartnersSection: FC = () => {
   const { data: allPartnersResponse } = useGetAllPartnersQuery();
-  const allPartners = allPartnersResponse?.data.data || [];
+  const allPartners = allPartnersResponse?.data?.data || [];
+
+  // Guard clause: show nothing if no partners
+  if (!allPartners.length) {
+    return null; // Or return a loading indicator/message
+  }
 
   const shouldShowSecondSlider = allPartners.length > 3;
   const reversedPartners = [...allPartners].reverse();
 
   const isStaticSlider = allPartners.length < 3;
 
+  const safeSlidesToShow = Math.max(allPartners.length, 1);
+
   const settings = {
     dots: false,
-    infinite: isStaticSlider ? false : true,
-    slidesToShow: isStaticSlider ? allPartners.length : 3,
+    infinite: !isStaticSlider,
+    slidesToShow: isStaticSlider ? safeSlidesToShow : 3,
     slidesToScroll: 1,
     autoplay: true,
     speed: 1000,
@@ -25,19 +30,24 @@ const PartnersSection: FC = () => {
     responsive: [
       {
         breakpoint: 1024,
-        settings: { slidesToShow: isStaticSlider ? allPartners.length : 3 },
+        settings: {
+          slidesToShow: isStaticSlider ? safeSlidesToShow : 3,
+        },
       },
       {
         breakpoint: 768,
-        settings: { slidesToShow: isStaticSlider ? allPartners.length : 2 },
+        settings: {
+          slidesToShow: isStaticSlider ? safeSlidesToShow : 2,
+        },
       },
       {
         breakpoint: 600,
-        settings: { slidesToShow: 1 },
+        settings: {
+          slidesToShow: 1,
+        },
       },
     ],
   };
-
 
   return (
     <section className="font-[Corbel] partnersSection py-12 flex flex-col gap-16">
