@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "../../assets/styles/Trainings.module.css";
 import TrainingCategoryListItem from "./TrainingCategoryListItem";
-// import type { CategoriesResponse } from "../../types/types";
+import type { CategoriesResponse } from "../../types/types";
 
 type TrainingCategoryListProps = {
-  trainingCategories: string[]/* CategoriesResponse[] */;
+  trainingCategories: CategoriesResponse[];
   activeItem: string;
   setActiveItem: (item: string) => void;
 };
@@ -19,10 +19,10 @@ const TrainingsCategoryList: React.FC<TrainingCategoryListProps> = ({
       <ul className={styles.navigation}>
         {trainingCategories.map((item) => (
           <TrainingCategoryListItem
-            key={item}
-            item={item}
-            isActive={activeItem === item}
-            onClick={() => setActiveItem(item)}
+            key={item.id}
+            item={item.name}
+            isActive={activeItem === item.name}
+            onClick={() => setActiveItem(item.name)}
           />
         ))}
       </ul>

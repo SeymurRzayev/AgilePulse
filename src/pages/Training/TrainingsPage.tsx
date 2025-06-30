@@ -24,18 +24,7 @@ const TrainingsPage = () => {
   // const navigate = useNavigate()
 
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
-  const {data} = useGetCategoriesQuery();
-  console.log(data)
-
-
-   const trainingCategories = [
-     "Scrum",
-     "Kanban",
-     "Lean",
-     "SAFe (Scaled Agile Framework)",
-     "XP (Extreme Programming)",
-     "Sprint Planlama",
-   ];
+  const { data: categories } = useGetCategoriesQuery();
 
   const trainingCourses = [
     {
@@ -168,7 +157,7 @@ const TrainingsPage = () => {
         <TrainingsHeroContainer />
         <TrainingsSearchContainer filterIcon={true} height={74} />
         <TrainingsCategoryList
-          trainingCategories={trainingCategories}
+          trainingCategories={categories ?? []}
           activeItem={activeItem}
           setActiveItem={setActiveItem}
         />
