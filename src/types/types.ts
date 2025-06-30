@@ -311,22 +311,31 @@ export interface PodcastResponse {
 
 
 export interface Trainer {
-    id: number;
-    name: string;
-    surname: string;
-    position: string;
-    description: string;
-    imageUrl: string;
+  id: number;
+  name: string;
+  surname: string;
+  position: string;
+  description: string;
+  imageUrl: string;
 }
 
 interface TrainersData {
-    data: Trainer[];
-    totalElements: number;
-    lastPageNumber: number;
-    hasNextPage: boolean;
+  data: Trainer[];
+  totalElements: number;
+  lastPageNumber: number;
+  hasNextPage: boolean;
 }
 
 export interface TrainerResponse {
-    message: string | null;
-    data: TrainersData;
+  message: string | null;
+  data: TrainersData;
 }
+
+
+export type Person = {
+  name: string;
+  surname: string;
+  position: string;
+  description: string;
+  imgUrl: string;
+};
