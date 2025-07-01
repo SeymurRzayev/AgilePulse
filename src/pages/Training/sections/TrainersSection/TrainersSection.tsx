@@ -1,24 +1,17 @@
 import type { FC } from "react";
 import styles from "./TrainersSection.module.css";
-import trainerFirst from "../../../../assets/images/trainer1.jpg";
-import trainerSecond from "../../../../assets/images/trainer2.jpg";
-import trainerThird from "../../../../assets/images/trainer3.jpg";
 import Slider from "react-slick";
-
-
-interface Trainer {
-  id: number;
-  name: string;
-  title: string;
-  description: string;
-  image: string;
-}
+import { useGetTrainersQuery } from "../../../../services/features/trainingPage/trainerApi";
 
 const TrainersSection: FC = () => {
+
+  const { data: trainers } = useGetTrainersQuery();
+
+
   const settings = {
     dots: false,
     infinite: true,
-    
+
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
@@ -52,7 +45,7 @@ const TrainersSection: FC = () => {
       },
     ],
   };
-  const trainers: Trainer[] = [
+  /* const trainers: Trainer[] = [
     {
       id: 1,
       name: "Səadət Hüseynova",
@@ -95,7 +88,7 @@ const TrainersSection: FC = () => {
       description: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
       image: trainerFirst,
     },
-  ];
+  ]; */
 
   return (
     <div className={styles.trainersContainer}>
@@ -111,18 +104,18 @@ const TrainersSection: FC = () => {
 
         <div className="slider-container py-4">
           <Slider {...settings}>
-            {trainers.map((trainer) => (
+            {trainers?.map((trainer) => (
               <div key={trainer.id} className={styles.trainerCard}>
                 <div className={styles.trainerImageContainer}>
                   <img
-                    src={trainer.image}
+                    src={trainer.imageUrl}
                     alt={trainer.name}
                     className={styles.trainerImage}
                   />
                 </div>
                 <div className={styles.trainerInfo}>
                   <h3>{trainer.name}</h3>
-                  <h4>{trainer.title}</h4>
+                  <h4>{trainer.position}</h4>
                   <p>{trainer.description}</p>
                 </div>
               </div>
@@ -131,7 +124,7 @@ const TrainersSection: FC = () => {
         </div>
       </div>
 
-      
+
 
       {/* Contact Section */}
     </div>

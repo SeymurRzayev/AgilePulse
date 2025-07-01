@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
-import { useCreateComplaintMutation, useCreateSuggestionMutation } from "../../services/features/suggestionsApi";
+import { useCreateComplaintMutation, useCreateSuggestionMutation } from "../../services/features/mainPage/suggestionsApi";
 import Swal from 'sweetalert2'
 
 const Suggestions = () => {

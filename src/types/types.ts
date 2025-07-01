@@ -9,12 +9,14 @@ export interface GetAllArticleResponse {
     hasNextPage: boolean;
   };
 }
-interface ArticleRes {
+export interface ArticleRes {
   id: number;
   title: string;
   content: string;
   text: string;
   imageUrl: string;
+  author: string;
+  createdAt: string
 }
 
 export interface GetByIdArticle {
@@ -28,8 +30,11 @@ interface ArticleByIdRes {
   content: string;
   text: string;
   imageUrl: string;
+  author: string;
+  createdAt: string
 }
 
+//Book types
 export interface Book {
   id: number;
   name: string;
@@ -53,7 +58,7 @@ export interface GetAllBookResponse {
 }
 
 export interface BookByidData {
-  id: number;
+  id?: number;
   name: string;
   pdfUrl: string;
   author: string;
@@ -276,3 +281,61 @@ export interface GetEmployeeByIdResponse {
   message: string;
   data: TeamMember;
 }
+
+
+export interface CategoriesResponse {
+  id: number;
+  name: string;
+}
+
+interface Podcast {
+  id: number;
+  speakerName: string;
+  topicTitle: string;
+  description: string;
+  imageUrl: string;
+  youtubeUrl: string;
+}
+
+interface PodcastData {
+  data: Podcast[];
+  totalElements: number;
+  lastPageNumber: number;
+  hasNextPage: boolean;
+}
+
+export interface PodcastResponse {
+  message: string;
+  data: PodcastData;
+}
+
+
+export interface Trainer {
+  id: number;
+  name: string;
+  surname: string;
+  position: string;
+  description: string;
+  imageUrl: string;
+}
+
+interface TrainersData {
+  data: Trainer[];
+  totalElements: number;
+  lastPageNumber: number;
+  hasNextPage: boolean;
+}
+
+export interface TrainerResponse {
+  message: string | null;
+  data: TrainersData;
+}
+
+
+export type Person = {
+  name: string;
+  surname: string;
+  position: string;
+  description: string;
+  imgUrl: string;
+};

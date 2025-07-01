@@ -4,7 +4,7 @@ import LibraryBookCard from "../../components/LibraryCards/LibraryBookCard"
 import Footer from "../../layout/Footer/Footer";
 import { useState } from "react";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
-import { useGetAllBookQuery } from "../../services/features/bookApi";
+import { useGetAllBookQuery } from "../../services/features/mainPage/bookApi";
 
 const Library = () => {
 

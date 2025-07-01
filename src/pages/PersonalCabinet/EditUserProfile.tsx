@@ -7,7 +7,7 @@ import choose from "../../assets/images/choose.png";
 import { useRef, useState } from 'react';
 import MainButton from '../../components/Butttons/MainButton';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/Hooks';
-import { useEditUserMutation, useUpdatePhotoMutation } from '../../services/features/userApi';
+import { useEditUserMutation, useUpdatePhotoMutation } from '../../services/features/auth/userApi';
 import { toast } from "react-toastify";
 import { setLoggedUser } from '../../redux/slices/authSlice';
 import Swal from 'sweetalert2';

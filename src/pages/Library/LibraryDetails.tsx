@@ -1,6 +1,6 @@
 import Navbar from "../../layout/Navbar/Navbar";
 import { useParams } from "react-router-dom";
-import { useGetBookByIdQuery } from "../../services/features/bookApi";
+import { useGetBookByIdQuery } from "../../services/features/mainPage/bookApi";
 import type { BookByidData } from "../../types/types";
 import FlipBook from "./FlipBook";
 
@@ -11,7 +11,6 @@ const LibraryDetails = () => {
 
   const book: BookByidData | undefined = bookRes?.data;
 
-  console.log(book);
 
   return (
     <>

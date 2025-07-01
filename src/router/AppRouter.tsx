@@ -19,13 +19,16 @@ import Suggestions from "../pages/UserOpinions/Suggestions";
 import Certificate from "../pages/Certificate/Certificate";
 import ProtectedRoute from "./ProtectedRoute";
 import QuizPage from "../pages/Quiz/Quiz";
-import AdminPanel from "../pages/Admin/AdminPanel";
-import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
+import AdminPanel from "../layout/Admin/AdminPanel";
 import Users from "../pages/Admin/MenuItemsContent/Users";
 import Projects from "../pages/Admin/MenuItemsContent/Projects";
 import Tasks from "../pages/Admin/MenuItemsContent/Tasks";
 import Groups from "../pages/Admin/MenuItemsContent/Groups";
 import NotificationCenter from "../pages/Admin/MenuItemsContent/NotificationCenter";
+import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
+import AdminMainPage from "../components/Admin/AdminMainPage";
+import AdminLibraryAndArticles from "../components/Admin/AdminLibraryAndArticles";
+import AdminAddLibraryOrArticle from "../components/Admin/AdminAddLibraryOrArticle";
 
 
 const AppRouter: FC = () => {
@@ -52,16 +55,26 @@ const AppRouter: FC = () => {
       <Route path="/about" element={<About />} />
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
-      <Route path="/exams" element={<Certificate studentName="Shahana Khalilova" />} />
+      <Route path="/certificate" element={<Certificate studentName="Shahana Khalilova" />} />
       <Route path="/quiz" element={<QuizPage />} />
-      <Route path="/admin" element={<AdminPanel />}>
-        <Route path="dashboard" element={<Dashboard />} />
+
+      {/* Admin panel */}
+      <Route path="/admin/*" element={<AdminPanel />}>
+        <Route path="dashboard">
+          <Route index element={<Dashboard />} />
+          <Route path="main-page" element={<AdminMainPage />} />
+          <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
+          <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
+          <Route path="main-page/articles/addArticle" element={<AdminAddLibraryOrArticle />} />
+          <Route path="main-page/library/addBook" element={<AdminAddLibraryOrArticle />} />
+        </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />
         <Route path="tasks" element={<Tasks />} />
         <Route path="groups" element={<Groups />} />
         <Route path="notificationSystem" element={<NotificationCenter />} />
       </Route>
+
     </Routes>
   );
 }

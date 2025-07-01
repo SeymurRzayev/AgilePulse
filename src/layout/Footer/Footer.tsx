@@ -6,7 +6,7 @@ import instagram_icon from "../../assets/images/sosialLogo/instagram_icon.png";
 import telegram_icon from "../../assets/images/sosialLogo/telegram_icon.png";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
-import { useCreateSubscriptionMutation } from "../../services/features/subscriptionApi";
+import { useCreateSubscriptionMutation } from "../../services/features/mainPage/subscriptionApi";
 import Swal from "sweetalert2";
 
 const navMenu = [

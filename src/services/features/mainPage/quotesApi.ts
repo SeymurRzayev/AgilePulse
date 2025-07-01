@@ -1,5 +1,5 @@
-import type { GetRandomQuotesRes } from "../../types/types";
-import { baseApi } from "../api/baseApi";
+import type { GetRandomQuotesRes } from "../../../types/types";
+import { baseApi } from "../../api/baseApi";
 
 
 const quotesApi = baseApi.injectEndpoints({

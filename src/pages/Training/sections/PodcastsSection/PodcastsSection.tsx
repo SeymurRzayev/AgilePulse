@@ -1,38 +1,17 @@
 import type { FC } from "react";
 import styles from "./PodcastsSection.module.css";
 import micImg from "../../../../assets/images/mic.png";
-import podcast1 from "../../../../assets/images/podcast1.webp";
-import podcast2 from "../../../../assets/images/podcast2.webp";
-import podcast3 from "../../../../assets/images/podcast3.webp";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CustomNextArrow } from "../../../Home/sections/TrainingExperiences";
+import { useGetAllPodcastQuery } from "../../../../services/features/trainingPage/podcastApi";
 
 const PodcastsSection: FC = () => {
-  const podcasts = [
-    {
-      id: 1,
-      image: podcast1,
-      name: "Tural Mammadov",
-      desc1: "“Scrum Master yoxsa Project Manager?",
-      desc2: "Fərqlər, funksiyalar və real təcrübələr”",
-    },
-    {
-      id: 2,
-      image: podcast2,
-      name: "Nuray Əhmədova",
-      desc1: "Personalin idarə edilməsi",
-      desc2: "“Agile yanaşma”",
-    },
-    {
-      id: 3,
-      image: podcast3,
-      name: "Günel Qasımova",
-      desc1: "“Sprint Retrospective: Uğursuz",
-      desc2: "sessiyaları necə faydalıya çevirək?”",
-    },
-  ];
+
+  const { data } = useGetAllPodcastQuery()
+
+  const allPodcast = data?.data.data
 
   const settings = {
     dots: false,
@@ -87,20 +66,21 @@ const PodcastsSection: FC = () => {
       </div>
       <div className={styles.sliderContainer}>
         <Slider {...settings} className={styles.slider}>
-          {podcasts.map((podcast) => (
-            <div key={podcast.id} className={styles.podcastCard}>
+          {allPodcast?.map((podcast) => (
+            <div onClick={() => window.open(podcast.youtubeUrl, "_blank")} key={podcast.id} className={styles.podcastCard}>
+
               <img
                 className={styles.cardImg}
-                src={podcast.image}
-                alt={podcast.name}
+                src={podcast.imageUrl}
+                alt={podcast.speakerName}
                 loading="lazy"
               />
               <div className={styles.cardInfo}>
-                <div className={styles.cardName}>{podcast.name}</div>
+                <div className={styles.cardName}>{podcast.speakerName}</div>
                 <div className={styles.cardDesc}>
-                  {podcast.desc1}
+                  {podcast.topicTitle}
                   <br />
-                  {podcast.desc2}
+                  {podcast.description}
                 </div>
               </div>
             </div>

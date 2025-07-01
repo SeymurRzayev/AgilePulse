@@ -3,34 +3,40 @@ import TeamInfoCard from "./TeamInfoCard";
 import managerImg from "../../assets/images/trainer1.jpg";
 import Lines from "./Lines";
 import RoleGroup from "./RoleGroup";
-import { useGetAllTeamQuery } from "../../services/features/teamApi";
+import { useGetAllTeamQuery } from "../../services/features/about/teamApi";
+import type { Person } from "../../types/types";
 
 const Team: FC = () => {
-  const people = [
-    {
-      name: "Səadət Hüseynova",
-      occupation: "Agile Coach",
-      jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-      img: managerImg,
-    },
-    {
-      name: "Məmmədov Murad",
-      occupation: "Agile Coach",
-      jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-      img: managerImg,
-    },
-    {
-      name: "Məmmədov Murad",
-      occupation: "Agile Coach",
-      jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-      img: managerImg,
-    },
-  ];
+  // const people = [
+  //   {
+  //     name: "Səadət Hüseynova",
+  //     occupation: "Agile Coach",
+  //     jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
+  //     img: managerImg,
+  //   },
+  //   {
+  //     name: "Məmmədov Murad",
+  //     occupation: "Agile Coach",
+  //     jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
+  //     img: managerImg,
+  //   },
+  //   {
+  //     name: "Məmmədov Murad",
+  //     occupation: "Agile Coach",
+  //     jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
+  //     img: managerImg,
+  //   },
+  // ];
 
   const { data } = useGetAllTeamQuery()
 
-  const people1 = data?.data.data;
-  console.log("object", people1)
+  const people1: Person[] = data?.data.data.map((item) => ({
+    name: item.name,
+    surname: item.surname,
+    position: item.position,
+    description: item.description,
+    imgUrl: item.imageUrl, // map it correctly
+  })) || [];
 
   return (
     <div className="flex flex-col gap-[50px] relative">
@@ -70,7 +76,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] w-[54%] font-bold text-center my-[6%]"
             }
-            people={people}
+            people={people1}
             occupation={"Frontend developerlər"}
           />
 
@@ -99,7 +105,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-[54%] mx-auto mb-[10%]"
             }
-            people={people}
+            people={people1}
             occupation={"Backend developerlər"}
           />
         </div>
@@ -110,7 +116,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-full mx-auto mt-[-13%] md:max-xl:mt-[0] lg:mt-[0] mb-[10%] "
               }
-              people={people}
+              people={people1}
               occupation={"Agile Team"}
             />
           </div>
@@ -120,7 +126,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold  mx-auto mb-[10%]"
               }
-              people={people}
+              people={people1}
               occupation={"QA Testerlər"}
             />
           </div>
@@ -129,7 +135,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-full mx-auto mb-[10%]"
               }
-              people={people}
+              people={people1}
               occupation={"System Support"}
             />
           </div>

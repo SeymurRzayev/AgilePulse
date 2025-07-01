@@ -31,13 +31,13 @@ export default function StartQuiz({
         </p>
 
         <ul className="flex  sm:flex-row justify-between items-center gap-2 sm:gap-2.5  w-[78%]">
-          <li className="w-full sm:w-[154px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
+          <li className="w-full sm:w-[154px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[12px] sm:text-2xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
             Sual: {totalQuestions}
           </li>
-          <li className="w-full sm:w-[200px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
+          <li className="w-full sm:w-[200px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[12px] sm:text-2xl lg:text-4xl text-[#2C4B9B] font-[corbel] border-r border-solid border-[#BEC7E0] flex items-center justify-center">
             Keçid: +{PassingScore}%
           </li>
-          <li className="w-full sm:w-[265px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[14px] sm:text-3xl lg:text-4xl text-[#2C4B9B] font-[corbel] flex items-center justify-center">
+          <li className="w-full sm:w-[265px] h-[34px] sm:h-[64px] font-bold tracking-normal leading-3 md:leading-11 text-[12px] sm:text-2xl lg:text-4xl text-[#2C4B9B] font-[corbel] flex items-center justify-center">
             Vaxt: {timeLimit} dəqiqə
           </li>
         </ul>

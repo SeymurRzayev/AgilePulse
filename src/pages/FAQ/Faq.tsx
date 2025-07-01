@@ -4,7 +4,7 @@ import TrainingsContactUs from "../../components/Trainings/TrainingsContactUs";
 import NavigateArrow from "../../ui/NavigateArrow/NavigateArrow";
 import QuestionContainer from "./QuestionContainer";
 import AnswerContainer from "./AnswerContainer";
-import { useGetAllFaqsQuery } from "../../services/features/faqApi";
+import { useGetAllFaqsQuery } from "../../services/features/mainPage/faqApi";
 import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
 
 const Faq: React.FC = () => {
@@ -16,7 +16,6 @@ const Faq: React.FC = () => {
 
   const allFaqs = allFaqsResponse?.data.data
   const slicesFaqs = allFaqs.slice(0, visibility)
-  console.log(allFaqs)
   return (
     <div className="w-full">
       <div
