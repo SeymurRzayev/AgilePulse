@@ -108,6 +108,9 @@
             margin-top: 20px;
 
         }
+        .inputField::placeholder{
+            font-size: 14px;
+        }
 
         .errorMsg {
             font-size: 14px;

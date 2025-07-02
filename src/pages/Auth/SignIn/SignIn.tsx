@@ -54,16 +54,16 @@ const SignIn: FC = () => {
         {({ isSubmitting }) => (
           <Form className="w-[50%] min-w-[250px] !gap-y-6 mt-9 mx-auto">
             <div className="w-1/2 flex items-center justify-center flex-col mx-auto gap-y-[60px]">
-              <h1 className="text-[46px] leading-14 font-bold tracking-normal font-[corbel]">
+              <h1 className="text-3xl md:text-[46px] leading-14 font-bold tracking-normal font-[corbel]">
                 Daxil ol
               </h1>
               <div className="flex flex-col gap-5">
-                <div className="flex flex-col w-[344px] rounded-xl">
+                <div className="flex flex-col w-72 md:w-[344px] rounded-xl">
                   <Field
                     name="email"
                     type="email"
                     placeholder="E-mail adress"
-                    className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] hover:shadow-[-1px_0px_6px_2px_rgba(44,75,155,0.35)] hover:shadow-[rgba(44,75,155,0.35)] transition-all duration-300 focus:border-[#2C4B9B]"
+                    className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-sm md:placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] hover:shadow-[-1px_0px_6px_2px_rgba(44,75,155,0.35)] hover:shadow-[rgba(44,75,155,0.35)] transition-all duration-300 focus:border-[#2C4B9B]"
                   />
                   <ErrorMessage
                     name="email"
@@ -77,7 +77,7 @@ const SignIn: FC = () => {
                       name="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Şifrə"
-                      className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] hover:shadow-[-1px_0px_6px_2px_rgba(44,75,155,0.35)] hover:shadow-[rgba(44,75,155,0.35)] transition-all duration-300 focus:border-[#2C4B9B]"
+                      className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-sm md:placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] hover:shadow-[-1px_0px_6px_2px_rgba(44,75,155,0.35)] hover:shadow-[rgba(44,75,155,0.35)] transition-all duration-300 focus:border-[#2C4B9B]"
                     />
                     <div
                       onClick={() => setShowPassword((prev) => !prev)}
@@ -90,20 +90,20 @@ const SignIn: FC = () => {
                     </div>
                   </div>
                 </div>
-                <span className="ml-50"><Link to="/forgotpassword" className=" text-[#566FAF] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel]">*Şifrəni unutmusan?</Link></span>
+                <span className="ml-45 md:ml-50"><Link to="/forgotpassword" className=" text-[#566FAF] text-xs md:text-sm font-normal tracking-normal leading-3 md:leading-5 font-[corbel]">*Şifrəni unutmusan?</Link></span>
               </div>
-              <div className="w-[344px]">
+              <div className="w-72 md:w-[344px]">
                 <MainButton
                   type="submit"
                   disabled={isSubmitting}
                   buttonClassName="!py-3"
                   text="Daxil ol"
                 />
-                <span className="text-[#9C9A99] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel] mt-4">
+                <span className="text-[#9C9A99] text-xs md:text-sm font-normal tracking-normal leading-[20px] font-[corbel] mt-4">
                   Hesabin var?
                   <Link
                     to="/sign-up"
-                    className="text-[#566FAF] text-[14px] font-normal tracking-normal leading-[20px] font-[corbel] ml-1"
+                    className="text-[#566FAF] text-xs md:text-sm font-normal tracking-normal leading-[20px] font-[corbel] ml-1"
                   >
                     Qeydiyyatdan keç
                   </Link>
