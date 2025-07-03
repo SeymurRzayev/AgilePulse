@@ -87,7 +87,6 @@ const BookSection: FC = () => {
     <div className={styles.bookSection}>
       <div className={styles.textContainer}>
         <p className={styles.description}>
-          {" "}
           Agile metodologiyası haqqında daha ətraflı məlumat almaq üçün
           kitabxanamızda olan bir çox kitabı <b>ödənişsiz</b> oxuya bilərsiniz.
         </p>

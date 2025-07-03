@@ -443,10 +443,12 @@
         flex-direction: column-reverse;
         justify-content: center;
         gap: 10px;
-        margin: auto;
+        margin: -60px auto;
+
     }
 
     .titleAndTest {
+        width: 97%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -469,7 +471,7 @@
         padding: 0 30px;
         font-size: 25px;
         font-weight: 600;
-        line-height: 40px;
+        line-height: 35px;
         letter-spacing: 0px;
         text-align: center;
         border-radius: 25px;
@@ -480,12 +482,18 @@
         z-index: -1;
     }
 
-    .description p {
+    .description{
+    width: 97%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+       
         font-size: 14px;
-        line-height: 36px;
+        line-height: 20px;
         text-align: center;
     }
-
+    }
     .testButton {
         display: flex;
         justify-content: center;
@@ -513,6 +521,7 @@
     }
 
     .testText {
+        width: 97%;
         margin-top: 0px;
         padding: 20px 15px;
         width: 200px;
