@@ -27,7 +27,6 @@ const SignIn: FC = () => {
 
   const handleSignin = async (values: any) => {
     try {
-      console.log(values);
       await login(values).unwrap()
     } catch (error) {
       console.log(error);

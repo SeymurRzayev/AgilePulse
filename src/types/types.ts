@@ -65,7 +65,7 @@ export interface BookByidData {
   language: string;
   pageCount: number;
   imageUrl: string;
-  description: string;
+  description?: string;
 }
 
 export interface BookByIdResponse {
