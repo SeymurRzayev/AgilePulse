@@ -38,6 +38,11 @@
     padding: 0 1rem;
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
 
 
     .slideItem {
@@ -139,7 +144,6 @@
     }
 
     .bookImage {
-      height: 400px;
       max-height: 239px;
       width: 90%;
       margin: 0 auto;
@@ -180,6 +184,7 @@
     }
 
     .sliderContainer {
+    
 
       .sliderWrapper {
         padding: 0;
@@ -190,23 +195,24 @@
         height: 350px;
         justify-content: center;
         align-items: center;
+        gap: 20px;
+       
 
         .slideItem {
-          width: 176px !important;
-          height: 270px;
+          width: 185px !important;
+          height: 260px;
           border: none;
 
-      
+        }
           .activeSlide {
-          
-            width: 155px ;
-            height: 239px;
+            width: 185px ;
+            height: 260px;
             transform: scale(1.05);
           }
 
           .blurredSlide {
-            width: 120px;
-            height: 185px;
+            width: 100px;
+            height: 260px;
             opacity: 0.4;
             filter: blur(1px);
             transform: scale(0.9);
@@ -230,4 +236,3 @@
     }
   }
 
-}
