@@ -30,7 +30,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
             content: Yup.string().required('Məzmun vacibdir'),
             text: Yup.string().required('Mətn vacibdir'),
             author: Yup.string().required('Müəllif vacibdir'),
-            imageUrl: Yup.mixed().required('Şəkil vacibdir'),
+            image: Yup.mixed().required('Şəkil vacibdir'),
         });
 
     const initialValues = isLibraryMode
@@ -47,7 +47,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
             content: '',
             text: '',
             author: '',
-            imageUrl: '',
+            image: '',
         };
 
     const handleCreate = async (values: typeof initialValues) => {
@@ -84,12 +84,12 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
         content: 'Məzmun',
         text: 'Məqalə mətni',
         author: 'Müəllif',
-        imageUrl: 'Şəkil',
+        image: 'Şəkil',
     };
     const textFields = isLibraryMode
         ? ['name', 'author', 'language', 'pageCount']
         : ['title', 'content', 'text', 'author'];
-    const fileFields = isLibraryMode ? ['pdfFile', 'image'] : ['imageUrl'];
+    const fileFields = isLibraryMode ? ['pdfFile', 'image'] : ['image'];
 
     return (
         <div className="fixed z-50 inset-0 flex justify-center items-center bg-black/50 p-4 overflow-y-auto">
@@ -122,7 +122,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                                         type="text"
                                         placeholder={fieldLabels[field]}
                                         rows={field === 'text' ? 4 : undefined}
-                                        className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition resize-none"
+                                        className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
                                     />
                                     <ErrorMessage
                                         name={field}
@@ -154,8 +154,6 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                                     <ErrorMessage name={field} component="div" className="text-red-500 text-sm mt-1" />
                                 </div>
                             ))}
-
-
 
                             {/* Submit düyməsi */}
                             <div className="sm:col-span-2 mt-2">
