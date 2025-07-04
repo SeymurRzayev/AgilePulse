@@ -68,19 +68,19 @@ const ListItem = ({
                 />
                 <span
                     onClick={() => pdfInp.current?.click()}
-                    className="bg-[#E99826] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
+                    className="bg-[#E9982666] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
                 >
                     <img src={DowmloadIcon} />
                 </span>
                 <span
                     onClick={() => imgInp.current?.click()}
-                    className="bg-[#44A15E] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
+                    className="bg-[#44A15E66] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
                 >
                     <img src={CamIcon} />
                 </span>
                 <span
                     onClick={() => onDelete(data.id)}
-                    className="bg-[#DA3D68] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
+                    className="bg-[#DA3D6866] cursor-pointer w-[60px] h-[48px] flex items-center justify-center rounded-[30px] p-2.5"
                 >
                     <img src={DelIcon} />
                 </span>

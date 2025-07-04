@@ -28,7 +28,7 @@ const AdminMainPage = () => {
     const navigate = useNavigate()
 
     return (
-        <div className=' w-full h-full '>
+        <div className=' w-full h-full py-10'>
 
             <div className='max-w-[1059pxpx] mt-[43px] pr-2'>
                 <ul className="space-y-4">

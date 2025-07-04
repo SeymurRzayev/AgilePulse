@@ -57,12 +57,12 @@ const AdminPartners = () => {
   };
 
   return (
-    <div className=' w-full h-full '>
+    <div className=' w-full h-full py-10 '>
       {showModal && <Modal onClose={() => setShowModal(false)} />}
       <div className="w-full flex justify-between px-3 ">
-        <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>Partnyorlar</h2>
+        <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3'>Partnyorlar</h2>
       </div>
-      <div style={{ overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }} className="grid grid-cols-2 w-[864px] h-[584px] gap-x-14 gap-y-2 overflow-auto">
+      <div style={{ overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }} className="grid grid-cols-2 w-[864px] h-[600px] gap-x-14 gap-y-2 overflow-auto">
         {
           allPartners?.map((partner) => (
             <div key={partner.id}
