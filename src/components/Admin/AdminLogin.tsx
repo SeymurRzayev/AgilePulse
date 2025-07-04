@@ -4,7 +4,7 @@ import loginAvatar from '../../assets/icons/loginAvatar.svg'
 const AdminLogin = () => {
 
     const user = useAppSelector(state => state.auth.user)
-    console.log("user", user);
+    // console.log("user", user);
     return (
         <div>
 

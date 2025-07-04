@@ -29,6 +29,7 @@ import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
 import AdminMainPage from "../components/Admin/AdminMainPage";
 import AdminLibraryAndArticles from "../components/Admin/AdminLibraryAndArticles";
 import AdminAddLibraryOrArticle from "../components/Admin/AdminAddLibraryOrArticle";
+import AdminPartners from "../components/Admin/MainPage/AdminPartners";
 
 
 const AppRouter: FC = () => {
@@ -65,8 +66,10 @@ const AppRouter: FC = () => {
           <Route path="main-page" element={<AdminMainPage />} />
           <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
-          <Route path="main-page/articles/addArticle" element={<AdminAddLibraryOrArticle />} />
-          <Route path="main-page/library/addBook" element={<AdminAddLibraryOrArticle />} />
+          <Route path="main-page/partners" element={<AdminPartners />} />
+          <Route path="main-page/articles/addArticle" element={<AdminAddLibraryOrArticle />} /> {/* ??? */}
+          <Route path="main-page/articles/addArticle" element={<AdminAddLibraryOrArticle />} /> {/* ??? */}
+          <Route path="main-page/library/addBook" element={<AdminAddLibraryOrArticle />} /> {/* ??? */}
         </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />
