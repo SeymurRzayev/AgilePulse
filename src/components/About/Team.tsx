@@ -28,15 +28,46 @@ const Team: FC = () => {
   //   },
   // ];
 
-  const { data } = useGetAllTeamQuery()
+  const { data } = useGetAllTeamQuery();
 
-  const people1: Person[] = data?.data.data.map((item) => ({
-    name: item.name,
-    surname: item.surname,
-    position: item.position,
-    description: item.description,
-    imgUrl: item.imageUrl, // map it correctly
-  })) || [];
+  console.log(data);
+
+  const response = data?.data.data;
+
+  console.log(response);
+
+  const positions = Array.from(new Set(response?.map((item) => item.position)));
+
+  console.log(positions);
+
+  function filterByPosition(
+    team: Person[] | undefined,
+    positionQuery: string | undefined
+  ): Person[] {
+    if (!team || !Array.isArray(team)) return [];
+    if (!positionQuery) return team;
+    const query = positionQuery.toLowerCase();
+    return team.filter((member) =>
+      member.position.toLowerCase().includes(query)
+    );
+  }
+
+  // console.log(manager);
+
+  // console.log(positions);
+
+  // const people1: Person[] =
+  //   response?.map((item) => ({
+  //     name: item.name,
+  //     surname: item.surname,
+  //     position: item.position,
+  //     description: item.description,
+  //     imgUrl: item.imageUrl, // map it correctly
+  //   })) || [];
+
+
+  console.log(filterByPosition(response, "Backend Developer"));
+  
 
   return (
     <div className="flex flex-col gap-[50px] relative">
@@ -59,12 +90,15 @@ const Team: FC = () => {
                  mt-[32px]"
             >
               <TeamInfoCard
-                name={"Səadət Hüseynova"}
-                occupation="Agile Coach"
-                jobDescription={
-                  "Startap və korporativ layihələrdə liderlik təcrübəsi."
+                name={filterByPosition(response, "Scrum Master")[0]?.name}
+                surname={filterByPosition(response, "Scrum Master")[0]?.surname}
+                occupation={
+                  filterByPosition(response, "Scrum Master")[0]?.position
                 }
-                img={managerImg}
+                jobDescription={
+                  filterByPosition(response, "Scrum Master")[0]?.description
+                }
+                img={filterByPosition(response, "Scrum Master")[0]?.imageUrl}
               />
             </div>
           </div>
@@ -76,7 +110,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] w-[54%] font-bold text-center my-[6%]"
             }
-            people={people1}
+            people={filterByPosition(response, "Frontend Developer")}
             occupation={"Frontend developerlər"}
           />
 
@@ -91,7 +125,8 @@ const Team: FC = () => {
                lg:w-[300px] lg:h-[375px] mt-[32px]"
             >
               <TeamInfoCard
-                name={"Səadət Hüseynova"}
+                name={"Səadət"}
+                surname={"Hüseynova"}
                 occupation="Agile Coach"
                 jobDescription={
                   "Startap və korporativ layihələrdə liderlik təcrübəsi."
@@ -105,7 +140,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-[54%] mx-auto mb-[10%]"
             }
-            people={people1}
+            people={filterByPosition(response, "Backend Developer")}
             occupation={"Backend developerlər"}
           />
         </div>
@@ -116,7 +151,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-full mx-auto mt-[-13%] md:max-xl:mt-[0] lg:mt-[0] mb-[10%] "
               }
-              people={people1}
+              people={filterByPosition(response, "Agile Team")}
               occupation={"Agile Team"}
             />
           </div>
@@ -126,7 +161,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold  mx-auto mb-[10%]"
               }
-              people={people1}
+              people={filterByPosition(response, "QA Tester")}
               occupation={"QA Testerlər"}
             />
           </div>
@@ -135,7 +170,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-full mx-auto mb-[10%]"
               }
-              people={people1}
+              people={filterByPosition(response, "System Support")}
               occupation={"System Support"}
             />
           </div>
