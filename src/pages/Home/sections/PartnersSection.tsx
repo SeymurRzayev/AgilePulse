@@ -3,11 +3,11 @@ import { useGetAllPartnersQuery } from "../../../services/features/mainPage/part
 import Slider from "react-slick";
 
 const PartnersSection: FC = () => {
-  const { data: allPartnersResponse } = useGetAllPartnersQuery();
-  const allPartners = allPartnersResponse?.data?.data || [];
+  const { data: allPartners } = useGetAllPartnersQuery();
+  // const allPartners = allPartnersResponse?.data?.data || [];
 
   // Guard clause: show nothing if no partners
-  if (!allPartners.length) {
+  if (!allPartners) {
     return null; // Or return a loading indicator/message
   }
 

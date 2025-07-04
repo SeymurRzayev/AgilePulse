@@ -15,7 +15,7 @@ const SECTIONS = [
     },
     {
         label: 'Partnyorlar',
-        path: ''
+        path: 'partners'
     },
     {
         label: 'Sitat sətri',
