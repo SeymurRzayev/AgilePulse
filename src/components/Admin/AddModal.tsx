@@ -14,7 +14,6 @@ interface ModalProps {
 
 const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
 
-    console.log("isLibraryMode", isLibraryMode)
     const [createBook] = useCreateBookMutation()
     const [createArticle] = useCreateArticleMutation()
 
@@ -52,31 +51,23 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
 
     const handleCreate = async (values: typeof initialValues) => {
         try {
+            const formData = new FormData();
+            Object.entries(values).forEach(([key, value]) => {
+                if (value) formData.append(key, value);
+            });
             if (isLibraryMode) {
-                const formData = new FormData();
-                formData.append('name', values.name || '');
-                formData.append('author', values.author || '');
-                formData.append('language', values.language || '');
-                formData.append('pageCount', values.pageCount || '');
-                if (values.image) formData.append('image', values.image);
-                if (values.pdfFile) formData.append('pdfFile', values.pdfFile);
                 await createBook(formData).unwrap();
             } else {
-                const formData = new FormData();
-                formData.append('title', values.title || '');
-                formData.append('content', values.content || '');
-                formData.append('text', values.text || '');
-                formData.append('author', values.author || '');
-                if (values.imageUrl) formData.append('imageUrl', values.imageUrl);
                 await createArticle(formData).unwrap();
             }
-            Swal.fire('Uğurlu', 'Kitab uğurla əlavə edildi', 'success')
+            Swal.fire('Uğurla', `${isLibraryMode ? 'Kitab' : 'Məqalə'} uğurla əlavə edildi`, 'success');
             onClose();
         } catch (error) {
-            Swal.fire('Xəta', 'Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin', 'error')
+            Swal.fire('Xəta', 'Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin', 'error');
             console.error(error);
         }
     };
+
 
     const fieldLabels: Record<string, string> = isLibraryMode ? {
         name: 'Kitabın adı',
@@ -92,6 +83,10 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
         author: 'Müəllif',
         imageUrl: 'Şəkil',
     };
+    const textFields = isLibraryMode
+        ? ['name', 'author', 'language', 'pageCount']
+        : ['title', 'content', 'text', 'author'];
+    const fileFields = isLibraryMode ? ['pdfFile', 'image'] : ['imageUrl'];
 
     return (
         <div className="fixed z-50 inset-0 flex justify-center items-center bg-black/50 p-4 overflow-y-auto">
@@ -112,10 +107,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                 >
                     {({ isSubmitting, setFieldValue }) => (
                         <Form className="grid grid-cols-1 sm:grid-cols-2 !gap-4">
-                            {(isLibraryMode
-                                ? ['name', 'author', 'language', 'pageCount']
-                                : ['title', 'content', 'text', 'author']
-                            ).map((field) => (
+                            {textFields.map((field) => (
                                 <div key={field} className="flex flex-col">
                                     <label htmlFor={field} className="mb-1 text-sm font-medium text-gray-700">
                                         {fieldLabels[field]}
@@ -136,83 +128,29 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                             ))}
 
                             {/* Fayl sahələri */}
-                            {isLibraryMode ? (
-                                <>
-                                    {/* PDF faylı */}
-                                    <div className="flex flex-col sm:col-span-2">
-                                        <label htmlFor="pdfFile" className="mb-1 text-sm font-medium text-gray-700">
-                                            PDF faylı yüklə
-                                        </label>
-                                        <input
-                                            id="pdfFile"
-                                            name="pdfFile"
-                                            type="file"
-                                            accept="application/pdf"
-                                            onChange={(e) => {
-                                                if (e.currentTarget.files) {
-                                                    setFieldValue('pdfFile', e.currentTarget.files[0]);
-                                                }
-                                            }}
-                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
-                                        />
-                                        <ErrorMessage
-                                            name="pdfFile"
-                                            component="div"
-                                            className="text-red-500 text-sm mt-1"
-                                        />
-                                    </div>
 
-                                    {/* Kitab şəkli */}
-                                    <div className="flex flex-col sm:col-span-2">
-                                        <label htmlFor="image" className="mb-1 text-sm font-medium text-gray-700">
-                                            Şəkil yüklə
-                                        </label>
-                                        <input
-                                            id="image"
-                                            name="image"
-                                            type="file"
-                                            accept="image/*"
-                                            onChange={(e) => {
-                                                if (e.currentTarget.files) {
-                                                    setFieldValue('image', e.currentTarget.files[0]);
-                                                }
-                                            }}
-                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
-                                        />
-                                        <ErrorMessage
-                                            name="image"
-                                            component="div"
-                                            className="text-red-500 text-sm mt-1"
-                                        />
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    {/* Məqalə şəkli */}
-                                    <div className="flex flex-col sm:col-span-2">
-                                        <label htmlFor="imageUrl" className="mb-1 text-sm font-medium text-gray-700">
-                                            Şəkil yüklə
-                                        </label>
-                                        <input
-                                            id="imageUrl"
-                                            name="imageUrl"
-                                            type="file"
-                                            accept="image/*"
-                                            onChange={(e) => {
-                                                if (e.currentTarget.files) {
-                                                    setFieldValue('imageUrl', e.currentTarget.files[0]);
-                                                }
-                                            }}
-                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
-                                        />
-                                        <ErrorMessage
-                                            name="imageUrl"
-                                            component="div"
-                                            className="text-red-500 text-sm mt-1"
-                                        />
-                                    </div>
-                                </>
-                            )}
+                            {fileFields.map((field) => (
+                                <div key={field} className="flex flex-col sm:col-span-2">
+                                    <label htmlFor={field} className="mb-1 text-sm font-medium text-gray-700">
+                                        {fieldLabels[field]} yüklə
+                                    </label>
+                                    <input
+                                        id={field}
+                                        name={field}
+                                        type="file"
+                                        accept={field === 'pdfFile' ? 'application/pdf' : 'image/*'}
+                                        onChange={(e) => {
+                                            if (e.currentTarget.files) {
+                                                setFieldValue(field, e.currentTarget.files[0]);
+                                            }
+                                        }}
+                                        className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
+                                    />
+                                    <ErrorMessage name={field} component="div" className="text-red-500 text-sm mt-1" />
+                                </div>
+                            ))}
+
+
 
                             {/* Submit düyməsi */}
                             <div className="sm:col-span-2 mt-2">

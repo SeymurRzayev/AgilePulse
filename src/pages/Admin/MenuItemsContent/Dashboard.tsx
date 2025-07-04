@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import dasboardIconAdmin from '../../../assets/icons/ci_main-component.svg'
-import userImg from "../../../assets/images/user.png";
 
 
 const PAGES = [
@@ -42,18 +41,6 @@ const Dashboard = () => {
 
     return (
         <div className=' w-full h-full '>
-            <div className="flex gap-3 items-center">
-                {/* Name */}
-                <div className="">
-                    {/* Must be dynamic */}
-                    <span className="block text-[#000000DE] text-sm font-bold font-[Corbel]">Seymur Rzayev</span>
-                    <span className=" text-[#000000DE] text-[12px] font-normal font-[Corbel]">Boss admin</span>
-                </div>
-                {/* Img */}
-                <div className="w-[46px] h-[46px]">
-                    <img src={userImg} alt="" />
-                </div>
-            </div>
             <div className='w-[630px] mt-[43px]'>
                 <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>Tapşırıqlar</h2>
                 <div className="grid grid-cols-3 gap-6 mt-[30px]">
