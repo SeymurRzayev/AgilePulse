@@ -10,7 +10,7 @@ import Team from "../../components/About/Team";
 const About: FC = () => {
   return (
     <>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center ">
         {/* Navbar */}
         <Navbar />
       </div>
