@@ -10,7 +10,6 @@ import { useLocation } from "react-router-dom";
 import ListItem from "./ListItem";
 import AnimatedButton from "../../ui/AnimatedButton/AnimatedButton";
 import AddModal from "./AddModal";
-import AdminLogin from "./AdminLogin";
 
 const AdminLibraryAndArticles = () => {
 
@@ -147,7 +146,7 @@ const AdminLibraryAndArticles = () => {
             filterIcon={false} height={56}
           />
         </div>
-        <AdminLogin />
+
       </div>
       <div className=''>
         <div className="w-full flex justify-between px-3 ">

@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import AdminLogin from "./AdminLogin";
 
 const SECTIONS = [
     {
@@ -30,7 +29,7 @@ const AdminMainPage = () => {
 
     return (
         <div className=' w-full h-full '>
-            <AdminLogin />
+
             <div className='max-w-[1059pxpx] mt-[43px] pr-2'>
                 <ul className="space-y-4">
                     {
