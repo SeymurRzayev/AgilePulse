@@ -8,7 +8,7 @@ const AdminLogin = () => {
     return (
         <div>
 
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center mb-5">
                 {/* Name */}
                 <div className="">
                     {/* Must be dynamic */}

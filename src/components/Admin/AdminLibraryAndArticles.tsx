@@ -161,7 +161,7 @@ const AdminLibraryAndArticles = () => {
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none'
                 }}
-                className="space-y-[19px] max-h-[520px] mt-5 overflow-y-scroll animated-list"
+                className="space-y-[19px] max-h-[545px] mt-5 overflow-y-scroll animated-list"
               >
                 {
                   isLibraryMode
@@ -196,7 +196,7 @@ const AdminLibraryAndArticles = () => {
               </ul>
             )
         }
-        <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
+        <div className=" left-[50%] absolute bottom-0 mb-10 flex items-center justify-center">
           <AnimatedButton onClick={() => setShowModal(prev => !prev)} className="!w-[250px] !h-[56px] !font-[Lexend]">
             Yeni {isLibraryMode ? 'kitab' : 'məqalə'} yarat <span className="text-3xl ml-2 font-light">+</span>
           </AnimatedButton>
