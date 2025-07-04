@@ -337,5 +337,5 @@ export type Person = {
   surname: string;
   position: string;
   description: string;
-  imgUrl: string;
+  imageUrl?: string;
 };

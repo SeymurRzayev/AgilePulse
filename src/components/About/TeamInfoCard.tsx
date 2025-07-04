@@ -1,13 +1,20 @@
 import type { FC } from "react";
 type Props = {
   name: string;
+  surname: string;
   occupation: string;
   jobDescription: string;
   img: any;
 };
 
 // FC<TeamMember> = ({ name, surname, position, description, imageUrl })
-const TeamInfoCard: FC<Props> = ({ name, occupation, jobDescription, img }) => {
+const TeamInfoCard: FC<Props> = ({
+  name,
+  surname,
+  occupation,
+  jobDescription,
+  img,
+}) => {
   return (
     <>
       <div
@@ -16,7 +23,7 @@ const TeamInfoCard: FC<Props> = ({ name, occupation, jobDescription, img }) => {
       >
         <div className="p-7 mt-auto">
           <h5 className="text-[#000000DE] font-bold leading-[16px] text-[16px]">
-            {name}
+            {name} {surname}
           </h5>
           <span className="text-[#566FAF] font-bold leading-[16px] text-[12px]">
             {occupation}
