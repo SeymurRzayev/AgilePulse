@@ -1,5 +1,5 @@
 import { useState, type FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { signInSchema } from "../../../validation/signInSchema";
 import openEye from "../../../assets/icons/Inputeye.svg";
 import closeEye from "../../../assets/icons/Inputclosedeye.svg";
@@ -12,13 +12,22 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import MainButton from "../../../components/Butttons/MainButton";
 import Swal from "sweetalert2";
 import { useLoginMutation } from "../../../services/features/auth/loginApi";
+import { useAppSelector } from "../../../redux/hooks/Hooks";
 
 //  validation schema for sign-in form
 
 const SignIn: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [login] = useLoginMutation()
+  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
+
   useSwipeBack();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = new URLSearchParams(location.search);
+  console.log("params", params);
+  const redirect = params.get('redirect') || '/';
+  console.log("redirect", redirect);
 
   const initialValues = {
     email: "",
@@ -28,6 +37,9 @@ const SignIn: FC = () => {
   const handleSignin = async (values: any) => {
     try {
       await login(values).unwrap()
+      if (!isLoggedIn) {
+        navigate(redirect);
+      }
     } catch (error) {
       console.log(error);
       Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error");
@@ -45,8 +57,8 @@ const SignIn: FC = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={signInSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          handleSignin(values);
+        onSubmit={async (values, { setSubmitting }) => {
+          await handleSignin(values);
           setSubmitting(false);
         }}
       >

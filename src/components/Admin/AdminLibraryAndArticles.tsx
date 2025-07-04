@@ -1,4 +1,3 @@
-import userImg from "../../assets/images/user.png";
 import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/mainPage/bookApi";
 import TrainingsSearchContainer from "../Trainings/TrainingsSearchContainer";
 import { useEffect, useState } from "react";
@@ -11,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import ListItem from "./ListItem";
 import AnimatedButton from "../../ui/AnimatedButton/AnimatedButton";
 import AddModal from "./AddModal";
+import AdminLogin from "./AdminLogin";
 
 const AdminLibraryAndArticles = () => {
 
@@ -138,7 +138,7 @@ const AdminLibraryAndArticles = () => {
 
   return (
     <div className=' w-full h-full '>
-      {showModal && <AddModal onClose={() => setShowModal(false)} />}
+      {showModal && <AddModal onClose={() => setShowModal(false)} isLibraryMode={isLibraryMode} />}
       <div className="w-full  flex justify-between items-start ">
         <div className="w-[669px] h-fit">
           <TrainingsSearchContainer
@@ -147,18 +147,7 @@ const AdminLibraryAndArticles = () => {
             filterIcon={false} height={56}
           />
         </div>
-        <div className="flex gap-3 items-center">
-          {/* Name */}
-          <div className="">
-            {/* Must be dynamic */}
-            <span className="block text-[#000000DE] text-sm font-bold font-[Corbel]">Seymur Rzayev</span>
-            <span className=" text-[#000000DE] text-[12px] font-normal font-[Corbel]">Boss admin</span>
-          </div>
-          {/* Img */}
-          <div className="w-[46px] h-[46px]">
-            <img src={userImg} alt="" />
-          </div>
-        </div>
+        <AdminLogin />
       </div>
       <div className=''>
         <div className="w-full flex justify-between px-3 ">

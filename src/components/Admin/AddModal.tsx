@@ -3,43 +3,73 @@ import Xicon from '../../assets/icons/Modalcloseicon.svg';
 import { useCreateBookMutation } from '../../services/features/mainPage/bookApi';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
+import { useCreateArticleMutation } from '../../services/features/mainPage/articleApi';
 
 
 
 interface ModalProps {
     onClose: () => void;
+    isLibraryMode?: boolean;
 }
 
-const AddModal = ({ onClose }: ModalProps) => {
+const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
 
-    const [create] = useCreateBookMutation()
+    console.log("isLibraryMode", isLibraryMode)
+    const [createBook] = useCreateBookMutation()
+    const [createArticle] = useCreateArticleMutation()
 
-    const validationSchema = Yup.object({
-        name: Yup.string().required('Kitabın adı vacibdir'),
-        author: Yup.string().required('Müəllif vacibdir'),
-        pdfFile: Yup.mixed().required('PDF faylı vacibdir'),
-        image: Yup.mixed().required('Şəkil vacibdir'),
-    });
+    const validationSchema = isLibraryMode
+        ? Yup.object({
+            name: Yup.string().required('Kitabın adı vacibdir'),
+            author: Yup.string().required('Müəllif vacibdir'),
+            pdfFile: Yup.mixed().required('PDF faylı vacibdir'),
+            image: Yup.mixed().required('Şəkil vacibdir'),
+        })
+        : Yup.object({
+            title: Yup.string().required('Başlıq vacibdir'),
+            content: Yup.string().required('Məzmun vacibdir'),
+            text: Yup.string().required('Mətn vacibdir'),
+            author: Yup.string().required('Müəllif vacibdir'),
+            imageUrl: Yup.mixed().required('Şəkil vacibdir'),
+        });
 
-    const initialValues = {
-        name: '',
-        author: '',
-        pdfFile: '',
-        language: '',
-        pageCount: '',
-        image: '',
-    };
+    const initialValues = isLibraryMode
+        ? {
+            name: '',
+            author: '',
+            pdfFile: '',
+            language: '',
+            pageCount: '',
+            image: '',
+        }
+        : {
+            title: '',
+            content: '',
+            text: '',
+            author: '',
+            imageUrl: '',
+        };
 
     const handleCreate = async (values: typeof initialValues) => {
         try {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            formData.append('author', values.author);
-            formData.append('language', values.language);
-            formData.append('pageCount', values.pageCount);
-            formData.append('image', values.image);
-            formData.append('pdfFile', values.pdfFile);
-            await create(formData).unwrap()
+            if (isLibraryMode) {
+                const formData = new FormData();
+                formData.append('name', values.name || '');
+                formData.append('author', values.author || '');
+                formData.append('language', values.language || '');
+                formData.append('pageCount', values.pageCount || '');
+                if (values.image) formData.append('image', values.image);
+                if (values.pdfFile) formData.append('pdfFile', values.pdfFile);
+                await createBook(formData).unwrap();
+            } else {
+                const formData = new FormData();
+                formData.append('title', values.title || '');
+                formData.append('content', values.content || '');
+                formData.append('text', values.text || '');
+                formData.append('author', values.author || '');
+                if (values.imageUrl) formData.append('imageUrl', values.imageUrl);
+                await createArticle(formData).unwrap();
+            }
             Swal.fire('Uğurlu', 'Kitab uğurla əlavə edildi', 'success')
             onClose();
         } catch (error) {
@@ -48,13 +78,19 @@ const AddModal = ({ onClose }: ModalProps) => {
         }
     };
 
-    const fieldLabels: Record<string, string> = {
+    const fieldLabels: Record<string, string> = isLibraryMode ? {
         name: 'Kitabın adı',
         author: 'Müəllif',
         language: 'Dil',
         pageCount: 'Səhifə sayı',
         image: 'Şəkil',
         pdfFile: 'PDF faylı',
+    } : {
+        title: 'Başlıq',
+        content: 'Məzmun',
+        text: 'Məqalə mətni',
+        author: 'Müəllif',
+        imageUrl: 'Şəkil',
     };
 
     return (
@@ -69,10 +105,17 @@ const AddModal = ({ onClose }: ModalProps) => {
 
                 <h2 className="text-2xl font-bold text-center mb-6 text-[#2C4B9B]">Yeni kitab əlavə et</h2>
 
-                <Formik initialValues={initialValues} onSubmit={handleCreate} validationSchema={validationSchema}>
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={handleCreate}
+                    validationSchema={validationSchema}
+                >
                     {({ isSubmitting, setFieldValue }) => (
                         <Form className="grid grid-cols-1 sm:grid-cols-2 !gap-4">
-                            {['name', 'author', 'language', 'pageCount'].map((field) => (
+                            {(isLibraryMode
+                                ? ['name', 'author', 'language', 'pageCount']
+                                : ['title', 'content', 'text', 'author']
+                            ).map((field) => (
                                 <div key={field} className="flex flex-col">
                                     <label htmlFor={field} className="mb-1 text-sm font-medium text-gray-700">
                                         {fieldLabels[field]}
@@ -92,51 +135,86 @@ const AddModal = ({ onClose }: ModalProps) => {
                                 </div>
                             ))}
 
-                            <div className="flex flex-col sm:col-span-2">
-                                <label htmlFor="pdfFile" className="mb-1 text-sm font-medium text-gray-700">
-                                    PDF faylı yüklə
-                                </label>
-                                <input
-                                    id="pdfFile"
-                                    name="pdfFile"
-                                    type="file"
-                                    accept="application/pdf"
-                                    onChange={(e) => {
-                                        if (e.currentTarget.files) {
-                                            setFieldValue('pdfFile', e.currentTarget.files[0]);
-                                        }
-                                    }}
-                                    className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:cursor-pointer file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
-                                />
-                                <ErrorMessage
-                                    name="pdfFile"
-                                    component="div"
-                                    className="text-red-500 text-sm mt-1"
-                                />
-                            </div>
-                            <div className="flex flex-col sm:col-span-2">
-                                <label htmlFor="image" className="mb-1 text-sm font-medium text-gray-700">
-                                    Şəkil yüklə
-                                </label>
-                                <input
-                                    id="image"
-                                    name="image"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => {
-                                        if (e.currentTarget.files) {
-                                            setFieldValue('image', e.currentTarget.files[0]);
-                                        }
-                                    }}
-                                    className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:cursor-pointer file:text-white hover:file:bg-[#1e3576] transition"
-                                />
-                                <ErrorMessage
-                                    name="image"
-                                    component="div"
-                                    className="text-red-500 text-sm mt-1"
-                                />
-                            </div>
+                            {/* Fayl sahələri */}
+                            {isLibraryMode ? (
+                                <>
+                                    {/* PDF faylı */}
+                                    <div className="flex flex-col sm:col-span-2">
+                                        <label htmlFor="pdfFile" className="mb-1 text-sm font-medium text-gray-700">
+                                            PDF faylı yüklə
+                                        </label>
+                                        <input
+                                            id="pdfFile"
+                                            name="pdfFile"
+                                            type="file"
+                                            accept="application/pdf"
+                                            onChange={(e) => {
+                                                if (e.currentTarget.files) {
+                                                    setFieldValue('pdfFile', e.currentTarget.files[0]);
+                                                }
+                                            }}
+                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
+                                        />
+                                        <ErrorMessage
+                                            name="pdfFile"
+                                            component="div"
+                                            className="text-red-500 text-sm mt-1"
+                                        />
+                                    </div>
 
+                                    {/* Kitab şəkli */}
+                                    <div className="flex flex-col sm:col-span-2">
+                                        <label htmlFor="image" className="mb-1 text-sm font-medium text-gray-700">
+                                            Şəkil yüklə
+                                        </label>
+                                        <input
+                                            id="image"
+                                            name="image"
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => {
+                                                if (e.currentTarget.files) {
+                                                    setFieldValue('image', e.currentTarget.files[0]);
+                                                }
+                                            }}
+                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
+                                        />
+                                        <ErrorMessage
+                                            name="image"
+                                            component="div"
+                                            className="text-red-500 text-sm mt-1"
+                                        />
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    {/* Məqalə şəkli */}
+                                    <div className="flex flex-col sm:col-span-2">
+                                        <label htmlFor="imageUrl" className="mb-1 text-sm font-medium text-gray-700">
+                                            Şəkil yüklə
+                                        </label>
+                                        <input
+                                            id="imageUrl"
+                                            name="imageUrl"
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => {
+                                                if (e.currentTarget.files) {
+                                                    setFieldValue('imageUrl', e.currentTarget.files[0]);
+                                                }
+                                            }}
+                                            className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
+                                        />
+                                        <ErrorMessage
+                                            name="imageUrl"
+                                            component="div"
+                                            className="text-red-500 text-sm mt-1"
+                                        />
+                                    </div>
+                                </>
+                            )}
+
+                            {/* Submit düyməsi */}
                             <div className="sm:col-span-2 mt-2">
                                 <button
                                     type="submit"
@@ -149,6 +227,7 @@ const AddModal = ({ onClose }: ModalProps) => {
                         </Form>
                     )}
                 </Formik>
+
             </div>
         </div>
     );
