@@ -268,7 +268,7 @@ const Navbar: FC<NavbarProps> = ({
                       Qeydiyyat
                     </NavLink>
                     <NavLink
-                      to="/sign-in"
+                      to={`/sign-in?redirect=${encodeURIComponent(location.pathname)}`}
                       className={({ isActive }) =>
                         `${styles.button} ${styles.outlineBtn} ${isActive ? styles.active : ""
                         }`
@@ -281,7 +281,7 @@ const Navbar: FC<NavbarProps> = ({
 
                   <div className="flex lg:hidden ">
                     <NavLink
-                      to="/sign-in"
+                      to={`/sign-in?redirect=${encodeURIComponent(location.pathname)}`}
                       className={({ isActive }) =>
                         ` ${isActive ? `${styles.active}` : ""
                         }`
@@ -379,7 +379,7 @@ const Navbar: FC<NavbarProps> = ({
                         Qeydiyyat
                       </NavLink>
                       <NavLink
-                        to="/sign-in"
+                        to={`/sign-in?redirect=${encodeURIComponent(location.pathname)}`}
                         className={({ isActive }) =>
                           `${styles.sidebarButton} ${styles.sidebarOutlineBtn} ${isActive ? styles.active : ""
                           }`
