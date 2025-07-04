@@ -198,7 +198,7 @@ const AdminLibraryAndArticles = () => {
         }
         <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
           <AnimatedButton onClick={() => setShowModal(prev => !prev)} className="!w-[250px] !h-[56px] !font-[Lexend]">
-            Yeni layihə yarat <span className="text-3xl ml-2 font-light">+</span>
+            Yeni {isLibraryMode ? 'kitab' : 'məqalə'} yarat <span className="text-3xl ml-2 font-light">+</span>
           </AnimatedButton>
         </div>
 

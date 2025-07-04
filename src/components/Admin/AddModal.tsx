@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import Xicon from '../../assets/icons/Modalcloseicon.svg';
-import { useCreateBookMutation } from '../../services/features/mainPage/bookApi';
+import { useCreateBookMutation, useGetAllBookQuery } from '../../services/features/mainPage/bookApi';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
-import { useCreateArticleMutation } from '../../services/features/mainPage/articleApi';
-
+import { useCreateArticleMutation, useGetAllArticleQuery } from '../../services/features/mainPage/articleApi';
+import './Admin.css'
 
 
 interface ModalProps {
@@ -13,7 +13,8 @@ interface ModalProps {
 }
 
 const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
-
+    const { refetch: refreshBook } = useGetAllBookQuery();
+    const { refetch: refreshArticle } = useGetAllArticleQuery();
     const [createBook] = useCreateBookMutation()
     const [createArticle] = useCreateArticleMutation()
 
@@ -57,8 +58,10 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
             });
             if (isLibraryMode) {
                 await createBook(formData).unwrap();
+                refreshBook()
             } else {
                 await createArticle(formData).unwrap();
+                refreshArticle()
             }
             Swal.fire('Uğurla', `${isLibraryMode ? 'Kitab' : 'Məqalə'} uğurla əlavə edildi`, 'success');
             onClose();
@@ -98,7 +101,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                     <img src={Xicon} alt="Bağla" className="w-5 h-5" />
                 </button>
 
-                <h2 className="text-2xl font-bold text-center mb-6 text-[#2C4B9B]">Yeni kitab əlavə et</h2>
+                <h2 className="text-2xl font-bold text-center mb-6 text-[#2C4B9B]">Yeni {isLibraryMode ? 'kitab' : 'məqalə'} əlavə et</h2>
 
                 <Formik
                     initialValues={initialValues}
@@ -113,11 +116,13 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                                         {fieldLabels[field]}
                                     </label>
                                     <Field
+                                        as={field === 'text' ? 'textarea' : 'input'}
                                         id={field}
                                         name={field}
                                         type="text"
                                         placeholder={fieldLabels[field]}
-                                        className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
+                                        rows={field === 'text' ? 4 : undefined}
+                                        className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition resize-none"
                                     />
                                     <ErrorMessage
                                         name={field}
@@ -144,7 +149,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                                                 setFieldValue(field, e.currentTarget.files[0]);
                                             }
                                         }}
-                                        className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition"
+                                        className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#2C4B9B] file:text-white hover:file:bg-[#1e3576] transition "
                                     />
                                     <ErrorMessage name={field} component="div" className="text-red-500 text-sm mt-1" />
                                 </div>
@@ -157,7 +162,7 @@ const AddModal = ({ onClose, isLibraryMode }: ModalProps) => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-[#2C4B9B] hover:bg-[#1e3576] text-white py-3 px-6 rounded-lg font-semibold transition"
+                                    className="w-full bg-[#2C4B9B] hover:bg-[#1e3576] text-white py-3 px-6 rounded-lg font-semibold transition bg-[linear-gradient(252.47deg,_#4E61EC_9.65%,_#621DAC_50.22%,_#401795_90.01%)]"
                                 >
                                     {isSubmitting ? 'Göndərilir...' : 'Yadda saxla'}
                                 </button>

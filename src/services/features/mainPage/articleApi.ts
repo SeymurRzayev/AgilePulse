@@ -18,7 +18,7 @@ export const articleApi = baseApi.injectEndpoints({
         }),
         createArticle: build.mutation<void, FormData>({
             query: (data) => ({
-                url: '/book/create',
+                url: '/articles/create',
                 method: 'POST',
                 body: data,
             }),
