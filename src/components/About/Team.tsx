@@ -70,7 +70,7 @@ const Team: FC = () => {
   
 
   return (
-    <div className="flex flex-col gap-[50px] relative">
+    <div className="flex flex-col gap-4 md:gap-[50px] relative">
       <Lines />
 
       <h1 className="text-[34px] md:max-xl:text-5xl lg:text-5xl  bg-gradient-to-r from-[#E7912B] via-[#D83D69] to-[#2C4B9B] bg-clip-text text-transparent text-center font-bold">
@@ -78,7 +78,7 @@ const Team: FC = () => {
       </h1>
       <div className="cntList ">
         <div className="mngrCnt w-full">
-          <div className="managerCntContent mx-auto mt-[12%]">
+          <div className="managerCntContent mx-auto mt-[4%] md:mt-[12%]">
             <h2 className="text-[26px] md:max-xl:text-[30px] lg:text-[38px] font-bold text-center  ">
               Layihə meneceri
             </h2>

@@ -2,11 +2,12 @@
 type ShowMoreBtnProps = {
     onClick: () => void;
     text: string;
+    classname?: string;
 };
-export default function ShowMoreBtn({ onClick, text }: ShowMoreBtnProps) {
+export default function ShowMoreBtn({ onClick, text, classname }: ShowMoreBtnProps) {
 
     return (
-        <div className="flex justify-center mt-4">
+        <div className={`flex justify-center mt-4 ${classname}`}>
             <button
                 onClick={() => onClick()}
                 className="relative inline-flex items-center justify-center gap-2 px-6 py-2.5 text-indigo-600 font-[lexend] text-base rounded-full border border-indigo-600 transition-all duration-300 overflow-hidden

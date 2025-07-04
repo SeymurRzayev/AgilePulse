@@ -30,7 +30,7 @@ const Missions: FC = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 w-[90%] mx-auto my-32">
+    <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 w-[90%] mx-auto my-8 md:my-32">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
         {/* left img cnt */}
         <div className="flex flex-col gap-6 ">

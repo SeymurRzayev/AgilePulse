@@ -16,9 +16,9 @@ export const loginApi = baseApi.injectEndpoints({
                     const { data } = await queryFulfilled;
                     localStorage.setItem("token", data.refreshToken);
                     localStorage.setItem("user", JSON.stringify(data));
-                    dispatch(setLoggedUser(data))
                     if (data?.refreshToken) {
-                        window.location.href = '/'
+                        dispatch(setLoggedUser(data))
+                        // window.location.href = '/'
                     }
                 } catch (err) {
                     Swal.fire("Xəta!", "İstifadəçi adı və ya şifrə yanlışdır", "error")

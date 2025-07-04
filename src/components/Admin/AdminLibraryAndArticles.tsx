@@ -1,4 +1,3 @@
-import userImg from "../../assets/images/user.png";
 import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/mainPage/bookApi";
 import TrainingsSearchContainer from "../Trainings/TrainingsSearchContainer";
 import { useEffect, useState } from "react";
@@ -7,19 +6,20 @@ import Swal from "sweetalert2";
 import './Admin.css'
 import LoadingSpinner from "../General/LoadingSpinner";
 import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/mainPage/articleApi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ListItem from "./ListItem";
-import MainButton from "../Butttons/MainButton";
+import AnimatedButton from "../../ui/AnimatedButton/AnimatedButton";
+import AddModal from "./AddModal";
 
 const AdminLibraryAndArticles = () => {
 
   const location = useLocation()
-  const navigate = useNavigate()
   const isLibraryMode: boolean = location.pathname.includes('library')
 
   const [books, setBooks] = useState<Book[]>([]);
   const [articles, setArticles] = useState<ArticleRes[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const { data: allBookData, refetch: refreshBook, isLoading: isLoadingBooks } = useGetAllBookQuery();
   const { data: allArticleData, refetch: refreshArticle, isLoading: isLoadingArticle } = useGetAllArticleQuery();
@@ -79,27 +79,6 @@ const AdminLibraryAndArticles = () => {
   };
 
 
-  /*   const handleFieldChange = (
-      id: number,
-      field: keyof Book,
-      value: string | number
-    ) => {
-      const book = books.find(book => book.id === id);
-      if (!book) return;
-  
-      const updatedBooks = books.map(b =>
-        b.id === id ? { ...b, [field]: value } : b
-      );
-      setBooks(updatedBooks);
-  
-      const formData = new FormData();
-      formData.append(field, value.toString());
-  
-      updateBook({ bookId: id, formData }).unwrap().catch(() =>
-        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Yenilənmə uğursuz oldu!' })
-      );
-    }; */
-
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -125,27 +104,6 @@ const AdminLibraryAndArticles = () => {
       Swal.fire({ icon: "error", title: "Xəta", text: "Fayl yüklənmədi." });
     }
   };
-
-
-  /*   const handleFileUpload = async (
-      e: React.ChangeEvent<HTMLInputElement>,
-      id: number,
-      field: "image" | "pdfFile"
-    ) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-  
-      const formData = new FormData();
-      formData.append(field, file);
-  
-      try {
-        await updateBook({ bookId: id, formData }).unwrap();
-        refreshBook()
-        Swal.fire({ icon: "success", title: "Uğurla yükləndi!" });
-      } catch (error) {
-        Swal.fire({ icon: "error", title: "Xəta", text: "Fayl yüklənmədi." });
-      }
-    }; */
 
   const handleItemDelete = async (id: number) => {
     const result = await Swal.fire({
@@ -179,7 +137,7 @@ const AdminLibraryAndArticles = () => {
 
   return (
     <div className=' w-full h-full '>
-
+      {showModal && <AddModal onClose={() => setShowModal(false)} isLibraryMode={isLibraryMode} />}
       <div className="w-full  flex justify-between items-start ">
         <div className="w-[669px] h-fit">
           <TrainingsSearchContainer
@@ -188,23 +146,11 @@ const AdminLibraryAndArticles = () => {
             filterIcon={false} height={56}
           />
         </div>
-        <div className="flex gap-3 items-center">
-          {/* Name */}
-          <div className="">
-            {/* Must be dynamic */}
-            <span className="block text-[#000000DE] text-sm font-bold font-[Corbel]">Seymur Rzayev</span>
-            <span className=" text-[#000000DE] text-[12px] font-normal font-[Corbel]">Boss admin</span>
-          </div>
-          {/* Img */}
-          <div className="w-[46px] h-[46px]">
-            <img src={userImg} alt="" />
-          </div>
-        </div>
+
       </div>
       <div className=''>
         <div className="w-full flex justify-between px-3 ">
           <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
-          <MainButton text={isLibraryMode ? "+ Kitab " : "+ Məqalə"} onClick={() => navigate(`${isLibraryMode ? 'addBook' : 'addArticle'}`)} />
         </div>
         {
           isLoadingBooks || isLoadingArticle
@@ -250,13 +196,18 @@ const AdminLibraryAndArticles = () => {
               </ul>
             )
         }
+        <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
+          <AnimatedButton onClick={() => setShowModal(prev => !prev)} className="!w-[250px] !h-[56px] !font-[Lexend]">
+            Yeni {isLibraryMode ? 'kitab' : 'məqalə'} yarat <span className="text-3xl ml-2 font-light">+</span>
+          </AnimatedButton>
+        </div>
+
       </div>
     </div>
   )
 }
 
 export default AdminLibraryAndArticles
-
 
 
 

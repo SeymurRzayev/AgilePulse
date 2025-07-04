@@ -1,9 +1,9 @@
-
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -12,4 +12,20 @@
 
 .fade-in {
   animation: fade-in 0.3s ease-out both;
+}
+
+/* index.css və ya global.css faylında yaz */
+input[type="file"]::file-selector-button {
+  background-image: linear-gradient(252.47deg, #4E61EC 9.65%, #621DAC 50.22%, #401795 90.01%);
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-image: linear-gradient(252.47deg, #3a4bd8 9.65%, #51109a 50.22%, #320e7e 90.01%);
 }

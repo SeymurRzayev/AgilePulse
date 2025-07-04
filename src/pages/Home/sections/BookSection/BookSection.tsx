@@ -17,7 +17,7 @@ const BookSection: FC = () => {
     null
   );
 
-  const { data } = useGetAllBookQuery()
+  const { data, isLoading, isError } = useGetAllBookQuery()
 
   const allBook = data?.data?.data
 
@@ -87,36 +87,41 @@ const BookSection: FC = () => {
     <div className={styles.bookSection}>
       <div className={styles.textContainer}>
         <p className={styles.description}>
-          {" "}
           Agile metodologiyası haqqında daha ətraflı məlumat almaq üçün
           kitabxanamızda olan bir çox kitabı <b>ödənişsiz</b> oxuya bilərsiniz.
         </p>
       </div>
       <div className={styles.sliderContainer}>
-        <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
-          {allBook?.map((book, index) => (
-            <div
-              key={index}
-              className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
-                } `}
-              onClick={togglePause}
-              title={
-                isPaused
-                  ? "Davam etdirmək üçün kliklə"
-                  : "Dayandırmaq üçün kliklə"
-              }
-              tabIndex={-1}
-            >
-              <img
-                onClick={() => navigate(`/library/detail/${book.id}`)}
-                src={book.imageUrl}
-                alt={`Agile book ${index + 1}`}
-                className={` ${styles.bookImage}`}
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </Slider>
+        {isLoading ? (
+          <div>Yüklənir...</div>
+        ) : isError ? (
+          <div>Xəta baş verdi!</div>
+        ) : (
+          <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
+            {allBook?.map((book, index) => (
+              <div
+                key={index}
+                className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
+                  } `}
+                onClick={togglePause}
+                title={
+                  isPaused
+                    ? "Davam etdirmək üçün kliklə"
+                    : "Dayandırmaq üçün kliklə"
+                }
+                tabIndex={-1}
+              >
+                <img
+                  onClick={() => navigate(`/library/detail/${book.id}`)}
+                  src={book.imageUrl}
+                  alt={`Agile book ${index + 1}`}
+                  className={` ${styles.bookImage}`}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </Slider>
+        )}
         <div className={styles.buttonContainer}>
           <button
             onClick={() => navigate("/library")}

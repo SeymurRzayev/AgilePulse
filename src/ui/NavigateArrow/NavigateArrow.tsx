@@ -1,7 +1,15 @@
-import navigateArrow from "../../assets/images/arrow.svg";
 import { useNavigate } from "react-router-dom";
+import defaultArrowIcon from "../../assets/images/arrow.svg";
 
-const NavigateArrow = () => {
+interface NavigateArrowProps {
+  className?: string;
+  iconSrc?: string;
+}
+
+const NavigateArrow = ({
+  className = "",
+  iconSrc = defaultArrowIcon,
+}: NavigateArrowProps) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -13,14 +21,12 @@ const NavigateArrow = () => {
   };
 
   return (
-    <div
-      className="absolute w-[60px] h-[60px] "
-    >
+    <div className={`absolute w-[60px] h-[60px] `}>
       <img
-        src={navigateArrow}
+        src={iconSrc}
         onClick={handleBack}
         alt="əvvəlki səhifəyə qayıt"
-        className="w-[19px] h-[20px] cursor-pointer"
+        className={`w-[19px] h-[20px] cursor-pointer ${className}`}
       />
     </div>
   );

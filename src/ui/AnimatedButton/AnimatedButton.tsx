@@ -4,11 +4,13 @@ import styles from "./AnimatedButton.module.css";
 
 interface AnimatedButtonProps {
   children: ReactNode;
+  className?: string;
+  onClick?: () => void;
 }
 
-const AnimatedButton: FC<AnimatedButtonProps> = ({ children }) => {
+const AnimatedButton: FC<AnimatedButtonProps> = ({ children, className, onClick }) => {
   return (
-    <button className={`${styles.btn} !cursor-pointer`} type="button">
+    <button onClick={onClick} className={`${styles.btn} ${className} !cursor-pointer`} type="button">
       {children}
     </button>
   );
