@@ -55,6 +55,14 @@ const OTP = () => {
     inputRefs.current[lastIndex]?.focus();
   };
 
+  const handleFocus = (index: number) => {
+    // Mobil cihazlarda klaviatura aktivləşməsi üçün
+    if (inputRefs.current[index]) {
+      inputRefs.current[index]?.click();
+      inputRefs.current[index]?.focus();
+    }
+  };
+
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -67,8 +75,9 @@ const OTP = () => {
       await sendOtp({ email, otp: otpCode }).unwrap()
       Swal.fire('Uğurlu!', 'Qeydiyyat uğurla tamamlandı', 'success')
       navigate('/sign-in', { replace: true })
-    } catch (error: any) {
-      error?.status === 401
+    } catch (error: unknown) {
+      const err = error as { status?: number };
+      err?.status === 401
         ? Swal.fire('Xəta baş verdi!', 'Təsdiq kodu yanlışdır!', 'error')
         : Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
     }
@@ -83,7 +92,7 @@ const OTP = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-4">
+    <div className="w-full min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <button
           onClick={() => navigate(-1)}
@@ -92,10 +101,10 @@ const OTP = () => {
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Geri
+        
         </button>
 
-        <div className="bg-white rounded-3xl shadow-xl p-8 border border-[#E5E7EB]">
+        <div className="w-[95%] bg-white rounded-3xl shadow-xl p-8 border border-[#E5E7EB]">
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Təsdiq kodu</h1>
             <p className="text-gray-600 text-sm">
@@ -114,29 +123,35 @@ const OTP = () => {
             </div>
           </div>
 
-          <div className="flex justify-center gap-3 mb-8">
+          <div className="w-full flex justify-center gap-1 md:gap-2 mb-8">
             {otp.map((digit, index) => (
               <input
                 key={index}
                 ref={(el) => { inputRefs.current[index] = el; }}
-
                 type="text"
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 onPaste={handlePaste}
-                className="w-12 h-14 text-center text-xl font-bold border-2 border-gray-200 rounded-xl focus:border-[#2C4B9B] focus:ring-2 focus:ring-[#4e71c7] transition-all duration-200 outline-none bg-gray-50 focus:bg-white"
+                onFocus={() => handleFocus(index)}
+                onTouchStart={() => handleFocus(index)}
+                className="w-8 h-10 md:w-12 md:h-14 text-center text-xl font-bold border-2 border-gray-200 rounded-xl focus:border-[#2C4B9B] focus:ring-2 focus:ring-[#4e71c7] transition-all duration-200 outline-none bg-gray-50 focus:bg-white"
                 maxLength={1}
                 inputMode="numeric"
+                pattern="[0-9]*"
+                autoComplete="one-time-code"
                 autoFocus={index === 0}
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck="false"
               />
             ))}
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col justify-center items-center">
             <button
               onClick={handleVerify}
-              className="w-full bg-gradient-to-r from-[#2C4B9B] to-[#2C4B9B] hover:from-[#2C4B9B] hover:to-[#2C4B9B] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+              className="w-[95%] md:w-full bg-gradient-to-r from-[#2C4B9B] to-[#2C4B9B] hover:from-[#2C4B9B] hover:to-[#2C4B9B] text-white font-semibold  py-4 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
             >
               Təsdiqlə
             </button>
@@ -144,7 +159,7 @@ const OTP = () => {
             <button
               onClick={handleResend}
               disabled={isResendDisabled}
-              className={`w-full font-semibold py-4 px-6 rounded-2xl transition-all duration-200 ${isResendDisabled
+              className={`w-[95%] md:w-full font-semibold py-4 px-6 rounded-2xl transition-all duration-200 ${isResendDisabled
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                 : 'bg-gradient-to-r from-[#4B4193] to-[#DA3D68] hover:from-[#4B4193] hover:to-[#E99826] text-white shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]'
                 }`}
