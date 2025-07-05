@@ -5,8 +5,13 @@ import Slider from "react-slick";
 import TrainingCard from "../../Trainings/TrainingCard";
 import TrainingExperiences from "../../../pages/Home/sections/TrainingExperiences";
 import { useNavigate } from "react-router-dom";
+import type { Training } from "../../../types/types";
 
-const ScrumList = () => {
+type ScrumListProps = {
+  data: Training | undefined;
+}
+
+const ScrumList = ({ data }: ScrumListProps) => {
 
   const settings = {
     dots: false,
@@ -43,7 +48,7 @@ const ScrumList = () => {
     ]
   }
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleClick = () => {
     navigate("/quiz");
   };
@@ -52,39 +57,21 @@ const navigate = useNavigate();
     <>
       <div className="w-[80%] mx-auto">
         <div className=" flex flex-col gap-[60px] font-corbel">
-          <div className="flex flex-col gap-y-[5px]">
-            <h2 className="">Modul 1. Scrum-a giriş</h2>
-            <AccordionItem content="Agile nədir? (Agile Manifesto və prinsipləri)" />
-            <AccordionItem content="Scrum nədir və nə üçün istifadə olunur?" />
-            <AccordionItem content="Scrum və digər Ağile metodologiyalar (Kanban, XP ilə müqayisə)" />
-            <AccordionItem content="Scrum-un əsas dəyərləri və prinsipləri" />
-          </div>
-          <div className="flex flex-col">
-            <h2>Modul 2. Scrum Rolları</h2>
-            <AccordionItem content="Product Owner (Məhsul Sahibi): vəzifə və məsuliyyətlər" />
-            <AccordionItem content="Scrum Master: fasilitator rolu və qarşılıqlı əlaqələr" />
-            <AccordionItem content="Development Team: funksiyalar, xüsusiyyətlər və özünüidarə" />
-          </div>
-          <div className="flex flex-col">
-            <h2>Modul 3. Scrum Artifacts (Əsas sənədlər)</h2>
-            <AccordionItem content="Product Backlog (Məhsul Siyahısı)" />
-            <AccordionItem content="Sprint Backlog (Sprint Siyahısı)" />
-            <AccordionItem content="Increment (Artım)" />
-            <AccordionItem content="Definition of Done (Tamamlanma tərifi)" />
-          </div>
-          <div className="flex flex-col">
-            <h2>Modul 4. Scrum Hadisələri (Events)</h2>
-            <AccordionItem content="Sprint: zaman çərçivəsi və planlama" />
-            <AccordionItem content="Sprint Planning: məqsdin və tapşırıqların müəyyənləşdirilməsi" />
-            <AccordionItem content="Daily Scrum (Gündəlik görüşlər): gündəlik koordinasiya" />
-            <AccordionItem content="Sprint Review: geribildirim və uyğunlaşdırma" />
-            <AccordionItem content="Sprint Retrospective: təkmilləşdirmə fürsətləri" />
-          </div>
-          <Button 
-          onClick={handleClick}
-          title="Tapşırıq və quiz" 
-          className="self-center !font-medium !font-[Montserrat] bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]" />
-
+          {
+            data?.modules?.map((mod) => (
+              <div key={mod.id} className="flex flex-col gap-y-[5px]">
+                <h2 className="text-2xl font-bold">{mod.title}</h2>
+                {mod.lessons.map((lesson) => (
+                  <AccordionItem key={lesson.id} moduleTitle={mod.title} lessonTitle={lesson.title} contentHtml={lesson.contentHtml} />
+                ))}
+              </div>
+            ))
+          }
+          <Button
+            onClick={handleClick}
+            title="Tapşırıq və quiz"
+            className="self-center !font-medium !font-[Montserrat] bg-gradient-to-r from-[#4A00E0] to-[#8E2DE2]"
+          />
         </div>
       </div>
 
@@ -103,7 +90,7 @@ const navigate = useNavigate();
                     isArticle={false}
                     user={item.author}
                     isCourse={true}
-                    time="4 modul : 16 blok"
+                    time={4} //dynamic
                   />
                 </div>
               ))

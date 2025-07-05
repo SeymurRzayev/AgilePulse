@@ -339,3 +339,29 @@ export type Person = {
   description: string;
   imageUrl?: string;
 };
+
+interface Lesson {
+  id: number;
+  title: string;
+  orderNumber: number;
+  contentHtml: string;
+}
+
+export interface Module {
+  id: number;
+  title: string;
+  orderNumber: number;
+  lessons: Lesson[];
+}
+
+export interface Training {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  publishedAt: string;
+  authorName?: string;
+  authorAvatarUrl?: string;
+  categoryName?: string;
+  modules?: Module[];
+}

@@ -1,40 +1,46 @@
 import React, { useState } from "react";
 import TrainingCard from "./TrainingCard";
 import TrainingsViewAllContainer from "./TrainingsViewAllContainer";
+import type { Module } from "../../types/types";
 
 type TrainingCardProps = {
   id: number;
-  imgUrl: string;
+  imageUrl: string;
   title: string;
   time?: string;
-  avatar?: string;
-  user?: string;
-  date?: string;
+  authorAvatarUrl?: string;
+  authorName?: string;
+  publishedAt?: string;
+  modules?: Module[];
 };
 
 type TrainingListContainerProps = {
   trainingCourses: TrainingCardProps[];
+  count: number;
 };
 const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
   trainingCourses,
+  count,
 }) => {
 
   const [visibilty, setVisibility] = useState<number>(6)
 
-  const slicesData = trainingCourses.slice(0, visibilty)
+  const slicesData = count > 5 ? trainingCourses.slice(0, visibilty) : trainingCourses
 
   return (
     <div>
       <div className="w-full  flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
-        {slicesData.map((course) => (
+        {slicesData?.map((course) => (
           <TrainingCard
             key={course.id}
-            imgUrl={course.imgUrl}
+            id={course.id}
+            imgUrl={course.imageUrl}
             title={course.title}
-            time={course.time}
-            avatar={course.avatar}
-            user={course.user}
-            date={course.date}
+            time={course.modules?.length} //modul sayi
+            lessonCount={course.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} //lesson sayi
+            avatar={course.authorAvatarUrl}
+            user={course.authorName}
+            date={course.publishedAt}
             isCourse={true}
           />
         ))}
