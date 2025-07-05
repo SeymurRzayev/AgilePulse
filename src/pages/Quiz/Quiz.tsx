@@ -110,7 +110,7 @@ const handleFinishQuiz = (timeout = false) => {
           <div className=" w-full max-w-[1440px] py-6 flex justify-center">
             {showResult ? (
               <QuizResult
-              isTimeOut={false}
+              isTimeOut={isTimeOut}
               score={8} totalQuestions={10}/>
             ) : !quizStarted || backButtonClicked ? (
               <StartQuiz
