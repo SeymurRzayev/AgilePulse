@@ -10,7 +10,7 @@ type TrainingCardProps = {
   id?: number;
   imgUrl: string;
   title: string;
-  time?: number; //modul sayidi
+  time?: number | string; //modul sayidi
   lessonCount?: number | undefined; //lesson sayidi
   avatar?: string;
   user?: string;
