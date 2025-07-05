@@ -5,8 +5,8 @@ import type { CategoriesResponse } from "../../types/types";
 
 type TrainingCategoryListProps = {
   trainingCategories: CategoriesResponse[];
-  activeItem: string;
-  setActiveItem: (item: string) => void;
+  activeItem: number;
+  setActiveItem: (item: number) => void;
 };
 
 const TrainingsCategoryList: React.FC<TrainingCategoryListProps> = ({
@@ -21,8 +21,8 @@ const TrainingsCategoryList: React.FC<TrainingCategoryListProps> = ({
           <TrainingCategoryListItem
             key={item.id}
             item={item.name}
-            isActive={activeItem === item.name}
-            onClick={() => setActiveItem(item.name)}
+            isActive={activeItem === item.id}
+            onClick={() => setActiveItem(item.id)}
           />
         ))}
       </ul>

@@ -47,7 +47,7 @@ const AppRouter: FC = () => {
       </Route>
       <Route path="/articles" element={<Articles />} />
       <Route path="/articles/details/:id" element={<ArticleDetails />} />
-      <Route path="/trainings/scrum" element={<ScrumSection />} />
+      <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
       <Route path="/personal-cabinet" element={<ProtectedRoute />}>
         <Route path="/personal-cabinet" element={<PersonalCabinet />} />
       </Route>

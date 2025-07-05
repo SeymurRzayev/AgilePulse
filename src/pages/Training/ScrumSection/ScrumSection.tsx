@@ -15,7 +15,6 @@ const ScrumSection = () => {
         className="w-full h-[357px] brightness-50 bg-cover bg-no-repeat bg-center">
       </div>
       <div className={`${styles.ScrumContainer} bg-cover bg-center`}>
-        <h2 className="w-[80%] mx-auto ">Scrum nədir? Praktik Başlanğıc</h2>
         <ScrumModule />
       </div>
       <Footer />

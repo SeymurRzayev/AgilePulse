@@ -2,10 +2,6 @@ import { useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import styles from "../../assets/styles/Trainings.module.css";
-import avatar1 from "../../assets/images/podcast1.webp";
-import training1 from "../../assets/images/training1.jpg";
-import training2 from "../../assets/images/training2.jpg";
-import training3 from "../../assets/images/training3.jpg";
 import Navbar from "../../layout/Navbar/Navbar";
 import Footer from "../../layout/Footer/Footer";
 import TrainingsHeroContainer from "../../components/Trainings/TrainingsHeroContainer";
@@ -18,127 +14,15 @@ import TrainingExperiences from "../Home/sections/TrainingExperiences";
 // import { useNavigate } from "react-router-dom";
 // import { useAppSelector } from "../../redux/hooks/Hooks";
 import { useGetCategoriesQuery } from "../../services/features/trainingPage/categoryApi";
+import { useGetTrainingsByCategoryQuery } from "../../services/features/trainingPage/trainingsApi";
 
 const TrainingsPage = () => {
-  const [activeItem, setActiveItem] = useState<string>("Scrum");
+  const [activeItem, setActiveItem] = useState<number>(1);
   // const navigate = useNavigate()
 
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
   const { data: categories } = useGetCategoriesQuery();
-
-  const trainingCourses = [
-    {
-      id: 1,
-      imgUrl: training1,
-      title: "Scrum nədir? Praktik Başlanğıc",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Səadət Hüseynova",
-      date: "12.04.2025",
-      href: "/trainings/scrum",
-    },
-    {
-      id: 2,
-      imgUrl: training2,
-      title: "Agile Manifesto və 12 Prinsip",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Məhəmməd Qasımov",
-      date: "16.01.2025",
-    },
-    {
-      id: 3,
-      imgUrl: training3,
-      title: "Kanban ilə İş Axınını Optimallaşdır",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Tofiq İsayev",
-      date: "20.02.2025",
-    },
-    {
-      id: 4,
-      imgUrl: training1,
-      title: "Scrum nədir? Praktik Başlanğıc",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Səadət Hüseynova",
-      date: "12.04.2025",
-    },
-    {
-      id: 5,
-      imgUrl: training2,
-      title: "Agile Manifesto və 12 Prinsip",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Məhəmməd Qasımov",
-      date: "16.01.2025",
-    },
-    {
-      id: 6,
-      imgUrl: training3,
-      title: "Kanban ilə İş Axınını Optimallaşdır",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Tofiq İsayev",
-      date: "20.02.2025",
-    },
-    {
-      id: 1,
-      imgUrl: training1,
-      title: "Scrum nədir? Praktik Başlanğıc",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Səadət Hüseynova",
-      date: "12.04.2025",
-      href: "/trainings/scrum",
-    },
-    {
-      id: 2,
-      imgUrl: training2,
-      title: "Agile Manifesto və 12 Prinsip",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Məhəmməd Qasımov",
-      date: "16.01.2025",
-    },
-    {
-      id: 3,
-      imgUrl: training3,
-      title: "Kanban ilə İş Axınını Optimallaşdır",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Tofiq İsayev",
-      date: "20.02.2025",
-    },
-    {
-      id: 4,
-      imgUrl: training1,
-      title: "Scrum nədir? Praktik Başlanğıc",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Səadət Hüseynova",
-      date: "12.04.2025",
-    },
-    {
-      id: 5,
-      imgUrl: training2,
-      title: "Agile Manifesto və 12 Prinsip",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Məhəmməd Qasımov",
-      date: "16.01.2025",
-    },
-    {
-      id: 6,
-      imgUrl: training3,
-      title: "Kanban ilə İş Axınını Optimallaşdır",
-      time: "4 modul : 16 blok",
-      avatar: avatar1,
-      user: "Tofiq İsayev",
-      date: "20.02.2025",
-    },
-  ];
-
+  const { data: trainingCourses } = useGetTrainingsByCategoryQuery(activeItem);
 
   return (
     <div className="relative">
@@ -161,7 +45,11 @@ const TrainingsPage = () => {
           activeItem={activeItem}
           setActiveItem={setActiveItem}
         />
-        <TrainingListContainer trainingCourses={trainingCourses} />
+        <TrainingListContainer
+          trainingCourses={trainingCourses ?? []}
+          count={trainingCourses?.length ?? 0}
+
+        />
         <PodcastsSection />
         <TrainersSection />
 

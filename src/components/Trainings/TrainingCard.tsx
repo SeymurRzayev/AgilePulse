@@ -10,7 +10,8 @@ type TrainingCardProps = {
   id?: number;
   imgUrl: string;
   title: string;
-  time?: string;
+  time?: number; //modul sayidi
+  lessonCount?: number | undefined; //lesson sayidi
   avatar?: string;
   user?: string;
   date?: string;
@@ -22,7 +23,8 @@ type TrainingCardProps = {
 const TrainingCard: React.FC<TrainingCardProps> = ({
   imgUrl,
   title,
-  time,
+  time, //modul sayidi
+  lessonCount, //lesson sayidi
   avatar,
   user,
   date,
@@ -32,6 +34,8 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
   isCourse,
 }: TrainingCardProps) => {
   const [isBookmarked, setIsBookmarked] = React.useState(false);
+
+  console.log(id)
   return (
     <div
       className={`${isCourse ? 'w-[325px]' : 'w-[325px] sm:w-[381px]'} ${isArticle && 'min-h-[595px]'} bg-[#FFFFFF] hover:translate-y-[-5px] transition-all duration-300 shadow-[4px_4px_12px_5px_#0000000D] rounded-br-[100px] rounded-bl-xl rounded-tl-[50px] rounded-tr-[50px]`}
@@ -48,10 +52,10 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
            `} />
         <div className="absolute bottom-0 right-0 flex justify-end items-end z-20">
           <div className={`${styles.infoButton}`}>
-            <Link to={isArticle ? `/articles/details/${id}` : "/trainings/scrum"}>
+            <Link to={isArticle ? `/articles/details/${id}` : `/trainings/scrum/${id}`}>
               {isArticle
                 ? <MainButton buttonClassName="py-6" className="w-[162px] h-[55px] pr-1" text="Daha çox" />
-                : <button className={`${styles.start_btn} min-w-[140px] h-[55px] sm:w-[162px] sm:h-[55px] `}>
+                : <button className={`${styles.start_btn} min-w-[140px] h-[55px] sm:w-[162px] sm:h-[55px] cursor-pointer`}>
                   Kursa başla
                 </button>}
             </Link>
@@ -69,7 +73,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
             {!isArticle && (
               <div className="flex gap-4 mt-[8px] items-center">
                 <img src={timeIcon} className="w-[20.44px] h-[20.44px] rounded-full " alt="time_icon" />
-                <span className="text-base font-[Corbel] font-normal text-[#00000099]">{time}</span>
+                <span className="text-base font-[Corbel] font-normal text-[#00000099]">{time} modul {lessonCount} blok</span>
               </div>
             )}
           </div>
