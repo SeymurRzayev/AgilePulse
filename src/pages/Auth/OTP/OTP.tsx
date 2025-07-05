@@ -70,18 +70,22 @@ const OTP = () => {
   };
 
   const handleVerify = async () => {
-    const otpCode = otp.join('');
-    try {
-      await sendOtp({ email, otp: otpCode }).unwrap()
-      Swal.fire('Uğurlu!', 'Qeydiyyat uğurla tamamlandı', 'success')
-      navigate('/sign-in', { replace: true })
-    } catch (error: unknown) {
-      const err = error as { status?: number };
-      err?.status === 401
-        ? Swal.fire('Xəta baş verdi!', 'Təsdiq kodu yanlışdır!', 'error')
-        : Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error')
+  const otpCode = otp.join('');
+  try {
+    await sendOtp({ email, otp: otpCode }).unwrap();
+    Swal.fire('Uğurlu!', 'Qeydiyyat uğurla tamamlandı', 'success');
+    navigate('/sign-in', { replace: true });
+  } catch (error: unknown) {
+    const err = error as { status?: number };
+
+    if (err?.status === 401) {
+      Swal.fire('Xəta baş verdi!', 'Təsdiq kodu yanlışdır!', 'error');
+    } else {
+      Swal.fire('Xəta baş verdi!', 'Xəta baş verdi!', 'error');
     }
-  };
+  }
+};
+
 
   const handleResend = () => {
     setTimeLeft(120);
