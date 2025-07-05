@@ -78,7 +78,7 @@ const Team: FC = () => {
       </h1>
       <div className="cntList ">
         <div className="mngrCnt w-full">
-          <div className="managerCntContent mx-auto mt-[4%] md:mt-[12%]">
+          <div className="managerCntContent mx-auto mt-[2%] md:mt-[12%]">
             <h2 className="text-[26px] md:max-xl:text-[30px] lg:text-[38px] font-bold text-center  ">
               Layihə meneceri
             </h2>

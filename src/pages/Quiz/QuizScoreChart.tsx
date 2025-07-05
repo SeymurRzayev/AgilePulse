@@ -16,7 +16,7 @@ const QuizScoreChart: FC<QuizScoreChartProps> = ({ score, totalQuestions }) => {
     const color =isPassed ? '#44DA5F' : '#EF3739';
 
     return (
-        <div className="w-full max-w-[300px] h-[280px] md:max-w-[400px] md:max-h-[350px] flex flex-col items-center justify-center">
+        <div className="w-full max-w-[300px] h-[280px] md:max-w-[400px] md:max-h-[350px] flex flex-col items-center justify-center bg-transparent">
             <div className="relative w-full h-full flex items-center justify-center">
                 <div 
                     className="w-50 h-50 md:w-60 md:h-60 rounded-full flex items-center justify-center overflow-hidden"

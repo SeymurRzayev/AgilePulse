@@ -235,7 +235,7 @@
 .hamburgerLine {
   width: 24px;
   height: 2px;
-  background: #eaedf5;
+  background: #d9dbe0;
   transition: var(--transition-standard);
   border-radius: 2px;
 }

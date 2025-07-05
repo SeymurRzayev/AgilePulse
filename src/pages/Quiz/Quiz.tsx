@@ -111,7 +111,7 @@ const handleFinishQuiz = (timeout = false) => {
             {showResult ? (
               <QuizResult
               isTimeOut={isTimeOut}
-              score={9} totalQuestions={10}/>
+              score={8} totalQuestions={10}/>
             ) : !quizStarted || backButtonClicked ? (
               <StartQuiz
                 totalQuestions={5}
