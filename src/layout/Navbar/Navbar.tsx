@@ -38,6 +38,7 @@ const Navbar: FC<NavbarProps> = ({
   const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
   const user = useAppSelector(state => state.auth.user)
   const [openDropDown, setOpenDropDown] = useState<boolean>(false)
+
   // Navigation links configuration
   const navLinks: NavLinkItem[] = [
     ...(isLoggedIn && isMenuOpen
@@ -65,6 +66,8 @@ const Navbar: FC<NavbarProps> = ({
     }
 
   ];
+
+
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -168,7 +171,7 @@ const Navbar: FC<NavbarProps> = ({
         {/* Hamburger Menu Icon */}
         {!logoOnly && (
           <button
-            className={styles.hamburger}
+            className={`${styles.hamburger}`}
             onClick={toggleMenu}
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
@@ -287,7 +290,7 @@ const Navbar: FC<NavbarProps> = ({
                         }`
                       }
                     >
-                      <img src={loginIcon768} alt="" className="w-[35px]" />
+                      <img src={loginIcon768} alt="" className="w-9" />
                     </NavLink>
                   </div></>
               )}
@@ -319,7 +322,7 @@ const Navbar: FC<NavbarProps> = ({
                     </div>
                   </Link>
                   <button
-                    className={styles.closeButton}
+                    className={`${styles.closeButton}  `}
                     onClick={() => setIsMenuOpen(false)}
                     aria-label="Close menu"
                     type="button"

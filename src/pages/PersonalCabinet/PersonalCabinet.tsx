@@ -24,7 +24,7 @@ const PersonalCabinet = () => {
       {/* Left side */}
       <div className={`max-h-fit mx-auto w-full flex flex-col sm:max-w-fit mt-[28px] ml-0 sm:ml-[50px] md:items-start items-center `}>
         <div className={styles.profileImage}>
-          <Image onClick={goBack} src={leftArrow} width={60} height={60} className={`${styles.arrow}  hidden sm:block`} />
+          <Image onClick={goBack} src={leftArrow} width={60} height={60} className={`${styles.arrow} left-0`} />
           <Image src={user?.profileImage ? user?.profileImage : userImg} alt="Emin Huseynov" className={styles.userImg} />
         </div>
 

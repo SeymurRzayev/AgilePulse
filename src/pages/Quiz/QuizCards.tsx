@@ -43,25 +43,25 @@ const QuizCards: FC<Props> = ({
 }, [remainingTime, onFinishQuiz]);
   return (
     <div className="w-full max-w-[823px]">
-      <div className="w-full lg:min-w-[690px] max-w-[823px] flex flex-col owerflow-hidden">
+      <div className="w-full lg:min-w-[690px] max-w-[823px] flex flex-col   justify-center items-center owerflow-hidden">
         <div className=" flex lg:min-h-[411px] flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px] shadow-2xl">
-          <div className="flex flex-col w-full mt-10 ml-10 overflow-hidden">
-            <h3 className="text-[18px] text-[#00000099] font-[Corbel] font-[700]">
+          <div className="flex flex-col gap-1.5 md:gap-3 w-full mt-6 ml-10 overflow-hidden">
+            <h3 className="text-[18px] text-[#00000099] font-[Corbel] font-bold">
               Sual {quizNum}
             </h3>
-            <h1 className="text-[20px] md:text-[24px] lg:text-[30px] w-[50%] md:w-[100%] lg:w-[100%]  text-[#1F356E] font-[Corbel] font-[700]">
+            <h1 className="text-[20px] leading-5 md:leading-6 lg:leading-8 md:text-2xl  lg:text-[30px] w-[70%] md:w-[100%] lg:w-[100%]  text-[#1F356E] font-[Corbel] font-bold">
               {questionItem}
             </h1>
-            <div className="flex flex-col gap-4 overflow-hidden">
+            <div className="flex flex-col gap-1 overflow-hidden">
               {answers.map((answer, index) => (
-                <div key={index} className="flex gap-2 items-center">
+                <div key={index} className="flex gap-2 items-center py-2">
                   <input
                     type="checkbox"
                     checked={selectedCheckbox === index}
                     onChange={() => setSelectedCheckbox(index)}
                     className="w-[10px] h-[10px] md:max-xl:w-[24px] md:max-xl:h-[24px] rounded-full appearance-none border border-[#757575] checked:bg-[#1F356E]"
                   />
-                  <p className="text-[14px]   md:text-[16px] lg:text-[18px]  text-[#00000099] font-[700] w-[50%] lg:w-[100%]  ">
+                  <p className="text-sm   md:text-[16px] lg:text-lg  text-[#00000099] font-bold w-[70%] lg:w-[100%]  ">
                     {answer}
                   </p>
                 </div>
@@ -75,14 +75,14 @@ const QuizCards: FC<Props> = ({
       {/* Container */}
       <div className=" w-[100%] mt-7 flex justify-between  md:gap-4 lg:gap-4">
         {/* Time */}
-        <div className=" md:gap-2 lg:gap-2 items-center hidden md:flex lg:flex  py-1 px-3 ">
-          <FaRegClock className="text-[32px] text-[#00000099] " />
-          <p className="text-[18px] md:text-[24px] lg:text-[24px]  text-[#00000099] mb-[3%] ">
+        <div className="gap-2  items-center flex  py-1 px-3 ">
+          <FaRegClock className="text-lg md:text-3xl text-[#00000099] " />
+          <p className="text-[16px] md:text-2xl  text-[#00000099] mb-[3%] ">
             {remainingTime} dəqiqə
           </p>
         </div>
         {/* Buttons */}
-        <div className="flex gap-4 ">
+        <div className="w-[60%] h-12 flex justify-center items-center gap-4 ">
           <OutlineBtn
             onClick={handleReturnButton}
             size={144}
@@ -90,7 +90,7 @@ const QuizCards: FC<Props> = ({
           />
           <MainButton
             text={isLastQuestion ? "Quizi bitir" : "Davam et"}
-            className="w-[144px] h-[56px]"
+            className="w-[144px] h-12 md:h-[56px]"
             onClick={handleNextQuestion}
           />
         </div>

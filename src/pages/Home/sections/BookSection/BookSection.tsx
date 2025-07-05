@@ -97,12 +97,12 @@ const BookSection: FC = () => {
         ) : isError ? (
           <div>Xəta baş verdi!</div>
         ) : (
-          <Slider ref={sliderRef} {...settings} className={styles.sliderWrapper}>
+          <Slider ref={sliderRef} {...settings} className={`${styles.sliderWrapper} `}>
             {allBook?.map((book, index) => (
               <div
                 key={index}
                 className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
-                  } `}
+                  }`}
                 onClick={togglePause}
                 title={
                   isPaused
@@ -115,7 +115,7 @@ const BookSection: FC = () => {
                   onClick={() => navigate(`/library/detail/${book.id}`)}
                   src={book.imageUrl}
                   alt={`Agile book ${index + 1}`}
-                  className={` ${styles.bookImage}`}
+                  className={` ${styles.bookImage} `}
                   loading="lazy"
                 />
               </div>

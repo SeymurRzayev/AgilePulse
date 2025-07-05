@@ -160,15 +160,15 @@ const resultTitle = isTimeOut
   };
 
   return (
-    <div className="w-11/12 flex flex-col justify-center gap-10 md:gap-14">
-      <div className="w-full h-[580px]  md:max-h-[687px] bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]">
+    <div className="w-11/12 flex flex-col justify-center items-center gap-10 md:gap-14">
+      <div className={isTimeOut?"w-full h-[380px]  md:max-h-[687px] bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]": "w-full h-[580px]  md:max-h-[687px] bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]"}>
       <div
-        className="flex flex-col justify-between items-center  w-full h-full bg-cover bg-center rounded-4xl relative z-0 "
+        className="flex flex-col justify-between items-center  w-full h-full bg-contain md:bg-cover bg-center rounded-4xl relative z-0 "
         style={{
           backgroundImage:isTimeOut? "none": isPassed ? `url(${successConfetti})` : "none",
         }}
       >
-        <div className={isTimeOut? "absolute z-20 flex flex-col justify-center items-center gap-20 bottom-54 md:bottom-30 " : "absolute z-20 flex flex-col justify-center items-center gap-3 p-5 bottom-1 md:bottom-3"}>
+        <div className={isTimeOut? "absolute z-20 flex flex-col justify-center items-center gap-10 bottom-16 md:bottom-10 " : "absolute z-20 flex flex-col justify-center items-center  p-5 bottom-0  md:bottom-2"}>
           <div className={isTimeOut? "w-38 h-38 md:w-60 md:h-60": isPassed ? "w-38 h-38 md:w-40 md:h-40" : "w-18 h-18 md:w-22 md:h-22"}>
             <img
               src={resultImg}
@@ -178,9 +178,9 @@ const resultTitle = isTimeOut
           </div>
 
           {
-            !isTimeOut&&<QuizScoreChart score={90} totalQuestions={100} isTimeOut={false} />
+            !isTimeOut&&<QuizScoreChart score={80} totalQuestions={100} isTimeOut={false} />
           }
-          <div className="flex flex-col items-center justify-center gap-4 md:gap-7">
+          <div className="flex flex-col items-center justify-center gap-4 md:gap-7 w-[90%]">
             <h2 className="text-xl md:text-3xl font-bold leading-8 md:leading-9 tracking-normal font-[corbel] text-center">
               {resultMessage}
             </h2>
