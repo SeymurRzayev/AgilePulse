@@ -6,42 +6,72 @@ import { useState } from "react";
 import QuizSider from "./QuizSider";
 import ProgressBar from "../../components/ProgressBar";
 import QuizResult from "./QuizResult";
-
-const quizdata = [
-  {
-    question: "Agile metodologiyasının əsas məqsədi nədir?",
-    answers: [
-      "Müştəriyə yalnız layihənin sonunda məhsul təqdim etmək",
-      "Planlara ciddi şəkildə sadiq qalmaq və dəyişikliklərə qarşı çıxmaq",
-      "Müştəriyə yalnız layihənin sonunda məhsul təqdim etmək",
-      "Müştəriyə yalnız layihənin sonunda məhsul təqdim etmək",
-      "Müştəriyə yalnız layihənin sonunda məhsul təqdim etmək",
-    ],
-  },
-  {
-    question: "Neçə əsas dəyər dayanır?",
-    answers: [
-      "Ənənəvi “waterfall” modelini sürətləndirmək",
-      "Planlara ciddi şəkildə sadiq qalmaq və dəyişikliklərə qarşı çıxmaq",
-      "Komanda üzvlərinin fərdi performansına fokuslanmaq",
-      "Komanda üzvlərinin fərdi performansına fokuslanmaq",
-      "Komanda üzvlərinin fərdi performansına fokuslanmaq",
-    ],
-  },
-];
+import { useEndQuizMutation, useStartQuizMutation } from "../../services/features/trainingPage/quizApi";
+import type { Answer, QuizData, QuizSession } from "../../types/types";
+import { useParams } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks/Hooks";
 
 export default function QuizPage() {
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [backButtonClicked, setBackButtonClicked] = useState(false);
-  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
-  const [showResult, setShowResult] = useState(false);
-const [isTimeOut, setIsTimeOut] = useState(false);
-const [, setIsFinished] = useState(false);
-  const handleQuiz = () => {
+  const params = useParams()
+  const trainingId = params.id
+  const user = useAppSelector(state => state.auth.user)
+  const [quizStarted, setQuizStarted] = useState<boolean>(false);
+  const [backButtonClicked, setBackButtonClicked] = useState<boolean>(false);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState<number>(0);
+  const [showResult, setShowResult] = useState<boolean>(false);
+  const [isTimeOut, setIsTimeOut] = useState<boolean>(false);
+  // Quizin neticesi
+  const [result, setResult] = useState<QuizSession | null>(null)
+  //Sessionun idaresi
+  const [sessionId, setSessionId] = useState<number | null>(null);
+  // Userin cavablari state ile idare olunur
+  const [userAnswers, setUserAnswers] = useState<Answer[]>([]);
+  // Apiden gelen quiz statede saxlanilir
+  const [quizData, setQuizData] = useState<QuizData | undefined>(undefined)
+  const [, setIsFinished] = useState(false);
+
+  const [startQuiz] = useStartQuizMutation(); // Suallari apiden getiren funksiya, user id ve kurs id teleb edir
+  const [endQuiz] = useEndQuizMutation(); // Quizni bitiren funksiya, user id, kurs id ve cavablar teleb edir
+
+  const handleQuiz = async () => { //Quize basla butonun kliki
+    if (!user || !trainingId) return; // User ve kurs id yoxdursa funksiya dayanmalidi
+
+    await startQuiz({ quizId: Number(trainingId), userId: user?.id }).then((res) => {
+      const data = res?.data?.data;
+      setQuizData(data);
+      setSessionId(data?.sessionId ?? null);
+    }).catch((err) => {
+      console.log(err)
+    });
     setQuizStarted(true);
     setBackButtonClicked(false);
     setShowResult(false);
+
   };
+
+
+  const handleAnswerSelect = (questionId: number, answerId: number) => {  // Cavablar secilir
+    if (!sessionId) return; // sessionId yoxdursa, heç nə etmə
+
+    setUserAnswers((prevAnswers) => {
+      const existingIndex = prevAnswers.findIndex((a) => a.questionId === questionId);
+
+      const newAnswer = {
+        sessionId: sessionId,
+        questionId,
+        answerId,
+      };
+
+      if (existingIndex !== -1) {
+        const updated = [...prevAnswers];
+        updated[existingIndex] = newAnswer;
+        return updated;
+      }
+
+      return [...prevAnswers, newAnswer];
+    });
+  };
+
 
   const handleBackButton = () => {
     if (currentQuizIndex > 0) {
@@ -53,20 +83,26 @@ const [, setIsFinished] = useState(false);
     }
   };
 
-  const numbers = [1, 2,3,4,5,6,7,8,9,10];
-
   const handleNextQuestion = () => {
-    if (currentQuizIndex < quizdata.length - 1) {
+    if (currentQuizIndex < quizData?.questions?.length! - 1) {
       setCurrentQuizIndex(currentQuizIndex + 1);
     } else {
       setShowResult(true);
     }
   };
-const handleFinishQuiz = (timeout = false) => {
-  setIsFinished(true);
-  setIsTimeOut(timeout); // Vaxtla bitibsə true olacaq
-};
+  const handleFinishQuiz = async (timeout = false) => {
+    if (!user || !sessionId) return; // User , training, session yoxdursa funksiya dayanmalidi
+    setIsFinished(true);
+    await endQuiz({ sessionId: sessionId!, answers: userAnswers }).then((res) => {
+      setShowResult(true);
+      setResult(res?.data?.data ?? null)
+    }).catch((err) => {
+      console.log(err)
+    });
+    setIsTimeOut(timeout);
+  };
   return (
+
     <div className="min-h-screen flex flex-col items-center w-full">
       {/* Navbar */}
       <div className="w-full flex justify-center px-4 sm:px-6 lg:px-8">
@@ -84,9 +120,8 @@ const handleFinishQuiz = (timeout = false) => {
 
       {/* Container */}
       <div
-        className={`w-full ${
-          !quizStarted ? "max-w-[1093px]" : "max-w-[1183px]"
-        } flex flex-col justify-center items-center mt-[200px] relative`}
+        className={`w-full ${!quizStarted ? "max-w-[1093px]" : "max-w-[1183px]"
+          } flex flex-col justify-center items-center mt-[200px] relative`}
       >
         {/* Header and progress bar */}
         <div className="space-y-4 relative w-[91%]">
@@ -98,7 +133,7 @@ const handleFinishQuiz = (timeout = false) => {
               className={quizStarted ? "max-w-[823px]" : "max-w-[1093px]"}
               progress={
                 quizStarted
-                  ? ((currentQuizIndex + 1) / quizdata.length) * 100
+                  ? ((currentQuizIndex + 1) / quizData?.questions?.length!) * 100
                   : 0
               }
             />
@@ -109,31 +144,44 @@ const handleFinishQuiz = (timeout = false) => {
         <div className="w-full flex flex-col justify-center gap-20">
           <div className=" w-full max-w-[1440px] py-6 flex justify-center">
             {showResult ? (
-              <QuizResult
-              isTimeOut={isTimeOut}
-              score={8} totalQuestions={10}/>
+              <QuizResult       /* Neticeler screeni */
+                isTimeOut={isTimeOut}
+                percentage={result?.scorePercentage!}
+                isPassed={result?.isPassed!}
+                correctAnswers={result?.correctAnswerCount!}
+              />
             ) : !quizStarted || backButtonClicked ? (
-              <StartQuiz
-                totalQuestions={5}
+              <StartQuiz        /* Quiz baslamamis screeni */
+                totalQuestions={25}
                 PassingScore={75}
-                timeLimit={10}
-                onclicked={handleQuiz}
-                onFinishQuiz={() => handleFinishQuiz(true)}
+                timeLimit={30}
+                startQuiz={handleQuiz}
               />
             ) : (
               <div className="w-full gap-x-11 mx-[3%] flex flex-col lg:flex-row">
-                <QuizCards
-                  quizNum={currentQuizIndex + 1}
-                  questionItem={quizdata[currentQuizIndex].question}
-                  answers={quizdata[currentQuizIndex].answers}
-                  remainingTime={52}
-                  clickedBack={handleBackButton}
+                <QuizCards      /* Quizler screeni artiq baslayib */
+                  quizNum={currentQuizIndex + 1}   // Aktiv quiz
+                  questionItem={quizData?.questions?.[currentQuizIndex]!}   // Sual (basliq)
+                  answers={quizData?.questions?.[currentQuizIndex].answers!}   // Variantlar
+                  timeLimit={quizData?.durationInMinutes!}   //Vaxt limiti
+                  clickedBack={handleBackButton} // Geriye qayit
                   clickForward={handleNextQuestion}
-                  totalQuestionCount={quizdata.length}
-                  totalQuestions={quizdata.length}
-                  onFinishQuiz={() => handleFinishQuiz(true)} 
+                  totalQuestions={quizData?.questions?.length!}
+                  onFinishQuiz={() => handleFinishQuiz()}  // Bitir
+                  onAnswerSelect={(answerId: number) =>
+                    handleAnswerSelect(quizData?.questions?.[currentQuizIndex].id!, answerId)
+                  }
+                  selectedAnswerId={
+                    userAnswers.find((a) => a.questionId === quizData?.questions?.[currentQuizIndex].id)
+                      ?.answerId ?? -1
+                  }
                 />
-                <QuizSider buttonCounts={numbers} />
+                <QuizSider
+                  setActiveQuiz={setCurrentQuizIndex}
+                  answeredQuestions={userAnswers}
+                  questions={quizData?.questions!}
+                  currentQuizIndex={currentQuizIndex}
+                />
               </div>
             )}
           </div>

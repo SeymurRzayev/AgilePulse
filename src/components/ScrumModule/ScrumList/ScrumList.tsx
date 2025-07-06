@@ -50,7 +50,7 @@ const ScrumList = ({ data }: ScrumListProps) => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/quiz");
+    navigate(`/quiz/${data?.id}`);
   };
 
   return (
