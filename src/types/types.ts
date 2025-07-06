@@ -365,3 +365,65 @@ export interface Training {
   categoryName?: string;
   modules?: Module[];
 }
+
+export interface Answers {
+  id: number;
+  content: string;
+}
+
+export interface Question {
+  id: number;
+  content: string;
+  answers: Answers[];
+}
+
+export interface QuizData {
+  sessionId: number;
+  quizId: number;
+  durationInMinutes: number;
+  questions: Question[];
+}
+
+//Finish quiz request
+
+export interface QuizApiResponse {
+  message: string | null;
+  data: QuizData;
+}
+
+export interface Answer {
+  sessionId: number;
+  questionId: number;
+  answerId: number;
+}
+
+export interface AnswerSubmissionRequest {
+  sessionId: number;
+  answers: Answer[];
+}
+
+//Finish quiz response
+export interface QuizSessionResponse {
+  message: string;
+  data: QuizSession;
+}
+
+export interface QuizSession {
+  id: number;
+  userId: number;
+  quizId: number;
+  startTime: string;
+  endTime: string;
+  isCompleted: boolean;
+  isPassed: boolean;
+  correctAnswerCount: number;
+  scorePercentage: number;
+  answers: SessionAnswer[];
+}
+
+export interface SessionAnswer {
+  id: number;
+  sessionId: number;
+  questionId: number;
+  answerId: number;
+}

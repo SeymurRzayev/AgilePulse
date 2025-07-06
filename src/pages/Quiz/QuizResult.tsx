@@ -12,9 +12,10 @@ import training1 from "../../assets/images/trainer1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg"; */
 interface Props {
-  score: number;
-  totalQuestions: number;
+  percentage: number;
   isTimeOut: boolean;
+  isPassed: boolean,
+  correctAnswers: number,
 }
 
 /*  const trainingCourses = [
@@ -129,12 +130,8 @@ interface Props {
      date: "20.02.2025",
    },
  ]; */
-const QuizResult: React.FC<Props> = ({ score, totalQuestions, isTimeOut }) => {
-  let percentage = 0;
-  if (totalQuestions > 0) {
-    percentage = Math.round((score / totalQuestions) * 100);
-  }
-  const isPassed = percentage >= 75;
+const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers }) => {
+
   const resultImg = isTimeOut ? timeOut : isPassed
     ? congratulation
     : notsucces;
@@ -178,7 +175,7 @@ const QuizResult: React.FC<Props> = ({ score, totalQuestions, isTimeOut }) => {
             </div>
 
             {
-              !isTimeOut && <QuizScoreChart score={80} totalQuestions={100} isTimeOut={false} />
+              !isTimeOut && <QuizScoreChart correctAnswers={correctAnswers} percentage={percentage} isPassed={isPassed} isTimeOut={false} />
             }
             <div className="flex flex-col items-center justify-center gap-4 md:gap-7 w-[90%]">
               <h2 className="text-xl md:text-3xl font-bold leading-8 md:leading-9 tracking-normal font-[corbel] text-center">

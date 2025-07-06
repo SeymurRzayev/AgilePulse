@@ -56,7 +56,7 @@ const AppRouter: FC = () => {
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
       <Route path="/certificate" element={<Certificate studentName="Shahana Khalilova" />} />
-      <Route path="/quiz" element={<QuizPage />} />
+      <Route path="/quiz/:id" element={<QuizPage />} />
 
       {/* Admin panel */}
       <Route path="/admin/*" element={<AdminPanel />}>

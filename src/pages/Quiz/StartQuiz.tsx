@@ -1,25 +1,22 @@
 import MainButton from "../../components/Butttons/MainButton";
 
-import { useState } from "react";
 interface StartQuizProps {
   totalQuestions: number;
   PassingScore: number;
   timeLimit: number;
-  onclicked: any;
-   onFinishQuiz: () => void;
+  startQuiz: () => void;
 }
 
 export default function StartQuiz({
   totalQuestions,
   PassingScore,
   timeLimit,
-  onclicked,
+  startQuiz,
 }: StartQuizProps) {
-  const [clicked, setClicked] = useState(false);
-  const handleNext = () => {
-    setClicked(clicked);
-    onclicked();
-  };
+
+  const handleStartQuiz = () => {
+    startQuiz();
+  }
 
   return (
     <div className=" w-11/12 bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px]  p-3 sm:p-6 lg:p-8">
@@ -43,9 +40,9 @@ export default function StartQuiz({
         </ul>
 
         <MainButton
+          onClick={handleStartQuiz}
           text={"Quizə başla"}
           className="w-full sm:w-[234px] h-[56px] mt-2"
-          onClick={handleNext}
         />
       </div>
     </div>
