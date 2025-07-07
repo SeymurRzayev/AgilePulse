@@ -6,6 +6,12 @@ import notsucces from "../../assets/images/notsucces.svg";
 import MainButton from "../../components/Butttons/MainButton";
 import timeOut from '../../assets/images/timeOut.svg';
 import { useNavigate } from "react-router-dom";
+import { toPng } from 'html-to-image'
+import { useEffect, useRef, useState } from "react";
+import Certificate from "../Certificate/Certificate";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/Hooks";
+import { useUpdatePhotoMutation } from "../../services/features/auth/userApi";
+import { setLoggedUser } from '../../redux/slices/authSlice';
 // import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
 /* import avatar1 from "../../assets/images/podcast1.webp";
 import training1 from "../../assets/images/trainer1.jpg";
@@ -131,7 +137,10 @@ interface Props {
    },
  ]; */
 const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers }) => {
-
+  const dispatch = useAppDispatch()
+  const [certificatePng, setCertificatePng] = useState<string | null>(null);
+  const user = useAppSelector(state => state.auth.user);
+  const [updatePhoto] = useUpdatePhotoMutation();
   const resultImg = isTimeOut ? timeOut : isPassed
     ? congratulation
     : notsucces;
@@ -152,8 +161,69 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
   const navigateQuiz = () => {
     navigate("/quiz");
   };
-  const navigateCertificate = () => {
-    navigate("/certificate");
+
+  useEffect(() => {
+    const generatePngAndUpload = async () => {
+      if (isPassed && certificateRef.current) {
+        const dataUrl = await toPng(certificateRef.current, {
+          backgroundColor: "white",
+          quality: 1,
+          cacheBust: true,
+          pixelRatio: 2,
+          fontEmbedCSS: '15px Arial, sans-serif',
+        });
+        setCertificatePng(dataUrl);
+
+        const byteCharacters = atob(dataUrl.split(',')[1]);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const file = new File([byteArray], 'memory-photo.png', {
+          type: 'image/png',
+        });
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+          // Try to upload and parse response as JSON
+          const res = await updatePhoto({ id: user?.id!, data: formData }).unwrap();
+          // If response is JSON, update user
+          if (res && res.profileImageUrl) {
+            dispatch(setLoggedUser({ ...user!, profileImage: res.profileImageUrl }));
+            localStorage.setItem("user", JSON.stringify({ ...user!, profileImage: res.profileImageUrl }));
+          }
+        } catch (error: any) {
+          // If error is a parsing error but status is 200 or 201, treat as success
+          if (
+            error &&
+            error.status === "PARSING_ERROR" &&
+            (error.originalStatus === 200 || error.originalStatus === 201)
+          ) {
+            // Optionally, you can show a success message here
+            // If you want to update the user, you may need to refetch user data
+          } else {
+            // For other errors, handle as usual
+            console.error("Image upload failed:", error);
+          }
+        }
+      }
+    };
+    generatePngAndUpload();
+    // eslint-disable-next-line
+  }, [isPassed, user?.fullName]);
+
+  const certificateRef = useRef<HTMLDivElement>(null);
+  const handleDownloadAndSave = () => {
+    if (certificatePng) {
+      const link = document.createElement("a");
+      link.download = "certificate.png";
+      link.href = certificatePng;
+      link.click();
+
+    }
   };
 
   return (
@@ -189,7 +259,7 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
                 onClick={navigateQuiz}
                 className="w-60 h-14" /> : isPassed ? (
                   <div
-                    onClick={navigateCertificate}
+                    onClick={handleDownloadAndSave}
                     className="flex justify-center items-center gap-1.5 md:gap-2">
                     <p className="leading-5 md:leading-7 text-[14px] md:text-[22px] font-medium font-[corbel]">
                       Sertifikatınızı buradan yükləyin
@@ -213,6 +283,20 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
         <h2 className="font-bold leading-7 md:leading-11 font-[corbel] text-2xl md:text-4xl">Uğurlu iştirakçılar üçün növbəti addım: yeni təlimlər</h2>
         {/* <TrainingListContainer trainingCourses={trainingCourses}/> */}
       </div>}
+
+      <div
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          top: 0,
+          width: "100%",
+          height: "600px",
+          pointerEvents: "none",
+          zIndex: -1,
+        }}
+      >
+        <Certificate studentName={`${user?.fullName}`} ref={certificateRef} />
+      </div>
     </div>
 
   );
