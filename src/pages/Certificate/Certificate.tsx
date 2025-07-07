@@ -28,7 +28,7 @@ const Certificate = React.forwardRef<HTMLDivElement, CertificateProps>(
         })
         .replace(/\//g, "."),
     },
-    ref // 👈 ref passed from parent
+    ref
   ) => {
     return (
       <div className="h-[600px]  bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">

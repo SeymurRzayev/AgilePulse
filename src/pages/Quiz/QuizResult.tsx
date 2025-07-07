@@ -167,6 +167,8 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
       if (isPassed && certificateRef.current) {
         const dataUrl = await toPng(certificateRef.current, {
           backgroundColor: "white",
+          width: 800,
+          height: 650,
           quality: 1,
           cacheBust: true,
           pixelRatio: 2,
@@ -188,26 +190,13 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
         formData.append('image', file);
 
         try {
-          // Try to upload and parse response as JSON
           const res = await updatePhoto({ id: user?.id!, data: formData }).unwrap();
-          // If response is JSON, update user
           if (res && res.profileImageUrl) {
             dispatch(setLoggedUser({ ...user!, profileImage: res.profileImageUrl }));
             localStorage.setItem("user", JSON.stringify({ ...user!, profileImage: res.profileImageUrl }));
           }
         } catch (error: any) {
-          // If error is a parsing error but status is 200 or 201, treat as success
-          if (
-            error &&
-            error.status === "PARSING_ERROR" &&
-            (error.originalStatus === 200 || error.originalStatus === 201)
-          ) {
-            // Optionally, you can show a success message here
-            // If you want to update the user, you may need to refetch user data
-          } else {
-            // For other errors, handle as usual
-            console.error("Image upload failed:", error);
-          }
+          console.error("Image upload failed:", error);
         }
       }
     };
@@ -290,7 +279,7 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
           left: "-9999px",
           top: 0,
           width: "100%",
-          height: "600px",
+          height: "650px",
           pointerEvents: "none",
           zIndex: -1,
         }}
