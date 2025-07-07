@@ -101,6 +101,7 @@ export default function QuizPage() {
     });
     setIsTimeOut(timeout);
   };
+  
   return (
 
     <div className="min-h-screen flex flex-col items-center w-full">
@@ -123,14 +124,20 @@ export default function QuizPage() {
         className={`w-full ${!quizStarted ? "max-w-[1093px]" : "max-w-[1183px]"
           } flex flex-col justify-center items-center mt-[200px] relative`}
       >
-        {/* Header and progress bar */}
-        <div className="space-y-4 relative w-[91%]">
+       
+
+        {/* Content */}
+        <div className="w-full flex flex-col items-center justify-center gap-5">
+         
+          <div className="w-full xl:max-w-[1440px] py-6 flex flex-col items-center  gap-5 justify-center relative z-[76]">
+              {/* Header and progress bar */}
+        <div className="space-y-4  relative w-[89%]">
           <h1 className="text-2xl text-start sm:text-3xl text-white leading-9 font-bold">
             {showResult ? "" : quizStarted ? "Quiz" : "Başlanılmayıb"}
           </h1>
           {!showResult && (
             <ProgressBar
-              className={quizStarted ? "max-w-[823px]" : "max-w-[1093px]"}
+              className={quizStarted ? "w-full md:max-w-[550px] lg:max-w-[755px] xl:max-w-[810px] relative z-[77] flex justify-start xl:justify-end " : "w-full "}
               progress={
                 quizStarted
                   ? ((currentQuizIndex + 1) / quizData?.questions?.length!) * 100
@@ -139,10 +146,6 @@ export default function QuizPage() {
             />
           )}
         </div>
-
-        {/* Content */}
-        <div className="w-full flex flex-col justify-center gap-20">
-          <div className=" w-full max-w-[1440px] py-6 flex justify-center">
             {showResult ? (
               <QuizResult       /* Neticeler screeni */
                 isTimeOut={isTimeOut}
@@ -158,7 +161,7 @@ export default function QuizPage() {
                 startQuiz={handleQuiz}
               />
             ) : (
-              <div className="w-full gap-x-11 mx-[3%] flex flex-col lg:flex-row">
+              <div className="w-full gap-x-11 flex flex-col items-center  xl:items-start gap-10 md:flex-row">
                 <QuizCards      /* Quizler screeni artiq baslayib */
                   quizNum={currentQuizIndex + 1}   // Aktiv quiz
                   questionItem={quizData?.questions?.[currentQuizIndex]!}   // Sual (basliq)

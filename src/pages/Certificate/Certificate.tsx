@@ -31,7 +31,7 @@ const Certificate = React.forwardRef<HTMLDivElement, CertificateProps>(
     ref
   ) => {
     return (
-      <div className="h-[600px]  bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">
+      <div className="h-[650px]  bg-gray-50 flex items-center justify-center mt-2 overflow-hidden">
         <div ref={ref} className="relative w-[96%] md:w-[68%] lg:w-[90%] xl:w-[72%] bg-white  overflow-hidden border border-gray-200 rounded-lg flex justify-center">
           {/* Gradient backgrounds */}
           <div className="absolute inset-0 overflow-hidden">

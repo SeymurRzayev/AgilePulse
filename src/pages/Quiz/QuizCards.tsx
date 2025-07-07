@@ -60,14 +60,14 @@ const QuizCards: FC<Props> = ({
   const seconds = countdown % 60;
 
   return (
-    <div className="w-full max-w-[823px]">
-      <div className="w-full lg:min-w-[690px] max-w-[823px] flex flex-col   justify-center items-center owerflow-hidden">
-        <div className=" flex lg:min-h-[411px] flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px] shadow-2xl">
-          <div className="flex flex-col gap-1.5 md:gap-3 w-full mt-6 ml-10 overflow-hidden">
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full md:min-w-[480px]  xl:min-w-[700px]  md:max-w-[550px] lg:max-w-[760px] xl:max-w-[823px] flex flex-col   justify-center items-start owerflow-hidden md:mr-30 lg:mr-40 xl:mr-63">
+        <div className=" flex justify-start lg:min-h-[411px] flex-col w-full h-full bg-[#EAEDF5BF] backdrop-blur-lg rounded-[30px] shadow-2xl">
+          <div className="flex flex-col  gap-1.5 md:gap-3 w-full mt-6 ml-10 overflow-hidden">
             <h3 className="text-lg text-[#00000099] font-[Corbel] font-bold">
               Sual {quizNum}
             </h3>
-            <h1 className="text-[20px] leading-5 md:leading-6 lg:leading-8 md:text-2xl  lg:text-[30px] w-[75%] md:w-[100%] lg:w-[100%]  text-[#1F356E] font-[Corbel] font-bold">
+            <h1 className="text-[20px] leading-5 md:leading-6 lg:leading-8 xl:text-2xl  lg:text-[30px] w-[75%] md:w-[100%] lg:w-[100%]  text-[#1F356E] font-[Corbel] font-bold">
               {questionItem.content}
             </h1>
             <div className="flex flex-col gap-1 overflow-hidden py-3">
@@ -95,25 +95,27 @@ const QuizCards: FC<Props> = ({
 
       {/* Timer and Buttons */}
       {/* Container */}
-      <div className=" w-[100%] mt-7 flex justify-between  md:gap-4 lg:gap-4">
+      <div className="w-full max-w-[480px] xl:min-w-[700px]  md:max-w-[550px] lg:max-w-[760px] xl:max-w-[823px] mt-7 flex justify-between  md:gap-4 lg:gap-4 md:mr-30 lg:mr-40 xl:mr-63">
         {/* Time */}
         <div className="gap-2  items-center flex  py-1 px-3 ">
           <FaRegClock className="text-lg md:text-3xl text-[#00000099] " />
-          <p className="text-[16px] md:text-2xl  text-[#00000099] mb-[3%] ">
+          <p className="text-sm  xl:text-2xl  text-[#00000099] mb-[3%] ">
             {minutes}:{seconds.toString().padStart(2, '0')} dəqiqə
           </p>
         </div>
         {/* Buttons */}
-        <div className="w-[60%] h-12 flex justify-center items-center gap-4 ">
+        <div className="w-[60%] md:w-[40%] xl:w-[35%] h-10 md:h-12 flex justify-between items-center gap-2 md:gap-4 ">
           <OutlineBtn
             onClick={handleReturnButton}
             size={144}
             text="Geriyə qayıt"
+            buttonClassName="text-sm md:text-[16px]"
           />
           <MainButton
             text={isLastQuestion ? "Quizi bitir" : "Davam et"}
-            className="w-[144px] h-12 md:h-[56px]"
+            className="w-[144px] h-10  md:h-12 "
             onClick={handleNextQuestion}
+            buttonClassName="text-sm md:text-[16px]"
           />
         </div>
       </div>

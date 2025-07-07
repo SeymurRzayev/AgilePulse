@@ -9,7 +9,8 @@ interface QuizScoreChartProps {
 
 const QuizScoreChart: FC<QuizScoreChartProps> = ({ isPassed, correctAnswers }) => {
 
-    let percentage = Math.round((correctAnswers / 25) * 100);
+    let percentage = Math.min(100, Math.round((correctAnswers / 25) * 100));
+    if (percentage > 100) percentage = 100;
 
     const color = isPassed ? '#44DA5F' : '#EF3739';
 
