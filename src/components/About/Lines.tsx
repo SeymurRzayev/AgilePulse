@@ -12,19 +12,19 @@ function Lines() {
     <>
       {/* up left line */}
       <img
-        className="absolute  hidden  lg:max-2xl:block lg:block  w-[30.2%]  top-[4%] left-[20%] "
+        className="absolute  hidden  lg:max-2xl:block lg:block  w-[30.2%]   top-[4%] left-[20%] "
         src={lineteamsvg}
         alt=""
       />
       {/* up right line */}
       <img
-        className="absolute  hidden   lg:block w-[30.2%] top-[4%] right-[20%] "
+        className="absolute  hidden   lg:block w-[30.2%] top-[4%] right-[20%] rotate-180"
         src={lineteamsvg}
         alt="line"
       />
       {/* out right line */}
       <img
-        className="absolute  hidden   lg:block h-[19.4%]  top-[3.6%] right-[19.5%] "
+        className="absolute  hidden   lg:block h-[19.4%]  top-[4%] right-[19.5%] "
         src={arrowlinesvg}
         alt="line"
       />
@@ -42,7 +42,12 @@ function Lines() {
       />
       {/* inner up line */}
       <img
-        className="absolute  hidden   lg:block  w-[30.2%]  top-[5.5%] right-[35.4%] "
+        className="absolute  hidden   lg:block   w-[15.1%]  top-[5.5%] right-[35.4%] rotate-180 "
+        src={lineteamsvg}
+        alt="line"
+      />
+        <img
+        className="absolute  hidden   lg:block   w-[15.1%]  top-[5.5%] left-[34.4%] "
         src={lineteamsvg}
         alt="line"
       />
@@ -72,19 +77,19 @@ function Lines() {
       />
       {/* second bottom line */}
       <img
-        className="absolute hidden   lg:block w-[14.8%]  top-[47.1%] right-[34.9%] "
+        className="absolute hidden   lg:block w-[14.8%]  top-[47.1%] right-[35.8%] rotate-180 "
         src={shortlineteam}
         alt="line"
       />
       {/* long downward line */}
       <img
-        className="absolute hidden   lg:block h-[9.4%]  top-[47.09%] right-[49.5%] "
+        className="absolute hidden   lg:block h-[9.4%]  top-[47.09%] right-[49.9%] "
         src={arrowteam273}
         alt="line"
       />
       {/* small downward arrow */}
       <img
-        className="absolute  hidden   lg:block h-[3.5%]  top-[56.4%] right-[49%] "
+        className="absolute  hidden   lg:block h-[3.5%]  top-[56.6%] right-[49.37%] "
         src={arrshortteam}
         alt="line"
       />
@@ -96,7 +101,7 @@ function Lines() {
       />
       {/* down right line */}
       <img
-        className="absolute  hidden   lg:block w-[30.2%]  top-[58%] right-[20%] "
+        className="absolute  hidden   lg:block w-[30.2%]  top-[58%] right-[20%] rotate-180"
         src={lineteamsvg}
         alt="line"
       />

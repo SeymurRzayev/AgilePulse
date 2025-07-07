@@ -13,10 +13,9 @@ const Hero: FC = () => {
     >
       <div className="flex flex-col gap-7 w-full">
         <h2 className="font-bold text-[46px] leading-[56px] text-[#000000DE]">
-          {" "}
           Biz kimik?
         </h2>
-        <div className="flex flex-col gap-4  font-bold text-sm leading-[20px] text-[#00000099]">
+        <div className="flex flex-col gap-4  font-bold text-sm 2xl:text-lg leading-[20px] text-[#00000099]">
           <p>
             Agile Pulse — çevik yanaşma (Agile) fəlsəfəsini mərkəzə alan,
             innovasiya və davamlı inkişaf prinsipləri üzərində qurulmuş
