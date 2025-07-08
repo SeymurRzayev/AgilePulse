@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery, type BaseQueryFn, type FetchArgs } from '@reduxjs/toolkit/query/react';
 import { base_url } from '../../config/adminApi';
+import Swal from 'sweetalert2';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: base_url,
@@ -55,7 +56,14 @@ function redirectToLogin() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
-    window.location.href = '/login';
+    Swal.fire({
+        icon: 'warning',
+        title: 'Sessiyanızın müddəti doldu!',
+        text: 'Giriş səhifəsinə yönləndirilirsiniz. Davam etmək üçün Tamam\'a klik edin.',
+        confirmButtonText: 'Tamam',
+    }).then(() => {
+        window.location.href = '/login';
+    });
 }
 
 export const baseApi = createApi({

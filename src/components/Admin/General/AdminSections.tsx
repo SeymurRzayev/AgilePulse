@@ -1,31 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { AdminPageSections, type AdminPageType } from "../../../config/sectionConfig";
 
-const SECTIONS = [
-    {
-        label: 'Kitabxana',
-        path: 'library'
-    },
-    {
-        label: 'Məqalələr',
-        path: 'articles'
-    },
-    {
-        label: 'İştirakçıların təlim təcrübələri',
-        path: ''
-    },
-    {
-        label: 'Partnyorlar',
-        path: 'partners'
-    },
-    {
-        label: 'Sitat sətri',
-        path: ''
-    },
-]
+interface AdminMainPageProps {
+    pageType: AdminPageType;
+}
 
-const AdminMainPage = () => {
-
+const AdminSections = ({ pageType }: AdminMainPageProps) => {
     const navigate = useNavigate()
+    const sections = AdminPageSections[pageType] || [];
 
     return (
         <div className=' w-full h-full py-10'>
@@ -33,7 +15,7 @@ const AdminMainPage = () => {
             <div className='max-w-[1059pxpx] mt-[43px] pr-2'>
                 <ul className="space-y-4">
                     {
-                        SECTIONS.map((section, index) => (
+                        sections.map((section, index) => (
                             <li
                                 key={index}
                                 style={{ boxShadow: '4px 4px 3px 3px #5756561F' }}
@@ -50,4 +32,4 @@ const AdminMainPage = () => {
     )
 }
 
-export default AdminMainPage
+export default AdminSections

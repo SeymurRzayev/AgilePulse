@@ -26,9 +26,10 @@ import Tasks from "../pages/Admin/MenuItemsContent/Tasks";
 import Groups from "../pages/Admin/MenuItemsContent/Groups";
 import NotificationCenter from "../pages/Admin/MenuItemsContent/NotificationCenter";
 import Dashboard from "../pages/Admin/MenuItemsContent/Dashboard";
-import AdminMainPage from "../components/Admin/AdminMainPage";
-import AdminLibraryAndArticles from "../components/Admin/AdminLibraryAndArticles";
+import AdminLibraryAndArticles from "../components/Admin/MainPage/AdminLibraryAndArticles";
 import AdminPartners from "../components/Admin/MainPage/AdminPartners";
+import { AdminPageType } from "../config/sectionConfig";
+import AdminSections from "../components/Admin/General/AdminSections";
 
 
 const AppRouter: FC = () => {
@@ -62,10 +63,12 @@ const AppRouter: FC = () => {
       <Route path="/admin/*" element={<AdminPanel />}>
         <Route path="dashboard">
           <Route index element={<Dashboard />} />
-          <Route path="main-page" element={<AdminMainPage />} />
+          <Route path=":main-page" element={<AdminSections pageType={AdminPageType.Main} />} />
           <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/partners" element={<AdminPartners />} />
+          <Route path="trainings-page" element={<AdminSections pageType={AdminPageType.Trainings} />} />
+
         </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />

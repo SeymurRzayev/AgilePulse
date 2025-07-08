@@ -11,7 +11,7 @@ const PAGES = [
     {
         label: 'Təlimlər',
         icon: dasboardIconAdmin,
-        path: ''
+        path: 'trainings-page'
     },
     {
         label: 'İmtahanlar',
