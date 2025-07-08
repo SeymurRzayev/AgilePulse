@@ -149,6 +149,8 @@ const PersonalCabinetTrainings = () => {
                             {
                                 courses.map(course => (
                                     <TrainingCard
+                                        className='w-[381px]'
+                                        isCurveBig={true}
                                         key={course.id}
                                         imgUrl={course.imgUrl}
                                         title={course.title}

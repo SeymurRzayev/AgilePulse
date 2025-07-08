@@ -57,6 +57,8 @@ const ArticleDetails = () => {
                     {
                         allArticles?.map(article =>
                             <TrainingCard
+                                className='!w-[381px]'
+                                isCurveBig={true}
                                 isArticle={true}
                                 title={article.title}
                                 imgUrl={article.imageUrl}

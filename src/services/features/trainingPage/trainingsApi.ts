@@ -16,6 +16,12 @@ const trainingsApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getAllTrainings: build.query<Training[], void>({
+      query: () => ({
+        url: `/trainings/all-training`,
+        method: "GET",
+      }),
+    }),
   }),
 })
 
@@ -23,4 +29,5 @@ const trainingsApi = baseApi.injectEndpoints({
 export const {
   useGetTrainingsByCategoryQuery,
   useGetTrainingByIdQuery,
+  useGetAllTrainingsQuery,
 } = trainingsApi

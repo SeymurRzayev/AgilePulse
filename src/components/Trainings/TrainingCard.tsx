@@ -5,6 +5,8 @@ import bookmarkIcon from "../../assets/icons/bookmark.svg";
 import bookmarkCheckIcon from "../../assets/icons/bookmarkCheck.svg";
 import { Link } from "react-router-dom";
 import MainButton from "../Butttons/MainButton";
+import { useAddSavedTrainingsMutation, useIsSavedQuery } from "../../services/features/trainingPage/savedTrainingsApi";
+import { useAppSelector } from "../../redux/hooks/Hooks";
 
 type TrainingCardProps = {
   id?: number;
@@ -18,6 +20,8 @@ type TrainingCardProps = {
   content?: string;
   isArticle?: boolean;
   isCourse?: boolean;
+  className: string;
+  isCurveBig?: boolean
 };
 
 const TrainingCard: React.FC<TrainingCardProps> = ({
@@ -32,19 +36,37 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
   isArticle,
   id,
   isCourse,
+  className,
+  isCurveBig
 }: TrainingCardProps) => {
-  const [isBookmarked, setIsBookmarked] = React.useState(false);
 
-  console.log(id)
+  const userId = useAppSelector(state => state.auth.user?.id);
+  const [addSavedTrainings] = useAddSavedTrainingsMutation();
+  const {data: isSaved} = useIsSavedQuery({ trainingId: id as number, userId: userId as number});
+  console.log(isSaved , 'isSaved')
+  
+  const handleSaveTraining = async () => {
+    try {
+      if (userId) {
+        await addSavedTrainings({
+          userId,
+          trainingId: id as number,
+        }).unwrap();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div
-      className={`${isCourse ? 'w-[325px]' : 'w-[325px] sm:w-[381px]'} ${isArticle && 'min-h-[595px]'} bg-[#FFFFFF] hover:translate-y-[-5px] transition-all duration-300 shadow-[4px_4px_12px_5px_#0000000D] rounded-br-[100px] rounded-bl-xl rounded-tl-[50px] rounded-tr-[50px]`}
+      className={`${className} ${isArticle && 'min-h-[595px]'} bg-[#FFFFFF] hover:translate-y-[-5px] transition-all duration-300 shadow-[4px_4px_12px_5px_#0000000D] rounded-br-[100px] rounded-bl-xl rounded-tl-[50px] rounded-tr-[50px]`}
     >
       <div className={`h-[391px] relative flex items-center justify-center overflow-hidden`}>
         <img
           src={imgUrl}
           style={{
-            clipPath: isCourse
+            clipPath: !isCurveBig
               ? "path('M 0,0 L325,0 L328,286 Q 319.74,307 300.43,316 Q 291.98,319 274.56,321 L215.71,321 Q 158.3,317 150,354 Q 141.39,344 142,355 Q 83.27,399 157,300 Q 158.06,391 97.76,391 L0,391 Z')"
               : "path('M 0,0 L381,0 L381,280 Q 375,307 347,316 Q 338,318 335,318 L240,320 Q 221,320 207,332 Q 202,336 198,346 Q 196,356 196,357 Q 190,387 158,391 L0,391 Z')"
           }}
@@ -65,6 +87,7 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
       <div className={
         `pt-[28px] 
         ${isCourse && 'px-4 md:px-[26px] py-[29px]'} 
+        ${isCurveBig && 'max-w-[355px] !px-3 sm:px-0'}
         ${isArticle ? 'max-w-[355px] px-3 sm:px-0' : 'max-w-[339px] sm:px-0'} mx-auto`
       }>
         <div className="flex items-start justify-between">
@@ -80,9 +103,9 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           {!isArticle && (
             <img
               className='cursor-pointer'
-              src={isBookmarked ? bookmarkCheckIcon : bookmarkIcon}
+              src={isSaved ? bookmarkCheckIcon : bookmarkIcon}
               alt="bookmark"
-              onClick={() => setIsBookmarked((prev) => !prev)}
+              onClick={handleSaveTraining}
               loading="lazy"
             />
           )}

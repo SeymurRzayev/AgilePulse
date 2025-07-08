@@ -14,7 +14,8 @@ export const loginApi = baseApi.injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
-                    localStorage.setItem("token", data.refreshToken);
+                    localStorage.setItem("accessToken", data.accessToken);
+                    localStorage.setItem("refreshToken", data.refreshToken);
                     localStorage.setItem("user", JSON.stringify(data));
                     if (data?.refreshToken) {
                         dispatch(setLoggedUser(data))

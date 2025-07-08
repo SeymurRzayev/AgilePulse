@@ -39,6 +39,8 @@ const Articles = () => {
                 {
                     slicesArticles.map(item =>
                         <TrainingCard
+                            className='!w-[381px]'
+                            isCurveBig={true}
                             isArticle={true}
                             title={item.title}
                             imgUrl={item.imageUrl}
