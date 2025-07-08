@@ -36,7 +36,7 @@ const ScrumModule: FC = () => {
             <div className="flex flex-col justify-center  md:w-[60%]">
               <p className={`${styles.trainerDate} text-xl md:text-2xl`}>{scrumTrainer?.publishedAt}</p>
               <p className={`${styles.trainerDuration} text-xl md:text-2xl md:[background-size:48.5px_46.4px] [background-size:35.5px_35.4px]`}>
-                {scrumTrainer?.modules?.length} modul  {scrumTrainer?.modules?.reduce((total, mod) => total + mod.lessons.length, 0)}
+                {scrumTrainer?.modules?.length} modul  {scrumTrainer?.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} blok
               </p>
               <button className={`${styles.favoriteBtn} w-[45px] md:w-[86px]`}>
                 <img className={styles.favorite} src={bookmark} />

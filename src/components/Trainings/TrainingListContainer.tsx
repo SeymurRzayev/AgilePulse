@@ -32,6 +32,8 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
       <div className="w-full  flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
         {slicesData?.map((course) => (
           <TrainingCard
+            className="w-[381px]"
+            isCurveBig={true}
             key={course.id}
             id={course.id}
             imgUrl={course.imageUrl}
@@ -46,7 +48,7 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
         ))}
       </div>
       <TrainingsViewAllContainer
-        text="Hamısına bax"
+        text="Daha çox"
         clickFunction={() => setVisibility(visibilty + 6)}
       />
     </div>

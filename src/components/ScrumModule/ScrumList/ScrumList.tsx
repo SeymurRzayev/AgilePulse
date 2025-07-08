@@ -1,17 +1,19 @@
 import Button from "../../../ui/Button/Button";
 import AccordionItem from "../../AccordionItem";
-import { dummyMock } from "../../../dummyMock";
 import Slider from "react-slick";
 import TrainingCard from "../../Trainings/TrainingCard";
 import TrainingExperiences from "../../../pages/Home/sections/TrainingExperiences";
 import { useNavigate } from "react-router-dom";
 import type { Training } from "../../../types/types";
+import { useGetAllTrainingsQuery } from "../../../services/features/trainingPage/trainingsApi";
 
 type ScrumListProps = {
   data: Training | undefined;
 }
 
 const ScrumList = ({ data }: ScrumListProps) => {
+
+  const {data: allTrainings} = useGetAllTrainingsQuery()
 
   const settings = {
     dots: false,
@@ -20,6 +22,7 @@ const ScrumList = ({ data }: ScrumListProps) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    // centerMode: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -77,20 +80,24 @@ const ScrumList = ({ data }: ScrumListProps) => {
 
       <div className="w-[95%] mx-auto mt-25">
         <h2 className="text-center">İstifadəçilər bu təlimləri də keçdilər </h2>
-        <div className="w-full gap-8 mx-auto pt-2 items-center flex-col md:flex-row">
-          <Slider {...settings}>
+        <div className="w-full  gap-8 mx-auto pt-2 items-center flex-col md:flex-row ">
+          <Slider {...settings} className="">
             {
-              dummyMock.map(item => (
-                <div className='px-3 py-3'>
+              allTrainings?.map(item => (
+                <div key={item.id} className='px-3 py-3'>
                   <TrainingCard
-                    imgUrl={item.imgUrl}
-                    date={item.date}
-                    avatar={item.profileImgUrl}
+                    id={item.id}
+                    isCurveBig={true}
+                    className={'w-[381px] h-[621px]'}
+                    imgUrl={item.imageUrl}
+                    date={item.publishedAt}
+                    avatar={item.authorAvatarUrl}
                     title={item.title}
+                    lessonCount={item.modules?.reduce((total, mod) => total + mod.lessons.length, 0)}
                     isArticle={false}
-                    user={item.author}
+                    user={item.authorName}
                     isCourse={true}
-                    time={4} //dynamic
+                    time={item.modules?.length}
                   />
                 </div>
               ))
