@@ -1,15 +1,15 @@
-import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../services/features/mainPage/bookApi";
-import TrainingsSearchContainer from "../Trainings/TrainingsSearchContainer";
+import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../../services/features/mainPage/bookApi";
+import TrainingsSearchContainer from "../../Trainings/TrainingsSearchContainer";
 import { useEffect, useState } from "react";
-import type { ArticleRes, Book } from "../../types/types";
+import type { ArticleRes, Book } from "../../../types/types";
 import Swal from "sweetalert2";
-import './Admin.css'
-import LoadingSpinner from "../General/LoadingSpinner";
-import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../services/features/mainPage/articleApi";
+import '../Admin.css'
+import LoadingSpinner from "../../General/LoadingSpinner";
+import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../../services/features/mainPage/articleApi";
 import { useLocation } from "react-router-dom";
-import ListItem from "./ListItem";
-import AnimatedButton from "../../ui/AnimatedButton/AnimatedButton";
-import AddModal from "./AddModal";
+import ListItem from "../ListItem";
+import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
+import AddModal from "../Modals/AddModal";
 
 const AdminLibraryAndArticles = () => {
 

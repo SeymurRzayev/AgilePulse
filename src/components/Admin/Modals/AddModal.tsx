@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import Xicon from '../../assets/icons/Modalcloseicon.svg';
-import { useCreateBookMutation, useGetAllBookQuery } from '../../services/features/mainPage/bookApi';
+import Xicon from '../../../assets/icons/Modalcloseicon.svg';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
-import { useCreateArticleMutation, useGetAllArticleQuery } from '../../services/features/mainPage/articleApi';
-import './Admin.css'
+import '../Admin.css'
+import { useCreateArticleMutation, useGetAllArticleQuery } from '../../../services/features/mainPage/articleApi';
+import { useCreateBookMutation, useGetAllBookQuery } from '../../../services/features/mainPage/bookApi';
 
 
 interface ModalProps {

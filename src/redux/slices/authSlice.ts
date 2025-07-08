@@ -23,7 +23,7 @@ const authSlice = createSlice({
             state.user = null;
             state.isLoggedIn = false;
             localStorage.removeItem("user");
-            localStorage.removeItem("token");
+            localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
         },
     },
