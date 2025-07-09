@@ -1,16 +1,16 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import Logo from '../../assets/icons/logo.svg'
-import dasboardIconAdmin from '../../assets/icons/dashboard-icon-admin.svg'
-import team from '../../assets/icons/team.svg'
-import users from '../../assets/icons/users.svg'
-import projects from '../../assets/icons/projects.svg'
-import tasks from '../../assets/icons/tasks.svg'
-import settings from '../../assets/icons/settings.svg'
-import logssettings from '../../assets/icons/logssettings.svg'
-import notification from '../../assets/icons/notification.svg'
-import Image from '../../components/ImageComponent'
-import arrow from '../../assets/images/arrow.svg'
-import styles from '../../pages/PersonalCabinet/personalCabinet.module.css'
+import Logo from '../../../assets/icons/logo.svg'
+import dasboardIconAdmin from '../../../assets/icons/dashboard-icon-admin.svg'
+import team from '../../../assets/icons/team.svg'
+import users from '../../../assets/icons/users.svg'
+import projects from '../../../assets/icons/projects.svg'
+import tasks from '../../../assets/icons/tasks.svg'
+import settings from '../../../assets/icons/settings.svg'
+import logssettings from '../../../assets/icons/logssettings.svg'
+import notification from '../../../assets/icons/notification.svg'
+import Image from '../../../components/ImageComponent'
+import arrow from '../../../assets/images/arrow.svg'
+import styles from '../../../pages/PersonalCabinet/personalCabinet.module.css'
 
 const NAVIGATION = [
     {
