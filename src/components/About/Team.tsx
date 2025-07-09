@@ -70,7 +70,7 @@ const Team: FC = () => {
   
 
   return (
-    <div className="flex flex-col gap-4 md:gap-6 lg:gap-[50px] relative">
+    <div className="flex flex-col gap-4 md:gap-6 lg:gap-[50px] relative max-w-7xl mx-auto">
       <Lines />
 
       <h1 className="text-[34px] md:max-xl:text-5xl lg:text-5xl  bg-gradient-to-r from-[#E7912B] via-[#D83D69] to-[#2C4B9B] bg-clip-text text-transparent text-center font-bold">
@@ -104,11 +104,11 @@ const Team: FC = () => {
           </div>
         </div>
         {/* {first big container} */}
-        <div className="teamCenterCnt  flex   flex-col md:max-xl:flex-row lg:flex-row gap-[1%]  md:max-xl:gap-[3%]  lg:gap-[7.8%]  justify-center    mb-[14%]  ">
+        <div className="teamCenterCnt  flex   flex-col md:max-xl:flex-row mt-4 lg:flex-row   justify-between w-full  mx-auto   mb-[14%]   ">
           {/* left  */}
           <RoleGroup
             className={
-              "text-[26px] md:max-xl:text-[30px] lg:text-[38px] w-[54%] font-bold text-center my-[6%]"
+              "text-[26px] md:max-xl:text-[30px] lg:text-[38px] w-[54%] font-bold text-center mb-[10%] "
             }
             people={filterByPosition(response, "Frontend Developer")}
             occupation={"Frontend developerlər"}
@@ -145,7 +145,7 @@ const Team: FC = () => {
           />
         </div>
         {/* {second big container} */}
-        <div className="teamCenterCnt  flex flex-col md:max-xl:flex-row lg:flex-row  gap-[1%]  md:max-xl:gap-[3%]  lg:gap-[7.8%]  justify-center     mb-[6%] md:max-xl:pt-[10%] lg:pt-[10%]  ">
+        <div className="teamCenterCnt  flex flex-col md:max-xl:flex-row lg:flex-row    justify-between w-full  mx-auto     mb-[6%] md:max-xl:pt-[10%] lg:pt-[10%]  ">
           <div className=" ">
             <RoleGroup
               className={
