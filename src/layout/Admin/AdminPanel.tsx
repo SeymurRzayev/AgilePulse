@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import AdminMenu from '../../components/Admin/AdminMenu';
 import AdminLogin from '../../components/Admin/AdminLogin';
+import AdminMenu from '../../components/Admin/General/AdminMenu';
 
 const AdminPanel = () => {
     return (

@@ -30,6 +30,7 @@ import AdminLibraryAndArticles from "../components/Admin/MainPage/AdminLibraryAn
 import AdminPartners from "../components/Admin/MainPage/AdminPartners";
 import { AdminPageType } from "../config/sectionConfig";
 import AdminSections from "../components/Admin/General/AdminSections";
+import AdminCategories from "../components/Admin/Trainings/AdminCategories";
 
 
 const AppRouter: FC = () => {
@@ -63,11 +64,12 @@ const AppRouter: FC = () => {
       <Route path="/admin/*" element={<AdminPanel />}>
         <Route path="dashboard">
           <Route index element={<Dashboard />} />
-          <Route path=":main-page" element={<AdminSections pageType={AdminPageType.Main} />} />
+          <Route path="main-page" element={<AdminSections pageType={AdminPageType.Main} />} />
           <Route path="main-page/library" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/partners" element={<AdminPartners />} />
           <Route path="trainings-page" element={<AdminSections pageType={AdminPageType.Trainings} />} />
+          <Route path="trainings-page/categories" element={<AdminCategories />} />
 
         </Route>
         <Route path="users" element={<Users />} />

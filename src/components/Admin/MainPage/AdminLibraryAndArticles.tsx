@@ -1,49 +1,45 @@
 import { useDeleteBookMutation, useGetAllBookQuery, useUpdateBookMutation } from "../../../services/features/mainPage/bookApi";
+import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../../services/features/mainPage/articleApi";
 import TrainingsSearchContainer from "../../Trainings/TrainingsSearchContainer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ArticleRes, Book } from "../../../types/types";
 import Swal from "sweetalert2";
-import '../Admin.css'
+import '../Admin.css';
 import LoadingSpinner from "../../General/LoadingSpinner";
-import { useDeleteArticleMutation, useGetAllArticleQuery, useUpdateArticleMutation } from "../../../services/features/mainPage/articleApi";
 import { useLocation } from "react-router-dom";
 import ListItem from "../ListItem";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
-import AddModal from "../Modals/AddModal";
+import CustomModal from "../Modals/CustomModal";
+import AddBookForm from "./AddBookForm";
+import AddArticleForm from "./AddArticleForm";
 
 const AdminLibraryAndArticles = () => {
+  const location = useLocation();
+  const isLibraryMode = location.pathname.includes('library');
 
-  const location = useLocation()
-  const isLibraryMode: boolean = location.pathname.includes('library')
-
-  const [books, setBooks] = useState<Book[]>([]);
-  const [articles, setArticles] = useState<ArticleRes[]>([]);
-  const [search, setSearch] = useState<string>("");
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [search, setSearch] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const { data: allBookData, refetch: refreshBook, isLoading: isLoadingBooks } = useGetAllBookQuery();
   const { data: allArticleData, refetch: refreshArticle, isLoading: isLoadingArticle } = useGetAllArticleQuery();
+
   const [updateBook] = useUpdateBookMutation();
   const [updateArticle] = useUpdateArticleMutation();
   const [deleteBook] = useDeleteBookMutation();
-  const [deleteArticle] = useDeleteArticleMutation()
+  const [deleteArticle] = useDeleteArticleMutation();
+
+  const books = allBookData?.data?.data || [];
+  const articles = allArticleData?.data?.data || [];
 
   const editableFields = isLibraryMode
     ? ["name", "author"] as Array<keyof Book>
     : ["title", "content"] as Array<keyof ArticleRes>;
 
-  useEffect(() => {
-    if (isLibraryMode && allBookData?.data?.data) {
-      setBooks(allBookData.data.data);
-    } else if (!isLibraryMode && allArticleData?.data?.data) {
-      setArticles(allArticleData.data.data);
-    }
-  }, [allBookData, allArticleData, isLibraryMode]);
-
   const filteredBooks = books.filter(book =>
     book.name.toLowerCase().includes(search.toLowerCase()) ||
     book.author.toLowerCase().includes(search.toLowerCase())
   );
+
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(search.toLowerCase()) ||
     article.author.toLowerCase().includes(search.toLowerCase())
@@ -57,28 +53,18 @@ const AdminLibraryAndArticles = () => {
     const formData = new FormData();
     formData.append(field, value.toString());
 
-    if (isLibraryMode) {
-      const updatedBooks = books.map(b =>
-        b.id === id ? { ...b, [field as keyof Book]: value } : b
-      );
-      setBooks(updatedBooks);
-
-      await updateBook({ bookId: id, formData }).unwrap().catch(() =>
-        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Yenilənmə uğursuz oldu!' })
-      );
-    } else {
-      const updatedArticles = articles.map(a =>
-        a.id === id ? { ...a, [field as keyof ArticleRes]: value } : a
-      );
-      setArticles(updatedArticles);
-
-      await updateArticle({ id, data: formData }).unwrap().catch(() =>
-        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Məqalə yenilənmədi!' })
-      );
+    try {
+      if (isLibraryMode) {
+        await updateBook({ bookId: id, formData }).unwrap();
+        refreshBook();
+      } else {
+        await updateArticle({ id, data: formData }).unwrap();
+        refreshArticle();
+      }
+    } catch {
+      Swal.fire({ icon: 'error', title: 'Xəta', text: 'Yenilənmə uğursuz oldu!' });
     }
   };
-
-
 
   const handleFileUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -100,7 +86,7 @@ const AdminLibraryAndArticles = () => {
         refreshArticle();
       }
       Swal.fire({ icon: "success", title: "Uğurla yükləndi!" });
-    } catch (error) {
+    } catch {
       Swal.fire({ icon: "error", title: "Xəta", text: "Fayl yüklənmədi." });
     }
   };
@@ -120,94 +106,82 @@ const AdminLibraryAndArticles = () => {
     if (result.isConfirmed) {
       try {
         if (isLibraryMode) {
-          await deleteBook(id);
-          refreshBook()
-          Swal.fire('Silindi!', 'Kitab silindi.', 'success');
+          await deleteBook(id).unwrap();
+          refreshBook();
         } else {
-          await deleteArticle(id)
-          refreshArticle()
-          Swal.fire('Silindi!', 'Məqalə silindi.', 'success');
+          await deleteArticle(id).unwrap();
+          refreshArticle();
         }
+        Swal.fire('Silindi!', '', 'success');
       } catch {
-        Swal.fire('Xəta!', 'Seçilmiş məhsul silinmədi.', 'error');
+        Swal.fire('Xəta!', 'Silinmə uğursuz oldu.', 'error');
       }
     }
   };
 
-
   return (
-    <div className=' w-full h-full '>
-      {showModal && <AddModal onClose={() => setShowModal(false)} isLibraryMode={isLibraryMode} />}
-      <div className="w-full  flex justify-between items-start ">
+    <div className='w-full h-full'>
+      {showModal && (
+        <CustomModal
+          onClose={() => setShowModal(false)}
+          title={`Yeni ${isLibraryMode ? 'kitab' : 'məqalə'} əlavə et`}
+        >
+          {isLibraryMode ? (
+            <AddBookForm onSuccess={() => { setShowModal(false); refreshBook(); }} />
+          ) : (
+            <AddArticleForm onSuccess={() => { setShowModal(false); refreshArticle(); }} />
+          )}
+        </CustomModal>
+      )}
+
+      <div className="w-full flex justify-between items-start">
         <div className="w-[669px] h-fit">
           <TrainingsSearchContainer
             searchValue={search}
             onSearchChange={setSearch}
-            filterIcon={false} height={56}
+            filterIcon={false}
+            height={56}
           />
         </div>
-
       </div>
-      <div className=''>
-        <div className="w-full flex justify-between px-3 ">
-          <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>{isLibraryMode ? "Kitabxana" : "Məqalələr"}</h2>
-        </div>
-        {
-          isLoadingBooks || isLoadingArticle
-            ? <LoadingSpinner className="mt-6" />
-            : (
-              <ul
-                style={{
-                  scrollbarWidth: 'none',
-                  msOverflowStyle: 'none'
-                }}
-                className="space-y-[19px] max-h-[545px] mt-5 overflow-y-scroll animated-list"
-              >
-                {
-                  isLibraryMode
-                    ? (
-                      filteredBooks?.map(book => (
-                        <ListItem
-                          key={book.id}
-                          data={book}
-                          editableFields={editableFields}
-                          onFieldChange={handleFieldChange}
-                          onFileUpload={handleFileUpload}
-                          onDelete={handleItemDelete}
-                          isLibraryMode={isLibraryMode}
-                        />
-                      ))
-                    )
-                    : (
-                      filteredArticles?.map(article => (
-                        <ListItem
-                          key={article.id}
-                          data={article}
-                          editableFields={editableFields}
-                          onFieldChange={handleFieldChange}
-                          onFileUpload={handleFileUpload}
-                          onDelete={handleItemDelete}
-                          isLibraryMode={isLibraryMode}
-                        />
-                      ))
-                    )
-                }
 
-              </ul>
-            )
+      <div className=''>
+        <div className="w-full flex justify-between px-3">
+          <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal'>
+            {isLibraryMode ? "Kitabxana" : "Məqalələr"}
+          </h2>
+        </div>
+
+        {(isLoadingBooks || isLoadingArticle)
+          ? <LoadingSpinner className="mt-6" />
+          : (
+            <ul className="space-y-[19px] max-h-[545px] mt-5 overflow-y-scroll animated-list">
+              {(isLibraryMode ? filteredBooks : filteredArticles).map(item => (
+                <ListItem
+                  key={item.id}
+                  data={item}
+                  editableFields={editableFields}
+                  onFieldChange={handleFieldChange}
+                  onFileUpload={handleFileUpload}
+                  onDelete={handleItemDelete}
+                  isLibraryMode={isLibraryMode}
+                />
+              ))}
+            </ul>
+          )
         }
-        <div className=" left-[50%] absolute bottom-0 mb-10 flex items-center justify-center">
-          <AnimatedButton onClick={() => setShowModal(prev => !prev)} className="!w-[250px] !h-[56px] !font-[Lexend]">
+
+        <div className="left-[50%] absolute bottom-0 mb-10 flex items-center justify-center">
+          <AnimatedButton
+            onClick={() => setShowModal(true)}
+            className="!w-[250px] !h-[56px] !font-[Lexend]"
+          >
             Yeni {isLibraryMode ? 'kitab' : 'məqalə'} yarat <span className="text-3xl ml-2 font-light">+</span>
           </AnimatedButton>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminLibraryAndArticles
-
-
-
+export default AdminLibraryAndArticles;
