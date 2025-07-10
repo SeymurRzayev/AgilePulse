@@ -40,20 +40,23 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
   isCurveBig
 }: TrainingCardProps) => {
 
+  const [optimisticSaved, setOptimisticSaved] = React.useState<boolean | null>(null);
+
   const userId = useAppSelector(state => state.auth.user?.id);
-  const [addSavedTrainings] = useAddSavedTrainingsMutation();
-  const {data: isSaved} = useIsSavedQuery({ trainingId: id as number, userId: userId as number});
-  console.log(isSaved , 'isSaved')
-  
+  const [addSavedTrainings, { isLoading: isToggling }] = useAddSavedTrainingsMutation();
+  const { data: isSaved } = useIsSavedQuery({ trainingId: id!, userId: userId as number });
+
+  const savedState = optimisticSaved !== null ? optimisticSaved : isSaved;
+
   const handleSaveTraining = async () => {
     try {
       if (userId) {
-        await addSavedTrainings({
-          userId,
-          trainingId: id as number,
-        }).unwrap();
+        setOptimisticSaved(!savedState);
+        await addSavedTrainings({ userId, trainingId: id as number }).unwrap();
+        setOptimisticSaved(prev => prev);
       }
     } catch (error) {
+      setOptimisticSaved(null);
       console.log(error);
     }
   }
@@ -102,8 +105,8 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
           </div>
           {!isArticle && (
             <img
-              className='cursor-pointer'
-              src={isSaved ? bookmarkCheckIcon : bookmarkIcon}
+              className={`cursor-pointer ${isToggling ? 'opacity-50 pointer-events-none' : ''}`}
+              src={savedState ? bookmarkCheckIcon : bookmarkIcon}
               alt="bookmark"
               onClick={handleSaveTraining}
               loading="lazy"
