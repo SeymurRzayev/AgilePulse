@@ -21,7 +21,7 @@ const EditAndCreateTrainer = ({
   initialSurname,
   initialPosition,
   initialDescription,
-  initialImg,
+ 
   id,
   onClose,
 }: EditAndCreateTrainerProps) => {
@@ -29,7 +29,8 @@ const EditAndCreateTrainer = ({
   const [surname, setSurname] = useState(initialSurname ?? "");
   const [position, setPosition] = useState(initialPosition ?? "");
   const [description, setDescription] = useState(initialDescription ?? "");
-  const [imageUrl, setImageUrl] = useState(initialImg ?? "");
+  const [image, setImage] = useState<File | null>(null);
+  // const [imageUrl, setImageUrl] = useState(initialImg ?? "");
 
   const [updateTrainer, { isLoading: isLoadingUpdate }] =
     useUpdateTrainerMutation();
@@ -41,14 +42,15 @@ const EditAndCreateTrainer = ({
   const handleSave = async () => {
     if (isEditMode) {
       try {
-        await updateTrainer({
-          id: id as number,
-          name: name as string,
-          surname: surname as string,
-          position: position as string,
-          description: description as string,
-          imageUrl: imageUrl as string,
-        }).unwrap();
+        const formData = new FormData();
+        formData.append("name", name as string);
+        formData.append("surname", surname as string);
+        formData.append("position", position as string);
+        formData.append("description", description as string);
+        if (image) {
+          formData.append("image", image);
+        }
+        await updateTrainer({ id: id as number, data: formData }).unwrap();
         Swal.fire("Uğurlu", "Kateqoriya uğurla dəyişdirildi", "success");
         onClose?.();
       } catch (error) {
@@ -56,14 +58,17 @@ const EditAndCreateTrainer = ({
       }
     } else {
       try {
-        await createTrainer({
-          id: id as number,
-          name: name as string,
-          surname: surname as string,
-          position: position as string,
-          description: description as string,
-          imageUrl: imageUrl as string,
-        }).unwrap();
+        const formData = new FormData();
+
+        formData.append("name", name as string);
+        formData.append("surname", surname as string);
+        formData.append("position", position as string);
+        formData.append("description", description as string);
+        if (image) {
+          formData.append("image", image);
+        }
+
+        await createTrainer(formData).unwrap();
         Swal.fire("Uğurlu", "Kateqoriya uğurla yaradıldı", "success");
         onClose?.();
       } catch (error) {
@@ -102,26 +107,16 @@ const EditAndCreateTrainer = ({
         rows={4}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="resize-nonew-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
+        className="resize-none w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
         placeholder="Təlimçi haqqında"
-      />
-
+      ></textarea>
       <input
         type="file"
         accept="image/*"
         onChange={(e) => {
           const file = e.target.files?.[0];
           if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              if (reader.result) {
-                setImageUrl(reader.result.toString());
-              }
-            };
-            reader.onerror = () => {
-              Swal.fire("Xəta", "Şəkil yüklənə bilmədi", "error");
-            };
-            reader.readAsDataURL(file);
+            setImage(file);
           }
         }}
         className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"

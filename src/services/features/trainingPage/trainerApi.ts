@@ -10,11 +10,11 @@ const trainerApi = baseApi.injectEndpoints({
       }),
       transformResponse: (response: TrainerResponse) => response.data.data,
     }),
-    updateTrainer: builder.mutation<void, Trainer>({
-      query: (trainer) => ({
-        url: `/trainer/update/${trainer.id}`,
+    updateTrainer: builder.mutation<void, { id: number; data: FormData }>({
+      query: ({ id, data }) => ({
+        url: `/trainer/update/${id}`,
         method: "PUT",
-        body: trainer,
+        body: data,
       }),
     }),
     deleteTrainer: builder.mutation<void, number>({
@@ -23,7 +23,7 @@ const trainerApi = baseApi.injectEndpoints({
         method: "DELETE",
       }),
     }),
-    createTrainer: builder.mutation<void, Trainer>({
+    createTrainer: builder.mutation<void, FormData>({
       query: (trainer) => ({
         url: "/trainer/create",
         method: "POST",
