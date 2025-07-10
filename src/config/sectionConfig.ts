@@ -26,7 +26,7 @@ export const AdminPageSections: Record<AdminPageType, Section[]> = {
         { label: "Kategoriyalar", path: "categories" },
         { label: "Kurslar", path: "" },
         { label: "Podcastlar", path: "" },
-        { label: "Təlimçilər", path: "" },
+        { label: "Təlimçilər", path: "trainers" },
         { label: "Quiz", path: "" },
     ],
     [AdminPageType.AboutUs]: [],
