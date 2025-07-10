@@ -20,6 +20,9 @@ const savedTrainingsApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body,
             }),
+            invalidatesTags: (_result, _error, arg) => [
+                { type: 'isSaved', id: `${arg.userId}-${arg.trainingId}` },
+            ],
         }),
         getAllSavedTrainingsOfUser: builder.query<Training[], number>({
             query: (userId) => ({
@@ -32,6 +35,9 @@ const savedTrainingsApi = baseApi.injectEndpoints({
                 url: `/saved-trainings/check?userId=${body.userId}&trainingId=${body.trainingId}`,
                 method: 'GET',
             }),
+            providesTags: (_result, _error, arg) => [
+                { type: 'isSaved', id: `${arg.userId}-${arg.trainingId}` },
+            ],
         }),
     }),
 })
