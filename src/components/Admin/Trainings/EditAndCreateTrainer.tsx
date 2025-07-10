@@ -30,9 +30,10 @@ const EditAndCreateTrainer = ({
   const [position, setPosition] = useState(initialPosition ?? "");
   const [description, setDescription] = useState(initialDescription ?? "");
   const [imageUrl, setImageUrl] = useState(initialImg ?? "");
-  const [updateCategory, { isLoading: isLoadingUpdate }] =
+
+  const [updateTrainer, { isLoading: isLoadingUpdate }] =
     useUpdateTrainerMutation();
-  const [createCategory, { isLoading: isLoadingCreate }] =
+  const [createTrainer, { isLoading: isLoadingCreate }] =
     useCreateTrainerMutation();
 
   const isEditMode: boolean = !!id;
@@ -40,7 +41,7 @@ const EditAndCreateTrainer = ({
   const handleSave = async () => {
     if (isEditMode) {
       try {
-        await updateCategory({
+        await updateTrainer({
           id: id as number,
           name: name as string,
           surname: surname as string,
@@ -55,7 +56,7 @@ const EditAndCreateTrainer = ({
       }
     } else {
       try {
-        await createCategory({
+        await createTrainer({
           id: id as number,
           name: name as string,
           surname: surname as string,

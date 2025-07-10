@@ -111,10 +111,10 @@ const TableCell: React.FC<{ content: TableCellContent }> = ({ content }) => {
         </p>
       ) : (
         <div
-          style={{ justifyContent: content.image ? "flex-start" : "center" }}
+          style={{ justifyContent: content?.image ? "flex-start" : "center" }}
           className="flex items-center gap-3 w-full"
         >
-          {content.image && (
+          {content?.image && (
             <img
               src={content.image}
               alt=""
@@ -126,7 +126,7 @@ const TableCell: React.FC<{ content: TableCellContent }> = ({ content }) => {
             />
           )}
           <span className="text-lg font-[Corbel] text-[#000000] font-semibold text-center">
-            {content.icon ? content.icon : content.text}
+            {content?.icon ? content?.icon : content?.text}
           
           </span>
         </div>
