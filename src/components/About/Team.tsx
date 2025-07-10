@@ -65,7 +65,7 @@ const Team: FC = () => {
   //     imgUrl: item.imageUrl, // map it correctly
   //   })) || [];
 
-  console.log(filterByPosition(response, "Backend Developer"));
+
 
   return (
     <div className="flex flex-col gap-4 md:gap-6 lg:gap-[50px] relative max-w-7xl mx-auto">
@@ -108,7 +108,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] w-[54%] font-bold text-center mb-[10%] "
             }
-            people={filterByPosition(response, "FRONTEND_DEVELOPER")}
+            people={filterByPosition(response, "FRONTEND")}
             occupation={"Frontend developerlər"}
           />
 
@@ -140,7 +140,7 @@ const Team: FC = () => {
             className={
               "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold w-[54%] mx-auto mb-[10%]"
             }
-            people={filterByPosition(response, "BACKEND_DEVELOPER")}
+            people={filterByPosition(response, "BACKEND")}
             occupation={"Backend developerlər"}
           />
         </div>
@@ -161,7 +161,7 @@ const Team: FC = () => {
               className={
                 "text-[26px] md:max-xl:text-[30px] lg:text-[38px] text-center font-bold  mx-auto mb-[10%]"
               }
-              people={filterByPosition(response, "QA_DEVELOPER")}
+              people={filterByPosition(response, "QA")}
               occupation={"QA Testerlər"}
             />
           </div>
