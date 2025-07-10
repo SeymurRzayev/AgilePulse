@@ -35,7 +35,7 @@ const AdminTable: React.FC<TableProps> = ({
   const columnCount = theads.length + (allowActions ? 1 : 0);
 
   return (
-    <div className="flex flex-col gap-2.5">
+    <div className="flex flex-col gap-2.5 fade-in">
       {/* Table Header */}
       <div
         className="grid gap-2.5 w-full"
