@@ -6,6 +6,8 @@ import { useGetTrainersQuery } from "../../../../services/features/trainingPage/
 const TrainersSection: FC = () => {
 
   const { data: trainers } = useGetTrainersQuery();
+  
+  
 
 
   const settings = {
@@ -114,7 +116,7 @@ const TrainersSection: FC = () => {
                   />
                 </div>
                 <div className={styles.trainerInfo}>
-                  <h3>{trainer.name}</h3>
+                  <h3>{trainer.name} {trainer.surname}</h3>
                   <h4>{trainer.position}</h4>
                   <p>{trainer.description}</p>
                 </div>

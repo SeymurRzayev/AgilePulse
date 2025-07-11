@@ -59,11 +59,11 @@ const AdminTable: React.FC<TableProps> = ({
       </div>
 
       {/* Table Body */}
-      <div className="flex flex-col gap-2.5">
+      <div className="grid grid-cols-1 gap-2.5">
         {rows.map((row) => (
           <div
             key={row.id}
-            className="grid gap-2.5 w-full"
+            className="grid gap-2.5 w-full grid-flow-row"
             style={{ gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}
           >
             {row.cells.map((cell, cellIndex) => (
@@ -104,9 +104,9 @@ const AdminTable: React.FC<TableProps> = ({
 // komekci komponent
 const TableCell: React.FC<{ content: TableCellContent }> = ({ content }) => {
   return (
-    <div className="h-[50px] bg-[#FFFFFF] p-3 flex items-center ">
+    <div className="h-[50px] bg-[#FFFFFF] p-3 flex items-center min-w-[25%]">
       {typeof content === "string" ? (
-        <p className=" font-[Corbel] text-[#000000] font-semibold text-center w-full text-base">
+        <p className=" font-[Corbel] text-[#000000] font-semibold text-center w-full text-base truncate max-w-[100%]">
           {content}
         </p>
       ) : (
@@ -125,8 +125,8 @@ const TableCell: React.FC<{ content: TableCellContent }> = ({ content }) => {
               }`}
             />
           )}
-          <span className="text-lg font-[Corbel] text-[#000000] font-semibold text-center">
-            {content?.icon ? content?.icon : content?.text}
+          <span className="text-lg font-[Corbel] text-[#000000] font-semibold text-center  truncate max-w-[80%] ">
+            {content?.icon ? content?.icon : <p className="w-full">{content?.text}</p>}
           
           </span>
         </div>

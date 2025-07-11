@@ -32,6 +32,7 @@ import { AdminPageType } from "../config/sectionConfig";
 import AdminSections from "../components/Admin/General/AdminSections";
 import AdminCategories from "../components/Admin/Trainings/AdminCategories";
 import AdminTrainers from "../components/Admin/Trainings/AdminTrainers";
+import AdminPodcasts from "../components/Admin/Trainings/AdminPodcasts";
 
 
 const AppRouter: FC = () => {
@@ -72,6 +73,7 @@ const AppRouter: FC = () => {
           <Route path="trainings-page" element={<AdminSections pageType={AdminPageType.Trainings} />} />
           <Route path="trainings-page/categories" element={<AdminCategories />} />
           <Route path="trainings-page/trainers" element={<AdminTrainers />} />
+          <Route path="trainings-page/podcasts" element={<AdminPodcasts />} />
 
 
         </Route>
