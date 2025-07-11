@@ -1,4 +1,10 @@
-import { createApi, fetchBaseQuery, type BaseQueryFn, type FetchArgs } from '@reduxjs/toolkit/query/react';
+import {
+    createApi,
+    fetchBaseQuery,
+    type BaseQueryFn,
+    type FetchArgs,
+    type FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react';
 import { base_url } from '../../config/adminApi';
 import Swal from 'sweetalert2';
 
@@ -13,19 +19,19 @@ const baseQuery = fetchBaseQuery({
     },
 });
 
-const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, unknown> = async (
+const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
     args,
     api,
     extraOptions
 ) => {
     let result = await baseQuery(args, api, extraOptions);
 
-    if (result?.error && result.error.status === 401) {
+    if (result?.error?.status === 401) {
+        console.log('401 isledi')
         const refreshToken = localStorage.getItem('refreshToken');
-
         if (!refreshToken) {
             await redirectToLogin();
-            return { error: { status: 401, data: "Unauthorized" } };
+            return { error: { status: 401, data: 'Unauthorized' } };
         }
 
         const refreshResult = await baseQuery(
@@ -42,17 +48,27 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, unknown> = a
             const newAccessToken = (refreshResult.data as any).accessToken;
             localStorage.setItem('accessToken', newAccessToken);
 
-            // Retry original request
-            return await baseQuery(args, api, extraOptions);
+            // Retry original request with updated token
+            const modifiedArgs =
+                typeof args === 'string'
+                    ? { url: args }
+                    : {
+                        ...args,
+                        headers: {
+                            ...(args as FetchArgs).headers,
+                            Authorization: `Bearer ${newAccessToken}`,
+                        },
+                    };
+
+            return await baseQuery(modifiedArgs, api, extraOptions);
         } else {
             await redirectToLogin();
-            return { error: { status: 401, data: "Session expired" } };
+            return { error: { status: 401, data: 'Session expired' } };
         }
     }
 
     return result;
 };
-
 
 async function redirectToLogin() {
     localStorage.removeItem('accessToken');
@@ -66,7 +82,6 @@ async function redirectToLogin() {
     });
     window.location.href = '/login';
 }
-
 
 export const baseApi = createApi({
     reducerPath: 'api',
