@@ -20,7 +20,7 @@ export const AdminPageSections: Record<AdminPageType, Section[]> = {
         { label: "Məqalələr", path: "articles" },
         { label: "İştirakçıların təlim təcrübələri", path: "" },
         { label: "Partnyorlar", path: "partners" },
-        { label: "Sitat sətri", path: "" },
+        { label: "Sitat sətri", path: "quotes" },
     ],
     [AdminPageType.Trainings]: [
         { label: "Kategoriyalar", path: "categories" },
