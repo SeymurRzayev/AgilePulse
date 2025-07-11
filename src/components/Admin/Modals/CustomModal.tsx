@@ -8,8 +8,10 @@ interface ModalProps {
 
 const CustomModal = ({ onClose, title = "Əlavə et", children }: ModalProps) => {
     return (
-        <div className="fixed z-50 inset-0 flex justify-center items-center bg-black/50 p-4 overflow-y-auto">
-            <div className="bg-white relative p-8 rounded-xl w-full max-w-2xl shadow-xl">
+        <div className="fixed z-50  inset-0 flex justify-center items-center bg-black/50 p-4 overflow-y-auto">
+            <div
+                style={{ overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                className="bg-white max-h-[95vh] overflow-y-auto relative p-8 rounded-xl w-full max-w-2xl shadow-xl">
                 <button
                     onClick={onClose}
                     className="absolute cursor-pointer right-4 top-4 text-gray-500 hover:text-gray-800 transition"
