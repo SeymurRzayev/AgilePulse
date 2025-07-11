@@ -41,6 +41,7 @@ export interface Book {
   pdfUrl: string;
   author: string;
   language: string;
+  description:string;
   pageCount: number;
   imageUrl: string;
 }

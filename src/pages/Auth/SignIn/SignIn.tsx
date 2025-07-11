@@ -25,9 +25,7 @@ const SignIn: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
-  console.log("params", params);
   const redirect = params.get('redirect') || '/';
-  console.log("redirect", redirect);
 
   const initialValues = {
     email: "",

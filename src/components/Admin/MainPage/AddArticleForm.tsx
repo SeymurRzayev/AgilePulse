@@ -1,11 +1,19 @@
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
-import { useCreateArticleMutation, useGetAllArticleQuery } from '../../../services/features/mainPage/articleApi';
+import { useCreateArticleMutation, useUpdateArticleMutation } from '../../../services/features/mainPage/articleApi';
 import DynamicForm, { type FieldConfig } from '../../General/DynamicForm';
+import type { ArticleRes } from '../../../types/types';
 
-const AddArticleForm = ({ onSuccess }: { onSuccess: () => void }) => {
+interface AddArticleFormProps {
+  initialData?: ArticleRes;
+  onSuccess: () => void;
+}
+
+const AddArticleForm = ({ initialData, onSuccess }: AddArticleFormProps) => {
   const [createArticle] = useCreateArticleMutation();
-  const { refetch } = useGetAllArticleQuery();
+  const [updateArticle] = useUpdateArticleMutation();
+
+  const isEdit = Boolean(initialData?.id);
 
   const fields: FieldConfig[] = [
     { name: 'title', type: 'text' },
@@ -31,12 +39,14 @@ const AddArticleForm = ({ onSuccess }: { onSuccess: () => void }) => {
     image: Yup.mixed().required('Şəkil vacibdir'),
   });
 
-  const initialValues = {
-    title: '',
-    content: '',
-    text: '',
-    author: '',
-    image: '',
+  const initialValues: ArticleRes = {
+    title: initialData?.title || '',
+    content: initialData?.content || '',
+    text: initialData?.text || '',
+    author: initialData?.author || '',
+    imageUrl: initialData?.imageUrl || '',
+    createdAt: initialData?.createdAt || '',
+    id: +(initialData?.id || ''),
   };
 
   const handleSubmit = async (values: typeof initialValues) => {
@@ -45,13 +55,23 @@ const AddArticleForm = ({ onSuccess }: { onSuccess: () => void }) => {
       if (value) formData.append(key, value);
     });
 
-    try {
-      await createArticle(formData).unwrap();
-      refetch();
-      Swal.fire('Uğurla', 'Məqalə əlavə olundu', 'success');
-      onSuccess();
-    } catch (e) {
-      Swal.fire('Xəta', 'Məqalə əlavə edilə bilmədi', 'error');
+    if (!isEdit) {
+      try {
+        await createArticle(formData).unwrap();
+        Swal.fire('Uğurla', 'Məqalə əlavə olundu', 'success');
+        onSuccess();
+      } catch (e) {
+        Swal.fire('Xəta', 'Məqalə əlavə edilə bilmədi', 'error');
+      }
+    } else {
+      try {
+        await updateArticle({ id: initialData?.id!, data: formData }).unwrap();
+        Swal.fire('Uğurla', 'Məqalə dəyişdirildi', 'success');
+        onSuccess();
+      } catch (e) {
+        console.log(e)
+        Swal.fire('Xəta', 'Məqalə dəyişdirilə bilmədi', 'error');
+      }
     }
   };
 
