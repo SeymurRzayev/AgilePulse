@@ -398,8 +398,8 @@ const Navbar: FC<NavbarProps> = ({
                       <OutlineBtn
                       text="Çıxış"
                       onClick={() => handleLogOut()}
-                      buttonClassName="py-3  sm:w-full "
-                      size={336 }
+                      buttonClassName="w-full py-3  "
+                   
                     />
                     </div>
                   )
