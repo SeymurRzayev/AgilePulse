@@ -80,7 +80,7 @@ async function redirectToLogin() {
         text: 'Giriş səhifəsinə yönləndirilirsiniz. Davam etmək üçün Tamam\'a klik edin.',
         confirmButtonText: 'Tamam',
     });
-    window.location.href = '/login';
+    window.location.href = '/sign-in';
 }
 
 export const baseApi = createApi({
