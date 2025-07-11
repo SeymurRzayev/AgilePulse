@@ -11,7 +11,7 @@ import type { Podcast } from "../../../types/types";
 
 const AddPodcastForm = ({
   onSuccess,
-  isEdit,
+  // isEdit,
   data,
 }: {
   onSuccess: () => void;
