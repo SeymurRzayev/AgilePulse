@@ -4,6 +4,7 @@ import LoadingSpinner from "../../General/LoadingSpinner";
 import {
   useUpdateTrainerMutation,
   useCreateTrainerMutation,
+  useGetTrainersQuery
 } from "../../../services/features/trainingPage/trainerApi";
 
 interface EditAndCreateTrainerProps {
@@ -32,6 +33,9 @@ const EditAndCreateTrainer = ({
   const [image, setImage] = useState<File | null>(null);
   // const [imageUrl, setImageUrl] = useState(initialImg ?? "");
 
+
+  const { refetch } = useGetTrainersQuery();
+
   const [updateTrainer, { isLoading: isLoadingUpdate }] =
     useUpdateTrainerMutation();
   const [createTrainer, { isLoading: isLoadingCreate }] =
@@ -51,6 +55,7 @@ const EditAndCreateTrainer = ({
           formData.append("image", image);
         }
         await updateTrainer({ id: id as number, data: formData }).unwrap();
+        refetch();
         Swal.fire("Uğurlu", "Kateqoriya uğurla dəyişdirildi", "success");
         onClose?.();
       } catch (error) {

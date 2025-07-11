@@ -24,7 +24,7 @@ const AdminTrainers: React.FC = () => {
     imageUrl: string;
   } | null>(null);
 
-  const { data: trainers, isLoading } = useGetTrainersQuery();
+  const { data: trainers, isLoading,refetch } = useGetTrainersQuery();
   const [deleteTrainer] = useDeleteTrainerMutation();
 
   console.log(trainers);
@@ -41,6 +41,7 @@ const AdminTrainers: React.FC = () => {
       if (result.isConfirmed) {
         try {
           await deleteTrainer(id).unwrap();
+          refetch();
           Swal.fire("Silindi!", "Təlimçi uğurla silindi.", "success");
         } catch (error) {
           Swal.fire("Xəta!", "Silinmə zamanı xəta baş verdi.", "error");

@@ -3,13 +3,24 @@ import Swal from "sweetalert2";
 import {
   useGetAllPodcastQuery,
   useCreatePodcastMutation,
+  useUpdatePodcastMutation,
 } from "../../../services/features/trainingPage/podcastApi";
 
 import DynamicForm, { type FieldConfig } from "../../General/DynamicForm";
+import type { Podcast } from "../../../types/types";
 
-const AddPodcastForm = ({ onSuccess }: { onSuccess: () => void }) => {
- 
-  const [createPodcast]=useCreatePodcastMutation();
+const AddPodcastForm = ({
+  onSuccess,
+  isEdit,
+  data,
+}: {
+  onSuccess: () => void;
+  isEdit?: boolean;
+  id?: number;
+  data?: Podcast;
+}) => {
+  const [createPodcast] = useCreatePodcastMutation();
+  const [updatePodcast] = useUpdatePodcastMutation();
   const { refetch } = useGetAllPodcastQuery();
 
   const fields: FieldConfig[] = [
@@ -33,14 +44,14 @@ const AddPodcastForm = ({ onSuccess }: { onSuccess: () => void }) => {
     description: Yup.string().required("Açıqlama vacibdir"),
     speakerName: Yup.string().required("İştirakçının adı vacibdir"),
     youtubeUrl: Yup.mixed().required("Url vacibdir"),
-    imageUrl: Yup.mixed().required("Şəkil vacibdir"),
+    imageUrl: data?.imageUrl ? Yup.mixed() : Yup.mixed().required("Şəkil vacibdir"),
   });
 
   const initialValues = {
-    topicTitle: "",
-    description: "",
-    speakerName: "",
-    youtubeUrl: "",
+    topicTitle: data?.topicTitle || "",
+    description: data?.description || "",
+    speakerName: data?.speakerName || "",
+    youtubeUrl: data?.youtubeUrl || "",
     imageUrl: "",
   };
 
@@ -51,7 +62,10 @@ const AddPodcastForm = ({ onSuccess }: { onSuccess: () => void }) => {
     });
 
     try {
-      await createPodcast(formData).unwrap();
+      data
+        ? await updatePodcast({ id: data.id, data: formData }).unwrap()
+        : await createPodcast(formData).unwrap();
+
       refetch();
       Swal.fire("Uğurlu", "Podcast əlavə olundu", "success");
       onSuccess();

@@ -11,12 +11,17 @@ import Swal from "sweetalert2";
 import LoadingSpinner from "../../General/LoadingSpinner";
 import AddPodcastForm from "../MainPage/AddPodcastForm";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
+import type { Podcast } from "../../../types/types";
 
 const AdminPodcasts: React.FC = () => {
   const { data: podcasts, isLoading } = useGetAllPodcastQuery();
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [deletePodcast] = useDeletePodcastMutation();
   const [search, setSearch] = useState("");
+
+  const [selectedPodcast, setSelectedPodcast] = useState<Podcast | undefined>(
+    undefined
+  );
 
   const handleDelete = async ({ id }: { id: number }) => {
     Swal.fire({
@@ -45,12 +50,14 @@ const AdminPodcasts: React.FC = () => {
 
       {openModal && (
         <CustomModal
-          title={
-            "Podcast əlavə et"
-          }
+          title={selectedPodcast !== undefined ? "Podcast redaktə et" : "Podcast əlavə et"}
           onClose={() => setOpenModal(false)}
         >
-          <AddPodcastForm onSuccess={() => setOpenModal(false)} />
+          <AddPodcastForm
+            onSuccess={() => setOpenModal(false)}
+            isEdit={selectedPodcast !== undefined}
+            data={selectedPodcast}
+          />
         </CustomModal>
       )}
 
@@ -90,26 +97,29 @@ const AdminPodcasts: React.FC = () => {
                 },
                 podcast.speakerName,
                 podcast.description,
-                
               ],
             }))}
-          onEdit={(id) => console.log("Edit:", id)}
+          onEdit={(id) => {
+            setOpenModal(true);
+            setSelectedPodcast(
+              podcasts?.data.data.find((podcast) => podcast.id === Number(id))
+            );
+          }}
           onDelete={(id) => handleDelete({ id: Number(id) })}
         />
       )}
 
-
       <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
-              <AnimatedButton
-                onClick={() => {
-                  // yeni əlavədir deyə null verirem
-                  setOpenModal(true); // modalı açıram
-                }}
-                className="!w-[185px] !h-[56px] "
-              >
-                Əlavə et <span className="text-3xl ml-2 font-light">+</span>
-              </AnimatedButton>
-            </div>
+        <AnimatedButton
+          onClick={() => {
+            setSelectedPodcast(undefined);
+            setOpenModal(true); // modalı açıram
+          }}
+          className="!w-[185px] !h-[56px] "
+        >
+          Əlavə et <span className="text-3xl ml-2 font-light">+</span>
+        </AnimatedButton>
+      </div>
     </div>
   );
 };
