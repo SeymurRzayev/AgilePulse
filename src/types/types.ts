@@ -289,7 +289,7 @@ export interface CategoriesResponse {
   name: string;
 }
 
-interface Podcast {
+export interface Podcast {
   id: number;
   speakerName: string;
   topicTitle: string;

@@ -1,3 +1,4 @@
+
 import type { PodcastResponse } from "../../../types/types";
 import { baseApi } from "../../api/baseApi";
 
@@ -6,6 +7,12 @@ const podcastapi = baseApi.injectEndpoints({
     getAllPodcast: builder.query<PodcastResponse, void>({
       query: () => ({
         url: "/podcasts/all",
+        method: "GET",
+      }),
+    }),
+    getPodcastById: builder.query<PodcastResponse, number>({
+      query: (id) => ({
+        url: `/podcasts/get/${id}`,
         method: "GET",
       }),
     }),
@@ -32,4 +39,4 @@ const podcastapi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllPodcastQuery, useDeletePodcastMutation } = podcastapi;
+export const { useGetAllPodcastQuery,useGetPodcastByIdQuery, useDeletePodcastMutation,useCreatePodcastMutation,useUpdatePodcastMutation } = podcastapi;
