@@ -149,6 +149,7 @@ export default function QuizPage() {
             {showResult ? (
               <QuizResult       /* Neticeler screeni */
                 isTimeOut={isTimeOut}
+                trainingId={Number(trainingId)}
                 percentage={result?.scorePercentage!}
                 isPassed={result?.isPassed!}
                 correctAnswers={result?.correctAnswerCount!}

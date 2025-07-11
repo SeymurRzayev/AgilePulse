@@ -88,7 +88,7 @@ const ScrumList = ({ data }: ScrumListProps) => {
                   <TrainingCard
                     id={item.id}
                     isCurveBig={true}
-                    className={'w-[381px] h-[621px]'}
+                    className={'w-[325px] md:w-[381px] h-[621px]'}
                     imgUrl={item.imageUrl}
                     date={item.publishedAt}
                     avatar={item.authorAvatarUrl}

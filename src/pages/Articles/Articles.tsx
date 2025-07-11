@@ -39,7 +39,7 @@ const Articles = () => {
                 {
                     slicesArticles.map(item =>
                         <TrainingCard
-                            className='!w-[381px]'
+                            className='w-[325px] md:w-[381px]'
                             isCurveBig={true}
                             isArticle={true}
                             title={item.title}

@@ -32,7 +32,7 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
       <div className="w-full  flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
         {slicesData?.map((course) => (
           <TrainingCard
-            className="w-[381px]"
+            className="w-[325px] md:w-[381px]"
             isCurveBig={true}
             key={course.id}
             id={course.id}
