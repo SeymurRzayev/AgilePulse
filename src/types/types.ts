@@ -427,3 +427,10 @@ export interface SessionAnswer {
   questionId: number;
   answerId: number;
 }
+
+export interface CertificateResponse {
+  id: number;
+  userId: number;
+  trainingId: number;
+  pdfUrl: string;
+}

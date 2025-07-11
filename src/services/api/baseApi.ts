@@ -22,9 +22,10 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, unknown> = a
 
     if (result?.error && result.error.status === 401) {
         const refreshToken = localStorage.getItem('refreshToken');
+
         if (!refreshToken) {
-            redirectToLogin();
-            return result;
+            await redirectToLogin();
+            return { error: { status: 401, data: "Unauthorized" } };
         }
 
         const refreshResult = await baseQuery(
@@ -37,38 +38,39 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, unknown> = a
             extraOptions
         );
 
-        if (refreshResult?.data) {
+        if (refreshResult?.data && !(refreshResult as any).error) {
             const newAccessToken = (refreshResult.data as any).accessToken;
             localStorage.setItem('accessToken', newAccessToken);
 
-            const retryResult = await baseQuery(args, api, extraOptions);
-            return retryResult;
+            // Retry original request
+            return await baseQuery(args, api, extraOptions);
         } else {
-            redirectToLogin();
-            return refreshResult;
+            await redirectToLogin();
+            return { error: { status: 401, data: "Session expired" } };
         }
     }
 
     return result;
 };
 
-function redirectToLogin() {
+
+async function redirectToLogin() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
-    Swal.fire({
+    await Swal.fire({
         icon: 'warning',
         title: 'Sessiyanızın müddəti doldu!',
         text: 'Giriş səhifəsinə yönləndirilirsiniz. Davam etmək üçün Tamam\'a klik edin.',
         confirmButtonText: 'Tamam',
-    }).then(() => {
-        window.location.href = '/login';
     });
+    window.location.href = '/login';
 }
+
 
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Book', 'Partner', 'Categories','isSaved'],
+    tagTypes: ['Book', 'Partner', 'Categories', 'isSaved', 'Quote'],
     endpoints: () => ({}),
 });

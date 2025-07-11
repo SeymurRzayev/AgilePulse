@@ -182,7 +182,7 @@ body {
   background-position: center;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 682px) {
   .curveImg {
     clip-path: path('M 0,0 L325,0 L328,286 Q 319.74,307 300.43,316 Q 291.98,319 274.56,321 L215.71,321 Q 158.3,317 150,354 Q 141.39,344 142,355 Q 83.27,399 157,300 Q 158.06,391 97.76,391 L0,391 Z') !important;
   }
