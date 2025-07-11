@@ -32,7 +32,7 @@ const AdminTrainers: React.FC = () => {
   const handleDelete = async ({ id }: { id: number }) => {
     Swal.fire({
       title: "Əminsiniz?",
-      text: "Bu kateqoriyanı silmək istədiyinizdən əminsiniz?",
+      text: "Bu Təlimçini silmək istədiyinizdən əminsiniz?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Bəli, sil",
@@ -41,7 +41,7 @@ const AdminTrainers: React.FC = () => {
       if (result.isConfirmed) {
         try {
           await deleteTrainer(id).unwrap();
-          Swal.fire("Silindi!", "Kateqoriya uğurla silindi.", "success");
+          Swal.fire("Silindi!", "Təlimçi uğurla silindi.", "success");
         } catch (error) {
           Swal.fire("Xəta!", "Silinmə zamanı xəta baş verdi.", "error");
         }
@@ -54,7 +54,7 @@ const AdminTrainers: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <h2 className="text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3">
         Təlimçilər
       </h2>
