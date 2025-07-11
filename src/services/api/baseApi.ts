@@ -79,8 +79,9 @@ async function redirectToLogin() {
         title: 'Sessiyanızın müddəti doldu!',
         text: 'Giriş səhifəsinə yönləndirilirsiniz. Davam etmək üçün Tamam\'a klik edin.',
         confirmButtonText: 'Tamam',
+    }).then(() => {
+        window.location.href = '/sign-in';
     });
-    window.location.href = '/sign-in';
 }
 
 export const baseApi = createApi({
