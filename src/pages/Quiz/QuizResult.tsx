@@ -9,19 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { toPng } from 'html-to-image'
 import { useEffect, useRef, useState } from "react";
 import Certificate from "../Certificate/Certificate";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/Hooks";
-import { useUpdatePhotoMutation } from "../../services/features/auth/userApi";
-import { setLoggedUser } from '../../redux/slices/authSlice';
-// import TrainingListContainer from "../../components/Trainings/TrainingListContainer";
-/* import avatar1 from "../../assets/images/podcast1.webp";
-import training1 from "../../assets/images/trainer1.jpg";
-import training2 from "../../assets/images/training2.jpg";
-import training3 from "../../assets/images/training3.jpg"; */
+import { useAppSelector } from "../../redux/hooks/Hooks";
+import { useCreateCertificateMutation } from "../../services/features/trainingPage/certificateApi";
 interface Props {
   percentage: number;
   isTimeOut: boolean;
   isPassed: boolean,
   correctAnswers: number,
+  trainingId: number
 }
 
 /*  const trainingCourses = [
@@ -136,11 +131,12 @@ interface Props {
      date: "20.02.2025",
    },
  ]; */
-const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers }) => {
-  const dispatch = useAppDispatch()
+const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers, trainingId }) => {
+  // const dispatch = useAppDispatch()
   const [certificatePng, setCertificatePng] = useState<string | null>(null);
   const user = useAppSelector(state => state.auth.user);
-  const [updatePhoto] = useUpdatePhotoMutation();
+  // const [updatePhoto] = useUpdatePhotoMutation();
+  const [createCertificate] = useCreateCertificateMutation();
   const resultImg = isTimeOut ? timeOut : isPassed
     ? congratulation
     : notsucces;
@@ -182,19 +178,18 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
           byteNumbers[i] = byteCharacters.charCodeAt(i);
         }
         const byteArray = new Uint8Array(byteNumbers);
-        const file = new File([byteArray], 'memory-photo.png', {
+        const file = new File([byteArray], 'certificate.png', {
           type: 'image/png',
         });
 
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('userId', user?.id.toString()!);
+        formData.append('trainingId', trainingId.toString());
+        formData.append('certificateFile ', file);
 
         try {
-          const res = await updatePhoto({ id: user?.id!, data: formData }).unwrap();
-          if (res && res.profileImageUrl) {
-            dispatch(setLoggedUser({ ...user!, profileImage: res.profileImageUrl }));
-            localStorage.setItem("user", JSON.stringify({ ...user!, profileImage: res.profileImageUrl }));
-          }
+          const res = await createCertificate(formData).unwrap();
+          console.log(res)
         } catch (error: any) {
           console.error("Image upload failed:", error);
         }
