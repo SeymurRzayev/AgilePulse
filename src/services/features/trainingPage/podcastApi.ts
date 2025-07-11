@@ -32,4 +32,4 @@ const podcastapi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllPodcastQuery, useDeletePodcastMutation } = podcastapi;
+export const { useGetAllPodcastQuery, useDeletePodcastMutation,useCreatePodcastMutation,useUpdatePodcastMutation } = podcastapi;

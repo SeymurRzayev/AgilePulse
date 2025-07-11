@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import AdminTable from "../General/AdminTable";
 import TrainingsSearchContainer from "../../Trainings/TrainingsSearchContainer";
+import CustomModal from "../Modals/CustomModal";
+
 import {
   useDeletePodcastMutation,
   useGetAllPodcastQuery,
 } from "../../../services/features/trainingPage/podcastApi";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../General/LoadingSpinner";
+import AddPodcastForm from "../MainPage/AddPodcastForm";
+import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 
 const AdminPodcasts: React.FC = () => {
   const { data: podcasts, isLoading } = useGetAllPodcastQuery();
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [deletePodcast] = useDeletePodcastMutation();
   const [search, setSearch] = useState("");
 
@@ -37,6 +42,17 @@ const AdminPodcasts: React.FC = () => {
       <h2 className="text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3">
         Podcastlar
       </h2>
+
+      {openModal && (
+        <CustomModal
+          title={
+            "Podcast əlavə et"
+          }
+          onClose={() => setOpenModal(false)}
+        >
+          <AddPodcastForm onSuccess={() => setOpenModal(false)} />
+        </CustomModal>
+      )}
 
       <div className="w-full flex justify-between items-start">
         <div className="w-full h-fit">
@@ -74,12 +90,26 @@ const AdminPodcasts: React.FC = () => {
                 },
                 podcast.speakerName,
                 podcast.description,
+                
               ],
             }))}
           onEdit={(id) => console.log("Edit:", id)}
           onDelete={(id) => handleDelete({ id: Number(id) })}
         />
       )}
+
+
+      <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
+              <AnimatedButton
+                onClick={() => {
+                  // yeni əlavədir deyə null verirem
+                  setOpenModal(true); // modalı açıram
+                }}
+                className="!w-[185px] !h-[56px] "
+              >
+                Əlavə et <span className="text-3xl ml-2 font-light">+</span>
+              </AnimatedButton>
+            </div>
     </div>
   );
 };
