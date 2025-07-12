@@ -9,18 +9,21 @@ const podcastapi = baseApi.injectEndpoints({
         url: "/podcasts/all",
         method: "GET",
       }),
+      providesTags: ['Podcasts'],
     }),
     getPodcastById: builder.query<PodcastResponse, number>({
       query: (id) => ({
         url: `/podcasts/get/${id}`,
         method: "GET",
       }),
+      providesTags: ['Podcasts'],
     }),
     deletePodcast: builder.mutation<void, number>({
       query: (id) => ({
-        url: `/podcasts/${id}`,
+        url: `/podcasts/delete/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ['Podcasts'],
     }),
     createPodcast: builder.mutation<void, FormData>({
       query: (data) => ({
@@ -28,6 +31,7 @@ const podcastapi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ['Podcasts'],
     }),
     updatePodcast: builder.mutation<void, { id: number; data: FormData }>({
       query: ({ id, data }) => ({
@@ -35,6 +39,7 @@ const podcastapi = baseApi.injectEndpoints({
         method: "PUT",
         body: data,
       }),
+      invalidatesTags: ['Podcasts'],
     }),
   }),
 });
