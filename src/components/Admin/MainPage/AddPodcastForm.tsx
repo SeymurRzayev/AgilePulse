@@ -1,7 +1,6 @@
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 import {
-  useGetAllPodcastQuery,
   useCreatePodcastMutation,
   useUpdatePodcastMutation,
 } from "../../../services/features/trainingPage/podcastApi";
@@ -21,7 +20,6 @@ const AddPodcastForm = ({
 }) => {
   const [createPodcast] = useCreatePodcastMutation();
   const [updatePodcast] = useUpdatePodcastMutation();
-  const { refetch } = useGetAllPodcastQuery();
 
   const fields: FieldConfig[] = [
     { name: "topicTitle", type: "text" },
@@ -66,7 +64,7 @@ const AddPodcastForm = ({
         ? await updatePodcast({ id: data.id, data: formData }).unwrap()
         : await createPodcast(formData).unwrap();
 
-      refetch();
+      // refetch();
       Swal.fire("Uğurlu", "Podcast əlavə olundu", "success");
       onSuccess();
     } catch (e) {

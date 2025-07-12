@@ -87,6 +87,12 @@ async function redirectToLogin() {
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Book', 'Partner', 'Categories', 'isSaved', 'Quote'],
+    tagTypes: ['Book',
+        'Partner',
+        'Categories',
+        'isSaved',
+        'Quote',
+        'Podcasts',
+    ],
     endpoints: () => ({}),
 });
