@@ -16,7 +16,6 @@ import ResetPassword from "../pages/Auth/ResetPassword/ResetPassword";
 import About from "../pages/About/About";
 import OTP from "../pages/Auth/OTP/OTP";
 import Suggestions from "../pages/UserOpinions/Suggestions";
-import Certificate from "../pages/Certificate/Certificate";
 import ProtectedRoute from "./ProtectedRoute";
 import QuizPage from "../pages/Quiz/Quiz";
 import AdminPanel from "../layout/Admin/AdminPanel";
@@ -34,6 +33,7 @@ import AdminCategories from "../components/Admin/Trainings/AdminCategories";
 import AdminTrainers from "../components/Admin/Trainings/AdminTrainers";
 import AdminQuotes from "../components/Admin/MainPage/AdminQuotes";
 import AdminPodcasts from "../components/Admin/Trainings/AdminPodcasts";
+import AdminQuizs from "../components/Admin/MainPage/AdminQuizs";
 
 
 
@@ -61,7 +61,7 @@ const AppRouter: FC = () => {
       <Route path="/about" element={<About />} />
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
-      <Route path="/certificate" element={<Certificate studentName="Shahana Khalilova" />} />
+      {/* <Route path="/certificate" element={<Certificate  studentName="Shahana Khalilova" />} /> */}
       <Route path="/quiz/:id" element={<QuizPage />} />
 
       {/* Admin panel */}
@@ -77,6 +77,7 @@ const AppRouter: FC = () => {
           <Route path="trainings-page/categories" element={<AdminCategories />} />
           <Route path="trainings-page/trainers" element={<AdminTrainers />} />
           <Route path="trainings-page/podcasts" element={<AdminPodcasts />} />
+          <Route path="trainings-page/quizs" element={<AdminQuizs />} />
 
         </Route>
         <Route path="users" element={<Users />} />

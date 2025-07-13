@@ -16,122 +16,12 @@ interface Props {
   isTimeOut: boolean;
   isPassed: boolean,
   correctAnswers: number,
+  courseName: string;
   trainingId: number
 }
 
-/*  const trainingCourses = [
-   {
-     id: 1,
-     imgUrl: training1,
-     title: "Scrum nədir? Praktik Başlanğıc",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Səadət Hüseynova",
-     date: "12.04.2025",
-     href: "/trainings/scrum",
-   },
-   {
-     id: 2,
-     imgUrl: training2,
-     title: "Agile Manifesto və 12 Prinsip",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Məhəmməd Qasımov",
-     date: "16.01.2025",
-   },
-   {
-     id: 3,
-     imgUrl: training3,
-     title: "Kanban ilə İş Axınını Optimallaşdır",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Tofiq İsayev",
-     date: "20.02.2025",
-   },
-   {
-     id: 4,
-     imgUrl: training1,
-     title: "Scrum nədir? Praktik Başlanğıc",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Səadət Hüseynova",
-     date: "12.04.2025",
-   },
-   {
-     id: 5,
-     imgUrl: training2,
-     title: "Agile Manifesto və 12 Prinsip",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Məhəmməd Qasımov",
-     date: "16.01.2025",
-   },
-   {
-     id: 6,
-     imgUrl: training3,
-     title: "Kanban ilə İş Axınını Optimallaşdır",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Tofiq İsayev",
-     date: "20.02.2025",
-   },
-   {
-     id: 1,
-     imgUrl: training1,
-     title: "Scrum nədir? Praktik Başlanğıc",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Səadət Hüseynova",
-     date: "12.04.2025",
-     href: "/trainings/scrum",
-   },
-   {
-     id: 2,
-     imgUrl: training2,
-     title: "Agile Manifesto və 12 Prinsip",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Məhəmməd Qasımov",
-     date: "16.01.2025",
-   },
-   {
-     id: 3,
-     imgUrl: training3,
-     title: "Kanban ilə İş Axınını Optimallaşdır",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Tofiq İsayev",
-     date: "20.02.2025",
-   },
-   {
-     id: 4,
-     imgUrl: training1,
-     title: "Scrum nədir? Praktik Başlanğıc",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Səadət Hüseynova",
-     date: "12.04.2025",
-   },
-   {
-     id: 5,
-     imgUrl: training2,
-     title: "Agile Manifesto və 12 Prinsip",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Məhəmməd Qasımov",
-     date: "16.01.2025",
-   },
-   {
-     id: 6,
-     imgUrl: training3,
-     title: "Kanban ilə İş Axınını Optimallaşdır",
-     time: "4 modul : 16 blok",
-     avatar: avatar1,
-     user: "Tofiq İsayev",
-     date: "20.02.2025",
-   },
- ]; */
-const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers, trainingId }) => {
+const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctAnswers, trainingId, courseName }) => {
+
   // const dispatch = useAppDispatch()
   const [certificatePng, setCertificatePng] = useState<string | null>(null);
   const user = useAppSelector(state => state.auth.user);
@@ -279,7 +169,7 @@ const QuizResult: React.FC<Props> = ({ percentage, isPassed, isTimeOut, correctA
           zIndex: -1,
         }}
       >
-        <Certificate studentName={`${user?.fullName}`} ref={certificateRef} />
+        <Certificate courseName={courseName} studentName={`${user?.fullName}`} ref={certificateRef} />
       </div>
     </div>
 

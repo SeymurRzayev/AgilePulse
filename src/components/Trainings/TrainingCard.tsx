@@ -44,11 +44,14 @@ const TrainingCard: React.FC<TrainingCardProps> = ({
 
   const userId = useAppSelector(state => state.auth.user?.id);
   const [addSavedTrainings, { isLoading: isToggling }] = useAddSavedTrainingsMutation();
-  const { data: isSaved } = useIsSavedQuery({ trainingId: id!, userId: userId as number });
-
+  const { data: isSaved } = useIsSavedQuery(
+    { trainingId: id!, userId: userId as number },
+    { skip: !isCourse || !id || !userId }
+  );
   const savedState = optimisticSaved !== null ? optimisticSaved : isSaved;
 
   const handleSaveTraining = async () => {
+    if (!isCourse) return;
     try {
       if (userId) {
         setOptimisticSaved(!savedState);

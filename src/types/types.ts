@@ -370,6 +370,7 @@ export interface Training {
 export interface Answers {
   id: number;
   content: string;
+  isCorrect?: boolean;
 }
 
 export interface Question {
@@ -434,4 +435,40 @@ export interface CertificateResponse {
   userId: number;
   trainingId: number;
   pdfUrl: string;
+}
+
+// Cavab modelini təsvir edir
+
+
+// Quiz və ya imtahan modelini təsvir edir
+export interface Quiz {
+  id: number;
+  trainingId: number | null;
+  totalQuestions: number | null;
+  passPercentage: number;
+  durationInMinutes: number;
+  questions: Question[];
+}
+
+// Əsas cavab strukturu (bir neçə quiz ola bilər)
+export interface QuizResponse {
+  content: Quiz[];
+}
+
+interface AnswerPost {
+  content: string;
+  isCorrect: boolean;
+}
+
+interface QuestionPost {
+  content: string;
+  answers: AnswerPost[];
+}
+
+export interface QuizPostBody {
+  trainingId: number;
+  totalQuestions: number;
+  passPercentage: number;
+  durationInMinutes: number;
+  questions: QuestionPost[];
 }

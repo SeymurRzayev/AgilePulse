@@ -1,14 +1,19 @@
 import Slider from "react-slick"
-import certificate1 from "../../assets/images/certificate1.png"
-import certificate2 from "../../assets/images/certificate1.png"
+import { useGetCACertificatesQuery } from "../../services/features/trainingPage/certificateApi"
+import { useNavigate } from "react-router-dom"
 
-const CabinetCertificates = () => {
+type CabinetCertificatesProps = {
+  userId: number
+}
 
-  const certificates = [`${certificate1}`, `${certificate2}`]
+const CabinetCertificates = ({ userId }: CabinetCertificatesProps) => {
+  const navigate = useNavigate()
+  if (!userId) navigate('/sign-in')
+  const { data: certificateData } = useGetCACertificatesQuery(userId)
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 2,
@@ -48,9 +53,9 @@ const CabinetCertificates = () => {
         {/* Card */}
         <Slider {...settings} className="w-full ml-[-24px] lg:ml-0">
           {
-            certificates.map(course => (
+            certificateData?.map(course => (
               <div className=' px-5'>
-                <img src={course} alt="course" className='object-center w-full rounded-tl-[100px] rounded-br-[100px]' />
+                <img src={course.pdfUrl} alt="course" className='object-center w-full rounded-tl-[100px] rounded-br-[100px]' />
               </div>
             ))
           }

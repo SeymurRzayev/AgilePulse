@@ -10,6 +10,7 @@ import { useEndQuizMutation, useStartQuizMutation } from "../../services/feature
 import type { Answer, QuizData, QuizSession } from "../../types/types";
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/Hooks";
+import { useGetTrainingByIdQuery } from "../../services/features/trainingPage/trainingsApi";
 
 export default function QuizPage() {
   const params = useParams()
@@ -32,6 +33,7 @@ export default function QuizPage() {
 
   const [startQuiz] = useStartQuizMutation(); // Suallari apiden getiren funksiya, user id ve kurs id teleb edir
   const [endQuiz] = useEndQuizMutation(); // Quizni bitiren funksiya, user id, kurs id ve cavablar teleb edir
+  const {data:courseName} = useGetTrainingByIdQuery(Number(trainingId))
 
   const handleQuiz = async () => { //Quize basla butonun kliki
     if (!user || !trainingId) return; // User ve kurs id yoxdursa funksiya dayanmalidi
@@ -152,6 +154,7 @@ export default function QuizPage() {
                 trainingId={Number(trainingId)}
                 percentage={result?.scorePercentage!}
                 isPassed={result?.isPassed!}
+                courseName={courseName?.title ?? ''}
                 correctAnswers={result?.correctAnswerCount!}
               />
             ) : !quizStarted || backButtonClicked ? (

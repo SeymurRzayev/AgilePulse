@@ -1,22 +1,44 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import Logo from '../../assets/icons/logo.svg'
-import training1 from "../../assets/images/training1.jpg";
+/* import training1 from "../../assets/images/training1.jpg";
 import training2 from "../../assets/images/training2.jpg";
 import training3 from "../../assets/images/training3.jpg";
-import avatar1 from "../../assets/images/podcast1.webp";
+import avatar1 from "../../assets/images/podcast1.webp"; */
 import Slider from 'react-slick';
 import TrainingCard from '../../components/Trainings/TrainingCard';
 import CabinetCertificates from './CabinetCertificates';
 import { useNavigate } from 'react-router-dom';
+import { useGetAllSavedTrainingsOfUserQuery } from '../../services/features/trainingPage/savedTrainingsApi';
+import { useAppSelector } from '../../redux/hooks/Hooks';
+import LoadingSpinner from '../../components/General/LoadingSpinner';
+
+const navLink = ['Davam eden', 'Tamamlanan', 'Qeyd olunan']
+
 
 const PersonalCabinetTrainings = () => {
 
     const navigate = useNavigate()
-    const [isActive, setIsActive] = useState(0)
+    const [activeTab, setActiveTab] = useState(0)
+    const userId = useAppSelector(state => state.auth.user?.id)
 
-    const navLink = ['Davam eden', 'Tamamlanan', 'Qeyd olunan']
 
-    const courses = [
+    const {
+        data: favoriteCourses = [],
+        isLoading: isFavoritesLoading,
+        // error: favoritesError,
+    } = useGetAllSavedTrainingsOfUserQuery(userId!, {
+        skip: activeTab !== 2,
+    });
+
+    const currentCourses = useMemo(() => {
+        // if (activeTab === 0) return   Davam edən
+        // if (activeTab === 1) return  Tamamlanan
+        return favoriteCourses; // Qeyd olunan
+    }, [activeTab, favoriteCourses]);
+
+    console.log(currentCourses)
+
+   /*  const courses = [
         {
             id: 1,
             imgUrl: training1,
@@ -72,7 +94,7 @@ const PersonalCabinetTrainings = () => {
             user: "Tofiq İsayev",
             date: "20.02.2025",
         },
-    ];
+    ]; */
 
     const settings = {
         dots: false,
@@ -130,14 +152,15 @@ const PersonalCabinetTrainings = () => {
                                 navLink.map((linkName, index) => (
                                     <li
                                         key={index}
+                                        onClick={() => setActiveTab(index)}
                                         className={`cursor-pointer
-                                            ${isActive === index
+                                            ${activeTab === index
                                                 ? 'text-[#2C4B9B] border-[#2C4B9B]'
                                                 : 'border-[#DEDEDE]'
                                             }
                                             border-b-2 `}
-                                        onClick={() => setIsActive(index)}
-                                    >{linkName}
+                                    >
+                                        {linkName}
                                     </li>
                                 ))
                             }
@@ -145,30 +168,42 @@ const PersonalCabinetTrainings = () => {
                     </div>
                     <div className='!w-full max-h-[639px] overflow-hidden gap-3]'>
                         {/* Card */}
-                        <Slider {...settings} className={"sliderPersonalCab ml-2"}>
-                            {
-                                courses.map(course => (
-                                    <TrainingCard
-                                        className='w-[381px]'
-                                        isCurveBig={true}
-                                        key={course.id}
-                                        imgUrl={course.imgUrl}
-                                        title={course.title}
-                                        time={course.time}
-                                        avatar={course.avatar}
-                                        date={course.date}
-                                        isArticle={false}
-                                        isCourse={true}
-                                    />
-                                ))
-                            }
-                        </Slider>
+                        {
+                            isFavoritesLoading
+                                ? <LoadingSpinner />
+                                : (currentCourses.length === 0
+                                    ? <p className='text-center text-[#000000DE] font-semibold text-xl'>Heç bir təlim yoxdur</p>
+                                    : (
+                                        <Slider {...settings} className={"sliderPersonalCab ml-2"}>
+                                            {
+                                                currentCourses.map(course => (
+                                                    <TrainingCard
+                                                        className="w-[325px] md:w-[381px]"
+                                                        isCurveBig={true}
+                                                        key={course.id}
+                                                        id={course.id}
+                                                        imgUrl={course.imageUrl}
+                                                        title={course.title}
+                                                        time={course.modules?.length} //modul sayi
+                                                        lessonCount={course.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} //lesson sayi
+                                                        avatar={course.authorAvatarUrl}
+                                                        user={course.authorName}
+                                                        date={course.publishedAt}
+                                                        isCourse={true}
+                                                    />
+                                                ))
+                                            }
+                                        </Slider>
+                                    )
+                                )
+                        }
+
                     </div>
                 </div>
             </div>
             <div>
                 {/* Certificate */}
-                <CabinetCertificates />
+                <CabinetCertificates userId={+userId!}/>
             </div>
         </div>
 

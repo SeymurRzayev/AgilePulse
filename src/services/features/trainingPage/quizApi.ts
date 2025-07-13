@@ -1,4 +1,4 @@
-import type { AnswerSubmissionRequest, QuizApiResponse, QuizSessionResponse } from "../../../types/types";
+import type { AnswerSubmissionRequest, Quiz, QuizApiResponse, QuizPostBody, QuizResponse, QuizSessionResponse } from "../../../types/types";
 import { baseApi } from "../../api/baseApi";
 
 
@@ -18,10 +18,26 @@ const quizApi = baseApi.injectEndpoints({
                 body,
             }),
         }),
+        getAllQuiz: build.query<Quiz[], void>({
+            query: () => ({
+                url: `/quizzes/findAllQuiz`,
+                method: 'GET',
+            }),
+            transformResponse:(res : QuizResponse)=> res.content,
+        }),
+        createQuiz: build.mutation<Quiz, QuizPostBody>({
+            query: (body) => ({
+                url: `/quizzes/create`,
+                method: 'POST',
+                body,
+            }),
+        }),
     }),
 })
 
 export const {
     useStartQuizMutation,
     useEndQuizMutation,
+    useGetAllQuizQuery,
+    useCreateQuizMutation
 } = quizApi;
