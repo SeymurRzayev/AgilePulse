@@ -13,13 +13,15 @@ import logo from "../../assets/icons/logo.svg";
 interface CertificateProps {
   studentName: string;
   courseDescription?: string;
+  courseName: string;
   date?: string;
 }
 const Certificate = React.forwardRef<HTMLDivElement, CertificateProps>(
   (
     {
       studentName,
-      courseDescription = '2025-ci ilin Aprel-May aylarında keçirilən "UX/UI Dizaynın Əsasları" adlı təlim proqramını uğurla tamamlamışdır.',
+      courseName,
+      courseDescription = `2025-ci ilin Aprel-May aylarında keçirilən "${courseName}" adlı təlim proqramını uğurla tamamlamışdır.`,
       date = new Date()
         .toLocaleDateString("az-AZ", {
           day: "2-digit",
