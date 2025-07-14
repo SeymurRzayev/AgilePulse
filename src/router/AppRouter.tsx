@@ -46,23 +46,23 @@ const AppRouter: FC = () => {
       <Route path="/auth/otp/:email" element={<OTP />} />
       <Route path="/forgotpassword" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/library" element={<Library />} />
-      <Route path="/library/detail/:id" element={<ProtectedRoute />}>
-        <Route path="/library/detail/:id" element={<LibraryDetails />} />
-      </Route>
       <Route path="/articles" element={<Articles />} />
       <Route path="/articles/details/:id" element={<ArticleDetails />} />
-      <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
-      <Route path="/personal-cabinet" element={<ProtectedRoute />}>
+
+      {/* Protecded routing */}
+      <Route element={<ProtectedRoute />}>
         <Route path="/personal-cabinet" element={<PersonalCabinet />} />
+        <Route path="/trainings" element={<TrainingsPage />} />
+        <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
+        <Route path="/library/detail/:id" element={<LibraryDetails />} />
+        <Route path="/quiz/:id" element={<QuizPage />} />
       </Route>
+
       <Route path="/FAQ" element={<Faq />} />
       <Route path="/about" element={<About />} />
       <Route path="/suggestions" element={<Suggestions />} />
       <Route path='/complaint' element={<Suggestions />} />
-      {/* <Route path="/certificate" element={<Certificate  studentName="Shahana Khalilova" />} /> */}
-      <Route path="/quiz/:id" element={<QuizPage />} />
 
       {/* Admin panel */}
       <Route path="/admin/*" element={<AdminPanel />}>

@@ -27,7 +27,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     let result = await baseQuery(args, api, extraOptions);
 
     if (result?.error?.status === 401) {
-        console.log('401 isledi')
         const refreshToken = localStorage.getItem('refreshToken');
         if (!refreshToken) {
             await redirectToLogin();
@@ -36,13 +35,15 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
         const refreshResult = await baseQuery(
             {
-                url: '/auth/refresh-token',
+                url: `${base_url}/auth/refresh-token`,
                 method: 'POST',
                 body: { refreshToken },
             },
             api,
             extraOptions
         );
+        
+        console.log(refreshResult)
 
         if (refreshResult?.data && !(refreshResult as any).error) {
             const newAccessToken = (refreshResult.data as any).accessToken;
