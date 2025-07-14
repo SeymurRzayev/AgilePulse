@@ -6,12 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CustomNextArrow } from "../../../Home/sections/TrainingExperiences";
 import { useGetAllPodcastQuery } from "../../../../services/features/trainingPage/podcastApi";
+import MainButton from "../../../../components/Butttons/MainButton";
 
 const PodcastsSection: FC = () => {
+  const { data } = useGetAllPodcastQuery();
 
-  const { data } = useGetAllPodcastQuery()
-
-  const allPodcast = data?.data.data
+  const allPodcast = data?.data.data;
 
   const settings = {
     dots: false,
@@ -67,14 +67,22 @@ const PodcastsSection: FC = () => {
       <div className={styles.sliderContainer}>
         <Slider {...settings} className={styles.slider}>
           {allPodcast?.map((podcast) => (
-            <div onClick={() => window.open(podcast.youtubeUrl, "_blank")} key={podcast.id} className={styles.podcastCard}>
+            <div
+              onClick={() => window.open(podcast.youtubeUrl, "_blank")}
+              key={podcast.id}
+              className={styles.podcastCard}
+            >
+              <div className="w-full h-[230px] relative rounded-[30px] group">
+                <img
+                  className={styles.cardImg}
+                  src={podcast.imageUrl}
+                  alt={podcast.speakerName}
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#00000084] z-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-all duration-500 " />
+              <MainButton className="relative w-[156px] h-10 inset-x-0 z-10 bottom-[55%] left-[20%]" buttonClassName="absolute  opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" text="Linkə keçid et"/>
+              </div>
 
-              <img
-                className={styles.cardImg}
-                src={podcast.imageUrl}
-                alt={podcast.speakerName}
-                loading="lazy"
-              />
               <div className={styles.cardInfo}>
                 <div className={styles.cardName}>{podcast.speakerName}</div>
                 <div className={styles.cardDesc}>
