@@ -14,8 +14,8 @@ import { MdKeyboardArrowDown as KeyboardArrowDownIcon } from "react-icons/md";
 import { MdKeyboardArrowUp as KeyboardArrowUpIcon } from "react-icons/md";
 import EditIcon from '../../../assets/icons/adminEdit.svg'
 import DeleteIcon from '../../../assets/icons/adminDelete.svg'
-
-
+import { useGetQuizByTrainingIdQuery } from '../../../services/features/trainingPage/quizApi';
+import LoadingSpinner from '../../General/LoadingSpinner';
 
 export interface Column {
     id: string;
@@ -32,13 +32,15 @@ interface AdminCourseTableProps {
     rows: RowType[];
 }
 
-
 function Row(props: { row: RowType; columns: Column[] }) {
     const { row, columns } = props;
     const [open, setOpen] = React.useState(false);
+    const { data: quizQuestions, isLoading } = useGetQuizByTrainingIdQuery(row.id, {
+        skip: !open // yalnız row açıldıqda sorğu getsin
+    });
 
     return (
-        <React.Fragment>
+        <>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
@@ -78,84 +80,87 @@ function Row(props: { row: RowType; columns: Column[] }) {
                 </TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={columns.length + 1}>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={columns.length + 2}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ margin: 1 }}>
+                        <Box sx={{ margin: 1 }} className="overflow-y-scroll max-h-[300px]">
                             <Typography variant="h6" gutterBottom component="div">
-                                Quiz
+                                Sual siyahısı
                             </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Suallar</TableCell>
-                                        <TableCell>Duzgun cavablari</TableCell>
-                                        <TableCell>Emaliyyatlar</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {row.history?.map((historyRow: any) => (
-                                        <TableRow key={historyRow.date}>
-                                            <TableCell>{historyRow.date}</TableCell>
-                                            <TableCell>{historyRow.customerId}</TableCell>
-                                            <TableCell align="center">
-                                                <div className="flex gap-3">
-                                                    <button
-                                                        className="w-[40px] h-[40px] bg-[#44A15E] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
-                                                    >
-                                                        <img
-                                                            src={EditIcon}
-                                                            alt="edit"
-                                                            className="w-full h-full"
-                                                        />
-                                                    </button>
-                                                    <button
-                                                        className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
-                                                    >
-                                                        <img
-                                                            src={DeleteIcon}
-                                                            alt="delete"
-                                                            className="w-full h-full"
-                                                        />
-                                                    </button>
-                                                </div>
-                                            </TableCell>
+                            {isLoading ? (
+                                <Typography className='flex items-center gap-x-2'><LoadingSpinner size={25} /> Yüklənir...</Typography>
+                            ) : quizQuestions ? (
+                                <Table size="small" aria-label="quiz-questions">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Sual</TableCell>
+                                            <TableCell>Düzgün Cavab</TableCell>
+                                            <TableCell>Əməliyyatlar</TableCell>
                                         </TableRow>
-                                    ))}
-
-                                </TableBody>
-                            </Table>
+                                    </TableHead>
+                                    <TableBody >
+                                        {quizQuestions?.map((q) => (
+                                            <TableRow key={q.id}>
+                                                <TableCell>{q.content}</TableCell>
+                                                <TableCell>{q.answers.map(answer => answer.isCorrect ? answer.content : '')}</TableCell>
+                                                <TableCell align="center">
+                                                    <div className="flex items-center  gap-3">
+                                                        <button
+                                                            className="w-[40px] h-[40px] bg-[#44A15E] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
+                                                        >
+                                                            <img
+                                                                src={EditIcon}
+                                                                alt="edit"
+                                                                className="w-full h-full"
+                                                            />
+                                                        </button>
+                                                        <button
+                                                            className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
+                                                        >
+                                                            <img
+                                                                src={DeleteIcon}
+                                                                alt="delete"
+                                                                className="w-full h-full"
+                                                            />
+                                                        </button>
+                                                    </div>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            ) : (
+                                <Typography className='text-red-600'>Sual tapılmadı.</Typography>
+                            )}
                         </Box>
                     </Collapse>
                 </TableCell>
             </TableRow>
-        </React.Fragment>
+        </>
     );
 }
 
 
 export default function AdminCourseTable({ columns, rows }: AdminCourseTableProps) {
     return (
-        <TableContainer component={Paper} className="mt-10">
-            <Table aria-label="collapsible table">
+        <TableContainer component={Paper} className="mt-10 fade-in overflow-y-scroll max-h-[545px]">
+            <Table aria-label="collapsible table !font-[Corbel]">
                 <TableHead>
                     <TableRow>
-                        <TableCell /> {/* Collapse üçün boşluq */}
+                        <TableCell />
                         {columns.map((col) => (
                             <TableCell key={col.id} align={col.align || 'left'}>
                                 {col.label}
                             </TableCell>
                         ))}
-                        <TableCell align="center">Əməliyyatlar</TableCell> {/* Yeni sütun */}
+                        <TableCell align="center">Əməliyyatlar</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <Row key={row.name} row={row} columns={columns} />
+                    {rows.map((row, index) => (
+                        <Row key={index} row={row} columns={columns} />
                     ))}
-                    {/* <EditIcon /> */}
                 </TableBody>
             </Table>
         </TableContainer>
     );
 }
-

@@ -25,19 +25,19 @@ const AdminQuotes = () => {
         { id: "authorName", label: "author", align: "right" },
         { id: "modules", label: "Modul sayi", align: "right" },
         { id: "lesson", label: "Ders sayi", align: "right" },
-        { id: "question", label: "Sual sayi", align: "right" },
+        // { id: "question", label: "Sual sayi", align: "right" },
     ];
 
-   const rows = (allTrainings ?? []).map(training => ({
-    ...training,
-    modules: training.modules?.length || 0,
-    lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
-    // question: training.quizCount || 0, // əgər API-də quiz-lərin sayı varsa, onu da əlavə edə bilərsən
-    /* history: training.quizList?.map((quiz: any) => ({
-        date: quiz.question,
-        customerId: quiz.correctAnswer
-    })) || [] */
-}));
+    const rows = (allTrainings ?? []).map(training => ({
+        ...training,
+        modules: training.modules?.length || 0,
+        lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
+        // question: training.quizCount || 0, // əgər API-də quiz-lərin sayı varsa, onu da əlavə edə bilərsən
+        /*  history: training.id?.map((id: any) => ({
+             date: quiz.question,
+             customerId: quiz.correctAnswer
+         })) || [] */
+    }));
 
     /*  const handleDeleteQuote = async (id: number, deleteQuote: (id: number) => Promise<any>) => {
          const result = await Swal.fire({
@@ -73,7 +73,7 @@ const AdminQuotes = () => {
     }; */
 
     return (
-        <div className=' w-full h-full py-10 '>
+        <div className=' w-full h-full py-10'>
 
             {/* {showModal && (
                 <CustomModal
