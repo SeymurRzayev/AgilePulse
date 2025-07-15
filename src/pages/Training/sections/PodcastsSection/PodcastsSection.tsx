@@ -80,7 +80,12 @@ const PodcastsSection: FC = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-[#00000084] z-0 rounded-[30px] opacity-0 group-hover:opacity-100 transition-all duration-500 " />
-              <MainButton className="relative w-[156px] h-10 inset-x-0 z-10 bottom-[55%] left-[20%]" buttonClassName="absolute  opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" text="Linkə keçid et"/>
+                <MainButton
+                  onClick={() => window.open(podcast.youtubeUrl, "_blank")}
+                  className="relative w-[156px] h-10 inset-x-0 z-10 bottom-[55%] left-[20%]"
+                  buttonClassName="absolute  opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                  text="Linkə keçid et"
+                />
               </div>
 
               <div className={styles.cardInfo}>
