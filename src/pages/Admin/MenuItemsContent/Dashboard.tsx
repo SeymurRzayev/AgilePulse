@@ -21,7 +21,7 @@ const PAGES = [
     {
         label: 'Haqqımızda',
         icon: dasboardIconAdmin,
-        path: ''
+        path: 'about-page'
     },
     {
         label: 'Akademiya',
