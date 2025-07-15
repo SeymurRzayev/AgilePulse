@@ -34,6 +34,7 @@ import AdminTrainers from "../components/Admin/Trainings/AdminTrainers";
 import AdminQuotes from "../components/Admin/MainPage/AdminQuotes";
 import AdminPodcasts from "../components/Admin/Trainings/AdminPodcasts";
 import AdminQuizs from "../components/Admin/MainPage/AdminQuizs";
+import Exams from "../pages/Exam/Exams";
 
 
 
@@ -57,6 +58,7 @@ const AppRouter: FC = () => {
         <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
         <Route path="/library/detail/:id" element={<LibraryDetails />} />
         <Route path="/quiz/:id" element={<QuizPage />} />
+        <Route path="/exams" element={<Exams />} />
       </Route>
 
       <Route path="/FAQ" element={<Faq />} />
