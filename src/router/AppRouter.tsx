@@ -35,6 +35,7 @@ import AdminQuotes from "../components/Admin/MainPage/AdminQuotes";
 import AdminPodcasts from "../components/Admin/Trainings/AdminPodcasts";
 import AdminQuizs from "../components/Admin/MainPage/AdminQuizs";
 import Exams from "../pages/Exam/Exams";
+import AdminAbout from "../components/Admin/AboutPage/AdminAbout";
 
 
 
@@ -80,7 +81,7 @@ const AppRouter: FC = () => {
           <Route path="trainings-page/trainers" element={<AdminTrainers />} />
           <Route path="trainings-page/podcasts" element={<AdminPodcasts />} />
           <Route path="trainings-page/quizs" element={<AdminQuizs />} />
-
+          <Route path="about-page" element={<AdminAbout/>}/>
         </Route>
         <Route path="users" element={<Users />} />
         <Route path="projects" element={<Projects />} />
