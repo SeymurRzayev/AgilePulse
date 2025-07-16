@@ -13,6 +13,7 @@ const Exams = () => {
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
+        event.preventDefault();
     };
 
     const totalPages = Math.ceil(examSample.length / itemsPerPage);
