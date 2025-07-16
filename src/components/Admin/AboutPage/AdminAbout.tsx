@@ -5,6 +5,7 @@ import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import managerImg from "../../../assets/images/trainer1.jpg";
 import CustomModal from "../Modals/CustomModal";
 import EditAndCreateEmployee from "./EditAndCreateEmployee";
+
 const people = [
   {
     id: 1,
