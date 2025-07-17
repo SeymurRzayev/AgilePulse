@@ -93,9 +93,9 @@ const Team: FC = () => {
                 occupation={
                   filterByPosition(response, "SCRUM_MASTER")[0]?.position
                 }
-                jobDescription={
-                  filterByPosition(response, "SCRUM_MASTER")[0]?.description
-                }
+                // jobDescription={
+                //   filterByPosition(response, "SCRUM_MASTER")[0]?.description
+                // }
                 img={filterByPosition(response, "SCRUM_MASTER")[0]?.imageUrl}
               />
             </div>
@@ -128,9 +128,9 @@ const Team: FC = () => {
                   filterByPosition(response, "DESIGNER")[0]?.surname || "Hüseynova"
                 }
                 occupation={ filterByPosition(response, "DESIGNER")[0]?.position || "Dizayner"}
-                jobDescription={
-                  filterByPosition(response, "DESIGNER")[0]?.description || "Startap və korporativ layihələrdə liderlik təcrubəsi."
-                }
+                // jobDescription={
+                //   filterByPosition(response, "DESIGNER")[0]?.description || "Startap və korporativ layihələrdə liderlik təcrubəsi."
+                // }
                 img={filterByPosition(response, "DESIGNER")[0]?.imageUrl || managerImg}
               />
             </div>

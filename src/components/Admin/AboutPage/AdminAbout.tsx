@@ -3,7 +3,7 @@ import { useState } from "react";
 import AdminTable from "../General/AdminTable";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import CustomModal from "../Modals/CustomModal";
-import EditAndCreateEmployee from "./EditAndCreateEmployee";
+import EditAndCreateEmployee, { getPositionLabel } from "./EditAndCreateEmployee";
 import {
  useDeleteEmployeeMutation,
  useGetAllTeamQuery,
@@ -83,7 +83,7 @@ const AdminAbout: React.FC = () => {
      ) : (
        <AdminTable
          allowActions={true}
-         theads={["Ad, soyad", "vəzifəsi", "Məlumat"]}
+         theads={["Ad, soyad", "vəzifəsi"]}
          rows={(teamData ?? []).map((employee) => ({
            id: employee.id!,
            cells: [
@@ -93,10 +93,7 @@ const AdminAbout: React.FC = () => {
                imageShape: "square",
              },
              {
-               text: `${employee.position}`,
-             },
-             {
-               text: `${employee.description}`,
+               text:  getPositionLabel(employee.position),
              },
            ],
          }))}

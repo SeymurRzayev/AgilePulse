@@ -6,12 +6,17 @@ import {
  useUpdateEmployeeMutation,
 } from "../../../services/features/about/teamApi";
 import LoadingSpinner from "../../General/LoadingSpinner";
+import { TEAM_POSITIONS } from "../../../consts/consts";
+
+export function getPositionLabel(value: string) {
+  const found = TEAM_POSITIONS.find((pos) => pos.value === value);
+  return found ? found.label : value;
+}
 
 interface EditAndCreateEmployeeProps {
  initialName?: string;
  initialSurname?: string;
  initialPosition?: string;
- initialDescription?: string;
  initialImg?: string;
  id?: number;
  onClose?: () => void;
@@ -21,14 +26,12 @@ const EditAndCreateEmployee = ({
  initialName,
  initialSurname,
  initialPosition,
- initialDescription,
  id,
  onClose,
 }: EditAndCreateEmployeeProps) => {
  const [name, setName] = useState(initialName ?? "");
  const [surname, setSurname] = useState(initialSurname ?? "");
  const [position, setPosition] = useState(initialPosition ?? "");
- const [description, setDescription] = useState(initialDescription ?? "");
  const [image, setImage] = useState<File | null>(null);
 
 
@@ -39,7 +42,6 @@ const EditAndCreateEmployee = ({
         formData.append("name", name as string);
         formData.append("surname", surname as string);
         formData.append("position", position as string);
-        formData.append("description", description as string);
         if (image) {
           formData.append("image", image);
         }
@@ -59,12 +61,11 @@ const EditAndCreateEmployee = ({
         formData.append("name", name as string);
         formData.append("surname", surname as string);
         formData.append("position", position as string);
-        formData.append("description", description as string);
         if (image) {
           formData.append("image", image);
         }
         await createEmployee(formData).unwrap();
-        console.log({ id, name, surname, position, description, image });
+        console.log({ id, name, surname, position, image });
         Swal.fire("Uğurlu", "Yeni işçi uğurla yaradıldı", "success");
         onClose?.();
       } catch (error) {
@@ -100,21 +101,18 @@ const EditAndCreateEmployee = ({
        placeholder="İşçinin soyadı"
      />
 
-     <input
-       type="text"
-       value={position}
-       onChange={(e) => setPosition(e.target.value)}
-       className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
-       placeholder="İşçinin vəzifəsi"
-     />
-
-     <textarea
-       rows={4}
-       value={description}
-       onChange={(e) => setDescription(e.target.value)}
-       className="resize-none w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
-       placeholder="İşçi haqqında"
-     ></textarea>
+<select 
+value={position}
+onChange={(e) => setPosition(e.target.value)}
+className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:ring-1 focus:ring-[#2C4B9B] focus:border-[#2C4B9B] transition"
+>
+  <option value="">Vəzifə seçin</option>
+  {TEAM_POSITIONS.map((pos) => (
+    <option key={pos.value} value={pos.value}>
+      {pos.label}
+    </option>
+  ))}
+</select>
      
      <input
        type="file"
