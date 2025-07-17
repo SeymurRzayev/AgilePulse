@@ -50,11 +50,13 @@ const EditAndCreateEmployee = ({
         if (image) {
           formData.append("image", image);
         }
+
         await updateEmployee({ id: id as number, data: formData }).unwrap();
         refetch();
         Swal.fire("Uğurlu", "Kateqoriya uğurla dəyişdirildi", "success");
         onClose?.();
       } catch (error) {
+        console.log(error);
         Swal.fire("Xəta", "Xəta baş verdi", "error");
       }
     } else {
@@ -68,8 +70,8 @@ const EditAndCreateEmployee = ({
         if (image) {
           formData.append("image", image);
         }
-
         await createEmployee(formData).unwrap();
+        console.log({ id, name, surname, position, description, image });
         Swal.fire("Uğurlu", "Yeni işçi uğurla yaradıldı", "success");
         onClose?.();
       } catch (error) {

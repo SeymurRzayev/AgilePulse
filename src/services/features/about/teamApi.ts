@@ -24,14 +24,14 @@ const teamApi = baseApi.injectEndpoints({
         }),
         updateEmployee: builder.mutation<void, { id: number; data: FormData }>({
             query: ({ id, data }) => ({
-                url: `/team/update/${id}`,
+                url: `/team/${id}`,
                 method: "PUT",
                 body: data,
             }),
         }),
         deleteEmployee: builder.mutation<void, number>({
             query: (id) => ({
-                url: `/team/delete/${id}`,
+                url: `/team/${id}`,
                 method: "DELETE",
             }),
         }),

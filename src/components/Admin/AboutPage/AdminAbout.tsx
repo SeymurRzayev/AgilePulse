@@ -23,9 +23,9 @@ const AdminAbout: React.FC = () => {
     imageUrl: string;
   } | null>(null);
   const { data: getAllTeam, isLoading, refetch } = useGetAllTeamQuery();
-  const teamData = getAllTeam?.data?.data;
+  const teamData = getAllTeam?.data?.data ?? [];
   const [deleteEmployee] = useDeleteEmployeeMutation();
-  console.log(teamData);
+  // console.log(teamData);
 
   const handleDelete = async ({ id }: { id: number }) => {
     Swal.fire({
