@@ -2,36 +2,15 @@ import React from "react";
 import { useState } from "react";
 import AdminTable from "../General/AdminTable";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
-import managerImg from "../../../assets/images/trainer1.jpg";
 import CustomModal from "../Modals/CustomModal";
 import EditAndCreateEmployee from "./EditAndCreateEmployee";
-
-const people = [
-  {
-    id: 1,
-    name: "Səadət",
-    surname: "huseynova",
-    occupation: "Agile Coach",
-    jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-    img: managerImg,
-  },
-  {
-    id: 2,
-    name: "Murad",
-    surname: "Məmmədov ",
-    occupation: "Agile Coach",
-    jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-    img: managerImg,
-  },
-  {
-    id: 3,
-    name: "Murad",
-    surname: "Məmmədov ",
-    occupation: "Agile Coach",
-    jobDescription: "Startap və korporativ layihələrdə liderlik təcrübəsi.",
-    img: managerImg,
-  },
-];
+import {
+  useDeleteEmployeeMutation,
+  useGetAllTeamQuery,
+} from "../../../services/features/about/teamApi";
+import Swal from "sweetalert2";
+import type { TeamMember } from "../../../types/types";
+import LoadingSpinner from "../../General/LoadingSpinner";
 
 const AdminAbout: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -43,6 +22,35 @@ const AdminAbout: React.FC = () => {
     description: string;
     imageUrl: string;
   } | null>(null);
+  const { data: getAllTeam, isLoading, refetch } = useGetAllTeamQuery();
+  const teamData = getAllTeam?.data?.data;
+  const [deleteEmployee] = useDeleteEmployeeMutation();
+  console.log(teamData);
+
+  const handleDelete = async ({ id }: { id: number }) => {
+    Swal.fire({
+      title: "Əminsiniz?",
+      text: "Bu Təlimçini silmək istədiyinizdən əminsiniz?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Bəli, sil",
+      cancelButtonText: "Ləğv et",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteEmployee(id).unwrap();
+          refetch();
+          Swal.fire("Silindi!", "Təlimçi uğurla silindi.", "success");
+        } catch (error) {
+          Swal.fire("Xəta!", "Silinmə zamanı xəta baş verdi.", "error");
+        }
+      }
+    });
+  };
+  const arrFilterer = (arr: TeamMember[], id: number) => {
+    return arr.find((employee) => employee.id === Number(id));
+  };
+
   return (
     <div className="w-full flex flex-col justify-center  gap-10">
       <h2 className="font-normal text-2xl leading-8">Komandamız</h2>
@@ -65,34 +73,52 @@ const AdminAbout: React.FC = () => {
           />
         </CustomModal>
       )}
-      <AdminTable
-        allowActions={true}
-        theads={["Ad, soyad", "vəzifəsi", "Məlumat"]}
-        rows={people.map((employee) => ({
-          id: employee.id,
-          cells: [
-            {
-              text: `${employee.name} ${employee.surname} `,
-              image: `${employee.img}`,
-              imageShape: "square",
-            },
-            {
-              text: `${employee.occupation}`,
-            },
-            {
-              text: `${employee.jobDescription}`,
-            },
-          ],
-        }))}
-  
-      />
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <AdminTable
+          allowActions={true}
+          theads={["Ad, soyad", "vəzifəsi", "Məlumat"]}
+          rows={(teamData?? []).map((employee) => ({
+            id: employee.id!,
+            cells: [
+              {
+                text: `${employee.name} ${employee.surname} `,
+                image: `${employee.imageUrl}`,
+                imageShape: "square",
+              },
+              {
+                text: `${employee.position}`,
+              },
+              {
+                text: `${employee.description}`,
+              },
+            ],
+          }))}
+          onEdit={(id) => {
+            setOpenModal(true);
+            setSelectedEmployee({
+              id: Number(id),
+              name: arrFilterer(teamData ?? [], Number(id))?.name ?? "",
+              surname: arrFilterer(teamData ?? [], Number(id))?.surname ?? "",
+              position: arrFilterer(teamData ?? [], Number(id))?.position ?? "",
+              description:
+                arrFilterer(teamData ?? [], Number(id))?.description ?? "",
+              imageUrl: arrFilterer(teamData ?? [], Number(id))?.imageUrl ?? "",
+            });
+          }}
+          onDelete={(id) => handleDelete({ id: Number(id) })}
+        />
+      )}
+
       <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
         <AnimatedButton
-        onClick={()=>{
-        setSelectedEmployee(null);
-          setOpenModal(true);
-        }}
-        className="!w-[185px] !h-[56px] ">
+          onClick={() => {
+            setSelectedEmployee(null);
+            setOpenModal(true);
+          }}
+          className="!w-[185px] !h-[56px] "
+        >
           Əlavə et <span className="text-3xl ml-2 font-light">+</span>
         </AnimatedButton>
       </div>

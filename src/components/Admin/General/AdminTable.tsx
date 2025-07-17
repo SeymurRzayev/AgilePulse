@@ -5,11 +5,11 @@ import adminDeleteImg from "../../../assets/icons/adminDelete.svg";
 type TableCellContent =
   | string
   | {
-    text: string;
-    image?: string;
-    imageShape?: "circle" | "square";
-    icon?: React.ReactNode;
-  };
+      text: string;
+      image?: string;
+      imageShape?: "circle" | "square";
+      icon?: React.ReactNode;
+    };
 
 type TableRow = {
   id: string | number;
@@ -36,7 +36,11 @@ const AdminTable: React.FC<TableProps> = ({
 
   return (
     <div
-      style={{ overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      style={{
+        overflowY: "scroll",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      }}
       className="flex flex-col gap-2.5 fade-in overflow-y-scroll max-h-[550px]"
     >
       {/* Table Header */}
@@ -121,15 +125,19 @@ const TableCell: React.FC<{ content: TableCellContent }> = ({ content }) => {
             <img
               src={content.image}
               alt=""
-              className={`w-8 h-8 object-cover ${content.imageShape === "circle"
-                ? "rounded-full"
-                : "rounded-none"
-                }`}
+              className={`w-8 h-8 object-cover ${
+                content.imageShape === "circle"
+                  ? "rounded-full"
+                  : "rounded-none"
+              }`}
             />
           )}
           <span className="text-lg font-[Corbel] text-[#000000] font-semibold text-center  truncate max-w-[80%] ">
-            {content?.icon ? content?.icon : <p className="w-full">{content?.text}</p>}
-
+            {content?.icon ? (
+              content?.icon
+            ) : (
+              <p className="w-full">{content?.text}</p>
+            )}
           </span>
         </div>
       )}
