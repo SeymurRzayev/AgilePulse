@@ -49,3 +49,15 @@ export const examSample = [
     { title: 'PSM 1 | imtahan', questionsCount: 60, duration: 60 },
     // add more data...
 ];
+
+export const TEAM_POSITIONS = [
+  { value: "SCRUM_MASTER", label: "Scrum Master" },
+  { value: "FRONTEND_DEVELOPER", label: "Frontend Developer" },
+  { value: "BACKEND_LEADER", label: "Backend Leader" },
+  // Yeni position-ları buraya əlavə et!
+];
+
+export function getPositionLabel(value: string) {
+  const found = TEAM_POSITIONS.find((pos) => pos.value === value);
+  return found ? found.label : value;
+}

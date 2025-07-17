@@ -20,7 +20,6 @@ type Props = {
   name: string;
   surname: string;
   occupation: string; // Use enum type here
-  jobDescription: string;
   img: any;
 };
 
@@ -28,7 +27,7 @@ const TeamInfoCard: FC<Props> = ({
   name,
   surname,
   occupation,
-  jobDescription,
+  // jobDescription,
   img,
 }) => {
   return (
@@ -41,9 +40,6 @@ const TeamInfoCard: FC<Props> = ({
           <span className="text-[#566FAF] font-bold leading-3 md:leading-base text-sm md:text-base">
             {Occupation[occupation] || occupation}
           </span>
-          <p className="text-sm md:text-base leading-3.5 md:leading-4 text-[#00000099] font-bold">
-            {jobDescription}
-          </p>
         </div>
       </div>
       <img
