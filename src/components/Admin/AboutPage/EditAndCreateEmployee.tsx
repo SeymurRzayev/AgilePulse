@@ -80,43 +80,6 @@ const EditAndCreateEmployee = ({
    useCreateTeamMemeberMutation();
  const isEditMode: boolean = !!id;
 
- const handleSave = async () => {
-   if (isEditMode) {
-     try {
-       const formData = new FormData();
-       formData.append("name", name as string);
-       formData.append("surname", surname as string);
-       formData.append("position", position as string);
-       formData.append("description", description as string);
-       if (image) {
-         formData.append("image", image);
-       }
-       await updateEmployee({ id: id as number, data: formData }).unwrap();
-       refetch();
-       Swal.fire("Uğurlu", "Kateqoriya uğurla dəyişdirildi", "success");
-       onClose?.();
-     } catch (error) {
-       Swal.fire("Xəta", "Xəta baş verdi", "error");
-     }
-   } else {
-     try {
-       const formData = new FormData();
-       formData.append("name", name as string);
-       formData.append("surname", surname as string);
-       formData.append("position", position as string);
-       formData.append("description", description as string);
-       if (image) {
-         formData.append("image", image);
-       }
-
-       await createEmployee(formData).unwrap();
-       Swal.fire("Uğurlu", "Yeni işçi uğurla yaradıldı", "success");
-       onClose?.();
-     } catch (error) {
-       Swal.fire("Xəta", "Xəta baş verdi", "error");
-     }
-   }
- };
 
 
  return (
