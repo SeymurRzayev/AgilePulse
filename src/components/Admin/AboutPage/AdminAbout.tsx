@@ -13,19 +13,23 @@ import type { TeamMember } from "../../../types/types";
 import LoadingSpinner from "../../General/LoadingSpinner";
 
 const AdminAbout: React.FC = () => {
- const [openModal, setOpenModal] = useState<boolean>(false);
- const [selectedEmployee, setSelectedEmployee] = useState<{
-   id: number;
-   name: string;
-   surname: string;
-   position: string;
-   description: string;
-   imageUrl: string;
- } | null>(null);
- const { data: getAllTeam, isLoading, refetch } = useGetAllTeamQuery();
- const teamData = getAllTeam?.data?.data;
- const [deleteEmployee] = useDeleteEmployeeMutation();
- console.log(teamData);
+
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [selectedEmployee, setSelectedEmployee] = useState<{
+    id: number;
+    name: string;
+    surname: string;
+    position: string;
+    description: string;
+    imageUrl: string;
+  } | null>(null);
+  const { data: getAllTeam, isLoading, refetch } = useGetAllTeamQuery();
+  const teamData = getAllTeam?.data?.data ?? [];
+  const [deleteEmployee] = useDeleteEmployeeMutation();
+  // console.log(teamData);
+
+
+
 
  const handleDelete = async ({ id }: { id: number }) => {
    Swal.fire({
