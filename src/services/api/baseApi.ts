@@ -42,8 +42,8 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
             api,
             extraOptions
         );
-        
-        console.log(refreshResult)
+
+        console.log(refreshResult);
 
         if (refreshResult?.data && !(refreshResult as any).error) {
             const newAccessToken = (refreshResult.data as any).accessToken;
@@ -88,7 +88,8 @@ async function redirectToLogin() {
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Book',
+    tagTypes: [
+        'Book',
         'Partner',
         'Categories',
         'isSaved',
