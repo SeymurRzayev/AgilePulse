@@ -3,12 +3,30 @@ import ExamBgImg from "../../assets/images/ExamBgImg.png";
 import Footer from '../../layout/Footer/Footer';
 
 import Pagination from '@mui/material/Pagination';
-import { useState } from 'react';
 import ExamCard from './ExamCard';
 import { examSample, sxWhitePagination } from '../../consts/consts';
-const Exams = () => {
+import { useState, useEffect } from 'react';
 
-    const itemsPerPage = 6;
+
+const Exams = () => {
+    const getItemsPerPage = () => {
+        const width = window.innerWidth;
+
+        if (width >= 1024) return 6; // lg
+        if (width >= 600) return 4;  // md
+        return 2;                    // sm or less
+    };
+    const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage());
+
+    useEffect(() => {
+        const handleResize = () => {
+            setItemsPerPage(getItemsPerPage());
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const [page, setPage] = useState(1);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -29,11 +47,10 @@ const Exams = () => {
                 style={{ backgroundImage: `url(${ExamBgImg})` }}
                 className="w-full relative  h-[1154px]  bg-no-repeat bg-cover bg-center"
             >
-
                 <div className="absolute  top-[155px] flex flex-col  items-center w-full h-full gap-[67px]">
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-[Corbel] font-bold text-[#FFFFFF] w-[90%] md:w-[600px] lg:w-[1007px] leading-normal text-center ">Scrum, Kanban, Product Owner və digər Agile sahələrində biliklərinizi yoxlamaq və sertifikat əldə etmək üçün imtahanlara buradan başlayın</h2>
 
-                    <div className=' w-[996px] h-[572px] text-white flex flex-wrap justify-between gap-5   '>
+                    <div className='md:max-w-[996px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-28 px-2 mx-auto '>
                         {currentExams.map((exam, index) => (
                             <ExamCard
                                 key={index}
@@ -52,6 +69,9 @@ const Exams = () => {
                         sx={sxWhitePagination}
                         hidePrevButton={page === 1}
                         hideNextButton={page === totalPages}
+                        defaultPage={6}
+                        siblingCount={0}
+
                     />
 
                 </div>
