@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminTable from "../General/AdminTable";
+import AdminTable from "../Tables/AdminTable";
 import Swal from "sweetalert2";
 import {
   useGetTrainersQuery,

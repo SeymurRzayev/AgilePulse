@@ -368,13 +368,13 @@ export interface Training {
 }
 
 export interface Answers {
-  id: number;
+  id?: number;
   content: string;
   isCorrect?: boolean;
 }
 
 export interface Question {
-  id: number;
+  id?: number;
   content: string;
   answers: Answers[];
 }

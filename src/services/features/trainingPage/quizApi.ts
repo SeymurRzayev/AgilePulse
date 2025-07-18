@@ -23,7 +23,8 @@ const quizApi = baseApi.injectEndpoints({
                 url: `/quizzes/findAllQuiz`,
                 method: 'GET',
             }),
-            transformResponse:(res : QuizResponse)=> res.content,
+            transformResponse: (res: QuizResponse) => res.content,
+            providesTags: ['Quiz'],
         }),
         createQuiz: build.mutation<Quiz, QuizPostBody>({
             query: (body) => ({
@@ -32,12 +33,50 @@ const quizApi = baseApi.injectEndpoints({
                 body,
             }),
         }),
-        getQuizByTrainingId: build.query<Question[],number>({
+        getQuizByTrainingId: build.query<Quiz, number>({
             query: (trainingId) => ({
-                url: `/quizzes/by-training/${trainingId}/questions`,
+                url: `/quizzes/by-training/${trainingId}`,
                 method: 'GET',
             }),
-        })
+            providesTags: (result, error, trainingId) => [
+                { type: 'Quiz', id: trainingId }
+            ]
+        }),
+        getQuestionByQuizId: build.query<Question, { quizId: number, questionId: number }>({
+            query: ({ questionId, quizId }) => ({
+                url: `/quizzes/${quizId}/questions/${questionId}`,
+                method: 'GET',
+            }),
+        }),
+        updateQuestion: build.mutation<Question, { questionId: number, quizId: number, question: Question }>({
+            query: ({ questionId, quizId, question }) => ({
+                url: `/quizzes/${quizId}/questions/${questionId}`,
+                method: 'PUT',
+                body: question,
+            }),
+            invalidatesTags: (result, error, { quizId }) => [
+                { type: 'Quiz', id: quizId }
+            ],
+        }),
+        createQuestion: build.mutation<Question, { quizId: number, question: Question }>({
+            query: ({ quizId, question }) => ({
+                url: `/quizzes/${quizId}/questions`,
+                method: 'POST',
+                body: question,
+            }),
+            invalidatesTags: (result, error, { quizId }) => [
+                { type: 'Quiz', id: quizId }
+            ],
+        }),
+        disabledQuestion: build.mutation<Question, { questionId: number, quizId: number, isActive: boolean }>({
+            query: ({ questionId, quizId, isActive }) => ({
+                url: `/quizzes/${quizId}/questions/${questionId}/status?isActive=${isActive}`,
+                method: 'PATCH',
+            }),
+            invalidatesTags: (result, error, { quizId }) => [
+                { type: 'Quiz', id: quizId }
+            ],
+        }),
     }),
 })
 
@@ -46,5 +85,9 @@ export const {
     useEndQuizMutation,
     useGetAllQuizQuery,
     useCreateQuizMutation,
-    useGetQuizByTrainingIdQuery
+    useGetQuizByTrainingIdQuery,
+    useGetQuestionByQuizIdQuery,
+    useUpdateQuestionMutation,
+    useCreateQuestionMutation,
+    useDisabledQuestionMutation,
 } = quizApi;

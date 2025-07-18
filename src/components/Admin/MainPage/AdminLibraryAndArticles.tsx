@@ -9,9 +9,9 @@ import LoadingSpinner from "../../General/LoadingSpinner";
 import { useLocation } from "react-router-dom";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import CustomModal from "../Modals/CustomModal";
-import AddBookForm from "./AddBookForm";
-import AddArticleForm from "./AddArticleForm";
-import AdminTable from "../General/AdminTable";
+import AddBookForm from "../Forms/AddBookForm";
+import AddArticleForm from "../Forms/AddArticleForm";
+import AdminTable from "../Tables/AdminTable";
 
 const AdminLibraryAndArticles = () => {
   const location = useLocation();

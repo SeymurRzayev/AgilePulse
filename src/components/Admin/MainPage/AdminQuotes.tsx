@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDeleteQuoteMutation, useGetAllQuotesQuery } from "../../../services/features/mainPage/quotesApi";
 import LoadingSpinner from "../../General/LoadingSpinner";
-import AdminTable from "../General/AdminTable";
+import AdminTable from "../Tables/AdminTable";
 import CustomModal from "../Modals/CustomModal";
-import QuoteForm from "./QuoteForm";
+import QuoteForm from "../Forms/QuoteForm";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import Swal from "sweetalert2";
 
