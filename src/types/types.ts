@@ -442,7 +442,7 @@ export interface CertificateResponse {
 
 // Quiz və ya imtahan modelini təsvir edir
 export interface Quiz {
-  id: number;
+  id?: number;
   trainingId: number | null;
   totalQuestions: number | null;
   passPercentage: number;

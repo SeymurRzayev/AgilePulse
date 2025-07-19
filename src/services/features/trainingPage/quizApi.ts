@@ -26,9 +26,9 @@ const quizApi = baseApi.injectEndpoints({
             transformResponse: (res: QuizResponse) => res.content,
             providesTags: ['Quiz'],
         }),
-        createQuiz: build.mutation<Quiz, QuizPostBody>({
+        createQuiz: build.mutation<Quiz, Quiz>({
             query: (body) => ({
-                url: `/quizzes/create`,
+                url: `/quizzes/createQuiz`,
                 method: 'POST',
                 body,
             }),

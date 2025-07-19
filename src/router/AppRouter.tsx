@@ -33,8 +33,8 @@ import AdminCategories from "../components/Admin/Trainings/AdminCategories";
 import AdminTrainers from "../components/Admin/Trainings/AdminTrainers";
 import AdminQuotes from "../components/Admin/MainPage/AdminQuotes";
 import AdminPodcasts from "../components/Admin/Trainings/AdminPodcasts";
-import AdminQuizs from "../components/Admin/MainPage/AdminQuizs";
-import AdminCourses from "../components/Admin/MainPage/AdminCourses";
+import AdminQuizs from "../components/Admin/Trainings/AdminQuizs";
+import AdminCourses from "../components/Admin/Trainings/AdminCourses";
 import Exams from "../pages/Exam/Exams";
 import AdminAbout from "../components/Admin/AboutPage/AdminAbout";
 

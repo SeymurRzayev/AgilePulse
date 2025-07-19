@@ -6,6 +6,7 @@ import { useState } from "react";
 import CustomModal from "../Modals/CustomModal";
 import Swal from "sweetalert2";
 import QuizForm from "../Forms/QuizForm";
+import CreateQuiz from "../Forms/CreateQuiz";
 
 const AdminQuotes = () => {
 
@@ -55,7 +56,7 @@ const AdminQuotes = () => {
         { id: "authorName", label: "author", align: "left" },
         { id: "modules", label: "Modul sayi", align: "center" },
         { id: "lesson", label: "Ders sayi", align: "center" },
-        // { id: "question", label: "Sual sayi", align: "right" },
+        { id: "question", label: "Sual sayi", align: "center" },
     ];
 
     const accordionThead: Column[] = [
@@ -63,12 +64,20 @@ const AdminQuotes = () => {
         { id: "correctAnswer", label: "Düzgün Cavab", align: 'left' },
     ];
 
-    const rows = (allTrainings ?? []).map(training => ({
-        ...training,
-        modules: training.modules?.length || 0,
-        lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
-        trainingId: training.id,
-    }));
+    const rows = (allTrainings ?? []).map(training => {
+        const quiz = allQuizes?.find(q => q.trainingId === training.id);
+        const questionCount = quiz?.questions?.length || 0;
+
+        return {
+            ...training,
+            modules: training.modules?.length || 0,
+            lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
+            trainingId: training.id,
+            question: questionCount,
+            questionCount,
+        };
+    });
+
 
     return (
         <div className=' w-full h-full py-10'>
@@ -76,14 +85,21 @@ const AdminQuotes = () => {
             {showModal && (
                 <CustomModal
                     onClose={() => setShowModal(false)}
-                    title={selectedTraining.isEdit ? 'Sualı redaktə et' : 'Kursa yeni sual əlavə et'}
+                    title={selectedTraining.isEdit ? 'Sualı redaktə et' : (selectedTraining.isCreateQuiz ? 'Quiz yarat' : 'Kursa yeni sual əlavə et')}
                 >
-                    <QuizForm
+                    {
+                        selectedTraining.isCreateQuiz
+                            ? <CreateQuiz
+                                refreshQuiz={selectedTraining.refreshQuiz}
+                                trainingId={selectedTraining.trainingId}
+                            />
+                            : <QuizForm
+                                refreshQuiz={selectedTraining.refreshQuiz}
+                                initialData={selectedTraining}
+                                onSuccess={() => setShowModal(false)}
+                            />
+                    }
 
-                        refreshQuiz={selectedTraining.refreshQuiz}
-                        initialData={selectedTraining}
-                        onSuccess={() => setShowModal(false)}
-                    />
                 </CustomModal>
             )}
 
