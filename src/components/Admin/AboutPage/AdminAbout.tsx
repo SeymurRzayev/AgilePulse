@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import AdminTable from "../General/AdminTable";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import CustomModal from "../Modals/CustomModal";
 import EditAndCreateEmployee, { getPositionLabel } from "./EditAndCreateEmployee";
@@ -11,6 +10,7 @@ import {
 import Swal from "sweetalert2";
 import type { TeamMember } from "../../../types/types";
 import LoadingSpinner from "../../General/LoadingSpinner";
+import AdminTable from "../Tables/AdminTable";
 
 const AdminAbout: React.FC = () => {
 
@@ -97,7 +97,7 @@ const AdminAbout: React.FC = () => {
              },
            ],
          }))}
-         onEdit={(id) => {
+         onEdit={(id: number | string) => {
            setOpenModal(true);
            setSelectedEmployee({
              id: Number(id),
