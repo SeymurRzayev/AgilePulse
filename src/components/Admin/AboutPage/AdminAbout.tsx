@@ -26,7 +26,7 @@ const AdminAbout: React.FC = () => {
   const { data: getAllTeam, isLoading, refetch } = useGetAllTeamQuery();
   const teamData = getAllTeam?.data?.data ?? [];
   const [deleteEmployee] = useDeleteEmployeeMutation();
-  // console.log(teamData);
+  console.log(teamData);
 
 
 
@@ -104,6 +104,7 @@ const AdminAbout: React.FC = () => {
              name: arrFilterer(teamData ?? [], Number(id))?.name ?? "",
              surname: arrFilterer(teamData ?? [], Number(id))?.surname ?? "",
              position: arrFilterer(teamData ?? [], Number(id))?.position ?? "",
+            
              description:
                arrFilterer(teamData ?? [], Number(id))?.description ?? "",
              imageUrl: arrFilterer(teamData ?? [], Number(id))?.imageUrl ?? "",
