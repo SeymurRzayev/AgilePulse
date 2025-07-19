@@ -1,4 +1,4 @@
-import type { AnswerSubmissionRequest, Question, Quiz, QuizApiResponse, QuizPostBody, QuizResponse, QuizSessionResponse } from "../../../types/types";
+import type { AnswerSubmissionRequest, Question, Quiz, QuizApiResponse, QuizResponse, QuizSessionResponse } from "../../../types/types";
 import { baseApi } from "../../api/baseApi";
 
 
