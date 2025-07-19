@@ -1,7 +1,7 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import { useCreateQuestionMutation, useUpdateQuestionMutation } from '../../../services/features/trainingPage/quizApi';
+import QuestionsForm, { type FieldConfigQuestion } from '../General/QuestionsForm';
 
 interface QuoteFormProps {
     onSuccess: () => void;
@@ -20,25 +20,16 @@ interface QuoteFormProps {
         correctAnswer?: string;
     };
     refreshQuiz: () => void;
-
-
-    /*  selectedQuiz?: {
-         id?: number;
-         question?: string;
-         correctAnswer?: string;
-         answers: { text: string; isCorrect: boolean }[];
-     }; */
 }
 
-const QuizForm = ({ onSuccess, initialData,refreshQuiz }: QuoteFormProps) => {
+const QuizForm = ({ onSuccess, initialData, refreshQuiz }: QuoteFormProps) => {
 
     const isEdit = initialData?.isEdit;
-    console.log(isEdit, 'isEdit');
 
     const [createQuestion] = useCreateQuestionMutation();
     const [updateQuestion] = useUpdateQuestionMutation();
 
-    const fields = [
+    const fields: FieldConfigQuestion[] = [
         { name: 'content', type: 'text' },
         { name: 'answers1', type: 'text' },
         { name: 'answers2', type: 'text' },
@@ -111,62 +102,18 @@ const QuizForm = ({ onSuccess, initialData,refreshQuiz }: QuoteFormProps) => {
                 return;
             }
         }
-
-
         onSuccess();
     };
 
     return (
-        <Formik
+        <QuestionsForm
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
-        >
-            {({ values, setFieldValue, isSubmitting }) => (
-                <Form className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {fields.map((field) => (
-                            <div key={field.name} className={`w-full ${field.name === 'content' ? 'sm:col-span-2' : ''}`}>
-                                <label className="block mb-1 text-sm font-medium text-gray-700">
-                                    {fieldLabels[field.name]}
-                                </label>
-                                <Field
-                                    type="text"
-                                    name={field.name}
-                                    placeholder={fieldLabels[field.name]}
-                                    className="w-full border border-gray-300 rounded-lg px-3 py-2"
-                                />
-                                <ErrorMessage name={field.name} component="div" className="text-red-500 text-sm mt-1" />
-                                {field.name != 'content' && (
-                                    <div className="mt-1 flex items-center gap-2">
-                                        <input
-                                            type="radio"
-                                            name="correctAnswer"
-                                            value={field.name}
-                                            checked={values.correctAnswer === field.name}
-                                            onChange={() => setFieldValue('correctAnswer', field.name)}
-                                        />
-                                        <span className="text-sm text-gray-600">Duzgun cavab kimi isare et</span>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-
-                    <ErrorMessage name="correctAnswer" component="div" className="text-red-500 text-sm mt-1" />
-
-                    <div className="sm:col-span-2 ">
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="w-full cursor-pointer bg-[#2C4B9B] hover:bg-[#1e3576] text-white py-3 px-6 rounded-lg font-semibold transition"
-                        >
-                            {isSubmitting ? 'Göndərilir...' : isEdit ? 'Redaktə et' : 'Əlavə et'}
-                        </button>
-                    </div>
-                </Form>
-            )}
-        </Formik>
+            fields={fields}
+            fieldLabels={fieldLabels}
+            isEdit={isEdit}
+        />
     );
 };
 

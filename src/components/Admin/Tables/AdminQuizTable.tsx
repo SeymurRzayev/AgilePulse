@@ -17,7 +17,7 @@ import DeleteIcon from '../../../assets/icons/adminDelete.svg'
 import { useGetQuizByTrainingIdQuery } from '../../../services/features/trainingPage/quizApi';
 import LoadingSpinner from '../../General/LoadingSpinner';
 import type { Answers } from '../../../types/types';
-import AddIcon from '../../../assets/icons/add.svg'
+// import AddIcon from '../../../assets/icons/add.svg'
 
 export interface Column {
     id: string;
@@ -47,11 +47,12 @@ interface RowProps {
     isCourse: boolean;
     trainingId: number;
     onEditClick: (training: any) => void;
+    questionCount: number;
 }
 
 
 function Row(props: RowProps) {
-    const { row, columns, onEditClick, accordionThead, onDisabledQuestion } = props;
+    const { row, columns, onEditClick, accordionThead, onDisabledQuestion, questionCount } = props;
     const [open, setOpen] = React.useState(false);
 
     const { data: quizQuestions, isLoading, refetch: refreshQuiz } = useGetQuizByTrainingIdQuery(row.id, {
@@ -92,18 +93,18 @@ function Row(props: RowProps) {
                         {row[column.id]}
                     </TableCell>
                 ))}
-                <TableCell align="center"> 
+                <TableCell align="center">
                     <div className="flex items-center justify-center gap-3">
                         <button  // EDIT DEYIL CREATEDIR!!!
-                        title='Sual əlavə et'
-                            onClick={onEditClick.bind(null, { ...row, isEdit: false, refreshQuiz: refreshQuiz })} // Burda sual yaradarkan quiz id lazim oldugu ucun row gonderib idsi ile find edilir
-                            className="w-[40px] h-[40px] bg-[#401795] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
+                            onClick={onEditClick.bind(null, { ...row, isEdit: false, refreshQuiz: refreshQuiz, isCreateQuiz: questionCount === 0 })} // Burda sual yaradarkan quiz id lazim oldugu ucun row gonderib idsi ile find edilir
+                            className="w-[100px]  h-[40px] flex items-center justify-center bg-[#401795] rounded-xl  hover:opacity-90 transition-opacity cursor-pointer"
                         >
-                            <img
+                            <span className='text-xs text-white'>{questionCount === 0 ? 'Quiz yarat' : 'Sual əlavə et'}</span>
+                            {/*  <img
                                 src={AddIcon}
                                 alt="edit"
-                                className="w-full h-full"
-                            />
+                                className="w-[30px] h-[30px]"
+                            /> */}
                         </button>
                     </div>
                 </TableCell>
@@ -201,7 +202,7 @@ function Row(props: RowProps) {
                                                                 />
                                                             </button>
                                                             <button
-                                                                onClick={() => onDisabledQuestion(q.id!, quizQuestions.id, false, refreshQuiz)}
+                                                                onClick={() => onDisabledQuestion(q.id!, quizQuestions.id!, false, refreshQuiz)}
                                                                 className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
                                                             >
                                                                 <img
@@ -267,6 +268,7 @@ export default function AdminQuizTable({ columns, rows, onEditClick, onDisabledQ
                             trainingId={row.id}
                             onEditClick={onEditClick}
                             onDisabledQuestion={onDisabledQuestion}
+                            questionCount={row.questionCount}
                         />
                     ))}
                 </TableBody>
