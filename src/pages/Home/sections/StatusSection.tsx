@@ -23,7 +23,7 @@ const StatusSection: React.FC = () => {
           alt=""
           className="w-16 h-14  md:w-auto md:h-auto  absolute bottom-6 -left-6 md:bottom-[20px] md:left-[-70px]"
         />
-        <h2 className="text-sm md:text-3xl lg:text-5xl z-10 mt-6 ">
+        <h2 className="text-sm md:text-3xl lg:text-4xl z-10 mt-6 ">
           {quote?.text}
         </h2>
         <p className="md:text-xl lg:text-2xl text-xs text-end opacity-60">
