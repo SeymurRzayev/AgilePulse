@@ -191,7 +191,7 @@
       .sliderWrapper {
         margin-left: -10%;
         margin-right: -10%;
-        width: 120%;
+        width: 155%;
         height: 350px;
         padding: 0;
         position: relative;
@@ -199,7 +199,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-      gap: 10px !important;
+        gap: 10px !important;
 
 
         .slideItem {

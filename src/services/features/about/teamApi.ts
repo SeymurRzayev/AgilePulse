@@ -1,4 +1,3 @@
-
 import type { GetAllTeamResponse, TeamMember } from "../../../types/types";
 import { baseApi } from "../../api/baseApi";
 
@@ -7,27 +6,42 @@ const teamApi = baseApi.injectEndpoints({
         getAllTeam: builder.query<GetAllTeamResponse, void>({
             query: () => ({
                 url: "/team/all",
-                method: "GET"
-            })
+                method: "GET",
+            }),
         }),
         getTeamMemberById: builder.query<TeamMember, number>({
             query: (id) => ({
                 url: `/team/get/${id}`,
-                method: "GET"
-            })
+                method: "GET",
+            }),
         }),
-        createTeamMemeber: builder.mutation<TeamMember, TeamMember>({
-            query: (data) => (
-                {
-                    url: "/team/create",
-                    method: "POST",
-                    body: data
-                }
-            )
-        })
-    })
-})
+        createTeamMemeber: builder.mutation<TeamMember, FormData>({
+            query: (data) => ({
+                url: "/team/create",
+                method: "POST",
+                body: data,
+            }),
+        }),
+        updateEmployee: builder.mutation<void, { id: number; data: FormData }>({
+            query: ({ id, data }) => ({
+                url: `/team/${id}`,
+                method: "PUT",
+                body: data,
+            }),
+        }),
+        deleteEmployee: builder.mutation<void, number>({
+            query: (id) => ({
+                url: `/team/${id}`,
+                method: "DELETE",
+            }),
+        }),
+    }),
+});
 
-
-export const { useGetAllTeamQuery, useGetTeamMemberByIdQuery, useCreateTeamMemeberMutation } = teamApi
-
+export const {
+    useGetAllTeamQuery,
+    useGetTeamMemberByIdQuery,
+    useCreateTeamMemeberMutation,
+    useDeleteEmployeeMutation,
+    useUpdateEmployeeMutation,
+} = teamApi;

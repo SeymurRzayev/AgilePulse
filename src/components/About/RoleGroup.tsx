@@ -63,9 +63,6 @@ const RoleGroup: FC<Props> = ({ occupation, className, people }) => {
             name={firstPerson?.name || testPeople[0].name}
             surname={firstPerson?.surname || testPeople[0].surname}
             occupation={firstPerson?.position || testPeople[0].position}
-            jobDescription={
-              firstPerson?.description || testPeople[0].description
-            }
             img={firstPerson?.imageUrl || testPeople[0].imageUrl}
           />
         </div>
@@ -80,9 +77,6 @@ const RoleGroup: FC<Props> = ({ occupation, className, people }) => {
               name={secondPerson?.name || testPeople[1].name}
               surname={secondPerson?.surname || testPeople[1].surname}
               occupation={secondPerson?.position || testPeople[1].position}
-              jobDescription={
-                secondPerson?.description || testPeople[1].description
-              }
               img={secondPerson?.imageUrl || testPeople[1].imageUrl}
             />
           )}
