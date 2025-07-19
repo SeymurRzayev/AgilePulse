@@ -38,7 +38,7 @@ const quizApi = baseApi.injectEndpoints({
                 url: `/quizzes/by-training/${trainingId}`,
                 method: 'GET',
             }),
-            providesTags: (result, error, trainingId) => [
+            providesTags: (_result, _error, trainingId) => [
                 { type: 'Quiz', id: trainingId }
             ]
         }),
@@ -54,7 +54,7 @@ const quizApi = baseApi.injectEndpoints({
                 method: 'PUT',
                 body: question,
             }),
-            invalidatesTags: (result, error, { quizId }) => [
+            invalidatesTags: (_result, _error, { quizId }) => [
                 { type: 'Quiz', id: quizId }
             ],
         }),
@@ -64,7 +64,7 @@ const quizApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body: question,
             }),
-            invalidatesTags: (result, error, { quizId }) => [
+            invalidatesTags: (_result, _error, { quizId }) => [
                 { type: 'Quiz', id: quizId }
             ],
         }),
@@ -73,7 +73,7 @@ const quizApi = baseApi.injectEndpoints({
                 url: `/quizzes/${quizId}/questions/${questionId}/status?isActive=${isActive}`,
                 method: 'PATCH',
             }),
-            invalidatesTags: (result, error, { quizId }) => [
+            invalidatesTags: (_result, _error, { quizId }) => [
                 { type: 'Quiz', id: quizId }
             ],
         }),
