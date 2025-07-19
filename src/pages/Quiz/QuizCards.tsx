@@ -77,7 +77,7 @@ const QuizCards: FC<Props> = ({
                     id={`answer-${answer.id}`}
                     type="radio"
                     checked={selectedAnswerId === answer.id}
-                    onChange={() => onAnswerSelect(answer.id)}
+                    onChange={() => onAnswerSelect(answer.id!)}
                     className="w-[10px] h-[10px] cursor-pointer md:max-xl:w-[24px] md:max-xl:h-[24px] rounded-full appearance-none border border-[#757575] checked:bg-[#1F356E]"
                   />
                   <label
