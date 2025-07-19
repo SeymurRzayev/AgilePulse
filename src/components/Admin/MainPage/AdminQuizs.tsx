@@ -1,91 +1,91 @@
-// import { useState } from "react";
-// import { useDeleteQuoteMutation, useGetAllQuotesQuery } from "../../../services/features/mainPage/quotesApi";
 import LoadingSpinner from "../../General/LoadingSpinner";
-/* import AdminTable from "../General/AdminTable";
-import CustomModal from "../Modals/CustomModal";
-import QuoteForm from "./QuoteForm";
-import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
-import Swal from "sweetalert2"; */
-import { useGetAllQuizQuery } from "../../../services/features/trainingPage/quizApi";
-import AdminCourseTable, { type Column } from "../General/AdminCourseTable";
-// import EditIcon from '../../../assets/icons/adminEdit.svg'
+import { useDisabledQuestionMutation, useGetAllQuizQuery } from "../../../services/features/trainingPage/quizApi";
+import AdminQuizTable, { type Column } from "../Tables/AdminQuizTable";
 import { useGetAllTrainingsQuery } from "../../../services/features/trainingPage/trainingsApi";
+import { useState } from "react";
+import CustomModal from "../Modals/CustomModal";
+import Swal from "sweetalert2";
+import QuizForm from "../Forms/QuizForm";
 
 const AdminQuotes = () => {
 
-    // const [showModal, setShowModal] = useState<boolean>(false);
-    // const [selectedQuote, setSelectedQuote] = useState<{ id?: number; text: string; author: string } | null>(null);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [selectedTraining, setSelectedTraining] = useState<any>(null);
     const { data: allQuizes, isLoading: isLoadingQuizes } = useGetAllQuizQuery()
     const { data: allTrainings } = useGetAllTrainingsQuery()
-    console.log(allQuizes)
+    const [disabledQuestion] = useDisabledQuestionMutation()
+
+    const handleEditClick = (training: any = []) => {
+        const relatedQuiz = allQuizes?.find(q => q.trainingId === training.id); // Əgər training ilə əlaqəli quiz varsa, onu seç
+        const quizId = relatedQuiz?.id; // Əgər quiz varsa, onun id-sini al
+        setSelectedTraining({ ...training, quizId });
+        setShowModal(true);
+    };
+
+    const handleDisabledQuestion = async (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => {
+        const result = await Swal.fire({
+            title: isActive ? "Aktivliyi dəyişmək istəyirsiniz?" : "Sualı deaktiv etmək istəyirsiniz?",
+            text: isActive
+                ? "Bu sual artıq aktiv olmayacaq."
+                : "Bu sual artıq görünməyəcək.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Bəli, təsdiq et",
+            cancelButtonText: "İmtina",
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await disabledQuestion({ questionId, quizId, isActive });
+                setSelectedTraining({ ...selectedTraining, isActive });
+                refreshQuiz()
+                Swal.fire('Uğurlu', 'Sual uğurla silindi', 'success')
+            } catch (error) {
+                console.error('Sualin aktivlik dəyişdirilmədi:', error);
+            }
+        }
+    };
+
 
     const columns: Column[] = [
         { id: "title", label: "Kursun adi" },
-        { id: "categoryName", label: "Kateqoriyasi", align: "right" },
-        { id: "authorName", label: "author", align: "right" },
-        { id: "modules", label: "Modul sayi", align: "right" },
-        { id: "lesson", label: "Ders sayi", align: "right" },
+        { id: "categoryName", label: "Kateqoriyasi", align: "left" },
+        { id: "authorName", label: "author", align: "left" },
+        { id: "modules", label: "Modul sayi", align: "center" },
+        { id: "lesson", label: "Ders sayi", align: "center" },
         // { id: "question", label: "Sual sayi", align: "right" },
+    ];
+
+    const accordionThead: Column[] = [
+        { id: "question", label: "Sual", align: 'left' },
+        { id: "correctAnswer", label: "Düzgün Cavab", align: 'left' },
     ];
 
     const rows = (allTrainings ?? []).map(training => ({
         ...training,
         modules: training.modules?.length || 0,
         lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
-        // question: training.quizCount || 0, // əgər API-də quiz-lərin sayı varsa, onu da əlavə edə bilərsən
-        /*  history: training.id?.map((id: any) => ({
-             date: quiz.question,
-             customerId: quiz.correctAnswer
-         })) || [] */
+        trainingId: training.id,
     }));
-
-    /*  const handleDeleteQuote = async (id: number, deleteQuote: (id: number) => Promise<any>) => {
-         const result = await Swal.fire({
-             title: 'Əminsiniz?',
-             text: "Bu sitatı silmək istədiyinizdən əminsiniz?",
-             icon: 'warning',
-             showCancelButton: true,
-             confirmButtonColor: '#d33',
-             cancelButtonColor: '#3085d6',
-             confirmButtonText: 'Bəli, sil!',
-             cancelButtonText: 'İmtina',
-         });
- 
-         if (result.isConfirmed) {
-             try {
-                 await deleteQuote(id);
-                 Swal.fire('Silindi!', 'Sitat uğurla silindi edildi.', 'success');
-             } catch (error) {
-                 Swal.fire('Xəta!', 'Sitat silinərkən problem oldu.', 'error');
-             }
-         }
-     }; */
-
-
-    /* const openCreateModal = () => {
-        setSelectedQuote(null); // yeni sitat üçün boş data
-        setShowModal(true);
-    };
-
-    const openEditModal = (quote: { id: number; text: string; author: string }) => {
-        setSelectedQuote(quote); // redaktə üçün seçilmiş sitat
-        setShowModal(true);
-    }; */
 
     return (
         <div className=' w-full h-full py-10'>
 
-            {/* {showModal && (
+            {showModal && (
                 <CustomModal
                     onClose={() => setShowModal(false)}
-                    title={selectedQuote ? 'Sitatı redaktə et' : 'Yeni sitat əlavə et'}
+                    title={selectedTraining.isEdit ? 'Sualı redaktə et' : 'Kursa yeni sual əlavə et'}
                 >
-                    <QuoteForm
+                    <QuizForm
+
+                        refreshQuiz={selectedTraining.refreshQuiz}
+                        initialData={selectedTraining}
                         onSuccess={() => setShowModal(false)}
-                        initialData={selectedQuote || undefined}
                     />
                 </CustomModal>
-            )} */}
+            )}
 
             <div className="w-full flex justify-between px-3 ">
                 <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3'>Quizler</h2>
@@ -95,16 +95,17 @@ const AdminQuotes = () => {
                 isLoadingQuizes
                     ? <LoadingSpinner />
                     : (
-                        <AdminCourseTable columns={columns} rows={rows} />
+                        <AdminQuizTable
+                            isCourse={false}
+                            accordionThead={accordionThead}
+                            columns={columns}
+                            rows={rows}
+                            onEditClick={handleEditClick}
+                            onDisabledQuestion={handleDisabledQuestion}
+
+                        />
                     )
             }
-
-
-            {/* <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
-                <AnimatedButton onClick={openCreateModal} className="!w-[185px] !h-[56px] !font-[Lexend]">
-                    Əlavə et <span className="text-3xl ml-2 font-light">+</span>
-                </AnimatedButton>
-            </div> */}
         </div>
     )
 }

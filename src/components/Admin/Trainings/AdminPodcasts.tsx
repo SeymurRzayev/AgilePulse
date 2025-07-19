@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminTable from "../General/AdminTable";
+import AdminTable from "../Tables/AdminTable";
 import TrainingsSearchContainer from "../../Trainings/TrainingsSearchContainer";
 import CustomModal from "../Modals/CustomModal";
 
@@ -9,7 +9,7 @@ import {
 } from "../../../services/features/trainingPage/podcastApi";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../General/LoadingSpinner";
-import AddPodcastForm from "../MainPage/AddPodcastForm";
+import AddPodcastForm from "../Forms/AddPodcastForm";
 import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 import type { Podcast } from "../../../types/types";
 
