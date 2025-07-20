@@ -36,11 +36,6 @@ const AdminTable: React.FC<TableProps> = ({
 
     return (
         <div
-            style={{
-                overflowY: "scroll",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-            }}
             className="flex flex-col gap-2.5 fade-in overflow-y-scroll max-h-[550px]"
         >
             {/* Table Header */}
