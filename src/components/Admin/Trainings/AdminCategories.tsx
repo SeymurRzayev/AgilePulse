@@ -55,8 +55,7 @@ const AdminCategories = () => {
                 isLoading
                     ? <LoadingSpinner />
                     : (
-                        <ul style={{ overflowY: 'scroll', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                            className="space-y-[19px] max-h-[545px] mt-5 overflow-y-scroll"
+                        <ul  className="space-y-[19px] max-h-[545px] mt-5 overflow-y-scroll"
                         >
                             {
                                 categories?.map(categorie => <ListItem
