@@ -1,19 +1,33 @@
 import Pagination from '@mui/material/Pagination';
 import ExamCard from './ExamCard';
 import { examSample, sxWhitePagination } from '../../consts/consts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 interface ExamsProps {
     selectedExamType: 'standard' | 'premium';
 }
 
 const Exams: React.FC<ExamsProps> = ({ selectedExamType }) => {
     const [page, setPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(2);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 1000) {
+                setItemsPerPage(1);
+            } else {
+                setItemsPerPage(2);
+            }
+        };
+
+        handleResize(); // page load-da yoxlayırıq
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
         event.preventDefault();
     };
-    const itemsPerPage = 2
+
     const totalPages = Math.ceil(examSample.length / itemsPerPage);
     const startIndex = (page - 1) * itemsPerPage;
     const currentExams = examSample.slice(startIndex, startIndex + itemsPerPage);
@@ -21,7 +35,7 @@ const Exams: React.FC<ExamsProps> = ({ selectedExamType }) => {
     return (
 
         <div className='h-full min-h-[1100px] flex flex-col  w-full justify-start items-center gap-60'>
-            <div className='md:max-w-[996px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-28 px-2 mx-auto '>
+            <div className='md:max-w-[996px] grid grid-cols-1 lg:grid-cols-2  gap-28 px-2 mx-auto '>
                 {currentExams.map((exam, index) => (
                     <ExamCard
                         key={index}
