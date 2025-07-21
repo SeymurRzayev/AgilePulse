@@ -37,6 +37,7 @@ import AdminQuizs from "../components/Admin/Trainings/AdminQuizs";
 import AdminCourses from "../components/Admin/Trainings/AdminCourses";
 import AdminAbout from "../components/Admin/AboutPage/AdminAbout";
 import ExamStartPage from "../pages/Exam/ExamStartPage";
+import Exams from "../pages/Exam/Exams";
 
 
 
@@ -60,7 +61,10 @@ const AppRouter: FC = () => {
         <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
         <Route path="/library/detail/:id" element={<LibraryDetails />} />
         <Route path="/quiz/:id" element={<QuizPage />} />
-        <Route path="/exams" element={<ExamStartPage />} />
+        <Route path="/exams" element={<ExamStartPage />}>
+          <Route path="standard" element={<Exams selectedExamType="standard" />} />
+          <Route path="premium" element={<Exams selectedExamType="premium" />} />
+        </Route>
       </Route>
 
       <Route path="/FAQ" element={<Faq />} />

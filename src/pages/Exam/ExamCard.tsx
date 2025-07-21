@@ -1,71 +1,88 @@
 import React from 'react';
 import MainButton from '../../components/Butttons/MainButton';
+import examPriceIcon from '../../assets/icons/examPrice.svg';
+import examQuestionsIcon from '../../assets/icons/examQuestions.svg';
+import passScoreIcon from '../../assets/icons/passScore.svg';
 import testIcon from '../../assets/icons/oclock.svg';
+
+// import passScoreIcon from '../../assets/icons/passScore.svg';
 interface ExamCardProps {
     examTitle: string;
     examDescription: string;
     questionsCount: number;
     duration: number;
-    passScore: number;
+    passScore?: number;
     price: number;
+    examType: 'standard' | 'premium';
     onClick?: () => void;
 }
 
-const ExamCard: React.FC<ExamCardProps> = ({ examTitle, examDescription, questionsCount, duration, passScore, price, onClick }) => {
-    return (
-        <div className="w-[447px] h-[727px] backdrop-blur-[25px] bg-[rgba(255,255,255,0.2)] rounded-[20px] text-[#F4F6FABF] flex justify-center items-center ">
-            <div className='flex flex-col justify-start items-start gap-3.5 w-[399px] h-[656px]'>
-                <div className='w-[368px] h-[212px] flex flex-col justify-between' >
-                    <h3 className="text-[22px] font-bold mb-2 text-transparent bg-clip-text bg-[linear-gradient(252.47deg,_#4E61EC_9.65%,_#621DAC_50.22%,_#401795_90.01%)]">{examTitle}</h3>
-                    <ul>
-                        {examDescription?.split('.')
-                            .map((sentence, index) => {
-                                const trimmed = sentence.trim();
-                                return trimmed ? <li key={index} >- {trimmed}.</li> : null;
-                            })}
-                    </ul>
-                </div>
-                <ul className="text-sm space-y-1 w-[399px]">
-                    <li className='w-full h-[78px]'>
-                        <p className='flex items-center justify-between rounded-[20px] bg-blue-200 h-[36px] py-1 px-5'>
-                            <span className='h-7 flex  gap-2'>
-                                <img src={testIcon} alt="test" className='w-[22px] h-[28px]' />
-                                <span className='text-lg text-[#00000099]'>Sual sayı:</span>
-                            </span>
-                            <span className='font-bold text-[22px] text-[#000000DE]'> {questionsCount} sual</span>
-                        </p>
-                        <p>Suallar seçimli (multiple choice), doğru/yanlış (true/false) formatındadır. Bəziləri bir neçə düzgün cavab tələb edə bilər.</p>
-                    </li>
-                    <li className='w-full h-[78px]'>
-                        <p className='flex items-center justify-between rounded-[20px] bg-blue-200 h-[36px] py-1 px-5'>
-                            <span className='flex h-7 gap-2'>
-                                <img src={testIcon} alt="test" className='w-[22px] h-[28px]' />
-                                <span className='text-lg text-[#00000099]'>Müddət:</span></span>
-                            <span className='font-bold text-[22px] text-[#000000DE]'>{duration}</span>
-                        </p>
-                        <p>İmtahan bir saat davam edir və bu müddətdə bütün sualları cavablandırmalısınız. Geri qayıtmaq mümkündür, amma vaxtın idarəsi vacibdir.</p>
-                    </li>
-                    <li className='w-full h-[78px]'>
-                        <p className='flex items-center justify-between rounded-[20px] bg-blue-200 h-[36px] py-1 px-5'>
-                            <span className='flex items-center gap-2'><img src={testIcon} alt="test" className='w-[22px] h-[28px]' />Keçid balı:</span>
-                            <span>{passScore}</span>
-                        </p>
-                        <p>Sertifikatı əldə etmək üçün ən azı 68 düzgün cavab toplamalısınız. Yüksək keçid balı, konseptləri dərin başa düşməyinizi tələb edir.</p>
-                    </li>
-                    <li className='w-full h-[78px]'>
-                        <p className='flex items-center justify-between rounded-[20px] bg-blue-200 h-[36px] py-1 px-5'>
-                            <span className='flex items-center gap-2'><img src={testIcon} alt="test" className='w-[22px] h-[28px]' />Qiymət:</span>
-                            <span>{price} manat</span>
-                        </p>
-                        <p>İmtahan ödənişi yalnız bir dəfə üçün keçərlidir. Nəticədən asılı olmayaraq yenidən vermək istəyirsinizsə, təkrar ödəniş tələb olunur.</p>
-                    </li>
-                </ul>
 
+const ExamCard: React.FC<ExamCardProps> = ({ examTitle, examDescription, questionsCount, duration, passScore, price, onClick, examType }) => {
+
+    const examInfoItems = [
+        {
+            icon: examQuestionsIcon,
+            title: "Sual sayı:",
+            value: `${questionsCount} sual`,
+            description: "Suallar seçimli (multiple choice), doğru/yanlış (true/false) formatındadır. Bəziləri bir neçə düzgün cavab tələb edə bilər."
+        },
+        {
+            icon: testIcon,
+            title: "Müddət:",
+            value: `${duration} dəqiqə`,
+            description: "İmtahan bir saat davam edir və bu müddətdə bütün sualları cavablandırmalısınız. Geri qayıtmaq mümkündür, amma vaxtın idarəsi vacibdir."
+        },
+        {
+            icon: passScoreIcon,
+            title: "Keçid balı:",
+            value: `${passScore}%`,
+            description: "Sertifikatı əldə etmək üçün ən azı 68 düzgün cavab toplamalısınız. Yüksək keçid balı, konseptləri dərin başa düşməyinizi tələb edir."
+        },
+        ...(examType === 'premium'
+            ? [{
+                icon: examPriceIcon,
+                title: "Qiymət:",
+                value: `${price} manat`,
+                description: "İmtahan ödənişi yalnız bir dəfə üçün keçərlidir. Nəticədən asılı olmayaraq yenidən vermək istəyirsinizsə, təkrar ödəniş tələb olunur."
+            }]
+            : [])
+    ];
+
+    return (
+        <div className={`w-[447px] ${examType === 'premium' ? "h-[727px]" : "h-[662px]"} backdrop-blur-[25px] bg-[#F4F6FABF] rounded-[20px]  flex justify-center items-center `}>
+            <div className='w-[399px]  flex flex-col  gap-6 '>
+                <div className='flex flex-col  gap-4 w-[399px] '>
+                    <div className='w-[368px] flex flex-col gap-4' >
+                        <span className="text-[22px]  font-bold text-transparent bg-clip-text bg-[linear-gradient(252.47deg,_#4E61EC_9.65%,_#621DAC_50.22%,_#401795_90.01%)]">{examTitle}</span>
+                        <ul>
+                            {examDescription?.split('.')
+                                .map((sentence, index) => {
+                                    const trimmed = sentence.trim();
+                                    return trimmed ? <li key={index} className='text-[16px] font-normal w-[356px]  text-[#00000099] '>- {trimmed}.</li> : null;
+                                })}
+                        </ul>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                        {examInfoItems.map((item, index) => (
+                            <div key={index} className="flex flex-col gap-0.5">
+                                <div className="flex justify-between items-center rounded-[20px] bg-[#9EACD1] h-[36px] py-1 px-5">
+                                    <span className="flex gap-2 items-center text-lg text-[#00000099]">
+                                        <img src={item.icon} alt="icon" className="w-[22px] h-[28px]" />
+                                        {item.title}
+                                    </span>
+                                    <span className="font-bold text-[22px] text-[#000000DE] w-[94.5px] text-left">{item.value}</span>
+                                </div>
+                                <p className="text-sm text-[#2C4B9B]">{item.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
                 <MainButton
-                    text={"Başla"}
-                    className="w-full h-10  md:h-12"
+                    text={"Imtahana başla"}
+                    className="w-full h-10"
                     onClick={onClick}
-                    buttonClassName="text-sm md:text-[16px]  "
+                    buttonClassName={`text-sm md:text-[16px] ${examType === 'premium' ? "bg-[radial-gradient(47.12%_309%_at_47.12%_40.18%,_rgba(254,255,134,0.7)_0%,_rgba(251,206,61,0.7)_50.48%,_rgba(132,77,32,0.7)_100%)] !text-[#844D20]" : "!bg-[linear-gradient(252.47deg,_#4E61EC_9.65%,_#621DAC_50.22%,_#401795_90.01%)]"} `}
                 />
             </div>
         </div>
