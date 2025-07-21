@@ -29,20 +29,8 @@ export const sxWhitePagination = {
 };
 
 export const examSample = [
-  { title: "PSM 1 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 2 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 3 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 4 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 5 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 6 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 7 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 8 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 9 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 10 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 11 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 12 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 13 | imtahan", questionsCount: 60, duration: 60 },
-  { title: "PSM 14 | imtahan", questionsCount: 60, duration: 60 },
+  { title: "Professional Scrum Master™ I (PSM I)", description: "Scrum biliklərinin əsas səviyyədə mənimsənildiyini göstərir. Scrum Guide-a əsaslanaraq, Scrum-un nə olduğunu və komandada necə tətbiq edildiyini anladığınızı sübut edir. Terminologiya və yanaşma baxımından düzgün və ardıcıl anlayışa sahib olduğunuzu təsdiqləyir.", price: 15, questionsCount: 60, duration: 60, passScore: 68 },
+
   // add more data...
 ];
 
