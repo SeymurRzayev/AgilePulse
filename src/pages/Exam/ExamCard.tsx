@@ -3,7 +3,7 @@ import MainButton from '../../components/Butttons/MainButton';
 import examPriceIcon from '../../assets/icons/examPrice.svg';
 import examQuestionsIcon from '../../assets/icons/examQuestions.svg';
 import passScoreIcon from '../../assets/icons/passScore.svg';
-import testIcon from '../../assets/icons/oclock.svg';
+import examTime from '../../assets/icons/examTime.svg';
 
 // import passScoreIcon from '../../assets/icons/passScore.svg';
 interface ExamCardProps {
@@ -28,7 +28,7 @@ const ExamCard: React.FC<ExamCardProps> = ({ examTitle, examDescription, questio
             description: "Suallar seçimli (multiple choice), doğru/yanlış (true/false) formatındadır. Bəziləri bir neçə düzgün cavab tələb edə bilər."
         },
         {
-            icon: testIcon,
+            icon: examTime,
             title: "Müddət:",
             value: `${duration} dəqiqə`,
             description: "İmtahan bir saat davam edir və bu müddətdə bütün sualları cavablandırmalısınız. Geri qayıtmaq mümkündür, amma vaxtın idarəsi vacibdir."
