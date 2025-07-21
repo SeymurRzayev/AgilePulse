@@ -1,33 +1,41 @@
-// import { useState } from "react";
-// import { useDeleteQuoteMutation, useGetAllQuotesQuery } from "../../../services/features/mainPage/quotesApi";
-// import LoadingSpinner from "../../General/LoadingSpinner";
-/* import AdminTable from "../General/AdminTable";
-import CustomModal from "../Modals/CustomModal";
-import QuoteForm from "./QuoteForm";
-import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
-import Swal from "sweetalert2"; */
 import { type Column } from "../Tables/AdminQuizTable";
-// import EditIcon from '../../../assets/icons/adminEdit.svg'
 import { useGetAllTrainingsQuery } from "../../../services/features/trainingPage/trainingsApi";
 import { useState } from "react";
 import CustomModal from "../Modals/CustomModal";
 import AdminCourseTable from "../Tables/AdminCourseTable";
 import Swal from "sweetalert2";
+import AddTrainingAndUpdate from "../Forms/AddTrainingAndUpdate";
+import ModuleForm from "../Forms/ModuleForm";
+import LessonForm from "../Forms/LessonForm";
+import type { Question } from "../../../types/types";
+import AnimatedButton from "../../../ui/AnimatedButton/AnimatedButton";
 
 const AdminCourses = () => {
 
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [_selectedTraining, setSelectedTraining] = useState<any>(null);
-    // const [selectedQuote, setSelectedQuote] = useState<{ id?: number; text: string; author: string } | null>(null);
-    // const { data: allQuizes, isLoading: isLoadingQuizes } = useGetAllQuizQuery()
-    const { data: allTrainings } = useGetAllTrainingsQuery()
-    console.log(allTrainings, 'allTrainings')
-    // console.log(allQuizes, 'allQuizes')
+    const [selectedModule, setSelectedModule] = useState<Question[]>([]);
+    const [selectedTraining, setSelectedTraining] = useState<any>(null);
 
-    const handleEditClick = (training: any) => {
-        setSelectedTraining(training);
+    const [clickInfo, setClickInfo] = useState<{ type: string, mode: string }>({ type: '', mode: '' })
+    const { data: allTrainings } = useGetAllTrainingsQuery()
+
+    const handleEditClick = (
+        training: any = [],
+        module: any,
+        clickInfo: { type: string, mode: string }
+    ) => {
+        setSelectedModule(module);
+        setClickInfo(clickInfo)
+        setSelectedTraining(training)
         setShowModal(true);
     };
+
+    const isCreateTraining: boolean = clickInfo.type === 'Add course'
+    const isEditTraining: boolean = clickInfo.type === 'Kursu redakte et'
+    const isAddModule: boolean = clickInfo.type === 'Modul əlavə et'
+    const isAddLesson: boolean = clickInfo.type === 'Dərs əlavə et'
+    const isEditModule: boolean = clickInfo.type === 'Modulu redakte et'
+    const isEditLesson: boolean = clickInfo.type === 'Dərsi redakte et'
 
     const columns: Column[] = [
         { id: "title", label: "Kursun adi" },
@@ -68,7 +76,7 @@ const AdminCourses = () => {
         if (result.isConfirmed) {
             /*  try {
                  await disabledQuestion({ questionId, quizId, isActive });
-                 setSelectedTraining({ ...selectedTraining, isActive });
+                 setSelectedModule({ ...selectedModule, isActive });
                  refreshQuiz()
                  Swal.fire('Uğurlu', 'Sual uğurla silindi', 'success')
              } catch (error) {
@@ -84,13 +92,36 @@ const AdminCourses = () => {
             {showModal && (
                 <CustomModal
                     onClose={() => setShowModal(false)}
-                    title="Kursu Redaktə Et"
+                    title={
+                        isEditModule ? "Modulu Redaktə Et" :
+                            isAddModule ? "Modul Əlavə Et" :
+                                isAddLesson ? "Dərs Əlavə Et" :
+                                    isEditLesson ? "Dərsi Redaktə Et" :
+                                        isEditTraining ? "Kursu Redaktə Et" : "Kursu Əlavə Et"
+                    }
                 >
-                    da
-                    {/*                     <TrainingForm
-                        initialData={selectedTraining}
-                        onSuccess={() => setShowModal(false)}
-                    /> */}
+                    {
+                        isEditModule || isAddModule ? (
+                            <ModuleForm
+                                isEdit={clickInfo.mode === 'edit'}
+                                initialData={selectedModule}
+                                onSuccess={() => setShowModal(false)}
+                            />
+                        ) : isEditLesson || isAddLesson ? (
+                            <LessonForm
+                                isEdit={clickInfo.mode === 'edit'}
+                                initialData={selectedModule}
+                                onSuccess={() => setShowModal(false)}
+                            />
+                        ) : isCreateTraining || isEditTraining ? (
+                            <AddTrainingAndUpdate
+                                isEdit={clickInfo.mode === 'edit'}
+                                initialData={selectedTraining}
+                                onSuccess={() => setShowModal(false)}
+                            />
+                        ) : null
+                    }
+
                 </CustomModal>
             )}
 
@@ -107,20 +138,11 @@ const AdminCourses = () => {
                 onDisabledQuestion={handleDisabledTraining}
             />
 
-            {/*   {
-                isLoadingQuizes
-                    ? <LoadingSpinner />
-                    : (
-                        <AdminCourseTable isCourse={true} accordionThead={accordionThead} columns={columns} rows={rows} onEditClick={handleEditClick} />
-                    )
-            } */}
-
-
-            {/* <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
-                <AnimatedButton onClick={openCreateModal} className="!w-[185px] !h-[56px] !font-[Lexend]">
+            <div className="left-[55%] absolute bottom-0 mb-10 flex items-center justify-center">
+                <AnimatedButton onClick={() => handleEditClick([], [], { type: "Add course", mode: "create" })} className="!w-[185px] !h-[56px] !font-[Lexend] !rounded-[18px]">
                     Əlavə et <span className="text-3xl ml-2 font-light">+</span>
                 </AnimatedButton>
-            </div> */}
+            </div>
         </div>
     )
 }
