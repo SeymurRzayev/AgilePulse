@@ -2,12 +2,11 @@ import Pagination from '@mui/material/Pagination';
 import ExamCard from './ExamCard';
 import { examSample, sxWhitePagination } from '../../consts/consts';
 import { useState } from 'react';
+interface ExamsProps {
+    selectedExamType: 'standard' | 'premium';
+}
 
-
-const Exams = () => {
-
-
-
+const Exams: React.FC<ExamsProps> = ({ selectedExamType }) => {
     const [page, setPage] = useState(1);
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -21,7 +20,7 @@ const Exams = () => {
 
     return (
 
-        <div className='flex flex-col items-center gap-8 w-full'>
+        <div className='h-full min-h-[1100px] flex flex-col  w-full justify-start items-center gap-60'>
             <div className='md:max-w-[996px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-28 px-2 mx-auto '>
                 {currentExams.map((exam, index) => (
                     <ExamCard
@@ -32,6 +31,7 @@ const Exams = () => {
                         passScore={exam.passScore}
                         questionsCount={exam.questionsCount}
                         duration={exam.duration}
+                        examType={selectedExamType}  // pass the type
                         onClick={() => console.log(`Starting ${exam.title}`)}
                     />
                 ))}
