@@ -28,8 +28,8 @@ const AdminCategories = () => {
                 try {
                     await deleteCategory({ id: id }).unwrap();
                     Swal.fire('Silindi!', 'Kateqoriya uğurla silindi.', 'success');
-                } catch (error) {
-                    Swal.fire('Xəta!', 'Silinmə zamanı xəta baş verdi.', 'error');
+                } catch (error: any) {
+                    Swal.fire('Xəta!', ` ${error.data === 'An unexpected error occurred.Cannot delete category with existing trainings' ? 'Kateqoriyaya bağlı təlimlər mövcud olduğu üçün silmək mümkün olmadı.' : 'Silinmə zamanı xəta baş verdi.'}`, 'error');
                 }
             }
         });

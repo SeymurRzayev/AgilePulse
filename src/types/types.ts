@@ -41,7 +41,7 @@ export interface Book {
   pdfUrl: string;
   author: string;
   language: string;
-  description:string;
+  description: string;
   pageCount: number;
   imageUrl: string;
 }
@@ -353,6 +353,12 @@ export interface Module {
   title: string;
   orderNumber: number;
   lessons: Lesson[];
+}
+
+export interface ModuleRequest {
+  title: string;
+  orderNumber: number;
+  courseId: number;
 }
 
 export interface Training {

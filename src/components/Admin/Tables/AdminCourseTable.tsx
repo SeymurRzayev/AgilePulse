@@ -12,7 +12,6 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { MdKeyboardArrowDown as KeyboardArrowDownIcon } from "react-icons/md";
 import { MdKeyboardArrowUp as KeyboardArrowUpIcon } from "react-icons/md";
-import EditIcon from '../../../assets/icons/adminEdit.svg'
 import DeleteIcon from '../../../assets/icons/adminDelete.svg'
 import LoadingSpinner from '../../General/LoadingSpinner';
 import { useGetTrainingByIdQuery } from '../../../services/features/trainingPage/trainingsApi';
@@ -33,7 +32,7 @@ interface AdminCourseTableProps {
     columns: Column[];
     isCourse: boolean; // Kurs mu yoxsa quiz mi
     rows: RowType[];
-    onEditClick: (training: RowType) => void;
+    onEditClick: (training: RowType, module: any, clickInfo: any) => void;
     onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => void;
 
 }
@@ -45,7 +44,7 @@ interface RowProps {
     columns: Column[];
     isCourse: boolean;
     trainingId: number;
-    onEditClick: (training: any) => void;
+    onEditClick: (training: any, module: any, clickInfo: any) => void;
 }
 
 
@@ -53,25 +52,9 @@ function Row(props: RowProps) {
     const { row, columns, trainingId, onEditClick, accordionThead, isCourse } = props;
     const [open, setOpen] = React.useState(false);
 
-    /*  const { data: quizQuestions, isLoading, refetch: refreshQuiz } = useGetQuizByTrainingIdQuery(row.id, {
-         skip: !open, // yalnız row (accordion) açıldıqda sorğu getsin
-         refetchOnMountOrArgChange: true, // açıldıqda və ya id dəyişdikdə yenidən sorğu atsın
-     }); */
-
-    /*   const {data: trainings} = useGetTrainingByIdQuery(trainingId, {
-          skip: !open, // yalnız row (accordion) açıldıqda sorğu getsin
-          refetchOnMountOrArgChange: true, // açıldıqda və ya id dəyişdikdə yenidən sorğu atsın
-      }) */
-
-    /*   const { data: modules } = useGetModuleByTrainingIdQuery(trainingId, {
-          skip: !open, // yalnız row (accordion) açıldıqda sorğu getsin
-          refetchOnMountOrArgChange: true, // açıldıqda və ya id dəyişdikdə yenidən sorğu atsın
-      }) */
-
-    const { data: training, isLoading } = useGetTrainingByIdQuery(trainingId, {
+    const { data: training, isLoading, refetch: refreshTraining } = useGetTrainingByIdQuery(trainingId, {
         skip: !open // yalnız row açıldıqda sorğu getsin
     });
-    console.log(training)
 
     return (
         <>
@@ -99,16 +82,22 @@ function Row(props: RowProps) {
                 ))}
                 <TableCell align="center">
                     <div className="flex items-center justify-center gap-3">
-                        <button
-                            onClick={onEditClick}
-                            className="w-[40px] h-[40px] bg-[#44A15E] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
-                        >
-                            <img
-                                src={EditIcon}
-                                alt="edit"
-                                className="w-full h-full"
-                            />
-                        </button>
+                        <DropDown
+                            title="Edit"
+                            list={[
+                                'Kursu redakte et',
+                                'Modul əlavə et'
+                            ]}
+                            className="bg-[#44A15E] hover:bg-[#38894F] active:bg-[#2F7342]"
+                            onSelect={(value) => {
+                                onEditClick(row,
+                                    value === 'Modul əlavə et' ? { trainingId: row.id, refreshTraining: refreshTraining } : [],
+                                    {
+                                        type: value, mode: value === 'Modul əlavə et' ? 'create' : 'edit'
+
+                                    })
+                            }}
+                        />
                         <button
                             className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
                         >
@@ -118,17 +107,6 @@ function Row(props: RowProps) {
                                 className="w-full h-full"
                             />
                         </button>
-                        {/* <button  // EDIT DEYIL CREATEDIR!!!
-                            title='Sual əlavə et'
-                            // onClick={onEditClick.bind(null, { ...row, isEdit: false, refreshQuiz: refreshQuiz })} // Burda sual yaradarkan quiz id lazim oldugu ucun row gonderib idsi ile find edilir
-                            className="w-[40px] h-[40px] bg-[#44A15E] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
-                        >
-                            <img
-                                src={AddIcon}
-                                alt="edit"
-                                className="w-full h-full"
-                            />
-                        </button> */}
                     </div>
                 </TableCell>
             </TableRow>
@@ -200,8 +178,29 @@ function Row(props: RowProps) {
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <div className="flex items-center  gap-3">
-                                                            <DropDown title='Edit' />
-                                                            <DropDown title='Delete' />
+                                                            <DropDown
+                                                                title="Edit"
+                                                                list={[
+                                                                    'Modulu redakte et',
+                                                                    q.lessons?.length > 0 ? 'Dərsi redakte et' : null,
+                                                                    'Dərs əlavə et'
+                                                                ].filter(Boolean) as string[]}
+                                                                className="bg-[#44A15E] hover:bg-[#38894F] active:bg-[#2F7342]"
+                                                                onSelect={(value) => {
+                                                                    onEditClick([], value === 'Dərsi redakte et' ? q.lessons : { ...q, trainingId: row.id, refreshTraining: refreshTraining }, {
+                                                                        type: value,
+                                                                        mode: value === 'Dərs əlavə et' ? 'create' : 'edit'
+                                                                    })
+                                                                }}
+                                                            />
+                                                            <DropDown
+                                                                list={[
+                                                                    'Modulu sil',
+                                                                    q.lessons?.length > 0 ? 'Dersi sil' : null,
+                                                                ].filter(Boolean) as string[]}
+                                                                title="Delete"
+                                                                className="bg-[#DA3D68] hover:bg-[#B83256] active:bg-[#A52C4B]"
+                                                            />
                                                         </div>
                                                     </TableCell>
                                                 </TableRow>
