@@ -25,6 +25,12 @@ const moduleApi = baseApi.injectEndpoints({
                 body: module,
             }),
         }),
+        deleteModule: build.mutation<void, number>({
+            query: (moduleId) => ({
+                url: `/modules/${moduleId}`,
+                method: "DELETE",
+            }),
+        }),
     })
 })
 
@@ -32,4 +38,5 @@ export const {
     useGetModuleByTrainingIdQuery,
     useCreateModuleMutation,
     useUpdateModuleMutation,
+    useDeleteModuleMutation,
 } = moduleApi;

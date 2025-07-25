@@ -341,9 +341,10 @@ export type Person = {
   imageUrl?: string;
 };
 
-interface Lesson {
-  id: number;
+export interface Lesson {
+  id?: number;
   title: string;
+  moduleId?: number;
   orderNumber: number;
   contentHtml: string;
 }
