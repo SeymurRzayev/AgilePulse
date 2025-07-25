@@ -33,13 +33,13 @@ interface AdminCourseTableProps {
     isCourse: boolean; // Kurs mu yoxsa quiz mi
     rows: RowType[];
     onEditClick: (training: RowType, module: any, clickInfo: any) => void;
-    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => void;
+    onDeleteCourse: (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => void;
 
 }
 
 interface RowProps {
     row: RowType;
-    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => void;
+    onDeleteCourse: (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => void;
     accordionThead: Column[];
     columns: Column[];
     isCourse: boolean;
@@ -49,7 +49,7 @@ interface RowProps {
 
 
 function Row(props: RowProps) {
-    const { row, columns, trainingId, onEditClick, accordionThead, isCourse } = props;
+    const { row, columns, trainingId, onEditClick, accordionThead, isCourse, onDeleteCourse } = props;
     const [open, setOpen] = React.useState(false);
 
     const { data: training, isLoading, refetch: refreshTraining } = useGetTrainingByIdQuery(trainingId, {
@@ -98,7 +98,8 @@ function Row(props: RowProps) {
                                     })
                             }}
                         />
-                        <button
+                        <button  /* DELETE */
+                            onClick={() => onDeleteCourse(refreshTraining, { id: row.id, type: 'course' })}
                             className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
                         >
                             <img
@@ -187,7 +188,7 @@ function Row(props: RowProps) {
                                                                 ].filter(Boolean) as string[]}
                                                                 className="bg-[#44A15E] hover:bg-[#38894F] active:bg-[#2F7342]"
                                                                 onSelect={(value) => {
-                                                                    onEditClick([], value === 'Dərsi redakte et' ? q.lessons : { ...q, trainingId: row.id, refreshTraining: refreshTraining }, {
+                                                                    onEditClick([], value === 'Dərsi redakte et' ? { ...q, refreshTraining: refreshTraining } : { ...q, trainingId: row.id, refreshTraining: refreshTraining }, {
                                                                         type: value,
                                                                         mode: value === 'Dərs əlavə et' ? 'create' : 'edit'
                                                                     })
@@ -200,6 +201,9 @@ function Row(props: RowProps) {
                                                                 ].filter(Boolean) as string[]}
                                                                 title="Delete"
                                                                 className="bg-[#DA3D68] hover:bg-[#B83256] active:bg-[#A52C4B]"
+                                                                onSelect={(value) => {
+                                                                    onDeleteCourse(refreshTraining, { id: q.id, type: value  === 'Modulu sil' ? 'module' : 'lesson' })
+                                                                }}
                                                             />
                                                         </div>
                                                     </TableCell>
@@ -220,7 +224,7 @@ function Row(props: RowProps) {
 }
 
 
-export default function AdminCourseTable({ columns, rows, onEditClick, onDisabledQuestion, accordionThead, isCourse }: AdminCourseTableProps) {
+export default function AdminCourseTable({ columns, rows, onEditClick, onDeleteCourse, accordionThead, isCourse }: AdminCourseTableProps) {
     return (
         <TableContainer component={Paper} className="mt-10 fade-in overflow-y-scroll max-h-[545px]">
             <Table aria-label="collapsible table !font-[Corbel]">
@@ -257,7 +261,7 @@ export default function AdminCourseTable({ columns, rows, onEditClick, onDisable
                             isCourse={isCourse}
                             trainingId={row.id}
                             onEditClick={onEditClick}
-                            onDisabledQuestion={onDisabledQuestion}
+                            onDeleteCourse={onDeleteCourse}
                         />
                     ))}
                 </TableBody>

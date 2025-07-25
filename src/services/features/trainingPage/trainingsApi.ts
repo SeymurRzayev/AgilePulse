@@ -36,6 +36,12 @@ const trainingsApi = baseApi.injectEndpoints({
         body: training,
       }),
     }),
+    deleteTraining: build.mutation<void, number>({
+      query: (trainingId) => ({
+        url: `/trainings/${trainingId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 })
 
@@ -46,4 +52,5 @@ export const {
   useGetAllTrainingsQuery,
   useUpdateTrainingMutation,
   useCreateTrainingMutation,
+  useDeleteTrainingMutation,
 } = trainingsApi
