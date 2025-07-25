@@ -32,5 +32,7 @@ export const AdminPageSections: Record<AdminPageType, Section[]> = {
     [AdminPageType.AboutUs]: [],
     [AdminPageType.Academy]: [],
     [AdminPageType.Exams]: [],
-    [AdminPageType.HeaderAndFooter]: [],
+    [AdminPageType.HeaderAndFooter]: [
+        { label: "FAQ", path: "faq" },
+    ],
 };

@@ -9,6 +9,8 @@ export const faqApi = baseApi.injectEndpoints({
                 url: '/faqs/all',
                 method: 'GET',
             }),
+            transformResponse: (response: GetAllFaqResponse) => response,
+            providesTags: ['FAQ'],
         }),
         getFaqById: build.query<GetByIdFaq, number>({
             query: (id) => ({
@@ -19,13 +21,27 @@ export const faqApi = baseApi.injectEndpoints({
         createFaq: build.mutation<FaqRes, { data: FaqRes }>({
             query({ data }) {
                 return {
-                    url: 'faqs/create',
+                    url: `faqs/create?question=${data.question}&answer=${data.answer}`,
                     method: "POST",
-                    data,
                 };
             },
+            invalidatesTags: ['FAQ'],
+        }),
+        updateFaq: build.mutation<FaqRes, { faq: FaqRes; id: number }>({
+            query: ({ faq, id }) => ({
+                url: `/faqs/update/${id}?question=${faq.question}&answer=${faq.answer}`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['FAQ'],
+        }),
+        deleteFaq: build.mutation<void, number>({
+            query: (id) => ({
+                url: `/faqs/disable/${id}`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['FAQ'],
         }),
     })
 });
 
-export const { useGetAllFaqsQuery, useGetFaqByIdQuery, useCreateFaqMutation } = faqApi;
+export const { useGetAllFaqsQuery, useGetFaqByIdQuery, useCreateFaqMutation, useUpdateFaqMutation, useDeleteFaqMutation } = faqApi;

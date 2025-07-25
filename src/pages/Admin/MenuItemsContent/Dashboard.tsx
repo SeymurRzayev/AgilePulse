@@ -31,7 +31,7 @@ const PAGES = [
     {
         label: 'Header&Footer',
         icon: dasboardIconAdmin,
-        path: ''
+        path: 'header-footer'
     }
 ]
 
