@@ -38,6 +38,7 @@ import AdminCourses from "../components/Admin/Trainings/AdminCourses";
 import AdminAbout from "../components/Admin/AboutPage/AdminAbout";
 import ExamStartPage from "../pages/Exam/ExamStartPage";
 import Exams from "../pages/Exam/Exams";
+import AdminFaq from "../components/Admin/HeaderFooterPage/AdminFaq";
 
 
 
@@ -81,6 +82,8 @@ const AppRouter: FC = () => {
           <Route path="main-page/quotes" element={<AdminQuotes />} />
           <Route path="main-page/articles" element={<AdminLibraryAndArticles />} />
           <Route path="main-page/partners" element={<AdminPartners />} />
+          <Route path="header-footer" element={<AdminSections pageType={AdminPageType.HeaderAndFooter} />} />
+          <Route path="header-footer/faq" element={<AdminFaq />} />
           <Route path="trainings-page" element={<AdminSections pageType={AdminPageType.Trainings} />} />
           <Route path="trainings-page/categories" element={<AdminCategories />} />
           <Route path="trainings-page/trainers" element={<AdminTrainers />} />

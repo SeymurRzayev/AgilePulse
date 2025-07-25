@@ -95,7 +95,8 @@ export const baseApi = createApi({
         'isSaved',
         'Quote',
         'Podcasts',
-        'Quiz'
+        'Quiz',
+        'FAQ'
     ],
     endpoints: () => ({}),
 });

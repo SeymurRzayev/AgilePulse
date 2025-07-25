@@ -27,13 +27,13 @@ const ExamStartPage
                         {!location.pathname.includes('standard') && !location.pathname.includes('premium') && (
                             <div className="w-[920px] flex flex-col lg:flex-row justify-between items-center gap-6">
                                 <button
-                                    className="rounded-[20px] w-[300px] sm:w-[400px] h-[234px] bg-[linear-gradient(229.72deg,_rgba(231,145,43,0.8)_5.45%,_rgba(216,61,105,0.8)_54.04%,_rgba(44,75,155,0.8)_101.69%)] text-white font-bold text-3xl"
+                                    className="rounded-[20px] w-[300px] sm:w-[400px] h-[234px] bg-[linear-gradient(229.72deg,_rgba(231,145,43,0.8)_5.45%,_rgba(216,61,105,0.8)_54.04%,_rgba(44,75,155,0.8)_101.69%)] text-white font-bold text-3xl cursor-pointer"
                                     onClick={() => navigate('standard')}
                                 >
                                     Standart İmtahanlar
                                 </button>
                                 <button
-                                    className="rounded-[20px] w-[300px] sm:w-[400px] h-[234px] bg-[radial-gradient(47.12%_309%_at_47.12%_40.18%,_rgba(254,255,134,0.7)_0%,_rgba(251,206,61,0.7)_50.48%,_rgba(132,77,32,0.7)_100%)] text-white font-bold text-3xl"
+                                    className="rounded-[20px] w-[300px] sm:w-[400px] h-[234px] bg-[radial-gradient(47.12%_309%_at_47.12%_40.18%,_rgba(254,255,134,0.7)_0%,_rgba(251,206,61,0.7)_50.48%,_rgba(132,77,32,0.7)_100%)] text-white font-bold text-3xl cursor-pointer"
                                     onClick={() => navigate('premium')}
                                 >
                                     Premium İmtahanlar
