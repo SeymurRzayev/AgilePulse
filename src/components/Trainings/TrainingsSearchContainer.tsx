@@ -7,6 +7,7 @@ interface SearchProps {
   className?: string;
   isAdmin?: boolean;
   onSearchChange?: (val: string) => void;
+  onFilterClick?: () => void;
 }
 
 const TrainingsSearchContainer = ({
@@ -16,13 +17,13 @@ const TrainingsSearchContainer = ({
   searchValue,
   className,
   isAdmin,
+  onFilterClick
 }: SearchProps) => {
   return (
     <div className={styles.searchWrapper}>
       <div
-        className={`${styles.searchContainer} h-[${height}px] ${
-          isAdmin && "!rounded-[20px] !shadow-none border-2 border-[#00000085]"
-        } ${className}`}
+        className={`${styles.searchContainer} h-[${height}px] ${isAdmin && "!rounded-[20px] !shadow-none border-2 border-[#00000085]"
+          } ${className}`}
       >
         <div className={styles.searchBar}>
           <input
@@ -46,7 +47,10 @@ const TrainingsSearchContainer = ({
         </div>
       </div>
       {filterIcon && (
-        <button className={styles.filterButton}>
+        <button
+        onClick={onFilterClick}
+          className={styles.filterButton}
+        >
           <svg
             width="40"
             height="40"

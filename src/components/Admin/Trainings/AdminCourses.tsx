@@ -43,16 +43,16 @@ const AdminCourses = () => {
     const isEditLesson: boolean = clickInfo.type === 'Dərsi redakte et'
 
     const columns: Column[] = [
-        { id: "title", label: "Kursun adi" },
-        { id: "categoryName", label: "Kateqoriyasi", align: "right" },
-        { id: "authorName", label: "author", align: "right" },
-        { id: "modules", label: "Modul sayi", align: "right" },
-        { id: "lesson", label: "Ders sayi", align: "right" },
+        { id: "title", label: "Kursun adı" },
+        { id: "categoryName", label: "Kateqoriyası", align: "left" },
+        { id: "authorName", label: "Sahibi", align: "left" },
+        { id: "modules", label: "Modul sayı", align: "center" },
+        { id: "lesson", label: "Ders sayı", align: "center" },
     ];
 
     const accordionThead: Column[] = [
         { id: "modules", label: "Modullar", align: "left" },
-        { id: "lesson", label: "Dersler", align: "left" },
+        { id: "lesson", label: "Dərslər", align: "left" },
     ];
 
     const rows = (allTrainings ?? []).map(training => ({
@@ -63,7 +63,7 @@ const AdminCourses = () => {
 
     }));
 
-    const handleDisabledTraining = async (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => {
+    const handleDeleteTraining = async (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => {
         console.log(refreshCourse, 'refreshCourserefreshCourse')
         const result = await Swal.fire({
             title: "Kursu silmek etmək istəyirsiniz?",
@@ -144,7 +144,7 @@ const AdminCourses = () => {
                 columns={columns}
                 rows={rows}
                 onEditClick={handleEditClick}
-                onDeleteCourse={handleDisabledTraining}
+                onDeleteCourse={handleDeleteTraining}
             />
 
             <div className="left-[55%] absolute bottom-0 mb-10 flex items-center justify-center">
