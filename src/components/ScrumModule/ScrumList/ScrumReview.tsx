@@ -35,26 +35,26 @@ const ScrumReview: React.FC<ScrumReviewProps> = ({
       <div className="bgCard bg-[#EAEDF5] rounded-3xl w-[92%] h-[95%]"></div>
       <div
         style={{ boxShadow: "0px 0px 40px 10px rgba(87, 87, 87, 0.12)" }}
-        className="frontCard rounded-3xl w-[92%] h-[95%] absolute bottom-0 right-0 z-20 bg-white p-20 space-y-2"
+        className="frontCard rounded-3xl w-[92%] h-[95%] absolute bottom-0 right-0 z-20 bg-white p-5 md:p-20 space-y-2"
       >
-        <h2 className="font-bold text-5xl text-center">
+        <h2 className="font-bold text-2xl lg:text-5xl text-center">
            {reviewTitle}
         </h2>
-        <p className="text-center text-[22px] font-normal text-[#00000099]">
+        <p className="text-center text-base lg:text-[22px] font-normal text-[#00000099]">
          {reviewText}
         </p>
-        <div className="feedBacks max-w-sm mx-auto flex gap-2 justify-between mt-8 mb-12 ">
+        <div className="feedBacks max-w-sm mx-auto flex gap-2 justify-between mt-4 mb-6 md:mt-8 md:mb-12 ">
           <RatingFaceCard icon={SadFace} title="Bad" activeRating={reviewRating === 1} clickAction={() => setRating(1)} />
           <RatingFaceCard icon={regularFace} title="Okay" activeRating={reviewRating === 2} clickAction={() => setRating(2)} />
           <RatingFaceCard icon={happyFace} title="Good" activeRating={reviewRating === 3} clickAction={() => setRating(3)} />
           <RatingFaceCard icon={smileFace} title="Amazing" activeRating={reviewRating === 4} clickAction={() => setRating(4)} />
         </div>
-        <div className="textAreaContainer h-[250px] relative ">
-          <p className=" text-[24px] font-normal text-[#00000099]">
+        <div className="textAreaContainer md:h-[250px] relative ">
+          <p className=" text-lg lg:text-[24px] font-normal text-[#00000099]">
             {commentText}
           </p>
           <textarea
-            className=" h-[150px] resize-none block w-full border border-[#00000059] rounded-[10px] p-4 outline-none"
+            className=" h-full sm:h-[250px] md:h-[170px] lg:h-[150px] resize-none block w-full border border-[#00000059] rounded-[10px] p-4 outline-none"
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value)}
             value={reviewComment}
             rows={4}
@@ -65,7 +65,7 @@ const ScrumReview: React.FC<ScrumReviewProps> = ({
               }
             }}
           ></textarea>
-          <span className="absolute bottom-8 left-2 text-[#00000059]">
+          <span className="absolute bottom-2 md:bottom-8 left-2 text-[#00000059]">
             {reviewComment.length}/{limit}
           </span>
         </div>
