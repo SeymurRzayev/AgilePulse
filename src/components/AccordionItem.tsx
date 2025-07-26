@@ -5,7 +5,7 @@ type AccordionItemProps = {
   lessonTitle: string,
   contentHtml: string;
 }
-const AccordionItem = ({ moduleTitle, lessonTitle, contentHtml }: AccordionItemProps) => {
+const AccordionItem = ({ lessonTitle, contentHtml }: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   return (
@@ -22,7 +22,7 @@ const AccordionItem = ({ moduleTitle, lessonTitle, contentHtml }: AccordionItemP
      `}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {moduleTitle}
+        {lessonTitle}
       </button>
       <div
         className={`transition-[max-height] px-[20px] duration-700 ease-in-out overflow-hidden
