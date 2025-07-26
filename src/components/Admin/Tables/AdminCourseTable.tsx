@@ -49,7 +49,7 @@ interface RowProps {
 
 
 function Row(props: RowProps) {
-    const { row, columns, trainingId, onEditClick, accordionThead, isCourse, onDeleteCourse } = props;
+    const { row, columns, trainingId, onEditClick, accordionThead, onDeleteCourse } = props;
     const [open, setOpen] = React.useState(false);
 
     const { data: training, isLoading, refetch: refreshTraining } = useGetTrainingByIdQuery(trainingId, {
@@ -122,7 +122,7 @@ function Row(props: RowProps) {
                                     fontWeight: 400,
                                 }}
                                 variant="h6" gutterBottom component="div">
-                                {isCourse ? 'Kurs Modulları' : 'Quiz Sualları'}
+                                Kurs Modulları və dərsləri
                             </Typography>
                             {isLoading ? (
                                 <div className='flex items-center gap-x-2'><LoadingSpinner size={25} /> Yüklənir...</div>
@@ -144,7 +144,7 @@ function Row(props: RowProps) {
                                                 </TableCell>
                                             ))}
                                             <TableCell
-                                                align="left"
+                                                align="center"
                                                 sx={{
                                                     fontFamily: '"Open Sans", sans-serif',
                                                     fontWeight: 600,
@@ -175,12 +175,12 @@ function Row(props: RowProps) {
                                                             fontSize: '14px',
                                                         }}
                                                     >
-                                                        {q.lessons?.map((lesson) => lesson.title).join(', ')}
+                                                        {q.lessons?.map((lesson) => <div>{lesson.orderNumber} {lesson.title}</div>)}
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <div className="flex items-center  gap-3">
                                                             <DropDown
-                                                                title="Edit"
+                                                                title="İdarə et"
                                                                 list={[
                                                                     'Modulu redakte et',
                                                                     q.lessons?.length > 0 ? 'Dərsi redakte et' : null,

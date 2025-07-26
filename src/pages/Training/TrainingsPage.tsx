@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import PodcastsSection from "./sections/PodcastsSection/PodcastsSection";
 import TrainersSection from "./sections/TrainersSection/TrainersSection";
 import styles from "../../assets/styles/Trainings.module.css";
@@ -14,15 +14,28 @@ import TrainingExperiences from "../Home/sections/TrainingExperiences";
 // import { useNavigate } from "react-router-dom";
 // import { useAppSelector } from "../../redux/hooks/Hooks";
 import { useGetCategoriesQuery } from "../../services/features/trainingPage/categoryApi";
-import { useGetTrainingsByCategoryQuery } from "../../services/features/trainingPage/trainingsApi";
+import { useGetAllTrainingsQuery, useGetTrainingsByCategoryQuery } from "../../services/features/trainingPage/trainingsApi";
+import LoadingSpinner from "../../components/General/LoadingSpinner";
 
 const TrainingsPage = () => {
-  const [activeItem, setActiveItem] = useState<number>(1);
+  const [activeItem, setActiveItem] = useState<number | null>(null);
+  const [showFilter, setShowFilter] = useState<boolean>(false);
   // const navigate = useNavigate()
 
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
   const { data: categories } = useGetCategoriesQuery();
-  const { data: trainingCourses } = useGetTrainingsByCategoryQuery(activeItem);
+  const { data: trainingCourses, isLoading: isLoadingTrainingCourses } = useGetTrainingsByCategoryQuery(activeItem, { skip: activeItem === null });
+  const { data: allTrainings, isLoading: isLoadingAllTrainings } = useGetAllTrainingsQuery();
+
+  const visibleCourses = useMemo(() => {
+    if (activeItem === null) return allTrainings;
+    return trainingCourses;
+  }, [activeItem, allTrainings, trainingCourses]);
+
+
+  if (!allTrainings) {
+    return null
+  }
 
   return (
     <div className="relative">
@@ -39,17 +52,28 @@ const TrainingsPage = () => {
       </div>
       <div className={`${styles.container} font-[Corbel]`}>
         <TrainingsHeroContainer />
-        <TrainingsSearchContainer filterIcon={true} height={74} />
-        <TrainingsCategoryList
-          trainingCategories={categories ?? []}
-          activeItem={activeItem}
-          setActiveItem={setActiveItem}
+        <TrainingsSearchContainer
+          filterIcon={true}
+          height={74}
+          onFilterClick={() => setShowFilter(prev => !prev)}
         />
-        <TrainingListContainer
-          trainingCourses={trainingCourses ?? []}
-          count={trainingCourses?.length ?? 0}
-
-        />
+        <div
+          className={` 
+                    overflow-hidden transition-all duration-500 ease-in-out
+                    ${showFilter ? "max-h-[500px] mt-[30px] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"}
+                  `}
+        >
+          <TrainingsCategoryList
+            trainingCategories={categories ?? []}
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+            className=""
+          />
+        </div>
+        {isLoadingAllTrainings || isLoadingTrainingCourses ? <LoadingSpinner /> : <TrainingListContainer
+          trainingCourses={visibleCourses ?? allTrainings}
+          count={(visibleCourses ?? allTrainings)?.length ?? 0}
+        />}
         <PodcastsSection />
         <TrainersSection />
 

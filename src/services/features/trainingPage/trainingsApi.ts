@@ -4,7 +4,7 @@ import { baseApi } from "../../api/baseApi";
 
 const trainingsApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getTrainingsByCategory: build.query<Training[], number>({
+    getTrainingsByCategory: build.query<Training[], number | null>({
       query: (categoryId) => ({
         url: `/trainings/category/${categoryId}`,
         method: "GET",
