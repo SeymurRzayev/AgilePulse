@@ -25,7 +25,7 @@ function App() {
           {user?.role === 'ADMIN' ? (
             <Route path="/admin/*" element={<AdminRouter />} />
           ) : (
-            <Route path="*" element={<AppRouter />} />
+            <Route path="/*" element={<AppRouter />} />
           )}
         </Routes>
         <ToastContainer />

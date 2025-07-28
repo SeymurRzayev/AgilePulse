@@ -20,7 +20,6 @@ export const loginApi = baseApi.injectEndpoints({
                     dispatch(setLoggedUser(data));
                 } catch (err) {
                     Swal.fire("Xəta!", "İstifadəçi adı və ya şifrə yanlışdır", "error")
-                    console.error("Login failed:", err);
                 }
             }
         }),
