@@ -22,7 +22,7 @@ const AdminCourses = () => {
     const [deleteLesson] = useDeleteLessonMutation();
 
     const [clickInfo, setClickInfo] = useState<{ type: string, mode: string }>({ type: '', mode: '' })
-    const { data: allTrainings } = useGetAllTrainingsQuery()
+    const { data: allTrainings, refetch: refreshAllCourse } = useGetAllTrainingsQuery()
 
     const handleEditClick = (
         training: any = [],
@@ -40,7 +40,7 @@ const AdminCourses = () => {
     const isAddModule: boolean = clickInfo.type === 'Modul əlavə et'
     const isAddLesson: boolean = clickInfo.type === 'Dərs əlavə et'
     const isEditModule: boolean = clickInfo.type === 'Modulu redakte et'
-    const isEditLesson: boolean = clickInfo.type === 'Dərsi redakte et'
+    const isEditLesson: boolean = clickInfo.type === 'Dərsləri idarə et'
 
     const columns: Column[] = [
         { id: "title", label: "Kursun adı" },
@@ -63,36 +63,54 @@ const AdminCourses = () => {
 
     }));
 
-    const handleDeleteTraining = async (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => {
-        console.log(refreshCourse, 'refreshCourserefreshCourse')
+    const handleDeleteTraining = async (
+        refreshCourse: () => void,
+        clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }
+    ) => {
+        const labelAccusative = {
+            course: 'Kursu',
+            module: 'Modulu',
+            lesson: 'Dərsi',
+        };
+
+        const labelNominative = {
+            course: 'Kurs',
+            module: 'Modul',
+            lesson: 'Dərs',
+        };
+
         const result = await Swal.fire({
-            title: "Kursu silmek etmək istəyirsiniz?",
-            text: "Bu kurs artıq aktiv olmayacaq.",
-            icon: "warning",
+            title: `${labelAccusative[clickInfo.type]} silmək istəyirsiniz?`,
+            text: `${labelAccusative[clickInfo.type]} sildikdə bu məlumat artıq aktiv olmayacaq.`,
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Bəli, təsdiq et",
-            cancelButtonText: "İmtina",
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Bəli, təsdiq et',
+            cancelButtonText: 'İmtina',
         });
 
         if (result.isConfirmed) {
             try {
                 if (clickInfo.type === 'course') {
-                    await deleteTraining(clickInfo.id);
+                    await deleteTraining(clickInfo.id).unwrap();
+                    refreshAllCourse();
                 } else if (clickInfo.type === 'module') {
-                    await deleteModule(clickInfo.id);
+                    await deleteModule(clickInfo.id).unwrap();
+                    refreshCourse();
                 } else if (clickInfo.type === 'lesson') {
-                    await deleteLesson(clickInfo.id);
+                    await deleteLesson(clickInfo.id).unwrap();
+                    refreshCourse();
                 }
-                refreshCourse() // Bura baxilmalidi islemir 
-                Swal.fire('Uğurlu', 'Kurs uğurla silindi', 'success')
+
+                Swal.fire('Uğurlu', `${labelNominative[clickInfo.type]} uğurla silindi`, 'success');
             } catch (error) {
-                Swal.fire('Xəta', 'Kurs silinmədi', 'error')
-                console.error('Kurs silinmədi:', error);
+                Swal.fire('Xəta', `${labelNominative[clickInfo.type]} silinmədi`, 'error');
+                console.error(`${labelNominative[clickInfo.type]} silinmədi:`, error);
             }
         }
     };
+
 
 
     return (
@@ -105,7 +123,7 @@ const AdminCourses = () => {
                         isEditModule ? "Modulu Redaktə Et" :
                             isAddModule ? "Modul Əlavə Et" :
                                 isAddLesson ? "Dərs Əlavə Et" :
-                                    isEditLesson ? "Dərsi Redaktə Et" :
+                                    isEditLesson ? "Dərsləri idarə et" :
                                         isEditTraining ? "Kursu Redaktə Et" : "Kursu Əlavə Et"
                     }
                 >
@@ -121,6 +139,7 @@ const AdminCourses = () => {
                                 isEdit={clickInfo.mode === 'edit'}
                                 initialData={selectedModule as Module}
                                 onSuccess={() => setShowModal(false)}
+                                onDelete={handleDeleteTraining}
                             />
                         ) : isCreateTraining || isEditTraining ? (
                             <AddTrainingAndUpdate

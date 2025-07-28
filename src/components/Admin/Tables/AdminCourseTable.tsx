@@ -183,28 +183,25 @@ function Row(props: RowProps) {
                                                                 title="İdarə et"
                                                                 list={[
                                                                     'Modulu redakte et',
-                                                                    q.lessons?.length > 0 ? 'Dərsi redakte et' : null,
+                                                                    q.lessons?.length > 0 ? 'Dərsləri idarə et' : null,
                                                                     'Dərs əlavə et'
                                                                 ].filter(Boolean) as string[]}
                                                                 className="bg-[#44A15E] hover:bg-[#38894F] active:bg-[#2F7342]"
                                                                 onSelect={(value) => {
-                                                                    onEditClick([], value === 'Dərsi redakte et' ? { ...q, refreshTraining: refreshTraining } : { ...q, trainingId: row.id, refreshTraining: refreshTraining }, {
+                                                                    onEditClick([], value === 'Dərsləri idarə et' ? { ...q, refreshTraining: refreshTraining } : { ...q, trainingId: row.id, refreshTraining: refreshTraining }, {
                                                                         type: value,
                                                                         mode: value === 'Dərs əlavə et' ? 'create' : 'edit'
                                                                     })
                                                                 }}
                                                             />
-                                                            <DropDown
-                                                                list={[
-                                                                    'Modulu sil',
-                                                                    q.lessons?.length > 0 ? 'Dersi sil' : null,
-                                                                ].filter(Boolean) as string[]}
-                                                                title="Delete"
-                                                                className="bg-[#DA3D68] hover:bg-[#B83256] active:bg-[#A52C4B]"
-                                                                onSelect={(value) => {
-                                                                    onDeleteCourse(refreshTraining, { id: q.id, type: value  === 'Modulu sil' ? 'module' : 'lesson' })
+                                                            <button
+                                                                className="bg-[#DA3D68] hover:bg-[#B83256] active:bg-[#A52C4B] py-2 px-3 flex items-center gap-1 cursor-pointer rounded-[8px] text-[#fff] font-[Roboto]"
+                                                                onClick={() => {
+                                                                    onDeleteCourse(refreshTraining, { id: q.id, type: 'module' })
                                                                 }}
-                                                            />
+                                                            >
+                                                                Modulu sil
+                                                            </button>
                                                         </div>
                                                     </TableCell>
                                                 </TableRow>

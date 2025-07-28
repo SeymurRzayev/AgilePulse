@@ -3,16 +3,18 @@ import { useCreateLessonMutation, useUpdateLessonMutation } from "../../../servi
 import DynamicForm, { type FieldConfig } from "../../General/DynamicForm";
 import * as yup from 'yup';
 import type { Lesson, Module } from "../../../types/types";
+import DeleteIcon from '../../../assets/icons/adminDelete.svg'
 import { useState } from "react";
 
 interface LessonFormProps {
     isEdit: boolean;
     initialData: Module & { refreshTraining?: () => void };
     onSuccess: () => void;
+    onDelete: (refreshCourse: () => void, clickInfo: { id: number, type: 'course' | 'module' | 'lesson' }) => void;
 }
 
 
-const LessonForm = ({ initialData, onSuccess, isEdit }: LessonFormProps) => {
+const LessonForm = ({ initialData, onSuccess, isEdit, onDelete }: LessonFormProps) => {
     console.log(initialData)
 
     const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null)
@@ -43,11 +45,11 @@ const LessonForm = ({ initialData, onSuccess, isEdit }: LessonFormProps) => {
             if (isEdit) { // Dersi redakte et
                 await updateLesson({ lessonId: +selectedLesson?.id!, body: { ...values, moduleId: initialData.id } }).unwrap()
                 initialData.refreshTraining?.()
-                Swal.fire('Ders redaktə edildi', 'Dersin məlumatları uğurla redaktə edildi', 'success')
+                Swal.fire('Ders redaktə edildi', 'Dersin məlumatları uğurla yeniləndi edildi', 'success')
             } else { // Yeni ders yarat
                 await createLesson(values).unwrap()
                 initialData.refreshTraining?.()
-                Swal.fire('Ders yaradıldı', 'Dersin məlumatları uğurla yaradıldı', 'success')
+                Swal.fire('Uğurlu!', 'Ders uğurla yaradıldı', 'success')
             }
         } catch (error) {
             Swal.fire('Xəta', 'Dersin məlumatları yadda saxlanırken xəta baş verdi', 'error')
@@ -71,11 +73,21 @@ const LessonForm = ({ initialData, onSuccess, isEdit }: LessonFormProps) => {
                                             .sort((a, b) => a.orderNumber - b.orderNumber)
                                             .map(lesson => (
                                                 <div
-                                                    className="border border-[#BEC7E0] px-4 py-2 rounded-xl cursor-pointer hover:bg-[#A6B1D1]"
+                                                    className="border flex items-center justify-between border-[#BEC7E0] px-4 py-2 rounded-xl cursor-pointer hover:bg-[#A6B1D1]"
                                                     key={lesson.id}
                                                     onClick={() => setSelectedLesson(lesson)}
                                                 >
                                                     {lesson.orderNumber}. {lesson.title}
+                                                    <button  /* DELETE */
+                                                        onClick={() => onDelete(initialData?.refreshTraining?.()!, { id: lesson.id!, type: 'lesson' })}
+                                                        className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
+                                                    >
+                                                        <img
+                                                            src={DeleteIcon}
+                                                            alt="delete"
+                                                            className="w-full h-full"
+                                                        />
+                                                    </button>
                                                 </div>
                                             ))
                                     }
