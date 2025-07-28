@@ -16,14 +16,14 @@ const DropDown = ({ title, className, list, onSelect }: DropDownProps) => {
 
             <button
                 onClick={() => setOpenDropDown(prev => !prev)}
-                className="  py-2 px-3 flex items-center gap-1 cursor-pointer"
+                className="!font-[Roboto] py-2 px-3 flex items-center gap-1 cursor-pointer"
             >
                 <span className="bg-transparent ">
                     {title}
                 </span>
                 {
                     <span
-                        className={`transition-transform duration-300 ${openDropDown ? 'rotate-180' : ''}`}
+                        className={`transition-transform duration-300  ${openDropDown ? 'rotate-180' : ''}`}
                     >
                         <IoIosArrowDown color="#fff" size={20} />
                     </span>
