@@ -243,6 +243,7 @@ export interface User {
   phone: string | null;
   position: string;
   profileImage: string | null;
+  role: string;
 }
 
 export interface UpdateUserRequest {

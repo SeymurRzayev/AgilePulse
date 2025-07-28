@@ -1,31 +1,25 @@
 import { useState, type FC } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInSchema } from "../../../validation/signInSchema";
 import openEye from "../../../assets/icons/Inputeye.svg";
 import closeEye from "../../../assets/icons/Inputclosedeye.svg";
 import AuthIllustration from "../../../ui/AuthIllustration/AuthIllustration";
 import authImgSignIn from "../../../assets/images/authImageSignIn.jpg";
-// Hook for swipe back functionality
 import { useSwipeBack } from "../../../ui/SwipeBack/UseSwipeBack";
 import SwipeBackMessage from "../../../ui/SwipeBack/SwipeBackMessage";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import MainButton from "../../../components/Butttons/MainButton";
 import Swal from "sweetalert2";
 import { useLoginMutation } from "../../../services/features/auth/loginApi";
-import { useAppSelector } from "../../../redux/hooks/Hooks";
-
-//  validation schema for sign-in form
+import { useAppDispatch } from "../../../redux/hooks/Hooks";
+import { setLoggedUser } from "../../../redux/slices/authSlice";
 
 const SignIn: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [login] = useLoginMutation()
-  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
-
-  useSwipeBack();
-  const location = useLocation();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const params = new URLSearchParams(location.search);
-  const redirect = params.get('redirect') || '/';
+  useSwipeBack();
 
   const initialValues = {
     email: "",
@@ -34,9 +28,13 @@ const SignIn: FC = () => {
 
   const handleSignin = async (values: any) => {
     try {
-      await login(values).unwrap()
-      if (!isLoggedIn) {
-        navigate(redirect);
+      const response = await login(values).unwrap();
+      dispatch(setLoggedUser(response));
+
+      if (response.role === 'ADMIN') {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
