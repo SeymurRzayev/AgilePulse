@@ -36,9 +36,10 @@ const SignIn: FC = () => {
       } else {
         navigate("/");
       }
-    } catch (error) {
-      console.log(error);
-      Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error");
+    } catch (error: any) {
+      error.originalStatus === 403
+        ? Swal.fire("Xəta baş verdi!", "Mail və ya şifrə yanlişdır!", "error")
+        : Swal.fire("Xəta baş verdi!", "Xəta! Yenidən yoxlayın", "error");
     }
   };
 
@@ -86,6 +87,7 @@ const SignIn: FC = () => {
                       placeholder="Şifrə"
                       className="w-full rounded-[30px] border border-[#B0B0B0] px-4 py-3 outline-none placeholder:font-[Corbel] placeholder:text-sm md:placeholder:text-lg placeholder:text-[#00000061] font-[Corbel] hover:border-[#2C4B9B] hover:shadow-[-1px_0px_6px_2px_rgba(44,75,155,0.35)] hover:shadow-[rgba(44,75,155,0.35)] transition-all duration-300 focus:border-[#2C4B9B]"
                     />
+
                     <div
                       onClick={() => setShowPassword((prev) => !prev)}
                       className="absolute inset-y-0 right-0 flex items-center cursor-pointer pr-4"
@@ -96,6 +98,11 @@ const SignIn: FC = () => {
                       />
                     </div>
                   </div>
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-[#E70303] text-sm mt-1"
+                  />
                 </div>
                 <span className="ml-45 md:ml-50"><Link to="/forgotpassword" className=" text-[#566FAF] text-xs md:text-sm font-normal tracking-normal leading-3 md:leading-5 font-[corbel]">*Şifrəni unutmusan?</Link></span>
               </div>

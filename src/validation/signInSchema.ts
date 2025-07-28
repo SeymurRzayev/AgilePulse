@@ -54,4 +54,5 @@ export const passwordField = yup
 
 export const signInSchema = yup.object({
   email: emailField,
-});
+  password: yup.string().required("Şifrə daxil edilməlidir")
+})
