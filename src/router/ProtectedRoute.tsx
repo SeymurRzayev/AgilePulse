@@ -5,9 +5,11 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
+    console.log(allowedRoles,'allowedRoles')
     const location = useLocation();
     const token = localStorage.getItem('accessToken');
-    const role = localStorage.getItem('role');
+    const user = localStorage.getItem('user');
+    const role = user ? JSON.parse(user).role : null;
 
     // Əgər login olmayıbsa, login səhifəsinə yönləndir
     if (!token) {
@@ -15,7 +17,7 @@ const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
     }
 
     // Əgər rolu icazə verilmiş siyahıda deyilsə, login səhifəsinə yönləndir
-    if (allowedRoles.includes(role || '')) {
+    if (!allowedRoles.includes(role!)) {
         localStorage.removeItem('accessToken'); // tokeni sil
         localStorage.removeItem('user'); // user datalarini sil
         return <Navigate to="/sign-in" replace />;

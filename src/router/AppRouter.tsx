@@ -20,6 +20,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import QuizPage from "../pages/Quiz/Quiz";
 import ExamStartPage from "../pages/Exam/ExamStartPage";
 import Exams from "../pages/Exam/Exams";
+import AdminRouter from "./AdminRouter";
 
 
 
@@ -37,7 +38,7 @@ const AppRouter: FC = () => {
       <Route path="/articles/details/:id" element={<ArticleDetails />} />
 
       {/* Protecded routing */}
-      <Route element={<ProtectedRoute allowedRoles={['USER']}/>}>
+      <Route element={<ProtectedRoute allowedRoles={['USER', 'ADMIN']} />}>
         <Route path="/personal-cabinet" element={<PersonalCabinet />} />
         <Route path="/trainings" element={<TrainingsPage />} />
         <Route path="/trainings/scrum/:id" element={<ScrumSection />} />
@@ -55,7 +56,9 @@ const AppRouter: FC = () => {
       <Route path='/complaint' element={<Suggestions />} />
 
       {/* Admin panel */}
-
+      <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
+        <Route path="/admin/*" element={<AdminRouter />} />
+      </Route>
 
     </Routes>
   );
