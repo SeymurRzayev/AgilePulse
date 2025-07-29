@@ -12,14 +12,14 @@ const AdminQuotes = () => {
 
     const [showModal, setShowModal] = useState<boolean>(false);
     const [selectedTraining, setSelectedTraining] = useState<any>(null);
-    const { data: allQuizes, isLoading: isLoadingQuizes } = useGetAllQuizQuery()
-    const { data: allTrainings } = useGetAllTrainingsQuery()
+    const { data: allQuizes, isLoading: isLoadingQuizes, refetch: refetchQuizes } = useGetAllQuizQuery()
+    const { data: allTrainings, refetch: refetchTrainings } = useGetAllTrainingsQuery()
     const [disabledQuestion] = useDisabledQuestionMutation()
 
     const handleEditClick = (training: any = []) => {
         const relatedQuiz = allQuizes?.find(q => q.trainingId === training.id); // Əgər training ilə əlaqəli quiz varsa, onu seç
         const quizId = relatedQuiz?.id; // Əgər quiz varsa, onun id-sini al
-        setSelectedTraining({ ...training, quizId });
+        setSelectedTraining({ ...training, quizId, refetchTrainings: refetchTrainings, refetchQuizes: refetchQuizes });
         setShowModal(true);
     };
 
@@ -53,7 +53,7 @@ const AdminQuotes = () => {
     const columns: Column[] = [
         { id: "title", label: "Kursun adi" },
         { id: "categoryName", label: "Kateqoriyasi", align: "left" },
-        { id: "authorName", label: "author", align: "left" },
+        { id: "authorName", label: "Sahibi", align: "left" },
         { id: "modules", label: "Modul sayi", align: "center" },
         { id: "lesson", label: "Ders sayi", align: "center" },
         { id: "question", label: "Sual sayi", align: "center" },
@@ -90,11 +90,13 @@ const AdminQuotes = () => {
                     {
                         selectedTraining.isCreateQuiz
                             ? <CreateQuiz
-                                refreshQuiz={selectedTraining.refreshQuiz}
+                                refreshQuiz={refetchTrainings}
                                 trainingId={selectedTraining.trainingId}
                             />
                             : <QuizForm
-                                refreshQuiz={selectedTraining.refreshQuiz}
+                                refreshIdQuiz={selectedTraining.refreshIdQuiz}
+                                refetchQuizes={refetchQuizes}
+                                refetchTrainings={refetchTrainings}
                                 initialData={selectedTraining}
                                 onSuccess={() => setShowModal(false)}
                             />

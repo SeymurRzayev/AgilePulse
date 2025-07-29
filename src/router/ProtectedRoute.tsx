@@ -5,7 +5,6 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = ({ allowedRoles }: ProtectedRouteProps) => {
-    console.log(allowedRoles,'allowedRoles')
     const location = useLocation();
     const token = localStorage.getItem('accessToken');
     const user = localStorage.getItem('user');

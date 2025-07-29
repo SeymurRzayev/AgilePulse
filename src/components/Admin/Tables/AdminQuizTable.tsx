@@ -60,10 +60,6 @@ function Row(props: RowProps) {
         refetchOnMountOrArgChange: true, // açıldıqda və ya id dəyişdikdə yenidən sorğu atsın
     });
 
-    /* const { data: training } = useGetTrainingByIdQuery(trainingId, {
-        skip: !open // yalnız row açıldıqda sorğu getsin
-    }); */
-
     function getCorrectAnswerKey(answers: Answers[]): string {
         const index = answers.findIndex((a) => a.isCorrect);
         return `answers${index + 1}`; // index 0 → answers1, və s.
@@ -96,15 +92,10 @@ function Row(props: RowProps) {
                 <TableCell align="center">
                     <div className="flex items-center justify-center gap-3">
                         <button  // EDIT DEYIL CREATEDIR!!!
-                            onClick={onEditClick.bind(null, { ...row, isEdit: false, refreshQuiz: refreshQuiz, isCreateQuiz: questionCount === 0 })} // Burda sual yaradarkan quiz id lazim oldugu ucun row gonderib idsi ile find edilir
+                            onClick={onEditClick.bind(null, { ...row, isEdit: false, refreshIdQuiz: refreshQuiz, isCreateQuiz: questionCount === 0 })} // Burda sual yaradarkan quiz id lazim oldugu ucun row gonderib idsi ile find edilir
                             className="w-[100px]  h-[40px] flex items-center justify-center bg-[#401795] rounded-xl  hover:opacity-90 transition-opacity cursor-pointer"
                         >
                             <span className='text-xs text-white'>{questionCount === 0 ? 'Quiz yarat' : 'Sual əlavə et'}</span>
-                            {/*  <img
-                                src={AddIcon}
-                                alt="edit"
-                                className="w-[30px] h-[30px]"
-                            /> */}
                         </button>
                     </div>
                 </TableCell>

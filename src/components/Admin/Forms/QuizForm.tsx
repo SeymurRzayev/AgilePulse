@@ -19,10 +19,12 @@ interface QuoteFormProps {
         answers5?: string;
         correctAnswer?: string;
     };
-    refreshQuiz: () => void;
+    refetchQuizes: () => void;
+    refetchTrainings: () => void;
+    refreshIdQuiz?: () => void;
 }
 
-const QuizForm = ({ onSuccess, initialData, refreshQuiz }: QuoteFormProps) => {
+const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, refreshIdQuiz }: QuoteFormProps) => {
 
     const isEdit = initialData?.isEdit;
 
@@ -84,8 +86,10 @@ const QuizForm = ({ onSuccess, initialData, refreshQuiz }: QuoteFormProps) => {
         if (!isEdit) {
             try {
                 await createQuestion({ question: payload, quizId: initialData?.quizId! }).unwrap();
-                Swal.fire('Uğurlu', 'Suaı uğurla əlavə edildi', 'success');
-                refreshQuiz()
+                Swal.fire('Uğurlu', 'Sual uğurla əlavə edildi', 'success');
+                refetchQuizes();
+                refetchTrainings();
+                refreshIdQuiz?.();
                 onSuccess();
             } catch (error) {
                 Swal.fire('Xəta!', 'Sual əlavə edilərkən problem oldu.', 'error');
@@ -94,8 +98,9 @@ const QuizForm = ({ onSuccess, initialData, refreshQuiz }: QuoteFormProps) => {
         } else {
             try {
                 await updateQuestion({ question: payload, questionId: initialData?.quesId!, quizId: initialData?.quizId! }).unwrap();
-                Swal.fire('Uğurlu', 'Suaı uğurla redaktə edildi', 'success');
-                refreshQuiz()
+                Swal.fire('Uğurlu', 'Sual uğurla redaktə edildi', 'success');
+                refetchQuizes();
+                refetchTrainings();
                 onSuccess();
             } catch (error) {
                 Swal.fire('Xəta!', 'Sual redaktə edilərkən problem oldu.', 'error');
