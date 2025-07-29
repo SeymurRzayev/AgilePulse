@@ -12,6 +12,8 @@ import { FiLogOut } from "react-icons/fi";
 import { userLogout } from "../../redux/slices/authSlice";
 import Swal from "sweetalert2";
 import OutlineBtn from "../../components/Butttons/OutlineBtn";
+import { GrUserAdmin } from "react-icons/gr";
+
 interface NavLinkItem {
   path: string;
   label: string;
@@ -250,6 +252,16 @@ const Navbar: FC<NavbarProps> = ({
                     </span>
                     Hesabım
                   </li>
+                  {
+                    user?.role === 'ADMIN' && (
+                      <li onClick={() => navigate("/admin/dashboard")} className="flex items-center gap-3 text-lg text-[#122041] font-[Corbel] cursor-pointer font-normal">
+                        <span className="bg-[#CCC]rounded-full p-2">
+                          <GrUserAdmin size={25} />
+                        </span>
+                        Admin panel
+                      </li>
+                    )
+                  }
                   <li onClick={handleLogOut} className="flex items-center gap-3 text-lg text-[#122041] font-[Corbel] cursor-pointer font-normal">
                     <span className="bg-red-100 rounded-full p-2">
                       <FiLogOut size={25} />
@@ -396,11 +408,11 @@ const Navbar: FC<NavbarProps> = ({
                   : (
                     <div className="w-full flex justify-center items-center">
                       <OutlineBtn
-                      text="Çıxış"
-                      onClick={() => handleLogOut()}
-                      buttonClassName="w-full py-3  "
-                   
-                    />
+                        text="Çıxış"
+                        onClick={() => handleLogOut()}
+                        buttonClassName="w-full py-3  "
+
+                      />
                     </div>
                   )
                 }

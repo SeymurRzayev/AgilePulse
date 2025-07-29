@@ -4,7 +4,7 @@ import TrainingForm from './TrainingForm';
 import { useGetCategoriesQuery } from '../../../services/features/trainingPage/categoryApi';
 import { useCreateTrainingMutation, useUpdateTrainingMutation } from '../../../services/features/trainingPage/trainingsApi';
 
-interface QuoteFormProps {
+interface TrainingProps {
   onSuccess: () => void;
   isEdit: boolean;
   initialData?: {
@@ -17,6 +17,7 @@ interface QuoteFormProps {
     categoryId: string
     categoryName?: string
   };
+  refreshAllCourse: () => void;
 }
 
 interface FieldConfig {
@@ -26,7 +27,7 @@ interface FieldConfig {
   colSpan?: number;
 }
 
-const AddTrainingAndUpdate = ({ onSuccess, isEdit, initialData }: QuoteFormProps) => {
+const AddTrainingAndUpdate = ({ onSuccess, isEdit, initialData, refreshAllCourse }: TrainingProps) => {
 
   const { data: categoryOptions } = useGetCategoriesQuery()
   const [createTraining] = useCreateTrainingMutation()
@@ -91,9 +92,11 @@ const AddTrainingAndUpdate = ({ onSuccess, isEdit, initialData }: QuoteFormProps
 
       if (isEdit && initialData?.id) {
         await updateTraining({ trainingId: initialData.id, training: formData }).unwrap();
+        refreshAllCourse()
         Swal.fire('Uğurla', 'Kurs yeniləndi', 'success');
       } else {
         await createTraining(formData).unwrap()
+        refreshAllCourse()
         Swal.fire('Uğurla', 'Kurs əlavə olundu', 'success');
       }
       onSuccess();

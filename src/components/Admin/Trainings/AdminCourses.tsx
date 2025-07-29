@@ -146,6 +146,7 @@ const AdminCourses = () => {
                                 isEdit={clickInfo.mode === 'edit'}
                                 initialData={selectedTraining}
                                 onSuccess={() => setShowModal(false)}
+                                refreshAllCourse={refreshAllCourse}
                             />
                         ) : null
                     }
