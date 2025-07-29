@@ -72,6 +72,7 @@ const AdminMenu = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(userLogout());
+                navigate('/');
             }
         });
     };
