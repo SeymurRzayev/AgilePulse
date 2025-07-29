@@ -16,7 +16,7 @@ export interface ArticleRes {
   text: string;
   imageUrl: string;
   author: string;
-  createdAt: string
+  createdAt: string;
 }
 
 export interface GetByIdArticle {
@@ -31,7 +31,7 @@ interface ArticleByIdRes {
   text: string;
   imageUrl: string;
   author: string;
-  createdAt: string
+  createdAt: string;
 }
 
 //Book types
@@ -102,7 +102,6 @@ interface FaqByIdRes {
   answer: string;
 }
 
-
 //Contact Us
 export interface ContactUsEntry {
   id?: number;
@@ -140,10 +139,7 @@ export interface FindAllContactUsResponse {
   first: boolean;
   last: boolean;
   empty: boolean;
-
 }
-
-
 
 //Partners Controller
 
@@ -192,7 +188,7 @@ export interface SubscriptionReq {
 
 export interface SubscriptionRes {
   id: number;
-  email: string
+  email: string;
 }
 
 export interface GetAllSubscriptionsResponse {
@@ -204,7 +200,6 @@ export interface GetAllSubscriptionsResponse {
     hasNextPage: boolean;
   };
 }
-
 
 export interface GetSubscriptionByIdResponse {
   message: string;
@@ -221,11 +216,10 @@ export interface CreateUserReq {
 //quotes api
 
 export interface GetRandomQuotesRes {
-  id: number;       // ya da bigint, duruma göre
+  id: number; // ya da bigint, duruma göre
   text: string;
   author: string;
 }
-
 
 export interface UserLoginReq {
   email: string;
@@ -256,7 +250,6 @@ export interface UpdateUserRequest {
   };
 }
 
-
 // team-controller api
 
 export interface TeamMember {
@@ -278,12 +271,10 @@ export interface GetAllTeamResponse {
   };
 }
 
-
 export interface GetEmployeeByIdResponse {
   message: string;
   data: TeamMember;
 }
-
 
 export interface CategoriesResponse {
   id: number;
@@ -311,7 +302,6 @@ export interface PodcastResponse {
   data: PodcastData;
 }
 
-
 export interface Trainer {
   id: number;
   name: string;
@@ -332,7 +322,6 @@ export interface TrainerResponse {
   message: string | null;
   data: TrainersData;
 }
-
 
 export type Person = {
   name: string;
@@ -447,7 +436,6 @@ export interface CertificateResponse {
 
 // Cavab modelini təsvir edir
 
-
 // Quiz və ya imtahan modelini təsvir edir
 export interface Quiz {
   id?: number;
@@ -479,4 +467,11 @@ export interface QuizPostBody {
   passPercentage: number;
   durationInMinutes: number;
   questions: QuestionPost[];
+}
+
+export interface TrainingReview {
+  trainingId: number;
+  rating: number;
+  comment: string;
+  createdAt: string;
 }

@@ -13,7 +13,7 @@ const ScrumModule: FC = () => {
   const { data: scrumTrainer } = useGetTrainingByIdQuery(Number(id));
 
   const progress = 14.5;
-  console.log(scrumTrainer)
+  // console.log(scrumTrainer)
 
   return (
     <>

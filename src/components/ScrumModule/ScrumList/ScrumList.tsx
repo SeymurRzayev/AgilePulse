@@ -8,12 +8,19 @@ import { useNavigate } from "react-router-dom";
 import type { Training } from "../../../types/types";
 import { useGetAllTrainingsQuery } from "../../../services/features/trainingPage/trainingsApi";
 import ScrumReview from "./ScrumReview";
+import { useAppSelector } from "../../../redux/hooks/Hooks";
+import { useCreateTrainingReviewMutation } from "../../../services/features/trainingPage/trainingReviewApi";
+import Swal from "sweetalert2";
 
 type ScrumListProps = {
   data: Training | undefined;
 };
 
 const ScrumList = ({ data }: ScrumListProps) => {
+  const user = useAppSelector((state) => state.auth.user);
+
+  const [createTrainingReview] = useCreateTrainingReviewMutation();
+
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
   const [commentLimit] = useState(100);
@@ -26,13 +33,35 @@ const ScrumList = ({ data }: ScrumListProps) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, id: number|undefined) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement>,
+    ScrumId: number | undefined,
+    userId: number | undefined
+  ) => {
     e.preventDefault();
-    console.log(comment, rating, id);
+
+
     if (rating === 0) {
-      alert("Davam etmək üçün xahiş edirik qiymətləndirin");
+      Swal.fire("Xəta", "Davam etmək üçün xahiş edirik xalınızı daxil edin", "error");
     } else if (comment.length === 0) {
-      alert("Davam etmək üçün xahiş edirik şərhinizi daxil edin");
+      Swal.fire("Xəta", "Davam etmək üçün xahiş edirik ətraflı məlumat daxil edin", "error");
+    }
+
+    if (rating !== 0 && comment.length !== 0 && ScrumId && userId) {
+      const date = new Date().toISOString();
+      createTrainingReview({
+        userId,
+        data: {
+          rating,
+          comment,
+          trainingId: ScrumId,
+          createdAt: date
+         
+        },
+      }).unwrap();
+
+      setRating(0);
+      setComment("");
     }
   };
 
@@ -108,7 +137,8 @@ const ScrumList = ({ data }: ScrumListProps) => {
             reviewRating={rating}
             setRating={setRating}
             limit={commentLimit}
-            id={data?.id}
+            ScrumId={data?.id}
+            userId={user?.id}
           />
         </div>
       </div>
