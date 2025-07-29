@@ -12,10 +12,11 @@ interface ScrumReviewProps {
   reviewComment: string;
   commentText?: string;
   limit?: number;
-  id: number|undefined;
+  ScrumId: number|undefined;
+  userId: number| undefined;
   setRating: React.Dispatch<React.SetStateAction<number>>;
   setComment: (text: string)=> void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>, id: number|undefined) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>, ScrumId: number|undefined,userId: number| undefined) => void;
 }
 
 const ScrumReview: React.FC<ScrumReviewProps> = ({
@@ -25,7 +26,8 @@ const ScrumReview: React.FC<ScrumReviewProps> = ({
   reviewRating,
   reviewComment,
   limit= 100,
-  id,
+  ScrumId,
+  userId,
   setRating,
   setComment,
   handleSubmit
@@ -61,7 +63,7 @@ const ScrumReview: React.FC<ScrumReviewProps> = ({
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
-                handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>, id);
+                handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>, ScrumId,userId);
               }
             }}
           ></textarea>
