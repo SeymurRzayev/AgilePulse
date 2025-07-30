@@ -1,6 +1,5 @@
 import Navbar from '../../layout/Navbar/Navbar'
-import ExamBgImg from "../../assets/images/ExamBgImg.png";
-import Footer from '../../layout/Footer/Footer';
+import ExamBgImg from "../../assets/images/ExamBgImg.jpg";
 import { Outlet, useNavigate } from 'react-router-dom';
 
 const ExamStartPage
@@ -15,7 +14,7 @@ const ExamStartPage
                 <div className="relative w-full">
                     <div
                         style={{ backgroundImage: `url(${ExamBgImg})` }}
-                        className="w-full h-full bg-no-repeat bg-cover bg-center absolute top-0 left-0 -z-10"
+                        className="w-full min-h-[180vh] bg-no-repeat bg-cover brightness-50 bg-center absolute top-0 left-0 -z-10"
                     />
 
                     {/* Content */}
@@ -43,7 +42,6 @@ const ExamStartPage
                     </div>
                 </div>
 
-                <Footer />
             </div>
 
         )

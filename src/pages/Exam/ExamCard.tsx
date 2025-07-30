@@ -50,16 +50,16 @@ const ExamCard: React.FC<ExamCardProps> = ({ examTitle, examDescription, questio
     ];
 
     return (
-        <div className={`w-[330px] sm:w-[447px] ${examType === 'premium' ? "h-[580px] sm:h-[727px]" : " h-[500px] sm:h-[662px]"} backdrop-blur-[25px] bg-[#F4F6FABF] rounded-[20px]  flex justify-center items-center `}>
-            <div className='w-[300px] sm:w-[399px]  flex flex-col  gap-6 '>
-                <div className='flex flex-col  gap-4 w-[300px] sm:w-[399px] '>
-                    <div className='w-[300px]  sm:w-[368px] flex flex-col gap-4' >
+        <div className={`w-[330px] sm:w-[558px]  ${examType === 'premium' ? "h-[580px] sm:h-[727px]" : " h-[500px] sm:h-[662px]"} backdrop-blur-[25px] bg-[#F4F6FABF] rounded-[20px]  flex justify-center items-center `}>
+            <div className='w-[300px] sm:w-[483px]  flex flex-col justify-center items-center  gap-6 '>
+                <div className='flex flex-col  gap-4 w-[300px] sm:w-[483px] '>
+                    <div className='w-[300px]  sm:w-[483px] flex flex-col gap-4' >
                         <span className="text-[18px] sm:text-[22px]  font-bold text-transparent bg-clip-text bg-[linear-gradient(252.47deg,_#4E61EC_9.65%,_#621DAC_50.22%,_#401795_90.01%)]">{examTitle}</span>
                         <ul>
                             {examDescription?.split('.')
                                 .map((sentence, index) => {
                                     const trimmed = sentence.trim();
-                                    return trimmed ? <li key={index} className='text-[12px] sm:text-[16px]  font-normal w-[300px] sm:w-[356px]  text-[#00000099] '>- {trimmed}.</li> : null;
+                                    return trimmed ? <li key={index} className='text-[12px] sm:text-[16px]  font-normal w-[300px] sm:w-[483px]  text-[#00000099] '>- {trimmed}.</li> : null;
                                 })}
                         </ul>
                     </div>
