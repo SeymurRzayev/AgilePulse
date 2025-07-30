@@ -35,13 +35,13 @@ interface AdminCourseTableProps {
     isCourse: boolean; // Kurs mu yoxsa quiz mi
     rows: RowType[];
     onEditClick: (training: RowType) => void;
-    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => void;
+    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void, questionCount: number) => void;
 
 }
 
 interface RowProps {
     row: RowType;
-    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => void;
+    onDisabledQuestion: (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void, questionCount: number) => void;
     accordionThead: Column[];
     columns: Column[];
     isCourse: boolean;
@@ -193,7 +193,7 @@ function Row(props: RowProps) {
                                                                 />
                                                             </button>
                                                             <button
-                                                                onClick={() => onDisabledQuestion(q.id!, quizQuestions.id!, false, refreshQuiz)}
+                                                                onClick={() => onDisabledQuestion(q.id!, quizQuestions.id!, false, refreshQuiz, questionCount)}
                                                                 className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
                                                             >
                                                                 <img
