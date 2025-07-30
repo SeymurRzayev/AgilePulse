@@ -104,6 +104,7 @@ const AdminCourses = () => {
                 }
 
                 Swal.fire('Uğurlu', `${labelNominative[clickInfo.type]} uğurla silindi`, 'success');
+                setShowModal(false)
             } catch (error) {
                 Swal.fire('Xəta', `${labelNominative[clickInfo.type]} silinmədi`, 'error');
                 console.error(`${labelNominative[clickInfo.type]} silinmədi:`, error);

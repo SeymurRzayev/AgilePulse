@@ -79,7 +79,7 @@ const LessonForm = ({ initialData, onSuccess, isEdit, onDelete }: LessonFormProp
                                                 >
                                                     {lesson.orderNumber}. {lesson.title}
                                                     <button  /* DELETE */
-                                                        onClick={() => onDelete(initialData?.refreshTraining?.()!, { id: lesson.id!, type: 'lesson' })}
+                                                        onClick={() => onDelete(initialData?.refreshTraining!, { id: lesson.id!, type: 'lesson' })}
                                                         className="w-[40px] h-[40px] bg-[#DA3D6866] rounded-xl p-2.5 hover:opacity-90 transition-opacity cursor-pointer"
                                                     >
                                                         <img
@@ -118,7 +118,7 @@ const LessonForm = ({ initialData, onSuccess, isEdit, onDelete }: LessonFormProp
                             fieldLabels={fieldLabels}
                             validationSchema={validationSchema}
                             onSubmit={onSubmit}
-                            submitLabel="Ders yarad"
+                            submitLabel="Ders yarat"
                             initialValues={{
                                 title: '',
                                 orderNumber: 0,
