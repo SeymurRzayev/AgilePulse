@@ -53,7 +53,8 @@ function Row(props: RowProps) {
     const [open, setOpen] = React.useState(false);
 
     const { data: training, isLoading, refetch: refreshTraining } = useGetTrainingByIdQuery(trainingId, {
-        skip: !open // yalnız row açıldıqda sorğu getsin
+        skip: !open, // yalnız row açıldıqda sorğu getsin
+        refetchOnMountOrArgChange: true, 
     });
 
     return (
@@ -157,7 +158,10 @@ function Row(props: RowProps) {
                                     </TableHead>
                                     <TableBody >
                                         {// Kurs modullarını göstərir
-                                            training?.modules?.map((q) => (
+                                            training?.modules
+                                            ?.slice() // orijinal array-ə toxunmamaq üçün
+                                            .sort((a, b) => a.orderNumber - b.orderNumber) // order
+                                            .map((q) => (
                                                 <TableRow key={q.id}>
                                                     <TableCell   // Modulun başlığını göstərir məsələn: "Kursun Girişi"
                                                         sx={{
@@ -166,7 +170,7 @@ function Row(props: RowProps) {
                                                             fontSize: '14px',
                                                         }}
                                                     >
-                                                        {q.title}
+                                                        {q.orderNumber} {q.title}
                                                     </TableCell>
                                                     <TableCell   // Modulun derslerini gosterir 
                                                         sx={{
@@ -175,7 +179,10 @@ function Row(props: RowProps) {
                                                             fontSize: '14px',
                                                         }}
                                                     >
-                                                        {q.lessons?.map((lesson) => <div>{lesson.orderNumber} {lesson.title}</div>)}
+                                                        {q.lessons
+                                                        ?.slice() // orijinal array-ə toxunmamaq üçün
+                                                        .sort((a, b) => a.orderNumber - b.orderNumber) // order
+                                                        .map((lesson) => <div>{lesson.orderNumber} {lesson.title}</div>)}
                                                     </TableCell>
                                                     <TableCell align="center">
                                                         <div className="flex items-center  gap-3">
