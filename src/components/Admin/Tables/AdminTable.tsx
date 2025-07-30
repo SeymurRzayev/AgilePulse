@@ -36,7 +36,7 @@ const AdminTable: React.FC<TableProps> = ({
 
     return (
         <div
-            className="flex flex-col gap-2.5 fade-in overflow-y-scroll max-h-[550px]"
+            className="flex flex-col gap-2.5 fade-in overflow-y-scroll max-h-[520px] !pb-15"
         >
             {/* Table Header */}
             <div

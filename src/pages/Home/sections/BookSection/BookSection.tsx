@@ -10,38 +10,74 @@ import { useGetAllBookQuery } from "../../../../services/features/mainPage/bookA
 
 const BookSection: FC = () => {
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(2);
+
+  const countPerPage = 5;  // slider-də neçə kitab göstəriləcək
+  const [page, setPage] = useState(0);  // 0-dan başlayır, API-də də eynidir
+
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<Slider>(null);
-  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
-    null
-  );
+  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const { data, isLoading, isError } = useGetAllBookQuery()
+  const { data, isLoading, isError } = useGetAllBookQuery({ page, count: countPerPage });
+  const allBook = data?.data?.data ?? [];
+  const totalCount = data?.data?.totalElements ?? 0;
+  const totalPages = Math.ceil(totalCount / countPerPage);
 
-  const allBook = data?.data?.data
-
+  // Avtopley
   const startAutoplay = useCallback(() => {
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current);
-    }
+    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
 
     autoplayIntervalRef.current = setInterval(() => {
       if (sliderRef.current && !isPaused) {
-        sliderRef.current.slickNext();
+        if (activeIndex === allBook.length - 1) {
+          // son slaydda isə növbəti səhifəyə keç
+          if (page < totalPages - 1) {
+            setPage((p) => p + 1);
+            setActiveIndex(0);
+          } else {
+            // səhifə sonundadır, yenidən başa qayıt
+            sliderRef.current.slickGoTo(0);
+            setActiveIndex(0);
+          }
+        } else {
+          sliderRef.current.slickNext();
+        }
       }
     }, 3000);
-  }, [isPaused]);
+  }, [isPaused, activeIndex, allBook.length, page, totalPages]);
 
   useEffect(() => {
     startAutoplay();
 
     return () => {
-      if (autoplayIntervalRef.current) {
-        clearInterval(autoplayIntervalRef.current);
-      }
+      if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
     };
-  }, [isPaused, startAutoplay]);
+  }, [startAutoplay]);
+
+  // Slayder dəyişəndə aktiv index-i set etmək
+  const beforeChangeHandler = (_current: number, next: number) => {
+    // Əgər növbəti indeks array uzunluğundan böyükdürsə səhifəni artır
+    if (next >= allBook.length) {
+      if (page < totalPages - 1) {
+        setPage(page + 1);
+        setActiveIndex(0);
+      } else {
+        setActiveIndex(0);
+        sliderRef.current?.slickGoTo(0);
+      }
+    } else if (next < 0) {
+      if (page > 0) {
+        setPage(page - 1);
+        setActiveIndex(countPerPage - 1);
+      } else {
+        setActiveIndex(allBook.length - 1);
+        sliderRef.current?.slickGoTo(allBook.length - 1);
+      }
+    } else {
+      setActiveIndex(next);
+    }
+  };
 
   const togglePause = () => {
     setIsPaused(!isPaused);
@@ -57,7 +93,7 @@ const BookSection: FC = () => {
     centerMode: true,
     centerPadding: "0",
     initialSlide: activeIndex,
-    beforeChange: (_current: number, next: number) => setActiveIndex(next),
+    beforeChange: beforeChangeHandler,
     responsive: [
       {
         breakpoint: 1024,
@@ -83,6 +119,9 @@ const BookSection: FC = () => {
     ],
   };
 
+  if (isLoading) return <div>Yüklənir...</div>;
+  if (isError) return <div>Xəta baş verdi!</div>;
+
   return (
     <div className={styles.bookSection}>
       <div className={styles.textContainer}>
@@ -92,36 +131,31 @@ const BookSection: FC = () => {
         </p>
       </div>
       <div className={styles.sliderContainer}>
-        {isLoading ? (
-          <div>Yüklənir...</div>
-        ) : isError ? (
-          <div>Xəta baş verdi!</div>
-        ) : (
-          <Slider ref={sliderRef} {...settings} className={`${styles.sliderWrapper} `}>
-            {allBook?.map((book, index) => (
-              <div
-                key={index}
-                className={`${styles.slideItem} ${index === activeIndex ? styles.activeSlide : styles.blurredSlide
-                  }`}
-                onClick={togglePause}
-                title={
-                  isPaused
-                    ? "Davam etdirmək üçün kliklə"
-                    : "Dayandırmaq üçün kliklə"
-                }
-                tabIndex={-1}
-              >
-                <img
-                  onClick={() => navigate(`/library/detail/${book.id}`)}
-                  src={book.imageUrl}
-                  alt={`Agile book ${index + 1}`}
-                  className={` ${styles.bookImage} `}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </Slider>
-        )}
+        <Slider ref={sliderRef} {...settings} className={`${styles.sliderWrapper} `}>
+          {allBook.map((book, index) => (
+            <div
+              key={book.id}
+              className={`${styles.slideItem} ${
+                index === activeIndex ? styles.activeSlide : styles.blurredSlide
+              }`}
+              onClick={togglePause}
+              title={
+                isPaused
+                  ? "Davam etdirmək üçün kliklə"
+                  : "Dayandırmaq üçün kliklə"
+              }
+              tabIndex={-1}
+            >
+              <img
+                onClick={() => navigate(`/library/detail/${book.id}`)}
+                src={book.imageUrl}
+                alt={`Agile book ${index + 1}`}
+                className={` ${styles.bookImage} `}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </Slider>
         <div className={styles.buttonContainer}>
           <button
             onClick={() => navigate("/library")}
@@ -131,7 +165,6 @@ const BookSection: FC = () => {
           </button>
         </div>
       </div>
-
     </div>
   );
 };

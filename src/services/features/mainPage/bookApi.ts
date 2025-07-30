@@ -4,9 +4,9 @@ import { baseApi } from "../../api/baseApi";
 
 const bookApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllBook: builder.query<GetAllBookResponse, void>({
-            query: () => ({
-                url: `/book/all`,
+        getAllBook: builder.query<GetAllBookResponse, { page: number, count: number }>({
+            query: ({ page, count }) => ({
+                url: `/book/all?page=${page}&count=${count}`,
                 method: 'GET',
             }),
             providesTags: ['Book'],

@@ -28,6 +28,31 @@ export const sxWhitePagination = {
     },
 };
 
+//Library pagination css
+export const PaginationCss = {
+    '& .MuiPaginationItem-root': {
+        backgroundColor: 'transparent',
+        color: '#122041',
+        fontFamily: 'Lexend',
+        fontSize: '16px',
+        fontWeight: 600,
+        lineHeight: '24px',
+    },
+    '& .Mui-selected': {
+        backgroundColor: '#9EACD1',
+    },
+    '& .MuiPaginationItem-root:hover': {
+        backgroundColor: '#e0e0e0',
+    },
+    '& .MuiPaginationItem-previousNext': {
+        backgroundColor: '#BEC7E0',
+    },
+    '& .MuiPaginationItem-previousNext:hover': {
+        backgroundColor: '#bfdbfe',
+    },
+}
+
+
 export const examSample = [
     { title: "Professional Scrum Master™ I (PSM I)", description: "Scrum biliklərinin əsas səviyyədə mənimsənildiyini göstərir. Scrum Guide-a əsaslanaraq, Scrum-un nə olduğunu və komandada necə tətbiq edildiyini anladığınızı sübut edir. Terminologiya və yanaşma baxımından düzgün və ardıcıl anlayışa sahib olduğunuzu təsdiqləyir.", price: 15, questionsCount: 60, duration: 60, passScore: 85 },
     { title: "Professional Scrum Master™ I (PSM I)", description: "Scrum biliklərinin əsas səviyyədə mənimsənildiyini göstərir. Scrum Guide-a əsaslanaraq, Scrum-un nə olduğunu və komandada necə tətbiq edildiyini anladığınızı sübut edir. Terminologiya və yanaşma baxımından düzgün və ardıcıl anlayışa sahib olduğunuzu təsdiqləyir.", price: 15, questionsCount: 60, duration: 60, passScore: 85 },
