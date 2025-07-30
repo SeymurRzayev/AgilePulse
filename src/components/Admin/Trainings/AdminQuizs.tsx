@@ -23,7 +23,11 @@ const AdminQuotes = () => {
         setShowModal(true);
     };
 
-    const handleDisabledQuestion = async (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => {
+    const handleDisabledQuestion = async (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void, questionCount: number) => {
+        if (questionCount < 25) {
+            Swal.fire('Xəta', 'Sual sayı 25dən az olmalıdır', 'error')
+            return
+        }
         const result = await Swal.fire({
             title: isActive ? "Aktivliyi dəyişmək istəyirsiniz?" : "Sualı deaktiv etmək istəyirsiniz?",
             text: isActive
@@ -36,7 +40,6 @@ const AdminQuotes = () => {
             confirmButtonText: "Bəli, təsdiq et",
             cancelButtonText: "İmtina",
         });
-
         if (result.isConfirmed) {
             try {
                 await disabledQuestion({ questionId, quizId, isActive });
@@ -120,7 +123,6 @@ const AdminQuotes = () => {
                             rows={rows}
                             onEditClick={handleEditClick}
                             onDisabledQuestion={handleDisabledQuestion}
-
                         />
                     )
             }
