@@ -34,8 +34,8 @@ const Exams: React.FC<ExamsProps> = ({ selectedExamType }) => {
 
     return (
 
-        <div className='h-full min-h-[1100px] flex flex-col  w-full justify-start items-center gap-60'>
-            <div className='md:max-w-[996px] grid grid-cols-1 lg:grid-cols-2  gap-28 px-2 mx-auto '>
+        <div className='h-full flex flex-col  w-full justify-start items-center gap-[47px]'>
+            <div className='md:max-w-[1143px] grid grid-cols-1 lg:grid-cols-2  gap-28 px-2 mx-auto '>
                 {currentExams.map((exam, index) => (
                     <ExamCard
                         key={index}
@@ -60,7 +60,6 @@ const Exams: React.FC<ExamsProps> = ({ selectedExamType }) => {
                 hideNextButton={page === totalPages}
                 defaultPage={6}
                 siblingCount={0}
-
             />
 
         </div>
