@@ -11,77 +11,99 @@ import { useGetAllBookQuery } from "../../../../services/features/mainPage/bookA
 const BookSection: FC = () => {
   const navigate = useNavigate();
 
-  const countPerPage = 5;  // slider-də neçə kitab göstəriləcək
-  const [page, setPage] = useState(0);  // 0-dan başlayır, API-də də eynidir
+  const countPerPage = 6; // slider-də neçə kitab göstəriləcək
+  const [page, setPage] = useState(0); // 0-dan başlayır, API-də də eynidir
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<Slider>(null);
-  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoplayIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null
+  );
 
-  const { data, isLoading, isError } = useGetAllBookQuery({ page, count: countPerPage });
+  const { data, isLoading, isError } = useGetAllBookQuery({
+    page,
+    count: countPerPage,
+  });
   const allBook = data?.data?.data ?? [];
   const totalCount = data?.data?.totalElements ?? 0;
   const totalPages = Math.ceil(totalCount / countPerPage);
 
-  // Avtopley
+  // Autoplay
   const startAutoplay = useCallback(() => {
     if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
 
     autoplayIntervalRef.current = setInterval(() => {
       if (sliderRef.current && !isPaused) {
         if (activeIndex === allBook.length - 1) {
-          // son slaydda isə növbəti səhifəyə keç
+          // Əgər cari səhifənin son kitabındadırsa
           if (page < totalPages - 1) {
+            // Əgər başqa səhifə varsa, növbəti səhifəyə keç
             setPage((p) => p + 1);
             setActiveIndex(0);
           } else {
-            // səhifə sonundadır, yenidən başa qayıt
-            sliderRef.current.slickGoTo(0);
+            // Əgər son səhifədədirsə, birinci səhifəyə qayıt
+            setPage(0);
             setActiveIndex(0);
           }
         } else {
+          // Normal halda - növbəti slayda keç
           sliderRef.current.slickNext();
+          setActiveIndex((prev) => prev + 1);
         }
       }
     }, 3000);
   }, [isPaused, activeIndex, allBook.length, page, totalPages]);
 
-  useEffect(() => {
-    startAutoplay();
-
-    return () => {
-      if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
-    };
-  }, [startAutoplay]);
-
-  // Slayder dəyişəndə aktiv index-i set etmək
   const beforeChangeHandler = (_current: number, next: number) => {
-    // Əgər növbəti indeks array uzunluğundan böyükdürsə səhifəni artır
+    // Əl ilə naviqasiya üçün
     if (next >= allBook.length) {
       if (page < totalPages - 1) {
-        setPage(page + 1);
+        // Növbəti səhifəyə keç
+        setPage((p) => p + 1);
         setActiveIndex(0);
       } else {
+        // Son səhifədədirsə, birinci səhifəyə qayıt
+        setPage(0);
         setActiveIndex(0);
-        sliderRef.current?.slickGoTo(0);
       }
     } else if (next < 0) {
       if (page > 0) {
-        setPage(page - 1);
+        // Əvvəlki səhifəyə keç
+        setPage((p) => p - 1);
         setActiveIndex(countPerPage - 1);
       } else {
-        setActiveIndex(allBook.length - 1);
-        sliderRef.current?.slickGoTo(allBook.length - 1);
+        // Birinci səhifədədirsə, son səhifəyə keç
+        setPage(totalPages - 1);
+        setActiveIndex(countPerPage - 1);
       }
     } else {
+      // Normal halda - sadəcə aktiv indeksi yenilə
       setActiveIndex(next);
     }
   };
 
+  // Səhifə dəyişəndə slideri sıfırla
+  useEffect(() => {
+    if (allBook.length > 0) {
+      sliderRef.current?.slickGoTo(0);
+      setActiveIndex(0);
+    }
+  }, [page, allBook.length]);
+
+  useEffect(() => {
+    startAutoplay();
+
+    return () => {
+      if (autoplayIntervalRef.current)
+        clearInterval(autoplayIntervalRef.current);
+    };
+  }, [startAutoplay]);
+
   const togglePause = () => {
     setIsPaused(!isPaused);
   };
+
 
   const settings: Settings = {
     dots: false,
@@ -98,7 +120,7 @@ const BookSection: FC = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 5,
           centerMode: true,
         },
       },
@@ -131,7 +153,11 @@ const BookSection: FC = () => {
         </p>
       </div>
       <div className={styles.sliderContainer}>
-        <Slider ref={sliderRef} {...settings} className={`${styles.sliderWrapper} `}>
+        <Slider
+          ref={sliderRef}
+          {...settings}
+          className={`${styles.sliderWrapper} `}
+        >
           {allBook.map((book, index) => (
             <div
               key={book.id}
