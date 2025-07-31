@@ -4,9 +4,9 @@ import { baseApi } from "../../api/baseApi";
 
 export const articleApi = baseApi.injectEndpoints({
     endpoints: (build) => ({
-        getAllArticle: build.query<GetAllArticleResponse, void>({
-            query: () => ({
-                url: '/articles/all',
+        getAllArticle: build.query<GetAllArticleResponse, { page: number, count: number }>({
+            query: ({ page, count }) => ({
+                url: `/articles/all?page=${page}&count=${count}`,
                 method: 'GET',
             }),
         }),

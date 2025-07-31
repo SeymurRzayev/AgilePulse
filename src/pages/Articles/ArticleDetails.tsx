@@ -8,7 +8,7 @@ import dayjs from 'dayjs';
 const ArticleDetails = () => {
 
     const params = useParams()
-    const { data: allArticlesResponse } = useGetAllArticleQuery()
+    const { data: allArticlesResponse } = useGetAllArticleQuery({ page: 0, count: 3 })
     const { data: articleRes } = useGetArticleByIdQuery(Number(params.id))
 
     const article = articleRes?.data

@@ -27,7 +27,7 @@ const AdminLibraryAndArticles = () => {
 
   // API çağırışları pagination parametrləri ilə
   const { data: allBookData, isLoading: isLoadingBooks } = useGetAllBookQuery({ page: page - 1, count: countPerPage });
-  const { data: allArticleData, isLoading: isLoadingArticle } = useGetAllArticleQuery();
+  const { data: allArticleData, isLoading: isLoadingArticle } = useGetAllArticleQuery({ page: page - 1, count: countPerPage });
 
   const [deleteBook] = useDeleteBookMutation();
   const [deleteArticle] = useDeleteArticleMutation();
