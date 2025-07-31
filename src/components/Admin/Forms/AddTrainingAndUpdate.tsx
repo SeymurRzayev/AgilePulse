@@ -47,20 +47,21 @@ const AddTrainingAndUpdate = ({ onSuccess, isEdit, initialData, refreshAllCourse
 
   const fieldLabels = {
     title: 'Kursun Adı',
-    description: 'Kursun Açıqlamasi',
-    authorName: 'Kursun Yaradicisi',
-    image: 'Kursun Resmi',
-    authorAvatar: 'Kursun Yaradicisi Avatarı',
-    categoryId: 'Kursun Kateqoriyasi'
+    description: 'Kursun Açıqlaması',
+    authorName: 'Kursun Yaradıcısı',
+    image: 'Kursun Şəkli',
+    authorAvatar: 'Kursun Yaradıcısı Avatarı',
+    categoryId: 'Kursun Kateqoriyası'
   };
 
   const validationSchema = Yup.object({
-    title: Yup.string().required('Kursun adı vacibdir'),
+    title: Yup.string().required('Kursun adı vacibdir')
+  .matches(/^[\p{L}\s]+$/u, 'Yalnız hərflər qəbul olunur'),
     description: Yup.string().required('Kursun açıqlaması vacibdir'),
-    authorName: Yup.string().required('Kursun yaradicisi vacibdir'),
-    image: Yup.string().required('Kursun resmi vacibdir'),
-    authorAvatar: Yup.string().required('Kursun yaradicisi avatarı vacibdir'),
-    categoryId: Yup.string().required('Kursun kateqoriyasi vacibdir'),
+    authorName: Yup.string().required('Kursun yaradıcısı vacibdir'),
+    image: Yup.string().required('Kursun şəkli vacibdir'),
+    authorAvatar: Yup.string().required('Kursun yaradıcısı avatarı vacibdir'),
+    categoryId: Yup.string().required('Kursun kateqoriyası vacibdir'),
   });
 
   const initialValues = {

@@ -84,9 +84,9 @@ function Row(props: RowProps) {
                 <TableCell align="center">
                     <div className="flex items-center justify-center gap-3">
                         <DropDown
-                            title="Edit"
+                            title="İdarə et"
                             list={[
-                                'Kursu redakte et',
+                                'Kursu redaktə et',
                                 'Modul əlavə et'
                             ]}
                             className="bg-[#44A15E] hover:bg-[#38894F] active:bg-[#2F7342]"
