@@ -12,8 +12,8 @@ const AdminQuotes = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const [selectedQuote, setSelectedQuote] = useState<{ id?: number; text: string; author: string } | null>(null);
 
-    const { data: allQuotes, isLoading } = useGetAllQuotesQuery()
-    const [deleteQuote] = useDeleteQuoteMutation()
+    const { data: allQuotes, isLoading } = useGetAllQuotesQuery();
+    const [deleteQuote] = useDeleteQuoteMutation();
 
     const handleDeleteQuote = async (id: number, deleteQuote: (id: number) => Promise<any>) => {
         const result = await Swal.fire({
@@ -30,13 +30,12 @@ const AdminQuotes = () => {
         if (result.isConfirmed) {
             try {
                 await deleteQuote(id);
-                Swal.fire('Silindi!', 'Sitat uğurla silindi edildi.', 'success');
+                Swal.fire('Silindi!', 'Sitat uğurla silindi.', 'success');
             } catch (error) {
                 Swal.fire('Xəta!', 'Sitat silinərkən problem oldu.', 'error');
             }
         }
     };
-
 
     const openCreateModal = () => {
         setSelectedQuote(null); // yeni sitat üçün boş data
@@ -49,7 +48,7 @@ const AdminQuotes = () => {
     };
 
     return (
-        <div className=' w-full h-full py-10 '>
+        <div className='w-full h-full py-10'>
 
             {showModal && (
                 <CustomModal
@@ -63,7 +62,7 @@ const AdminQuotes = () => {
                 </CustomModal>
             )}
 
-            <div className="w-full flex justify-between px-3 ">
+            <div className="w-full flex justify-between px-3">
                 <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3'>Sitat sətri</h2>
             </div>
 
@@ -72,13 +71,13 @@ const AdminQuotes = () => {
                     ? <LoadingSpinner />
                     : (
                         <AdminTable
-                            theads={["Sitat", "Author"]}
+                            theads={["Sitat", "Müəllif"]}
                             allowActions={true}
                             rows={(allQuotes ?? []).map((quotes) => ({
                                 id: quotes.id,
                                 cells: [
                                     {
-                                        text: `${quotes.text} `,
+                                        text: quotes.text,
                                     },
                                     quotes.author,
                                 ],
@@ -94,14 +93,13 @@ const AdminQuotes = () => {
                     )
             }
 
-
-            <div className=" w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
+            <div className="w-full max-w-[1105px] mx-auto absolute bottom-0 mb-10 flex items-center justify-center">
                 <AnimatedButton onClick={openCreateModal} className="!w-[185px] !h-[56px] !font-[Lexend]">
                     Əlavə et <span className="text-3xl ml-2 font-light">+</span>
                 </AnimatedButton>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default AdminQuotes
+export default AdminQuotes;
