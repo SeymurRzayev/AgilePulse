@@ -17,7 +17,7 @@ const ScrumModule: FC = () => {
 
   return (
     <>
-      <h2 className="w-[80%] mx-auto ">{scrumTrainer?.title}</h2>
+      <h2 className="w-[80%] mx-auto text-3xl md:text-4xl lg:text-6xl leading-9 md:leading-12">{scrumTrainer?.title}</h2>
 
       <div className={`${styles.moduleWrapper}`}>
         <div className={styles.progressBar}>
@@ -25,7 +25,7 @@ const ScrumModule: FC = () => {
             className={`${styles.progressFill} mt-5 `}
             style={{ width: `${progress}%` }}
           />
-          <div className={`${styles.trainerInfo} mt-5  flex-col md:flex-row md:justify-start md:items-start`}>
+          <div className={`${styles.trainerInfo} mt-5  flex-col items-start md:flex-row md:justify-start md:items-start`}>
             <div className="flex flex-col md:items-center md:flex-row ">
               <img
                 src={scrumTrainer?.authorAvatarUrl}
@@ -34,9 +34,9 @@ const ScrumModule: FC = () => {
               />
               <h3 className={`${styles.trainerName} mt-3 md:mt-0 text-2xl md:text-3xl`}>{scrumTrainer?.authorName}</h3>
             </div>
-            <div className="flex flex-col justify-center  md:w-[60%]">
-              <p className={`${styles.trainerDate} text-xl md:text-2xl`}>{scrumTrainer?.publishedAt}</p>
-              <p className={`${styles.trainerDuration} text-xl md:text-2xl md:[background-size:48.5px_46.4px] [background-size:35.5px_35.4px]`}>
+            <div className="flex  items-start w-[100%]  lg:w-[60%]">
+              <p className={`${styles.trainerDate} text-base lg:text-2xl`}>{scrumTrainer?.publishedAt}</p>
+              <p className={`${styles.trainerDuration} text-base md:text-2xl lg:[background-size:48.5px_46.4px] [background-size:35.5px_35.4px]`}>
                 {scrumTrainer?.modules?.length} modul  {scrumTrainer?.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} blok
               </p>
               <button className={`${styles.favoriteBtn} w-[45px] md:w-[86px]`}>

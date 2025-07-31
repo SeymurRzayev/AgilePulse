@@ -104,3 +104,24 @@
     width: 86px;
     flex-shrink: 0;
 }
+@media screen and (max-width: 768px) {
+   .moduleWrapper {
+       width: 100%;
+   }
+   .favoriteBtn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    /* width: 86px; */
+    height: 86px;
+    background-color: inherit;
+    padding: 0;
+}
+
+.favorite {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+}
