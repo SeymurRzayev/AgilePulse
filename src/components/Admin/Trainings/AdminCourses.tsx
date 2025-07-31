@@ -47,20 +47,19 @@ const AdminCourses = () => {
         { id: "categoryName", label: "Kateqoriyası", align: "left" },
         { id: "authorName", label: "Sahibi", align: "left" },
         { id: "modules", label: "Modul sayı", align: "center" },
-        { id: "lesson", label: "Ders sayı", align: "center" },
+        { id: "lessons", label: "Dərs sayı", align: "center" }, 
     ];
 
     const accordionThead: Column[] = [
         { id: "modules", label: "Modullar", align: "left" },
-        { id: "lesson", label: "Dərslər", align: "left" },
+        { id: "lessons", label: "Dərslər", align: "left" }, 
     ];
 
     const rows = (allTrainings ?? []).map(training => ({
         ...training,
         modules: training.modules?.length || 0,
-        lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
+        lessons: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0), 
         id: training.id,
-
     }));
 
     const handleDeleteTraining = async (
@@ -111,8 +110,6 @@ const AdminCourses = () => {
             }
         }
     };
-
-
 
     return (
         <div className=' w-full h-full py-10'>
