@@ -36,11 +36,11 @@ const AdminCourses = () => {
     };
 
     const isCreateTraining: boolean = clickInfo.type === 'Add course'
-    const isEditTraining: boolean = clickInfo.type === 'Kursu redakte et'
+    const isEditTraining: boolean = clickInfo.type === 'Kursu redaktə et'
     const isAddModule: boolean = clickInfo.type === 'Modul əlavə et'
     const isAddLesson: boolean = clickInfo.type === 'Dərs əlavə et'
-    const isEditModule: boolean = clickInfo.type === 'Modulu redakte et'
-    const isEditLesson: boolean = clickInfo.type === 'Dərsləri idarə et'
+    const isEditModule: boolean = clickInfo.type === 'Modulu redaktə et'
+    const isEditLesson: boolean = clickInfo.type === 'Dərsləri redaktə et'
 
     const columns: Column[] = [
         { id: "title", label: "Kursun adı" },

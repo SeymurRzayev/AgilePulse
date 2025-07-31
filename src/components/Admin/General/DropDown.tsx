@@ -36,7 +36,7 @@ const DropDown = ({ title, className, list, onSelect }: DropDownProps) => {
                 className={`
                       absolute top-[40px] -right-0.5  space-y-2 py-3 rounded-lg bg-[#EAEDF5] w-[150px] 
                       transition-all duration-300 ease-in-out
-                      transform  z-20
+                      transform  z-[99]
                       ${openDropDown ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}
                 `}
             >
