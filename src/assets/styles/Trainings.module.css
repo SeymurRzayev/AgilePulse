@@ -78,13 +78,14 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+
 }
 
 .searchBar input {
   border: none;
   outline: none;
   width: 100%;
-  padding: 8px 15px 8px 0;
+height: 40px;
   background: transparent;
   color: rgba(117, 117, 117, 1);
  
