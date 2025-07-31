@@ -7,7 +7,7 @@ const ArticlesSection = () => {
 
   const navigate = useNavigate()
 
-  const { data: allArticlesResponse } = useGetAllArticleQuery()
+  const { data: allArticlesResponse } = useGetAllArticleQuery({page: 0, count: 3})
 
   if (!allArticlesResponse) return null;;
 

@@ -3,22 +3,33 @@ import Navbar from "../../layout/Navbar/Navbar"
 import backgroundImage from '../../assets/images/articles-bg.jpg'
 import { useState } from "react";
 import TrainingCard from "../../components/Trainings/TrainingCard";
-import ShowMoreBtn from "../../components/Butttons/ShowMoreBtn";
 import { useGetAllArticleQuery } from "../../services/features/mainPage/articleApi";
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
+import { PaginationCss } from "../../consts/consts";
 
 const Articles = () => {
 
-    const [visibility, setVisibility] = useState(6)
+    const [page, setPage] = useState<number>(1);
+    const countPerPage = 6;
 
-    const { data: allArticlesResponse } = useGetAllArticleQuery()
-
-    if (!allArticlesResponse) return null;
+    const { data: allArticlesResponse, isLoading } = useGetAllArticleQuery({
+        page: page - 1,
+        count: countPerPage
+    })
 
     const allArticles = allArticlesResponse?.data.data
+    const totalCount = allArticlesResponse?.data.totalElements || 0;
+    const totalPages = Math.ceil(totalCount / countPerPage);
 
-    const slicesArticles = allArticles.slice(0, visibility)
 
+    if (isLoading) return <div className="text-center mt-10">Yüklənir...</div>;
+    if (!allArticlesResponse) return <div className="text-center mt-10">Kitab tapılmadı.</div>;
 
+    const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+    };
 
     return (
         <div>
@@ -34,10 +45,10 @@ const Articles = () => {
                 </div>
             </div>
             <h3 className="text-[#000000DE] text-2xl font-[Corbel] font-normal text-center mt-[43px]">Təcrübəni zənginləşdirəcək materiallar burada!</h3>
-            <div className="w-[90%] flex flex-wrap gap-y-10 mt-[55px] mb-[137px] justify-center gap-x-6 mx-auto">
+            <div className="w-[90%] flex flex-wrap gap-y-10 mt-[55px] mb-[74px] justify-center gap-x-6 mx-auto">
 
                 {
-                    slicesArticles.map(item =>
+                    allArticles?.map(item =>
                         <TrainingCard
                             className='w-[325px] md:w-[381px]'
                             isCurveBig={true}
@@ -51,20 +62,17 @@ const Articles = () => {
                     )
                 }
 
-                {allArticles?.length > 6 && (
-                    visibility >= allArticles.length
-                        ? (
-                            <div className="w-full text-center">
-                                <ShowMoreBtn text='Daha az göstər' onClick={() => setVisibility(6)} />
-                            </div>
-                        )
-                        : (
-                            <div className="w-full text-center">
-                                <ShowMoreBtn text='Daha çox göstər' onClick={() => setVisibility(prev => prev + 6)} />
-                            </div>
-                        )
-                )
-                }
+            </div>
+            <div className="flex justify-center mb-[40px] md:mb-[50px] lg:mb-[74px]">
+                <Stack spacing={2}>
+                    <Pagination
+                        count={totalPages}
+                        page={page}
+                        onChange={handleChange}
+                        color="primary"
+                        sx={PaginationCss}
+                    />
+                </Stack>
             </div>
             <Footer />
         </div>
