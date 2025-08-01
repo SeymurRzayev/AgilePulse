@@ -16,21 +16,25 @@ type TrainingCardProps = {
 
 type TrainingListContainerProps = {
   trainingCourses: TrainingCardProps[];
-  count: number;
 };
+
 const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
   trainingCourses,
-  count,
 }) => {
+  const [visibleCount, setVisibleCount] = useState<number>(6);
 
-  const [visibilty, setVisibility] = useState<number>(6)
+  const visibleTrainings = trainingCourses.slice(0, visibleCount);
+  
+  const hasMoreItems = visibleCount < trainingCourses.length;
 
-  const slicesData = count > 5 ? trainingCourses.slice(0, visibilty) : trainingCourses
+  const handleViewMore = () => {
+    setVisibleCount(prev => Math.min(prev + 6, trainingCourses.length));
+  };
 
   return (
     <div>
-      <div className="w-full  flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
-        {slicesData?.map((course) => (
+      <div className="w-full flex flex-wrap mt-15 gap-y-15 justify-center gap-6">
+        {visibleTrainings?.map((course) => (
           <TrainingCard
             className="w-[325px] md:w-[381px]"
             isCurveBig={true}
@@ -38,8 +42,8 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
             id={course.id}
             imgUrl={course.imageUrl}
             title={course.title}
-            time={course.modules?.length} //modul sayi
-            lessonCount={course.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} //lesson sayi
+            time={course.modules?.length} // modul sayı
+            lessonCount={course.modules?.reduce((total, mod) => total + mod.lessons.length, 0)} // lesson sayı
             avatar={course.authorAvatarUrl}
             user={course.authorName}
             date={course.publishedAt}
@@ -47,10 +51,13 @@ const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
           />
         ))}
       </div>
-      <TrainingsViewAllContainer
-        text="Daha çox"
-        clickFunction={() => setVisibility(visibilty + 6)}
-      />
+      
+      {hasMoreItems && (
+        <TrainingsViewAllContainer
+          text="Hamısına bax"
+          clickFunction={handleViewMore}
+        />
+      )}
     </div>
   );
 };
