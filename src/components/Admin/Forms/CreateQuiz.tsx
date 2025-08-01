@@ -17,17 +17,12 @@ const createEmptyQuestion = () => ({
 });
 
 interface CreateQuizProps {
-  trainingId: number,
-  refreshQuiz: () => void
-  onSuccess: () => void
-}
-
-const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
   trainingId: number;
   refreshQuiz: () => void;
+  onSuccess: () => void;
 }
 
-const CreateQuiz = ({ trainingId, refreshQuiz }: CreateQuizProps) => {
+const CreateQuiz = ({ trainingId, refreshQuiz, onSuccess }: CreateQuizProps) => {
   const [totalQuestions, setTotalQuestions] = useState<number | null>(null);
   const [quizInfo, setQuizInfo] = useState<Omit<Quiz, "questions"> | null>(null);
 
@@ -127,23 +122,21 @@ const CreateQuiz = ({ trainingId, refreshQuiz }: CreateQuizProps) => {
         questions,
       };
       await createQuiz(payload).unwrap();
-      onSuccess()
-      Swal.fire('Uğurlu', 'Quiz uğurla yaratıldı!', 'success')
-    } catch (e:any) {
-      Swal.fire('Xəta', `Quizi yaratmaq mümkün olmadı! ${e.data}`, 'error')
+      onSuccess();
       Swal.fire("Uğurlu", "Quiz uğurla yaratıldı!", "success");
       refreshQuiz();
-    } catch (e) {
-      Swal.fire("Xəta", "Quizi yaratmaq mümkün olmadı!", "error");
-    }
+    } catch (e: any) {
+  const errorMessage = e.data ? `Quizi yaratmaq mümkün olmadı! ${e.data}` : "Quizi yaratmaq mümkün olmadı!";
+  Swal.fire("Xəta", errorMessage, "error");
+}
   };
 
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Kurs üçün quiz yarat</h2>
-      <Formik 
-        initialValues={questionsInitialValues} 
-        validationSchema={questionsValidationSchema} 
+      <Formik
+        initialValues={questionsInitialValues}
+        validationSchema={questionsValidationSchema}
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue, isSubmitting, errors }) => (
@@ -157,9 +150,9 @@ const CreateQuiz = ({ trainingId, refreshQuiz }: CreateQuizProps) => {
                 {errors.questions &&
                   Array.isArray(errors.questions) &&
                   errors.questions[qIndex] &&
-                  typeof errors.questions[qIndex] === 'object' &&
+                  typeof errors.questions[qIndex] === "object" &&
                   (errors.questions[qIndex] as any)?.answers &&
-                  typeof (errors.questions[qIndex] as any).answers === 'string' && (
+                  typeof (errors.questions[qIndex] as any).answers === "string" && (
                     <div className="text-red-500 text-sm mt-1">
                       {(errors.questions[qIndex] as any).answers}
                     </div>
