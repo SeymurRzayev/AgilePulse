@@ -12,10 +12,12 @@ type TrainingCardProps = {
   authorName?: string;
   publishedAt?: string;
   modules?: Module[];
+  count?: number;
 };
 
 type TrainingListContainerProps = {
   trainingCourses: TrainingCardProps[];
+  count?: number;
 };
 
 const TrainingListContainer: React.FC<TrainingListContainerProps> = ({
