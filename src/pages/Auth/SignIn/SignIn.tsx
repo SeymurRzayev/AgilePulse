@@ -114,7 +114,7 @@ const SignIn: FC = () => {
                   text="Daxil ol"
                 />
                 <span className="text-[#9C9A99] text-xs md:text-sm font-normal tracking-normal leading-[20px] font-[corbel] mt-4">
-                  Hesabin var?
+                  Hesabın yoxdur?
                   <Link
                     to="/sign-up"
                     className="text-[#566FAF] text-xs md:text-sm font-normal tracking-normal leading-[20px] font-[corbel] ml-1"
