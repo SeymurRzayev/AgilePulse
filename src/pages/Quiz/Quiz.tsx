@@ -34,7 +34,7 @@ export default function QuizPage() {
   const [startQuiz] = useStartQuizMutation(); // Suallari apiden getiren funksiya, user id ve kurs id teleb edir
   const [endQuiz] = useEndQuizMutation(); // Quizni bitiren funksiya, user id, kurs id ve cavablar teleb edir
   const {data:courseName} = useGetTrainingByIdQuery(Number(trainingId))
-
+console.log(courseName)
   const handleQuiz = async () => { //Quize basla butonun kliki
     if (!user || !trainingId) return; // User ve kurs id yoxdursa funksiya dayanmalidi
 
