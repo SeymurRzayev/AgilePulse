@@ -115,20 +115,23 @@
 /* Responsive styles */
 @media (min-width: 1024px) {
   .bookSection {
-    padding: 3rem 1rem;
+    padding: 6rem 0rem;
+  }
 
+  .bookImage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
 
-    .bookImage {
-      width: 268px;
-      height: 413px;
-
-    }
-
-    .activeSlide {
-      transform: scale(1.08);
-    }
+  .activeSlide {
+    transform: scale(1.08);
   }
 }
+
 
 @media (max-width: 768px) {
   .booksSection {

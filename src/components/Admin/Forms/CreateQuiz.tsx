@@ -6,13 +6,11 @@ import type { Quiz } from "../../../types/types";
 import { useCreateQuizMutation } from "../../../services/features/trainingPage/quizApi";
 import Swal from "sweetalert2";
 
-// Boş cavab obyekti
 const createEmptyAnswer = () => ({
   content: "",
   isCorrect: false,
 });
 
-// Boş sual obyekti
 const createEmptyQuestion = () => ({
   content: "",
   answers: Array(5).fill(null).map(() => createEmptyAnswer()),
@@ -25,18 +23,23 @@ interface CreateQuizProps {
 }
 
 const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
+  trainingId: number;
+  refreshQuiz: () => void;
+}
+
+const CreateQuiz = ({ trainingId, refreshQuiz }: CreateQuizProps) => {
   const [totalQuestions, setTotalQuestions] = useState<number | null>(null);
   const [quizInfo, setQuizInfo] = useState<Omit<Quiz, "questions"> | null>(null);
 
   const [createQuiz] = useCreateQuizMutation();
 
-  const handleContinue = async (values: typeof initialValuess) => {
+  const handleContinue = async (values: typeof initialValues) => {
     setTotalQuestions(Number(values.totalQuestions));
     setQuizInfo({
-      totalQuestions: Number(values.totalQuestions)!,
-      passPercentage: Number(values.passPercentage)!,
-      durationInMinutes: Number(values.durationInMinutes)!,
-      trainingId: trainingId!,
+      totalQuestions: Number(values.totalQuestions),
+      passPercentage: Number(values.passPercentage),
+      durationInMinutes: Number(values.durationInMinutes),
+      trainingId: trainingId,
     });
   };
 
@@ -52,7 +55,7 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
     durationInMinutes: "Quizin müddəti (dəqiqə)",
   };
 
-  const validationSchemaa = Yup.object({
+  const validationSchema = Yup.object({
     totalQuestions: Yup.number()
       .typeError("Sual sayı yalnız rəqəmlə olmalıdır")
       .required("Sual sayı vacibdir")
@@ -63,12 +66,12 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
       .min(0, "Keçid faizi 0-dan böyük olmalıdır")
       .max(100, "Keçid faizi 100-dən kiçik olmalıdır"),
     durationInMinutes: Yup.number()
-      .typeError("Quizin müddəti yalnış rəqəmlə olmalıdır")
+      .typeError("Quizin müddəti yalnız rəqəmlə olmalıdır")
       .required("Quizin müddəti vacibdir")
       .min(25, "Quizin müddəti 25-dən böyük olmalıdır"),
   });
 
-  const initialValuess = {
+  const initialValues = {
     totalQuestions: "",
     passPercentage: "",
     durationInMinutes: "",
@@ -79,19 +82,19 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
       <DynamicForm
         fields={fields}
         fieldLabels={fieldLabels}
-        validationSchema={validationSchemaa}
-        initialValues={initialValuess}
+        validationSchema={validationSchema}
+        initialValues={initialValues}
         onSubmit={handleContinue}
         submitLabel={"Davam et"}
       />
     );
   }
 
-  const initialValues = {
+  const questionsInitialValues = {
     questions: Array(totalQuestions).fill(null).map(() => createEmptyQuestion()),
   };
 
-  const validationSchema = Yup.object({
+  const questionsValidationSchema = Yup.object({
     questions: Yup.array()
       .of(
         Yup.object({
@@ -111,29 +114,38 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
             ),
         })
       )
+      .required("Suallar vacibdir"),
   });
 
   const handleSubmit = async (values: any) => {
-    const { questions } = values
+    const { questions } = values;
     try {
       if (!quizInfo) return;
 
       const payload = {
         ...quizInfo,
         questions,
-      }
+      };
       await createQuiz(payload).unwrap();
       onSuccess()
       Swal.fire('Uğurlu', 'Quiz uğurla yaratıldı!', 'success')
     } catch (e:any) {
       Swal.fire('Xəta', `Quizi yaratmaq mümkün olmadı! ${e.data}`, 'error')
+      Swal.fire("Uğurlu", "Quiz uğurla yaratıldı!", "success");
+      refreshQuiz();
+    } catch (e) {
+      Swal.fire("Xəta", "Quizi yaratmaq mümkün olmadı!", "error");
     }
   };
 
   return (
-    <div className="p-4"> {/* QUIZ CREATE */}
+    <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Kurs üçün quiz yarat</h2>
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+      <Formik 
+        initialValues={questionsInitialValues} 
+        validationSchema={questionsValidationSchema} 
+        onSubmit={handleSubmit}
+      >
         {({ values, setFieldValue, isSubmitting, errors }) => (
           <Form className="space-y-6">
             {values.questions.map((question, qIndex) => (
@@ -142,7 +154,6 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
                   Sual {qIndex + 1}
                 </label>
 
-                {/* Doğru cavab seçilmədiyi zaman error mesajı */}
                 {errors.questions &&
                   Array.isArray(errors.questions) &&
                   errors.questions[qIndex] &&
@@ -171,7 +182,7 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
                   {() => (
                     <div className="grid grid-cols-1 sm:grid-cols-2 !gap-0">
                       {question.answers.map((answer, aIndex) => (
-                        <div key={aIndex} className=" p-3 rounded-lg space-y-2">
+                        <div key={aIndex} className="p-3 rounded-lg space-y-2">
                           <div>
                             <Field
                               name={`questions[${qIndex}].answers[${aIndex}].content`}
@@ -214,7 +225,7 @@ const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full cursor-pointer bg-[#2C4B9B] hover:bg-[#1e3576] text-white py-3 px-6 rounded-lg font-semibold transition"
+                className="w-full cursor-pointer bg-[#2C4B9B] hover:bg-[#1e3576] text-white py-3 px-6 rounded-lg font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Yaradılır..." : "Quiz Yarat"}
               </button>

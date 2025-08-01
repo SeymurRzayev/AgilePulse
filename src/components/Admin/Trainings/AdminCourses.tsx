@@ -36,10 +36,10 @@ const AdminCourses = () => {
     };
 
     const isCreateTraining: boolean = clickInfo.type === 'Add course'
-    const isEditTraining: boolean = clickInfo.type === 'Kursu redakte et'
+    const isEditTraining: boolean = clickInfo.type === 'Kursu redaktə et'
     const isAddModule: boolean = clickInfo.type === 'Modul əlavə et'
     const isAddLesson: boolean = clickInfo.type === 'Dərs əlavə et'
-    const isEditModule: boolean = clickInfo.type === 'Modulu redakte et'
+    const isEditModule: boolean = clickInfo.type === 'Modulu redaktə et'
     const isEditLesson: boolean = clickInfo.type === 'Dərsləri idarə et'
 
     const columns: Column[] = [
@@ -47,20 +47,19 @@ const AdminCourses = () => {
         { id: "categoryName", label: "Kateqoriyası", align: "left" },
         { id: "authorName", label: "Sahibi", align: "left" },
         { id: "modules", label: "Modul sayı", align: "center" },
-        { id: "lesson", label: "Ders sayı", align: "center" },
+        { id: "lessons", label: "Dərs sayı", align: "center" }, 
     ];
 
     const accordionThead: Column[] = [
         { id: "modules", label: "Modullar", align: "left" },
-        { id: "lesson", label: "Dərslər", align: "left" },
+        { id: "lessons", label: "Dərslər", align: "left" }, 
     ];
 
     const rows = (allTrainings ?? []).map(training => ({
         ...training,
         modules: training.modules?.length || 0,
-        lesson: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0),
+        lessons: training.modules?.reduce((acc: number, module: any) => acc + (module.lessons?.length || 0), 0), 
         id: training.id,
-
     }));
 
     const handleDeleteTraining = async (
@@ -112,8 +111,6 @@ const AdminCourses = () => {
         }
     };
 
-
-
     return (
         <div className=' w-full h-full py-10'>
 
@@ -125,7 +122,7 @@ const AdminCourses = () => {
                             isAddModule ? "Modul Əlavə Et" :
                                 isAddLesson ? "Dərs Əlavə Et" :
                                     isEditLesson ? "Dərsləri idarə et" :
-                                        isEditTraining ? "Kursu Redaktə Et" : "Kursu Əlavə Et"
+                                        isEditTraining ? "Kursu Redaktə Et" : "Dərsləri Redaktə et"
                     }
                 >
                     {

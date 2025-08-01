@@ -54,12 +54,12 @@ const AdminQuotes = () => {
 
 
     const columns: Column[] = [
-        { id: "title", label: "Kursun adi" },
-        { id: "categoryName", label: "Kateqoriyasi", align: "left" },
+        { id: "title", label: "Kursun adı" },
+        { id: "categoryName", label: "Kateqoriyası", align: "left" },
         { id: "authorName", label: "Sahibi", align: "left" },
-        { id: "modules", label: "Modul sayi", align: "center" },
-        { id: "lesson", label: "Ders sayi", align: "center" },
-        { id: "question", label: "Sual sayi", align: "center" },
+        { id: "modules", label: "Modul sayı", align: "center" },
+        { id: "lesson", label: "Dərs sayı", align: "center" },
+        { id: "question", label: "Sual sayı", align: "center" },
     ];
 
     const accordionThead: Column[] = [
@@ -110,7 +110,7 @@ const AdminQuotes = () => {
             )}
 
             <div className="w-full flex justify-between px-3 ">
-                <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3'>Quizler</h2>
+                <h2 className='text-2xl font-[Corbel] text-[#000000DE] font-normal mb-3'>Quizlər</h2>
             </div>
 
             {

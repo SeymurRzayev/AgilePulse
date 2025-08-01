@@ -113,7 +113,7 @@ const ScrumList = ({ data }: ScrumListProps) => {
         <div className=" flex flex-col gap-[60px] font-corbel">
           {data?.modules?.map((mod) => (
             <div key={mod.id} className="flex flex-col gap-y-[5px]">
-              <h2 className="text-2xl font-bold">{mod.title}</h2>
+              <h2 className="text-xl md:text-3xl font-bold">{mod.title}</h2>
               {mod.lessons.map((lesson) => (
                 <AccordionItem
                   key={lesson.id}

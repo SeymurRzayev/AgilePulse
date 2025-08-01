@@ -129,7 +129,7 @@ const SignUp: FC = () => {
                   buttonClassName="!py-3"
                   text="Qeydiyyatdan keç"
                 />
-                <span className="text-[#9C9A99] text-xs md:text-sm font-normal tracking-normal leading-5 font-[corbel] mt-4">Hesabin var?
+                <span className="text-[#9C9A99] text-xs md:text-sm font-normal tracking-normal leading-5 font-[corbel] mt-4">Hesabın var?
                   <Link to="/sign-in"
                     className="text-[#566FAF] text-xs md:text-sm font-normal tracking-normal leading-5 font-[corbel] ml-1">Daxil ol</Link></span>
               </div>

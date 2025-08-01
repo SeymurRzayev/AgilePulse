@@ -14,7 +14,10 @@ import TrainingExperiences from "../Home/sections/TrainingExperiences";
 // import { useNavigate } from "react-router-dom";
 // import { useAppSelector } from "../../redux/hooks/Hooks";
 import { useGetCategoriesQuery } from "../../services/features/trainingPage/categoryApi";
-import { useGetAllTrainingsQuery, useGetTrainingsByCategoryQuery } from "../../services/features/trainingPage/trainingsApi";
+import {
+  useGetAllTrainingsQuery,
+  useGetTrainingsByCategoryQuery,
+} from "../../services/features/trainingPage/trainingsApi";
 import LoadingSpinner from "../../components/General/LoadingSpinner";
 
 const TrainingsPage = () => {
@@ -24,17 +27,18 @@ const TrainingsPage = () => {
 
   // const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn)
   const { data: categories } = useGetCategoriesQuery();
-  const { data: trainingCourses, isLoading: isLoadingTrainingCourses } = useGetTrainingsByCategoryQuery(activeItem, { skip: activeItem === null });
-  const { data: allTrainings, isLoading: isLoadingAllTrainings } = useGetAllTrainingsQuery();
+  const { data: trainingCourses, isLoading: isLoadingTrainingCourses } =
+    useGetTrainingsByCategoryQuery(activeItem, { skip: activeItem === null });
+  const { data: allTrainings, isLoading: isLoadingAllTrainings } =
+    useGetAllTrainingsQuery();
 
   const visibleCourses = useMemo(() => {
     if (activeItem === null) return allTrainings;
     return trainingCourses;
   }, [activeItem, allTrainings, trainingCourses]);
 
-
   if (!allTrainings) {
-    return null
+    return null;
   }
 
   return (
@@ -55,12 +59,16 @@ const TrainingsPage = () => {
         <TrainingsSearchContainer
           filterIcon={true}
           height={74}
-          onFilterClick={() => setShowFilter(prev => !prev)}
+          onFilterClick={() => setShowFilter((prev) => !prev)}
         />
         <div
           className={` 
                     overflow-hidden transition-all duration-500 ease-in-out
-                    ${showFilter ? "max-h-[500px] mt-[30px] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"}
+                    ${
+                      showFilter
+                        ? "max-h-[500px] mt-[30px] opacity-100 translate-y-0"
+                        : "max-h-0 opacity-0 -translate-y-2"
+                    }
                   `}
         >
           <TrainingsCategoryList
@@ -70,13 +78,21 @@ const TrainingsPage = () => {
             className=""
           />
         </div>
-        {isLoadingAllTrainings || isLoadingTrainingCourses ? <LoadingSpinner /> : <TrainingListContainer
-          trainingCourses={visibleCourses ?? allTrainings}
-          count={(visibleCourses ?? allTrainings)?.length ?? 0}
-        />}
+        {isLoadingAllTrainings || isLoadingTrainingCourses ? (
+          <LoadingSpinner />
+        ) : visibleCourses?.length === 0 || allTrainings?.length === 0 ? (
+          <div className="text-center py-10 text-gray-500">
+            Kateqoriyaya uyğun təlim yoxdur
+          </div>
+        ) : (
+          <TrainingListContainer
+            trainingCourses={visibleCourses ?? allTrainings}
+            count={(visibleCourses ?? allTrainings)?.length ?? 0}
+          />
+        )}
+
         <PodcastsSection />
         <TrainersSection />
-
       </div>
       <TrainingExperiences />
       <div className="w-full mx-auto  max-w-[1020px] ">

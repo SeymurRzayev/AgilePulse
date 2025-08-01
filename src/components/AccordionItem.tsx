@@ -11,7 +11,7 @@ const AccordionItem = ({ lessonTitle, contentHtml }: AccordionItemProps) => {
   return (
     <div >
 
-      <button className={`text-2xl font-normal leading-[32px] text-left outline-none ease-in
+      <button className={`text-base md:text-xl font-normal leading-[24px] text-left outline-none ease-in
             py-[10px] px-[25px] 
             border  border-blue-100
             ${isOpen ? 'bg-[#a6b1d1]' : ''}
@@ -30,11 +30,11 @@ const AccordionItem = ({ lessonTitle, contentHtml }: AccordionItemProps) => {
   `}
       >
         <div className="mt-5">
-          <h2 className="text-2xl font-bold !text-[#2C4B9B]">{lessonTitle}</h2>
+          <h2 className="text-lg md:text-2xl leading-8 md:leading-12 font-bold !text-[#2C4B9B]">{lessonTitle}</h2>
 
-          <ul className="px-7 list-disc text-xl space-y-4">
+          <ul className="px-7 list-disc text-lg space-y-4">
             <li className="">
-              <div dangerouslySetInnerHTML={{ __html: contentHtml }} className="text-2xl font-bold" />
+              <div dangerouslySetInnerHTML={{ __html: contentHtml }} className="text-sm md:text-lg font-normal" />
             </li>
           </ul>
         </div>

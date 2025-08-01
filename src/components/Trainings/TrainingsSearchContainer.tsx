@@ -29,7 +29,7 @@ const TrainingsSearchContainer = ({
           <input
             type="text"
             placeholder="Search"
-            className="!outline-none !border-0 !shadow-none "
+            className={`!outline-none !border-0 !shadow-none   ${styles.searchBarInput}`}
             value={searchValue}
             onChange={(e) => onSearchChange?.(e.target.value)}
           />

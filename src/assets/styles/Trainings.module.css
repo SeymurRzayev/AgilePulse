@@ -69,7 +69,7 @@ body {
   align-items: center;
   background-color: #f8f8f8;
   border-radius: 30px;
-  padding: 0 28px;
+  padding: 17px 28px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -78,30 +78,33 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+
 }
 
 .searchBar input {
   border: none;
   outline: none;
-  font-size: 16px;
   width: 100%;
-  padding: 8px 15px 8px 0;
+  height: 40px;
   background: transparent;
   color: rgba(117, 117, 117, 1);
- 
+  font-size: 24px;
 }
 
-.searchBar input::placeholder {
+.searchBar .searchBarInput::placeholder {
   color: #888;
   font-family: 'corbel';
+  font-weight: 400;
+  line-height: 25px;
+  font-size: 30px;
 }
 
 .searchButton {
   border: none;
   background: transparent;
   color: rgba(117, 117, 117, 1);
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,8 +240,10 @@ body {
   width: 154px;
   height: 56px;
   border-radius: 30px;
-  border: 1px solid rgba(44, 75, 155, 1);
-  background: white;
+  /* Linear gradient border using background trick */
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #4E61EC, #621DAC, #401795) border-box;
+  border: 1px solid transparent;
   color: rgba(44, 75, 155, 1);
   font-family: "Lexend";
   font-size: 16px;
@@ -252,10 +257,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .viewAllBtn:hover {
-  background: rgba(44, 75, 155, 1);
+  background: linear-gradient(to right, #4E61EC, #621DAC, #401795);
   color: white;
 }
 
@@ -334,12 +340,16 @@ body {
 
   .searchContainer {
     height: 56px;
-    padding: 0 15px;
+    padding: 0px 15px;
   }
 
-  .searchBar input {
-    font-size: 14px;
+  .searchBar .searchBarInput {
+    font-size: 16px;
     padding-left: 16px;
+  }
+
+  .searchBar input::placeholder {
+    font-size: 18px;
   }
 
   .filterButton {
@@ -349,8 +359,8 @@ body {
 
   .searchButton svg,
   .filterButton svg {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
   }
 
   .card {

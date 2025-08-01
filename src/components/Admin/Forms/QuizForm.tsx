@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { useCreateQuestionMutation, useUpdateQuestionMutation } from '../../../services/features/trainingPage/quizApi';
 import QuestionsForm, { type FieldConfigQuestion } from '../General/QuestionsForm';
 
-interface QuoteFormProps {
+interface QuizFormProps {
     onSuccess: () => void;
     initialData?: {
         refreshQuiz: () => void;
@@ -24,9 +24,9 @@ interface QuoteFormProps {
     refreshIdQuiz?: () => void;
 }
 
-const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, refreshIdQuiz }: QuoteFormProps) => {
+const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, refreshIdQuiz }: QuizFormProps) => {
 
-    const isEdit = initialData?.isEdit;
+    const isEdit = initialData?.isEdit || false;
 
     const [createQuestion] = useCreateQuestionMutation();
     const [updateQuestion] = useUpdateQuestionMutation();
@@ -66,7 +66,7 @@ const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, ref
         answers3: initialData?.answers3 || '',
         answers4: initialData?.answers4 || '',
         answers5: initialData?.answers5 || '',
-        correctAnswer: initialData?.correctAnswer || '', // seçilmiş cavabın adı burada saxlanacaq
+        correctAnswer: initialData?.correctAnswer || '', 
     };
 
     const handleSubmit = async (values: any) => {
@@ -85,29 +85,42 @@ const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, ref
 
         if (!isEdit) {
             try {
-                await createQuestion({ question: payload, quizId: initialData?.quizId! }).unwrap();
+                if (!initialData?.quizId) {
+                    Swal.fire('Xəta!', 'Quiz ID tapılmadı.', 'error');
+                    return;
+                }
+                await createQuestion({ question: payload, quizId: initialData.quizId }).unwrap();
                 Swal.fire('Uğurlu', 'Sual uğurla əlavə edildi', 'success');
                 refetchQuizes();
                 refetchTrainings();
                 refreshIdQuiz?.();
                 onSuccess();
             } catch (error) {
+                console.error('Error creating question:', error);
                 Swal.fire('Xəta!', 'Sual əlavə edilərkən problem oldu.', 'error');
                 return;
             }
         } else {
             try {
-                await updateQuestion({ question: payload, questionId: initialData?.quesId!, quizId: initialData?.quizId! }).unwrap();
+                if (!initialData?.quesId || !initialData?.quizId) {
+                    Swal.fire('Xəta!', 'Sual və ya Quiz ID tapılmadı.', 'error');
+                    return;
+                }
+                await updateQuestion({ 
+                    question: payload, 
+                    questionId: initialData.quesId, 
+                    quizId: initialData.quizId 
+                }).unwrap();
                 Swal.fire('Uğurlu', 'Sual uğurla redaktə edildi', 'success');
                 refetchQuizes();
                 refetchTrainings();
                 onSuccess();
             } catch (error) {
+                console.error('Error updating question:', error);
                 Swal.fire('Xəta!', 'Sual redaktə edilərkən problem oldu.', 'error');
                 return;
             }
         }
-        onSuccess();
     };
 
     return (
