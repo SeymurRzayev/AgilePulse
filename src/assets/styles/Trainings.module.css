@@ -240,8 +240,10 @@ height: 40px;
   width: 154px;
   height: 56px;
   border-radius: 30px;
-  border: 1px solid rgba(44, 75, 155, 1);
-  background: white;
+  /* Linear gradient border using background trick */
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #4E61EC, #621DAC, #401795) border-box;
+  border: 1px solid transparent;
   color: rgba(44, 75, 155, 1);
   font-family: "Lexend";
   font-size: 16px;
@@ -255,10 +257,11 @@ height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .viewAllBtn:hover {
-  background: rgba(44, 75, 155, 1);
+  background: linear-gradient(to right, #4E61EC, #621DAC, #401795);
   color: white;
 }
 
