@@ -17,6 +17,12 @@ const createEmptyQuestion = () => ({
 });
 
 interface CreateQuizProps {
+  trainingId: number,
+  refreshQuiz: () => void
+  onSuccess: () => void
+}
+
+const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
   trainingId: number;
   refreshQuiz: () => void;
 }
@@ -121,6 +127,10 @@ const CreateQuiz = ({ trainingId, refreshQuiz }: CreateQuizProps) => {
         questions,
       };
       await createQuiz(payload).unwrap();
+      onSuccess()
+      Swal.fire('Uğurlu', 'Quiz uğurla yaratıldı!', 'success')
+    } catch (e:any) {
+      Swal.fire('Xəta', `Quizi yaratmaq mümkün olmadı! ${e.data}`, 'error')
       Swal.fire("Uğurlu", "Quiz uğurla yaratıldı!", "success");
       refreshQuiz();
     } catch (e) {
