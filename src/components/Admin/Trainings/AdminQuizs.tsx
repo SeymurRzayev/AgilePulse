@@ -93,6 +93,7 @@ const AdminQuotes = () => {
                     {
                         selectedTraining.isCreateQuiz
                             ? <CreateQuiz
+                                onSuccess={() => setShowModal(false)}
                                 refreshQuiz={refetchTrainings}
                                 trainingId={selectedTraining.trainingId}
                             />

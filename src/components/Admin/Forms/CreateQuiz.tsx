@@ -21,9 +21,10 @@ const createEmptyQuestion = () => ({
 interface CreateQuizProps {
   trainingId: number,
   refreshQuiz: () => void
+  onSuccess: () => void
 }
 
-const CreateQuiz = ({ trainingId }: CreateQuizProps) => {
+const CreateQuiz = ({ trainingId, onSuccess }: CreateQuizProps) => {
   const [totalQuestions, setTotalQuestions] = useState<number | null>(null);
   const [quizInfo, setQuizInfo] = useState<Omit<Quiz, "questions"> | null>(null);
 
@@ -122,9 +123,10 @@ const CreateQuiz = ({ trainingId }: CreateQuizProps) => {
         questions,
       }
       await createQuiz(payload).unwrap();
+      onSuccess()
       Swal.fire('Uğurlu', 'Quiz uğurla yaratıldı!', 'success')
-    } catch (e) {
-      Swal.fire('Xəta', 'Quizi yaratmaq mümkün olmadı!', 'error')
+    } catch (e:any) {
+      Swal.fire('Xəta', `Quizi yaratmaq mümkün olmadı! ${e.data}`, 'error')
     }
   };
 
