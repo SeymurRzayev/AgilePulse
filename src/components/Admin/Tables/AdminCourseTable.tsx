@@ -189,7 +189,7 @@ function Row(props: RowProps) {
                                                             <DropDown
                                                                 title="İdarə et"
                                                                 list={[
-                                                                    'Modulu redakte et',
+                                                                    'Modulu redaktə et',
                                                                     q.lessons?.length > 0 ? 'Dərsləri idarə et' : null,
                                                                     'Dərs əlavə et'
                                                                 ].filter(Boolean) as string[]}
