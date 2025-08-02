@@ -122,7 +122,7 @@ const AdminCourses = () => {
                             isAddModule ? "Modul Əlavə Et" :
                                 isAddLesson ? "Dərs Əlavə Et" :
                                     isEditLesson ? "Dərsləri idarə et" :
-                                        isEditTraining ? "Kursu Redaktə Et" : "Dərsləri Redaktə et"
+                                        isEditTraining ? "Kursu Redaktə Et" : "Kurs Əlavə Et"
                     }
                 >
                     {
