@@ -29,9 +29,9 @@ const LessonForm = ({ initialData, onSuccess, isEdit, onDelete }: LessonFormProp
     ]
 
     const fieldLabels = {
-        title: 'Dersin adı',
-        orderNumber: 'Dersin sıra numarası',
-        contentHtml: 'Dersin məzmunu',
+        title: 'Dərsin adı',
+        orderNumber: 'Dərsin sıra nömrəsi',
+        contentHtml: 'Dərsin məzmunu',
     };
 
     const validationSchema = yup.object({

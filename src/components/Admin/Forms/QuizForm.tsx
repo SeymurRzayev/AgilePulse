@@ -24,7 +24,7 @@ interface QuizFormProps {
     refreshIdQuiz?: () => void;
 }
 
-const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, refreshIdQuiz }: QuizFormProps) => {
+const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings }: QuizFormProps) => {
 
     const isEdit = initialData?.isEdit || false;
 
@@ -91,9 +91,9 @@ const QuizForm = ({ onSuccess, initialData, refetchQuizes, refetchTrainings, ref
                 }
                 await createQuestion({ question: payload, quizId: initialData.quizId }).unwrap();
                 Swal.fire('Uğurlu', 'Sual uğurla əlavə edildi', 'success');
-                refetchQuizes();
-                refetchTrainings();
-                refreshIdQuiz?.();
+                refetchQuizes?.();
+                refetchTrainings?.();
+                // refreshIdQuiz?.();
                 onSuccess();
             } catch (error) {
                 console.error('Error creating question:', error);

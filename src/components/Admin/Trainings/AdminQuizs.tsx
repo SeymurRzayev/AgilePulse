@@ -23,11 +23,7 @@ const AdminQuotes = () => {
         setShowModal(true);
     };
 
-    const handleDisabledQuestion = async (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void, questionCount: number) => {
-        if (questionCount < 25) {
-            Swal.fire('Xəta', 'Sual sayı 25dən az olmalıdır', 'error')
-            return
-        }
+    const handleDisabledQuestion = async (questionId: number, quizId: number, isActive: boolean, refreshQuiz: () => void) => {
         const result = await Swal.fire({
             title: isActive ? "Aktivliyi dəyişmək istəyirsiniz?" : "Sualı deaktiv etmək istəyirsiniz?",
             text: isActive
@@ -42,12 +38,13 @@ const AdminQuotes = () => {
         });
         if (result.isConfirmed) {
             try {
-                await disabledQuestion({ questionId, quizId, isActive });
+                await disabledQuestion({ questionId, quizId, isActive }).unwrap();
                 setSelectedTraining({ ...selectedTraining, isActive });
                 refreshQuiz()
+                refetchQuizes()
                 Swal.fire('Uğurlu', 'Sual uğurla silindi', 'success')
-            } catch (error) {
-                console.error('Sualin aktivlik dəyişdirilmədi:', error);
+            } catch (error: any) {
+                Swal.fire('Xəta', `${error.data}`, 'error')
             }
         }
     };
@@ -94,7 +91,7 @@ const AdminQuotes = () => {
                         selectedTraining.isCreateQuiz
                             ? <CreateQuiz
                                 onSuccess={() => setShowModal(false)}
-                                refreshQuiz={refetchTrainings}
+                                refreshQuiz={refetchQuizes}
                                 trainingId={selectedTraining.trainingId}
                             />
                             : <QuizForm
